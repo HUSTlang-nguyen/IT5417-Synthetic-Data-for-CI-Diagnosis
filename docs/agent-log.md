@@ -39,3 +39,10 @@ Append entries in chronological order. Timezone: Asia/Bangkok. Record facts, evi
 - Reviewed 72 staged files: Python/config/context/references and small evidence only. Cache/runs/environments/weights/.env excluded. Credential-pattern scan found no matches; Python compile check passed.
 - Code whitespace check passed. Full diff-check warnings are confined to preserved whitespace in archived source snapshots, Markdown line breaks and raw test logs.
 - Next: commit/push and verify GitHub commit; then target-PC model protocol.
+
+## 2026-10-29 02:41 +07 — Published and verified
+
+- Committed initial implementation as 381b3beedba07ba800aea5dbeec9cbc16c159b48 and pushed main without force. GitHub API commit SHA matched local HEAD; default branch main, private=true. Working tree was clean.
+- Added explicit ignore patterns for datasets/Parquet and local key/secret files before final handoff commit.
+- Handoff: docs/demo-runbook.md, docs/architecture.md and committed evidence. On target PC install/start Docker Linux and Ollama, then run python scripts/demo.py --pull-models. First confirm doctor; no claim that either model or RTX 4070 SUPER has been tested.
+- Remaining research work: actual 2x3 model attempts, review labels, measure runtime and revise next experiments from those results. Parent presentation/research originals unchanged.

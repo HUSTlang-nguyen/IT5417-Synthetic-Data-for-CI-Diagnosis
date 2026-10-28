@@ -4,6 +4,12 @@ __pycache__/
 .cache/
 runs/
 models/
+data/
+datasets/
+*.parquet
+.secrets/
+*.pem
+*.key
 .env
 .env.*
 !.env.example
