@@ -1,0 +1,45 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-8.3.5, pluggy-1.7.0 -- /opt/head/bin/python
+rootdir: /source/head
+configfile: pyproject.toml
+collecting ... collected 2 items
+
+../source/head/tests/test_import.py::test_uncertain_arithmetic FAILED    [ 50%]
+../source/head/tests/test_import.py::test_uncertain_multiplication FAILED [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_uncertain_arithmetic ___________________________
+
+    def test_uncertain_arithmetic():
+        x = properr.uval(10.0, 1.0)
+        y = properr.uval(10.0, 1.0)
+    
+        z = x - y
+        z2 = x - x
+    
+>       assert properr.nominal(z) == 0.0
+E       assert 1.0 == 0.0
+E        +  where 1.0 = <function <lambda> at 0x7044f7d1f2e0>(<builtins.UncertainValue object at 0x7044f7b391b0>)
+E        +    where <function <lambda> at 0x7044f7d1f2e0> = properr.nominal
+
+/source/head/tests/test_import.py:12: AssertionError
+________________________ test_uncertain_multiplication _________________________
+
+    def test_uncertain_multiplication():
+        x = properr.uval(10.0, 1.0)
+        y = properr.uval(10.0, 1.0)
+    
+        z = x * y
+        z2 = x * x
+    
+>       assert properr.nominal(z) == 100.0
+E       assert 101.0 == 100.0
+E        +  where 101.0 = <function <lambda> at 0x7044f7d1f2e0>(<builtins.UncertainValue object at 0x7044f7b3b190>)
+E        +    where <function <lambda> at 0x7044f7d1f2e0> = properr.nominal
+
+/source/head/tests/test_import.py:24: AssertionError
+------------------- generated xml file: /results/results.xml -------------------
+=========================== short test summary info ============================
+FAILED ../source/head/tests/test_import.py::test_uncertain_arithmetic - asser...
+FAILED ../source/head/tests/test_import.py::test_uncertain_multiplication - a...
+============================== 2 failed in 0.04s ===============================

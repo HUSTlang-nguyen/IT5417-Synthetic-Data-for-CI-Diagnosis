@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-10-29T02:35:10+07:00",
+  "development_host_python": {
+    "version": "3.13.12",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "docker_linux": true,
+  "target_gpu_matches": false,
+  "ollama_available": false,
+  "llm_attempts_executed": 0,
+  "target_pc_validation": "not_run",
+  "historical_status": "hypothesis_supported_locally",
+  "historical_head_passed": true,
+  "source_head": "8fd30245ed66b5145d651efc9203eb9a911e95d5",
+  "docker_image_id": "sha256:0d6c02d2b9a764990fd009b079ce5bd0233ee5a7ad4ecffde80326441097f625",
+  "software_fixture_is_model_output": false,
+  "software_tests": "14 passed including opt-in real Docker test"
+}

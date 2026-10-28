@@ -1,0 +1,17 @@
+{
+  "revision": "eff739a28971a66a36d443bfde91c515f7a858ea",
+  "files": {
+    ".github/workflows/ci.yml": "ff65d07392092e2b74c78d6607c5101c8c8bc128c6b28113d85e7cc00f8d7671",
+    ".gitignore": "68f0e9e89b51b8f6178fa382f99a9f0c1f7d5b347055d5455ece30bf5273aac0",
+    "AGENTS.md": "32027745e26bf0e79c6bb842d30b562aea14963933aeaab21b44db5ab971ef2b",
+    "Cargo.lock": "647792a7532e7118ca4e1d226eed128f752428a9dd3cb1967858cb1b9825e78b",
+    "Cargo.toml": "b481aa724ac02ce0c14a44650c97fc813bb51384cb7e4d91e5a9b12294a1aeba",
+    "LICENSE": "0b27574d529e1155d04c4b98f8b9186bff226e3a69996f766df9f3218d17fb34",
+    "README.md": "7c00ab2282cb659a510962f80fdee03911b389bdb3029bdf24ed8a052d0525d1",
+    "properr/__init__.py": "e156afcd90644779229990c8ac5ee4495a969e0df0dfb3fa5574a8dc2c252dc9",
+    "pyproject.toml": "20e00c1af85d86025ed761f489c63e219cd77d36928db023cd30d0db1afb7c97",
+    "src/lib.rs": "51e4b6776841cc5ad0496d4a58fa49524374dfbcd6f808bfc00f5c2b22f79273",
+    "tests/test_import.py": "50347d9a5696d704be7236a902ec7bd232a8dd5a0df59f29f97f718deb45f4f3"
+  },
+  "repo": "https://github.com/kurtbrose/properr"
+}

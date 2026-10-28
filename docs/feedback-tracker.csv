@@ -1,0 +1,8 @@
+timestamp,feedback,action,status,evidence
+00:52-01:09,Explain changes and locations,Track milestones and link artifacts,implemented,docs/agent-log.md
+03:52-04:10,Compare fail-only with pass+fail,Separate research dimension from gold-patch leakage,deferred,docs/revised-plan.md
+07:14-08:39,Justify source subset,Pin one technical demo case without representativeness claim,implemented,cases/properr-6/case.json
+09:06-11:06,Clarify workflow and interceptor,Document workflow; confirm interceptor scope,deferred,docs/demo-runbook.md
+11:59-12:10,Run real feasibility experiment,Reproduce source in Docker,reproduction_verified_models_pending,docs/evidence/README.md
+13:17-13:28,Compare two generator models,Provide local 7B and 1.5B runner,awaiting_target_PC,scripts/demo.py
+13:43-13:56,At most 20 slides,Prepare compact demo report after measurements,deferred,docs/revised-plan.md

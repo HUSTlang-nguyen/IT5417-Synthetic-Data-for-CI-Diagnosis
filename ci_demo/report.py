@@ -1,0 +1,87 @@
+"""Offline HTML report. Every model/source string is escaped."""
+from __future__ import annotations
+from html import escape
+import json
+from pathlib import Path
+from urllib.parse import quote
+from .common import read_json, run_path
+
+def esc(value):
+    return escape(str(value), quote=True)
+
+def link(path, text=None):
+    return '<a href="' + quote(path, safe="/.-") + '">' + esc(text or path) + '</a>'
+
+def stage(folder, result, prefix=""):
+    if not result: return "<p>Chưa chạy.</p>"
+    detail = "timeout" if result.get("timed_out") else "exit " + str(result.get("exit_code"))
+    files = [link(prefix + result[k]) for k in ("stdout", "stderr", "junit") if k in result]
+    return "<p>" + esc(detail) + " · " + esc(result.get("duration_seconds")) + "s · " + " · ".join(files) + "</p>"
+
+def render(folder, manifest):
+    source = manifest.get("source", {})
+    body = ['<h1>Demo dữ liệu lỗi CI có kiểm chứng</h1>',
+            '<p class="notice">BÁO CÁO ARTIFACT ĐÃ LƯU — mở trang này không gọi LLM hoặc chạy test mới.</p>',
+            '<p>Run: <code>' + esc(manifest["run_id"]) + '</code> · ' + esc(manifest.get("created_at")) + '</p>',
+            '<p>Trạng thái: <strong>' + esc(manifest["status"]) + '</strong></p>']
+    if manifest.get("error"):
+        body.append('<p class="error">' + esc(manifest["error"]) + '</p>')
+    body.append('<p>' + link("manifest.json", "Manifest đầy đủ") + '</p>')
+    if source:
+        body.append('<h2>Nguồn và workflow</h2><p>' + esc(source["dataset"]) + " " + esc(source["revision"])
+                    + " · " + esc(source["table"]) + " · record " + esc(source["record_id"]) + '</p>')
+        body.append('<p>Base: <code>' + esc(source["base"]) + '</code><br>Head: <code>'
+                    + esc(source["head"]) + '</code></p>')
+        body.append('<p>Dataset → repo/commit → môi trường → LLM sinh ứng viên → test độc lập → người rà nhãn.</p>')
+        body.append('<p>Nhãn agent ở PR không chứng minh actor gây lỗi. Log ở đây là log tái hiện local, không phải CI lịch sử.</p>')
+    if manifest["kind"] == "historical_reproduction":
+        body.append('<h2>Kiểm tra giả thuyết lịch sử</h2><p>' + esc(source["historical_hypothesis"]) + '</p>')
+        body.append('<h3>Base</h3>' + stage(folder, manifest.get("base")))
+        body.append('<h3>Head</h3>' + stage(folder, manifest.get("head")))
+        body.append('<p>Bản head pass là điều kiện chọn seed. Không suy gold label hoặc tác giả gây lỗi từ kết quả này.</p>')
+        if manifest.get("build"):
+            body.append('<h3>Dựng môi trường</h3>' + stage(folder, manifest["build"]))
+    elif manifest["kind"] == "synthetic_generation":
+        attempts = manifest.get("attempts", [])
+        denominator = manifest["attempt_count"]
+        executed = sum(x["status"] == "execution_verified" for x in attempts)
+        body.append('<h2>Thí nghiệm synthetic có kiểm soát</h2><p>Model: <strong>' + esc(manifest["model"]) + '</strong></p>')
+        body.append('<p>Đạt kiểm tra thực thi: ' + str(executed) + "/" + str(denominator)
+                    + '. Mẫu số gồm cả lượt lỗi/không hợp lệ; không phải tỷ lệ nhãn gold hay hiệu quả huấn luyện.</p>')
+        body.append('<p>Rà nhãn: <strong>chờ người duyệt</strong>. Đây là lỗi mới sinh, không phải lỗi lịch sử AIDev.</p>')
+        body.append('<p>' + link("prompt.txt") + ' · ' + link("original.py") + ' · ' + link("tests.py") + '</p>')
+        for item in attempts:
+            prefix = item["directory"] + "/"
+            body.append('<section><h3>Lượt ' + str(item["index"]) + ' — ' + esc(item["status"]) + '</h3>')
+            body.append('<p>Thời gian sinh: ' + esc(item.get("generation_seconds", "chưa đo")) + 's</p>')
+            if item.get("error"): body.append('<p class="error">' + esc(item["error"]) + '</p>')
+            if item.get("rejection_reason"):
+                body.append('<p>Lý do không đạt: ' + esc(item["rejection_reason"]) + '</p>')
+            for filename in ("request.json", "response.raw.json", "proposal.json", "review.json"):
+                if (folder / prefix / filename).is_file():
+                    body.append('<p>' + link(prefix + filename) + '</p>')
+            patch = folder / prefix / "change.diff"
+            if patch.is_file():
+                body.append('<h4>Diff từ output LLM</h4><pre>' + esc(patch.read_text(encoding="utf-8")) + '</pre>')
+            if "baseline" in item:
+                body.append('<h4>Baseline</h4>' + stage(folder, item["baseline"], prefix))
+                for i, result in enumerate(item["repetitions"], 1):
+                    body.append('<h4>Ứng viên / lần ' + str(i) + '</h4>' + stage(folder, result, prefix))
+                body.append('<h4>Hoàn tác</h4>' + stage(folder, item["restored"], prefix))
+            body.append('</section>')
+        if len(attempts) < denominator:
+            body.append('<p class="error">Có lượt chưa thực hiện; không coi chúng là thành công.</p>')
+    else:
+        body.append('<pre>' + esc(json.dumps(manifest, ensure_ascii=False, indent=2)) + '</pre>')
+    return """<!doctype html><html lang="vi"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>CI demo — artifact report</title>
+<style>body{max-width:1080px;margin:40px auto;padding:0 24px;background:#f2f0e9;color:#151610;font:17px/1.7 system-ui}
+h1{line-height:1.3}h2{margin-top:2em}a{color:#193b74}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e6e3d9;padding:20px}
+code{overflow-wrap:anywhere}section{border-top:1px solid #aaa;padding:20px 0}.notice{border:1px solid #888;padding:12px}.error{color:#8c1a10}</style>""" + "\n".join(body) + "</html>"
+
+def report_run(run_id):
+    folder = run_path(run_id)
+    manifest = read_json(folder / "manifest.json")
+    path = folder / "report.html"
+    path.write_text(render(folder, manifest), encoding="utf-8")
+    return path

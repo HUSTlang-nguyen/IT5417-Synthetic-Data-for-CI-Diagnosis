@@ -1,0 +1,47 @@
+{
+  "pull_request": {
+    "url": "https://github.com/kurtbrose/properr/pull/6",
+    "number": 6,
+    "state": "closed",
+    "merged": true,
+    "mergeable": false,
+    "draft": false,
+    "body": "## Summary\n- add pytest as a test extra\n- use the new extra in the GitHub workflow so tests run\n\n## Testing\n- `pytest -v`\n\n\n------\nhttps://chatgpt.com/codex/tasks/task_e_688101027b04832983595fa7e4e21c9f",
+    "title": "Fix CI by including pytest",
+    "base": "main",
+    "base_sha": "eff739a28971a66a36d443bfde91c515f7a858ea",
+    "head": "codex/fix-pytest-installation-in-ci-config",
+    "head_sha": "8fd30245ed66b5145d651efc9203eb9a911e95d5",
+    "head_repo_id": 1024967462,
+    "head_repo_full_name": "kurtbrose/properr",
+    "merge_commit_sha": "eb5edb0d597625cd353a5a071c22b3666061612f",
+    "user": {
+      "login": "kurtbrose",
+      "name": "kurtbrose",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/543934?v=4",
+      "id": 543934
+    },
+    "requested_reviewers": null,
+    "requested_team_reviewers": null,
+    "diff": "@@ -21,6 +21,6 @@ jobs:\n       - name: Install package\n         run: |\n           pip install -U pip\n-          pip install .\n+          pip install .[test]\n       - name: Run tests\n         run: pytest -v\n@@ -11,6 +11,9 @@ requires-python = \">=3.8\"\n license = {file = \"LICENSE\"}\n authors = [{name = \"Properr Developers\", email = \"devs@example.com\"}]\n \n+[project.optional-dependencies]\n+test = [\"pytest\"]\n+\n [tool.maturin]\n bindings = \"pyo3\"\n # Install the extension inside the Python package",
+    "comments": [],
+    "created_at": "2025-07-23T15:40:06Z",
+    "updated_at": "2025-07-23T15:41:59Z",
+    "closed_at": "2025-07-23T15:41:59Z",
+    "merged_at": "2025-07-23T15:41:59Z",
+    "commits": 1,
+    "changed_files": 2,
+    "additions": 4,
+    "deletions": 1,
+    "display_url": "https://github.com/kurtbrose/properr/pull/6",
+    "display_title": "Fix CI by including pytest"
+  },
+  "url": "https://github.com/kurtbrose/properr/pull/6",
+  "title": "Fix CI by including pytest",
+  "diff": "@@ -21,6 +21,6 @@ jobs:\n       - name: Install package\n         run: |\n           pip install -U pip\n-          pip install .\n+          pip install .[test]\n       - name: Run tests\n         run: pytest -v\n@@ -11,6 +11,9 @@ requires-python = \">=3.8\"\n license = {file = \"LICENSE\"}\n authors = [{name = \"Properr Developers\", email = \"devs@example.com\"}]\n \n+[project.optional-dependencies]\n+test = [\"pytest\"]\n+\n [tool.maturin]\n bindings = \"pyo3\"\n # Install the extension inside the Python package",
+  "comments": null,
+  "display_url": "https://github.com/kurtbrose/properr/pull/6",
+  "display_title": "Fix CI by including pytest"
+}
+

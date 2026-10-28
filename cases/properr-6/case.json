@@ -1,0 +1,18 @@
+{
+  "case_id": "properr-6",
+  "dataset": "hao-li/AIDev",
+  "revision": "v5",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "table": "all_pull_request",
+  "record_id": 3256868569,
+  "row_idx": 12,
+  "repo_url": "https://github.com/kurtbrose/properr",
+  "pr_url": "https://github.com/kurtbrose/properr/pull/6",
+  "base": "eff739a28971a66a36d443bfde91c515f7a858ea",
+  "head": "8fd30245ed66b5145d651efc9203eb9a911e95d5",
+  "allowed_file": "properr/__init__.py",
+  "test_file": "tests/test_import.py",
+  "image": "it5417-properr-6:v1",
+  "historical_hypothesis": "The base installation lacks pytest; the head declares a test extra and installs it.",
+  "warning": "AIDev agent metadata is PR-level provenance, not proof of the actor causing a historical failure."
+}

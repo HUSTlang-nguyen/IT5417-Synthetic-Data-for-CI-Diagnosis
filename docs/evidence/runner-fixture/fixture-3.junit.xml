@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.043" timestamp="2026-10-28T19:37:03.097226+00:00" hostname="f4afd46d4816"><testcase classname="tests.test_import" name="test_uncertain_arithmetic" time="0.001"><failure message="assert 1.0 == 0.0&#10; +  where 1.0 = &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt;(&lt;builtins.UncertainValue object at 0x7044f7b391b0&gt;)&#10; +    where &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt; = properr.nominal">def test_uncertain_arithmetic():
+        x = properr.uval(10.0, 1.0)
+        y = properr.uval(10.0, 1.0)
+    
+        z = x - y
+        z2 = x - x
+    
+&gt;       assert properr.nominal(z) == 0.0
+E       assert 1.0 == 0.0
+E        +  where 1.0 = &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt;(&lt;builtins.UncertainValue object at 0x7044f7b391b0&gt;)
+E        +    where &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt; = properr.nominal
+
+/source/head/tests/test_import.py:12: AssertionError</failure></testcase><testcase classname="tests.test_import" name="test_uncertain_multiplication" time="0.001"><failure message="assert 101.0 == 100.0&#10; +  where 101.0 = &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt;(&lt;builtins.UncertainValue object at 0x7044f7b3b190&gt;)&#10; +    where &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt; = properr.nominal">def test_uncertain_multiplication():
+        x = properr.uval(10.0, 1.0)
+        y = properr.uval(10.0, 1.0)
+    
+        z = x * y
+        z2 = x * x
+    
+&gt;       assert properr.nominal(z) == 100.0
+E       assert 101.0 == 100.0
+E        +  where 101.0 = &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt;(&lt;builtins.UncertainValue object at 0x7044f7b3b190&gt;)
+E        +    where &lt;function &lt;lambda&gt; at 0x7044f7d1f2e0&gt; = properr.nominal
+
+/source/head/tests/test_import.py:24: AssertionError</failure></testcase></testsuite></testsuites>
