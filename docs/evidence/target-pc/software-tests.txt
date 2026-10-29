@@ -1,0 +1,33 @@
+test_duplicate_model_and_historical_runs_are_rejected (tests.test_comparison.ComparisonTests.test_duplicate_model_and_historical_runs_are_rejected) ... ok
+test_environment_failure_preserves_unexecuted_attempts_and_unknown_timing (tests.test_comparison.ComparisonTests.test_environment_failure_preserves_unexecuted_attempts_and_unknown_timing) ... ok
+test_first_model_failure_does_not_skip_second_model (tests.test_comparison.ComparisonTests.test_first_model_failure_does_not_skip_second_model) ... ok
+test_mismatched_images_are_not_comparable (tests.test_comparison.ComparisonTests.test_mismatched_images_are_not_comparable) ... ok
+test_modified_snapshot_is_reported (tests.test_comparison.ComparisonTests.test_modified_snapshot_is_reported) ... ok
+test_preflight_failure_still_saves_both_denominators (tests.test_comparison.ComparisonTests.test_preflight_failure_still_saves_both_denominators) ... ok
+test_zero_accepted_is_a_complete_comparison_with_full_denominators (tests.test_comparison.ComparisonTests.test_zero_accepted_is_a_complete_comparison_with_full_denominators) ... ok
+test_real_container_pass_fail_fail_fail_pass (tests.test_docker.DockerIntegrationTests.test_real_container_pass_fail_fail_fail_pass) ... ok
+Comparison: C:\Users\neikh\Documents\GitHub\IT5417-Synthetic-Data-for-CI-Diagnosis\.cache\test-temp\tmp46ecou2_\runs\comparison-20261029T053740233519Z\report.html
+Comparison: C:\Users\neikh\Documents\GitHub\IT5417-Synthetic-Data-for-CI-Diagnosis\.cache\test-temp\tmp46ecou2_\runs\comparison-20261029T053740233519Z\report.html
+Comparison: C:\Users\neikh\Documents\GitHub\IT5417-Synthetic-Data-for-CI-Diagnosis\.cache\test-temp\tmp6acr4vlv\runs\comparison-20261029T053740325899Z\report.html
+Comparison: C:\Users\neikh\Documents\GitHub\IT5417-Synthetic-Data-for-CI-Diagnosis\.cache\test-temp\tmp6acr4vlv\runs\comparison-20261029T053740325899Z\report.html
+attempt 1 invalid_output
+attempt 2 invalid_output
+attempt 3 invalid_output
+test_all_invalid_attempts_preserve_raw_output_and_denominator (tests.test_generation.GenerationTests.test_all_invalid_attempts_preserve_raw_output_and_denominator) ... ok
+test_rejection_classifies_timeout_and_no_regression (tests.test_generation.GenerationTests.test_rejection_classifies_timeout_and_no_regression) ... ok
+test_accepts_new_source_without_evaluating_it (tests.test_pipeline.ProposalTests.test_accepts_new_source_without_evaluating_it) ... ok
+test_case_is_pinned (tests.test_pipeline.ProposalTests.test_case_is_pinned) ... ok
+test_invalid_envelopes_and_unchanged (tests.test_pipeline.ProposalTests.test_invalid_envelopes_and_unchanged) ... ok
+test_local_endpoint_only (tests.test_pipeline.ProposalTests.test_local_endpoint_only) ... ok
+test_only_allowlisted_file (tests.test_pipeline.ProposalTests.test_only_allowlisted_file) ... ok
+test_addresses_vary_but_assertion_values_must_match (tests.test_pipeline.VerificationTests.test_addresses_vary_but_assertion_values_must_match) ... ok
+test_docker_is_constrained_and_no_shell (tests.test_pipeline.VerificationTests.test_docker_is_constrained_and_no_shell) ... ok
+test_missing_or_malformed_reports_do_not_pass (tests.test_pipeline.VerificationTests.test_missing_or_malformed_reports_do_not_pass) ... ok
+test_test_manifest_is_not_gold (tests.test_pipeline.VerificationTests.test_test_manifest_is_not_gold) ... ok
+test_three_matching_failures_and_restored_pass (tests.test_pipeline.VerificationTests.test_three_matching_failures_and_restored_pass) ... ok
+test_timeout_is_evidence_not_exception (tests.test_pipeline.VerificationTests.test_timeout_is_evidence_not_exception) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 3.634s
+
+OK

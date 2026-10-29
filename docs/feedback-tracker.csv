@@ -3,6 +3,6 @@ timestamp,feedback,action,status,evidence
 03:52-04:10,Compare fail-only with pass+fail,Separate research dimension from gold-patch leakage,deferred,docs/revised-plan.md
 07:14-08:39,Justify source subset,Pin one technical demo case without representativeness claim,implemented,cases/properr-6/case.json
 09:06-11:06,Clarify workflow and interceptor,Document workflow; confirm interceptor scope,deferred,docs/demo-runbook.md
-11:59-12:10,Run real feasibility experiment,Reproduce source in Docker,reproduction_verified_models_pending,docs/evidence/README.md
-13:17-13:28,Compare two generator models,Provide local 7B and 1.5B runner,awaiting_target_PC,scripts/demo.py
+11:59-12:10,Run real feasibility experiment,Reproduce source and run 2x3 model protocol,target_PC_execution_verified_review_pending,docs/evidence/target-pc/README.md
+13:17-13:28,Compare two generator models,Run local 7B and 1.5B with matching protocol,target_PC_2x3_completed_review_pending,docs/evidence/target-pc/validation-summary.json
 13:43-13:56,At most 20 slides,Prepare compact demo report after measurements,deferred,docs/revised-plan.md

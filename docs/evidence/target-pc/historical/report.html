@@ -1,0 +1,18 @@
+<!doctype html><html lang="vi"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>CI demo — artifact report</title>
+<style>body{max-width:1080px;margin:40px auto;padding:0 24px;background:#f2f0e9;color:#151610;font:17px/1.7 system-ui}
+h1{line-height:1.3}h2{margin-top:2em}a{color:#193b74}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e6e3d9;padding:20px}
+code{overflow-wrap:anywhere}section{border-top:1px solid #aaa;padding:20px 0}.notice{border:1px solid #888;padding:12px}.error{color:#8c1a10}</style><h1>Demo dữ liệu lỗi CI có kiểm chứng</h1>
+<p class="notice">BÁO CÁO ARTIFACT ĐÃ LƯU — mở trang này không gọi LLM hoặc chạy test mới.</p>
+<p>Run: <code>reproduce-20261029T053446089841Z</code> · 2026-10-29T12:34:46+07:00</p>
+<p>Trạng thái: <strong>hypothesis_supported_locally</strong></p>
+<p><a href="manifest.json">Manifest đầy đủ</a></p>
+<h2>Nguồn và workflow</h2><p>hao-li/AIDev v5 · all_pull_request · record 3256868569</p>
+<p>Base: <code>eff739a28971a66a36d443bfde91c515f7a858ea</code><br>Head: <code>8fd30245ed66b5145d651efc9203eb9a911e95d5</code></p>
+<p>Dataset → repo/commit → môi trường → LLM sinh ứng viên → test độc lập → người rà nhãn.</p>
+<p>Nhãn agent ở PR không chứng minh actor gây lỗi. Log ở đây là log tái hiện local, không phải CI lịch sử.</p>
+<h2>Kiểm tra giả thuyết lịch sử</h2><p>The base installation lacks pytest; the head declares a test extra and installs it.</p>
+<h3>Base</h3><p>exit 1 · 1.516s · <a href="historical-base.stdout.txt">historical-base.stdout.txt</a> · <a href="historical-base.stderr.txt">historical-base.stderr.txt</a></p>
+<h3>Head</h3><p>exit 0 · 0.453s · <a href="historical-head.stdout.txt">historical-head.stdout.txt</a> · <a href="historical-head.stderr.txt">historical-head.stderr.txt</a> · <a href="historical-head.junit.xml">historical-head.junit.xml</a></p>
+<p>Bản head pass là điều kiện chọn seed. Không suy gold label hoặc tác giả gây lỗi từ kết quả này.</p>
+<h3>Dựng môi trường</h3><p>exit 0 · 106.875s · <a href="docker-build.stdout.txt">docker-build.stdout.txt</a> · <a href="docker-build.stderr.txt">docker-build.stderr.txt</a></p></html>

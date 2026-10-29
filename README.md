@@ -28,11 +28,14 @@ ollama pull qwen2.5-coder:1.5b-instruct
 python -m ci_demo generate --model qwen2.5-coder:7b-instruct --attempts 3
 python -m ci_demo verify --run <RUN-ID>
 python -m ci_demo report --run <RUN-ID>
+python -m ci_demo compare --runs <RUN-7B> <RUN-1.5B>
 ```
 
 Mỗi lệnh in ID run và đường dẫn report HTML. Thay <RUN-ID> bằng ID thật được in, không nhập cả dấu ngoặc. Trên PC RTX 4070 SUPER có thể chạy `python scripts/demo.py --pull-models` để thực hiện tuần tự hai model và xuất bảng so sánh.
 
-**Trạng thái thực tế:** xem [evidence](docs/evidence/README.md) và [agent log](docs/agent-log.md). Laptop phát triển không phải bằng chứng đã chạy model trên PC mục tiêu.
+Bảng so sánh giữ cả lượt lỗi/chưa thực hiện trong mẫu số, báo thời gian chưa đo và phát hiện giao thức không tương thích. Script vẫn lưu comparison report nếu demo bị gián đoạn; lệnh `compare` dựng bảng mới từ hai run đã lưu mà không gọi model.
+
+**Trạng thái thực tế:** [PC RTX 4070 SUPER đã chạy](docs/evidence/target-pc/README.md): tái hiện properr thành công, 22 tests pass và đủ sáu lượt LLM. 7B đạt kiểm chứng thực thi 2/3, 1.5B đạt 1/3; nhãn/chất lượng chưa được duyệt để train. [Evidence laptop cũ](docs/evidence/README.md) và [agent log](docs/agent-log.md) được giữ riêng.
 
 ## Tài liệu và cấu trúc
 

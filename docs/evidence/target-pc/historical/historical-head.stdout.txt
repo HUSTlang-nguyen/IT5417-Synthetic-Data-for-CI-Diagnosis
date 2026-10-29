@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.2, pytest-8.3.5, pluggy-1.7.0 -- /opt/head/bin/python
+rootdir: /source/head
+configfile: pyproject.toml
+collecting ... collected 2 items
+
+../source/head/tests/test_import.py::test_uncertain_arithmetic PASSED    [ 50%]
+../source/head/tests/test_import.py::test_uncertain_multiplication PASSED [100%]
+
+------------------- generated xml file: /results/results.xml -------------------
+============================== 2 passed in 0.01s ===============================

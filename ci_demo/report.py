@@ -71,13 +71,39 @@ def render(folder, manifest):
             body.append('</section>')
         if len(attempts) < denominator:
             body.append('<p class="error">Có lượt chưa thực hiện; không coi chúng là thành công.</p>')
+    elif manifest["kind"] == "pilot_comparison":
+        body.append('<h2>So sánh pilot hai model sinh</h2>')
+        body.append('<p>Nhãn chờ người duyệt. Một seed không đủ kết luận tổng quát hoặc hiệu quả huấn luyện.</p>')
+        body.append('<p>Tương thích giao thức: ' + esc(manifest["protocol_compatible"]) + '</p>')
+        for issue in manifest.get("comparison_issues", []):
+            body.append('<p class="error">' + esc(issue) + '</p>')
+        if manifest.get("doctor_run"):
+            body.append('<p>' + link('../' + manifest["doctor_run"] + '/report.html', 'Kiểm tra môi trường') + '</p>')
+        body.append('<table><tr><th>Model</th><th>Trạng thái</th><th>Đạt/tổng lượt</th>'
+                    '<th>Chưa thực hiện</th><th>Thời gian sinh đã đo</th><th>Evidence</th></tr>')
+        for model in manifest["models"]:
+            measured = model["generation_seconds"]
+            timing = ('chưa đo' if measured is None else str(measured) + 's / '
+                      + str(model["measured_generation_attempts"]) + ' lượt có số đo')
+            evidence = (link('../' + model["run_id"] + '/report.html', 'Artifact đã lưu')
+                        if model["run_id"] else 'Chưa có run')
+            body.append('<tr><td>' + esc(model["model"]) + '</td><td>' + esc(model["status"])
+                        + '</td><td>' + str(model["execution_verified"]) + '/' + str(model["requested"])
+                        + '</td><td>' + str(model["unexecuted"]) + '</td><td>' + esc(timing)
+                        + '</td><td>' + evidence + '</td></tr>')
+        body.append('</table><p>Mẫu số giữ cả lượt lỗi và lượt chưa thực hiện. Thời gian trên chỉ cộng các lượt có số đo; không phải tổng thời gian chạy.</p>')
+        for model in manifest["models"]:
+            body.append('<p>' + esc(model["model"]) + ': ' + esc(json.dumps(model["status_counts"])) + '</p>')
+            if model.get("error"):
+                body.append('<p class="error">' + esc(model["error"]) + '</p>')
     else:
         body.append('<pre>' + esc(json.dumps(manifest, ensure_ascii=False, indent=2)) + '</pre>')
     return """<!doctype html><html lang="vi"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>CI demo — artifact report</title>
 <style>body{max-width:1080px;margin:40px auto;padding:0 24px;background:#f2f0e9;color:#151610;font:17px/1.7 system-ui}
 h1{line-height:1.3}h2{margin-top:2em}a{color:#193b74}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e6e3d9;padding:20px}
-code{overflow-wrap:anywhere}section{border-top:1px solid #aaa;padding:20px 0}.notice{border:1px solid #888;padding:12px}.error{color:#8c1a10}</style>""" + "\n".join(body) + "</html>"
+code{overflow-wrap:anywhere}section{border-top:1px solid #aaa;padding:20px 0}.notice{border:1px solid #888;padding:12px}.error{color:#8c1a10}
+table{width:100%;border-collapse:collapse;font-size:15px}th,td{border:1px solid #aaa;padding:10px;text-align:left;overflow-wrap:anywhere}</style>""" + "\n".join(body) + "</html>"
 
 def report_run(run_id):
     folder = run_path(run_id)

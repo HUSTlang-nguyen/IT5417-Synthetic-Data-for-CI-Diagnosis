@@ -1,0 +1,21 @@
+{
+  "command": [
+    "docker",
+    "build",
+    "--label",
+    "it5417.base=eff739a28971a66a36d443bfde91c515f7a858ea",
+    "--label",
+    "it5417.head=8fd30245ed66b5145d651efc9203eb9a911e95d5",
+    "--label",
+    "it5417.runner=v1",
+    "-t",
+    "it5417-properr-6:v1",
+    "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\docker-context"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "duration_seconds": 106.875,
+  "recorded_at": "2026-10-29T12:36:35+07:00",
+  "stdout": "docker-build.stdout.txt",
+  "stderr": "docker-build.stderr.txt"
+}

@@ -4,6 +4,7 @@ import argparse
 import os
 import sys
 from . import ollama
+from .comparison import compare_runs
 from .pipeline import doctor, generate_run, reproduce, verify_run
 from .report import report_run
 
@@ -21,6 +22,7 @@ def main(argv=None):
     gen.add_argument("--endpoint", default=os.getenv("OLLAMA_HOST", "http://127.0.0.1:11434"))
     for name in ("verify", "report"):
         sub.add_parser(name).add_argument("--run", required=True)
+    sub.add_parser("compare").add_argument("--runs", nargs=2, required=True, metavar="RUN-ID")
     args = parser.parse_args(argv)
     try:
         if args.command == "report":
@@ -34,13 +36,15 @@ def main(argv=None):
             manifest = reproduce(args.case)
         elif args.command == "generate":
             manifest = generate_run(args.model, args.attempts, args.endpoint)
+        elif args.command == "compare":
+            manifest = compare_runs(args.runs)
         else:
             manifest = verify_run(args.run)
         print("run:", manifest["run_id"])
         print("status:", manifest.get("status", "doctor_finished"))
         print("report:", report_run(manifest["run_id"]))
         if manifest.get("error"): print("error:", manifest["error"], file=sys.stderr)
-        return 1 if manifest.get("status") in {"environment_error", "hypothesis_not_confirmed"} else 0
+        return 1 if manifest.get("status") in {"environment_error", "hypothesis_not_confirmed", "comparison_incomplete"} else 0
     except (OSError, RuntimeError, ValueError) as exc:
         print("ERROR:", str(exc), file=sys.stderr)
         return 1

@@ -1,4 +1,12 @@
-# Bằng chứng nghiệm thu trên laptop phát triển
+# Bằng chứng nghiệm thu
+
+## PC RTX 4070 SUPER — cập nhật 29/10/2026, 12:52 +07
+
+[Evidence PC riêng](target-pc/README.md): tái hiện thật thành công, 22 software tests pass gồm Docker thật, đã chạy đủ sáu lượt LLM. 7B đạt kiểm chứng thực thi 2/3; 1.5B đạt 1/3. Nhãn/chất lượng vẫn chờ người duyệt; đây chưa là gold data hoặc đánh giá hiệu quả ML.
+
+## Snapshot laptop phát triển — 02:35 +07
+
+Phần dưới và `validation-summary.json` ghi trạng thái laptop tại thời điểm cũ, được giữ nguyên làm evidence; không phải cấu hình hay trạng thái hiện tại của PC.
 
 Ngày 29/10/2026, Asia/Bangkok. Artifact đã lưu; mở báo cáo không thực hiện lần chạy live.
 

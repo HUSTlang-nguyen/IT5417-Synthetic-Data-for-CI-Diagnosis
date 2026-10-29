@@ -1,4 +1,6 @@
 * text=auto eol=lf
+docs/evidence/target-pc/historical/** -text
+docs/evidence/target-pc/software-tests*.txt -text
 *.png binary
 *.xlsx binary
 *.pdf binary

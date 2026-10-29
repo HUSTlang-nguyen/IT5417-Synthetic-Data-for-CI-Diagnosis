@@ -36,6 +36,36 @@ python scripts/demo.py --pull-models
 
 Nếu đã có passing seed và image được xác minh trên PC: thêm --skip-reproduce. Script vẫn kiểm tra image ID và baseline trước khi sinh.
 
+Script tạo comparison manifest/report ngay khi bắt đầu, cập nhật sau từng stage và giữ báo cáo khi môi trường hoặc một model lỗi. Model còn lại vẫn được thử nếu lỗi xảy ra trong stage của riêng model đầu. Mỗi model luôn có mẫu số ba; lượt chưa thực hiện hiển thị riêng, thời gian chưa đo là chưa biết.
+
+Để dựng lại bảng so sánh từ hai run đã lưu, không gọi lại model hoặc chạy test:
+
+```text
+python -m ci_demo compare --runs <RUN-7B> <RUN-1.5B>
+```
+
+Lệnh tạo comparison run mới, không sửa evidence của hai run đầu vào. So sánh kiểm tra cùng source, source/test hash, prompt, options và image ID; giao thức khác nhau hoặc stage chưa xong được ghi `comparison_incomplete` và trả exit 1. Nhãn vẫn chờ người duyệt. Tổng thời gian sinh chỉ cộng các lượt có số đo, không phải toàn bộ wall time hoặc phép đo VRAM.
+
+Nếu unit tests trên Windows báo lỗi quyền ghi ở thư mục tạm hệ thống, đặt thư mục tạm trong cache của repo trước khi chạy lại:
+
+```powershell
+New-Item -ItemType Directory -Force .cache/test-temp | Out-Null
+$env:TEMP = (Resolve-Path .cache/test-temp).Path
+$env:TMP = $env:TEMP
+python -m unittest discover -v
+```
+
+PC hiện tại dùng bản Ollama portable tại `.cache/tools/ollama/ollama.exe`. Sau khi khởi động lại PC, nếu cần bật lại bản này (PowerShell, từ root repo):
+
+```powershell
+$env:OLLAMA_MODELS = Join-Path (Resolve-Path .cache).Path 'models'
+$env:OLLAMA_HOST = '127.0.0.1:11434'
+$env:PATH = (Resolve-Path .cache/tools/ollama).Path + ';' + $env:PATH
+Start-Process -FilePath (Resolve-Path .cache/tools/ollama/ollama.exe).Path -ArgumentList 'serve' -WindowStyle Hidden
+```
+
+Chỉ chạy bước bật server nếu chưa có Ollama ở cổng 11434; dùng `doctor` để kiểm tra. Runtime và weights đều nằm trong cache bị ignore; clone Git không kèm các file này.
+
 ## Trình diễn khoảng 5 phút
 
 1. Nêu nguồn dataset, PR và commit; tách tái hiện lịch sử khỏi synthetic.

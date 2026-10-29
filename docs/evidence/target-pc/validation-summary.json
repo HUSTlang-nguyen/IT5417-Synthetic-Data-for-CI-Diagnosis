@@ -1,0 +1,184 @@
+{
+  "checked_at": "2026-10-29T12:52:41+07:00",
+  "experiment": "first_target_pc_pilot_not_training_evaluation",
+  "doctor_run": "doctor-20261029T055141374481Z",
+  "host_python": {
+    "version": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "gpu_snapshot_csv": "NVIDIA GeForce RTX 4070 SUPER, 12282 MiB, 9757 MiB, 596.49",
+  "target_gpu_matches": true,
+  "docker_linux": true,
+  "ollama_available": true,
+  "ollama_version": {
+    "version": "0.40.13"
+  },
+  "historical_reproduction": {
+    "run_id": "reproduce-20261029T053446089841Z",
+    "status": "hypothesis_supported_locally",
+    "base_exit": 1,
+    "head_exit": 0,
+    "image_id": "sha256:4aa2ac18be6a80bc53e4861b08db38ddddfccc648d898e45ebe643a264b621a5"
+  },
+  "software_tests": {
+    "passed": 22,
+    "skipped": 0,
+    "evidence": "software-tests-final.txt",
+    "includes_real_docker_fixture": true,
+    "fixture_is_model_output": false
+  },
+  "comparison_run": "comparison-20261029T053856421402Z",
+  "offline_comparison_run": "comparison-20261029T055142213496Z",
+  "target_pc_validation": "execution_protocol_completed",
+  "protocol_compatible": true,
+  "llm_attempts_executed": 6,
+  "models": [
+    {
+      "model": "qwen2.5-coder:7b-instruct",
+      "run_id": "generate-20261029T054921315491Z",
+      "status": "verification_finished",
+      "requested": 3,
+      "execution_verified": 2,
+      "unexecuted": 0,
+      "status_counts": {
+        "verification_failed": 1,
+        "execution_verified": 2
+      },
+      "generation_seconds": 49.374,
+      "measured_generation_attempts": 3,
+      "model_digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+      "runtime_version": {
+        "version": "0.40.13"
+      },
+      "attempts": [
+        {
+          "index": 1,
+          "status": "verification_failed",
+          "generation_seconds": 39.984,
+          "rejection_reason": "does_not_fail_consistently",
+          "candidate_sha256": "bc63093b730e58bd1eb5aeedc47ef8338ec8aa4869382f24e4e5e98dd0a484a4",
+          "done_reason": "stop",
+          "eval_count": 254,
+          "load_seconds": 18.9410453,
+          "first_repetition_failure_signature": []
+        },
+        {
+          "index": 2,
+          "status": "execution_verified",
+          "generation_seconds": 4.781,
+          "candidate_sha256": "0be77d2c2a556e960aaee7e39186e276e504ea66237bc3f76582b52e74667d33",
+          "done_reason": "stop",
+          "eval_count": 228,
+          "load_seconds": 2.003033,
+          "first_repetition_failure_signature": [
+            [
+              "tests.test_import",
+              "test_uncertain_arithmetic",
+              "failure",
+              null,
+              "TypeError: unsupported operand type(s) for *: 'builtin_function_or_method' and 'float'"
+            ],
+            [
+              "tests.test_import",
+              "test_uncertain_multiplication",
+              "failure",
+              null,
+              "TypeError: unsupported operand type(s) for *: 'builtin_function_or_method' and 'float'"
+            ]
+          ]
+        },
+        {
+          "index": 3,
+          "status": "execution_verified",
+          "generation_seconds": 4.609,
+          "candidate_sha256": "dc4f3a5c8ee60adc3fd7d2892806c84fa612c63d50cae2813baf9d0a8256dfaf",
+          "done_reason": "stop",
+          "eval_count": 225,
+          "load_seconds": 1.8642848,
+          "first_repetition_failure_signature": [
+            [
+              "tests.test_import",
+              "test_uncertain_arithmetic",
+              "failure",
+              null,
+              "assert 1.5556349186104048 == 1.4142135623730951 ± 1.4e-06\n  \n  comparison failed\n  Obtained: 1.5556349186104048\n  Expected: 1.4142135623730951 ± 1.4e-06"
+            ],
+            [
+              "tests.test_import",
+              "test_uncertain_multiplication",
+              "failure",
+              null,
+              "assert 15.556349186104047 == 14.142135623730951 ± 1.4e-05\n  \n  comparison failed\n  Obtained: 15.556349186104047\n  Expected: 14.142135623730951 ± 1.4e-05"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "model": "qwen2.5-coder:1.5b-instruct",
+      "run_id": "generate-20261029T055021908791Z",
+      "status": "verification_finished",
+      "requested": 3,
+      "execution_verified": 1,
+      "unexecuted": 0,
+      "status_counts": {
+        "invalid_output": 2,
+        "execution_verified": 1
+      },
+      "generation_seconds": 16.078,
+      "measured_generation_attempts": 3,
+      "model_digest": "d7372fd828518a4d38b1eb196c673c31a85f2ed302b3d1e406c4c2d1b64a0668",
+      "runtime_version": {
+        "version": "0.40.13"
+      },
+      "attempts": [
+        {
+          "index": 1,
+          "status": "invalid_output",
+          "generation_seconds": 6.906,
+          "error": "Incomplete or truncated model output",
+          "done_reason": "length",
+          "eval_count": 1536,
+          "load_seconds": 1.3636013
+        },
+        {
+          "index": 2,
+          "status": "invalid_output",
+          "generation_seconds": 6.985,
+          "error": "Incomplete or truncated model output",
+          "done_reason": "length",
+          "eval_count": 1536,
+          "load_seconds": 1.4031922
+        },
+        {
+          "index": 3,
+          "status": "execution_verified",
+          "generation_seconds": 2.187,
+          "candidate_sha256": "2f02b4b09b40fda2290945533291a8839e231a8b2943883f611b6beeae8088f4",
+          "done_reason": "stop",
+          "eval_count": 181,
+          "load_seconds": 1.3700867,
+          "first_repetition_failure_signature": [
+            [
+              "",
+              "tests.test_import",
+              "error",
+              null,
+              "collection failure"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "human_review": "pending",
+  "peak_model_vram": null,
+  "timing_qualification": "Per-request wall seconds include runtime/model loading; totals exclude downloads, Docker verification and other orchestration. First 7B request includes initial runtime warmup. Three attempts on one source are not a benchmark.",
+  "quality_observations": [
+    "7B candidates contain comments explicitly describing the regression despite the prompt prohibition. Execution acceptance does not approve instruction compliance or training use.",
+    "7B attempt 2 raises TypeError; attempt 3 fails numerical assertions. Proposed labels are not confirmed.",
+    "1.5B attempts 1 and 2 ended with done_reason=length at 1536 output tokens. Attempt 3 passed response-envelope validation but introduced an unfinished __all__ list and a stable collection error."
+  ],
+  "visual_qa": "pending_browser_security_policy_blocks_file_protocol",
+  "full_evidence": "Ignored runs/ folders; models and source checkouts are not committed."
+}

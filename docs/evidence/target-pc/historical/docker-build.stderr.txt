@@ -1,0 +1,514 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.26kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/rust:1.85-slim-bookworm
+#2 ...
+
+#3 [auth] library/rust:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/rust:1.85-slim-bookworm
+#2 DONE 3.7s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 49.94kB 0.0s done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/rust:1.85-slim-bookworm@sha256:9f841bbe9e7d8e37ceb96ed907265a3a0df7f44e3737d0b100e7907a679acb36
+#6 resolve docker.io/library/rust:1.85-slim-bookworm@sha256:9f841bbe9e7d8e37ceb96ed907265a3a0df7f44e3737d0b100e7907a679acb36 0.0s done
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 0B / 264.47MB 0.2s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 0B / 28.20MB 0.2s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 2.10MB / 28.20MB 1.7s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 13.63MB / 264.47MB 2.3s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 4.19MB / 28.20MB 2.1s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 6.29MB / 28.20MB 2.6s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 8.39MB / 28.20MB 3.0s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 10.49MB / 28.20MB 3.5s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 12.58MB / 28.20MB 3.8s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 14.68MB / 28.20MB 4.2s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 16.78MB / 28.20MB 4.5s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 18.87MB / 28.20MB 4.8s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 27.26MB / 264.47MB 5.1s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 20.97MB / 28.20MB 5.1s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 23.07MB / 28.20MB 5.4s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 25.17MB / 28.20MB 5.7s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 27.26MB / 28.20MB 6.0s
+#6 sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 28.20MB / 28.20MB 6.1s done
+#6 extracting sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad
+#6 extracting sha256:6e909acdb790c5a1989d9cfc795fda5a246ad6664bb27b5c688e2b734b2c5fad 0.9s done
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 41.94MB / 264.47MB 7.4s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 55.57MB / 264.47MB 8.7s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 70.25MB / 264.47MB 10.1s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 83.89MB / 264.47MB 11.4s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 97.52MB / 264.47MB 12.6s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 112.20MB / 264.47MB 14.1s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 125.83MB / 264.47MB 15.5s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 139.46MB / 264.47MB 17.0s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 154.14MB / 264.47MB 18.3s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 168.82MB / 264.47MB 19.8s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 182.45MB / 264.47MB 21.2s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 196.08MB / 264.47MB 22.5s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 209.72MB / 264.47MB 24.2s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 223.35MB / 264.47MB 26.7s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 236.98MB / 264.47MB 30.6s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 250.61MB / 264.47MB 33.4s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 264.47MB / 264.47MB 36.3s
+#6 sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 264.47MB / 264.47MB 36.4s done
+#6 extracting sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061
+#6 extracting sha256:d4ceaeef95ce1795f2816135a0ffe7f89ef389cbc075611930bbd36e992de061 3.0s done
+#6 DONE 39.4s
+
+#7 [2/8] RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-venv python3-dev gcc libc6-dev ca-certificates && rm -rf /var/lib/apt/lists/*
+#7 0.426 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#7 0.724 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#7 0.837 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [34.8 kB]
+#7 0.955 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8790 kB]
+#7 3.009 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#7 3.045 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [363 kB]
+#7 3.589 Fetched 9402 kB in 3s (2766 kB/s)
+#7 3.589 Reading package lists...
+#7 3.946 Reading package lists...
+#7 4.291 Building dependency tree...
+#7 4.386 Reading state information...
+#7 4.464 gcc is already the newest version (4:12.2.0-3).
+#7 4.464 The following additional packages will be installed:
+#7 4.464   libc-bin libc-dev-bin libc6 libexpat1 libexpat1-dev libjs-jquery
+#7 4.464   libjs-sphinxdoc libjs-underscore libncursesw6 libpython3-dev
+#7 4.464   libpython3-stdlib libpython3.11 libpython3.11-dev libpython3.11-minimal
+#7 4.464   libpython3.11-stdlib libreadline8 libsqlite3-0 media-types python3-distutils
+#7 4.464   python3-lib2to3 python3-minimal python3-pip-whl python3-setuptools-whl
+#7 4.464   python3.11 python3.11-dev python3.11-minimal python3.11-venv readline-common
+#7 4.464   zlib1g-dev
+#7 4.465 Suggested packages:
+#7 4.465   glibc-doc libc-l10n locales libnss-nis libnss-nisplus manpages-dev
+#7 4.465   python3-doc python3-tk python3.11-doc binfmt-support readline-doc
+#7 4.465 Recommended packages:
+#7 4.465   manpages manpages-dev libc-devtools javascript-common libgpm2
+#7 4.609 The following NEW packages will be installed:
+#7 4.609   libexpat1 libexpat1-dev libjs-jquery libjs-sphinxdoc libjs-underscore
+#7 4.609   libncursesw6 libpython3-dev libpython3-stdlib libpython3.11
+#7 4.610   libpython3.11-dev libpython3.11-minimal libpython3.11-stdlib libreadline8
+#7 4.610   libsqlite3-0 media-types python3 python3-dev python3-distutils
+#7 4.610   python3-lib2to3 python3-minimal python3-pip-whl python3-setuptools-whl
+#7 4.610   python3-venv python3.11 python3.11-dev python3.11-minimal python3.11-venv
+#7 4.610   readline-common zlib1g-dev
+#7 4.610 The following packages will be upgraded:
+#7 4.611   ca-certificates libc-bin libc-dev-bin libc6 libc6-dev
+#7 4.811 5 upgraded, 29 newly installed, 0 to remove and 49 not upgraded.
+#7 4.811 Need to get 24.2 MB of archives.
+#7 4.811 After this operation, 67.6 MB of additional disk space will be used.
+#7 4.811 Get:1 http://deb.debian.org/debian bookworm/main amd64 libc6-dev amd64 2.36-9+deb12u14 [1904 kB]
+#7 5.736 Get:2 http://deb.debian.org/debian bookworm/main amd64 libc-dev-bin amd64 2.36-9+deb12u14 [48.1 kB]
+#7 5.742 Get:3 http://deb.debian.org/debian bookworm/main amd64 libc6 amd64 2.36-9+deb12u14 [2759 kB]
+#7 6.292 Get:4 http://deb.debian.org/debian bookworm/main amd64 libc-bin amd64 2.36-9+deb12u14 [609 kB]
+#7 6.482 Get:5 http://deb.debian.org/debian-security bookworm-security/main amd64 libpython3.11-minimal amd64 3.11.2-6+deb12u9 [821 kB]
+#7 6.731 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 libexpat1 amd64 2.5.0-1+deb12u5 [108 kB]
+#7 6.733 Get:7 http://deb.debian.org/debian-security bookworm-security/main amd64 python3.11-minimal amd64 3.11.2-6+deb12u9 [2055 kB]
+#7 6.958 Get:8 http://deb.debian.org/debian bookworm/main amd64 python3-minimal amd64 3.11.2-1+b1 [26.3 kB]
+#7 6.958 Get:9 http://deb.debian.org/debian bookworm/main amd64 media-types all 10.0.0 [26.1 kB]
+#7 6.958 Get:10 http://deb.debian.org/debian bookworm/main amd64 libncursesw6 amd64 6.4-4 [134 kB]
+#7 6.981 Get:11 http://deb.debian.org/debian bookworm/main amd64 readline-common all 8.2-1.3 [69.0 kB]
+#7 6.990 Get:12 http://deb.debian.org/debian bookworm/main amd64 libreadline8 amd64 8.2-1.3 [166 kB]
+#7 7.020 Get:13 http://deb.debian.org/debian bookworm/main amd64 libsqlite3-0 amd64 3.40.1-2+deb12u2 [839 kB]
+#7 7.237 Get:14 http://deb.debian.org/debian-security bookworm-security/main amd64 libpython3.11-stdlib amd64 3.11.2-6+deb12u9 [1798 kB]
+#7 7.469 Get:15 http://deb.debian.org/debian-security bookworm-security/main amd64 python3.11 amd64 3.11.2-6+deb12u9 [575 kB]
+#7 7.631 Get:16 http://deb.debian.org/debian bookworm/main amd64 libpython3-stdlib amd64 3.11.2-1+b1 [9312 B]
+#7 7.631 Get:17 http://deb.debian.org/debian bookworm/main amd64 python3 amd64 3.11.2-1+b1 [26.3 kB]
+#7 7.633 Get:18 http://deb.debian.org/debian-security bookworm-security/main amd64 ca-certificates all 20250419~deb12u2 [161 kB]
+#7 7.639 Get:19 http://deb.debian.org/debian-security bookworm-security/main amd64 libexpat1-dev amd64 2.5.0-1+deb12u5 [159 kB]
+#7 7.644 Get:20 http://deb.debian.org/debian bookworm/main amd64 libjs-jquery all 3.6.1+dfsg+~3.5.14-1 [326 kB]
+#7 7.673 Get:21 http://deb.debian.org/debian bookworm/main amd64 libjs-underscore all 1.13.4~dfsg+~1.11.4-3 [116 kB]
+#7 7.694 Get:22 http://deb.debian.org/debian bookworm/main amd64 libjs-sphinxdoc all 5.3.0-4 [130 kB]
+#7 7.715 Get:23 http://deb.debian.org/debian-security bookworm-security/main amd64 libpython3.11 amd64 3.11.2-6+deb12u9 [1989 kB]
+#7 8.037 Get:24 http://deb.debian.org/debian bookworm/main amd64 zlib1g-dev amd64 1:1.2.13.dfsg-1 [916 kB]
+#7 8.189 Get:25 http://deb.debian.org/debian-security bookworm-security/main amd64 libpython3.11-dev amd64 3.11.2-6+deb12u9 [4739 kB]
+#7 8.904 Get:26 http://deb.debian.org/debian bookworm/main amd64 libpython3-dev amd64 3.11.2-1+b1 [9572 B]
+#7 8.904 Get:27 http://deb.debian.org/debian-security bookworm-security/main amd64 python3.11-dev amd64 3.11.2-6+deb12u9 [619 kB]
+#7 9.045 Get:28 http://deb.debian.org/debian bookworm/main amd64 python3-lib2to3 all 3.11.2-3 [76.3 kB]
+#7 9.050 Get:29 http://deb.debian.org/debian bookworm/main amd64 python3-distutils all 3.11.2-3 [131 kB]
+#7 9.059 Get:30 http://deb.debian.org/debian bookworm/main amd64 python3-dev amd64 3.11.2-1+b1 [26.2 kB]
+#7 9.061 Get:31 http://deb.debian.org/debian bookworm/main amd64 python3-pip-whl all 23.0.1+dfsg-1 [1717 kB]
+#7 9.296 Get:32 http://deb.debian.org/debian bookworm/main amd64 python3-setuptools-whl all 66.1.1-1+deb12u2 [1112 kB]
+#7 9.467 Get:33 http://deb.debian.org/debian-security bookworm-security/main amd64 python3.11-venv amd64 3.11.2-6+deb12u9 [5896 B]
+#7 9.467 Get:34 http://deb.debian.org/debian bookworm/main amd64 python3-venv amd64 3.11.2-1+b1 [1200 B]
+#7 9.560 debconf: delaying package configuration, since apt-utils is not installed
+#7 9.582 Fetched 24.2 MB in 5s (4989 kB/s)
+#7 9.596 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 9027 files and directories currently installed.)
+#7 9.605 Preparing to unpack .../libc6-dev_2.36-9+deb12u14_amd64.deb ...
+#7 9.613 Unpacking libc6-dev:amd64 (2.36-9+deb12u14) over (2.36-9+deb12u10) ...
+#7 10.55 Preparing to unpack .../libc-dev-bin_2.36-9+deb12u14_amd64.deb ...
+#7 10.56 Unpacking libc-dev-bin (2.36-9+deb12u14) over (2.36-9+deb12u10) ...
+#7 10.60 Preparing to unpack .../libc6_2.36-9+deb12u14_amd64.deb ...
+#7 10.66 debconf: unable to initialize frontend: Dialog
+#7 10.66 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#7 10.66 debconf: falling back to frontend: Readline
+#7 10.66 debconf: unable to initialize frontend: Readline
+#7 10.66 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#7 10.66 debconf: falling back to frontend: Teletype
+#7 10.69 Unpacking libc6:amd64 (2.36-9+deb12u14) over (2.36-9+deb12u10) ...
+#7 11.27 Setting up libc6:amd64 (2.36-9+deb12u14) ...
+#7 11.33 debconf: unable to initialize frontend: Dialog
+#7 11.33 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#7 11.33 debconf: falling back to frontend: Readline
+#7 11.33 debconf: unable to initialize frontend: Readline
+#7 11.33 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#7 11.33 debconf: falling back to frontend: Teletype
+#7 12.39 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 9027 files and directories currently installed.)
+#7 12.40 Preparing to unpack .../libc-bin_2.36-9+deb12u14_amd64.deb ...
+#7 12.41 Unpacking libc-bin (2.36-9+deb12u14) over (2.36-9+deb12u10) ...
+#7 12.51 Setting up libc-bin (2.36-9+deb12u14) ...
+#7 12.56 Selecting previously unselected package libpython3.11-minimal:amd64.
+#7 12.56 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 9027 files and directories currently installed.)
+#7 12.56 Preparing to unpack .../libpython3.11-minimal_3.11.2-6+deb12u9_amd64.deb ...
+#7 12.57 Unpacking libpython3.11-minimal:amd64 (3.11.2-6+deb12u9) ...
+#7 12.65 Selecting previously unselected package libexpat1:amd64.
+#7 12.65 Preparing to unpack .../libexpat1_2.5.0-1+deb12u5_amd64.deb ...
+#7 12.65 Unpacking libexpat1:amd64 (2.5.0-1+deb12u5) ...
+#7 12.69 Selecting previously unselected package python3.11-minimal.
+#7 12.69 Preparing to unpack .../python3.11-minimal_3.11.2-6+deb12u9_amd64.deb ...
+#7 12.69 Unpacking python3.11-minimal (3.11.2-6+deb12u9) ...
+#7 12.80 Setting up libpython3.11-minimal:amd64 (3.11.2-6+deb12u9) ...
+#7 12.81 Setting up libexpat1:amd64 (2.5.0-1+deb12u5) ...
+#7 12.82 Setting up python3.11-minimal (3.11.2-6+deb12u9) ...
+#7 13.19 Selecting previously unselected package python3-minimal.
+#7 13.19 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 9343 files and directories currently installed.)
+#7 13.20 Preparing to unpack .../0-python3-minimal_3.11.2-1+b1_amd64.deb ...
+#7 13.20 Unpacking python3-minimal (3.11.2-1+b1) ...
+#7 13.23 Selecting previously unselected package media-types.
+#7 13.23 Preparing to unpack .../1-media-types_10.0.0_all.deb ...
+#7 13.23 Unpacking media-types (10.0.0) ...
+#7 13.26 Selecting previously unselected package libncursesw6:amd64.
+#7 13.26 Preparing to unpack .../2-libncursesw6_6.4-4_amd64.deb ...
+#7 13.26 Unpacking libncursesw6:amd64 (6.4-4) ...
+#7 13.29 Selecting previously unselected package readline-common.
+#7 13.29 Preparing to unpack .../3-readline-common_8.2-1.3_all.deb ...
+#7 13.30 Unpacking readline-common (8.2-1.3) ...
+#7 13.32 Selecting previously unselected package libreadline8:amd64.
+#7 13.32 Preparing to unpack .../4-libreadline8_8.2-1.3_amd64.deb ...
+#7 13.32 Unpacking libreadline8:amd64 (8.2-1.3) ...
+#7 13.36 Selecting previously unselected package libsqlite3-0:amd64.
+#7 13.36 Preparing to unpack .../5-libsqlite3-0_3.40.1-2+deb12u2_amd64.deb ...
+#7 13.36 Unpacking libsqlite3-0:amd64 (3.40.1-2+deb12u2) ...
+#7 13.41 Selecting previously unselected package libpython3.11-stdlib:amd64.
+#7 13.41 Preparing to unpack .../6-libpython3.11-stdlib_3.11.2-6+deb12u9_amd64.deb ...
+#7 13.41 Unpacking libpython3.11-stdlib:amd64 (3.11.2-6+deb12u9) ...
+#7 13.52 Selecting previously unselected package python3.11.
+#7 13.52 Preparing to unpack .../7-python3.11_3.11.2-6+deb12u9_amd64.deb ...
+#7 13.52 Unpacking python3.11 (3.11.2-6+deb12u9) ...
+#7 13.55 Selecting previously unselected package libpython3-stdlib:amd64.
+#7 13.55 Preparing to unpack .../8-libpython3-stdlib_3.11.2-1+b1_amd64.deb ...
+#7 13.55 Unpacking libpython3-stdlib:amd64 (3.11.2-1+b1) ...
+#7 13.57 Setting up python3-minimal (3.11.2-1+b1) ...
+#7 13.68 Selecting previously unselected package python3.
+#7 13.68 (Reading database ... 
+(Reading database ... 5%
+(Reading database ... 10%
+(Reading database ... 15%
+(Reading database ... 20%
+(Reading database ... 25%
+(Reading database ... 30%
+(Reading database ... 35%
+(Reading database ... 40%
+(Reading database ... 45%
+(Reading database ... 50%
+(Reading database ... 55%
+(Reading database ... 60%
+(Reading database ... 65%
+(Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+(Reading database ... 85%
+(Reading database ... 90%
+(Reading database ... 95%
+(Reading database ... 100%
+(Reading database ... 9794 files and directories currently installed.)
+#7 13.69 Preparing to unpack .../00-python3_3.11.2-1+b1_amd64.deb ...
+#7 13.69 Unpacking python3 (3.11.2-1+b1) ...
+#7 13.73 Preparing to unpack .../01-ca-certificates_20250419~deb12u2_all.deb ...
+#7 13.73 Unpacking ca-certificates (20250419~deb12u2) over (20230311) ...
+#7 13.97 Selecting previously unselected package libexpat1-dev:amd64.
+#7 13.97 Preparing to unpack .../02-libexpat1-dev_2.5.0-1+deb12u5_amd64.deb ...
+#7 13.97 Unpacking libexpat1-dev:amd64 (2.5.0-1+deb12u5) ...
+#7 14.00 Selecting previously unselected package libjs-jquery.
+#7 14.01 Preparing to unpack .../03-libjs-jquery_3.6.1+dfsg+~3.5.14-1_all.deb ...
+#7 14.01 Unpacking libjs-jquery (3.6.1+dfsg+~3.5.14-1) ...
+#7 14.04 Selecting previously unselected package libjs-underscore.
+#7 14.04 Preparing to unpack .../04-libjs-underscore_1.13.4~dfsg+~1.11.4-3_all.deb ...
+#7 14.05 Unpacking libjs-underscore (1.13.4~dfsg+~1.11.4-3) ...
+#7 14.07 Selecting previously unselected package libjs-sphinxdoc.
+#7 14.07 Preparing to unpack .../05-libjs-sphinxdoc_5.3.0-4_all.deb ...
+#7 14.07 Unpacking libjs-sphinxdoc (5.3.0-4) ...
+#7 14.11 Selecting previously unselected package libpython3.11:amd64.
+#7 14.11 Preparing to unpack .../06-libpython3.11_3.11.2-6+deb12u9_amd64.deb ...
+#7 14.11 Unpacking libpython3.11:amd64 (3.11.2-6+deb12u9) ...
+#7 14.22 Selecting previously unselected package zlib1g-dev:amd64.
+#7 14.22 Preparing to unpack .../07-zlib1g-dev_1%3a1.2.13.dfsg-1_amd64.deb ...
+#7 14.23 Unpacking zlib1g-dev:amd64 (1:1.2.13.dfsg-1) ...
+#7 14.26 Selecting previously unselected package libpython3.11-dev:amd64.
+#7 14.26 Preparing to unpack .../08-libpython3.11-dev_3.11.2-6+deb12u9_amd64.deb ...
+#7 14.26 Unpacking libpython3.11-dev:amd64 (3.11.2-6+deb12u9) ...
+#7 14.50 Selecting previously unselected package libpython3-dev:amd64.
+#7 14.50 Preparing to unpack .../09-libpython3-dev_3.11.2-1+b1_amd64.deb ...
+#7 14.51 Unpacking libpython3-dev:amd64 (3.11.2-1+b1) ...
+#7 14.53 Selecting previously unselected package python3.11-dev.
+#7 14.53 Preparing to unpack .../10-python3.11-dev_3.11.2-6+deb12u9_amd64.deb ...
+#7 14.53 Unpacking python3.11-dev (3.11.2-6+deb12u9) ...
+#7 14.56 Selecting previously unselected package python3-lib2to3.
+#7 14.56 Preparing to unpack .../11-python3-lib2to3_3.11.2-3_all.deb ...
+#7 14.56 Unpacking python3-lib2to3 (3.11.2-3) ...
+#7 14.60 Selecting previously unselected package python3-distutils.
+#7 14.60 Preparing to unpack .../12-python3-distutils_3.11.2-3_all.deb ...
+#7 14.60 Unpacking python3-distutils (3.11.2-3) ...
+#7 14.64 Selecting previously unselected package python3-dev.
+#7 14.64 Preparing to unpack .../13-python3-dev_3.11.2-1+b1_amd64.deb ...
+#7 14.64 Unpacking python3-dev (3.11.2-1+b1) ...
+#7 14.66 Selecting previously unselected package python3-pip-whl.
+#7 14.66 Preparing to unpack .../14-python3-pip-whl_23.0.1+dfsg-1_all.deb ...
+#7 14.67 Unpacking python3-pip-whl (23.0.1+dfsg-1) ...
+#7 14.74 Selecting previously unselected package python3-setuptools-whl.
+#7 14.74 Preparing to unpack .../15-python3-setuptools-whl_66.1.1-1+deb12u2_all.deb ...
+#7 14.75 Unpacking python3-setuptools-whl (66.1.1-1+deb12u2) ...
+#7 14.80 Selecting previously unselected package python3.11-venv.
+#7 14.80 Preparing to unpack .../16-python3.11-venv_3.11.2-6+deb12u9_amd64.deb ...
+#7 14.80 Unpacking python3.11-venv (3.11.2-6+deb12u9) ...
+#7 14.83 Selecting previously unselected package python3-venv.
+#7 14.83 Preparing to unpack .../17-python3-venv_3.11.2-1+b1_amd64.deb ...
+#7 14.83 Unpacking python3-venv (3.11.2-1+b1) ...
+#7 14.85 Setting up media-types (10.0.0) ...
+#7 14.86 Setting up python3-setuptools-whl (66.1.1-1+deb12u2) ...
+#7 14.87 Setting up libsqlite3-0:amd64 (3.40.1-2+deb12u2) ...
+#7 14.88 Setting up ca-certificates (20250419~deb12u2) ...
+#7 14.93 debconf: unable to initialize frontend: Dialog
+#7 14.93 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#7 14.93 debconf: falling back to frontend: Readline
+#7 14.93 debconf: unable to initialize frontend: Readline
+#7 14.93 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#7 14.93 debconf: falling back to frontend: Teletype
+#7 15.94 Updating certificates in /etc/ssl/certs...
+#7 16.55 rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+#7 16.56 23 added, 15 removed; done.
+#7 16.58 Setting up libncursesw6:amd64 (6.4-4) ...
+#7 16.59 Setting up libjs-jquery (3.6.1+dfsg+~3.5.14-1) ...
+#7 16.60 Setting up libc-dev-bin (2.36-9+deb12u14) ...
+#7 16.61 Setting up readline-common (8.2-1.3) ...
+#7 16.62 Setting up libjs-underscore (1.13.4~dfsg+~1.11.4-3) ...
+#7 16.63 Setting up python3-pip-whl (23.0.1+dfsg-1) ...
+#7 16.63 Setting up libreadline8:amd64 (8.2-1.3) ...
+#7 16.64 Setting up libjs-sphinxdoc (5.3.0-4) ...
+#7 16.65 Setting up libc6-dev:amd64 (2.36-9+deb12u14) ...
+#7 16.66 Setting up libpython3.11-stdlib:amd64 (3.11.2-6+deb12u9) ...
+#7 16.67 Setting up libexpat1-dev:amd64 (2.5.0-1+deb12u5) ...
+#7 16.67 Setting up zlib1g-dev:amd64 (1:1.2.13.dfsg-1) ...
+#7 16.68 Setting up libpython3-stdlib:amd64 (3.11.2-1+b1) ...
+#7 16.69 Setting up python3.11 (3.11.2-6+deb12u9) ...
+#7 17.11 Setting up libpython3.11:amd64 (3.11.2-6+deb12u9) ...
+#7 17.11 Setting up python3 (3.11.2-1+b1) ...
+#7 17.12 running python rtupdate hooks for python3.11...
+#7 17.12 running python post-rtupdate hooks for python3.11...
+#7 17.19 Setting up libpython3.11-dev:amd64 (3.11.2-6+deb12u9) ...
+#7 17.19 Setting up python3-lib2to3 (3.11.2-3) ...
+#7 17.27 Setting up python3-distutils (3.11.2-3) ...
+#7 17.33 Setting up libpython3-dev:amd64 (3.11.2-1+b1) ...
+#7 17.34 Setting up python3.11-dev (3.11.2-6+deb12u9) ...
+#7 17.35 Setting up python3.11-venv (3.11.2-6+deb12u9) ...
+#7 17.39 Setting up python3-dev (3.11.2-1+b1) ...
+#7 17.39 Setting up python3-venv (3.11.2-1+b1) ...
+#7 17.40 Processing triggers for libc-bin (2.36-9+deb12u14) ...
+#7 17.41 Processing triggers for ca-certificates (20250419~deb12u2) ...
+#7 17.42 Updating certificates in /etc/ssl/certs...
+#7 17.82 0 added, 0 removed; done.
+#7 17.82 Running hooks in /etc/ca-certificates/update.d...
+#7 17.82 done.
+#7 DONE 18.3s
+
+#8 [3/8] RUN python3 -m venv /opt/build && /opt/build/bin/pip install --no-cache-dir pip==24.3.1 maturin==1.7.8
+#8 3.008 Collecting pip==24.3.1
+#8 3.340   Downloading pip-24.3.1-py3-none-any.whl (1.8 MB)
+#8 4.049      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 2.8 MB/s eta 0:00:00
+#8 4.401 Collecting maturin==1.7.8
+#8 4.452   Downloading maturin-1.7.8-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl (7.9 MB)
+#8 6.045      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.9/7.9 MB 5.0 MB/s eta 0:00:00
+#8 6.082 Installing collected packages: pip, maturin
+#8 6.083   Attempting uninstall: pip
+#8 6.086     Found existing installation: pip 23.0.1
+#8 6.232     Uninstalling pip-23.0.1:
+#8 6.237       Successfully uninstalled pip-23.0.1
+#8 6.833 Successfully installed maturin-1.7.8 pip-24.3.1
+#8 DONE 6.9s
+
+#9 [4/8] COPY base /source/base
+#9 DONE 0.0s
+
+#10 [5/8] COPY head /source/head
+#10 DONE 0.0s
+
+#11 [6/8] RUN mkdir -p /wheels/base /wheels/head /wheels/test &&     python -m pip wheel --no-deps --no-build-isolation /source/base -w /wheels/base &&     python -m pip wheel --no-deps --no-build-isolation /source/head -w /wheels/head &&     python -m pip download --only-binary=:all: pytest==8.3.5 -d /wheels/test
+#11 0.393 Processing /source/base
+#11 0.395   Preparing metadata (pyproject.toml): started
+#11 5.161   Preparing metadata (pyproject.toml): finished with status 'done'
+#11 5.164 Building wheels for collected packages: properr
+#11 5.166   Building wheel for properr (pyproject.toml): started
+#11 11.34   Building wheel for properr (pyproject.toml): finished with status 'done'
+#11 11.34   Created wheel for properr: filename=properr-0.1.0-cp311-cp311-linux_x86_64.whl size=276265 sha256=6eb46ca15844fbfa6ed9ce4cb7153be46bf035a221da81805d9671d4ce24f65d
+#11 11.34   Stored in directory: /tmp/pip-ephem-wheel-cache-_8im2ide/wheels/69/d6/8f/6dc7ab89f2ce860703aed62f6c0174723a0bc3cf1a58dd9e79
+#11 11.34 Successfully built properr
+#11 11.73 
+#11 11.73 [notice] A new release of pip is available: 24.3.1 -> 26.2.2
+#11 11.73 [notice] To update, run: pip install --upgrade pip
+#11 12.01 Processing /source/head
+#11 12.01   Preparing metadata (pyproject.toml): started
+#11 12.13   Preparing metadata (pyproject.toml): finished with status 'done'
+#11 12.14 Building wheels for collected packages: properr
+#11 12.14   Building wheel for properr (pyproject.toml): started
+#11 18.63   Building wheel for properr (pyproject.toml): finished with status 'done'
+#11 18.63   Created wheel for properr: filename=properr-0.1.0-cp311-cp311-linux_x86_64.whl size=276302 sha256=d2c48f344ba33abddc833c08a3464c5315a626aa5307a1750b7ed4f59cdee147
+#11 18.63   Stored in directory: /tmp/pip-ephem-wheel-cache-2ldy52xg/wheels/34/61/c9/4d84cc5a0c8a27dd1efd85a3f83a8714181a3371887431a433
+#11 18.63 Successfully built properr
+#11 18.65 
+#11 18.65 [notice] A new release of pip is available: 24.3.1 -> 26.2.2
+#11 18.65 [notice] To update, run: pip install --upgrade pip
+#11 19.23 Collecting pytest==8.3.5
+#11 19.46   Downloading pytest-8.3.5-py3-none-any.whl.metadata (7.6 kB)
+#11 19.53 Collecting iniconfig (from pytest==8.3.5)
+#11 19.57   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+#11 19.62 Collecting packaging (from pytest==8.3.5)
+#11 19.65   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#11 19.74 Collecting pluggy<2,>=1.5 (from pytest==8.3.5)
+#11 19.78   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+#11 19.83 Downloading pytest-8.3.5-py3-none-any.whl (343 kB)
+#11 20.18 Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+#11 20.26 Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+#11 20.32 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#11 20.40 Saved /wheels/test/pytest-8.3.5-py3-none-any.whl
+#11 20.40 Saved /wheels/test/pluggy-1.7.0-py3-none-any.whl
+#11 20.40 Saved /wheels/test/iniconfig-2.3.1-py3-none-any.whl
+#11 20.40 Saved /wheels/test/packaging-26.3-py3-none-any.whl
+#11 20.40 Successfully downloaded pytest pluggy iniconfig packaging
+#11 20.42 
+#11 20.42 [notice] A new release of pip is available: 24.3.1 -> 26.2.2
+#11 20.42 [notice] To update, run: pip install --upgrade pip
+#11 DONE 20.6s
+
+#12 [7/8] RUN python3 -m venv /opt/base && python3 -m venv /opt/head &&     /opt/base/bin/pip install --no-index --no-deps /wheels/base/*.whl &&     /opt/head/bin/pip install --no-index --no-deps /wheels/head/*.whl &&     /opt/head/bin/pip install --no-index --find-links=/wheels/test pytest==8.3.5 &&     cp /source/head/properr/__init__.py /opt/original.py &&     cmp /source/head/tests/test_import.py /source/base/tests/test_import.py
+#12 4.454 Processing /wheels/base/properr-0.1.0-cp311-cp311-linux_x86_64.whl
+#12 4.460 Installing collected packages: properr
+#12 4.480 Successfully installed properr-0.1.0
+#12 4.759 Processing /wheels/head/properr-0.1.0-cp311-cp311-linux_x86_64.whl
+#12 4.764 Installing collected packages: properr
+#12 4.791 Successfully installed properr-0.1.0
+#12 5.025 Looking in links: /wheels/test
+#12 5.041 Processing /wheels/test/pytest-8.3.5-py3-none-any.whl
+#12 5.054 Processing /wheels/test/iniconfig-2.3.1-py3-none-any.whl
+#12 5.059 Processing /wheels/test/packaging-26.3-py3-none-any.whl
+#12 5.064 Processing /wheels/test/pluggy-1.7.0-py3-none-any.whl
+#12 5.098 Installing collected packages: pluggy, packaging, iniconfig, pytest
+#12 5.300 Successfully installed iniconfig-2.3.1 packaging-26.3 pluggy-1.7.0 pytest-8.3.5
+#12 DONE 5.4s
+
+#13 [8/8] WORKDIR /work
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 4.2s done
+#14 exporting manifest sha256:e3c44dd902efe35fbc2ee565d4270af1211e695de74db79291aa4d3b27e69612 0.0s done
+#14 exporting config sha256:995be8b40c09f8f11821df4a0a1c79736a5551d1d5994d388c4742fb4695b21c done
+#14 exporting attestation manifest sha256:5050fe7c4837eccd3c330fc7a9b4893c8b45e63c06bbb4ea244bd054bb1a41f7 0.0s done
+#14 exporting manifest list sha256:4aa2ac18be6a80bc53e4861b08db38ddddfccc648d898e45ebe643a264b621a5 done
+#14 naming to docker.io/library/it5417-properr-6:v1 done
+#14 unpacking to docker.io/library/it5417-properr-6:v1
+#14 unpacking to docker.io/library/it5417-properr-6:v1 7.3s done
+#14 DONE 11.6s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ppro8xqgilpdev0i3fp7fgvn4
