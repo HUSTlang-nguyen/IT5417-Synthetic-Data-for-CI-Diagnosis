@@ -215,3 +215,10 @@ Append entries in chronological order. Timezone: Asia/Bangkok. Record facts, evi
 - 2026-10-29 23:44 +07 pre-publication validation: bundled skill validator passed; 202 scoped protected files retain byte hashes; 66 local links resolve after correcting two demo-summary links to the actual artifact root. git diff --check passed; credential-pattern scan found no matches (rg exit 1). Only the three intended skill files are present. Authoring cache remains ignored.
 
 - 2026-10-29 23:44 +07: retained stash 13c2651686057aa1cb02d07714d84623473ec86b with tracked/untracked publication changes, applied it with --index without dropping it, and created codex/w1-review-skill from dfcda0d. All 23 changed/deleted/untracked paths match the pre-stash inventory after expected text newline normalization. Older stash cd1a89ec1732070f1e74ef0377c720f57f8d0022 remains retained. Next: commit and push, then verify remote identity and working tree.
+
+
+## 2026-10-29 23:45 +07 — W1 implementation, review skill and decisions published
+
+- Created commit 5857d8c484237e0dcd59330aa3c78b7d9806f6c7, “Complete W1 single-generator workflow and add CI data review skill”, covering the 23 reviewed paths. git push --set-upstream origin codex/w1-review-skill succeeded; git ls-remote returned the identical SHA, and git status --short was empty.
+- Both stash backups remain retained: publication 13c2651686057aa1cb02d07714d84623473ec86b and older target-PC backup cd1a89ec1732070f1e74ef0377c720f57f8d0022. Raw runs/models/cache were not staged; no evidence files were changed. Main and the original checkout were not updated.
+- This publication receipt is a documentation-only follow-up commit on the same branch. Research next task remains W2-01 (todo): diagnostic input/output contract. W1-03 disposition review is done; formal gold labels/locations and training eligibility remain pending. No W2 implementation, model/Docker execution or new measurements in this handoff.
