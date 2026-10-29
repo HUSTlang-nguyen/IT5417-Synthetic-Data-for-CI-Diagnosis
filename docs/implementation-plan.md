@@ -1,6 +1,6 @@
 # Kế hoạch thực thi theo tuần dành cho agent
 
-Cập nhật: 29/10/2026, Asia/Bangkok. Đây là danh sách công việc để agent tiếp tục triển khai toàn đề tài, không chỉ mô tả kiến trúc hoặc ghi lại việc đã làm.
+Cập nhật: 30/10/2026, Asia/Bangkok. Đây là danh sách công việc để agent tiếp tục triển khai toàn đề tài, không chỉ mô tả kiến trúc hoặc ghi lại việc đã làm.
 
 ## Cách dùng khi bắt đầu hoặc khôi phục context
 
@@ -16,12 +16,27 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 ## Điểm tiếp tục hiện tại
 
+- **Đợt mở rộng 01 đã chạy xong:** [tổng kết](expansion-01-summary.md), [review](expansion-01-review.md), [registry](../data-manifests/expansion-01.json). Sàng lọc 20, thử 9 case/6 repo, 7 seed pass, gọi 21 lượt 7B, 6 lượt đạt thực thi nhưng chỉ 3 candidate khác byte. Active time được batch ghi nhận 456,233s; integrity image thêm 3,937s. Mẫu số 27 lượt yêu cầu, 6 chưa chạy; gold/training pending, toàn bộ development. W1 không chạy lại.
+
 - **Công cụ hỗ trợ đã tạo và áp dụng:** [skill ci-data-review](../.agents/skills/ci-data-review/SKILL.md) hướng dẫn agent phân tích kỹ thuật và giải thích evidence cho người dùng review; metadata cho phép dùng theo ngữ cảnh hoặc gọi `$ci-data-review`. Kết quả áp dụng cho ba lượt 7B nằm trong bản rà R2; skill không tự phê duyệt dữ liệu. Người dùng đã đồng ý ba kiến nghị; W1-03 `done` ở phạm vi review kết luận/giữ-loại, các trường nhãn gold/training vẫn pending. Kiểm tra skill được ghi riêng trong agent-log.
-- **Task kế tiếp: W2-01 (`todo`) — chốt hợp đồng input/output chẩn đoán.** Người dùng đã đồng ý ba kết luận/kiến nghị W1-03 qua chat; ghi nhận tại bảng xác nhận trong bản review. Chưa triển khai W2 trong lượt bàn giao Git này. [Bản rà R2 bằng ci-data-review](pilot-review.md) giải thích code → hành vi → log, độ chắc chắn và kiến nghị: loại 01 khỏi tập synthetic-failure, giữ 02/03 như ứng viên lỗi API/type và logic có bằng chứng. Phần kết luận/giữ-loại đã được người dùng đồng ý; nhãn/vị trí xác nhận và training approval vẫn pending. Comment vi phạm prompt nhưng leakage chỉ là rủi ro có điều kiện khi input 3B chưa chốt.
+- **Task kế tiếp: W2-04 (`doing`) — hoàn thiện nhóm/trùng lặp và vai trò split trước vòng train.** W2-01/02 đủ dùng cho development; W2-03 đã có registry và pilot thật. [Review mở rộng](expansion-01-review.md) chờ người dùng, chưa duyệt gold/training. Người dùng đã đồng ý ba kết luận/kiến nghị W1-03 qua chat; ghi nhận tại bảng xác nhận trong bản review. Phần W2 development đã được triển khai trong đợt mở rộng được người dùng yêu cầu sau bàn giao Git W1. [Bản rà R2 bằng ci-data-review](pilot-review.md) giải thích code → hành vi → log, độ chắc chắn và kiến nghị: loại 01 khỏi tập synthetic-failure, giữ 02/03 như ứng viên lỗi API/type và logic có bằng chứng. Phần kết luận/giữ-loại đã được người dùng đồng ý; nhãn/vị trí xác nhận và training approval vẫn pending. Comment vi phạm prompt nhưng leakage chỉ là rủi ro có điều kiện khi input 3B chưa chốt.
 - W1-01 hiệu chỉnh vai trò đã xong: chỉ 7B sinh, 3B chẩn đoán ở giai đoạn sau; 31 host tests pass, một Docker integration test bỏ qua có chủ đích. Không chạy lại model/pilot. [Tổng kết W1-04](demo-summary.md) hoàn tất; W1-03 đã hoàn tất review kết luận; không coi dữ liệu đã được duyệt gold/training khi các trường tương ứng còn pending.
 - Pilot PC đã chạy: properr head pass hai test; log nghiệm thu cũ có 22 kiểm thử phần mềm pass. 7B đạt kiểm chứng thực thi 2/3. Đây chưa phải số mẫu được duyệt để train; 3B chẩn đoán chưa chạy. Model phụ đã bỏ khỏi cấu hình/workflow, không tải/gọi/chạy/rà tiếp; evidence lịch sử giữ nguyên.
-- Run 7B đang được rà: `generate-20261029T054921315491Z`. [Evidence đã commit](evidence/target-pc/README.md); raw run/ZIP nằm local, không đi theo Git clone. Nếu thiếu raw artifacts, khôi phục archive phù hợp hoặc yêu cầu cung cấp; không dựng lại output bằng tay.
+- Run 7B W1 đã rà và được người dùng đồng ý kiến nghị: `generate-20261029T054921315491Z`. [Evidence đã commit](evidence/target-pc/README.md); raw run/ZIP nằm local, không đi theo Git clone. Nếu thiếu raw artifacts, khôi phục archive phù hợp hoặc yêu cầu cung cấp; không dựng lại output bằng tay.
 - Không tải lại model/chạy lại pilot chỉ để cập nhật tài liệu. Giữ nguyên kết quả vòng đầu, kể cả các lượt bị loại.
+
+## Nguồn dữ liệu dự kiến: AIDev và SWE-bench
+
+Phạm vi nguồn giữ theo [báo cáo nghiên cứu §4](reference/00_bao_cao_dinh_huong_nghien_cuu.md): **AIDev/AIDev-pop và subset SWE-bench phù hợp**. W1 mới triển khai case properr từ AIDev; việc roadmap trước đó chỉ nhắc AIDev là thiếu chi tiết, không phải quyết định loại SWE-bench.
+
+| Nguồn | Phần tận dụng | Phần cần chuẩn bị cho nhiệm vụ chẩn đoán |
+|---|---|---|
+| AIDev/AIDev-pop | PR, repo/commit và metadata agent; dữ liệu chi tiết tùy subset | Tái hiện/log, nguyên nhân/vị trí và nhãn được rà; metadata PR không chứng minh ai gây lỗi |
+| SWE-bench, subset phù hợp (cân nhắc Lite/Verified) | Repo/base commit, mô tả vấn đề, gold solution patch, test patch, FAIL_TO_PASS và PASS_TO_PASS | Chọn task phù hợp, tái hiện và lưu log; ánh xạ taxonomy/vị trí kèm evidence và người duyệt. Chưa chọn subset cuối hoặc tích hợp harness |
+
+SWE-bench có **đáp án sửa lỗi và các test mục tiêu**, giúp giảm công thu thập/kiểm chứng. Nó không cung cấp sẵn mọi nhãn chẩn đoán của đồ án: loại lỗi theo taxonomy riêng, dòng nguyên nhân đã xác nhận hoặc provenance người–agent. Các dòng trong patch là nơi sửa, không tự động là toàn bộ dòng gây lỗi. Không đưa gold patch vào input như diff gây lỗi; giữ nó ở phần tham chiếu/đáp án khi chấm hoặc review. [Cấu trúc nguồn chính thức](https://www.swebench.com/SWE-bench/guides/datasets/).
+
+W2-03 chọn case và ghi nguồn/revision; W2-04 chốt vai trò train/validation/test theo nhóm và rà trùng giữa hai nguồn. Nếu giữ benchmark ngoài với split gốc, không lấy các instance đó làm seed sinh hoặc dữ liệu train. Nếu tự chia subset, công bố protocol riêng. Mẫu `astropy__astropy-12907` đã được đọc trong báo cáo nghiên cứu thuộc phần phát triển, không dùng để khẳng định test độc lập chưa từng xem. Đã chạy năm case SWE Lite dev trong đợt mở rộng 01; nhãn chẩn đoán chính thức mới vẫn pending.
 
 ## Tuần 1 — Hoàn tất demo và rà chất lượng pilot
 
@@ -38,10 +53,10 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
-| W2-01 | todo | Dựa W1-03/04 và revised-plan, định nghĩa input/output chẩn đoán, thông tin được phép thấy, vai trò AI/code/người; ghi câu hỏi workflow/interceptor còn mở | `docs/task-contract.md`: ví dụ input/output, phạm vi phân loại/khoanh vùng/trạng thái, unknown/thiếu thông tin và các quyết định chưa chốt. Không tự implement interceptor |
-| W2-02 | todo | Từ W2-01, lập taxonomy nhỏ và hướng dẫn gắn nhãn | `docs/labeling-guide.md`: định nghĩa, phản ví dụ, mức file/hàm/dòng, trường hợp chưa xác định, nguồn bằng chứng và thủ tục người duyệt. Không ép actor/nhãn khi nguồn không đủ |
-| W2-03 | todo | Chọn thêm repo/case theo tiêu chí có mục đích; mở rộng harness từng repo, chưa tải toàn bộ AIDev | Registry nhỏ trong `data-manifests/`: nguồn/revision/id/base/head/test command/giấy phép, lý do chọn/loại, chi phí và kết quả tái hiện thật. Raw code/data ở thư mục bị ignore. Mục tiêu thăm dò 10–20 tình huống từ tài liệu nghiên cứu là dự kiến, không phải quota đã hoàn thành hoặc yêu cầu 20 repo/label |
-| W2-04 | todo | Dựa registry và W2-02, xác định group id, duplicate family và vai trò train/validation/test trước vòng sinh mở rộng | `docs/experiment-protocol.md` bản nháp + split manifest có hash. properr/case đã dùng phân tích pilot thuộc phần phát triển, không gọi là test chưa từng xem. Tỷ lệ 70/15/15 chỉ là phương án, phải đối chiếu số nhóm/lớp thực tế |
+| W2-01 | done | Dựa W1-03/04 và revised-plan, định nghĩa input/output chẩn đoán cho cả AIDev và SWE-bench, thông tin được phép thấy (tách gold patch khỏi input), vai trò AI/code/người; ghi câu hỏi workflow/interceptor còn mở | [task-contract.md](task-contract.md) development v0.1: input/output review, reference fields tách riêng, unknown và các quyết định tương lai; chưa có 3B inference/training schema cuối. Không tự implement interceptor |
+| W2-02 | done | Từ W2-01, lập taxonomy nhỏ và hướng dẫn gắn nhãn; phân biệt metadata/đáp án nguồn với nhãn chẩn đoán đã rà | [labeling-guide.md](labeling-guide.md) development v0.1: mô tả nhãn tạm thời, phản ví dụ, mức vị trí và thủ tục người duyệt; taxonomy cuối/gold labels vẫn pending. Không ép actor/nhãn khi nguồn không đủ |
+| W2-03 | done | Chọn subset/case từ AIDev/AIDev-pop và SWE-bench theo tiêu chí có mục đích; ghim nguồn/revision và mở rộng harness từng repo; chưa tải toàn bộ dataset | [Registry expansion-01](../data-manifests/expansion-01.json): 20 screened, 9 attempted/6 repo, 6 strict-supported, 7 fixed-pass; có nguồn/revision/test recipe/license và lý do loại. Như [tổng kết](expansion-01-summary.md); không tuyên bố đại diện nguồn. Raw code/data ở thư mục bị ignore. Mục tiêu thăm dò 10–20 tình huống từ tài liệu nghiên cứu là dự kiến, không phải quota đã hoàn thành hoặc yêu cầu 20 repo/label |
+| W2-04 | doing | Dựa registry và W2-02, xác định group id, duplicate family giữa AIDev/SWE-bench và vai trò train/validation/test trước vòng sinh mở rộng; chốt benchmark ngoài hay protocol chia subset riêng | Đang làm: registry có repo group_id và instance family; review đã nhận diện duplicate hashes của candidate. Còn near-duplicate giữa nguồn và train/validation/test; tất cả case đợt 01 giữ development. Chưa có split cuối hoặc `docs/experiment-protocol.md` khóa. properr/case đã dùng phân tích pilot thuộc phần phát triển, không gọi là test chưa từng xem. Tỷ lệ 70/15/15 chỉ là phương án, phải đối chiếu số nhóm/lớp thực tế |
 
 **Cổng G2:** có subset thật tái hiện được, dữ liệu đủ input và nhãn được duyệt cho nhiệm vụ đã chọn; mỗi nhóm chỉ ở một split. Nếu support quá ít, giảm taxonomy/phạm vi và ghi lý do trước khi mở rộng sinh. Không dùng synthetic để che việc chưa có test thật độc lập.
 
@@ -49,9 +64,9 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
-| W3-01 | todo | Từ review 7B W1-03 và train groups W2-04, thiết kế vòng prompt/budget mới xử lý bug-disclosing comments và thay đổi kém hợp lý; chỉ dùng generator 7B | Giao thức version mới: prompt/options/model digest/seed/ngân sách/lý do thay đổi. Không ghi đè pilot đầu; không sửa output model để biến mẫu lỗi thành mẫu đạt |
-| W3-02 | todo | Sinh trên seed pass của **train groups**, chạy baseline → fail ổn định → hoàn tác; mở rộng allowlist/test command theo từng repo đã cấu hình | Run manifests, raw requests/outputs/diff/log/timeout/cost; tests giữ nguyên, container không mạng và có giới hạn. Lỗi JSON/build/timeout/không làm test fail được giữ trong tổng lượt |
-| W3-03 | todo | Rà nhãn, vị trí, hợp lý và trùng lặp; phân biệt kiểm chứng thực thi với toàn bộ tiêu chí dùng để train | Review records có người duyệt, bảng lý do loại/yield theo lớp/nguồn; các nhãn chưa xác nhận vẫn pending, không tự thành gold |
+| W3-01 | doing | Từ review 7B W1-03 và train groups W2-04, thiết kế vòng prompt/budget mới xử lý bug-disclosing comments và thay đổi kém hợp lý; chỉ dùng generator 7B | Đã thử single-file-exact-edit-v2 trong development, giữ options/seed/model 7B; raw requests/prompts/digests được lưu. Vẫn cần xử lý instruction drift/invalid output và chốt train groups trước vòng tiếp theo. Không ghi đè pilot đầu; không sửa output model để biến mẫu lỗi thành mẫu đạt |
+| W3-02 | doing | Sinh trên seed pass của **train groups**, chạy baseline → fail ổn định → hoàn tác; mở rộng allowlist/test command theo từng repo đã cấu hình | [Đợt 01](expansion-01-summary.md) đã có 21 lượt development, 6 execution_verified/3 hash khác byte. Đây là pilot được người dùng cho phép trước split cuối, chưa phải vòng train groups; tests giữ nguyên, container không mạng và có giới hạn. Lỗi JSON/build/timeout/không làm test fail được giữ trong tổng lượt |
+| W3-03 | waiting_user | Rà nhãn, vị trí, hợp lý và trùng lặp; phân biệt kiểm chứng thực thi với toàn bộ tiêu chí dùng để train | [Review đợt 01](expansion-01-review.md) hoàn tất phân tích kỹ thuật theo skill, ba candidate khác byte chờ người dùng review kết luận/kiến nghị. Raw review stubs và training eligibility vẫn pending; các nhãn chưa xác nhận vẫn pending, không tự thành gold |
 
 **Cổng G3:** giao thức tái lập được, ứng viên đủ evidence và bộ tiêu chí nhận/loại được ghi rõ. Không kết luận khả năng sinh hoặc chẩn đoán tổng quát từ một case hay tỷ lệ thực thi 2/3 của 7B.
 
@@ -61,7 +76,7 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 |---|---|---|---|
 | W4-01 | todo | Chốt protocol dựa phần phát triển W2/3: nhiệm vụ, splits, nhãn, model chẩn đoán, metric, ngân sách, seeds và cấu hình ưu tiên | `docs/experiment-protocol.md` version khóa + decision log. Chốt tách riêng hai trục thật-only/thật+synthetic và fail-only/pass+fail; nếu thiếu nguồn pass thì ghi chưa thực hiện, không tự coi head pass là một mẫu chẩn đoán đã có nhãn |
 | W4-02 | todo | Đóng gói real train/validation/test và synthetic từ train groups theo schema thống nhất | Dataset version + manifests/checksums/source lineage + `docs/dataset-card.md`. Raw dataset bị ignore; chỉ metadata nhỏ hợp lệ đi vào Git |
-| W4-03 | todo | Kiểm tra leakage, near-duplicate, nhãn pending, trường đáp án lộ trong input và tính đầy đủ evidence | Lệnh kiểm tra có report: không giao nhóm/duplicate family giữa splits; validation/test thật không chứa synthetic; TF-IDF/statistics chỉ fit train. Không dùng validation/test làm seed sinh |
+| W4-03 | todo | Kiểm tra leakage, near-duplicate, nhãn pending, trường đáp án lộ trong input (gồm gold patch/nhãn tham chiếu SWE-bench) và tính đầy đủ evidence | Lệnh kiểm tra có report: không giao nhóm/duplicate family giữa splits; validation/test thật không chứa synthetic; TF-IDF/statistics chỉ fit train. Không dùng validation/test làm seed sinh |
 
 **Cổng G4:** dataset/protocol được version hóa và kiểm tra tái lập. Tỷ lệ/chia tập/filter không đổi vì điểm test. Cross-validation theo nhóm trong development là tùy protocol/số liệu; synthetic chỉ nằm ở phần train tương ứng của mỗi fold nếu dùng, test cuối vẫn độc lập.
 

@@ -70,6 +70,9 @@ def doctor(endpoint, target_gpu="RTX 4070 SUPER"):
 
 def reproduce(case_id="properr-6"):
     case = case_config(case_id)
+    if case.get("runner_kind") == "python-source-v2":
+        from .multicase import reproduce_case
+        return reproduce_case(case)
     folder = new_run("reproduce")
     manifest = {"schema_version": 1, "kind": "historical_reproduction",
                 "run_id": folder.name, "created_at": now(), "source": case,
@@ -137,12 +140,15 @@ def validate_proposal(proposal, original, allowed="properr/__init__.py"):
         raise ValueError("Invalid source envelope")
     return content
 
-def generate_run(model, attempts, endpoint):
+def generate_run(model, attempts, endpoint, case_id="properr-6"):
     if model != ollama.GENERATOR_MODEL:
         raise ValueError("Generation requires the configured 7B generator.")
     if attempts != 3:
         raise ValueError("The generator protocol fixes three attempts.")
-    case = case_config()
+    case = case_config(case_id)
+    if case.get("runner_kind") == "python-source-v2":
+        from .multicase import generate_case
+        return generate_case(case, endpoint)
     gate, source_dir = passing_seed(case)
     folder = new_run("generate")
     source = (source_dir / case["allowed_file"]).read_text(encoding="utf-8")
@@ -216,6 +222,9 @@ def generate_run(model, attempts, endpoint):
 def verify_run(run_id):
     folder = run_path(run_id)
     manifest = read_json(folder / "manifest.json")
+    if manifest.get("source", {}).get("runner_kind") == "python-source-v2":
+        from .multicase import verify_case
+        return verify_case(run_id)
     if manifest["kind"] != "synthetic_generation":
         raise ValueError("verify requires a synthetic generation run.")
     if manifest.get("model") != ollama.GENERATOR_MODEL:

@@ -1,0 +1,45 @@
+{
+  "case_id": "esaul314__chunkify-340",
+  "source_kind": "aidev",
+  "repo_url": "https://github.com/esaul314/chunkify",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "license": "MIT",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "record_id": 3376218258,
+  "base": "9359f9312dd324fa18f1d2f16e0588cc69b553d7",
+  "head": "c4cbbea3a0ad8099538a5d638f167a44f93783d1",
+  "allowed_file": "pdf_chunker/passes/emit_jsonl.py",
+  "test_targets": [
+    "tests/emit_jsonl_truncation_test.py"
+  ],
+  "frozen_test_files": [
+    "tests/emit_jsonl_truncation_test.py",
+    "tests/conftest.py"
+  ],
+  "dependencies": [
+    "haystack-ai==2.15.1",
+    "ftfy==6.3.1",
+    "PyYAML==6.0.3",
+    "pydantic==2.10.6",
+    "structlog==24.4.0"
+  ],
+  "install_project": false,
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "focus_line": 29,
+  "resources": {
+    "memory_mb": 1024,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "source_record_sha256": "24d5fb629fc38b6e97deaded248a0b2168f82043d6cd2ebf06f377bd9d2c975d",
+  "pr_metadata_sha256": "2a7091843bfd6db56c97fdc15e49f709a0ca7e3830f724b38668e2f60e9ec398",
+  "historical_hypothesis": "Frozen upstream regression tests fail at base and pass at PR head; local reconstruction only"
+}

@@ -31,7 +31,7 @@ def render(folder, manifest):
         body.append('<h2>Nguồn và workflow</h2><p>' + esc(source["dataset"]) + " " + esc(source["revision"])
                     + " · " + esc(source["table"]) + " · record " + esc(source["record_id"]) + '</p>')
         body.append('<p>Base: <code>' + esc(source["base"]) + '</code><br>Head: <code>'
-                    + esc(source["head"]) + '</code></p>')
+                    + esc(source.get("head", "base + pinned repair patch")) + '</code></p>')
         body.append('<p>Dataset → repo/commit → môi trường → LLM sinh ứng viên → test độc lập → người rà nhãn.</p>')
         body.append('<p>Nhãn agent ở PR không chứng minh actor gây lỗi. Log ở đây là log tái hiện local, không phải CI lịch sử.</p>')
     if manifest["kind"] == "historical_reproduction":
@@ -41,7 +41,7 @@ def render(folder, manifest):
         body.append('<p>Bản head pass là điều kiện chọn seed. Không suy gold label hoặc tác giả gây lỗi từ kết quả này.</p>')
         if manifest.get("build"):
             body.append('<h3>Dựng môi trường</h3>' + stage(folder, manifest["build"]))
-    elif manifest["kind"] == "synthetic_generation":
+    elif manifest["kind"] == "synthetic_generation" and manifest.get("schema_version", 1) == 1:
         attempts = manifest.get("attempts", [])
         denominator = manifest["attempt_count"]
         executed = sum(x["status"] == "execution_verified" for x in attempts)
@@ -71,6 +71,53 @@ def render(folder, manifest):
             body.append('</section>')
         if len(attempts) < denominator:
             body.append('<p class="error">Có lượt chưa thực hiện; không coi chúng là thành công.</p>')
+    elif manifest["kind"] == "case_reproduction":
+        body.append('<h2>Tái hiện local với upstream tests cố định</h2>')
+        body.append('<p>' + esc(manifest.get("qualification")) + '</p>')
+        body.append('<p>Giả thuyết được hỗ trợ: ' + esc(manifest.get("historical_supported", "chưa biết"))
+                    + ' · Seed fixed pass: ' + esc(manifest.get("head_passed", "chưa biết")) + '</p>')
+        body.append('<h3>Base</h3>' + stage(folder, manifest.get("base")))
+        body.append('<h3>Fixed</h3>' + stage(folder, manifest.get("head")))
+        if manifest.get("environment"):
+            body.append('<h3>Build</h3>' + stage(folder, manifest["environment"].get("build")))
+            body.append('<p>' + link('environment.json') + ' · ' + link('base-source.json') + ' · ' + link('head-source.json') + '</p>')
+    elif manifest["kind"] in {"synthetic_generation", "synthetic_verification"}:
+        generated = manifest["kind"] == "synthetic_generation"
+        attempts = manifest.get("attempts", [])
+        body.append('<h2>' + ('Sinh bằng 7B — exact edit v2' if generated else 'Kiểm chứng candidate trong Docker') + '</h2>')
+        body.append('<p>Đã ghi nhận ' + str(len(attempts)) + '/' + str(manifest["attempt_count"]) + ' lượt; đạt thực thi: '
+                    + ("xem verification run" if generated else str(sum(x["status"] == "execution_verified" for x in attempts))) + '</p>')
+        if generated:
+            files = [link(p) for p in ('prompt.txt', 'original.py', 'tests.json') if (folder / p).is_file()]
+            body.append('<p>' + ' · '.join(files) + '</p>')
+        else:
+            body.append('<p>' + link('../' + manifest['generation_run'] + '/report.html', 'Raw generation được giữ nguyên') + '</p>')
+        body.append('<p>Development; nhãn gold và training eligibility pending.</p>')
+        for item in attempts:
+            prefix = item["directory"] + '/'
+            body.append('<section><h3>Lượt ' + str(item["index"]) + ' — ' + esc(item["status"]) + '</h3>')
+            body.append('<p>' + esc(item.get('error') or item.get('rejection_reason') or '') + '</p>')
+            for filename in ('request.json', 'response.raw.json', 'proposal.json', 'change.diff', 'candidate.py', 'review.json'):
+                if (folder / prefix / filename).is_file(): body.append('<p>' + link(prefix + filename) + '</p>')
+            if item.get('baseline'):
+                body.append('<h4>Baseline</h4>' + stage(folder, item['baseline'], prefix))
+                for rep in item.get('repetitions', []): body.append('<h4>Candidate</h4>' + stage(folder, rep, prefix))
+                body.append('<h4>Restored</h4>' + stage(folder, item.get('restored'), prefix))
+            body.append('</section>')
+    elif manifest["kind"] == "development_batch":
+        summary = manifest.get('summary', {})
+        body.append('<h2>Đợt phát triển nhiều repo</h2><p>Ngân sách: 6 giờ active runtime; tối thiểu 20 GiB trống.</p>')
+        body.append('<p>Đã đo: ' + esc(manifest.get('active_seconds')) + 's · Cận thời gian mất do gián đoạn: '
+                    + esc(manifest.get('unaccounted_time_bound_seconds', 0)) + 's</p>')
+        body.append('<pre>' + esc(json.dumps(summary, ensure_ascii=False, indent=2)) + '</pre>')
+        if manifest.get('stop_reason'): body.append('<p>' + esc(manifest['stop_reason']) + '</p>')
+        body.append('<table><tr><th>Case / nguồn</th><th>Trạng thái</th><th>Evidence</th></tr>')
+        for item in manifest['cases']:
+            links = [link('../' + value['run_id'] + ('/report.html' if (folder.parent / value['run_id'] / 'report.html').is_file()
+                           else '/manifest.json'), name) for name, value in item['stages'].items()]
+            body.append('<tr><td>' + esc(item['case_id']) + '<br>' + esc(item['source_kind']) + '</td><td>'
+                        + esc(item['status']) + '<br>' + esc(item.get('error', '')) + '</td><td>' + ' · '.join(links) + '</td></tr>')
+        body.append('</table><p>Giữ toàn bộ lỗi và lượt chưa chạy. Execution acceptance chưa là gold/training approval.</p>')
     elif manifest["kind"] == "generation_demo":
         generator = manifest["generator"]
         body.append('<h2>Phiên sinh dữ liệu bằng 7B</h2><p>Generator: <strong>' + esc(generator["model"]) + '</strong></p>')

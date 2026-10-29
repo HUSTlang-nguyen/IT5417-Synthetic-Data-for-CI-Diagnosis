@@ -1,0 +1,69 @@
+{
+  "case_id": "pydicom__pydicom-1256",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "license": "MIT",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-1256",
+  "base": "49a3da4a3d9c24d7e8427a25048a1c7d5c4f7724",
+  "head": "base+repair:fa1d1ddcd0074c66e5cc6801278dbf2e26020b23c6f7f65b12eb034151c5b706",
+  "allowed_file": "pydicom/jsonrep.py",
+  "repair_patch": ".cache/expansion/records/pydicom__pydicom-1256/repair.patch",
+  "repair_patch_sha256": "fa1d1ddcd0074c66e5cc6801278dbf2e26020b23c6f7f65b12eb034151c5b706",
+  "test_patch": ".cache/expansion/records/pydicom__pydicom-1256/test.patch",
+  "test_patch_sha256": "acf2035574c780340aa5dff311ec3f24a28e6a19c5d5400a9af1b21a5418ebbf",
+  "fail_to_pass": [
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_within_SQ"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_json.py::TestPersonName::test_json_pn_from_file",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_from_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_empty_value",
+    "pydicom/tests/test_json.py::TestPersonName::test_multi_value_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_dataelem_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_to_json",
+    "pydicom/tests/test_json.py::TestAT::test_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_value_in_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_tag_in_json",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_json_from_dicom_file",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_roundtrip",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataset_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataelement_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_sort_order",
+    "pydicom/tests/test_json.py::TestSequence::test_nested_sequences",
+    "pydicom/tests/test_json.py::TestBinary::test_inline_binary",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_inline_binary",
+    "pydicom/tests/test_json.py::TestBinary::test_valid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_2"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_json.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_json.py"
+  ],
+  "focus_line": 226,
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base and pass with reference repair; PASS_TO_PASS remain passing"
+}

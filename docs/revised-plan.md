@@ -16,7 +16,7 @@ Task thực thi theo tuần và trạng thái hiện tại nằm trong [implemen
 ## Milestone sau demo
 
 1. Chốt workflow user–agent–tool/API và vị trí lỗi; xác nhận interceptor là ví dụ, yêu cầu mới hay thay đổi phạm vi. Chưa implement interceptor.
-2. Chọn thêm repo theo tiêu chí có mục đích/tương đồng về nhiệm vụ, ngôn ngữ, test và điều kiện tái hiện. Không mặc định SWE-bench là nhóm không có agent hoặc AIDev là lỗi do agent gây ra.
+2. Chọn subset/case từ cả AIDev/AIDev-pop và SWE-bench theo tiêu chí có mục đích/tương đồng về nhiệm vụ, ngôn ngữ, test và điều kiện tái hiện. Tận dụng gold solution patch/test patch và FAIL_TO_PASS/PASS_TO_PASS của SWE-bench; taxonomy/vị trí chẩn đoán vẫn cần ánh xạ và rà soát, gold patch tách khỏi input. Subset/split cuối chưa chốt. Không mặc định SWE-bench là nhóm không có agent hoặc AIDev là lỗi do agent gây ra.
 3. Thiết kế đối chứng fail-only so với pass+fail, độc lập với thật-only/thật+synthetic. Chưa chốt tỷ lệ 50/50 và chưa tăng thành toàn bộ thí nghiệm trong demo.
 4. Chốt taxonomy, nhãn vị trí, group split, validation/test thật, rà trùng và phạm vi actor có bằng chứng.
 5. Chỉ sau đó triển khai baseline/SFT và đánh giá hiệu quả synthetic.

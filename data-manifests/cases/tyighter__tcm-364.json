@@ -1,0 +1,44 @@
+{
+  "case_id": "tyighter__tcm-364",
+  "source_kind": "aidev",
+  "repo_url": "https://github.com/tyighter/tcm",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "license": "GPL-3.0",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "record_id": 4181747281,
+  "base": "27ca584dbc54fff0b7b51856c33777b20b8dae95",
+  "head": "9b031c20397cc0d4af1985da7f01a3187c63da71",
+  "allowed_file": "modules/ImageMagickInterface.py",
+  "test_targets": [
+    "tests/test_imagemagick_interface.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_imagemagick_interface.py"
+  ],
+  "dependencies": [
+    "imagesize==1.4.1",
+    "tqdm==4.67.1"
+  ],
+  "install_project": false,
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "focus_line": 208,
+  "resources": {
+    "memory_mb": 1024,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "source_record_sha256": "ab067b49701f07318c7820aecf0e119cb8f0d4c2e6f94f201cb94d6c8d7e4902",
+  "pr_metadata_sha256": "d5aa9d0ec93080d7fb1ba63d6d06b4118b076b5efb47fa40efbd346b241f6312",
+  "historical_hypothesis": "Frozen upstream regression tests fail at base and pass at PR head; local reconstruction only",
+  "writable_dirs": [
+    "logs"
+  ]
+}

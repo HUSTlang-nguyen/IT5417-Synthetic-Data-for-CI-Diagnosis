@@ -1,0 +1,44 @@
+{
+  "case_id": "mfat__sshpilot-716",
+  "source_kind": "aidev",
+  "repo_url": "https://github.com/mfat/sshpilot",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "license": "GPL-3.0",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "record_id": 3505345309,
+  "base": "7437fe0553004141f614a4a4c22cf9f03c66f32f",
+  "head": "62ec6b686aec303160d0f4893ac11469d3d7c5d3",
+  "allowed_file": "sshpilot/terminal.py",
+  "test_targets": [
+    "tests/test_terminal_askpass.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_terminal_askpass.py",
+    "tests/conftest.py"
+  ],
+  "dependencies": [
+    "paramiko==3.5.1",
+    "cryptography==44.0.2",
+    "keyring==25.6.0",
+    "psutil==6.1.1"
+  ],
+  "install_project": false,
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "focus_line": 1250,
+  "resources": {
+    "memory_mb": 1024,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "source_record_sha256": "1a289c28ce7e697ca857d2b6b0740e6957a706b5e063f477549d198c496f6217",
+  "pr_metadata_sha256": "1e4fb81aff2502c6eba29ade25347db3e5cfc5f45e1899f0b3415df08742215f",
+  "historical_hypothesis": "Frozen upstream regression tests fail at base and pass at PR head; local reconstruction only"
+}

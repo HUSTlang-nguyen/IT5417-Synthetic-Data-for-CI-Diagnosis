@@ -6,7 +6,7 @@ Sinh dữ liệu tổng hợp có kiểm chứng hỗ trợ chẩn đoán lỗi 
 
 Mục tiêu nghiên cứu dài hạn là đánh giá dữ liệu synthetic đối với phân loại/khoanh vùng lỗi trên dữ liệu thật. Milestone đầu là **demo pipeline Python trên một repo thật**; chưa có fine-tuning hoặc kết luận hiệu quả ML.
 
-Luồng: **AIDev record → repo/commit → seed pass → 7B sinh → Docker kiểm chứng → người duyệt → dữ liệu cho 3B chẩn đoán.** Generator duy nhất là `qwen2.5-coder:7b-instruct`; model chẩn đoán chính là `Qwen/Qwen2.5-Coder-3B-Instruct`, chưa triển khai/chạy. Model phụ đã bỏ khỏi workflow; evidence lịch sử giữ nguyên.
+Luồng demo W1: **AIDev record → repo/commit → seed pass → 7B sinh → Docker kiểm chứng → người duyệt → dữ liệu cho 3B chẩn đoán.** Generator duy nhất là `qwen2.5-coder:7b-instruct`; model chẩn đoán chính là `Qwen/Qwen2.5-Coder-3B-Instruct`, chưa triển khai/chạy. Model phụ đã bỏ khỏi workflow; evidence lịch sử giữ nguyên.
 
 properr PR #6: AIDev v5, bảng all_pull_request, record 3256868569. Repo nguồn có Python + Rust; code điều phối của đề tài viết bằng Python. Nguồn, revision, snapshot và giới hạn nằm trong cases/properr-6.
 
@@ -62,3 +62,25 @@ Agent đọc code/diff/log, đối chiếu evidence và giải thích nhãn/vị
 - Artifact report luôn ghi rõ xem lại kết quả; không giả làm chạy live.
 - Không có fake mode dùng patch viết tay thay output LLM; fixture trong unit tests chỉ kiểm thử phần mềm.
 - Không commit models, secrets, clone nguồn hoặc output lớn. Không có cloud fallback.
+
+## Đợt development nhiều repo
+
+Kết quả thực đo của đợt 01:
+
+| Hạng mục | Kết quả |
+|---|---|
+| Sàng lọc và tái hiện | 20 case sàng lọc → 9 case thử tái hiện, trên 6 repo |
+| Seed và lượt sinh | 7 seed pass → 21 lượt sinh bằng 7B |
+| Kiểm chứng thực thi | 6 lượt đạt, gồm 3 candidate khác byte; đều từ pydicom |
+| Kiểm thử phần mềm | 49 kiểm thử: 48 pass, 1 legacy Docker opt-in skip |
+
+Đây là số liệu development; chưa phải nhãn gold, số mẫu được duyệt train hoặc accuracy chẩn đoán.
+
+[Đợt mở rộng 01](docs/expansion-01-summary.md) đã thử 9 case/6 repo từ AIDev và SWE Lite dev; 21 lượt 7B, 6 đạt thực thi nhưng chỉ 3 candidate khác byte. [Review kỹ thuật](docs/expansion-01-review.md) chờ người dùng; gold/training vẫn pending. W1 properr và evidence cũ giữ nguyên.
+
+```text
+python -m ci_demo batch --manifest data-manifests/expansion-01.json
+python -m ci_demo batch --resume <BATCH-ID>
+```
+
+Raw artifacts/patches/cache không đi theo clone; đọc [runbook](docs/demo-runbook.md) trước khi bắt đầu run mới. Resume batch đã hoàn tất chỉ trả trạng thái đã lưu, không gọi lại model/test. [Task contract](docs/task-contract.md) và [hướng dẫn nhãn](docs/labeling-guide.md) phân biệt source evidence, generator proposal, agent assessment và human approval.

@@ -1,0 +1,60 @@
+test_real_container_pass_fail_fail_fail_pass (tests.test_docker.DockerIntegrationTests.test_real_container_pass_fail_fail_fail_pass) ... skipped 'Set CI_DEMO_DOCKER_TESTS=1 after reproduce'
+attempt 1 invalid_output
+attempt 2 invalid_output
+attempt 3 invalid_output
+test_all_invalid_attempts_preserve_raw_output_and_denominator (tests.test_generation.GenerationTests.test_all_invalid_attempts_preserve_raw_output_and_denominator) ... ok
+test_rejection_classifies_timeout_and_no_regression (tests.test_generation.GenerationTests.test_rejection_classifies_timeout_and_no_regression) ... ok
+test_disk_guard_stops_before_first_external_stage (tests.test_multicase.BatchTests.test_disk_guard_stops_before_first_external_stage) ... ok
+test_lock_refuses_concurrent_resume_and_releases (tests.test_multicase.BatchTests.test_lock_refuses_concurrent_resume_and_releases) ... ok
+test_resume_never_reissues_unknown_generation (tests.test_multicase.BatchTests.test_resume_never_reissues_unknown_generation) ... ok
+test_selection_preserves_source_quota_and_repo_cap (tests.test_multicase.BatchTests.test_selection_preserves_source_quota_and_repo_cap) ... ok
+test_batch_report_escapes_errors_and_has_manifest_fallback (tests.test_multicase.CaseTests.test_batch_report_escapes_errors_and_has_manifest_fallback) ... ok
+test_dynamic_schema_does_not_mutate_legacy_schema (tests.test_multicase.CaseTests.test_dynamic_schema_does_not_mutate_legacy_schema) ... ok
+test_exact_edit_is_single_unique_allowlisted_change (tests.test_multicase.CaseTests.test_exact_edit_is_single_unique_allowlisted_change) ... ok
+test_gate_rejects_other_case_and_modified_tests (tests.test_multicase.CaseTests.test_gate_rejects_other_case_and_modified_tests) ... ok
+test_junit_target_mapping_and_skip_not_a_pass (tests.test_multicase.CaseTests.test_junit_target_mapping_and_skip_not_a_pass) ... ok
+test_missing_passing_gate_is_saved_before_preflight_without_model_call (tests.test_multicase.CaseTests.test_missing_passing_gate_is_saved_before_preflight_without_model_call) ... ok
+test_patch_applies_to_export_not_outer_repository (tests.test_multicase.CaseTests.test_patch_applies_to_export_not_outer_repository) ... ok
+test_patch_paths_refuse_traversal_and_metadata (tests.test_multicase.CaseTests.test_patch_paths_refuse_traversal_and_metadata) ... ok
+test_runner_mounts_only_candidate_and_fresh_results (tests.test_multicase.CaseTests.test_runner_mounts_only_candidate_and_fresh_results) ... ok
+test_tampered_candidate_is_refused_without_execution_or_raw_rewrite (tests.test_multicase.CaseTests.test_tampered_candidate_is_refused_without_execution_or_raw_rewrite) ... ok
+example attempt 1 generation_error
+example attempt 2 generation_error
+example attempt 3 generation_error
+test_three_model_timeouts_keep_denominator_and_exclude_reference_fields (tests.test_multicase.CaseTests.test_three_model_timeouts_keep_denominator_and_exclude_reference_fields) ... ok
+test_undeclared_conftest_or_fixture_change_is_not_a_product_regression (tests.test_multicase.CaseTests.test_undeclared_conftest_or_fixture_change_is_not_a_product_regression) ... ok
+test_validation_rejects_unsafe_or_unapproved_cases (tests.test_multicase.CaseTests.test_validation_rejects_unsafe_or_unapproved_cases) ... ok
+test_accepts_new_source_without_evaluating_it (tests.test_pipeline.ProposalTests.test_accepts_new_source_without_evaluating_it) ... ok
+test_case_is_pinned (tests.test_pipeline.ProposalTests.test_case_is_pinned) ... ok
+test_invalid_envelopes_and_unchanged (tests.test_pipeline.ProposalTests.test_invalid_envelopes_and_unchanged) ... ok
+test_local_endpoint_only (tests.test_pipeline.ProposalTests.test_local_endpoint_only) ... ok
+test_only_allowlisted_file (tests.test_pipeline.ProposalTests.test_only_allowlisted_file) ... ok
+test_addresses_vary_but_assertion_values_must_match (tests.test_pipeline.VerificationTests.test_addresses_vary_but_assertion_values_must_match) ... ok
+test_docker_is_constrained_and_no_shell (tests.test_pipeline.VerificationTests.test_docker_is_constrained_and_no_shell) ... ok
+test_missing_or_malformed_reports_do_not_pass (tests.test_pipeline.VerificationTests.test_missing_or_malformed_reports_do_not_pass) ... ok
+test_test_manifest_is_not_gold (tests.test_pipeline.VerificationTests.test_test_manifest_is_not_gold) ... ok
+test_three_matching_failures_and_restored_pass (tests.test_pipeline.VerificationTests.test_three_matching_failures_and_restored_pass) ... ok
+test_timeout_is_evidence_not_exception (tests.test_pipeline.VerificationTests.test_timeout_is_evidence_not_exception) ... ok
+test_7b_transport_preserves_prompt_options_and_seed (tests.test_session.SessionTests.test_7b_transport_preserves_prompt_options_and_seed) ... ok
+test_cli_stage_error_retains_run_id (tests.test_session.SessionTests.test_cli_stage_error_retains_run_id) ... ok
+test_compare_command_is_not_offered (tests.test_session.SessionTests.test_compare_command_is_not_offered) ... ok
+test_demo_pulls_and_generates_only_7b_and_preserves_stage_links (tests.test_session.SessionTests.test_demo_pulls_and_generates_only_7b_and_preserves_stage_links) ... ok
+test_download_failure_stops_before_generation_and_keeps_denominator (tests.test_session.SessionTests.test_download_failure_stops_before_generation_and_keeps_denominator) ... ok
+test_error_text_is_escaped_and_doctor_link_is_saved (tests.test_session.SessionTests.test_error_text_is_escaped_and_doctor_link_is_saved) ... ok
+test_existing_non_session_artifact_cannot_be_overwritten (tests.test_session.SessionTests.test_existing_non_session_artifact_cannot_be_overwritten) ... ok
+test_historical_reports_render_without_current_generation_configuration (tests.test_session.SessionTests.test_historical_reports_render_without_current_generation_configuration) ... ok
+test_initial_session_preserves_denominator_and_unknown_timing (tests.test_session.SessionTests.test_initial_session_preserves_denominator_and_unknown_timing) ... ok
+test_invalid_source_kind_model_and_indices_are_rejected (tests.test_session.SessionTests.test_invalid_source_kind_model_and_indices_are_rejected) ... ok
+test_missing_generation_id_and_reproduction_error_are_saved (tests.test_session.SessionTests.test_missing_generation_id_and_reproduction_error_are_saved) ... ok
+test_mixed_terminal_results_complete_but_pending_results_do_not (tests.test_session.SessionTests.test_mixed_terminal_results_complete_but_pending_results_do_not) ... ok
+test_other_models_are_rejected_before_any_pipeline_or_http_work (tests.test_session.SessionTests.test_other_models_are_rejected_before_any_pipeline_or_http_work) ... ok
+test_partial_environment_failure_has_unexecuted_not_successful_attempts (tests.test_session.SessionTests.test_partial_environment_failure_has_unexecuted_not_successful_attempts) ... ok
+test_preflight_is_checkpointed_before_doctor_and_failure_stops_calls (tests.test_session.SessionTests.test_preflight_is_checkpointed_before_doctor_and_failure_stops_calls) ... ok
+test_stage_failure_keeps_generation_id_and_never_retries (tests.test_session.SessionTests.test_stage_failure_keeps_generation_id_and_never_retries) ... ok
+test_verification_refuses_other_model_before_runner_or_evidence_changes (tests.test_session.SessionTests.test_verification_refuses_other_model_before_runner_or_evidence_changes) ... ok
+test_zero_accepted_is_complete_and_raw_source_is_unchanged (tests.test_session.SessionTests.test_zero_accepted_is_complete_and_raw_source_is_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 0.679s
+
+OK (skipped=1)
