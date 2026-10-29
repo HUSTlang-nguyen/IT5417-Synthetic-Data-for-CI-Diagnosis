@@ -274,3 +274,17 @@ Append entries in chronological order. Timezone: Asia/Bangkok. Record facts, evi
 - User asked to do more and then explicitly questioned whether the four reported expansion metrics were being incorporated into the project. They already existed in detailed summary/evidence and partially in README, but were uncommitted/unpublished. Added a prominent four-row README table with exact counts and development/gold/training qualification.
 - Publishing the completed expansion-01 implementation, registry, tests, review and compact actual evidence on existing codex/w1-review-skill; preserve raw runtime/cache/model exclusions and all earlier stashes. Rechecked W1 and new raw byte inventories before Git backup.
 - Next: verify remote publication, then continue a separately recorded development expansion with new source cases; do not overwrite or silently rerun expansion-01.
+
+- 2026-10-30T06:39:41+07:00 publication verified: commit 54dede6d45ae03810ff72a1ca625da701c3a867b pushed to origin/codex/w1-review-skill, remote SHA matched local and worktree was clean. A retained expansion stash plus the earlier two backups remain. Git initially treated preserved CRLF evidence as trailing whitespace; scoped .gitattributes -text + whitespace=cr-at-eol now preserves exact actual log bytes (SHA in summary). README exposes all four metrics.
+
+## 2026-10-30T06:39:41+07:00 — Begin bounded development expansion 02
+
+- Continue user request “làm thêm đi” without waiting for additional input. Reuse six-hour active-runtime ceiling, <=10 cases/30 model calls and development-only scope. Prefer new source cases, retain prior failures, no training/gold approval or 3B. Protected 1087 prior run/evidence files before new work.
+- New screening pool: ten additional pinned AIDev records and ten remaining SWE Lite dev cases from pvlib/astroid. Plan a new versioned site-indexed single-line generator envelope with independent test excerpts to reduce exact-string mismatch/duplicate outputs; original W1/v2 protocols and outputs stay intact. Add auditable unique truncated-parameter ID matching and declared test_logs tmpfs for new recipes only.
+- Next: screen source/license/environment, implement/test versioned improvements, execute the new bounded manifest, read-only skill review and publish the actual results.
+
+## 2026-10-30T06:42:23+07:00 — Unify case metadata under cases/
+
+- User could see only properr-6 in cases/. Expansion configs had been stored in data-manifests/cases; this split obscured project contents. Moved all fourteen regular JSON config files, byte-for-byte, to cases/<id>/case.json after verifying absolute source/destination paths stay inside workspace and refusing overwrites. properr evidence unchanged.
+- Added cases/README index distinguishing nine attempted from five unselected expansion profiles; README/architecture point to the canonical layout. Loader prefers canonical paths and retains old-path read-only fallback; screening writes canonical paths only.
+- All nine saved batch-01 config digests still match canonical configs, proving migration does not alter case definitions or resume provenance. Add loader regression test; no model/Docker/test rerun of research artifacts for this move.

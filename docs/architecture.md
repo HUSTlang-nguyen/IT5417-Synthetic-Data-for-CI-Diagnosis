@@ -35,7 +35,7 @@ Python CLI -> pinned case preparation -> Docker image -> historical reproduction
 
 ## Persistent state
 
-- cases/properr-6/case.json: source identity and exact revisions.
+- cases/<case-id>/case.json: canonical source/config identity; cases/README.md indexes W1 and expansion profiles. data-manifests holds registry/group selections only.
 - .cache/: ignored source checkout, exported sources, Docker build context and environment evidence.
 - runs/<run-id>/: ignored immutable input/output evidence, per-command logs, JSON manifest, review stub and report.
 - docs/evidence/: small committed summaries and selected actual textual logs, without vendor code/model weights.
@@ -60,7 +60,7 @@ Python CLI -> pinned case preparation -> Docker image -> historical reproduction
 
 ## Configuration, commands and state
 
-Run from repository root with Python >=3.11; standard library only. Optional `python -m pip install -e .`; documented python -m commands need no installation. Default case is cases/properr-6/case.json; v2 registered cases are data-manifests/cases/*.json. Model tags/schema/options are in ci_demo/ollama.py; exact-edit-v2 schema and execution adapter are in ci_demo/multicase.py. CLI --endpoint or OLLAMA_HOST must be loopback HTTP origins; default http://127.0.0.1:11434.
+Run from repository root with Python >=3.11; standard library only. Optional `python -m pip install -e .`; documented python -m commands need no installation. Default case is cases/properr-6/case.json; all registered cases now use cases/<case-id>/case.json; old data-manifests/cases/*.json is read-only fallback for older artifacts. Model tags/schema/options are in ci_demo/ollama.py; exact-edit-v2 schema and execution adapter are in ci_demo/multicase.py. CLI --endpoint or OLLAMA_HOST must be loopback HTTP origins; default http://127.0.0.1:11434.
 
 The generator uses three attempts, the same passing source/prompt, temperature 0.2, context 4096, output budget 1536 and seed sequence 5417/5418/5419. These values and the prompt are unchanged by the role correction. Model digest/Ollama version are saved; seeds do not guarantee bitwise determinism across runtimes/hardware.
 

@@ -49,7 +49,7 @@ Agent đọc code/diff/log, đối chiếu evidence và giải thích nhãn/vị
 - [Nhật ký theo thứ tự](docs/agent-log.md).
 - [Kế hoạch sau góp ý GVHD](docs/revised-plan.md).
 - [Nguồn tài liệu nghiên cứu](docs/reference/README.md).
-- cases/: provenance nhỏ được commit; .cache/: repo nguồn và môi trường có thể dựng lại.
+- [cases/](cases/README.md): mỗi case có `cases/<id>/case.json`, gồm properr W1 và cấu hình mở rộng; [data-manifests/](data-manifests/expansion-01.json): registry/chọn nhóm; .cache/: repo nguồn và môi trường.
 - runs/: raw output/log/report sinh theo run ID, bị ignore; chỉ tóm tắt evidence cần thiết được commit.
 
 ## Giới hạn cần giữ

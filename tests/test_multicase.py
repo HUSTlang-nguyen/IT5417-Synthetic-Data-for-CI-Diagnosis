@@ -18,6 +18,19 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_case_loader_prefers_canonical_directory_and_keeps_legacy_fallback(self):
+        from ci_demo import common
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); c = config("registered")
+            legacy = root / "data-manifests/cases/registered.json"
+            write_json(legacy, c)
+            with patch.object(common, "ROOT", root):
+                self.assertEqual(common.case_config("registered"), c)
+                canonical = root / "cases/registered/case.json"
+                newer = {**c, "focus_line": 42}; write_json(canonical, newer)
+                self.assertEqual(common.case_config("registered"), newer)
+                with self.assertRaises(ValueError): common.case_config("../escape")
+
     def test_patch_applies_to_export_not_outer_repository(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); tree = root / "export"; tree.mkdir(); evidence = root / "evidence"; evidence.mkdir()
