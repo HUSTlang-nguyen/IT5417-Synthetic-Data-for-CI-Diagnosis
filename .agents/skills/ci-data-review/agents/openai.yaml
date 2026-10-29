@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rà dữ liệu lỗi CI"
+  short_description: "Rà lỗi CI từ code, diff và log có bằng chứng"
+  default_prompt: "Dùng $ci-data-review để phân tích mẫu lỗi CI từ evidence, giải thích nguyên nhân và đề xuất kết luận cho tôi review."

@@ -16,19 +16,21 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 ## Điểm tiếp tục hiện tại
 
-- **Task kế tiếp: W1-03.** Chuẩn bị `docs/pilot-review.md` từ evidence thật; ghi nhận xét đề xuất và các ô cần người duyệt, giữ trạng thái pending.
-- Pilot PC đã chạy: properr head pass hai test; 22 kiểm thử phần mềm pass; đủ sáu lượt sinh. 7B đạt kiểm chứng thực thi 2/3, 1.5B 1/3. Đây chưa phải số mẫu được duyệt để train.
-- Run 7B: `generate-20261029T054921315491Z`; 1.5B: `generate-20261029T055021908791Z`. [Evidence đã commit](evidence/target-pc/README.md); raw run/ZIP nằm local, không đi theo Git clone. Nếu thiếu raw artifacts, khôi phục archive phù hợp hoặc yêu cầu cung cấp; không dựng lại output bằng tay.
+- **Công cụ hỗ trợ đã tạo và áp dụng:** [skill ci-data-review](../.agents/skills/ci-data-review/SKILL.md) hướng dẫn agent phân tích kỹ thuật và giải thích evidence cho người dùng review; metadata cho phép dùng theo ngữ cảnh hoặc gọi `$ci-data-review`. Kết quả áp dụng cho ba lượt 7B nằm trong bản rà R2; skill không tự phê duyệt dữ liệu. Người dùng đã đồng ý ba kiến nghị; W1-03 `done` ở phạm vi review kết luận/giữ-loại, các trường nhãn gold/training vẫn pending. Kiểm tra skill được ghi riêng trong agent-log.
+- **Task kế tiếp: W2-01 (`todo`) — chốt hợp đồng input/output chẩn đoán.** Người dùng đã đồng ý ba kết luận/kiến nghị W1-03 qua chat; ghi nhận tại bảng xác nhận trong bản review. Chưa triển khai W2 trong lượt bàn giao Git này. [Bản rà R2 bằng ci-data-review](pilot-review.md) giải thích code → hành vi → log, độ chắc chắn và kiến nghị: loại 01 khỏi tập synthetic-failure, giữ 02/03 như ứng viên lỗi API/type và logic có bằng chứng. Phần kết luận/giữ-loại đã được người dùng đồng ý; nhãn/vị trí xác nhận và training approval vẫn pending. Comment vi phạm prompt nhưng leakage chỉ là rủi ro có điều kiện khi input 3B chưa chốt.
+- W1-01 hiệu chỉnh vai trò đã xong: chỉ 7B sinh, 3B chẩn đoán ở giai đoạn sau; 31 host tests pass, một Docker integration test bỏ qua có chủ đích. Không chạy lại model/pilot. [Tổng kết W1-04](demo-summary.md) hoàn tất; W1-03 đã hoàn tất review kết luận; không coi dữ liệu đã được duyệt gold/training khi các trường tương ứng còn pending.
+- Pilot PC đã chạy: properr head pass hai test; log nghiệm thu cũ có 22 kiểm thử phần mềm pass. 7B đạt kiểm chứng thực thi 2/3. Đây chưa phải số mẫu được duyệt để train; 3B chẩn đoán chưa chạy. Model phụ đã bỏ khỏi cấu hình/workflow, không tải/gọi/chạy/rà tiếp; evidence lịch sử giữ nguyên.
+- Run 7B đang được rà: `generate-20261029T054921315491Z`. [Evidence đã commit](evidence/target-pc/README.md); raw run/ZIP nằm local, không đi theo Git clone. Nếu thiếu raw artifacts, khôi phục archive phù hợp hoặc yêu cầu cung cấp; không dựng lại output bằng tay.
 - Không tải lại model/chạy lại pilot chỉ để cập nhật tài liệu. Giữ nguyên kết quả vòng đầu, kể cả các lượt bị loại.
 
 ## Tuần 1 — Hoàn tất demo và rà chất lượng pilot
 
 | ID | Trạng thái | Việc làm theo thứ tự | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
-| W1-01 | done | Dựng package Python, CLI, runner cô lập, manifest/report và context docs | Mã hiện có; kiểm tra thực thi và hash test. [Architecture](architecture.md) |
-| W1-02 | done | Tái hiện properr trên PC; chạy hai model, ba lượt mỗi model; giữ mọi thất bại | [PC evidence](evidence/target-pc/README.md): 22 tests pass, sáu lượt và comparison tương thích; không tự gán gold |
-| W1-03 | todo | Rà cả sáu lượt: hai output cắt, một ứng viên không làm test fail, ba ứng viên đạt thực thi. So diff/log của bốn ứng viên có file | `docs/pilot-review.md`: run/attempt, nguồn evidence, lỗi quan sát, nhãn/vị trí đề xuất, tuân thủ prompt, tính hợp lý, quyết định sử dụng và người duyệt. Các trường xác nhận để pending đến khi người duyệt trả lời |
-| W1-04 | todo | Tổng hợp demo từ số đo thật và vấn đề chất lượng; phụ thuộc bản review dự thảo W1-03 | `docs/demo-summary.md`: workflow, kết quả 2x3, định nghĩa đạt thực thi/được duyệt, thời gian gồm gì, giới hạn và việc tiếp theo. Nếu cần slide, outline không quá 20 slide; chưa sửa slide gốc chỉ vì tạo roadmap |
+| W1-01 | done | Hiệu chỉnh theo quyết định mới: 7B sinh duy nhất, 3B chẩn đoán; demo một generator và giữ evidence cũ | CLI/config/session/report: 31 host tests pass, một Docker test skip; 358 file evidence/case giữ nguyên hash. Không gọi lại model. [Architecture](architecture.md) |
+| W1-02 | done | Tái hiện properr và giữ pilot PC đã chạy như evidence lịch sử; không chạy lại khi đổi phạm vi | [PC evidence](evidence/target-pc/README.md): log nghiệm thu cũ 22 tests pass; 7B ba lượt, 2/3 đạt thực thi; không tự gán gold hoặc sửa artifact lịch sử |
+| W1-03 | done | Đã áp dụng ci-data-review, đối chiếu source/test/candidate hash và 15 bộ stage JSON/JUnit của ba lượt 7B; giải thích cơ chế và độ chắc chắn. Không gọi model/Docker/test | [pilot-review.md](pilot-review.md) R2: 01 không gây lỗi test; 02 TypeError do dùng method như số; 03 sai hệ số; kiến nghị sử dụng có điều kiện, leakage chưa chốt khi input chưa rõ. Người dùng đã đồng ý loại 01, giữ 02/03 làm ứng viên và các giải thích tương ứng; nhãn gold/vị trí theo schema/training vẫn pending |
+| W1-04 | done | Tổng hợp demo 7B từ số đo thật và vấn đề chất lượng; dựa bản review W1-03 | [demo-summary.md](demo-summary.md): ba lượt, 2/3 đạt thực thi, tổng giây gọi sinh 49.374, giới hạn và replay năm phút; số liệu/liên kết đã kiểm tra. Chưa tạo slide |
 
 **Cổng G1:** artifact chạy thật có thể xem lại, kết quả không bị sửa tay, mọi lượt có trạng thái; có bảng review nêu rõ phần chưa được duyệt. Có thể chuẩn bị tuần 2 khi review còn pending, nhưng chưa coi mẫu là dữ liệu train.
 
@@ -47,11 +49,11 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
-| W3-01 | todo | Từ review W1-03 và train groups W2-04, thiết kế vòng prompt/budget mới xử lý output cắt, bug-disclosing comments và thay đổi kém hợp lý | Giao thức version mới: prompt/options/model digest/seed/ngân sách/lý do thay đổi. Không ghi đè vòng 2x3 đầu; không sửa output model để biến mẫu lỗi thành mẫu đạt |
+| W3-01 | todo | Từ review 7B W1-03 và train groups W2-04, thiết kế vòng prompt/budget mới xử lý bug-disclosing comments và thay đổi kém hợp lý; chỉ dùng generator 7B | Giao thức version mới: prompt/options/model digest/seed/ngân sách/lý do thay đổi. Không ghi đè pilot đầu; không sửa output model để biến mẫu lỗi thành mẫu đạt |
 | W3-02 | todo | Sinh trên seed pass của **train groups**, chạy baseline → fail ổn định → hoàn tác; mở rộng allowlist/test command theo từng repo đã cấu hình | Run manifests, raw requests/outputs/diff/log/timeout/cost; tests giữ nguyên, container không mạng và có giới hạn. Lỗi JSON/build/timeout/không làm test fail được giữ trong tổng lượt |
 | W3-03 | todo | Rà nhãn, vị trí, hợp lý và trùng lặp; phân biệt kiểm chứng thực thi với toàn bộ tiêu chí dùng để train | Review records có người duyệt, bảng lý do loại/yield theo lớp/nguồn; các nhãn chưa xác nhận vẫn pending, không tự thành gold |
 
-**Cổng G3:** giao thức tái lập được, ứng viên đủ evidence và bộ tiêu chí nhận/loại được ghi rõ. Không kết luận hai model tốt hơn nhau một cách tổng quát từ một case hoặc chỉ số 2/3 và 1/3.
+**Cổng G3:** giao thức tái lập được, ứng viên đủ evidence và bộ tiêu chí nhận/loại được ghi rõ. Không kết luận khả năng sinh hoặc chẩn đoán tổng quát từ một case hay tỷ lệ thực thi 2/3 của 7B.
 
 ## Tuần 4 — Khóa protocol và đóng gói dataset
 
@@ -68,11 +70,11 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
 | W5-01 | todo | Từ G4, implement loader/evaluation và M0 TF-IDF + Logistic Regression cho **phân loại** | CLI/config/report; pipeline fit train, metric có support/confusion matrix. Đây là baseline từ đề xuất nghiên cứu, không đánh giá khả năng sinh giải thích hoặc khoanh vùng bằng classifier |
-| W5-02 | todo | Chạy M1 prompt-only; pilot runtime của model chẩn đoán dự kiến 3B Instruct trước SFT | Lưu checkpoint revision/chat template/context, tốc độ và VRAM thực đo. Model sinh 7B/1.5B không mặc nhiên là model chẩn đoán |
+| W5-02 | todo | Chạy M1 prompt-only; pilot runtime model chẩn đoán chính Qwen2.5-Coder-3B-Instruct trước SFT, sau các cổng dữ liệu | Lưu checkpoint revision/chat template/context, tốc độ và VRAM thực đo. Generator 7B không thay vai trò chẩn đoán của 3B |
 | W5-03 | todo | Khi dữ liệu/VRAM cho phép, chạy M2 SFT real-only và M5 real+verified-synthetic theo protocol | Config/checkpoint/log/chi phí; cùng checkpoint nền và input/validation; kiểm soát lượng dữ liệu/phân bố và công bố số token/update. Mọi thay đổi vì OOM tạo config mới |
 | W5-04 | todo | Dùng validation chọn checkpoint/tham số theo protocol đã khóa; chưa mở test để sửa cấu hình | Bảng kết quả phát triển + cấu hình cuối. Nếu thiếu thời gian/dữ liệu, ghi thiếu thí nghiệm thay vì tạo kết quả hoặc kết luận hiệu quả |
 
-**Cổng G5:** có baseline thật và cấu hình cuối truy vết được. Chỉ nói tác dụng fine-tuning/synthetic khi đối chứng tương ứng tồn tại; ba mẫu đạt thực thi hiện tại chưa đủ thay thế dataset huấn luyện.
+**Cổng G5:** có baseline thật và cấu hình cuối truy vết được. Chỉ nói tác dụng fine-tuning/synthetic khi đối chứng tương ứng tồn tại; hai lượt 7B đạt thực thi hiện tại chưa đủ thay thế dataset huấn luyện và chưa được duyệt để train.
 
 ## Tuần 6 — Đối chứng bổ sung, đánh giá và báo cáo
 

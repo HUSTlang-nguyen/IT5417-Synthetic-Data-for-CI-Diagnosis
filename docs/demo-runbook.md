@@ -6,6 +6,8 @@ Demo một mẫu repo thật (properr PR #6, record AIDev v5 3256868569) và cá
 
 Workflow: user yêu cầu sinh ca lỗi -> code điều phối gọi LLM -> ứng viên chỉ sửa file Python cho phép -> test độc lập trong Docker -> log thật -> người rà nhãn.
 
+Vai trò hiện hành: 7B là generator duy nhất; 3B là model chẩn đoán chính ở giai đoạn sau, chưa tải/chạy trong W1. Model phụ đã bỏ khỏi cấu hình và workflow. Dùng [demo-summary](demo-summary.md) và [pilot-review](pilot-review.md) để replay ba lượt 7B hiện có; không chạy lại chỉ để soạn tài liệu.
+
 ## Trước buổi demo trên PC
 
 - Clone repo private và mở terminal ở root repo.
@@ -22,13 +24,12 @@ python -m ci_demo doctor
 python -m unittest discover -v
 python -m ci_demo reproduce --case properr-6
 ollama pull qwen2.5-coder:7b-instruct
-ollama pull qwen2.5-coder:1.5b-instruct
 python -m ci_demo generate --model qwen2.5-coder:7b-instruct --attempts 3
 python -m ci_demo verify --run <RUN-ID-IN-RA-O-TREN>
 python -m ci_demo report --run <RUN-ID>
 ```
 
-Lặp generate/verify/report cho 1.5B cùng giao thức. Hoặc chạy tuần tự toàn bộ trên PC:
+Hoặc chạy trọn phiên sinh bằng 7B, ba lượt, trên PC:
 
 ```text
 python scripts/demo.py --pull-models
@@ -36,15 +37,9 @@ python scripts/demo.py --pull-models
 
 Nếu đã có passing seed và image được xác minh trên PC: thêm --skip-reproduce. Script vẫn kiểm tra image ID và baseline trước khi sinh.
 
-Script tạo comparison manifest/report ngay khi bắt đầu, cập nhật sau từng stage và giữ báo cáo khi môi trường hoặc một model lỗi. Model còn lại vẫn được thử nếu lỗi xảy ra trong stage của riêng model đầu. Mỗi model luôn có mẫu số ba; lượt chưa thực hiện hiển thị riêng, thời gian chưa đo là chưa biết.
+Script tạo demo manifest/report trước preflight, checkpoint sau doctor/reproduction/generation và kết thúc sau verify. `--pull-models` chỉ tải 7B. Lỗi môi trường/download/generation/verification dừng phiên, trả exit 1 và giữ `demo_incomplete` cùng liên kết evidence đã có; không retry model tự động. Mẫu số luôn ba, lượt chưa thực hiện hiển thị riêng, thời gian chưa đo là chưa biết.
 
-Để dựng lại bảng so sánh từ hai run đã lưu, không gọi lại model hoặc chạy test:
-
-```text
-python -m ci_demo compare --runs <RUN-7B> <RUN-1.5B>
-```
-
-Lệnh tạo comparison run mới, không sửa evidence của hai run đầu vào. So sánh kiểm tra cùng source, source/test hash, prompt, options và image ID; giao thức khác nhau hoặc stage chưa xong được ghi `comparison_incomplete` và trả exit 1. Nhãn vẫn chờ người duyệt. Tổng thời gian sinh chỉ cộng các lượt có số đo, không phải toàn bộ wall time hoặc phép đo VRAM.
+`generation_demo` kết thúc `demo_finished` khi đủ ba lượt có trạng thái cuối và stage verify hoàn tất; có thể không có mẫu nào đạt. Tổng thời gian gọi sinh chỉ cộng các lượt có số đo, không phải toàn bộ wall time hoặc peak VRAM. Nhãn vẫn chờ người duyệt. Không có lệnh `compare` hoặc nhánh legacy trong CLI/demo hiện hành; báo cáo comparison lịch sử giữ nguyên, bộ đọc report vẫn hỗ trợ định dạng cũ.
 
 Nếu unit tests trên Windows báo lỗi quyền ghi ở thư mục tạm hệ thống, đặt thư mục tạm trong cache của repo trước khi chạy lại:
 
@@ -72,7 +67,7 @@ Chỉ chạy bước bật server nếu chưa có Ollama ở cổng 11434; dùng
 2. Mở báo cáo reproduce: base không có pytest, head chạy test. Nếu kết quả không đúng giả thuyết, phải nói rõ.
 3. Chạy generate một model với ba lượt, hoặc mở kết quả đã lưu và ghi rõ không live.
 4. Chạy verify; chỉ ra baseline, ba lần ứng viên và restoration. Không nhầm fail build với lỗi test.
-5. Mở report HTML: diff, log, timing, rejected attempts và review pending. So hai model bằng cùng mẫu số.
+5. Mở report HTML: diff, log, timing, lượt không đạt và review pending. Giữ mẫu số đủ ba lượt 7B; phân biệt đạt thực thi với được duyệt để train.
 6. Kết luận khả thi/điểm hỏng, không khẳng định synthetic cải thiện ML.
 
 ## Đầu ra và phục hồi

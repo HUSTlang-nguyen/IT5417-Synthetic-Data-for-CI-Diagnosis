@@ -33,7 +33,7 @@ class GenerationTests(unittest.TestCase):
             outside = {"path": "tests/test_import.py", "content": "x = 2", "proposed_label": "logic", "explanation": "fixture"}
             raw_outputs = ["not JSON", "[]", json.dumps({"done": True, "message": {"content": json.dumps(outside)}})]
             generate = mocks.enter_context(patch("ci_demo.pipeline.ollama.generate", side_effect=[({}, raw, 0.1) for raw in raw_outputs]))
-            manifest = pipeline.generate_run(ollama.MODELS[0], 3, "http://127.0.0.1:11434")
+            manifest = pipeline.generate_run(ollama.GENERATOR_MODEL, 3, "http://127.0.0.1:11434")
             self.assertEqual(generate.call_count, 3)
             self.assertEqual(manifest["attempt_count"], 3)
             self.assertEqual([a["status"] for a in manifest["attempts"]], ["invalid_output"] * 3)

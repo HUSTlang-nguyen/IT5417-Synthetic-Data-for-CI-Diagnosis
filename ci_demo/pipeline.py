@@ -138,10 +138,10 @@ def validate_proposal(proposal, original, allowed="properr/__init__.py"):
     return content
 
 def generate_run(model, attempts, endpoint):
-    if model not in ollama.MODELS:
-        raise ValueError("Use one of the two documented local models.")
+    if model != ollama.GENERATOR_MODEL:
+        raise ValueError("Generation requires the configured 7B generator.")
     if attempts != 3:
-        raise ValueError("The comparison protocol fixes three attempts per model.")
+        raise ValueError("The generator protocol fixes three attempts.")
     case = case_config()
     gate, source_dir = passing_seed(case)
     folder = new_run("generate")
@@ -218,6 +218,8 @@ def verify_run(run_id):
     manifest = read_json(folder / "manifest.json")
     if manifest["kind"] != "synthetic_generation":
         raise ValueError("verify requires a synthetic generation run.")
+    if manifest.get("model") != ollama.GENERATOR_MODEL:
+        raise ValueError("verify requires a run from the configured 7B generator.")
     if manifest.get("verified_at"):
         raise ValueError("Run already verified; create a new run instead of overwriting evidence.")
     case = manifest["source"]
