@@ -102,3 +102,12 @@ Append entries in chronological order. Timezone: Asia/Bangkok. Record facts, evi
 - Reviewed changed/new files and the actual final 22-test log. Whitespace check passed before staging; credential-pattern scan returned no matches. No production code has changed since the successful full Docker-inclusive test suite.
 - Stash exposed Git line-ending normalization on copied PC raw evidence. Added targeted .gitattributes -text rules for the new historical artifacts and software logs, then recopied those bytes from the untouched runs/cache originals. Existing laptop evidence remains unchanged.
 - Next: stage implementation, docs and selected small evidence only; verify staged paths and raw evidence bytes; commit and push main without force; verify remote commit.
+
+
+## 2026-10-29 13:00 +07 — Implementation committed and remote publication verified
+
+- Committed 30 reviewed files as b49c9dc3bfe0ffc9dc068f9ec3e7ca719696ff5a (Add resilient pilot comparison and validate RTX 4070 SUPER demo). Staged raw-evidence bytes matched all 16 selected historical/software files; largest staged file below 100 KB; no cache, runs, models or datasets staged.
+- `git push origin main` succeeded without force. `git ls-remote origin refs/heads/main` matched local b49c9dc3bfe0ffc9dc068f9ec3e7ca719696ff5a exactly. Working tree was clean after publication.
+- Retained stash@{0} backup cd1a89ec1732070f1e74ef0377c720f57f8d0022 as explicitly requested; it is a local backup, not remote content. Ignored runtime/source/model/raw run folders remain local and unchanged.
+- Final code validation remains the recorded 22-test successful Docker-inclusive suite; only evidence byte-preservation attributes and publication documentation changed afterward. No model or reproduction reruns performed for publication.
+- Next: commit/push this publication note, then human review of the actual pilot candidates before any training-use decision or separately versioned follow-up experiment.
