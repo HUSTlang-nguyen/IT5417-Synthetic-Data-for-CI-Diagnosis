@@ -5,7 +5,9 @@ import time
 import urllib.request
 from urllib.parse import urlsplit
 
-MODELS = ("qwen2.5-coder:7b-instruct", "qwen2.5-coder:1.5b-instruct")
+GENERATOR_MODEL = "qwen2.5-coder:7b-instruct"
+# Future diagnosis/SFT checkpoint identity; this is not an Ollama generation tag.
+DIAGNOSTIC_MODEL = "Qwen/Qwen2.5-Coder-3B-Instruct"
 OPTIONS = {"temperature": 0.2, "seed": 5417, "num_ctx": 4096, "num_predict": 1536}
 SCHEMA = {
     "type": "object", "additionalProperties": False,
@@ -42,6 +44,8 @@ def model_info(endpoint, model):
     return {"tag": entry, "details": details}
 
 def generate(endpoint, model, prompt, attempt):
+    if model != GENERATOR_MODEL:
+        raise ValueError("Generation requires the configured 7B generator.")
     payload = {
         "model": model, "stream": False, "format": SCHEMA,
         "messages": [{"role": "user", "content": prompt}],

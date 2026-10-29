@@ -1,4 +1,4 @@
-"""Run the two documented models sequentially on the target PC."""
+"""Run the 7B generator demo on the target PC; diagnosis is a later stage."""
 from __future__ import annotations
 import argparse
 from pathlib import Path
@@ -7,36 +7,45 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from ci_demo.common import new_run, read_json, successful
-from ci_demo.comparison import save_comparison
-from ci_demo.ollama import MODELS
+from ci_demo.common import new_run, successful
+from ci_demo.ollama import GENERATOR_MODEL
 from ci_demo.pipeline import doctor
+from ci_demo.session import save_session
 
-def cli(*args, allow_failure=False):
+
+class StageError(RuntimeError):
+    def __init__(self, args, run_id):
+        super().__init__("Stage failed: " + " ".join(args))
+        self.run_id = run_id
+
+
+def cli(*args):
     result = subprocess.run([sys.executable, "-m", "ci_demo", *args], cwd=ROOT, text=True,
                             capture_output=True, encoding="utf-8", errors="replace")
     print(result.stdout, end="", flush=True)
-    if result.stderr: print(result.stderr, file=sys.stderr)
+    if result.stderr:
+        print(result.stderr, file=sys.stderr)
     run_id = next((line[5:].strip() for line in result.stdout.splitlines() if line.startswith("run: ")), None)
-    if result.returncode and not (allow_failure and run_id):
-        raise RuntimeError("Stage failed: " + " ".join(args))
+    if result.returncode:
+        raise StageError(args, run_id)
     return run_id
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Target-PC demo runner (real local models only)")
-    parser.add_argument("--pull-models", action="store_true", help="Download the two models through installed Ollama")
+    parser = argparse.ArgumentParser(description="Target-PC 7B generator demo (diagnosis not implemented)")
+    parser.add_argument("--pull-models", action="store_true", help="Download only the configured 7B generator")
     parser.add_argument("--skip-reproduce", action="store_true", help="Use an already verified local passing seed")
     args = parser.parse_args()
-    summary_dir = new_run("comparison")
-    run_ids, errors = [], []
-    doctor_run = None
-    print("Comparison:", summary_dir / "report.html")
-    save_comparison(folder=summary_dir, finished=False)
+    folder = new_run("demo")
+    generation_run = doctor_run = reproduction_run = error = None
+    operation = "doctor"
+    save_session(folder)
+    print("Demo:", folder / "report.html", flush=True)
     try:
         checks = doctor("http://127.0.0.1:11434")
         doctor_run = checks["run_id"]
+        save_session(folder, doctor_run=doctor_run)
         cli("report", "--run", doctor_run)
-        save_comparison(folder=summary_dir, doctor_run=doctor_run, finished=False)
         prerequisites = []
         if not successful(checks["checks"]["docker"]) or checks["checks"]["docker"].get("server_os") != "linux":
             prerequisites.append("Start Docker with its Linux engine.")
@@ -47,37 +56,40 @@ def main():
         if prerequisites:
             raise RuntimeError(" ".join(prerequisites))
         if args.pull_models:
-            for model in MODELS:
-                subprocess.run(["ollama", "pull", model], check=True)
+            operation = "pull"
+            subprocess.run(["ollama", "pull", GENERATOR_MODEL], check=True)
         if not args.skip_reproduce:
-            cli("reproduce", "--case", "properr-6")
-        for model in MODELS:
-            try:
-                run_id = cli("generate", "--model", model, "--attempts", "3", allow_failure=True)
-                if not run_id:
-                    raise RuntimeError("Missing generation run ID for " + model)
-                run_ids.append(run_id)
-                save_comparison(run_ids, folder=summary_dir, doctor_run=doctor_run, finished=False)
-                manifest = read_json(ROOT / "runs" / run_id / "manifest.json")
-                if manifest["status"] == "generation_finished":
-                    cli("verify", "--run", run_id, allow_failure=True)
-                else:
-                    errors.append(model + ": " + manifest.get("error", manifest["status"]))
-            except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
-                errors.append(model + ": " + str(exc))
-            save_comparison(run_ids, folder=summary_dir, doctor_run=doctor_run, error="; ".join(errors) or None,
-                            finished=False)
-    except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
-        errors.append(str(exc))
+            operation = "reproduce"
+            reproduction_run = cli("reproduce", "--case", "properr-6")
+            if not reproduction_run:
+                raise RuntimeError("Missing reproduction run ID")
+            save_session(folder, reproduction_run=reproduction_run)
+        operation = "generate"
+        generation_run = cli("generate", "--model", GENERATOR_MODEL, "--attempts", "3")
+        if not generation_run:
+            raise RuntimeError("Missing generation run ID")
+        save_session(folder, generation_run=generation_run)
+        operation = "verify"
+        cli("verify", "--run", generation_run)
+    except StageError as exc:
+        error = str(exc)
+        if operation == "generate":
+            generation_run = exc.run_id
+        elif operation == "reproduce":
+            reproduction_run = exc.run_id
+    except (OSError, RuntimeError, ValueError, subprocess.CalledProcessError) as exc:
+        error = str(exc)
     finally:
-        summary = save_comparison(run_ids, folder=summary_dir, doctor_run=doctor_run,
-                                  error="; ".join(errors) or None)
-        print("Comparison:", summary_dir / "report.html")
-    if summary["status"] != "comparison_finished" or errors:
-        raise RuntimeError("Demo incomplete; see the saved comparison report. " + "; ".join(errors))
+        summary = save_session(folder, generation_run=generation_run, doctor_run=doctor_run,
+                               reproduction_run=reproduction_run, error=error, finished=True)
+        print("Demo:", folder / "report.html", flush=True)
+    if summary["status"] != "demo_finished":
+        raise RuntimeError("Demo incomplete; see the saved report. " + (error or "Verification did not finish."))
+
 
 if __name__ == "__main__":
-    try: main()
-    except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
+    try:
+        main()
+    except (OSError, RuntimeError, ValueError, subprocess.CalledProcessError) as exc:
         print("ERROR:", exc, file=sys.stderr)
         raise SystemExit(1)

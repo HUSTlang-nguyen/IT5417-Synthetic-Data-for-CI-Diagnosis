@@ -11,3 +11,4 @@
 - Generated code runs only in the constrained Docker runner. Never run it on the host.
 - Keep models, source checkouts, runtime artifacts and secrets out of Git.
 - Read docs/demo-runbook.md before changing the demo protocol.
+- When reviewing CI data samples from code/diff/logs, use `.agents/skills/ci-data-review/SKILL.md`. The agent prepares the technical analysis and evidence; the user reviews the conclusions and remaining decisions. Keep skill use scoped to the requested samples, not unrelated development tasks.

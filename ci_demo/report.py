@@ -71,6 +71,29 @@ def render(folder, manifest):
             body.append('</section>')
         if len(attempts) < denominator:
             body.append('<p class="error">Có lượt chưa thực hiện; không coi chúng là thành công.</p>')
+    elif manifest["kind"] == "generation_demo":
+        generator = manifest["generator"]
+        body.append('<h2>Phiên sinh dữ liệu bằng 7B</h2><p>Generator: <strong>' + esc(generator["model"]) + '</strong></p>')
+        body.append('<p>Trạng thái sinh/kiểm chứng: ' + esc(generator["status"]) + '</p>')
+        body.append('<p>Đạt kiểm chứng thực thi: ' + str(generator["execution_verified"]) + '/' + str(generator["requested"])
+                    + ' · Lượt chưa thực hiện: ' + str(generator["unexecuted"]) + '</p>')
+        measured = generator["generation_seconds"]
+        timing = ('chưa đo' if measured is None else str(measured) + 's / '
+                  + str(generator["measured_generation_attempts"]) + ' lượt có số đo')
+        body.append('<p>Thời gian gọi sinh đã đo: ' + esc(timing) + '. Có thể gồm loading; không phải tổng thời gian demo hoặc peak VRAM.</p>')
+        body.append('<p>Trạng thái các lượt: ' + esc(json.dumps(generator["status_counts"])) + '</p>')
+        if generator.get("error"):
+            body.append('<p class="error">' + esc(generator["error"]) + '</p>')
+        for run_id, label in ((manifest.get("doctor_run"), 'Kiểm tra môi trường'),
+                              (manifest.get("reproduction_run"), 'Tái hiện properr'),
+                              (generator["run_id"], 'Evidence sinh và kiểm chứng')):
+            if run_id:
+                # A failing stage can save its manifest before its HTML is built.
+                filename = 'report.html' if (folder.parent / run_id / 'report.html').is_file() else 'manifest.json'
+                body.append('<p>' + link('../' + run_id + '/' + filename, label) + '</p>')
+        body.append('<p>Rà nhãn: <strong>chờ người duyệt</strong>. Đạt thực thi chưa là phê duyệt dùng để train.</p>')
+        body.append('<p>Model chẩn đoán chính: ' + esc(manifest["diagnoser"]["model"])
+                    + ' — chưa triển khai, chưa chạy trong phiên sinh dữ liệu.</p>')
     elif manifest["kind"] == "pilot_comparison":
         body.append('<h2>So sánh pilot hai model sinh</h2>')
         body.append('<p>Nhãn chờ người duyệt. Một seed không đủ kết luận tổng quát hoặc hiệu quả huấn luyện.</p>')

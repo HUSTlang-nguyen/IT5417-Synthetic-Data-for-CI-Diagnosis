@@ -8,7 +8,7 @@ Task thực thi theo tuần và trạng thái hiện tại nằm trong [implemen
 
 - Một case properr #6 có nguồn AIDev v5, commit cố định.
 - Chứng minh tái hiện local trước/sau PR; lưu cả trường hợp không xác nhận giả thuyết.
-- Seed head phải pass; hai local model sinh, ba lượt/model, cùng giao thức.
+- Seed head phải pass; 7B là generator duy nhất, ba lượt. 3B là model chẩn đoán chính ở giai đoạn sau, chưa chạy trong W1. Quyết định mới của người dùng thay phạm vi hai generator ban đầu; evidence lịch sử giữ nguyên, không tiếp tục dùng hoặc rà model phụ.
 - Python điều phối, Docker thực thi, người duyệt nhãn. Môi trường này chưa thay thế một harness cho mọi repo AIDev.
 - Báo cáo HTML nêu raw evidence, rejected attempts, thời gian và label pending.
 - Target PC RTX 4070 SUPER; host laptop chỉ cho kết quả kiểm tra tại laptop.
@@ -30,7 +30,7 @@ Task thực thi theo tuần và trạng thái hiện tại nằm trong [implemen
 | 07:14–08:39 | Subset có tiêu chí và tương đồng | Case demo để kiểm tra kỹ thuật, không gọi đại diện dataset |
 | 09:06–11:06 | Workflow và interceptor | Demo có workflow rõ; interceptor cần xác nhận lại phạm vi |
 | 11:59–12:10 | Chạy thử và báo khả thi | Ưu tiên evidence thực thi trước khi thêm mô tả |
-| 13:17–13:28 | Hai model sinh | 7B và 1.5B Instruct, ba lượt/model |
+| 13:17–13:28 | Diễn giải hai generator trong demo ban đầu | Đã được người dùng chốt lại: 7B sinh, 3B chẩn đoán chính; model phụ đã bỏ khỏi workflow. Evidence pilot ban đầu giữ nguyên |
 | 13:43–13:56 | Tối đa 20 slide | Sẽ viết bản báo cáo demo <=20 sau khi có số đo; giữ bản slide gốc |
 
 Không coi phát biểu 20 repo mỗi label là yêu cầu GVHD. Câu POC mở đầu transcript có thể thuộc lượt người trước. Những câu nhận dạng không rõ chưa dùng làm ràng buộc hoặc deadline.
