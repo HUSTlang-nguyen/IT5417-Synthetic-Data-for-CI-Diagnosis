@@ -61,7 +61,30 @@ Start-Process -FilePath (Resolve-Path .cache/tools/ollama/ollama.exe).Path -Argu
 
 Chỉ chạy bước bật server nếu chưa có Ollama ở cổng 11434; dùng `doctor` để kiểm tra. Runtime và weights đều nằm trong cache bị ignore; clone Git không kèm các file này.
 
-## Trình diễn khoảng 5 phút
+## Đợt development nhiều case (v2)
+
+Đợt đầu có registry tại `data-manifests/expansion-01.json`: 20 case sàng lọc (10/nguồn), chọn tối đa 5/nguồn, 4/repo. Nguồn SWE Lite dev trong đợt này thuộc development. Tài liệu nhiệm vụ và nhãn nháp nằm ở [task-contract](task-contract.md) và [labeling-guide](labeling-guide.md). Không dùng đợt này như test độc lập.
+
+```text
+python scripts/screen_expansion.py
+python -m ci_demo batch --manifest data-manifests/expansion-01.json
+python -m ci_demo batch --resume <BATCH-ID>
+python -m ci_demo reproduce --case <REGISTERED-CASE-ID>
+python -m ci_demo generate --case <REGISTERED-CASE-ID> --model qwen2.5-coder:7b-instruct --attempts 3
+python -m ci_demo verify --run <GENERATION-RUN-ID>
+```
+
+Screening script đọc raw metadata đã lưu trong `.cache/expansion`, không tự tải toàn dataset. Từ clone mới cần artifact root/snapshot nguồn đúng hash trước khi chạy; không dựng lại raw patch bằng tay. Case configs nhỏ được version hóa, raw source/patch/weights không vào Git. Mỗi case có recipe Python/dependencies, test targets và tài nguyên rõ ràng; SWE recipes là reconstruction theo test mục tiêu, không thay toàn bộ harness chính thức.
+
+Batch checkpoint trước mọi stage và sau kết quả, dùng source/image/gate riêng theo case và revision. Ngân sách 6 giờ active runtime tính cả discovery đã đo; coding nằm ngoài. Trước mỗi thao tác kiểm tra thời gian và tối thiểu 20 GiB trống. Build tối đa 20 phút, test 5 phút, model call 3 phút; stage đang chạy được giới hạn theo timeout đã khai báo. Không tự retry lỗi môi trường/model, tải 3B hoặc prune Docker.
+
+Resume bỏ qua stage hoàn tất; nếu stage gián đoạn có manifest chưa hoàn tất, đánh dấu kết quả chưa biết và không gọi lại model/test của stage đó. Thời gian bị mất do interruption được báo thành một cận ngân sách riêng, không giả làm số đo thật. Muốn thử lại một case lỗi cần thí nghiệm mới với lý do/giao thức mới; không dùng resume để che lần thất bại.
+
+V2 dùng một phép thay thế `before → after` khớp đúng một lần trong một file Python; raw response và candidate đầy đủ được giữ. Generation và verification là các run riêng có liên kết, không sửa generation đã hoàn tất. Passing gate kiểm tra toàn inventory source/test và image ID. Runtime không mạng, read-only, user 65534, drop capabilities và giới hạn tài nguyên. Recipe TCM khai báo tmpfs `logs/` vì logger upstream cần ghi; source/tests/candidate và raw evidence vẫn không được ghi.
+
+Đạt thực thi chỉ là baseline pass → ba fail có chữ ký ổn định → restored pass. Review bằng `$ci-data-review` đọc artifacts đã lưu; gold labels/training vẫn pending. Báo đủ số selected/requested/unexecuted, cả lỗi build/timeout/output không hợp lệ và thời gian thực đo.
+
+## Replay W1 đã lưu khoảng 5 phút
 
 1. Nêu nguồn dataset, PR và commit; tách tái hiện lịch sử khỏi synthetic.
 2. Mở báo cáo reproduce: base không có pytest, head chạy test. Nếu kết quả không đúng giả thuyết, phải nói rõ.

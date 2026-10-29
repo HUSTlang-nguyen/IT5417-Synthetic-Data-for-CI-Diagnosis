@@ -1,6 +1,7 @@
 * text=auto eol=lf
 docs/evidence/target-pc/historical/** -text
 docs/evidence/target-pc/software-tests*.txt -text
+docs/evidence/expansion-*/software-tests.txt -text whitespace=cr-at-eol
 *.png binary
 *.xlsx binary
 *.pdf binary

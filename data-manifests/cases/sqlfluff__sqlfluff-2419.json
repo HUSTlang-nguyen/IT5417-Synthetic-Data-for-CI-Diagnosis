@@ -1,0 +1,50 @@
+{
+  "case_id": "sqlfluff__sqlfluff-2419",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/sqlfluff/sqlfluff",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "license": "MIT",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "sqlfluff__sqlfluff-2419",
+  "base": "f1dba0e1dd764ae72d67c3d5e1471cf14d3db030",
+  "head": "base+repair:588fafc67193d682933d441362a2d61700451524968aa8108f32d6fb7966f4b5",
+  "allowed_file": "src/sqlfluff/rules/L060.py",
+  "repair_patch": ".cache/expansion/records/sqlfluff__sqlfluff-2419/repair.patch",
+  "repair_patch_sha256": "588fafc67193d682933d441362a2d61700451524968aa8108f32d6fb7966f4b5",
+  "test_patch": ".cache/expansion/records/sqlfluff__sqlfluff-2419/test.patch",
+  "test_patch_sha256": "e656f7441948f67a3c7b46b56f9051be605bcd0058651c7d8011109a083b96e3",
+  "fail_to_pass": [
+    "test/rules/std_L060_test.py::test__rules__std_L060_raised"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "test/rules/std_L060_test.py"
+  ],
+  "frozen_test_files": [
+    "test/rules/std_L060_test.py"
+  ],
+  "focus_line": 59,
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "Jinja2==3.0.3",
+    "click==8.0.4",
+    "diff-cover==6.5.0",
+    "pathspec==0.9.0",
+    "hypothesis==6.54.6"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base and pass with reference repair; PASS_TO_PASS remain passing"
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "PyLabRobot__pylabrobot-527",
+  "source_kind": "aidev",
+  "repo_url": "https://github.com/PyLabRobot/pylabrobot",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "license": "MIT",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "record_id": 3098528457,
+  "base": "50bb6c348de7a7c5477d758062b81ba82dca52f4",
+  "head": "7ec4f9cc33a4e7b6aeb687e72ce88d0cbfc1eca2",
+  "allowed_file": "pylabrobot/serializer.py",
+  "test_targets": [
+    "pylabrobot/tests/serializer_tests.py::test_serialize_deserialize_special_floats",
+    "pylabrobot/tests/serializer_tests.py::test_serialize_deserialize_closure"
+  ],
+  "frozen_test_files": [
+    "pylabrobot/tests/serializer_tests.py"
+  ],
+  "dependencies": [
+    "typing_extensions==4.12.2"
+  ],
+  "install_project": false,
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "focus_line": 110,
+  "resources": {
+    "memory_mb": 1024,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "source_record_sha256": "87cf1f547e24ed18a3a45ca8387debe2da0059d56a7ab69b7bc7df0a5a4e734d",
+  "pr_metadata_sha256": "706ae01246ac96c208fe9a37b2ea70fcf2c16fe2819c075fb602bac3ec8f3629",
+  "historical_hypothesis": "Frozen upstream regression tests fail at base and pass at PR head; local reconstruction only"
+}

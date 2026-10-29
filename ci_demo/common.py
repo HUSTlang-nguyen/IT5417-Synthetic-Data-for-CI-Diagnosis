@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import time
@@ -30,9 +31,16 @@ def sha256(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def case_config(case="properr-6"):
-    if case != "properr-6":
-        raise ValueError("Only the pinned properr-6 case is supported.")
-    return read_json(ROOT / "cases" / case / "case.json")
+    if not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_.-]{0,120}", case):
+        raise ValueError("Invalid case ID")
+    if case == "properr-6":
+        return read_json(ROOT / "cases" / case / "case.json")
+    from .multicase import validate_case
+    value = read_json(ROOT / "data-manifests" / "cases" / (case + ".json"))
+    validate_case(value)
+    if value["case_id"] != case:
+        raise ValueError("Case ID mismatch")
+    return value
 
 def new_run(kind):
     RUNS.mkdir(parents=True, exist_ok=True)

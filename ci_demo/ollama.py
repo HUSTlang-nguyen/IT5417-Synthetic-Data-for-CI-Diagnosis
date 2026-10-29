@@ -43,15 +43,21 @@ def model_info(endpoint, model):
     details = json.loads(request(endpoint, "/api/show", {"model": model}, timeout=15))
     return {"tag": entry, "details": details}
 
-def generate(endpoint, model, prompt, attempt):
+def schema_for_path(path):
+    import copy
+    schema = copy.deepcopy(SCHEMA)
+    schema["properties"]["path"]["enum"] = [path]
+    return schema
+
+def generate(endpoint, model, prompt, attempt, *, allowed_file=None, timeout=600):
     if model != GENERATOR_MODEL:
         raise ValueError("Generation requires the configured 7B generator.")
     payload = {
-        "model": model, "stream": False, "format": SCHEMA,
+        "model": model, "stream": False, "format": schema_for_path(allowed_file) if allowed_file else SCHEMA,
         "messages": [{"role": "user", "content": prompt}],
         "options": {**OPTIONS, "seed": OPTIONS["seed"] + attempt},
         "keep_alive": 0,
     }
     start = time.monotonic()
-    raw = request(endpoint, "/api/chat", payload)
+    raw = request(endpoint, "/api/chat", payload) if timeout == 600 else request(endpoint, "/api/chat", payload, timeout=timeout)
     return payload, raw, round(time.monotonic() - start, 3)

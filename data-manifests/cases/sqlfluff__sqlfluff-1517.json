@@ -1,0 +1,93 @@
+{
+  "case_id": "sqlfluff__sqlfluff-1517",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/sqlfluff/sqlfluff",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "license": "MIT",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "sqlfluff__sqlfluff-1517",
+  "base": "304a197829f98e7425a46d872ada73176137e5ae",
+  "head": "base+repair:4b98fc0e60d02c599363008b1557704adb704bb6013bd54557b8bcb67c28082c",
+  "allowed_file": "src/sqlfluff/core/parser/helpers.py",
+  "repair_patch": ".cache/expansion/records/sqlfluff__sqlfluff-1517/repair.patch",
+  "repair_patch_sha256": "4b98fc0e60d02c599363008b1557704adb704bb6013bd54557b8bcb67c28082c",
+  "test_patch": ".cache/expansion/records/sqlfluff__sqlfluff-1517/test.patch",
+  "test_patch_sha256": "0f45ca07cef0b0af07840b213b10306d954cc8f04b78c2b29a298e0432cd8327",
+  "fail_to_pass": [
+    "test/dialects/ansi_test.py::test__dialect__ansi_multiple_semicolons[select"
+  ],
+  "pass_to_pass": [
+    "test/dialects/ansi_test.py::test__dialect__ansi__file_lex[a",
+    "test/dialects/ansi_test.py::test__dialect__ansi__file_lex[b.c-res1]",
+    "test/dialects/ansi_test.py::test__dialect__ansi__file_lex[abc",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectKeywordSegment-select]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[NakedIdentifierSegment-online_sales]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[BareFunctionSegment-current_timestamp]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[FunctionSegment-current_timestamp()]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[NumericLiteralSegment-1000.0]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-online_sales",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[IntervalExpressionSegment-INTERVAL",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-CASE",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-CAST(ROUND(online_sales",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-name",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-MIN",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-DATE_ADD(CURRENT_DATE('America/New_York'),",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-my_array[1]]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-my_array[OFFSET(1)]]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-my_array[5:8]]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-4",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-bits[OFFSET(0)]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-(count_18_24",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-count_18_24",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectStatementSegment-SELECT",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-t.val/t.id]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-CAST(num",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-a.*]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-a.b.*]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-a.b.c.*]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ObjectReferenceSegment-a..c.*]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment--some_variable]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment--",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-concat(left(uaid,",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-c",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-c",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[ExpressionSegment-NULL::INT]",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[SelectClauseElementSegment-NULL::INT",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_parses[TruncateStatementSegment-TRUNCATE",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_not_match[ObjectReferenceSegment-\\n",
+    "test/dialects/ansi_test.py::test__dialect__ansi_specific_segment_not_parse[SELECT",
+    "test/dialects/ansi_test.py::test__dialect__ansi_is_whitespace",
+    "test/dialects/ansi_test.py::test__dialect__ansi_parse_indented_joins[select",
+    "test/dialects/ansi_test.py::test__dialect__ansi_multiple_semicolons[;;-Line"
+  ],
+  "test_targets": [
+    "test/dialects/ansi_test.py"
+  ],
+  "frozen_test_files": [
+    "test/dialects/ansi_test.py"
+  ],
+  "focus_line": 2,
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "Jinja2==3.0.3",
+    "click==8.0.4",
+    "diff-cover==6.5.0",
+    "pathspec==0.9.0",
+    "hypothesis==6.54.6"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base and pass with reference repair; PASS_TO_PASS remain passing"
+}

@@ -1,0 +1,55 @@
+{
+  "case_id": "sqlfluff__sqlfluff-1733",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/sqlfluff/sqlfluff",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "license": "MIT",
+  "split": "development",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "sqlfluff__sqlfluff-1733",
+  "base": "a1579a16b1d8913d9d7c7d12add374a290bcc78c",
+  "head": "base+repair:6ea771cc2ef0d6444dc5b991b68b249213b552b0ff843f775cb974c8f9394dbb",
+  "allowed_file": "src/sqlfluff/rules/L039.py",
+  "repair_patch": ".cache/expansion/records/sqlfluff__sqlfluff-1733/repair.patch",
+  "repair_patch_sha256": "6ea771cc2ef0d6444dc5b991b68b249213b552b0ff843f775cb974c8f9394dbb",
+  "test_patch": ".cache/expansion/records/sqlfluff__sqlfluff-1733/test.patch",
+  "test_patch_sha256": "72941d7cb2c7afe43d25c988c2bf4d0e4e2533b6489a38f4ba3d1396769c4c86",
+  "fail_to_pass": [
+    "test/rules/std_L003_L036_L039_combo_test.py::test__rules__std_L003_L036_L039"
+  ],
+  "pass_to_pass": [
+    "test/rules/std_L016_L36_combo_test.py::test__rules__std_L016_L036_long_line_lint",
+    "test/rules/std_L016_L36_combo_test.py::test__rules__std_L016_L036_long_line_fix",
+    "test/rules/std_L016_L36_combo_test.py::test__rules__std_L016_L036_long_line_fix2"
+  ],
+  "test_targets": [
+    "test/rules/std_L003_L036_L039_combo_test.py",
+    "test/rules/std_L016_L36_combo_test.py"
+  ],
+  "frozen_test_files": [
+    "test/rules/std_L003_L036_L039_combo_test.py"
+  ],
+  "focus_line": 44,
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "Jinja2==3.0.3",
+    "click==8.0.4",
+    "diff-cover==6.5.0",
+    "pathspec==0.9.0",
+    "hypothesis==6.54.6"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base and pass with reference repair; PASS_TO_PASS remain passing"
+}

@@ -1,0 +1,227 @@
+{
+  "batch_run": "batch-20261029T173420443187Z",
+  "created_at": "2026-10-30T00:34:20+07:00",
+  "finished_at": "2026-10-30T00:40:31+07:00",
+  "summary": {
+    "screened": 20,
+    "selected": 9,
+    "requested_generation_attempts": 27,
+    "generation_capacity": 30,
+    "reproduction_attempted": 9,
+    "historical_supported": 6,
+    "passing_seeds": 7,
+    "generation_attempted": 21,
+    "execution_verified": 6,
+    "by_source": {
+      "aidev": {
+        "selected": 4,
+        "reproduction_attempted": 4,
+        "historical_supported": 2,
+        "passing_seeds": 2,
+        "generation_attempted": 6,
+        "execution_verified": 0
+      },
+      "swebench": {
+        "selected": 5,
+        "reproduction_attempted": 5,
+        "historical_supported": 4,
+        "passing_seeds": 5,
+        "generation_attempted": 15,
+        "execution_verified": 6
+      }
+    },
+    "by_repo": {
+      "https://github.com/PyLabRobot/pylabrobot": {
+        "selected": 1,
+        "reproduction_attempted": 1,
+        "historical_supported": 0,
+        "passing_seeds": 0,
+        "generation_attempted": 0,
+        "execution_verified": 0
+      },
+      "https://github.com/marshmallow-code/marshmallow": {
+        "selected": 2,
+        "reproduction_attempted": 2,
+        "historical_supported": 1,
+        "passing_seeds": 2,
+        "generation_attempted": 6,
+        "execution_verified": 0
+      },
+      "https://github.com/tyighter/tcm": {
+        "selected": 1,
+        "reproduction_attempted": 1,
+        "historical_supported": 1,
+        "passing_seeds": 1,
+        "generation_attempted": 3,
+        "execution_verified": 0
+      },
+      "https://github.com/esaul314/chunkify": {
+        "selected": 1,
+        "reproduction_attempted": 1,
+        "historical_supported": 0,
+        "passing_seeds": 0,
+        "generation_attempted": 0,
+        "execution_verified": 0
+      },
+      "https://github.com/pydicom/pydicom": {
+        "selected": 3,
+        "reproduction_attempted": 3,
+        "historical_supported": 3,
+        "passing_seeds": 3,
+        "generation_attempted": 9,
+        "execution_verified": 6
+      },
+      "https://github.com/mfat/sshpilot": {
+        "selected": 1,
+        "reproduction_attempted": 1,
+        "historical_supported": 1,
+        "passing_seeds": 1,
+        "generation_attempted": 3,
+        "execution_verified": 0
+      }
+    },
+    "generation_unexecuted": 6
+  },
+  "verification_status_counts": {
+    "invalid_output": 10,
+    "verification_failed": 5,
+    "execution_verified": 6
+  },
+  "unique_valid_candidate_hashes": 6,
+  "unique_execution_verified_candidate_hashes": 3,
+  "duplicate_families": {
+    "d6335f8e5d8105cd94e94cea214ff5d72a1b27f325dc7454f19ef51a69b23a56": [
+      {
+        "case_id": "pydicom__pydicom-1139",
+        "attempt": 1,
+        "status": "execution_verified"
+      },
+      {
+        "case_id": "pydicom__pydicom-1139",
+        "attempt": 2,
+        "status": "execution_verified"
+      },
+      {
+        "case_id": "pydicom__pydicom-1139",
+        "attempt": 3,
+        "status": "execution_verified"
+      }
+    ],
+    "0f15de3d28ead93252a6bbc28fdd19b6ad1fb86ab0662f2b6e5662998a0ebf80": [
+      {
+        "case_id": "pydicom__pydicom-1256",
+        "attempt": 1,
+        "status": "execution_verified"
+      },
+      {
+        "case_id": "pydicom__pydicom-1256",
+        "attempt": 3,
+        "status": "execution_verified"
+      }
+    ],
+    "972bc7ba518606aea50aca13a37906477991a5249cd4408b7297c998321d4cd1": [
+      {
+        "case_id": "pydicom__pydicom-1256",
+        "attempt": 2,
+        "status": "execution_verified"
+      }
+    ]
+  },
+  "batch_active_seconds": 456.233,
+  "discovery_seconds": 85.12399999999616,
+  "model_request_seconds_sum": 76.484,
+  "image_integrity_audit": "integrity-20261029T174127403846Z",
+  "image_integrity_seconds": 3.937,
+  "junit_files_checked": 78,
+  "junit_testcase_records_checked": 2580,
+  "host_source_bundles_checked": 8,
+  "protected_W1_files_unchanged": 202,
+  "new_raw_files_unchanged": 968,
+  "split": "development",
+  "gold_labels": "pending",
+  "training_eligibility": "pending",
+  "qualification": "Strict source-ID matching reports six historical_supported; marshmallow-1359 shows fail/fixed-pass but truncated source PASS_TO_PASS IDs prevent complete exact matching. No raw result rewritten.",
+  "software_tests": {
+    "discovered": 49,
+    "passed": 48,
+    "skipped_opt_in_legacy_Docker": 1
+  },
+  "live_preflight_software_tests": {
+    "discovered": 43,
+    "passed": 42,
+    "skipped_opt_in_legacy_Docker": 1
+  },
+  "implementation_hashes_at_run": {
+    "ci_demo/multicase.py": "166a51a6c3df34a11aeadd1a02ddb6271b7d6d36af322afcaf3a1536806d97ed",
+    "ci_demo/batch.py": "0861348bfb73d4007df6d616cc780d95a5fc7e4121043af0890d45b9762e86a8",
+    "ci_demo/ollama.py": "ee51a207da350adbad56b486cd4b6dbbc48825c8cd1077dd7457b19c5b92efaa",
+    "ci_demo/runner.py": "d6f33c108c771e5be62b4c83c28b71b84adde72a3d5cca8776f0cd5f3e4cc27a",
+    "ci_demo/common.py": "e3e033c637ce7cc2de40b0dc401115ffae9fc83589cf9a02f766a8fc12568bc4",
+    "ci_demo/pipeline.py": "0b9f0aa7a7c879083d834fecb7a15ac7380021e830c80e3228b8557757012df4"
+  },
+  "implementation_hashes_after_software_hardening": {
+    "ci_demo/multicase.py": "b77855107f8bd0f53bdf0eabbf70fa1013495e0cf8bf124ca6dd03b8d9abb810",
+    "ci_demo/batch.py": "6e918873e2c076e62a6423b42cc256a83d7e41b5909d9f94d80c9d04416fb274",
+    "ci_demo/ollama.py": "ee51a207da350adbad56b486cd4b6dbbc48825c8cd1077dd7457b19c5b92efaa",
+    "ci_demo/runner.py": "d6f33c108c771e5be62b4c83c28b71b84adde72a3d5cca8776f0cd5f3e4cc27a",
+    "ci_demo/common.py": "e3e033c637ce7cc2de40b0dc401115ffae9fc83589cf9a02f766a8fc12568bc4",
+    "ci_demo/pipeline.py": "0b9f0aa7a7c879083d834fecb7a15ac7380021e830c80e3228b8557757012df4"
+  },
+  "archive": {
+    "files": 1199,
+    "bytes": 2384628,
+    "sha256": "f707abdaadb783c211e0e02bb68b58aa8b8dd67e5a5a71eca8d63b60e45a01d7",
+    "raw_hashes_verified": 968
+  },
+  "source_pair_differences": [
+    {
+      "case_id": "PyLabRobot__pylabrobot-527",
+      "changed_files_after_test_freeze": [
+        "pylabrobot/serializer.py"
+      ]
+    },
+    {
+      "case_id": "marshmallow-code__marshmallow-1343",
+      "changed_files_after_test_freeze": [
+        "src/marshmallow/schema.py"
+      ]
+    },
+    {
+      "case_id": "tyighter__tcm-364",
+      "changed_files_after_test_freeze": [
+        "modules/ImageMagickInterface.py"
+      ]
+    },
+    {
+      "case_id": "marshmallow-code__marshmallow-1359",
+      "changed_files_after_test_freeze": [
+        "src/marshmallow/fields.py"
+      ]
+    },
+    {
+      "case_id": "pydicom__pydicom-1139",
+      "changed_files_after_test_freeze": [
+        "pydicom/valuerep.py"
+      ]
+    },
+    {
+      "case_id": "mfat__sshpilot-716",
+      "changed_files_after_test_freeze": [
+        "sshpilot/terminal.py"
+      ]
+    },
+    {
+      "case_id": "pydicom__pydicom-1256",
+      "changed_files_after_test_freeze": [
+        "pydicom/jsonrep.py"
+      ]
+    },
+    {
+      "case_id": "pydicom__pydicom-1694",
+      "changed_files_after_test_freeze": [
+        "pydicom/dataset.py"
+      ]
+    }
+  ],
+  "software_test_log_sha256": "03b978dfc93569bb0f56f99e5fd0164229a9373774ed54021e834927d3d479c0"
+}
