@@ -1,6 +1,8 @@
 # Agent working instructions
 
 - Read docs/architecture.md and the latest entries in docs/agent-log.md before working or after context compaction.
+- Then read docs/implementation-plan.md, especially its current next task. Follow task dependencies and completion gates; do not restart completed experiments just to recover context.
+- Update task status, evidence and the next concrete task in docs/implementation-plan.md at each milestone. Weekly slots are estimates, not confirmed calendar deadlines; never infer gold-label approval from execution success.
 - Log actual milestones, commands/results, failures, decisions and the next step in docs/agent-log.md (Asia/Bangkok).
 - Update docs/architecture.md when implementation, interfaces or decisions change.
 - Implement the pipeline in Python. Keep responses concise.

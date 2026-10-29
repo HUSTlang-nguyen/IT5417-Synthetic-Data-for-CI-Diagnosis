@@ -66,6 +66,6 @@ Current local runtime is portable .cache/tools/ollama/ollama.exe, with OLLAMA_MO
 ## Recovery sequence
 
 1. Read latest docs/agent-log.md entries and this file.
-2. Inspect Git status and docs/demo-runbook.md.
-3. Run doctor; inspect existing manifests before re-running a stage.
+2. Read docs/implementation-plan.md for the current task/dependencies/gates; inspect Git status and docs/demo-runbook.md. Next task is W1-03: prepare an evidence-linked pilot review for human confirmation; do not rerun the completed pilot just to resume.
+3. Inspect existing manifests before re-running a stage. Run doctor before runtime work; documentation-only changes do not require model, Docker or doctor reruns.
 4. Continue the next unresolved milestone. Never overwrite a completed run to hide failures.

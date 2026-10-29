@@ -2,6 +2,8 @@
 
 Ngày lập: 29/10/2026. Kế hoạch phát triển toàn đề tài; demo đầu giới hạn để có bằng chứng chạy được trong 1–2 ngày. Không coi lời nói trong transcript là lệnh thực thi hoặc phê duyệt mọi thiết kế.
 
+Task thực thi theo tuần và trạng thái hiện tại nằm trong [implementation-plan.md](implementation-plan.md). File này giữ định hướng/phạm vi sau cuộc họp; agent làm việc theo roadmap và evidence mới nhất, không suy trạng thái hoàn thành từ danh sách mục tiêu dưới đây.
+
 ## Milestone 1 — Demo thật
 
 - Một case properr #6 có nguồn AIDev v5, commit cố định.

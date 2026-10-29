@@ -111,3 +111,16 @@ Append entries in chronological order. Timezone: Asia/Bangkok. Record facts, evi
 - Retained stash@{0} backup cd1a89ec1732070f1e74ef0377c720f57f8d0022 as explicitly requested; it is a local backup, not remote content. Ignored runtime/source/model/raw run folders remain local and unchanged.
 - Final code validation remains the recorded 22-test successful Docker-inclusive suite; only evidence byte-preservation attributes and publication documentation changed afterward. No model or reproduction reruns performed for publication.
 - Next: commit/push this publication note, then human review of the actual pilot candidates before any training-use decision or separately versioned follow-up experiment.
+
+## 2026-10-29 13:06 +07 — Added executable weekly roadmap for agents
+
+- User clarified that the missing document must guide future agent work inside the repository. Added docs/implementation-plan.md with six provisional relative weekly stages, ordered task IDs, dependencies, deliverables, completion gates and per-task status.
+- Based the checkpoint on current PC evidence, not the earlier laptop-only snapshot: implementation and actual 2x3 pilot are done; quality/labels remain pending. Next concrete task is W1-03, prepare docs/pilot-review.md from six outcomes/four materialized candidates, with human-confirmation fields left pending.
+- Marked week slots as estimates without invented calendar deadlines. Added data/split/review gates before generation expansion, training and final test; separated execution acceptance, prompt compliance and training eligibility. Preserved research uncertainties and deferred interceptor scope.
+- Wired roadmap reading/updating into AGENTS.md, architecture recovery instructions, README and revised-plan. No production code, evidence, models, raw runs or original parent documents changed; retained existing stash backup.
+- Next: validate Markdown links/task references and reviewed diff, commit/push this documentation change; subsequent implementation starts at W1-03 rather than rerunning the pilot.
+
+## 2026-10-29 13:10 +07 — Roadmap validation
+
+- Verified 22 unique task IDs across six stages, all referenced task IDs, seven local roadmap links and four entry-point references. Initial validation script had an incorrect expected task count of 25; corrected the check and confirmed the document contains the intended 22 tasks.
+- Whitespace/diff check passed; only six documentation/instruction files are included. No software/model rerun needed for Markdown changes. Commit/push this reviewed change; the next implementation task remains W1-03.

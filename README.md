@@ -39,6 +39,7 @@ Bảng so sánh giữ cả lượt lỗi/chưa thực hiện trong mẫu số, b
 
 ## Tài liệu và cấu trúc
 
+- [Kế hoạch thực thi theo tuần dành cho agent](docs/implementation-plan.md): task ID, phụ thuộc, đầu ra, cổng nghiệm thu và điểm tiếp tục.
 - [Kịch bản demo và lệnh đầy đủ](docs/demo-runbook.md).
 - [Kiến trúc, trạng thái và phục hồi context](docs/architecture.md).
 - [Nhật ký theo thứ tự](docs/agent-log.md).
