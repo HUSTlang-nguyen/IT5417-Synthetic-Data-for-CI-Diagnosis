@@ -43,6 +43,14 @@ Giao thức `single-file-exact-edit-v2` cung cấp excerpt từ seed pass và te
 
 Baseline pass → ba candidate fail ổn định → restored pass chỉ xác nhận điều kiện thực thi. Không tự xác nhận gold label, tính đại diện hoặc training eligibility. Docker không mạng, không đặc quyền và có giới hạn tài nguyên; candidate không chạy trên host.
 
-## Chưa triển khai
+## Bổ sung giao thức development v3 — 30/10/2026
+
+V3 mới chỉ thay giao diện generator, không đổi input/output diagnosis hay trạng thái phê duyệt: `path`, `site_id`, `replacement`, `explanation`. Không có trường generator diagnosis label được yêu cầu. Site catalog được tạo tĩnh từ seed pass; replacement là một dòng không có leading indentation, renderer giữ indentation/line ending gốc. Per-attempt source/test excerpts, allowed sites và request/raw response đều lưu để replay. Các lượt v2 và W1 vẫn dùng giao thức đã lưu của chúng.
+
+Site catalog, selected site_id, replacement/proposal và generator-localized excerpt là provenance của phép sinh, không tự trở thành input 3B. Đặc biệt không đưa selected site vào input khi model phải dự đoán vị trí. Bug-introducing diff hoặc stack trace vẫn là evidence hợp lệ nếu biến thể task cho phép rõ; metadata tiết lộ phép edit được giữ riêng.
+
+Một candidate v3 gây lỗi cú pháp dù prompt yêu cầu Python hợp lệ: runner acceptance, prompt compliance và training eligibility phải đánh giá riêng. Profile correction là trial của source_case_id cũ, có reason/trial_of và budget kế thừa; không nâng số case nguồn độc lập. Grouping snapshot giữ toàn bộ development; lexical duplicate suggestions không tự là semantic-equivalence/gold decision.
+
+## Phần chưa triển khai sau hai đợt
 
 3B inference, SFT, interceptor, benchmark cuối và chính sách trộn train chưa thuộc đợt này. Các quyết định đó tiếp tục theo [roadmap](implementation-plan.md); review theo [hướng dẫn nhãn](labeling-guide.md) và skill của repo.

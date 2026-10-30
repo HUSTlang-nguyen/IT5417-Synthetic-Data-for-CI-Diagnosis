@@ -1,0 +1,103 @@
+{
+  "case_id": "pylint-dev__astroid-1333",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "split": "development",
+  "license": "LGPL-2.1-or-later",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-1333",
+  "base": "d2a5b3c7b1e203fec3c7ca73c30eb1785d3d4d0a",
+  "head": "base+repair:0b0c8b3e1c17c103912cc1f9432432e2bbcf8c75b1162866493d637e2bc2c027",
+  "allowed_file": "astroid/modutils.py",
+  "repair_patch": ".cache/expansion-02/records/pylint-dev__astroid-1333/repair.patch",
+  "repair_patch_sha256": "0b0c8b3e1c17c103912cc1f9432432e2bbcf8c75b1162866493d637e2bc2c027",
+  "test_patch": ".cache/expansion-02/records/pylint-dev__astroid-1333/test.patch",
+  "test_patch_sha256": "a42fc193871d59ca603dfc4982250b71c1c222128bd86af6d43478f0826965da",
+  "fail_to_pass": [
+    "tests/unittest_modutils.py::ModPathFromFileTest::test_load_packages_without_init"
+  ],
+  "pass_to_pass": [
+    "tests/unittest_modutils.py::ModuleFileTest::test_find_egg_module",
+    "tests/unittest_modutils.py::ModuleFileTest::test_find_zipped_module",
+    "tests/unittest_modutils.py::LoadModuleFromNameTest::test_known_values_load_module_from_name_1",
+    "tests/unittest_modutils.py::LoadModuleFromNameTest::test_known_values_load_module_from_name_2",
+    "tests/unittest_modutils.py::LoadModuleFromNameTest::test_raise_load_module_from_name_1",
+    "tests/unittest_modutils.py::GetModulePartTest::test_get_module_part_exception",
+    "tests/unittest_modutils.py::GetModulePartTest::test_known_values_get_builtin_module_part",
+    "tests/unittest_modutils.py::GetModulePartTest::test_known_values_get_compiled_module_part",
+    "tests/unittest_modutils.py::GetModulePartTest::test_known_values_get_module_part_1",
+    "tests/unittest_modutils.py::GetModulePartTest::test_known_values_get_module_part_2",
+    "tests/unittest_modutils.py::GetModulePartTest::test_known_values_get_module_part_3",
+    "tests/unittest_modutils.py::ModPathFromFileTest::test_import_symlink_both_outside_of_path",
+    "tests/unittest_modutils.py::ModPathFromFileTest::test_import_symlink_with_source_outside_of_path",
+    "tests/unittest_modutils.py::ModPathFromFileTest::test_known_values_modpath_from_file_1",
+    "tests/unittest_modutils.py::ModPathFromFileTest::test_load_from_module_symlink_on_symlinked_paths_in_syspath",
+    "tests/unittest_modutils.py::ModPathFromFileTest::test_raise_modpath_from_file_exception",
+    "tests/unittest_modutils.py::LoadModuleFromPathTest::test_do_not_load_twice",
+    "tests/unittest_modutils.py::FileFromModPathTest::test_builtin",
+    "tests/unittest_modutils.py::FileFromModPathTest::test_site_packages",
+    "tests/unittest_modutils.py::FileFromModPathTest::test_std_lib",
+    "tests/unittest_modutils.py::FileFromModPathTest::test_unexisting",
+    "tests/unittest_modutils.py::FileFromModPathTest::test_unicode_in_package_init",
+    "tests/unittest_modutils.py::GetSourceFileTest::test",
+    "tests/unittest_modutils.py::GetSourceFileTest::test_raise",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_4",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_builtin",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_builtins",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_custom_path",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_datetime",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_failing_edge_cases",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_nonstandard",
+    "tests/unittest_modutils.py::StandardLibModuleTest::test_unknown",
+    "tests/unittest_modutils.py::IsRelativeTest::test_deep_relative",
+    "tests/unittest_modutils.py::IsRelativeTest::test_deep_relative2",
+    "tests/unittest_modutils.py::IsRelativeTest::test_deep_relative3",
+    "tests/unittest_modutils.py::IsRelativeTest::test_deep_relative4",
+    "tests/unittest_modutils.py::IsRelativeTest::test_is_relative_bad_path",
+    "tests/unittest_modutils.py::IsRelativeTest::test_known_values_is_relative_1",
+    "tests/unittest_modutils.py::IsRelativeTest::test_known_values_is_relative_3",
+    "tests/unittest_modutils.py::IsRelativeTest::test_known_values_is_relative_4",
+    "tests/unittest_modutils.py::IsRelativeTest::test_known_values_is_relative_5",
+    "tests/unittest_modutils.py::GetModuleFilesTest::test_get_all_files",
+    "tests/unittest_modutils.py::GetModuleFilesTest::test_get_module_files_1",
+    "tests/unittest_modutils.py::GetModuleFilesTest::test_load_module_set_attribute",
+    "tests/unittest_modutils.py::ExtensionPackageWhitelistTest::test_is_module_name_part_of_extension_package_whitelist_success",
+    "tests/unittest_modutils.py::ExtensionPackageWhitelistTest::test_is_module_name_part_of_extension_package_whitelist_true"
+  ],
+  "test_targets": [
+    "tests/unittest_modutils.py"
+  ],
+  "prompt_test_nodes": [
+    "tests/unittest_modutils.py::ModPathFromFileTest::test_load_packages_without_init"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_modutils.py"
+  ],
+  "focus_line": 313,
+  "generation_protocol": "single-line-site-v3",
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "lazy-object-proxy==1.9.0",
+    "wrapt==1.13.3",
+    "typing_extensions==4.12.2",
+    "six==1.16.0",
+    "nose==1.3.7",
+    "attrs==22.2.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base/fixed-pass, PASS_TO_PASS stay pass; unique truncated parameter mapping recorded"
+}

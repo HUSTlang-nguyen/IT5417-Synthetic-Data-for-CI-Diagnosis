@@ -84,6 +84,23 @@ V2 dùng một phép thay thế `before → after` khớp đúng một lần tro
 
 Đạt thực thi chỉ là baseline pass → ba fail có chữ ký ổn định → restored pass. Review bằng `$ci-data-review` đọc artifacts đã lưu; gold labels/training vẫn pending. Báo đủ số selected/requested/unexecuted, cả lỗi build/timeout/output không hợp lệ và thời gian thực đo.
 
+### Cohort 02: v3 và profile hiệu chỉnh
+
+```text
+python scripts/screen_expansion_02.py
+python -m ci_demo batch --manifest data-manifests/expansion-02.json
+python -m ci_demo batch --manifest data-manifests/expansion-02-corrections.json
+python scripts/audit_development_groups.py --cohort data-manifests/expansion-01.json --cohort data-manifests/expansion-02.json --cohort data-manifests/expansion-02-corrections.json --output data-manifests/development-groups-v1.json
+```
+
+Các lệnh batch không tự nhận biết đây là run mới ngoài `--resume`; không chạy lại manifest chỉ để xem kết quả. Trước khi chạy cohort mới cần raw snapshot/patch đúng hash. Case configs hiện ở `cases/<id>/case.json`; [index](../cases/README.md) phân biệt case nguồn, profile thử lại và cấu hình chưa chọn.
+
+V3 là opt-in `single-line-site-v3`: đọc AST tĩnh của source/test seed, cung cấp site ID và test excerpt, nhận path/site_id/replacement/explanation; không yêu cầu 7B tự gán nhãn. Renderer thêm lại indent/newline gốc theo hợp đồng và lưu per-attempt prompt/site catalog. Không parse/import/execute candidate trên host. Kết quả runner chưa chứng minh tuân thủ valid-syntax prompt; review đợt 02 đã phát hiện một syntax violation và giữ nguyên raw status.
+
+Profile hiệu chỉnh có ID mới `-r1`, source_case_id/trial_of/reason. Cumulative budget charge kế thừa từ parent, không cộng parent charge hai lần khi báo thời gian. Hai profile này không là hai PR/case nguồn mới. Pytest/version/plugins được khai báo và kiểm tra allowlist; runtime giữ plugin autoload disabled, logs/test_logs chỉ có tmpfs khai báo không che source/tests. Kết quả thất bại của profile gốc không bị sửa hoặc ghi đè.
+
+Audit grouping chỉ đọc các batch đã hoàn tất: repo/shared-commit group, exact hashes và lexical-edit suggestions. Nó không phê duyệt nhãn, xóa raw hoặc tự chia train/validation/test. [Tổng kết 02](expansion-02-summary.md) nêu số đo và giới hạn.
+
 ## Replay W1 đã lưu khoảng 5 phút
 
 1. Nêu nguồn dataset, PR và commit; tách tái hiện lịch sử khỏi synthetic.

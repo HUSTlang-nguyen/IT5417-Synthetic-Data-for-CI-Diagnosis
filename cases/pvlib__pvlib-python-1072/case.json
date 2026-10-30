@@ -1,0 +1,76 @@
+{
+  "case_id": "pvlib__pvlib-python-1072",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "split": "development",
+  "license": "BSD-3-Clause",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1072",
+  "base": "04a523fafbd61bc2e49420963b84ed8e2bd1b3cf",
+  "head": "base+repair:d2f39869df2686004fde7b6ba285dd1f4921e5cd0510dda36b2f186219bd36e9",
+  "allowed_file": "pvlib/temperature.py",
+  "repair_patch": ".cache/expansion-02/records/pvlib__pvlib-python-1072/repair.patch",
+  "repair_patch_sha256": "d2f39869df2686004fde7b6ba285dd1f4921e5cd0510dda36b2f186219bd36e9",
+  "test_patch": ".cache/expansion-02/records/pvlib__pvlib-python-1072/test.patch",
+  "test_patch_sha256": "b4adc4b231e3fdb31d65cec49c66a2d02f8bb53f31cd4fb6c5f50cabc1503427",
+  "fail_to_pass": [
+    "pvlib/tests/test_temperature.py::test_fuentes_timezone[Etc/GMT+5]"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/test_temperature.py::test_sapm_cell",
+    "pvlib/tests/test_temperature.py::test_sapm_module",
+    "pvlib/tests/test_temperature.py::test_sapm_cell_from_module",
+    "pvlib/tests/test_temperature.py::test_sapm_ndarray",
+    "pvlib/tests/test_temperature.py::test_sapm_series",
+    "pvlib/tests/test_temperature.py::test_pvsyst_cell_default",
+    "pvlib/tests/test_temperature.py::test_pvsyst_cell_kwargs",
+    "pvlib/tests/test_temperature.py::test_pvsyst_cell_ndarray",
+    "pvlib/tests/test_temperature.py::test_pvsyst_cell_series",
+    "pvlib/tests/test_temperature.py::test_faiman_default",
+    "pvlib/tests/test_temperature.py::test_faiman_kwargs",
+    "pvlib/tests/test_temperature.py::test_faiman_list",
+    "pvlib/tests/test_temperature.py::test_faiman_ndarray",
+    "pvlib/tests/test_temperature.py::test_faiman_series",
+    "pvlib/tests/test_temperature.py::test__temperature_model_params",
+    "pvlib/tests/test_temperature.py::test_fuentes[pvwatts_8760_rackmount.csv-45]",
+    "pvlib/tests/test_temperature.py::test_fuentes[pvwatts_8760_roofmount.csv-49]",
+    "pvlib/tests/test_temperature.py::test_fuentes_timezone[None]"
+  ],
+  "test_targets": [
+    "pvlib/tests/test_temperature.py"
+  ],
+  "prompt_test_nodes": [
+    "pvlib/tests/test_temperature.py::test_fuentes_timezone[Etc/GMT+5]"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/test_temperature.py"
+  ],
+  "focus_line": 602,
+  "generation_protocol": "single-line-site-v3",
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "pytz==2025.2",
+    "requests==2.32.3",
+    "matplotlib==3.7.5",
+    "h5py==3.10.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base/fixed-pass, PASS_TO_PASS stay pass; unique truncated parameter mapping recorded"
+}

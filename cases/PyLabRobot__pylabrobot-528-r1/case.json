@@ -1,0 +1,54 @@
+{
+  "case_id": "PyLabRobot__pylabrobot-528-r1",
+  "source_kind": "aidev",
+  "repo_url": "https://github.com/PyLabRobot/pylabrobot",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "split": "development",
+  "license": "MIT",
+  "runner_kind": "python-source-v2",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "record_id": 3098557986,
+  "base": "6bf5d49d45cad7a8b67dc5f3c161442362a15e87",
+  "head": "69ef3b02882743fa30c2eb0bdff75b2ef524f040",
+  "allowed_file": "pylabrobot/resources/resource.py",
+  "frozen_test_files": [
+    "pylabrobot/resources/resource_tests.py",
+    "pylabrobot/conftest.py"
+  ],
+  "test_targets": [
+    "pylabrobot/resources/resource_tests.py"
+  ],
+  "prompt_test_nodes": [
+    "pylabrobot/resources/resource_tests.py"
+  ],
+  "dependencies": [
+    "typing_extensions==4.12.2",
+    "requests==2.32.3",
+    "numpy==1.26.4",
+    "websockets==12.0",
+    "pyserial==3.5"
+  ],
+  "install_project": false,
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "writable_dirs": [
+    "logs",
+    "test_logs"
+  ],
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 402,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "identity_source": "saved_GitHub_PR_API",
+  "source_record_sha256": "6a18c04bc7ecbfed0351204706ea57455d66d26e20e53f7d086d4afa7c1a93e2",
+  "historical_hypothesis": "Frozen upstream tests on pinned base/head; support requires an observed regression, not PR text",
+  "source_case_id": "PyLabRobot__pylabrobot-528",
+  "trial_of": "reproduce-20261029T235240560985Z",
+  "trial_reason": "recognize upstream resource_tests.py as a test module; keep declared logs/test_logs tmpfs and all source/test bytes"
+}

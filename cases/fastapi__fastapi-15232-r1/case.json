@@ -1,0 +1,58 @@
+{
+  "case_id": "fastapi__fastapi-15232-r1",
+  "source_kind": "aidev",
+  "repo_url": "https://github.com/fastapi/fastapi",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "split": "development",
+  "license": "MIT",
+  "runner_kind": "python-source-v2",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "record_id": 4148102697,
+  "base": "d128a7089a645466b789e32097de125a3b0f8979",
+  "head": "b041772fb1c8bf49709236af41c3009f711289df",
+  "allowed_file": "fastapi/routing.py",
+  "frozen_test_files": [
+    "tests/test_router_mount.py"
+  ],
+  "test_targets": [
+    "tests/test_router_mount.py"
+  ],
+  "prompt_test_nodes": [
+    "tests/test_router_mount.py::test_mount_sub_application_with_router_prefix",
+    "tests/test_router_mount.py::test_mount_sub_application_with_include_router_prefix",
+    "tests/test_router_mount.py::test_mount_sub_application_openapi_with_included_router"
+  ],
+  "dependencies": [
+    "starlette==0.48.0",
+    "pydantic==2.10.6",
+    "httpx==0.28.1",
+    "typing_extensions==4.14.1",
+    "typing-inspection==0.4.2",
+    "annotated-doc==0.0.4",
+    "inline-snapshot==0.23.2"
+  ],
+  "install_project": false,
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "writable_dirs": [],
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1503,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "identity_source": "saved_GitHub_PR_API",
+  "source_record_sha256": "9506aac30d188d06b91e4e6a033b64d2decb243e74f609b0b06c26350c00caa7",
+  "historical_hypothesis": "Frozen upstream tests on pinned base/head; support requires an observed regression, not PR text",
+  "source_case_id": "fastapi__fastapi-15232",
+  "trial_of": "reproduce-20261029T235512322126Z",
+  "pytest_version": "8.3.5",
+  "pytest_plugins": [
+    "inline_snapshot.pytest_plugin"
+  ],
+  "trial_reason": "resolve actual pinned inline-snapshot pytest>=8.3.4 conflict; plugin explicitly loaded with autoload disabled"
+}

@@ -1,0 +1,319 @@
+{
+  "batches": [
+    {
+      "run_id": "batch-20261029T235240554230Z",
+      "active_seconds": 414.546,
+      "inherited_budget_seconds": 0,
+      "summary": {
+        "screened": 20,
+        "selected": 8,
+        "requested_generation_attempts": 24,
+        "generation_capacity": 30,
+        "reproduction_attempted": 8,
+        "historical_supported": 3,
+        "passing_seeds": 4,
+        "generation_attempted": 12,
+        "execution_verified": 10,
+        "by_source": {
+          "aidev": {
+            "selected": 3,
+            "reproduction_attempted": 3,
+            "historical_supported": 0,
+            "passing_seeds": 0,
+            "generation_attempted": 0,
+            "execution_verified": 0
+          },
+          "swebench": {
+            "selected": 5,
+            "reproduction_attempted": 5,
+            "historical_supported": 3,
+            "passing_seeds": 4,
+            "generation_attempted": 12,
+            "execution_verified": 10
+          }
+        },
+        "by_repo": {
+          "https://github.com/PyLabRobot/pylabrobot": {
+            "selected": 1,
+            "reproduction_attempted": 1,
+            "historical_supported": 0,
+            "passing_seeds": 0,
+            "generation_attempted": 0,
+            "execution_verified": 0
+          },
+          "https://github.com/pylint-dev/astroid": {
+            "selected": 4,
+            "reproduction_attempted": 4,
+            "historical_supported": 2,
+            "passing_seeds": 3,
+            "generation_attempted": 9,
+            "execution_verified": 8
+          },
+          "https://github.com/shillis13/python": {
+            "selected": 1,
+            "reproduction_attempted": 1,
+            "historical_supported": 0,
+            "passing_seeds": 0,
+            "generation_attempted": 0,
+            "execution_verified": 0
+          },
+          "https://github.com/fastapi/fastapi": {
+            "selected": 1,
+            "reproduction_attempted": 1,
+            "historical_supported": 0,
+            "passing_seeds": 0,
+            "generation_attempted": 0,
+            "execution_verified": 0
+          },
+          "https://github.com/pvlib/pvlib-python": {
+            "selected": 1,
+            "reproduction_attempted": 1,
+            "historical_supported": 1,
+            "passing_seeds": 1,
+            "generation_attempted": 3,
+            "execution_verified": 2
+          }
+        },
+        "generation_unknown": 0,
+        "generation_unexecuted": 12
+      }
+    },
+    {
+      "run_id": "batch-20261029T235944990687Z",
+      "active_seconds": 527.436,
+      "inherited_budget_seconds": 414.546,
+      "summary": {
+        "screened": 20,
+        "selected": 2,
+        "requested_generation_attempts": 6,
+        "generation_capacity": 30,
+        "reproduction_attempted": 2,
+        "historical_supported": 1,
+        "passing_seeds": 1,
+        "generation_attempted": 3,
+        "execution_verified": 1,
+        "by_source": {
+          "aidev": {
+            "selected": 2,
+            "reproduction_attempted": 2,
+            "historical_supported": 1,
+            "passing_seeds": 1,
+            "generation_attempted": 3,
+            "execution_verified": 1
+          }
+        },
+        "by_repo": {
+          "https://github.com/PyLabRobot/pylabrobot": {
+            "selected": 1,
+            "reproduction_attempted": 1,
+            "historical_supported": 0,
+            "passing_seeds": 0,
+            "generation_attempted": 0,
+            "execution_verified": 0
+          },
+          "https://github.com/fastapi/fastapi": {
+            "selected": 1,
+            "reproduction_attempted": 1,
+            "historical_supported": 1,
+            "passing_seeds": 1,
+            "generation_attempted": 3,
+            "execution_verified": 1
+          }
+        },
+        "generation_unknown": 0,
+        "generation_unexecuted": 3
+      }
+    }
+  ],
+  "source_cases_attempted": 8,
+  "profile_attempts": 10,
+  "repo_count": 5,
+  "model_calls": 15,
+  "model_request_seconds": 50.406,
+  "verification_status_counts": {
+    "execution_verified": 11,
+    "verification_failed": 3,
+    "invalid_output": 1
+  },
+  "execution_verified_unique_hashes": 11,
+  "accepted_candidates": {
+    "f4ca0fb25a82a8e05daf1eed2c4eca353120f0d827c43a80f119fb7f09dd1577": [
+      {
+        "case_id": "pylint-dev__astroid-1196",
+        "profile_id": "pylint-dev__astroid-1196",
+        "attempt": 1,
+        "generation_run": "generate-20261029T235321366861Z",
+        "verification_run": "verify-20261029T235337035725Z"
+      }
+    ],
+    "d66ef7592651e116f836123205f5a5c22172ea77cd8e8893a4eba64df6d003d9": [
+      {
+        "case_id": "pylint-dev__astroid-1196",
+        "profile_id": "pylint-dev__astroid-1196",
+        "attempt": 2,
+        "generation_run": "generate-20261029T235321366861Z",
+        "verification_run": "verify-20261029T235337035725Z"
+      }
+    ],
+    "2b20f6de44abbcc4f21df2180557f9b324ffbb165b1307e83676ab16ecde8233": [
+      {
+        "case_id": "pylint-dev__astroid-1268",
+        "profile_id": "pylint-dev__astroid-1268",
+        "attempt": 1,
+        "generation_run": "generate-20261029T235415338424Z",
+        "verification_run": "verify-20261029T235427190903Z"
+      }
+    ],
+    "682dc668843b0d564e9944413b8c06585596eab80fbfe138e92905aaa9c856ed": [
+      {
+        "case_id": "pylint-dev__astroid-1268",
+        "profile_id": "pylint-dev__astroid-1268",
+        "attempt": 2,
+        "generation_run": "generate-20261029T235415338424Z",
+        "verification_run": "verify-20261029T235427190903Z"
+      }
+    ],
+    "380e78e831aa1aae26e293915b3b7a1ab216607f3e03ecbe1ea32b64c8257c32": [
+      {
+        "case_id": "pylint-dev__astroid-1268",
+        "profile_id": "pylint-dev__astroid-1268",
+        "attempt": 3,
+        "generation_run": "generate-20261029T235415338424Z",
+        "verification_run": "verify-20261029T235427190903Z"
+      }
+    ],
+    "bd1a4eb6a17d3cefa2936de031cf033e05fedd04d02d8662242c20e0c543c39a": [
+      {
+        "case_id": "pylint-dev__astroid-1866",
+        "profile_id": "pylint-dev__astroid-1866",
+        "attempt": 1,
+        "generation_run": "generate-20261029T235638993708Z",
+        "verification_run": "verify-20261029T235649711472Z"
+      }
+    ],
+    "70e3e4d842391a0f8472f33925facbe717de1e118bc709d92492491cc7bd5291": [
+      {
+        "case_id": "pylint-dev__astroid-1866",
+        "profile_id": "pylint-dev__astroid-1866",
+        "attempt": 2,
+        "generation_run": "generate-20261029T235638993708Z",
+        "verification_run": "verify-20261029T235649711472Z"
+      }
+    ],
+    "2912d15dae2a0490829982ad20a2f5467e3b88f4afe3b967feea6b9e0c1edb17": [
+      {
+        "case_id": "pylint-dev__astroid-1866",
+        "profile_id": "pylint-dev__astroid-1866",
+        "attempt": 3,
+        "generation_run": "generate-20261029T235638993708Z",
+        "verification_run": "verify-20261029T235649711472Z"
+      }
+    ],
+    "5405d832f6628bafd8a6e6fc958b9826776351d428c0c327d3cddef3049a388b": [
+      {
+        "case_id": "pvlib__pvlib-python-1072",
+        "profile_id": "pvlib__pvlib-python-1072",
+        "attempt": 1,
+        "generation_run": "generate-20261029T235810212189Z",
+        "verification_run": "verify-20261029T235820935739Z"
+      }
+    ],
+    "b48bfaa39b07cda72b02b23f739f914e1b15638a0a2d564fe43d9db7f75fdaa6": [
+      {
+        "case_id": "pvlib__pvlib-python-1072",
+        "profile_id": "pvlib__pvlib-python-1072",
+        "attempt": 2,
+        "generation_run": "generate-20261029T235810212189Z",
+        "verification_run": "verify-20261029T235820935739Z"
+      }
+    ],
+    "91417ff914ef0041ffbdd70af4f5f2c9f76bd6e540a32332762cc065b15e081e": [
+      {
+        "case_id": "fastapi__fastapi-15232",
+        "profile_id": "fastapi__fastapi-15232-r1",
+        "attempt": 3,
+        "generation_run": "generate-20261030T000107782911Z",
+        "verification_run": "verify-20261030T000118300588Z"
+      }
+    ]
+  },
+  "charged_seconds_combined": 527.436,
+  "junit_files_checked": 87,
+  "testcase_records_checked": 2822,
+  "old_files_unchanged": 1087,
+  "new_raw_files_recorded": 1018,
+  "human_gold_training": "pending",
+  "image_integrity_audit": "integrity-20261030T000410182947Z",
+  "image_integrity_seconds": 4.578,
+  "images_checked": 6,
+  "software_tests": {
+    "discovered": 58,
+    "passed": 57,
+    "opt_in_legacy_docker_skipped": 1
+  },
+  "combined_expansion_01_02": {
+    "screened_source_cases": 40,
+    "profile_records": 42,
+    "registry_repo_groups": 20,
+    "model_attempts": 36,
+    "execution_verified": 17,
+    "unique_execution_verified_hashes": 14,
+    "syntax_candidate_error_text_stable": true,
+    "qualification": "Expansion cohorts 01/02 only; profile corrections are not new source cases; gold/training pending"
+  },
+  "source_pair_differences": [
+    {
+      "profile_id": "pylint-dev__astroid-1196",
+      "changed_files": [
+        "astroid/nodes/node_classes.py"
+      ]
+    },
+    {
+      "profile_id": "pylint-dev__astroid-1268",
+      "changed_files": [
+        "astroid/nodes/as_string.py"
+      ]
+    },
+    {
+      "profile_id": "pylint-dev__astroid-1333",
+      "changed_files": [
+        "astroid/modutils.py"
+      ]
+    },
+    {
+      "profile_id": "pylint-dev__astroid-1866",
+      "changed_files": [
+        "astroid/brain/brain_builtin_inference.py"
+      ]
+    },
+    {
+      "profile_id": "pvlib__pvlib-python-1072",
+      "changed_files": [
+        "pvlib/temperature.py"
+      ]
+    },
+    {
+      "profile_id": "fastapi__fastapi-15232-r1",
+      "changed_files": [
+        "fastapi/routing.py"
+      ]
+    }
+  ],
+  "software_test_log_sha256": "40ce4400e00d43d3ac1419fc9f0ee34f0a8045b3d269c4c216af6ccc5823872b",
+  "archive": {
+    "files": 1275,
+    "bytes": 3533105,
+    "sha256": "f29b5e9daa8b3e5955d8ab9fa55b156ac5b13d59df888b700613d81dede11c9e",
+    "new_raw_hashes_verified": 1018
+  },
+  "software_tests_pre_primary": {
+    "discovered": 53,
+    "passed": 52,
+    "opt_in_legacy_docker_skipped": 1
+  },
+  "software_tests_pre_corrections": {
+    "discovered": 56,
+    "passed": 55,
+    "opt_in_legacy_docker_skipped": 1
+  }
+}

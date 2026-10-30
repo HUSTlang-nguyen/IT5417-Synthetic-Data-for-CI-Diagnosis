@@ -18,6 +18,51 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_windows_export_names_and_repo_identity_cannot_escape_cache(self):
+        for value in ["../escape", "dir/.. /escape.py", "dir./module.py", "dir/NUL.py"]:
+            with self.assertRaises(ValueError): multicase.safe_relative(value)
+        for url in ["https://github.com/../..", "https://github.com/owner./repo", "https://github.com/owner/CON"]:
+            with self.assertRaises(ValueError): multicase.validate_case({**config(), "repo_url":url})
+
+    def test_upstream_plural_test_suffix_and_explicit_plugin_recipe_are_bounded(self):
+        self.assertTrue(multicase.is_test("package/resources/resource_tests.py"))
+        c = config(); c["pytest_version"] = "8.3.5"; c["pytest_plugins"] = ["inline_snapshot.pytest_plugin"]
+        multicase.validate_case(c)
+        for field, value in [("pytest_version", "unbounded"), ("pytest_plugins", ["--override-ini=unsafe"])]:
+            with self.assertRaises(ValueError): multicase.validate_case({**c, field: value})
+
+    def test_site_edits_preserve_indentation_crlf_and_refuse_undeclared_sites(self):
+        original = "def f(x):\r\n    if x > 3:\r\n        return x + 1\r\n    return 0\r\n"
+        sites = multicase.mutation_sites(original, 2)
+        site = next(s for s in sites if s["line"] == 2)
+        proposal = {"path": "package/api.py", "site_id": site["site_id"], "replacement": "if x >= 3:", "explanation": "fixture"}
+        changed = multicase.apply_site_edit(proposal, original, proposal["path"], [site])
+        self.assertEqual(changed, original.replace("if x > 3:", "if x >= 3:"))
+        self.assertEqual(changed.count("\r\n"), 4)
+        for replacement in [" if x >= 3:", "if x >= 3:\nreturn 9", "if x > 3:"]:
+            with self.assertRaises(ValueError): multicase.apply_site_edit({**proposal, "replacement": replacement}, original, proposal["path"], [site])
+        with self.assertRaises(ValueError): multicase.apply_site_edit(proposal, original, proposal["path"], [])
+        self.assertNotIn("proposed_label", multicase.SITE_SCHEMA["properties"])
+
+    def test_truncated_parameter_mapping_requires_unique_explicit_parameter_prefix(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); p = root / "results.xml"
+            p.write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_error[required-Missing data]"/></testsuite>')
+            result = {"exit_code": 0, "timed_out": False, "junit": p.name}
+            target = "tests/test_api.py::TestAPI::test_error[required-Missing"
+            self.assertFalse(multicase.resolve_targets(result, root, [target], "pass")[0])
+            ok, rows = multicase.resolve_targets(result, root, [target], "pass", "exact_or_unique_truncated_param")
+            self.assertTrue(ok); self.assertEqual(rows[0]["resolution"], "unique_truncated_parameter_prefix")
+            p.write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_error[required-Missing data]"/><testcase classname="tests.test_api.TestAPI" name="test_error[required-Missing other]"/></testsuite>')
+            self.assertFalse(multicase.resolve_targets(result, root, [target], "pass", "exact_or_unique_truncated_param")[0])
+            self.assertFalse(multicase.resolve_targets(result, root, ["tests/test_api.py::TestAPI::test_error"], "pass", "exact_or_unique_truncated_param")[0])
+
+    def test_declared_log_tmpfs_must_not_mask_source_or_tests(self):
+        case = config(); case["writable_dirs"] = ["test_logs"]
+        multicase.validate_case(case)
+        case["allowed_file"] = "test_logs/api.py"
+        with self.assertRaises(ValueError): multicase.validate_case(case)
+
     def test_case_loader_prefers_canonical_directory_and_keeps_legacy_fallback(self):
         from ci_demo import common
         with tempfile.TemporaryDirectory() as tmp:
@@ -125,6 +170,9 @@ class CaseTests(unittest.TestCase):
             self.assertNotIn('<script>', html)
             self.assertIn('&lt;script&gt;', html)
             self.assertIn('../source-fixture/manifest.json', html)
+            generated = render(folder, {"kind":"synthetic_generation", "schema_version":2, "run_id":"fixture", "status":"generation_finished",
+                                        "protocol":multicase.SITE_PROTOCOL, "attempts":[], "attempt_count":3})
+            self.assertIn(multicase.SITE_PROTOCOL, generated)
 
     def test_three_model_timeouts_keep_denominator_and_exclude_reference_fields(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -180,6 +228,11 @@ class CaseTests(unittest.TestCase):
 
 
 class BatchTests(unittest.TestCase):
+    def test_budget_carry_cannot_extend_the_six_hour_limit(self):
+        self.assertEqual(batch.initial_budget_charge({"initial_budget_charge_seconds":414.546}),414.546)
+        for value in [-1,21601,float('nan'),float('inf'),True]:
+            with self.assertRaises(ValueError): batch.initial_budget_charge({"initial_budget_charge_seconds":value})
+
     def test_lock_refuses_concurrent_resume_and_releases(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "batch.lock"

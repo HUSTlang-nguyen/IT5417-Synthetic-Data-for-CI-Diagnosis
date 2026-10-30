@@ -1,0 +1,47 @@
+{
+  "case_id": "shillis13__python-33",
+  "source_kind": "aidev",
+  "repo_url": "https://github.com/shillis13/python",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "split": "development",
+  "license": "MIT",
+  "runner_kind": "python-source-v2",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "record_id": 3483317540,
+  "base": "c9bcda4fe622fa9e18731021f37411d21b5c02e8",
+  "head": "61dadabd3cb6c22206e469c5d56c7ae912908c51",
+  "allowed_file": "src/file_utils/fsFormat.py",
+  "frozen_test_files": [
+    "tests/tests_fileUtils/test_pipeline_integration.py"
+  ],
+  "test_targets": [
+    "tests/tests_fileUtils/test_pipeline_integration.py"
+  ],
+  "prompt_test_nodes": [
+    "tests/tests_fileUtils/test_pipeline_integration.py::test_fsfind_to_fsformat_json",
+    "tests/tests_fileUtils/test_pipeline_integration.py::test_find_filter_pipeline",
+    "tests/tests_fileUtils/test_pipeline_integration.py::test_find_filter_actions_delete_dry_run"
+  ],
+  "dependencies": [
+    "PyYAML==6.0.3",
+    "colorama==0.4.6",
+    "rich==13.9.4"
+  ],
+  "install_project": false,
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "writable_dirs": [],
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 140,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "identity_source": "saved_GitHub_PR_API",
+  "source_record_sha256": "3d7ab9653acf5c8b70e01a6a87378a793b7f654d3ed08fddf1bcee7b060643f5",
+  "historical_hypothesis": "Frozen upstream tests on pinned base/head; support requires an observed regression, not PR text"
+}
