@@ -6,7 +6,7 @@ Demo một mẫu repo thật (properr PR #6, record AIDev v5 3256868569) và cá
 
 Workflow: user yêu cầu sinh ca lỗi -> code điều phối gọi LLM -> ứng viên chỉ sửa file Python cho phép -> test độc lập trong Docker -> log thật -> người rà nhãn.
 
-Vai trò hiện hành: 7B là generator duy nhất; 3B là model chẩn đoán chính ở giai đoạn sau, chưa tải/chạy trong W1. Model phụ đã bỏ khỏi cấu hình và workflow. Dùng [demo-summary](demo-summary.md) và [pilot-review](pilot-review.md) để replay ba lượt 7B hiện có; không chạy lại chỉ để soạn tài liệu.
+Vai trò hiện hành: 7B là generator duy nhất; 3B là model chẩn đoán chính ở giai đoạn sau, chưa tải/chạy trong W1. Model phụ đã bỏ khỏi cấu hình và workflow. Dùng [tổng kết W1 và replay](development-summary.md#w1) và [review W1](data-review.md#w1) để replay ba lượt 7B hiện có; không chạy lại chỉ để soạn tài liệu.
 
 ## Trước buổi demo trên PC
 
@@ -99,7 +99,7 @@ V3 là opt-in `single-line-site-v3`: đọc AST tĩnh của source/test seed, cu
 
 Profile hiệu chỉnh có ID mới `-r1`, source_case_id/trial_of/reason. Cumulative budget charge kế thừa từ parent, không cộng parent charge hai lần khi báo thời gian. Hai profile này không là hai PR/case nguồn mới. Pytest/version/plugins được khai báo và kiểm tra allowlist; runtime giữ plugin autoload disabled, logs/test_logs chỉ có tmpfs khai báo không che source/tests. Kết quả thất bại của profile gốc không bị sửa hoặc ghi đè.
 
-Audit grouping chỉ đọc các batch đã hoàn tất: repo/shared-commit group, exact hashes và lexical-edit suggestions. Nó không phê duyệt nhãn, xóa raw hoặc tự chia train/validation/test. [Tổng kết 02](expansion-02-summary.md) nêu số đo và giới hạn.
+Audit grouping chỉ đọc các batch đã hoàn tất: repo/shared-commit group, exact hashes và lexical-edit suggestions. Nó không phê duyệt nhãn, xóa raw hoặc tự chia train/validation/test. [Tổng kết 02](development-summary.md#expansion-02) nêu số đo và giới hạn.
 
 ## Replay W1 đã lưu khoảng 5 phút
 
