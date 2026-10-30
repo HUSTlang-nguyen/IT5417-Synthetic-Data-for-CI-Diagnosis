@@ -37,6 +37,6 @@ Mỗi thư mục con chứa `case.json`; source checkout, weights và raw runs �
 
 Có 30 profile folders cho 28 case nguồn đã có cấu hình (gồm properr W1). Số folder không phải số case đã tái hiện thành công. Hai đợt mở rộng đã thử 17 case nguồn trên 10 repo; hai profile hiệu chỉnh được đếm riêng.
 
-[Đợt 01](../docs/expansion-01-summary.md) · [Đợt 02](../docs/expansion-02-summary.md) · [Grouping/duplicate](../data-manifests/development-groups-v1.json). Registry còn lưu case bị loại mà không có runnable config.
+[Đợt 01](../docs/development-summary.md#expansion-01) · [Đợt 02](../docs/development-summary.md#expansion-02) · [Grouping/duplicate](../data-manifests/development-groups-v1.json). Registry còn lưu case bị loại mà không có runnable config.
 
 Loader ưu tiên `cases/<id>/case.json`; `data-manifests/cases/<id>.json` chỉ là fallback đọc artifact cũ. Không tạo case mới ở đường dẫn cũ.

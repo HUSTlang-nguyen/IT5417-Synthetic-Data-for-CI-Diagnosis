@@ -2,7 +2,7 @@
 
 - [summary.json](summary.json): số liệu thực, hai batch, correction budget carry, candidate hashes, source-pair/image checks và combined metrics.
 - [software-tests.txt](software-tests.txt): output software unit suite thật, giữ byte CRLF bằng `.gitattributes`; không phải log nghiên cứu giả lập.
-- [Tổng kết](../../expansion-02-summary.md), [review kỹ thuật](../../expansion-02-review.md), [grouping snapshot](../../../data-manifests/development-groups-v1.json), [case index](../../../cases/README.md).
+- [Tổng kết](../../development-summary.md#expansion-02), [review kỹ thuật](../../data-review.md#expansion-02), [grouping snapshot](../../../data-manifests/development-groups-v1.json), [case index](../../../cases/README.md).
 
 Primary run: `batch-20261029T235240554230Z`; correction run: `batch-20261029T235944990687Z`; image audit: `integrity-20261030T000410182947Z`. Source/test/model artifacts ở các run được manifest liên kết, raw metadata/patches trong `.cache/expansion-02/records/`. Chúng bị ignore và không tự có trong clone.
 

@@ -33,7 +33,7 @@ Mỗi lệnh in ID run và đường dẫn report HTML. Thay <RUN-ID> bằng ID 
 
 Demo lưu manifest/report `generation_demo` trước preflight, giữ mẫu số ba, lượt lỗi/chưa thực hiện và thời gian chưa đo; liên kết doctor/reproduction/generation được lưu theo từng stage. CLI không còn lệnh so sánh hai generator. Báo cáo comparison lịch sử vẫn đọc được, không sửa raw artifacts.
 
-**Trạng thái thực tế:** [Tổng kết W1](docs/demo-summary.md): tái hiện properr thành công; 7B đạt kiểm chứng thực thi 2/3, chưa được duyệt để train. [Bản rà ba lượt 7B](docs/pilot-review.md) chờ người duyệt. Evidence PC/laptop và log 22-test nghiệm thu cũ được giữ nguyên; kiểm thử sau thay đổi workflow được ghi riêng trong [agent log](docs/agent-log.md).
+**Trạng thái thực tế:** [Tổng kết W1](docs/development-summary.md#w1): tái hiện properr thành công; 7B đạt kiểm chứng thực thi 2/3, chưa được duyệt để train. [Bản rà ba lượt 7B](docs/data-review.md#w1) đã được người dùng đồng ý kết luận/kiến nghị giữ-loại; gold/training vẫn pending. Evidence PC/laptop và log 22-test nghiệm thu cũ được giữ nguyên; kiểm thử sau thay đổi workflow được ghi riêng trong [agent log](docs/agent-log.md).
 
 ## Review dữ liệu với agent
 
@@ -42,6 +42,9 @@ Dùng skill [ci-data-review](.agents/skills/ci-data-review/SKILL.md), ví dụ: 
 Agent đọc code/diff/log, đối chiếu evidence và giải thích nhãn/vị trí đề xuất; người dùng review kết luận và các lựa chọn còn quan trọng. Skill không tự chạy lại thí nghiệm hoặc biến lời đồng ý tiếp tục thành duyệt nhãn/training. Nếu raw artifacts không nằm trong worktree, cung cấp đường dẫn run/archive; không cần tải lại model để review. Hướng dẫn đánh giá leakage phụ thuộc input chẩn đoán thực tế, không tự loại mẫu chỉ vì comment.
 
 ## Tài liệu và cấu trúc
+
+- [Tổng kết phát triển](docs/development-summary.md): số liệu W1 và hai expansion, thời gian, giới hạn, replay và bước tiếp theo.
+- [Review dữ liệu](docs/data-review.md): phân tích từng mẫu, kiến nghị và trạng thái xác nhận.
 
 - [Kế hoạch thực thi theo tuần dành cho agent](docs/implementation-plan.md): task ID, phụ thuộc, đầu ra, cổng nghiệm thu và điểm tiếp tục.
 - [Kịch bản demo và lệnh đầy đủ](docs/demo-runbook.md).
@@ -76,7 +79,7 @@ Kết quả thực đo của đợt 01:
 
 Đây là số liệu development; chưa phải nhãn gold, số mẫu được duyệt train hoặc accuracy chẩn đoán.
 
-[Đợt mở rộng 01](docs/expansion-01-summary.md) đã thử 9 case/6 repo từ AIDev và SWE Lite dev; 21 lượt 7B, 6 đạt thực thi nhưng chỉ 3 candidate khác byte. [Review kỹ thuật](docs/expansion-01-review.md) chờ người dùng; gold/training vẫn pending. W1 properr và evidence cũ giữ nguyên.
+[Đợt mở rộng 01](docs/development-summary.md#expansion-01) đã thử 9 case/6 repo từ AIDev và SWE Lite dev; 21 lượt 7B, 6 đạt thực thi nhưng chỉ 3 candidate khác byte. [Review kỹ thuật](docs/data-review.md#expansion-01) chờ người dùng; gold/training vẫn pending. W1 properr và evidence cũ giữ nguyên.
 
 ```text
 python -m ci_demo batch --manifest data-manifests/expansion-01.json
@@ -87,6 +90,6 @@ Raw artifacts/patches/cache không đi theo clone; đọc [runbook](docs/demo-ru
 
 ### Kết quả đợt 02 đã chạy
 
-[Đợt 02](docs/expansion-02-summary.md): sàng lọc thêm 20 nguồn, thử 8 case mới và 2 profile hiệu chỉnh; 15 lượt 7B, 11 đạt runner/11 candidate khác byte ở astroid, pvlib và FastAPI. Một candidate gây lỗi cú pháp vi phạm prompt v3; [review](docs/expansion-02-review.md) nêu rõ kiến nghị curation.
+[Đợt 02](docs/development-summary.md#expansion-02): sàng lọc thêm 20 nguồn, thử 8 case mới và 2 profile hiệu chỉnh; 15 lượt 7B, 11 đạt runner/11 candidate khác byte ở astroid, pvlib và FastAPI. Một candidate gây lỗi cú pháp vi phạm prompt v3; [review](docs/data-review.md#expansion-02) nêu rõ kiến nghị curation.
 
 Cộng hai đợt: **40 nguồn sàng lọc, 17 case nguồn đã thử/10 repo, 36 lượt sinh, 17 lượt đạt runner/14 candidate khác byte**. Những số này chưa phải gold/training approval. [cases/README](cases/README.md) phân biệt source case với profile; [grouping snapshot](data-manifests/development-groups-v1.json) giữ development, chưa tạo split cuối.

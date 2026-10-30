@@ -2,7 +2,7 @@
 
 - [summary.json](summary.json): số liệu phái sinh từ artifact thực, links/run IDs, trạng thái pending và hash/byte-integrity checks.
 - [software-tests.txt](software-tests.txt): output thật của host unit suite cuối; fixture phần mềm được tách khỏi dữ liệu nghiên cứu.
-- [Tổng kết](../../expansion-01-summary.md), [review](../../expansion-01-review.md), [registry](../../../data-manifests/expansion-01.json).
+- [Tổng kết](../../development-summary.md#expansion-01), [review](../../data-review.md#expansion-01), [registry](../../../data-manifests/expansion-01.json).
 
 Raw run root trên máy hiện tại là `runs/batch-20261029T173420443187Z/` cùng các stage được manifest liên kết. Raw snapshots/patches/setup/license metadata ở `.cache/expansion/records/`; nguồn đầy đủ ở `.cache/case-contexts/`. Đây là artifact local bị ignore, không có trong Git clone.
 
