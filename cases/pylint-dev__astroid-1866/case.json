@@ -1,0 +1,67 @@
+{
+  "case_id": "pylint-dev__astroid-1866",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "split": "development",
+  "license": "LGPL-2.1-or-later",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-1866",
+  "base": "6cf238d089cf4b6753c94cfc089b4a47487711e5",
+  "head": "base+repair:2a043aadd8b6a26ddd78b2877734843ff448a7b2359b60a6035d879c1532b38e",
+  "allowed_file": "astroid/brain/brain_builtin_inference.py",
+  "repair_patch": ".cache/expansion-02/records/pylint-dev__astroid-1866/repair.patch",
+  "repair_patch_sha256": "2a043aadd8b6a26ddd78b2877734843ff448a7b2359b60a6035d879c1532b38e",
+  "test_patch": ".cache/expansion-02/records/pylint-dev__astroid-1866/test.patch",
+  "test_patch_sha256": "e7cd515e63106317962cce33933c6d0058b4732d0886ddd70988c1795a7c8dda",
+  "fail_to_pass": [
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\\n"
+  ],
+  "pass_to_pass": [
+    "tests/unittest_brain_builtin.py::BuiltinsTest::test_infer_property",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes-from-positional]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes-from-keyword]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[mixed-indexes-from-mixed]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes-on-variable]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\"I",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_with_specs"
+  ],
+  "test_targets": [
+    "tests/unittest_brain_builtin.py"
+  ],
+  "prompt_test_nodes": [
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\\n"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_brain_builtin.py"
+  ],
+  "focus_line": 957,
+  "generation_protocol": "single-line-site-v3",
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "lazy-object-proxy==1.9.0",
+    "wrapt==1.13.3",
+    "typing_extensions==4.12.2",
+    "six==1.16.0",
+    "nose==1.3.7",
+    "attrs==22.2.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base/fixed-pass, PASS_TO_PASS stay pass; unique truncated parameter mapping recorded"
+}

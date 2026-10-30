@@ -7,6 +7,7 @@ from pathlib import Path
 import hashlib
 import json
 import os
+import math
 import shutil
 import time
 from . import multicase
@@ -15,6 +16,13 @@ from .common import CACHE, ROOT, case_config, new_run, now, read_json, run_path,
 
 class BudgetStop(RuntimeError):
     pass
+
+
+def initial_budget_charge(plan):
+    value = plan.get("initial_budget_charge_seconds", plan.get("discovery_seconds", 0))
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or not 0 <= value <= 21600:
+        raise ValueError("Initial budget charge must be finite and within the fixed six-hour limit")
+    return value
 
 
 @contextmanager
@@ -117,9 +125,13 @@ def _run_batch(manifest_path=None, resume=None, endpoint="http://127.0.0.1:11434
         manifest = {"schema_version": 2, "kind": "development_batch", "run_id": folder.name,
                     "created_at": now(), "status": "running", "plan_sha256": sha256(Path(manifest_path)),
                     "screening": records, "budget_seconds": 21600,
-                    "active_seconds": plan.get("discovery_seconds", 0), "unaccounted_time_bound_seconds": 0,
+                    "active_seconds": initial_budget_charge(plan),
+                    "inherited_budget_seconds": plan.get("initial_budget_charge_seconds", 0),
+                    "cohort_kind": plan.get("cohort_kind", "new_source_cases"), "parent_batch": plan.get("parent_batch"),
+                    "unaccounted_time_bound_seconds": 0,
                     "minimum_free_bytes": 20 * 2**30, "human_review": "pending", "split": "development",
-                    "cases": [{"case_id": c["case_id"], "source_kind": c["source_kind"], "repo_url": c["repo_url"],
+                    "cases": [{"case_id": c["case_id"], "source_case_id": c.get("source_case_id", c["case_id"]),
+                               "source_kind": c["source_kind"], "repo_url": c["repo_url"],
                                "config_sha256": hashlib.sha256(json.dumps(c, sort_keys=True).encode()).hexdigest(),
                                "stages": {}, "status": "pending"} for c in cases]}
         write_json(folder / "plan.json", plan)

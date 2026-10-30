@@ -1,0 +1,828 @@
+{
+  "schema_version": 1,
+  "scope": "development registries and their finished batches only",
+  "registry_files": [
+    "data-manifests/expansion-01.json",
+    "data-manifests/expansion-02.json",
+    "data-manifests/expansion-02-corrections.json"
+  ],
+  "source_case_records": 40,
+  "profile_records": 42,
+  "groups": [
+    {
+      "group_id": "repo:cailleanc1c/c1c-bot",
+      "repo_urls": [
+        "https://github.com/cailleanC1C/C1C-Bot"
+      ],
+      "case_ids": [
+        "cailleanC1C__C1C-Bot-339"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:creditimpact/finance-platform",
+      "repo_urls": [
+        "https://github.com/creditimpact/finance-platform"
+      ],
+      "case_ids": [
+        "creditimpact__finance-platform-1090"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:neuron7x/kuramoto-synchronization-model",
+      "repo_urls": [
+        "https://github.com/neuron7x/Kuramoto-synchronization-model"
+      ],
+      "case_ids": [
+        "neuron7x__Kuramoto-synchronization-model-2159"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:mfat/sshpilot",
+      "repo_urls": [
+        "https://github.com/mfat/sshpilot"
+      ],
+      "case_ids": [
+        "mfat__sshpilot-176",
+        "mfat__sshpilot-418",
+        "mfat__sshpilot-716"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:thesnowcloak/blockchain-for-sharing-documents-in-python",
+      "repo_urls": [
+        "https://github.com/TheSnowcloak/Blockchain-for-sharing-documents-in-Python"
+      ],
+      "case_ids": [
+        "TheSnowcloak__Blockchain-for-sharing-documents-in-Python-16"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:pylabrobot/pylabrobot",
+      "repo_urls": [
+        "https://github.com/PyLabRobot/pylabrobot"
+      ],
+      "case_ids": [
+        "PyLabRobot__pylabrobot-527",
+        "PyLabRobot__pylabrobot-528",
+        "PyLabRobot__pylabrobot-528-r1",
+        "PyLabRobot__pylabrobot-537"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:esaul314/chunkify",
+      "repo_urls": [
+        "https://github.com/esaul314/chunkify"
+      ],
+      "case_ids": [
+        "esaul314__chunkify-340"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:dslopresti3/quick-netters",
+      "repo_urls": [
+        "https://github.com/dslopresti3/quick-netters"
+      ],
+      "case_ids": [
+        "dslopresti3__quick-netters-36"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:tyighter/tcm",
+      "repo_urls": [
+        "https://github.com/tyighter/tcm"
+      ],
+      "case_ids": [
+        "tyighter__tcm-211",
+        "tyighter__tcm-364"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:leonarduk/allotmint",
+      "repo_urls": [
+        "https://github.com/leonarduk/allotmint"
+      ],
+      "case_ids": [
+        "leonarduk__allotmint-420"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "repo_urls": [
+        "https://github.com/marshmallow-code/marshmallow"
+      ],
+      "case_ids": [
+        "marshmallow-code__marshmallow-1343",
+        "marshmallow-code__marshmallow-1359"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:pydicom/pydicom",
+      "repo_urls": [
+        "https://github.com/pydicom/pydicom"
+      ],
+      "case_ids": [
+        "pydicom__pydicom-1139",
+        "pydicom__pydicom-1256",
+        "pydicom__pydicom-1694"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:sqlfluff/sqlfluff",
+      "repo_urls": [
+        "https://github.com/sqlfluff/sqlfluff"
+      ],
+      "case_ids": [
+        "sqlfluff__sqlfluff-1517",
+        "sqlfluff__sqlfluff-1625",
+        "sqlfluff__sqlfluff-1733",
+        "sqlfluff__sqlfluff-1763",
+        "sqlfluff__sqlfluff-2419"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:shillis13/python",
+      "repo_urls": [
+        "https://github.com/shillis13/python"
+      ],
+      "case_ids": [
+        "shillis13__python-33"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:policyengine/policyengine-us-data",
+      "repo_urls": [
+        "https://github.com/PolicyEngine/policyengine-us-data"
+      ],
+      "case_ids": [
+        "PolicyEngine__policyengine-us-data-362"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:leaddesigner63/numerolog_bot",
+      "repo_urls": [
+        "https://github.com/leaddesigner63/numerolog_bot"
+      ],
+      "case_ids": [
+        "leaddesigner63__numerolog_bot-608"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:artkoder/events-bot-new",
+      "repo_urls": [
+        "https://github.com/artkoder/events-bot-new"
+      ],
+      "case_ids": [
+        "artkoder__events-bot-new-1178"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:fastapi/fastapi",
+      "repo_urls": [
+        "https://github.com/fastapi/fastapi"
+      ],
+      "case_ids": [
+        "fastapi__fastapi-15232",
+        "fastapi__fastapi-15232-r1"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:pvlib/pvlib-python",
+      "repo_urls": [
+        "https://github.com/pvlib/pvlib-python"
+      ],
+      "case_ids": [
+        "pvlib__pvlib-python-1072",
+        "pvlib__pvlib-python-1154",
+        "pvlib__pvlib-python-1606",
+        "pvlib__pvlib-python-1707",
+        "pvlib__pvlib-python-1854"
+      ],
+      "split": "development"
+    },
+    {
+      "group_id": "repo:pylint-dev/astroid",
+      "repo_urls": [
+        "https://github.com/pylint-dev/astroid"
+      ],
+      "case_ids": [
+        "pylint-dev__astroid-1196",
+        "pylint-dev__astroid-1268",
+        "pylint-dev__astroid-1333",
+        "pylint-dev__astroid-1866",
+        "pylint-dev__astroid-1978"
+      ],
+      "split": "development"
+    }
+  ],
+  "shared_commit_edges": [],
+  "batch_runs": [
+    "batch-20261029T173420443187Z",
+    "batch-20261029T235240554230Z",
+    "batch-20261029T235944990687Z"
+  ],
+  "attempts": [
+    {
+      "artifact_id": "generate-20261029T173541374859Z/attempt-01",
+      "case_id": "marshmallow-code__marshmallow-1343",
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "source_case_id": "marshmallow-code__marshmallow-1343",
+      "generation_run": "generate-20261029T173541374859Z",
+      "index": 1,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T173541374859Z/attempt-02",
+      "case_id": "marshmallow-code__marshmallow-1343",
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "source_case_id": "marshmallow-code__marshmallow-1343",
+      "generation_run": "generate-20261029T173541374859Z",
+      "index": 2,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "2a21776c5e5672f5a7a02b68a1b7805ff720706cf47940540ce26b979214982b",
+      "lexical_edit_fingerprint": "c8c1bab2f324a3ebb51257acc1487313e0cfc345e364a341aa92269d1335682d"
+    },
+    {
+      "artifact_id": "generate-20261029T173541374859Z/attempt-03",
+      "case_id": "marshmallow-code__marshmallow-1343",
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "source_case_id": "marshmallow-code__marshmallow-1343",
+      "generation_run": "generate-20261029T173541374859Z",
+      "index": 3,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "2a21776c5e5672f5a7a02b68a1b7805ff720706cf47940540ce26b979214982b",
+      "lexical_edit_fingerprint": "c8c1bab2f324a3ebb51257acc1487313e0cfc345e364a341aa92269d1335682d"
+    },
+    {
+      "artifact_id": "generate-20261029T173641181162Z/attempt-01",
+      "case_id": "tyighter__tcm-364",
+      "group_id": "repo:tyighter/tcm",
+      "source_case_id": "tyighter__tcm-364",
+      "generation_run": "generate-20261029T173641181162Z",
+      "index": 1,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T173641181162Z/attempt-02",
+      "case_id": "tyighter__tcm-364",
+      "group_id": "repo:tyighter/tcm",
+      "source_case_id": "tyighter__tcm-364",
+      "generation_run": "generate-20261029T173641181162Z",
+      "index": 2,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "7f36fd6ed263d85851003c2b04e0802d09139f1500b1bcffc87d2978ecc43854",
+      "lexical_edit_fingerprint": "fecd593a1c868441f45a69009fc6edeb2d06ce2d5ca68c93af872ebd40520bb6"
+    },
+    {
+      "artifact_id": "generate-20261029T173641181162Z/attempt-03",
+      "case_id": "tyighter__tcm-364",
+      "group_id": "repo:tyighter/tcm",
+      "source_case_id": "tyighter__tcm-364",
+      "generation_run": "generate-20261029T173641181162Z",
+      "index": 3,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T173710990536Z/attempt-01",
+      "case_id": "marshmallow-code__marshmallow-1359",
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "source_case_id": "marshmallow-code__marshmallow-1359",
+      "generation_run": "generate-20261029T173710990536Z",
+      "index": 1,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "584a530d8b41b9aae4aea6a5a4d43b045f14b4cab66c1bfb5b4661feb237a321",
+      "lexical_edit_fingerprint": "f5052407df9cb59d67f6413e3535a1e9f1f168999872a082296d353148d6c6ff"
+    },
+    {
+      "artifact_id": "generate-20261029T173710990536Z/attempt-02",
+      "case_id": "marshmallow-code__marshmallow-1359",
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "source_case_id": "marshmallow-code__marshmallow-1359",
+      "generation_run": "generate-20261029T173710990536Z",
+      "index": 2,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "584a530d8b41b9aae4aea6a5a4d43b045f14b4cab66c1bfb5b4661feb237a321",
+      "lexical_edit_fingerprint": "f5052407df9cb59d67f6413e3535a1e9f1f168999872a082296d353148d6c6ff"
+    },
+    {
+      "artifact_id": "generate-20261029T173710990536Z/attempt-03",
+      "case_id": "marshmallow-code__marshmallow-1359",
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "source_case_id": "marshmallow-code__marshmallow-1359",
+      "generation_run": "generate-20261029T173710990536Z",
+      "index": 3,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T173754950832Z/attempt-01",
+      "case_id": "pydicom__pydicom-1139",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1139",
+      "generation_run": "generate-20261029T173754950832Z",
+      "index": 1,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "d6335f8e5d8105cd94e94cea214ff5d72a1b27f325dc7454f19ef51a69b23a56",
+      "lexical_edit_fingerprint": "1032d8609227078ea003fb97a9a2db6913cab0f5b5af0a8f9c7aaea7457f611b"
+    },
+    {
+      "artifact_id": "generate-20261029T173754950832Z/attempt-02",
+      "case_id": "pydicom__pydicom-1139",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1139",
+      "generation_run": "generate-20261029T173754950832Z",
+      "index": 2,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "d6335f8e5d8105cd94e94cea214ff5d72a1b27f325dc7454f19ef51a69b23a56",
+      "lexical_edit_fingerprint": "1032d8609227078ea003fb97a9a2db6913cab0f5b5af0a8f9c7aaea7457f611b"
+    },
+    {
+      "artifact_id": "generate-20261029T173754950832Z/attempt-03",
+      "case_id": "pydicom__pydicom-1139",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1139",
+      "generation_run": "generate-20261029T173754950832Z",
+      "index": 3,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "d6335f8e5d8105cd94e94cea214ff5d72a1b27f325dc7454f19ef51a69b23a56",
+      "lexical_edit_fingerprint": "1032d8609227078ea003fb97a9a2db6913cab0f5b5af0a8f9c7aaea7457f611b"
+    },
+    {
+      "artifact_id": "generate-20261029T173843891949Z/attempt-01",
+      "case_id": "mfat__sshpilot-716",
+      "group_id": "repo:mfat/sshpilot",
+      "source_case_id": "mfat__sshpilot-716",
+      "generation_run": "generate-20261029T173843891949Z",
+      "index": 1,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T173843891949Z/attempt-02",
+      "case_id": "mfat__sshpilot-716",
+      "group_id": "repo:mfat/sshpilot",
+      "source_case_id": "mfat__sshpilot-716",
+      "generation_run": "generate-20261029T173843891949Z",
+      "index": 2,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T173843891949Z/attempt-03",
+      "case_id": "mfat__sshpilot-716",
+      "group_id": "repo:mfat/sshpilot",
+      "source_case_id": "mfat__sshpilot-716",
+      "generation_run": "generate-20261029T173843891949Z",
+      "index": 3,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T173924603722Z/attempt-01",
+      "case_id": "pydicom__pydicom-1256",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1256",
+      "generation_run": "generate-20261029T173924603722Z",
+      "index": 1,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "0f15de3d28ead93252a6bbc28fdd19b6ad1fb86ab0662f2b6e5662998a0ebf80",
+      "lexical_edit_fingerprint": "4371475c934d6178f6dca9688bdfbb0f61bbb1d3e150d5a1bd6324128e750df6"
+    },
+    {
+      "artifact_id": "generate-20261029T173924603722Z/attempt-02",
+      "case_id": "pydicom__pydicom-1256",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1256",
+      "generation_run": "generate-20261029T173924603722Z",
+      "index": 2,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "972bc7ba518606aea50aca13a37906477991a5249cd4408b7297c998321d4cd1",
+      "lexical_edit_fingerprint": "00a89654aad7586701868906e73c3e485e11930f0ab67c058ae914e2729b78d5"
+    },
+    {
+      "artifact_id": "generate-20261029T173924603722Z/attempt-03",
+      "case_id": "pydicom__pydicom-1256",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1256",
+      "generation_run": "generate-20261029T173924603722Z",
+      "index": 3,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "0f15de3d28ead93252a6bbc28fdd19b6ad1fb86ab0662f2b6e5662998a0ebf80",
+      "lexical_edit_fingerprint": "4371475c934d6178f6dca9688bdfbb0f61bbb1d3e150d5a1bd6324128e750df6"
+    },
+    {
+      "artifact_id": "generate-20261029T174020789887Z/attempt-01",
+      "case_id": "pydicom__pydicom-1694",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1694",
+      "generation_run": "generate-20261029T174020789887Z",
+      "index": 1,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T174020789887Z/attempt-02",
+      "case_id": "pydicom__pydicom-1694",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1694",
+      "generation_run": "generate-20261029T174020789887Z",
+      "index": 2,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T174020789887Z/attempt-03",
+      "case_id": "pydicom__pydicom-1694",
+      "group_id": "repo:pydicom/pydicom",
+      "source_case_id": "pydicom__pydicom-1694",
+      "generation_run": "generate-20261029T174020789887Z",
+      "index": 3,
+      "protocol": "single-file-exact-edit-v2",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261029T235321366861Z/attempt-01",
+      "case_id": "pylint-dev__astroid-1196",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1196",
+      "generation_run": "generate-20261029T235321366861Z",
+      "index": 1,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "f4ca0fb25a82a8e05daf1eed2c4eca353120f0d827c43a80f119fb7f09dd1577",
+      "lexical_edit_fingerprint": "1534262e74306ce13033e55d6d5953c44e04a47ccc3f28e80bbf7dd37c3d735a"
+    },
+    {
+      "artifact_id": "generate-20261029T235321366861Z/attempt-02",
+      "case_id": "pylint-dev__astroid-1196",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1196",
+      "generation_run": "generate-20261029T235321366861Z",
+      "index": 2,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "d66ef7592651e116f836123205f5a5c22172ea77cd8e8893a4eba64df6d003d9",
+      "lexical_edit_fingerprint": "57c66c6dc610f42d5e799574a7da6d5459c70999e387ca29aa579a86bb6f2047"
+    },
+    {
+      "artifact_id": "generate-20261029T235321366861Z/attempt-03",
+      "case_id": "pylint-dev__astroid-1196",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1196",
+      "generation_run": "generate-20261029T235321366861Z",
+      "index": 3,
+      "protocol": "single-line-site-v3",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "760c12e1051d492487d3bcb615a913f35331617925599a52b763bc72511c32fa",
+      "lexical_edit_fingerprint": "3be3a3ecb01a8a5cda7de5ee5a4c33e761abe6044d429109999a749b1cbb74c2"
+    },
+    {
+      "artifact_id": "generate-20261029T235415338424Z/attempt-01",
+      "case_id": "pylint-dev__astroid-1268",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1268",
+      "generation_run": "generate-20261029T235415338424Z",
+      "index": 1,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "2b20f6de44abbcc4f21df2180557f9b324ffbb165b1307e83676ab16ecde8233",
+      "lexical_edit_fingerprint": "33e45aa6b89dc5616750233aa70317d4e850213a76a0073258babb6ebc7e6aae"
+    },
+    {
+      "artifact_id": "generate-20261029T235415338424Z/attempt-02",
+      "case_id": "pylint-dev__astroid-1268",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1268",
+      "generation_run": "generate-20261029T235415338424Z",
+      "index": 2,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "682dc668843b0d564e9944413b8c06585596eab80fbfe138e92905aaa9c856ed",
+      "lexical_edit_fingerprint": "c70604a8a23db7b628953cb1c335427f0271651f84bbe5d0b6f176ea38176135"
+    },
+    {
+      "artifact_id": "generate-20261029T235415338424Z/attempt-03",
+      "case_id": "pylint-dev__astroid-1268",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1268",
+      "generation_run": "generate-20261029T235415338424Z",
+      "index": 3,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "380e78e831aa1aae26e293915b3b7a1ab216607f3e03ecbe1ea32b64c8257c32",
+      "lexical_edit_fingerprint": "6a228c8a9db3f0eb551b41e39ff117794b738c13c62819197e5abcb77c5b88b4"
+    },
+    {
+      "artifact_id": "generate-20261029T235638993708Z/attempt-01",
+      "case_id": "pylint-dev__astroid-1866",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1866",
+      "generation_run": "generate-20261029T235638993708Z",
+      "index": 1,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "bd1a4eb6a17d3cefa2936de031cf033e05fedd04d02d8662242c20e0c543c39a",
+      "lexical_edit_fingerprint": "ac3d7a62eff3f9f90ec65a629ad32c39526a304b06f405f02df5c34f86a6a45c"
+    },
+    {
+      "artifact_id": "generate-20261029T235638993708Z/attempt-02",
+      "case_id": "pylint-dev__astroid-1866",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1866",
+      "generation_run": "generate-20261029T235638993708Z",
+      "index": 2,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "70e3e4d842391a0f8472f33925facbe717de1e118bc709d92492491cc7bd5291",
+      "lexical_edit_fingerprint": "d43e5dda0feddfcc3f08e17380fd067d34281ec4bfffd554ef6f961473d973b9"
+    },
+    {
+      "artifact_id": "generate-20261029T235638993708Z/attempt-03",
+      "case_id": "pylint-dev__astroid-1866",
+      "group_id": "repo:pylint-dev/astroid",
+      "source_case_id": "pylint-dev__astroid-1866",
+      "generation_run": "generate-20261029T235638993708Z",
+      "index": 3,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "2912d15dae2a0490829982ad20a2f5467e3b88f4afe3b967feea6b9e0c1edb17",
+      "lexical_edit_fingerprint": "832d96c46c8263ad211f08b21f6b6a921ce2df5f9859b719de4e2d81b60218fd"
+    },
+    {
+      "artifact_id": "generate-20261029T235810212189Z/attempt-01",
+      "case_id": "pvlib__pvlib-python-1072",
+      "group_id": "repo:pvlib/pvlib-python",
+      "source_case_id": "pvlib__pvlib-python-1072",
+      "generation_run": "generate-20261029T235810212189Z",
+      "index": 1,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "5405d832f6628bafd8a6e6fc958b9826776351d428c0c327d3cddef3049a388b",
+      "lexical_edit_fingerprint": "88b888433d2a92d42d82409f5b53126f99f097aae3a19b5e653f1c0a559448f8"
+    },
+    {
+      "artifact_id": "generate-20261029T235810212189Z/attempt-02",
+      "case_id": "pvlib__pvlib-python-1072",
+      "group_id": "repo:pvlib/pvlib-python",
+      "source_case_id": "pvlib__pvlib-python-1072",
+      "generation_run": "generate-20261029T235810212189Z",
+      "index": 2,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "b48bfaa39b07cda72b02b23f739f914e1b15638a0a2d564fe43d9db7f75fdaa6",
+      "lexical_edit_fingerprint": "61164e3c59b9ec89842ddf59d6e617fc91edbad10d0e66dace586476128ee081"
+    },
+    {
+      "artifact_id": "generate-20261029T235810212189Z/attempt-03",
+      "case_id": "pvlib__pvlib-python-1072",
+      "group_id": "repo:pvlib/pvlib-python",
+      "source_case_id": "pvlib__pvlib-python-1072",
+      "generation_run": "generate-20261029T235810212189Z",
+      "index": 3,
+      "protocol": "single-line-site-v3",
+      "status": "invalid_output",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "artifact_id": "generate-20261030T000107782911Z/attempt-01",
+      "case_id": "fastapi__fastapi-15232-r1",
+      "group_id": "repo:fastapi/fastapi",
+      "source_case_id": "fastapi__fastapi-15232",
+      "generation_run": "generate-20261030T000107782911Z",
+      "index": 1,
+      "protocol": "single-line-site-v3",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "c0aeeec566f66e5b291410bb6b92527d00ad74b824ae103db039a4202c512ced",
+      "lexical_edit_fingerprint": "895ec04271c75b87dc2c777c10c67eb89cf38231faeba250b32c3e813d6ae679"
+    },
+    {
+      "artifact_id": "generate-20261030T000107782911Z/attempt-02",
+      "case_id": "fastapi__fastapi-15232-r1",
+      "group_id": "repo:fastapi/fastapi",
+      "source_case_id": "fastapi__fastapi-15232",
+      "generation_run": "generate-20261030T000107782911Z",
+      "index": 2,
+      "protocol": "single-line-site-v3",
+      "status": "verification_failed",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "a48518c5a8c07c9a6c7a2e10655c6ed3e0f1c05c31f53df14dde22590d88e3e1",
+      "lexical_edit_fingerprint": "d9697861ca9dad3f126305729dd65b7c81469fcecf3e99b6fff92fd26b3878da"
+    },
+    {
+      "artifact_id": "generate-20261030T000107782911Z/attempt-03",
+      "case_id": "fastapi__fastapi-15232-r1",
+      "group_id": "repo:fastapi/fastapi",
+      "source_case_id": "fastapi__fastapi-15232",
+      "generation_run": "generate-20261030T000107782911Z",
+      "index": 3,
+      "protocol": "single-line-site-v3",
+      "status": "execution_verified",
+      "split": "development",
+      "human_confirmation": "pending",
+      "training_eligibility": "pending",
+      "candidate_sha256": "91417ff914ef0041ffbdd70af4f5f2c9f76bd6e540a32332762cc065b15e081e",
+      "lexical_edit_fingerprint": "2e949fbbfceaccf787a536e6cb57b62f957d8b72591a7d86263e5182f88747a4"
+    }
+  ],
+  "exact_duplicate_candidate_families": [
+    {
+      "sha256": "2a21776c5e5672f5a7a02b68a1b7805ff720706cf47940540ce26b979214982b",
+      "artifacts": [
+        "generate-20261029T173541374859Z/attempt-02",
+        "generate-20261029T173541374859Z/attempt-03"
+      ]
+    },
+    {
+      "sha256": "584a530d8b41b9aae4aea6a5a4d43b045f14b4cab66c1bfb5b4661feb237a321",
+      "artifacts": [
+        "generate-20261029T173710990536Z/attempt-01",
+        "generate-20261029T173710990536Z/attempt-02"
+      ]
+    },
+    {
+      "sha256": "d6335f8e5d8105cd94e94cea214ff5d72a1b27f325dc7454f19ef51a69b23a56",
+      "artifacts": [
+        "generate-20261029T173754950832Z/attempt-01",
+        "generate-20261029T173754950832Z/attempt-02",
+        "generate-20261029T173754950832Z/attempt-03"
+      ]
+    },
+    {
+      "sha256": "0f15de3d28ead93252a6bbc28fdd19b6ad1fb86ab0662f2b6e5662998a0ebf80",
+      "artifacts": [
+        "generate-20261029T173924603722Z/attempt-01",
+        "generate-20261029T173924603722Z/attempt-03"
+      ]
+    }
+  ],
+  "same_lexical_edit_suggestions": [
+    {
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "fingerprint": "c8c1bab2f324a3ebb51257acc1487313e0cfc345e364a341aa92269d1335682d",
+      "artifacts": [
+        "generate-20261029T173541374859Z/attempt-02",
+        "generate-20261029T173541374859Z/attempt-03"
+      ]
+    },
+    {
+      "group_id": "repo:marshmallow-code/marshmallow",
+      "fingerprint": "f5052407df9cb59d67f6413e3535a1e9f1f168999872a082296d353148d6c6ff",
+      "artifacts": [
+        "generate-20261029T173710990536Z/attempt-01",
+        "generate-20261029T173710990536Z/attempt-02"
+      ]
+    },
+    {
+      "group_id": "repo:pydicom/pydicom",
+      "fingerprint": "1032d8609227078ea003fb97a9a2db6913cab0f5b5af0a8f9c7aaea7457f611b",
+      "artifacts": [
+        "generate-20261029T173754950832Z/attempt-01",
+        "generate-20261029T173754950832Z/attempt-02",
+        "generate-20261029T173754950832Z/attempt-03"
+      ]
+    },
+    {
+      "group_id": "repo:pydicom/pydicom",
+      "fingerprint": "4371475c934d6178f6dca9688bdfbb0f61bbb1d3e150d5a1bd6324128e750df6",
+      "artifacts": [
+        "generate-20261029T173924603722Z/attempt-01",
+        "generate-20261029T173924603722Z/attempt-03"
+      ]
+    }
+  ],
+  "qualification": "Lexical edit similarity is a review suggestion, not semantic equivalence or approval. No raw edits/deletions, gold labels, training export or final train/validation/test assignment."
+}

@@ -49,7 +49,7 @@ Agent đọc code/diff/log, đối chiếu evidence và giải thích nhãn/vị
 - [Nhật ký theo thứ tự](docs/agent-log.md).
 - [Kế hoạch sau góp ý GVHD](docs/revised-plan.md).
 - [Nguồn tài liệu nghiên cứu](docs/reference/README.md).
-- cases/: provenance nhỏ được commit; .cache/: repo nguồn và môi trường có thể dựng lại.
+- [cases/](cases/README.md): mỗi case có `cases/<id>/case.json`, gồm properr W1 và cấu hình mở rộng; [data-manifests/](data-manifests/expansion-01.json): registry/chọn nhóm; .cache/: repo nguồn và môi trường.
 - runs/: raw output/log/report sinh theo run ID, bị ignore; chỉ tóm tắt evidence cần thiết được commit.
 
 ## Giới hạn cần giữ
@@ -84,3 +84,9 @@ python -m ci_demo batch --resume <BATCH-ID>
 ```
 
 Raw artifacts/patches/cache không đi theo clone; đọc [runbook](docs/demo-runbook.md) trước khi bắt đầu run mới. Resume batch đã hoàn tất chỉ trả trạng thái đã lưu, không gọi lại model/test. [Task contract](docs/task-contract.md) và [hướng dẫn nhãn](docs/labeling-guide.md) phân biệt source evidence, generator proposal, agent assessment và human approval.
+
+### Kết quả đợt 02 đã chạy
+
+[Đợt 02](docs/expansion-02-summary.md): sàng lọc thêm 20 nguồn, thử 8 case mới và 2 profile hiệu chỉnh; 15 lượt 7B, 11 đạt runner/11 candidate khác byte ở astroid, pvlib và FastAPI. Một candidate gây lỗi cú pháp vi phạm prompt v3; [review](docs/expansion-02-review.md) nêu rõ kiến nghị curation.
+
+Cộng hai đợt: **40 nguồn sàng lọc, 17 case nguồn đã thử/10 repo, 36 lượt sinh, 17 lượt đạt runner/14 candidate khác byte**. Những số này chưa phải gold/training approval. [cases/README](cases/README.md) phân biệt source case với profile; [grouping snapshot](data-manifests/development-groups-v1.json) giữ development, chưa tạo split cuối.

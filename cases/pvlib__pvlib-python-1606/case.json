@@ -1,0 +1,68 @@
+{
+  "case_id": "pvlib__pvlib-python-1606",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "split": "development",
+  "license": "BSD-3-Clause",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1606",
+  "base": "c78b50f4337ecbe536a961336ca91a1176efc0e8",
+  "head": "base+repair:08e84f3c0e0d91c84b6035ab660c741d56a6611e78fb7383e0cbfcbeeeefd482",
+  "allowed_file": "pvlib/tools.py",
+  "repair_patch": ".cache/expansion-02/records/pvlib__pvlib-python-1606/repair.patch",
+  "repair_patch_sha256": "08e84f3c0e0d91c84b6035ab660c741d56a6611e78fb7383e0cbfcbeeeefd482",
+  "test_patch": ".cache/expansion-02/records/pvlib__pvlib-python-1606/test.patch",
+  "test_patch_sha256": "208b3f9a8401ab1d34e6269c32053f87e942132838c64b1955d7fd3bcf3d9f75",
+  "fail_to_pass": [
+    "pvlib/tests/test_tools.py::test__golden_sect_DataFrame_vector"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/test_tools.py::test_build_kwargs[keys0-input_dict0-expected0]",
+    "pvlib/tests/test_tools.py::test_build_kwargs[keys1-input_dict1-expected1]",
+    "pvlib/tests/test_tools.py::test_build_kwargs[keys2-input_dict2-expected2]",
+    "pvlib/tests/test_tools.py::test_build_kwargs[keys3-input_dict3-expected3]",
+    "pvlib/tests/test_tools.py::test__golden_sect_DataFrame[params0-0.0-1.0-0.5-_obj_test_golden_sect]",
+    "pvlib/tests/test_tools.py::test__golden_sect_DataFrame[params1-0.0-1.0-0.07230200263994839-_obj_test_golden_sect]",
+    "pvlib/tests/test_tools.py::test__golden_sect_DataFrame[params2-0.0-100.0-89.14332727531685-_obj_test_golden_sect]",
+    "pvlib/tests/test_tools.py::test__golden_sect_DataFrame_atol",
+    "pvlib/tests/test_tools.py::test__golden_sect_DataFrame_nans",
+    "pvlib/tests/test_tools.py::test_degrees_to_index_1"
+  ],
+  "test_targets": [
+    "pvlib/tests/test_tools.py"
+  ],
+  "prompt_test_nodes": [
+    "pvlib/tests/test_tools.py::test__golden_sect_DataFrame_vector"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/test_tools.py"
+  ],
+  "focus_line": 344,
+  "generation_protocol": "single-line-site-v3",
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "pytz==2025.2",
+    "requests==2.32.3",
+    "matplotlib==3.7.5",
+    "h5py==3.10.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base/fixed-pass, PASS_TO_PASS stay pass; unique truncated parameter mapping recorded"
+}

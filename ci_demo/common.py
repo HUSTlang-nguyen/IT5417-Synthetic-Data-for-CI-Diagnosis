@@ -36,7 +36,9 @@ def case_config(case="properr-6"):
     if case == "properr-6":
         return read_json(ROOT / "cases" / case / "case.json")
     from .multicase import validate_case
-    value = read_json(ROOT / "data-manifests" / "cases" / (case + ".json"))
+    canonical = ROOT / "cases" / case / "case.json"
+    legacy = ROOT / "data-manifests" / "cases" / (case + ".json")
+    value = read_json(canonical if canonical.is_file() else legacy)
     validate_case(value)
     if value["case_id"] != case:
         raise ValueError("Case ID mismatch")

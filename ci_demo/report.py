@@ -84,7 +84,8 @@ def render(folder, manifest):
     elif manifest["kind"] in {"synthetic_generation", "synthetic_verification"}:
         generated = manifest["kind"] == "synthetic_generation"
         attempts = manifest.get("attempts", [])
-        body.append('<h2>' + ('Sinh bằng 7B — exact edit v2' if generated else 'Kiểm chứng candidate trong Docker') + '</h2>')
+        body.append('<h2>' + ('Sinh bằng 7B — ' + esc(manifest.get('protocol', 'single-file-exact-edit-v2')) if generated
+                             else 'Kiểm chứng candidate trong Docker') + '</h2>')
         body.append('<p>Đã ghi nhận ' + str(len(attempts)) + '/' + str(manifest["attempt_count"]) + ' lượt; đạt thực thi: '
                     + ("xem verification run" if generated else str(sum(x["status"] == "execution_verified" for x in attempts))) + '</p>')
         if generated:

@@ -1,0 +1,88 @@
+{
+  "case_id": "pvlib__pvlib-python-1707",
+  "source_kind": "swebench",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "dataset": "SWE-bench/SWE-bench_Lite",
+  "dataset_revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "split": "development",
+  "license": "BSD-3-Clause",
+  "runner_kind": "python-source-v2",
+  "revision": "b0dde1093fe417d83b7184254edf8199c1f0dff5",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1707",
+  "base": "40e9e978c170bdde4eeee1547729417665dbc34c",
+  "head": "base+repair:0380f3b9a652b76b9da8092d18418b100d9a7990299aab26d01fb52c7aece91b",
+  "allowed_file": "pvlib/iam.py",
+  "repair_patch": ".cache/expansion-02/records/pvlib__pvlib-python-1707/repair.patch",
+  "repair_patch_sha256": "0380f3b9a652b76b9da8092d18418b100d9a7990299aab26d01fb52c7aece91b",
+  "test_patch": ".cache/expansion-02/records/pvlib__pvlib-python-1707/test.patch",
+  "test_patch_sha256": "635528235fdfb0add1fa03d8cebe9529f1f3aac2ed7e32dbda2251aefc69e038",
+  "fail_to_pass": [
+    "pvlib/tests/test_iam.py::test_physical_n1_L0"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/test_iam.py::test_ashrae",
+    "pvlib/tests/test_iam.py::test_ashrae_scalar",
+    "pvlib/tests/test_iam.py::test_physical",
+    "pvlib/tests/test_iam.py::test_physical_ar",
+    "pvlib/tests/test_iam.py::test_physical_noar",
+    "pvlib/tests/test_iam.py::test_physical_scalar",
+    "pvlib/tests/test_iam.py::test_martin_ruiz",
+    "pvlib/tests/test_iam.py::test_martin_ruiz_exception",
+    "pvlib/tests/test_iam.py::test_martin_ruiz_diffuse",
+    "pvlib/tests/test_iam.py::test_iam_interp",
+    "pvlib/tests/test_iam.py::test_sapm[45-0.9975036250000002]",
+    "pvlib/tests/test_iam.py::test_sapm[aoi1-expected1]",
+    "pvlib/tests/test_iam.py::test_sapm[aoi2-expected2]",
+    "pvlib/tests/test_iam.py::test_sapm_limits",
+    "pvlib/tests/test_iam.py::test_marion_diffuse_model",
+    "pvlib/tests/test_iam.py::test_marion_diffuse_kwargs",
+    "pvlib/tests/test_iam.py::test_marion_diffuse_invalid",
+    "pvlib/tests/test_iam.py::test_marion_integrate_scalar[sky-180-0.9596085829811408]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_scalar[horizon-1800-0.8329070417832541]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_scalar[ground-180-0.719823559106309]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_list[sky-180-expected0]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_list[horizon-1800-expected1]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_list[ground-180-expected2]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_series[sky-180-expected0]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_series[horizon-1800-expected1]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_series[ground-180-expected2]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_ground_flat",
+    "pvlib/tests/test_iam.py::test_marion_integrate_invalid",
+    "pvlib/tests/test_iam.py::test_schlick",
+    "pvlib/tests/test_iam.py::test_schlick_diffuse"
+  ],
+  "test_targets": [
+    "pvlib/tests/test_iam.py"
+  ],
+  "prompt_test_nodes": [
+    "pvlib/tests/test_iam.py::test_physical_n1_L0"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/test_iam.py"
+  ],
+  "focus_line": 178,
+  "generation_protocol": "single-line-site-v3",
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "python_image": "python:3.9-slim-bookworm",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "pytz==2025.2",
+    "requests==2.32.3",
+    "matplotlib==3.7.5",
+    "h5py==3.10.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source FAIL_TO_PASS fail on base/fixed-pass, PASS_TO_PASS stay pass; unique truncated parameter mapping recorded"
+}

@@ -1,6 +1,7 @@
 """Versioned multi-repository development experiments; never execute candidates on host."""
 from __future__ import annotations
 import copy
+import ast
 import difflib
 import hashlib
 import io
@@ -17,6 +18,10 @@ from . import ollama, runner
 from .common import CACHE, ROOT, command, new_run, now, read_json, require_success, run_path, sha256, successful, write_json
 
 PROTOCOL = "single-file-exact-edit-v2"
+SITE_PROTOCOL = "single-line-site-v3"
+SITE_SCHEMA = {"type": "object", "additionalProperties": False,
+               "properties": {k: {"type": "string"} for k in ("path", "site_id", "replacement", "explanation")},
+               "required": ["path", "site_id", "replacement", "explanation"]}
 EDIT_SCHEMA = {
     "type": "object", "additionalProperties": False,
     "properties": {k: {"type": "string"} for k in ("path", "before", "after", "proposed_label", "explanation")},
@@ -31,6 +36,9 @@ def safe_relative(value):
     p = PurePosixPath(value)
     if p.is_absolute() or any(x in ("..", ".git") for x in p.parts) or value.startswith("-"):
         raise ValueError("Unsafe repository-relative path")
+    reserved = {"CON", "PRN", "AUX", "NUL", *["COM" + str(i) for i in range(1, 10)], *["LPT" + str(i) for i in range(1, 10)]}
+    if any(part.rstrip(" .") != part or part.split(".")[0].upper() in reserved for part in p.parts):
+        raise ValueError("Repository path cannot be exported safely on Windows")
     return value
 
 
@@ -42,6 +50,9 @@ def validate_case(case):
         raise ValueError("Invalid case ID")
     if not re.fullmatch(r"https://github.com/[\w.-]+/[\w.-]+", case["repo_url"]):
         raise ValueError("Expected an explicit GitHub repository URL")
+    if any(part in {".", ".."} for part in case["repo_url"].removeprefix("https://github.com/").split("/")):
+        raise ValueError("Repository identity cannot contain dot components")
+    safe_relative(case["repo_url"].removeprefix("https://github.com/"))
     if not re.fullmatch(r"[0-9a-f]{40}", case["base"]):
         raise ValueError("Base must be an immutable commit")
     if case["source_kind"] == "aidev" and not re.fullmatch(r"[0-9a-f]{40}", case["head"]):
@@ -57,8 +68,19 @@ def validate_case(case):
         safe_relative(target.split("::")[0])
     for path in case.get("python_paths", ["."]):
         if path != ".": safe_relative(path)
-    if any(p != "logs" for p in case.get("writable_dirs", [])):
-        raise ValueError("Only an isolated runtime logs directory may be writable under source")
+    if any(p not in {"logs", "test_logs"} for p in case.get("writable_dirs", [])):
+        raise ValueError("Only isolated declared runtime log directories may be writable under source")
+    for directory in case.get("writable_dirs", []):
+        if any(p == directory or p.startswith(directory + "/") for p in [case["allowed_file"], *case["frozen_test_files"]]):
+            raise ValueError("Runtime tmpfs must not cover source/tests")
+    if case.get("generation_protocol", PROTOCOL) not in {PROTOCOL, SITE_PROTOCOL}:
+        raise ValueError("Unknown generator protocol")
+    if case.get("source_id_matching", "exact") not in {"exact", "exact_or_unique_truncated_param"}:
+        raise ValueError("Unknown source test identity matching policy")
+    if case.get("pytest_version", "7.4.4") not in {"7.4.4", "8.3.5"}:
+        raise ValueError("Unsupported pinned pytest version")
+    for plugin in case.get("pytest_plugins", []):
+        if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.]*", plugin): raise ValueError("Invalid explicit pytest plugin")
     limits = case["resources"]
     if not (128 <= limits["memory_mb"] <= 8192 and 0 < limits["cpus"] <= 4):
         raise ValueError("Invalid resource bounds")
@@ -81,7 +103,7 @@ def validate_case(case):
 
 def is_test(path):
     p = PurePosixPath(path)
-    return any(x in ("test", "tests") for x in p.parts) or p.name.startswith("test_") or p.name.endswith("_test.py")
+    return any(x in ("test", "tests") for x in p.parts) or p.name.startswith("test_") or p.name.endswith(("_test.py", "_tests.py"))
 
 
 def patch_paths(text):
@@ -115,6 +137,7 @@ def export_commit(repo, revision, destination, evidence, name, guard):
             if member.isdir(): continue
             if not member.isfile(): raise ValueError("Nonregular source archive entry: " + member.name)
             target = destination / member.name
+            if not target.resolve().is_relative_to(destination.resolve()): raise ValueError("Source export escaped context")
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(archive.extractfile(member).read())
 
@@ -179,7 +202,7 @@ def prepare_case(case, evidence, guard=None):
             raise ValueError("Test bytes differ between base and fixed")
     source = work / "head" / case["allowed_file"]
     if not source.is_file(): raise ValueError("Allowlisted source file missing")
-    dependencies = ["setuptools==75.6.0", "wheel==0.45.1", "pytest==7.4.4", *case.get("dependencies", [])]
+    dependencies = ["setuptools==75.6.0", "wheel==0.45.1", "pytest==" + case.get("pytest_version", "7.4.4"), *case.get("dependencies", [])]
     install = ["/opt/venv/bin/pip", "install", "--disable-pip-version-check", *dependencies]
     dockerfile = ("FROM " + case.get("python_image", "python:3.11-slim-bookworm") + "\n"
                   "ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1\n"
@@ -229,7 +252,9 @@ def execute(case, gate, evidence, name, role="head", candidate=None, guard=None)
         if "," in str(output): raise ValueError("Invalid results mount path")
         args += ["--mount", "type=bind,src=" + str(output) + ",dst=/results", gate["image_id"],
                  "/opt/venv/bin/python", "-m", "pytest", "-v", "-p", "no:cacheprovider",
-                 "--junitxml=/results/results.xml", *case["test_targets"]]
+                 "--junitxml=/results/results.xml"]
+        for plugin in case.get("pytest_plugins", []): args += ["-p", plugin]
+        args += case["test_targets"]
         try:
             result = command(args, evidence, name, timeout=300)
         finally:
@@ -268,6 +293,22 @@ def targets_match(result, folder, targets, status):
     return bool(targets)
 
 
+def resolve_targets(result, folder, targets, expected, mode="exact"):
+    """Resolve only a unique incomplete parameter ID, never fuzzy test names."""
+    outcomes = test_outcomes(result, folder); records = []
+    for target in targets:
+        parts = target.split("::"); cls = parts[0].removesuffix(".py")
+        if len(parts) > 2: cls += "/" + "/".join(parts[1:-1])
+        name = parts[-1]; resolved = name if (cls, name) in outcomes else None; how = "exact"
+        if resolved is None and mode == "exact_or_unique_truncated_param" and "[" in name and not name.endswith("]"):
+            matches = [n for c, n in outcomes if c == cls and n.startswith(name)]
+            if len(matches) == 1: resolved = matches[0]; how = "unique_truncated_parameter_prefix"
+        records.append({"source_id": target, "resolved_class": cls, "resolved_name": resolved,
+                        "resolution": how if resolved is not None else "unresolved",
+                        "expected": expected, "observed": outcomes.get((cls, resolved))})
+    return bool(records) and all(r["resolved_name"] is not None and r["observed"] == expected for r in records), records
+
+
 def reproduce_case(case, folder=None, guard=None):
     folder = folder or new_run("reproduce")
     manifest = {"schema_version": 2, "kind": "case_reproduction", "run_id": folder.name, "source": case,
@@ -281,11 +322,17 @@ def reproduce_case(case, folder=None, guard=None):
         fixed_pass = test_passed(manifest["head"], folder)
         supported = base_fail and fixed_pass
         if case["source_kind"] == "swebench":
-            supported = (supported and targets_match(manifest["base"], folder, case["fail_to_pass"], "fail")
-                         and targets_match(manifest["head"], folder, case["fail_to_pass"], "pass"))
+            mode = case.get("source_id_matching", "exact")
+            manifest["source_test_resolution"] = []
+            for role, expectation in (("base", "fail"), ("head", "pass")):
+                ok, detail = resolve_targets(manifest[role], folder, case["fail_to_pass"], expectation, mode)
+                supported = supported and ok
+                manifest["source_test_resolution"].append({"role": role, "set": "FAIL_TO_PASS", "matching_mode": mode, "records": detail})
             for role in ("base", "head"):
                 if case.get("pass_to_pass"):
-                    supported = supported and targets_match(manifest[role], folder, case["pass_to_pass"], "pass")
+                    ok, detail = resolve_targets(manifest[role], folder, case["pass_to_pass"], "pass", mode)
+                    supported = supported and ok
+                    manifest["source_test_resolution"].append({"role": role, "set": "PASS_TO_PASS", "matching_mode": mode, "records": detail})
         manifest["historical_supported"] = bool(supported)
         gate["head_passed"] = bool(fixed_pass)
         manifest["status"] = "hypothesis_supported_locally" if supported else "hypothesis_not_confirmed"
@@ -320,9 +367,63 @@ def apply_edit(proposal, original, allowed):
     return original.replace(before, after, 1)
 
 
+def mutation_sites(original, focus_line):
+    """Static parsing of a pinned passing seed; never import/execute that source."""
+    lines = original.splitlines(keepends=True)
+    try: tree = ast.parse(original.lstrip("\ufeff"))
+    except SyntaxError as exc: raise ValueError("Passing source is outside host static parser grammar") from exc
+    numbers = set()
+    for node in ast.walk(tree):
+        if not isinstance(node, (ast.Compare, ast.BoolOp, ast.BinOp, ast.UnaryOp, ast.Return, ast.IfExp)): continue
+        if getattr(node, "end_lineno", None) != node.lineno: continue
+        text = lines[node.lineno - 1].rstrip("\r\n").strip()
+        if len(text) > 220 or text.startswith(("#", "def ", "class ", "import ", "from ")): continue
+        if not (text.startswith(("if ", "elif ", "return ", "while ", "assert ")) or " = " in text): continue
+        numbers.add(node.lineno)
+    numbers = sorted(numbers, key=lambda n: (abs(n - focus_line), n))[:18]
+    return [{"site_id": str(i + 1), "line": n, "source": lines[n - 1].rstrip("\r\n").lstrip()}
+            for i, n in enumerate(numbers)]
+
+
+def apply_site_edit(proposal, original, allowed, sites):
+    if not isinstance(proposal, dict) or set(proposal) != set(SITE_SCHEMA["required"]): raise ValueError("Unexpected site edit fields")
+    if not all(isinstance(v, str) for v in proposal.values()): raise ValueError("Site fields must be strings")
+    if proposal["path"] != allowed: raise ValueError("Edit outside allowlist")
+    site = next((s for s in sites if s["site_id"] == proposal["site_id"]), None)
+    if not site: raise ValueError("Site is not allowed for this attempt")
+    text = proposal["replacement"]
+    if not text.strip() or text != text.lstrip() or any(c in text for c in "\r\n\x00") or len(text) > 600:
+        raise ValueError("Replacement must be one nonempty unindented code line")
+    lines = original.splitlines(keepends=True); before = lines[site["line"] - 1]
+    body = before.rstrip("\r\n"); ending = before[len(body):]; indent = body[:len(body) - len(body.lstrip())]
+    if text == body.lstrip(): raise ValueError("Unchanged site")
+    lines[site["line"] - 1] = indent + text + ending
+    return "".join(lines)
+
+
+def test_excerpt(case, head):
+    targets = case.get("prompt_test_nodes", case.get("fail_to_pass", case["test_targets"]))
+    chunks = []; budget = 2500
+    for target in targets[:4]:
+        parts = target.split("::"); path = safe_relative(parts[0]); file = head / path
+        if not file.is_file(): continue
+        text = file.read_bytes().decode("utf-8"); lines = text.splitlines(keepends=True)
+        name = parts[-1].split("[")[0] if len(parts) > 1 else None
+        try:
+            nodes = [n for n in ast.walk(ast.parse(text)) if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))
+                     and (n.name == name if name else n.name.startswith("test_"))]
+        except SyntaxError: nodes = []
+        for node in nodes[:2]:
+            snippet = "".join(lines[node.lineno - 1:node.end_lineno])[:budget]
+            chunks.append(path + ":" + str(node.lineno) + "\n" + snippet); budget -= len(snippet)
+            if budget <= 0: return "\n".join(chunks)
+    return "\n".join(chunks)
+
+
 def generate_case(case, endpoint, folder=None, reproduction_run=None, guard=None):
     folder = folder or new_run("generate")
-    manifest = {"schema_version": 2, "kind": "synthetic_generation", "protocol": PROTOCOL, "run_id": folder.name,
+    protocol = case.get("generation_protocol", PROTOCOL)
+    manifest = {"schema_version": 2, "kind": "synthetic_generation", "protocol": protocol, "run_id": folder.name,
                 "created_at": now(), "status": "running", "source": case, "model": ollama.GENERATOR_MODEL,
                 "attempt_count": 3, "attempts": [], "options": ollama.OPTIONS, "human_review": "pending",
                 "reproduction_run": reproduction_run, "origin": "controlled_synthetic_not_historical"}
@@ -352,13 +453,38 @@ def generate_case(case, endpoint, folder=None, reproduction_run=None, guard=None
         (folder / "prompt.txt").write_text(prompt, encoding="utf-8")
         write_json(folder / "tests.json", gate["test_hashes"])
         schema = copy.deepcopy(EDIT_SCHEMA); schema["properties"]["path"]["enum"] = [case["allowed_file"]]
+        sites = []
+        if protocol == SITE_PROTOCOL:
+            sites = mutation_sites(original, int(case.get("focus_line", 1)))
+            if not sites: raise ValueError("No bounded single-line mutation sites in passing seed")
+            write_json(folder / "mutation-sites.json", sites)
+            independent_tests = test_excerpt(case, head)
+            (folder / "independent-tests.txt").write_text(independent_tests, encoding="utf-8")
+            manifest["generator_labels"] = "not_requested_by_v3"
+            (folder / "prompt.txt").write_text("Protocol " + SITE_PROTOCOL + ": actual per-attempt prompts are stored in attempt-XX/prompt.txt and request.json.\n", encoding="utf-8")
         for index in range(3):
             if guard: guard("model-attempt-" + str(index + 1))
             d = folder / ("attempt-" + str(index + 1).zfill(2)); d.mkdir()
             item = {"index": index + 1, "directory": d.name, "status": "generation_in_progress", "human_review": "pending"}
             manifest["attempts"].append(item); write_json(folder / "manifest.json", manifest)
+            attempt_prompt = prompt
+            allowed_sites = sites[index::3] or sites
+            if protocol == SITE_PROTOCOL:
+                schema = copy.deepcopy(SITE_SCHEMA)
+                schema["properties"]["path"]["enum"] = [case["allowed_file"]]
+                schema["properties"]["site_id"]["enum"] = [s["site_id"] for s in allowed_sites]
+                attempt_prompt = ("Inject ONE small plausible WRONG behavior into this passing Python file. Do not fix or improve code. "
+                    "Choose one allowed site_id and provide replacement: a single code line WITHOUT leading indentation. "
+                    "The pipeline keeps original indentation/newline and replaces exactly that line. Preserve valid Python syntax, "
+                    "API and tests. Prefer a wrong comparison, boundary, numeric value or returned value that the independent tests detect. "
+                    "Do not add comments explaining the bug. Return JSON path, site_id, replacement, explanation; no markdown or diagnosis label.\n"
+                    + "FILE: " + case["allowed_file"] + "\nALLOWED SITES:\n" + json.dumps(allowed_sites, ensure_ascii=False)
+                    + "\nPASSING SOURCE CONTEXT:\n" + excerpt[:3600]
+                    + "\nIMMUTABLE UPSTREAM TEST EXCERPTS:\n" + independent_tests)
+                (d / "prompt.txt").write_text(attempt_prompt, encoding="utf-8")
+                write_json(d / "allowed-sites.json", allowed_sites)
             payload = {"model": ollama.GENERATOR_MODEL, "stream": False, "format": schema,
-                       "messages": [{"role": "user", "content": prompt}], "options": {**ollama.OPTIONS, "seed": 5417 + index}, "keep_alive": 0}
+                       "messages": [{"role": "user", "content": attempt_prompt}], "options": {**ollama.OPTIONS, "seed": 5417 + index}, "keep_alive": 0}
             write_json(d / "request.json", payload); started = time.monotonic()
             try:
                 raw = ollama.request(endpoint, "/api/chat", payload, timeout=180)
@@ -366,11 +492,12 @@ def generate_case(case, endpoint, folder=None, reproduction_run=None, guard=None
                 response = json.loads(raw); write_json(d / "response.json", response)
                 if not response.get("done") or response.get("done_reason") == "length": raise ValueError("Incomplete/truncated model output")
                 proposal = json.loads(response["message"]["content"]); write_json(d / "proposal.json", proposal)
-                content = apply_edit(proposal, original, case["allowed_file"])
+                content = (apply_site_edit(proposal, original, case["allowed_file"], allowed_sites) if protocol == SITE_PROTOCOL
+                           else apply_edit(proposal, original, case["allowed_file"]))
                 (d / "candidate.py").write_text(content, encoding="utf-8", newline="")
                 (d / "change.diff").write_text("".join(difflib.unified_diff(original.splitlines(True), content.splitlines(True),
                                                      fromfile="a/" + case["allowed_file"], tofile="b/" + case["allowed_file"])), encoding="utf-8", newline="")
-                item.update(status="awaiting_verification", candidate_sha256=sha256(d / "candidate.py"), proposed_label=proposal["proposed_label"])
+                item.update(status="awaiting_verification", candidate_sha256=sha256(d / "candidate.py"), proposed_label=proposal.get("proposed_label"))
             except (OSError, ValueError, KeyError, TypeError) as exc:
                 item.update(status="generation_error" if isinstance(exc, OSError) else "invalid_output", error=str(exc))
             item["generation_seconds"] = round(time.monotonic() - started, 3)

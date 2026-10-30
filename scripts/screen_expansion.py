@@ -17,6 +17,7 @@ from ci_demo.batch import select_cases
 
 RAW = ROOT / ".cache" / "expansion"
 DEST = ROOT / "data-manifests"
+CASE_DEST = ROOT / "cases"
 AIDEV_REV = "b8dc67df93e7c11f6f20c84129db7232eb1ec253"
 SWE_REV = "b0dde1093fe417d83b7184254edf8199c1f0dff5"
 
@@ -77,7 +78,7 @@ def main():
                     "historical_hypothesis": "Frozen upstream regression tests fail at base and pass at PR head; local reconstruction only"}
             if case_id == "tyighter__tcm-364": case["writable_dirs"] = ["logs"]
             entry.update(eligible=True, environment_cost=cost)
-            validate_case(case); write_json(DEST / "cases" / (case_id + ".json"), case)
+            validate_case(case); write_json(CASE_DEST / case_id / "case.json", case)
         records.append(entry)
     for folder in sorted((RAW / "records").iterdir()):
         if not (folder / "record.json").exists(): continue
@@ -109,7 +110,7 @@ def main():
                     "python_image": "python:3.9-slim-bookworm", "dependencies": dependencies, "python_paths": [".", "src"],
                     "resources": {"memory_mb": 2048, "cpus": 1}, "build_timeout": 1200, "test_timeout": 300,
                     "historical_hypothesis": "Source FAIL_TO_PASS fail on base and pass with reference repair; PASS_TO_PASS remain passing"}
-            validate_case(case); write_json(DEST / "cases" / (case["case_id"] + ".json"), case)
+            validate_case(case); write_json(CASE_DEST / case["case_id"] / "case.json", case)
         records.append(entry)
     for entry in records:
         entry["group_id"] = "repo:" + entry["repo_url"].lower().removeprefix("https://github.com/")
