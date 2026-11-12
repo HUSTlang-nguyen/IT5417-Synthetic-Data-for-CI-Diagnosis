@@ -1,0 +1,83 @@
+{
+  "case_id": "pylint-dev__pylint-8898-ds1-extra",
+  "source_case_id": "pylint-dev__pylint-8898",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-8898",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "1f8c4d9eb185c16a2c1d881c054f015e1c2eb334",
+  "head": "base+repair:1ef5ef80b29bcfb5902b6818e58a576cf6d97b66fb7b354fa1392451954a6c98",
+  "allowed_file": "pylint/config/argument.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-8898-ds1-extra/repair.patch",
+  "repair_patch_sha256": "1ef5ef80b29bcfb5902b6818e58a576cf6d97b66fb7b354fa1392451954a6c98",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-8898-ds1-extra/test.patch",
+  "test_patch_sha256": "0fa5d0f2e19d994ed7a5b0450f502b986cb3dc862f83ee7cbc96676210012b10",
+  "source_record_sha256": "eaa1831d679ceaa340d1b0867628d5d0889e46c62b2bcee352b463454ba99085",
+  "fail_to_pass": [
+    "tests/config/test_config.py::test_csv_regex_error"
+  ],
+  "pass_to_pass": [
+    "tests/config/test_config.py::test_can_read_toml_env_variable",
+    "tests/config/test_config.py::test_unknown_message_id",
+    "tests/config/test_config.py::test_unknown_option_name",
+    "tests/config/test_config.py::test_unknown_short_option_name",
+    "tests/config/test_config.py::test_unknown_confidence",
+    "tests/config/test_config.py::test_empty_confidence",
+    "tests/config/test_config.py::test_unknown_yes_no",
+    "tests/config/test_config.py::test_unknown_py_version",
+    "tests/config/test_config.py::test_csv_regex_comma_in_quantifier[foo-expected0]",
+    "tests/config/test_config.py::test_csv_regex_comma_in_quantifier[foo,bar-expected1]",
+    "tests/config/test_config.py::test_csv_regex_comma_in_quantifier[foo,",
+    "tests/config/test_config.py::test_regex_error",
+    "tests/config/test_config.py::test_short_verbose",
+    "tests/config/test_config.py::test_argument_separator",
+    "tests/config/test_config.py::test_clear_cache_post_run",
+    "tests/config/test_config.py::test_enable_all_disable_all_mutually_exclusive",
+    "tests/config/test_config.py::test_disable_before_enable_all_takes_effect",
+    "tests/config/test_config.py::test_enable_before_disable_all_takes_effect"
+  ],
+  "test_targets": [
+    "tests/config/test_config.py"
+  ],
+  "frozen_test_files": [
+    "tests/config/test_config.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "dependencies": [
+    "astroid==3.0.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8",
+    "py==1.11.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

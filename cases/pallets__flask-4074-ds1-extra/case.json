@@ -1,0 +1,73 @@
+{
+  "case_id": "pallets__flask-4074-ds1-extra",
+  "source_case_id": "pallets__flask-4074",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pallets__flask-4074",
+  "repo_url": "https://github.com/pallets/flask",
+  "base": "a541c2ac8b05c2b23e11bd8540088fce1abc2373",
+  "head": "base+repair:f0c7af037c3f9ab4f0d843f0dc564d2f36e5e7dd4d18c37f76bcca1657da8ad2",
+  "allowed_file": "src/flask/app.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pallets__flask-4074-ds1-extra/repair.patch",
+  "repair_patch_sha256": "f0c7af037c3f9ab4f0d843f0dc564d2f36e5e7dd4d18c37f76bcca1657da8ad2",
+  "test_patch": ".cache/dataset-v1-source/cases/pallets__flask-4074-ds1-extra/test.patch",
+  "test_patch_sha256": "d5873c5f324cabc31722a9129cd8857d6826c52539eb7cb04a1ebd9084bdc475",
+  "source_record_sha256": "a0936cc5d75a19d0ca5aa3dd1e5b9f92613d363f5819ff1c9c331eefd235cffe",
+  "fail_to_pass": [
+    "tests/test_blueprints.py::test_unique_blueprint_names",
+    "tests/test_blueprints.py::test_self_registration"
+  ],
+  "pass_to_pass": [
+    "tests/test_blueprints.py::test_dotted_name_not_allowed",
+    "tests/test_blueprints.py::test_route_decorator_custom_endpoint_with_dots",
+    "tests/test_blueprints.py::test_template_filter",
+    "tests/test_blueprints.py::test_add_template_filter",
+    "tests/test_blueprints.py::test_template_filter_with_name",
+    "tests/test_blueprints.py::test_add_template_filter_with_name",
+    "tests/test_blueprints.py::test_template_test",
+    "tests/test_blueprints.py::test_add_template_test",
+    "tests/test_blueprints.py::test_template_test_with_name",
+    "tests/test_blueprints.py::test_add_template_test_with_name",
+    "tests/test_blueprints.py::test_template_global"
+  ],
+  "test_targets": [
+    "tests/test_blueprints.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_blueprints.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "7.4.4",
+  "install_project": false,
+  "dependencies": [
+    "Werkzeug==2.0.3",
+    "Jinja2==3.0.3",
+    "itsdangerous==2.0.1",
+    "click==8.0.4",
+    "MarkupSafe==2.0.1",
+    "blinker==1.6.2",
+    "importlib-metadata==6.8.0"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

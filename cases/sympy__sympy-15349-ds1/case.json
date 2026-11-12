@@ -1,0 +1,58 @@
+{
+  "case_id": "sympy__sympy-15349-ds1",
+  "source_case_id": "sympy__sympy-15349",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-15349",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "768da1c6f6ec907524b8ebbf6bf818c92b56101b",
+  "head": "base+repair:14d79be0430f201c1938906118c86d18fd0b2103a4510afd9f957c14876361e4",
+  "allowed_file": "sympy/algebras/quaternion.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15349-ds1/repair.patch",
+  "repair_patch_sha256": "14d79be0430f201c1938906118c86d18fd0b2103a4510afd9f957c14876361e4",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15349-ds1/test.patch",
+  "test_patch_sha256": "55b665a1494aece4976006e2bfe7df6d857e14a4dba4cb071b71a9f0c309f0fe",
+  "source_record_sha256": "b3b7a76391052472c9626e83bfbbfb8f808568960cdf881fdd1e7a731eb55a5f",
+  "fail_to_pass": [
+    "test_quaternion_conversions"
+  ],
+  "pass_to_pass": [
+    "test_quaternion_construction",
+    "test_quaternion_complex_real_addition",
+    "test_quaternion_functions"
+  ],
+  "test_targets": [
+    "sympy/algebras/tests/test_quaternion.py"
+  ],
+  "frozen_test_files": [
+    "sympy/algebras/tests/test_quaternion.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "case_id": "sympy__sympy-11438-ds1",
+  "source_case_id": "sympy__sympy-11438",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-11438",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "46e3e96e5a6a16f340320585299ed577e1bf882d",
+  "head": "base+repair:7943ea071f069f532faf82a13870702eca486a5011c04e9c30b939a23106adc1",
+  "allowed_file": "sympy/solvers/diophantine.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-11438-ds1/repair.patch",
+  "repair_patch_sha256": "7943ea071f069f532faf82a13870702eca486a5011c04e9c30b939a23106adc1",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-11438-ds1/test.patch",
+  "test_patch_sha256": "954786f56ead5c3bbb2c2fd44c1992b24026590be75adfeef291adae1e58b81e",
+  "source_record_sha256": "d39d635274f436d92fa1a1de578ca6d3ef4940843b5c79ee68e7ee25ba773fa4",
+  "fail_to_pass": [
+    "test_classify_diop"
+  ],
+  "pass_to_pass": [
+    "test_input_format",
+    "test_univariate",
+    "test_linear",
+    "test_quadratic_simple_hyperbolic_case",
+    "test_quadratic_elliptical_case",
+    "test_quadratic_perfect_square",
+    "test_transformation_to_pell",
+    "test_find_DN",
+    "test_ldescent",
+    "test_transformation_to_normal",
+    "test_square_factor",
+    "test_no_square_ternary_quadratic",
+    "test_general_pythagorean",
+    "test_diop_partition",
+    "test_prime_as_sum_of_two_squares",
+    "test_sum_of_three_squares",
+    "test_sum_of_four_squares",
+    "test_power_representation",
+    "test_holzer",
+    "test_issue_9539",
+    "test_diop_sum_of_even_powers",
+    "test_sum_of_squares_powers",
+    "test__can_do_sum_of_squares"
+  ],
+  "test_targets": [
+    "sympy/solvers/tests/test_diophantine.py"
+  ],
+  "frozen_test_files": [
+    "sympy/solvers/tests/test_diophantine.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

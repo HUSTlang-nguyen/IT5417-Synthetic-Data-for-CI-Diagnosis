@@ -1,0 +1,85 @@
+{
+  "case_id": "sphinx-doc__sphinx-8284-ds1",
+  "source_case_id": "sphinx-doc__sphinx-8284",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-8284",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "f1af7dc84fed8143e8bf7a51edb1338e21e6f901",
+  "head": "base+repair:6df005a9c8162438198abadc30f21724744949abb3f475cd1e49832483e93699",
+  "allowed_file": "sphinx/builders/manpage.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-8284-ds1/repair.patch",
+  "repair_patch_sha256": "6df005a9c8162438198abadc30f21724744949abb3f475cd1e49832483e93699",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-8284-ds1/test.patch",
+  "test_patch_sha256": "91ea0b39c3817115d8d365e933a2eb0809d9ceb509ce98c12e9a7c4ddac3a7d7",
+  "source_record_sha256": "8224658507996ca03cbbd72b6ddd1439ac3912ca1db7658edeacdba126f6756f",
+  "fail_to_pass": [
+    "tests/test_build_manpage.py::test_all",
+    "tests/test_build_manpage.py::test_captioned_code_block",
+    "tests/test_build_manpage.py::test_rubric",
+    "tests/test_smartquotes.py::test_smartquotes_excludes_builders"
+  ],
+  "pass_to_pass": [
+    "tests/test_build_manpage.py::test_man_make_section_directory",
+    "tests/test_build_manpage.py::test_default_man_pages",
+    "tests/test_smartquotes.py::test_basic",
+    "tests/test_smartquotes.py::test_text_builder",
+    "tests/test_smartquotes.py::test_latex_builder",
+    "tests/test_smartquotes.py::test_ja_html_builder",
+    "tests/test_smartquotes.py::test_smartquotes_disabled",
+    "tests/test_smartquotes.py::test_smartquotes_action",
+    "tests/test_smartquotes.py::test_smartquotes_excludes_language"
+  ],
+  "test_targets": [
+    "tests/test_build_manpage.py",
+    "tests/test_smartquotes.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_build_manpage.py",
+    "tests/test_smartquotes.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.17.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

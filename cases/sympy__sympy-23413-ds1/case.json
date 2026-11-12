@@ -1,0 +1,59 @@
+{
+  "case_id": "sympy__sympy-23413-ds1",
+  "source_case_id": "sympy__sympy-23413",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-23413",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "10de1a18a0efac0b19b611e40c928250dda688bf",
+  "head": "base+repair:fb2076f93a6f3c846ad01c5ed6016131b16d192d3d03b4e4e03b3183e15eeb0e",
+  "allowed_file": "sympy/polys/matrices/normalforms.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23413-ds1/repair.patch",
+  "repair_patch_sha256": "fb2076f93a6f3c846ad01c5ed6016131b16d192d3d03b4e4e03b3183e15eeb0e",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23413-ds1/test.patch",
+  "test_patch_sha256": "b9d06681718200bac5fca23916e07681baaf16addd2394dd8f44599b41df6a84",
+  "source_record_sha256": "4959733ecda98e44dd278052f89297495aa132149a45e6e533aafbde2055a721",
+  "fail_to_pass": [
+    "test_hermite_normal"
+  ],
+  "pass_to_pass": [
+    "test_smith_normal",
+    "test_smith_normal_deprecated"
+  ],
+  "test_targets": [
+    "sympy/matrices/tests/test_normalforms.py",
+    "sympy/polys/matrices/tests/test_normalforms.py"
+  ],
+  "frozen_test_files": [
+    "sympy/matrices/tests/test_normalforms.py",
+    "sympy/polys/matrices/tests/test_normalforms.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

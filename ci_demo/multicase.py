@@ -6,6 +6,7 @@ import difflib
 import hashlib
 import io
 import json
+import posixpath
 from pathlib import Path, PurePosixPath
 import re
 import shutil
@@ -19,6 +20,7 @@ from .common import CACHE, ROOT, command, new_run, now, read_json, require_succe
 
 PROTOCOL = "single-file-exact-edit-v2"
 SITE_PROTOCOL = "single-line-site-v3"
+SITE_PROMPT_REVISION = "single-line-site-v3-quality-r3"
 SITE_SCHEMA = {"type": "object", "additionalProperties": False,
                "properties": {k: {"type": "string"} for k in ("path", "site_id", "replacement", "explanation")},
                "required": ["path", "site_id", "replacement", "explanation"]}
@@ -45,6 +47,12 @@ def safe_relative(value):
 def validate_case(case):
     if case.get("runner_kind") != "python-source-v2" or case.get("split") != "development":
         raise ValueError("Only registered development cases are supported")
+    if "experiment_role" in case and case["experiment_role"] not in {"train", "validation", "test"}:
+        raise ValueError("Unknown frozen experiment role")
+    if case.get("test_workdir", "source") not in ("source", "work"):
+        raise ValueError("Test working directory must be source or isolated work tmpfs")
+    if case.get("system_tools", []) not in ([], ["git"]):
+        raise ValueError("Only the declared git build/runtime tool is supported")
     if case.get("source_kind") not in {"aidev", "swebench"}: raise ValueError("Unknown source adapter")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,120}", case["case_id"]):
         raise ValueError("Invalid case ID")
@@ -75,9 +83,11 @@ def validate_case(case):
             raise ValueError("Runtime tmpfs must not cover source/tests")
     if case.get("generation_protocol", PROTOCOL) not in {PROTOCOL, SITE_PROTOCOL}:
         raise ValueError("Unknown generator protocol")
-    if case.get("source_id_matching", "exact") not in {"exact", "exact_or_unique_truncated_param"}:
+    if case.get("source_id_matching", "exact") not in {"exact", "exact_or_unique_truncated_param", "exact_unique_function_name"}:
         raise ValueError("Unknown source test identity matching policy")
-    if case.get("pytest_version", "7.4.4") not in {"7.4.4", "8.3.5"}:
+    if case.get("source_id_matching") == "exact_unique_function_name" and case["repo_url"] != "https://github.com/sympy/sympy":
+        raise ValueError("Function-name source identifiers are specific to SymPy")
+    if case.get("pytest_version", "7.4.4") not in {"6.2.5", "7.4.4", "8.3.5"}:
         raise ValueError("Unsupported pinned pytest version")
     for plugin in case.get("pytest_plugins", []):
         if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.]*", plugin): raise ValueError("Invalid explicit pytest plugin")
@@ -92,6 +102,11 @@ def validate_case(case):
     for package in case.get("dependencies", []):
         if not re.fullmatch(r"[A-Za-z0-9_.\[\],<>=!~-]+", package) or package.startswith("-"):
             raise ValueError("Dependencies must be package requirements, not commands or URLs")
+    if case.get("scm_build_version") is not None:
+        if (not isinstance(case["scm_build_version"], str)
+                or not re.fullmatch(r"[0-9][A-Za-z0-9.+!-]{0,100}", case["scm_build_version"])
+                or not case.get("install_project", True)):
+            raise ValueError("SCM build version requires a safe recorded version and project installation")
     for key in ("repair_patch", "test_patch"):
         if case.get(key):
             path = (ROOT / safe_relative(case[key])).resolve()
@@ -103,7 +118,7 @@ def validate_case(case):
 
 def is_test(path):
     p = PurePosixPath(path)
-    return any(x in ("test", "tests") for x in p.parts) or p.name.startswith("test_") or p.name.endswith(("_test.py", "_tests.py"))
+    return p.parts[:1] == ("testing",) or any(x in ("test", "tests") for x in p.parts) or p.name.startswith("test_") or p.name.endswith(("_test.py", "_tests.py"))
 
 
 def patch_paths(text):
@@ -125,21 +140,54 @@ def checked(args, evidence, name, timeout=180, cwd=None, guard=None):
     return result
 
 
+def archive_links(archive):
+    """Retain safe source symlinks as data; materialize only inside the Linux image."""
+    members = {m.name.rstrip("/"): m for m in archive.getmembers()}
+    links = {}
+    for path, member in members.items():
+        safe_relative(path)
+        if member.isfile() or member.isdir():
+            continue
+        if not member.issym() or not member.linkname or "\\" in member.linkname or ":" in member.linkname or "\x00" in member.linkname or member.linkname.startswith("/"):
+            raise ValueError("Unsafe/nonregular source archive entry: " + path)
+        links[path] = member.linkname
+    if any(path != p and path.startswith(p + "/") for path in members for p in links):
+        raise ValueError("Archive file nested under a symlink")
+    for path, target in links.items():
+        resolved = posixpath.normpath(posixpath.join(posixpath.dirname(path), target))
+        for _ in range(len(links) + 1):
+            safe_relative(resolved)
+            prefix = next((p for p in links if resolved == p or resolved.startswith(p + "/")), None)
+            if prefix is None:
+                break
+            resolved = posixpath.normpath(posixpath.join(posixpath.dirname(prefix), links[prefix], resolved[len(prefix):].lstrip("/")))
+        else:
+            raise ValueError("Cyclic source symlink: " + path)
+        if resolved not in members or any(path != p and path.startswith(p + "/") for p in links):
+            raise ValueError("Missing target or nested symlink source entry: " + path)
+    return links
+
+
 def export_commit(repo, revision, destination, evidence, name, guard):
-    checked(["git", "-C", repo, "fetch", "--depth=1", "origin", revision], evidence, name + "-fetch", guard=guard)
+    if guard: guard(name + "-commit")
+    cached = command(["git", "-C", repo, "cat-file", "-e", revision + "^{commit}"], evidence, name + "-commit")
+    if not successful(cached):
+        checked(["git", "-C", repo, "fetch", "--depth=1", "origin", revision], evidence, name + "-fetch", guard=guard)
     actual = subprocess.check_output(["git", "-C", str(repo), "rev-parse", revision + "^{commit}"], text=True).strip()
     if actual != revision: raise ValueError("Fetched commit identity mismatch")
     raw = subprocess.check_output(["git", "-C", str(repo), "archive", revision], timeout=90)
     destination.mkdir(parents=True)
     with tarfile.open(fileobj=io.BytesIO(raw)) as archive:
+        links = archive_links(archive)
         for member in archive.getmembers():
             safe_relative(member.name)
-            if member.isdir(): continue
-            if not member.isfile(): raise ValueError("Nonregular source archive entry: " + member.name)
+            if member.isdir() or member.issym(): continue
             target = destination / member.name
             if not target.resolve().is_relative_to(destination.resolve()): raise ValueError("Source export escaped context")
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(archive.extractfile(member).read())
+    write_json(evidence / (name + "-source-links.json"), links)
+    return links
 
 
 def inventory(folder):
@@ -152,6 +200,23 @@ def ensure_frozen_tests(inventories):
         if is_test(path) or PurePosixPath(path).name == "conftest.py":
             if base.get(path) != head.get(path):
                 raise ValueError("Undeclared test/harness difference between base and fixed: " + path)
+
+
+def source_function_targets(case, tree):
+    """SymPy source IDs omit paths: resolve exact names once against frozen test ASTs."""
+    names = list(dict.fromkeys(case["fail_to_pass"] + case["pass_to_pass"]))
+    found = {name: [] for name in names}
+    for relative in case["frozen_test_files"]:
+        path = tree / relative
+        if path.suffix != ".py":
+            continue
+        module = ast.parse(path.read_text(encoding="utf-8"))
+        for node in module.body:
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name in found:
+                found[node.name].append(relative + "::" + node.name)
+    if any(not re.fullmatch(r"test_\w+", name) or len(matches) != 1 for name, matches in found.items()):
+        raise ValueError("Source function identifiers missing or ambiguous in frozen tests")
+    return [found[name][0] for name in names]
 
 
 def apply_patch_file(tree, path, evidence, name, guard):
@@ -177,14 +242,15 @@ def prepare_case(case, evidence, guard=None):
         repo.mkdir(parents=True, exist_ok=True)
         checked(["git", "init", str(repo)], evidence, "source-init", guard=guard)
         checked(["git", "-C", repo, "remote", "add", "origin", case["repo_url"] + ".git"], evidence, "source-origin", guard=guard)
-    export_commit(repo, case["base"], work / "base", evidence, "base", guard)
+    source_links = {"base": export_commit(repo, case["base"], work / "base", evidence, "base", guard) or {}}
     if case["source_kind"] == "swebench":
         shutil.copytree(work / "base", work / "head")
+        source_links["head"] = dict(source_links["base"])
         for role in ("base", "head"):
             apply_patch_file(work / role, ROOT / case["test_patch"], evidence, role + "-test-patch", guard)
         apply_patch_file(work / "head", ROOT / case["repair_patch"], evidence, "gold-repair", guard)
     else:
-        export_commit(repo, case["head"], work / "head", evidence, "head", guard)
+        source_links["head"] = export_commit(repo, case["head"], work / "head", evidence, "head", guard) or {}
         # Freeze declared head tests onto the base as a reconstruction harness.
         # These are upstream tests, never generated candidate tests.
         for path in case["frozen_test_files"]:
@@ -202,15 +268,37 @@ def prepare_case(case, evidence, guard=None):
             raise ValueError("Test bytes differ between base and fixed")
     source = work / "head" / case["allowed_file"]
     if not source.is_file(): raise ValueError("Allowlisted source file missing")
+    resolved_targets = source_function_targets(case, work / "head") if case.get("source_id_matching") == "exact_unique_function_name" else case["test_targets"]
+    if case.get("verify_pinned_license"):
+        candidates = [work / "base" / name for name in ("LICENSE", "LICENSE.txt", "LICENSE.rst", "COPYING", "COPYING.txt")]
+        license_file = next((p for p in candidates if p.is_file()), None)
+        if license_file is None:
+            raise ValueError("Pinned source license missing")
+        text = license_file.read_text(encoding="utf-8", errors="replace")
+        markers = {"BSD-3-Clause": "Redistribution and use", "BSD-2-Clause": "Redistribution and use",
+                   "MIT": "Permission is hereby granted", "GPL-2.0-or-later": "GNU GENERAL PUBLIC LICENSE",
+                   "LGPL-2.1-or-later": "GNU LESSER GENERAL PUBLIC LICENSE"}
+        if markers.get(case["license"], "<unrecognized>").lower() not in text.lower():
+            raise ValueError("Pinned license does not match declared family; manual review required")
+        write_json(evidence / "license-evidence.json", {"path": license_file.relative_to(work / "base").as_posix(),
+                   "sha256": sha256(license_file), "declared_license": case["license"],
+                   "qualification": "Pinned full license retained; family marker check, not legal review"})
     dependencies = ["setuptools==75.6.0", "wheel==0.45.1", "pytest==" + case.get("pytest_version", "7.4.4"), *case.get("dependencies", [])]
     install = ["/opt/venv/bin/pip", "install", "--disable-pip-version-check", *dependencies]
     dockerfile = ("FROM " + case.get("python_image", "python:3.11-slim-bookworm") + "\n"
-                  "ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1\n"
+                  "ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1\n")
+    if case.get("system_tools"):
+        dockerfile += "RUN apt-get update && apt-get install -y --no-install-recommends git && dpkg-query -W git\n"
+    dockerfile += (
                   "RUN python -m venv /opt/venv\n"
-                  "COPY base /source/base\nCOPY head /source/head\n"
-                  "RUN " + json.dumps(install) + "\n")
-    if case.get("install_project", True):
-        dockerfile += 'RUN ["/opt/venv/bin/pip","install","--no-build-isolation","-e","/source/head"]\n'
+                  "RUN " + json.dumps(install) + "\n"
+                  "COPY base /source/base\nCOPY head /source/head\n")
+    links = [("/source/" + role + "/" + path, target) for role in ("base", "head") for path, target in source_links[role].items()]
+    if links:
+        program = ("import os; links=" + repr(links) + "; "
+                   "[(os.makedirs(os.path.dirname(p),exist_ok=True),os.symlink(t,p)) for p,t in links]")
+        dockerfile += "RUN " + json.dumps(["python", "-c", program]) + "\n"
+    dockerfile += project_install_steps(case)
     dockerfile += 'RUN ["/opt/venv/bin/pip","freeze","--all"]\nUSER 65534:65534\nWORKDIR /work\n'
     (work / "Dockerfile").write_text(dockerfile, encoding="utf-8")
     image = "it5417-expansion-" + case["case_id"].lower() + ":" + identity
@@ -224,8 +312,22 @@ def prepare_case(case, evidence, guard=None):
             "image_id": image_info["Id"], "image_tag": image, "inventories": inventories,
             "source_hash": sha256(source), "test_hashes": {p: inventories["head"][p] for p in case["frozen_test_files"]},
             "reproduction_run": evidence.name, "build": result, "head_passed": False}
+    gate["resolved_test_targets"] = resolved_targets
+    gate["source_links"] = source_links
     write_json(evidence / "environment.json", gate)
     return gate
+
+
+def project_install_steps(case):
+    """Generate packaging metadata inside the image; never edit exported source bytes."""
+    if not case.get("install_project", True):
+        return ""
+    version = case.get("scm_build_version")
+    result = "ENV SETUPTOOLS_SCM_PRETEND_VERSION=" + version + "\n" if version else ""
+    for role in (("base", "head") if version else ("head",)):
+        args = ["/opt/venv/bin/pip", "install", "--no-build-isolation"]
+        result += "RUN " + json.dumps(args + (["--no-deps"] if version else []) + ["-e", "/source/" + role]) + "\n"
+    return result
 
 
 def execute(case, gate, evidence, name, role="head", candidate=None, guard=None):
@@ -237,8 +339,8 @@ def execute(case, gate, evidence, name, role="head", candidate=None, guard=None)
     args = ["docker", "run", "--name", container, "--network=none", "--read-only", "--user", "65534:65534",
             "--cap-drop=ALL", "--security-opt=no-new-privileges", "--pids-limit=128",
             "--memory=" + str(limits["memory_mb"]) + "m", "--cpus=" + str(limits["cpus"]),
-            "--tmpfs", "/tmp:rw,noexec,nosuid,size=256m", "--tmpfs", "/work:rw,noexec,nosuid,size=64m",
-            "--workdir", "/source/" + role]
+            "--tmpfs", "/tmp:rw,noexec,nosuid,size=256m", "--tmpfs", "/work:rw,noexec,nosuid,size=64m,mode=1777",
+            "--workdir", "/work" if case.get("test_workdir") == "work" else "/source/" + role]
     paths = ["/source/" + role + ("/" + p if p != "." else "") for p in case.get("python_paths", ["."])]
     args += ["--env", "PYTHONPATH=" + ":".join(paths), "--env", "HOME=/tmp", "--env", "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1"]
     for path in case.get("writable_dirs", []):
@@ -254,7 +356,11 @@ def execute(case, gate, evidence, name, role="head", candidate=None, guard=None)
                  "/opt/venv/bin/python", "-m", "pytest", "-v", "-p", "no:cacheprovider",
                  "--junitxml=/results/results.xml"]
         for plugin in case.get("pytest_plugins", []): args += ["-p", plugin]
-        args += case["test_targets"]
+        targets = gate.get("resolved_test_targets", case["test_targets"])
+        if case.get("test_workdir") == "work":
+            args += ["--rootdir=/source/" + role]
+            targets = ["/source/" + role + "/" + target for target in targets]
+        args += targets
         try:
             result = command(args, evidence, name, timeout=300)
         finally:
@@ -287,17 +393,35 @@ def test_passed(result, folder):
 def targets_match(result, folder, targets, status):
     outcomes = test_outcomes(result, folder)
     for target in targets:
-        parts = target.split("::"); file = parts[0].removesuffix(".py"); test = parts[-1]
+        parts = split_test_id(target); file = parts[0].removesuffix(".py"); test = parts[-1]
         cls = file + ("/" + "/".join(parts[1:-1]) if len(parts) > 2 else "")
         if outcomes.get((cls, test)) != status: return False
     return bool(targets)
+
+
+def split_test_id(target):
+    path, boundary, node = target.partition("::")
+    if not boundary:
+        return [path]
+    prefix, bracket, parameter = node.partition("[")
+    parts = prefix.split("::")
+    parts[-1] += bracket + parameter
+    return [path, *parts]
 
 
 def resolve_targets(result, folder, targets, expected, mode="exact"):
     """Resolve only a unique incomplete parameter ID, never fuzzy test names."""
     outcomes = test_outcomes(result, folder); records = []
     for target in targets:
-        parts = target.split("::"); cls = parts[0].removesuffix(".py")
+        if mode == "exact_unique_function_name":
+            matches = [(c, n) for c, n in outcomes if n == target]
+            resolved = matches[0] if len(matches) == 1 else None
+            records.append({"source_id": target, "resolved_class": resolved[0] if resolved else None,
+                            "resolved_name": resolved[1] if resolved else None,
+                            "resolution": "exact_unique_function_name" if resolved else "unresolved",
+                            "expected": expected, "observed": outcomes.get(resolved)})
+            continue
+        parts = split_test_id(target); cls = parts[0].removesuffix(".py")
         if len(parts) > 2: cls += "/" + "/".join(parts[1:-1])
         name = parts[-1]; resolved = name if (cls, name) in outcomes else None; how = "exact"
         if resolved is None and mode == "exact_or_unique_truncated_param" and "[" in name and not name.endswith("]"):
@@ -367,7 +491,7 @@ def apply_edit(proposal, original, allowed):
     return original.replace(before, after, 1)
 
 
-def mutation_sites(original, focus_line):
+def mutation_sites(original, focus_line, *, identity=None, test_context=""):
     """Static parsing of a pinned passing seed; never import/execute that source."""
     lines = original.splitlines(keepends=True)
     try: tree = ast.parse(original.lstrip("\ufeff"))
@@ -380,9 +504,25 @@ def mutation_sites(original, focus_line):
         if len(text) > 220 or text.startswith(("#", "def ", "class ", "import ", "from ")): continue
         if not (text.startswith(("if ", "elif ", "return ", "while ", "assert ")) or " = " in text): continue
         numbers.add(node.lineno)
-    numbers = sorted(numbers, key=lambda n: (abs(n - focus_line), n))[:18]
+    if identity is not None:
+        referenced = set(re.findall(r"\b([A-Za-z_]\w*)\s*\(", test_context))
+        ranges = [(n.lineno, n.end_lineno) for n in ast.walk(tree)
+                  if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)) and n.name in referenced]
+        relevant = [n for n in numbers if any(lo <= n <= hi for lo, hi in ranges)]
+        # Static name matches are a preference, never a claim of execution coverage.
+        numbers = sorted(relevant or numbers,
+            key=lambda n: hashlib.sha256((identity + ":" + str(n)).encode()).digest())[:18]
+    else:
+        numbers = sorted(numbers, key=lambda n: (abs(n - focus_line), n))[:18]
     return [{"site_id": str(i + 1), "line": n, "source": lines[n - 1].rstrip("\r\n").lstrip()}
             for i, n in enumerate(numbers)]
+
+
+def site_context(original, sites):
+    lines = original.splitlines(keepends=True)
+    return "\n".join("LINE " + str(site["line"]) + ":\n" +
+        "".join(lines[max(0, site["line"] - 4):site["line"] + 3])
+        for site in sorted(sites, key=lambda site: site["line"]))[:3600]
 
 
 def apply_site_edit(proposal, original, allowed, sites):
@@ -403,9 +543,11 @@ def apply_site_edit(proposal, original, allowed, sites):
 
 def test_excerpt(case, head):
     targets = case.get("prompt_test_nodes", case.get("fail_to_pass", case["test_targets"]))
+    if case.get("source_id_matching") == "exact_unique_function_name":
+        targets = source_function_targets(case, head)
     chunks = []; budget = 2500
     for target in targets[:4]:
-        parts = target.split("::"); path = safe_relative(parts[0]); file = head / path
+        parts = split_test_id(target); path = safe_relative(parts[0]); file = head / path
         if not file.is_file(): continue
         text = file.read_bytes().decode("utf-8"); lines = text.splitlines(keepends=True)
         name = parts[-1].split("[")[0] if len(parts) > 1 else None
@@ -427,8 +569,12 @@ def generate_case(case, endpoint, folder=None, reproduction_run=None, guard=None
                 "created_at": now(), "status": "running", "source": case, "model": ollama.GENERATOR_MODEL,
                 "attempt_count": 3, "attempts": [], "options": ollama.OPTIONS, "human_review": "pending",
                 "reproduction_run": reproduction_run, "origin": "controlled_synthetic_not_historical"}
+    if protocol == SITE_PROTOCOL:
+        manifest["prompt_revision"] = SITE_PROMPT_REVISION
     write_json(folder / "manifest.json", manifest)
     try:
+        if case.get("experiment_role") in {"validation", "test"}:
+            raise ValueError("Held-out validation/test cases cannot be used for generation")
         if reproduction_run is None:
             reproduction_run = read_json(CACHE / "passing-seeds" / (case["case_id"] + ".json"))["reproduction_run"]
             manifest["reproduction_run"] = reproduction_run
@@ -455,10 +601,12 @@ def generate_case(case, endpoint, folder=None, reproduction_run=None, guard=None
         schema = copy.deepcopy(EDIT_SCHEMA); schema["properties"]["path"]["enum"] = [case["allowed_file"]]
         sites = []
         if protocol == SITE_PROTOCOL:
-            sites = mutation_sites(original, int(case.get("focus_line", 1)))
+            independent_tests = test_excerpt(case, head)
+            sites = mutation_sites(original, int(case.get("focus_line", 1)),
+                identity=case.get("source_case_id", case["case_id"]), test_context=independent_tests)
             if not sites: raise ValueError("No bounded single-line mutation sites in passing seed")
             write_json(folder / "mutation-sites.json", sites)
-            independent_tests = test_excerpt(case, head)
+            manifest["site_selection"] = "static-test-names-and-case-sha256-v1"
             (folder / "independent-tests.txt").write_text(independent_tests, encoding="utf-8")
             manifest["generator_labels"] = "not_requested_by_v3"
             (folder / "prompt.txt").write_text("Protocol " + SITE_PROTOCOL + ": actual per-attempt prompts are stored in attempt-XX/prompt.txt and request.json.\n", encoding="utf-8")
@@ -476,10 +624,13 @@ def generate_case(case, endpoint, folder=None, reproduction_run=None, guard=None
                 attempt_prompt = ("Inject ONE small plausible WRONG behavior into this passing Python file. Do not fix or improve code. "
                     "Choose one allowed site_id and provide replacement: a single code line WITHOUT leading indentation. "
                     "The pipeline keeps original indentation/newline and replaces exactly that line. Preserve valid Python syntax, "
-                    "API and tests. Prefer a wrong comparison, boundary, numeric value or returned value that the independent tests detect. "
+                    "API and tests. Choose a realistic wrong comparison, boundary, operator, attribute, call or guarded return "
+                    "whose intended behavior follows from this source and its tests. Do not append arbitrary numeric offsets "
+                    "or fabricated string/list markers. Do not force conditions with 'or True' or 'and False'. "
+                    "Do not reverse or globally replace output strings as an arbitrary corruption. "
                     "Do not add comments explaining the bug. Return JSON path, site_id, replacement, explanation; no markdown or diagnosis label.\n"
                     + "FILE: " + case["allowed_file"] + "\nALLOWED SITES:\n" + json.dumps(allowed_sites, ensure_ascii=False)
-                    + "\nPASSING SOURCE CONTEXT:\n" + excerpt[:3600]
+                    + "\nPASSING SOURCE CONTEXT:\n" + site_context(original, allowed_sites)
                     + "\nIMMUTABLE UPSTREAM TEST EXCERPTS:\n" + independent_tests)
                 (d / "prompt.txt").write_text(attempt_prompt, encoding="utf-8")
                 write_json(d / "allowed-sites.json", allowed_sites)
@@ -519,7 +670,8 @@ def verify_case(generation_run, folder=None, guard=None):
     case = raw["source"]; gate = raw["passing_seed"]
     manifest = {"schema_version": 2, "kind": "synthetic_verification", "source": case, "run_id": folder.name,
                 "created_at": now(), "status": "running", "generation_run": generation_run, "attempt_count": 3,
-                "attempts": [], "human_review": "pending", "model": raw["model"]}
+                "attempts": [], "human_review": "pending", "model": raw["model"],
+                "verification_policy": "stop_repetitions_after_timeout_restore_still_required_v1"}
     write_json(folder / "manifest.json", manifest)
     try:
         head = check_gate(case, gate)
@@ -536,6 +688,8 @@ def verify_case(generation_run, folder=None, guard=None):
                 for i in range(3):
                     result["repetitions"].append(execute(case, gate, d, "candidate-" + str(i + 1), candidate=candidate, guard=guard))
                     write_json(folder / "manifest.json", manifest)
+                    if result["repetitions"][-1]["timed_out"]:
+                        break
             result["restored"] = execute(case, gate, d, "restored", guard=guard)
             accepted = (runner.accepted(result["baseline"], result["repetitions"], result["restored"], d)
                         and test_passed(result["baseline"], d) and test_passed(result["restored"], d))

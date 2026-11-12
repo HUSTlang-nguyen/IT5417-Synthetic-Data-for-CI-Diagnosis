@@ -1,0 +1,64 @@
+{
+  "case_id": "pylint-dev__astroid-2023-ds1",
+  "source_case_id": "pylint-dev__astroid-2023",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-2023",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "base": "2108ae51b516458243c249cf67301cb387e33afa",
+  "head": "base+repair:d3b8a9281c7b19030b2b6d0d0824a093d2257c339dce6617211ad54a01927539",
+  "allowed_file": "astroid/nodes/node_classes.py",
+  "license": "LGPL-2.1-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__astroid-2023-ds1/repair.patch",
+  "repair_patch_sha256": "d3b8a9281c7b19030b2b6d0d0824a093d2257c339dce6617211ad54a01927539",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__astroid-2023-ds1/test.patch",
+  "test_patch_sha256": "3c1cce35e7e2971e7680de0083ec82d4d77bd0f3fe3aa5b99c0c910401e6f47a",
+  "source_record_sha256": "82b3f1b735df3d46fd04c7749e4c0a65ada80aea6097be1a67dffc6f888f6410",
+  "fail_to_pass": [
+    "tests/test_utils.py::InferenceUtil::test_not_exclusive_walrus_multiple",
+    "tests/test_utils.py::InferenceUtil::test_not_exclusive_walrus_operator",
+    "tests/test_utils.py::InferenceUtil::test_not_exclusive_walrus_operator_nested"
+  ],
+  "pass_to_pass": [
+    "tests/test_utils.py::InferenceUtil::test_if",
+    "tests/test_utils.py::InferenceUtil::test_not_exclusive",
+    "tests/test_utils.py::InferenceUtil::test_try_except",
+    "tests/test_utils.py::InferenceUtil::test_unpack_infer_empty_tuple",
+    "tests/test_utils.py::InferenceUtil::test_unpack_infer_uninferable_nodes"
+  ],
+  "test_targets": [
+    "tests/test_utils.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_utils.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "wrapt==1.15.0",
+    "lazy-object-proxy==1.9.0",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

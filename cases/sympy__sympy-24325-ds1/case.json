@@ -1,0 +1,54 @@
+{
+  "case_id": "sympy__sympy-24325-ds1",
+  "source_case_id": "sympy__sympy-24325",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-24325",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "cdef6fcbfc12008d0de65ecd8ed21d1912e77e5d",
+  "head": "base+repair:47e31eea9fc38d8a64a34cebd48e164a159f4dff32b879e9168b7b7108a62db0",
+  "allowed_file": "sympy/physics/units/systems/cgs.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24325-ds1/repair.patch",
+  "repair_patch_sha256": "47e31eea9fc38d8a64a34cebd48e164a159f4dff32b879e9168b7b7108a62db0",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24325-ds1/test.patch",
+  "test_patch_sha256": "bffe15a876de11266aad40180d6c35f95c2101226d3dd29d307301de44ef353f",
+  "source_record_sha256": "80e8571012ca7eb6287f14941ba392b5f20759597addbc09b46529b9ac314615",
+  "fail_to_pass": [
+    "test_conversion_to_from_si"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "sympy/physics/units/tests/test_unit_system_cgs_gauss.py"
+  ],
+  "frozen_test_files": [
+    "sympy/physics/units/tests/test_unit_system_cgs_gauss.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

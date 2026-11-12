@@ -1,0 +1,72 @@
+{
+  "case_id": "sympy__sympy-22914-ds1",
+  "source_case_id": "sympy__sympy-22914",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-22914",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "c4e836cdf73fc6aa7bab6a86719a0f08861ffb1d",
+  "head": "base+repair:9bf076ac9ded3e486c10a22e70156aa2299a72dea087233cde48a5de6dbb74df",
+  "allowed_file": "sympy/printing/pycode.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-22914-ds1/repair.patch",
+  "repair_patch_sha256": "9bf076ac9ded3e486c10a22e70156aa2299a72dea087233cde48a5de6dbb74df",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-22914-ds1/test.patch",
+  "test_patch_sha256": "95e580cdfb748ead82b4e87d89ac8a8195e4dc6abded0f046028be5191b867f5",
+  "source_record_sha256": "4c2344acac504670a47c266dae68f0e9dcf4857625846cd0e245c5d338daf211",
+  "fail_to_pass": [
+    "test_PythonCodePrinter"
+  ],
+  "pass_to_pass": [
+    "test_PythonCodePrinter_standard",
+    "test_MpmathPrinter",
+    "test_NumPyPrinter",
+    "test_SciPyPrinter",
+    "test_pycode_reserved_words",
+    "test_sqrt",
+    "test_frac",
+    "test_printmethod",
+    "test_codegen_ast_nodes",
+    "test_issue_14283",
+    "test_NumPyPrinter_print_seq",
+    "test_issue_16535_16536",
+    "test_Integral",
+    "test_fresnel_integrals",
+    "test_beta",
+    "test_airy",
+    "test_airy_prime"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_pycode.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_pycode.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

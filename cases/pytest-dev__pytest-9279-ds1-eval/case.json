@@ -1,0 +1,86 @@
+{
+  "case_id": "pytest-dev__pytest-9279-ds1-eval",
+  "source_case_id": "pytest-dev__pytest-9279",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pytest-dev__pytest-9279",
+  "repo_url": "https://github.com/pytest-dev/pytest",
+  "base": "86446edc869f14de4d9e32d9f1fa4d8cd1df8cb6",
+  "head": "base+repair:d3c10f0ff71027f0e291c336c3a794076521444ce64c216cd093f96812c1c06b",
+  "allowed_file": "src/_pytest/nodes.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-9279-ds1-eval/repair.patch",
+  "repair_patch_sha256": "d3c10f0ff71027f0e291c336c3a794076521444ce64c216cd093f96812c1c06b",
+  "test_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-9279-ds1-eval/test.patch",
+  "test_patch_sha256": "b56263d3df42e6743c9365371e325e8640450881c23b5b1eb8777cb31136327c",
+  "source_record_sha256": "a62e7875ae972042455da3813a51d3a81958fdb9d144e502e32e4b5499dcb71d",
+  "fail_to_pass": [
+    "testing/test_nodes.py::test_subclassing_both_item_and_collector_deprecated"
+  ],
+  "pass_to_pass": [
+    "testing/test_nodes.py::test_iterparentnodeids[-expected0]",
+    "testing/test_nodes.py::test_iterparentnodeids[a-expected1]",
+    "testing/test_nodes.py::test_iterparentnodeids[aa/b-expected2]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c-expected3]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/bbb/c::D-expected4]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c::D::eee-expected5]",
+    "testing/test_nodes.py::test_iterparentnodeids[::xx-expected6]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c::D/d::e-expected7]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b::D:e:f::g-expected8]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b::c/d::e[/test]-expected9]",
+    "testing/test_nodes.py::test_node_from_parent_disallowed_arguments",
+    "testing/test_nodes.py::test_node_direct_construction_deprecated",
+    "testing/test_nodes.py::test__check_initialpaths_for_relpath",
+    "testing/test_nodes.py::test_node_warn_is_no_longer_only_pytest_warnings[DeprecationWarning-deprecated]",
+    "testing/test_nodes.py::test_node_warn_is_no_longer_only_pytest_warnings[PytestWarning-pytest]",
+    "testing/test_nodes.py::test_node_warning_enforces_warning_types",
+    "testing/test_nodes.py::test_failure_with_changed_cwd"
+  ],
+  "test_targets": [
+    "testing/test_nodes.py"
+  ],
+  "frozen_test_files": [
+    "testing/test_nodes.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Frozen reference tests on base/fixed; local reconstruction only",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "7.4.4",
+  "pytest_plugins": [
+    "pytester"
+  ],
+  "install_project": false,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dependencies": [
+    "py==1.11.0",
+    "attrs==21.4.0",
+    "iniconfig==2.0.0",
+    "packaging==23.2",
+    "tomli==2.0.1",
+    "exceptiongroup==1.1.3",
+    "typing_extensions==4.12.2",
+    "pluggy==1.6.0",
+    "more-itertools==9.1.0",
+    "atomicwrites==1.4.1",
+    "wcwidth==0.2.13",
+    "mock==5.1.0"
+  ]
+}

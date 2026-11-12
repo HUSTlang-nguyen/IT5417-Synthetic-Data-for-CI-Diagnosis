@@ -1,0 +1,103 @@
+{
+  "case_id": "sphinx-doc__sphinx-7350-ds1-env2",
+  "source_case_id": "sphinx-doc__sphinx-7350",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-7350",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "c75470f9b79046f6d32344be5eacf60a4e1c1b7d",
+  "head": "base+repair:4186c3b91374f6a9c437a07948ad3a1961707fc1234422fa9c831ca5bc53fab5",
+  "allowed_file": "sphinx/ext/napoleon/docstring.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7350-ds1/repair.patch",
+  "repair_patch_sha256": "4186c3b91374f6a9c437a07948ad3a1961707fc1234422fa9c831ca5bc53fab5",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7350-ds1/test.patch",
+  "test_patch_sha256": "4dc06914a967b1f603cae00eccdc6e6d4860ba2431fd0c25f398732c6cd59575",
+  "source_record_sha256": "145c007b8ddcdc6acaaaf2142e28648a0304e86c72ec802cdc3ee0bdcf44627d",
+  "fail_to_pass": [
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_noindex"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_napoleon_docstring.py::NamedtupleSubclassTest::test_attributes_docstring",
+    "tests/test_ext_napoleon_docstring.py::InlineAttributeTest::test_class_data_member",
+    "tests/test_ext_napoleon_docstring.py::InlineAttributeTest::test_class_data_member_inline",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_attributes_with_class_reference",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_code_block_in_returns_section",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_colon_in_return_type",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_custom_generic_sections",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_docstrings",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_kwargs_in_arguments",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_list_in_parameter_description",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_parameters_with_class_reference",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_raises_types",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_section_header_formatting",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_sphinx_admonitions",
+    "tests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_xrefs_in_return_type",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_colon_in_return_type",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_docstrings",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_keywords_with_types",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_list_in_parameter_description",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_parameters_with_class_reference",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_parameters_without_class_reference",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_raises_types",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_section_header_underline_length",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_see_also_refs",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_sphinx_admonitions",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_underscore_in_attribute",
+    "tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_xrefs_in_return_type"
+  ],
+  "test_targets": [
+    "tests/test_ext_napoleon_docstring.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_ext_napoleon_docstring.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7350-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ]
+}

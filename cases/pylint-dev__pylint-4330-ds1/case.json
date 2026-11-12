@@ -1,0 +1,93 @@
+{
+  "case_id": "pylint-dev__pylint-4330-ds1",
+  "source_case_id": "pylint-dev__pylint-4330",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4330",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "5e1928b325bc798f5be1ab94031bf6816d058d9f",
+  "head": "base+repair:91e1edc6e679124f63d9492a616845ad8005b3e6b263d5d46aeb4f070e950feb",
+  "allowed_file": "pylint/checkers/spelling.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4330-ds1/repair.patch",
+  "repair_patch_sha256": "91e1edc6e679124f63d9492a616845ad8005b3e6b263d5d46aeb4f070e950feb",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4330-ds1/test.patch",
+  "test_patch_sha256": "035995409367935b4e682c580f5c584c0c66195f7405fb8de3fdf1913c62b74f",
+  "source_record_sha256": "fbeab435b526f19571c0be329e76bcd9b4d8e06a73d2a2db1e6974f122a8ad7c",
+  "fail_to_pass": [
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_tool_directives_at_beginning_of_comments_but_still_raise_error_if_directive_appears_later_in_comment[fmt-:",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_tool_directives_at_beginning_of_comments_but_still_raise_error_if_directive_appears_later_in_comment[noqa--pycharm",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_tool_directives_at_beginning_of_comments_but_still_raise_error_if_directive_appears_later_in_comment[noqa-:-flake8",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_tool_directives_at_beginning_of_comments_but_still_raise_error_if_directive_appears_later_in_comment[nosec--bandit",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_tool_directives_at_beginning_of_comments_but_still_raise_error_if_directive_appears_later_in_comment[isort-:skip-isort",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_tool_directives_at_beginning_of_comments_but_still_raise_error_if_directive_appears_later_in_comment[mypy-:-mypy",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_code_flanked_in_double_backticks",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_code_flanked_in_single_backticks",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_directives_specified_in_pylintrc"
+  ],
+  "pass_to_pass": [
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_check_bad_coment",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_check_bad_coment_custom_suggestion_count",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_check_bad_docstring",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_shebangs",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_python_coding_comments",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_top_level_pylint_enable_disable_comments",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_words_with_numbers",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_wiki_words",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_camel_cased_words",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_words_with_underscores",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_email_address",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_urls",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_sphinx_directives",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_skip_sphinx_directives_2",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_handle_words_joined_by_forward_slash",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_more_than_one_error_in_same_line_for_same_word_on_docstring",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_more_than_one_error_in_same_line_for_same_word_on_comment",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_docstring_lines_that_look_like_comments_1",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_docstring_lines_that_look_like_comments_2",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_docstring_lines_that_look_like_comments_3",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_docstring_lines_that_look_like_comments_4",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_docstring_lines_that_look_like_comments_5",
+    "tests/checkers/unittest_spelling.py::TestSpellingChecker::test_docstring_lines_that_look_like_comments_6"
+  ],
+  "test_targets": [
+    "tests/checkers/unittest_spelling.py"
+  ],
+  "frozen_test_files": [
+    "tests/checkers/unittest_spelling.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

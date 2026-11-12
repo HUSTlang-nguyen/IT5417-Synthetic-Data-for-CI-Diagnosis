@@ -1,0 +1,65 @@
+{
+  "case_id": "sympy__sympy-24638-ds1",
+  "source_case_id": "sympy__sympy-24638",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-24638",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "c4d6b3eb1c7b39832116f7b02baf524a1ffadfba",
+  "head": "base+repair:68093ed4b4790025e69a3803ee58a199d6d9f269e9d92106771f2012a00e5a3a",
+  "allowed_file": "sympy/tensor/array/expressions/arrayexpr_derivatives.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24638-ds1/repair.patch",
+  "repair_patch_sha256": "68093ed4b4790025e69a3803ee58a199d6d9f269e9d92106771f2012a00e5a3a",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24638-ds1/test.patch",
+  "test_patch_sha256": "110fe50c2175f8c3dc7cdbb096fdead9802fe91248d1dbefebeb662b1f83753c",
+  "source_record_sha256": "c93342c224100778557a25123b76c798943f597fa7fc767070472923de2996bb",
+  "fail_to_pass": [
+    "test_one_matrix"
+  ],
+  "pass_to_pass": [
+    "test_matrix_derivative_by_scalar",
+    "test_matrix_derivative_non_matrix_result",
+    "test_matrix_derivative_trivial_cases",
+    "test_matrix_derivative_with_inverse",
+    "test_matrix_derivative_vectors_and_scalars",
+    "test_matrix_derivatives_of_traces",
+    "test_derivatives_of_complicated_matrix_expr",
+    "test_mixed_deriv_mixed_expressions",
+    "test_derivatives_matrix_norms",
+    "test_derivatives_elementwise_applyfunc"
+  ],
+  "test_targets": [
+    "sympy/matrices/expressions/tests/test_derivatives.py"
+  ],
+  "frozen_test_files": [
+    "sympy/matrices/expressions/tests/test_derivatives.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

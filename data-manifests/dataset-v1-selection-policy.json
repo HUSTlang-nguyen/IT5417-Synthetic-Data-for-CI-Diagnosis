@@ -1,0 +1,25 @@
+{
+  "version": "dataset-v1-final-selection-policy-1",
+  "status": "selection_policy_not_a_locked_dataset",
+  "real_targets": {"train": 175, "validation": 37, "test": 38},
+  "eligibility": "Evidence-bound include silver with unchanged source/tests/raw artifacts; no unresolved exact or semantic duplicate",
+  "real_train_class_support": {
+    "minimum_samples_per_learned_class": 10,
+    "minimum_learned_classes": 2,
+    "rule": "Derive qualifying classes from all curated real train records before any research fit/prediction; select train only from those classes. Never relabel a sparse class. Preserve sparse-class records outside the final selection with explicit reasons.",
+    "heldout_rule": "Do not filter validation/test by train class support. Report unseen classes and per-class support/metrics, including errors. The diagnosis output taxonomy stays unchanged."
+  },
+  "ordering": "Within each frozen role, sort eligible real source_case_id lexicographically and take the role target. Never rank by retrieval coverage, model prediction or diagnosis performance. Retain all unselected records and selection reasons.",
+  "synthetic": {
+    "target": "Equal to actual selected real train count",
+    "role": "train only, original repository roles unchanged",
+    "class_scope": "Same qualifying real-train classes, with quality/evidence review and exact/semantic family adjudication before selection",
+    "ordering": "Sort eligible generation_run and attempt_index; take the required number after duplicate adjudication"
+  },
+  "boundaries": [
+    "This implements the existing minimum10-per-learned-class gate; it does not reduce the250-real or matched-synthetic gates.",
+    "If targets cannot be met under these rules and original time/storage/request caps, report the deficit and leave SFT gated.",
+    "Gold remains pending. Actor remains unknown for real reconstructions. No repository role or existing assessment is rewritten.",
+    "A final selection ledger, complete evidence audit and hash-bound group review are still required."
+  ]
+}

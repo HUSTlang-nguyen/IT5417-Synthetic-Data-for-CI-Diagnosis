@@ -1,0 +1,64 @@
+{
+  "case_id": "pvlib__pvlib-python-1349-ds1",
+  "source_case_id": "pvlib__pvlib-python-1349",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1349",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "aba071f707f9025882e57f3e55cc9e3e90e869b2",
+  "head": "base+repair:5325fb81cbd7d7409f8e6f5e0100e6e3171c942e06d293e2c5d9ac92e971f35a",
+  "allowed_file": "pvlib/spectrum/spectrl2.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pvlib__pvlib-python-1349-ds1/repair.patch",
+  "repair_patch_sha256": "5325fb81cbd7d7409f8e6f5e0100e6e3171c942e06d293e2c5d9ac92e971f35a",
+  "test_patch": ".cache/dataset-v1-source/cases/pvlib__pvlib-python-1349-ds1/test.patch",
+  "test_patch_sha256": "e99ae701b6ff550a37c4e0c60f01d312954e5946894dec25eb3a6b9833602ed7",
+  "source_record_sha256": "02c7ab301655f3685ec75e6039eb40920a395061166b0874e54a3375c7a10226",
+  "fail_to_pass": [
+    "pvlib/tests/test_spectrum.py::test_aoi_gt_90"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/test_spectrum.py::test_spectrl2",
+    "pvlib/tests/test_spectrum.py::test_spectrl2_array",
+    "pvlib/tests/test_spectrum.py::test_spectrl2_series",
+    "pvlib/tests/test_spectrum.py::test_dayofyear_missing"
+  ],
+  "test_targets": [
+    "pvlib/tests/test_spectrum.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/test_spectrum.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "case_id": "sympy__sympy-18961-ds1",
+  "source_case_id": "sympy__sympy-18961",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-18961",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "d6417fbb2972861e7f472537bb9cd55ed01afd00",
+  "head": "base+repair:45cbb5a7e2113760ee43b69daf4bb2a1f3ecbd63c4efaf75e281029cb6f3ca37",
+  "allowed_file": "sympy/ntheory/digits.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-18961-ds1/repair.patch",
+  "repair_patch_sha256": "45cbb5a7e2113760ee43b69daf4bb2a1f3ecbd63c4efaf75e281029cb6f3ca37",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-18961-ds1/test.patch",
+  "test_patch_sha256": "f695a2648f1b4d3cd9b639f099a3b97e6c1248bf01b80f52aa5cd292dcc909e7",
+  "source_record_sha256": "3809fde53a72b912c48624570c969c6145bc3fc2ccafa3b2db6d22a8bd798427",
+  "fail_to_pass": [
+    "test_digits"
+  ],
+  "pass_to_pass": [
+    "test_count_digits"
+  ],
+  "test_targets": [
+    "sympy/ntheory/tests/test_digits.py"
+  ],
+  "frozen_test_files": [
+    "sympy/ntheory/tests/test_digits.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

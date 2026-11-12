@@ -1,0 +1,79 @@
+{
+  "case_id": "pylint-dev__pylint-5201-ds1-extra",
+  "source_case_id": "pylint-dev__pylint-5201",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-5201",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "772b3dcc0b0770a843653783e5c93b4256e5ec6f",
+  "head": "base+repair:79682cdd862beb1cf63f56bbfdfaa5eb2fcdd9b543c5fd7f739460219eff702d",
+  "allowed_file": "pylint/config/option.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5201-ds1-extra/repair.patch",
+  "repair_patch_sha256": "79682cdd862beb1cf63f56bbfdfaa5eb2fcdd9b543c5fd7f739460219eff702d",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5201-ds1-extra/test.patch",
+  "test_patch_sha256": "1940b54a5076e3e18360fc88225b19cc0eb37f3ba6bbd9dfc3f79fa585296ad2",
+  "source_record_sha256": "e2483f8f71f9b8bef079878dfca63304ea585252a1729c1511f34463a29f3562",
+  "fail_to_pass": [
+    "tests/lint/unittest_expand_modules.py::TestExpandModules::test_expand_modules[files_or_modules0-expected0]",
+    "tests/lint/unittest_expand_modules.py::TestExpandModules::test_expand_modules[files_or_modules1-expected1]",
+    "tests/lint/unittest_expand_modules.py::TestExpandModules::test_expand_modules_with_ignore[files_or_modules0-expected0]",
+    "tests/lint/unittest_expand_modules.py::TestExpandModules::test_expand_modules_with_ignore[files_or_modules1-expected1]",
+    "tests/unittest_config.py::TestPyLinterOptionSetters::test_ignore_paths_with_value",
+    "tests/unittest_config.py::TestPyLinterOptionSetters::test_ignore_paths_with_no_value"
+  ],
+  "pass_to_pass": [
+    "tests/lint/unittest_expand_modules.py::test__is_in_ignore_list_re_match",
+    "tests/unittest_config.py::test__regexp_validator_valid",
+    "tests/unittest_config.py::test__regexp_validator_invalid",
+    "tests/unittest_config.py::test__csv_validator_no_spaces",
+    "tests/unittest_config.py::test__csv_validator_spaces",
+    "tests/unittest_config.py::test__regexp_csv_validator_valid",
+    "tests/unittest_config.py::test__regexp_csv_validator_invalid"
+  ],
+  "test_targets": [
+    "tests/lint/unittest_expand_modules.py",
+    "tests/unittest_config.py"
+  ],
+  "frozen_test_files": [
+    "tests/lint/unittest_expand_modules.py",
+    "tests/unittest_config.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "dependencies": [
+    "astroid==2.8.6",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8",
+    "py==1.11.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

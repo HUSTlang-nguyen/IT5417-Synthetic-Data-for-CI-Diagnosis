@@ -1,0 +1,91 @@
+{
+  "case_id": "sympy__sympy-15635-ds1",
+  "source_case_id": "sympy__sympy-15635",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-15635",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "e2fbe231f48ec768bee63fb4fc54bdf9f31c3bd1",
+  "head": "base+repair:b3bd6c476f90a987791debd7107e68ce016b45093dae3a342c67807f77e74ceb",
+  "allowed_file": "sympy/printing/repr.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15635-ds1/repair.patch",
+  "repair_patch_sha256": "b3bd6c476f90a987791debd7107e68ce016b45093dae3a342c67807f77e74ceb",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15635-ds1/test.patch",
+  "test_patch_sha256": "860a9290a7c9bb99890cdf1d15c3ca0294da0769897073b891f1be0078a9572a",
+  "source_record_sha256": "1cfc18615bac4a9e972916c3ff17a450dab374d547a1efa4b33e23295223a9ce",
+  "fail_to_pass": [
+    "test_Integers",
+    "test_Naturals",
+    "test_Naturals0"
+  ],
+  "pass_to_pass": [
+    "test_printmethod",
+    "test_Add",
+    "test_more_than_255_args_issue_10259",
+    "test_Function",
+    "test_Geometry",
+    "test_Singletons",
+    "test_Integer",
+    "test_list",
+    "test_Matrix",
+    "test_empty_Matrix",
+    "test_Rational",
+    "test_Float",
+    "test_Symbol",
+    "test_Symbol_two_assumptions",
+    "test_Symbol_no_special_commutative_treatment",
+    "test_Wild",
+    "test_Dummy",
+    "test_Dummy_assumption",
+    "test_Dummy_from_Symbol",
+    "test_tuple",
+    "test_WildFunction",
+    "test_settins",
+    "test_Mul",
+    "test_AlgebraicNumber",
+    "test_PolyRing",
+    "test_FracField",
+    "test_PolyElement",
+    "test_FracElement",
+    "test_FractionField",
+    "test_PolynomialRingBase",
+    "test_DMP",
+    "test_FiniteExtension",
+    "test_ExtensionElement",
+    "test_BooleanAtom"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_repr.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_repr.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

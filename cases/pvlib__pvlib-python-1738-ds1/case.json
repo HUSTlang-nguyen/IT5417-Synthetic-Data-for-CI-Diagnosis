@@ -1,0 +1,67 @@
+{
+  "case_id": "pvlib__pvlib-python-1738-ds1",
+  "source_case_id": "pvlib__pvlib-python-1738",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1738",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "275e6718caf7486cb5b7dcf29acd59499ad51f7f",
+  "head": "base+repair:473d5db34621550ddb6312306dd10614c554d3ca598dc39023f63016d12b782e",
+  "allowed_file": "pvlib/soiling.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pvlib__pvlib-python-1738-ds1/repair.patch",
+  "repair_patch_sha256": "473d5db34621550ddb6312306dd10614c554d3ca598dc39023f63016d12b782e",
+  "test_patch": ".cache/dataset-v1-source/cases/pvlib__pvlib-python-1738-ds1/test.patch",
+  "test_patch_sha256": "7b850ae8e802e9a0bf3b28a4e36a80306e47a8acb2a179d3a6bca4601609311d",
+  "source_record_sha256": "e012cd243fd37b30cabe44d635c6e02139ced3b4c823163047863f61e600cd49",
+  "fail_to_pass": [
+    "pvlib/tests/test_soiling.py::test_hsu_no_cleaning",
+    "pvlib/tests/test_soiling.py::test_hsu",
+    "pvlib/tests/test_soiling.py::test_hsu_defaults",
+    "pvlib/tests/test_soiling.py::test_hsu_variable_time_intervals"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/test_soiling.py::test_kimber_nowash",
+    "pvlib/tests/test_soiling.py::test_kimber_manwash",
+    "pvlib/tests/test_soiling.py::test_kimber_norain",
+    "pvlib/tests/test_soiling.py::test_kimber_initial_soil"
+  ],
+  "test_targets": [
+    "pvlib/tests/test_soiling.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/test_soiling.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

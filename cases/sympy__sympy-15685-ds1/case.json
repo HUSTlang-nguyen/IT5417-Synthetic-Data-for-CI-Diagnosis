@@ -1,0 +1,60 @@
+{
+  "case_id": "sympy__sympy-15685-ds1",
+  "source_case_id": "sympy__sympy-15685",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-15685",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "9ac430347eb80809a1dd89bbf5dad7ca593bbe63",
+  "head": "base+repair:98b90f5ef7ec0e219f4ddbd8edf75f53a59f51884a418b09d40a020a528ea145",
+  "allowed_file": "sympy/physics/units/definitions.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15685-ds1/repair.patch",
+  "repair_patch_sha256": "98b90f5ef7ec0e219f4ddbd8edf75f53a59f51884a418b09d40a020a528ea145",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15685-ds1/test.patch",
+  "test_patch_sha256": "72b219b1e4743748132a741f2d254797e38433d5ba8a415ea58d42de17097c0e",
+  "source_record_sha256": "197e1914c58af1cc9a0b574a4a78552c7f047323fd6d63c6efccb02e446d73b9",
+  "fail_to_pass": [
+    "test_print_unit_base"
+  ],
+  "pass_to_pass": [
+    "test_definition",
+    "test_error_definition",
+    "test_str_repr",
+    "test_extend",
+    "test_dim"
+  ],
+  "test_targets": [
+    "sympy/physics/units/tests/test_unitsystem.py"
+  ],
+  "frozen_test_files": [
+    "sympy/physics/units/tests/test_unitsystem.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

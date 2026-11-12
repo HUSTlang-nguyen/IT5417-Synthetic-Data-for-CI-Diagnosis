@@ -1,0 +1,72 @@
+{
+  "case_id": "pylint-dev__pylint-7993-ds1",
+  "source_case_id": "pylint-dev__pylint-7993",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-7993",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "e90702074e68e20dc8e5df5013ee3ecf22139c3e",
+  "head": "base+repair:a56ae72f6b88f0a03865155b280af1dfa97592074bd5bedc9a91a642801e11d5",
+  "allowed_file": "pylint/reporters/text.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-7993-ds1/repair.patch",
+  "repair_patch_sha256": "a56ae72f6b88f0a03865155b280af1dfa97592074bd5bedc9a91a642801e11d5",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-7993-ds1/test.patch",
+  "test_patch_sha256": "4064bfda717e1c876b91b15ece090dd8d0aba30c5df48ca1d98e1ba59064b4a1",
+  "source_record_sha256": "f258c57e2b2ddec920e80441bfdc6bb1e8700157673625de54f04cfb84740aaf",
+  "fail_to_pass": [
+    "tests/reporters/unittest_reporting.py::test_template_option_with_header"
+  ],
+  "pass_to_pass": [
+    "tests/reporters/unittest_reporting.py::test_template_option",
+    "tests/reporters/unittest_reporting.py::test_template_option_default",
+    "tests/reporters/unittest_reporting.py::test_template_option_end_line",
+    "tests/reporters/unittest_reporting.py::test_template_option_non_existing",
+    "tests/reporters/unittest_reporting.py::test_deprecation_set_output",
+    "tests/reporters/unittest_reporting.py::test_parseable_output_deprecated",
+    "tests/reporters/unittest_reporting.py::test_parseable_output_regression",
+    "tests/reporters/unittest_reporting.py::test_multi_format_output",
+    "tests/reporters/unittest_reporting.py::test_multi_reporter_independant_messages",
+    "tests/reporters/unittest_reporting.py::test_display_results_is_renamed"
+  ],
+  "test_targets": [
+    "tests/reporters/unittest_reporting.py"
+  ],
+  "frozen_test_files": [
+    "tests/reporters/unittest_reporting.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.12.13",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

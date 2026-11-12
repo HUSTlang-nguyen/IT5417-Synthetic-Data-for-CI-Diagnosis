@@ -1,0 +1,64 @@
+{
+  "case_id": "pylint-dev__pylint-5839-ds1-extra",
+  "source_case_id": "pylint-dev__pylint-5839",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-5839",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "15040ee7c42958606ae27aa32ccbe54371b83049",
+  "head": "base+repair:9a94d364264c77a9e1213841c49d04cc4552ecd0df2441b02bbca0babc5ab5f3",
+  "allowed_file": "pylint/checkers/__init__.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5839-ds1-extra/repair.patch",
+  "repair_patch_sha256": "9a94d364264c77a9e1213841c49d04cc4552ecd0df2441b02bbca0babc5ab5f3",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5839-ds1-extra/test.patch",
+  "test_patch_sha256": "a5cd2b3f91a6ae8ff5adc3513be2978cb948f183acc6d18c235afd32a2cfaad3",
+  "source_record_sha256": "903027bbf9b170d925d23dfa84b5f0c00d86d0461363581a5a37e374914b4c34",
+  "fail_to_pass": [
+    "tests/message/test_no_removed_msgid_or_symbol_used.py::test_no_removed_msgid_or_symbol_used"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "tests/message/test_no_removed_msgid_or_symbol_used.py"
+  ],
+  "frozen_test_files": [
+    "tests/message/test_no_removed_msgid_or_symbol_used.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "dependencies": [
+    "astroid==2.11.7",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8",
+    "py==1.11.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

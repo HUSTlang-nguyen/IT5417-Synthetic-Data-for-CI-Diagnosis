@@ -1,0 +1,72 @@
+{
+  "case_id": "pylint-dev__pylint-6357-ds1",
+  "source_case_id": "pylint-dev__pylint-6357",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-6357",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "cb37ae4fc24a8756a5f965cdc6ab9c472f909ab0",
+  "head": "base+repair:a9aca1790b8a4e28fa8cf79d4d21aa991a37c7824a07f53cee7c24d7358f6fc0",
+  "allowed_file": "pylint/checkers/similar.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6357-ds1/repair.patch",
+  "repair_patch_sha256": "a9aca1790b8a4e28fa8cf79d4d21aa991a37c7824a07f53cee7c24d7358f6fc0",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6357-ds1/test.patch",
+  "test_patch_sha256": "26bf971b8c46e86dcc18c77711d52274c2e2143f67e4827fac0c296c9131482b",
+  "source_record_sha256": "7347c7f7d33391453df458267ac3a0fe89333c2ddc4532a5e0535af14f6a667b",
+  "fail_to_pass": [
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_disable_all",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope_double",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope_function"
+  ],
+  "pass_to_pass": [
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_all",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_file",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_file_double",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_two",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_midle",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_end",
+    "tests/test_similar.py::TestSimilarCodeChecker::test_ignore_imports"
+  ],
+  "test_targets": [
+    "tests/test_similar.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_similar.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.11.7",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

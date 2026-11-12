@@ -1,0 +1,57 @@
+{
+  "case_id": "sympy__sympy-22005-ds1",
+  "source_case_id": "sympy__sympy-22005",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-22005",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "2c83657ff1c62fc2761b639469fdac7f7561a72a",
+  "head": "base+repair:10762dbd420f083b97d105bc6c7835a3b89f0d406b21e15bc09e12fad1a888d1",
+  "allowed_file": "sympy/solvers/polysys.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-22005-ds1/repair.patch",
+  "repair_patch_sha256": "10762dbd420f083b97d105bc6c7835a3b89f0d406b21e15bc09e12fad1a888d1",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-22005-ds1/test.patch",
+  "test_patch_sha256": "02693afc0a8cf0d1335c5eaf67dea771e0064a3ec2d68c6d3047bb2b803930e4",
+  "source_record_sha256": "6cecd8fb5712e3e85e01efbe0309528ff32320b3e8a9ae5c4ce84eb95064deac",
+  "fail_to_pass": [
+    "test_solve_poly_system"
+  ],
+  "pass_to_pass": [
+    "test_solve_biquadratic",
+    "test_solve_triangulated"
+  ],
+  "test_targets": [
+    "sympy/solvers/tests/test_polysys.py"
+  ],
+  "frozen_test_files": [
+    "sympy/solvers/tests/test_polysys.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

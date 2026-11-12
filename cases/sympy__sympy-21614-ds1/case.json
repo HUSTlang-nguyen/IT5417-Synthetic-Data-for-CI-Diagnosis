@@ -1,0 +1,61 @@
+{
+  "case_id": "sympy__sympy-21614-ds1",
+  "source_case_id": "sympy__sympy-21614",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-21614",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "b4777fdcef467b7132c055f8ac2c9a5059e6a145",
+  "head": "base+repair:5a20f33fdb0a731064a81dc26e925e91557900bb7edbfce84463de6280e8e3cd",
+  "allowed_file": "sympy/core/function.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-21614-ds1/repair.patch",
+  "repair_patch_sha256": "5a20f33fdb0a731064a81dc26e925e91557900bb7edbfce84463de6280e8e3cd",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-21614-ds1/test.patch",
+  "test_patch_sha256": "55d2672c66a3ddce4236b7cfe912c730232657a7008d7ab26ec50c40ad4a1ee7",
+  "source_record_sha256": "721aa5c972ea9dbb5993cd409d3f81aa65055971755e0e2a3f290e7a022314d7",
+  "fail_to_pass": [
+    "test_Derivative_kind"
+  ],
+  "pass_to_pass": [
+    "test_NumberKind",
+    "test_Add_kind",
+    "test_mul_kind",
+    "test_Symbol_kind",
+    "test_Integral_kind",
+    "test_Matrix_kind"
+  ],
+  "test_targets": [
+    "sympy/core/tests/test_kind.py"
+  ],
+  "frozen_test_files": [
+    "sympy/core/tests/test_kind.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

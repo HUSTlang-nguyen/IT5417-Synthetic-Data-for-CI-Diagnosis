@@ -1,0 +1,93 @@
+{
+  "case_id": "sphinx-doc__sphinx-9229-ds1-env2-deps",
+  "source_case_id": "sphinx-doc__sphinx-9229",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-9229",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "876fa81e0a038cda466925b85ccf6c5452e0f685",
+  "head": "base+repair:a629737ba0c45e7c4c2ded79949650dd54443a536735e67ebffa33b7c40a424b",
+  "allowed_file": "sphinx/ext/autodoc/__init__.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-9229-ds1/repair.patch",
+  "repair_patch_sha256": "a629737ba0c45e7c4c2ded79949650dd54443a536735e67ebffa33b7c40a424b",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-9229-ds1/test.patch",
+  "test_patch_sha256": "a8e12b2a7914effc59e2e01301cd227b8486db5bf2bf9f9419cb5fd637cf863c",
+  "source_record_sha256": "b5a9ab742a8d98536ac4c9c036edb9ceaa9e64d7f36ae18ced3a78b85b9fbb35",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_autoclass.py::test_class_alias_having_doccomment"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autodoc_autoclass.py::test_classes",
+    "tests/test_ext_autodoc_autoclass.py::test_instance_variable",
+    "tests/test_ext_autodoc_autoclass.py::test_inherited_instance_variable",
+    "tests/test_ext_autodoc_autoclass.py::test_uninitialized_attributes",
+    "tests/test_ext_autodoc_autoclass.py::test_undocumented_uninitialized_attributes",
+    "tests/test_ext_autodoc_autoclass.py::test_decorators",
+    "tests/test_ext_autodoc_autoclass.py::test_properties",
+    "tests/test_ext_autodoc_autoclass.py::test_slots_attribute",
+    "tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_subclass_of_generic_type",
+    "tests/test_ext_autodoc_autoclass.py::test_class_doc_from_class",
+    "tests/test_ext_autodoc_autoclass.py::test_class_doc_from_init",
+    "tests/test_ext_autodoc_autoclass.py::test_class_doc_from_both",
+    "tests/test_ext_autodoc_autoclass.py::test_class_alias"
+  ],
+  "test_targets": [
+    "tests/test_ext_autodoc_autoclass.py"
+  ],
+  "frozen_test_files": [
+    "tests/roots/test-ext-autodoc/target/classes.py",
+    "tests/test_ext_autodoc_autoclass.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.17.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-9229-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ]
+}

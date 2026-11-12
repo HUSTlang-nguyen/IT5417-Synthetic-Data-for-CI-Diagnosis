@@ -1,0 +1,65 @@
+{
+  "updated_at": "2026-11-12T18:57:11+07:00",
+  "experiment_run_id": "experiment-20261111T192045721211Z",
+  "status": "curation_complete_final_audit_running_learning_gated",
+  "source": {
+    "planned_candidates": 525,
+    "attempted_source_cases": 449,
+    "profile_attempts": 471,
+    "strict_reproduced": 285,
+    "passing_seeds": 333
+  },
+  "real": {
+    "curated_silver": 265,
+    "quarantined": 20,
+    "selected": 250,
+    "selected_by_role": {
+      "train": 175,
+      "validation": 37,
+      "test": 38
+    },
+    "selected_train_support": {
+      "logic/value": 134,
+      "API/type": 41
+    }
+  },
+  "synthetic": {
+    "generator_calls_finished": 372,
+    "runner_accepted": 197,
+    "verification_failed": 159,
+    "invalid_output": 13,
+    "unknown_verification_attempts": 3,
+    "curated_exports": 105,
+    "in_scope_selection": 102,
+    "required": 175,
+    "missing": 73
+  },
+  "gates": {
+    "real_count_and_class_support": "met",
+    "full_evidence_group_audit": "running_352records",
+    "matched_synthetic": "not_met",
+    "learning_dataset_lock": "not_created",
+    "gold_labels": "pending"
+  },
+  "models": {
+    "M0": "not_run",
+    "M1": "not_run_one_train_runtime_calibration_only",
+    "M2": "not_run",
+    "M5": "not_run"
+  },
+  "execution": {
+    "live_execution_workers": 0,
+    "live_read_only_audit_session": 35613,
+    "synthetic_stage": "exhausted_includes_unknown_inflight_gap",
+    "new_generation": "not_started_after_cap",
+    "deadline": "2026-11-13T02:19:29+07:00"
+  },
+  "pointers": {
+    "real_selection": "data-manifests/dataset-v1-real-selection.json",
+    "dataset_card": "docs/dataset-card.md",
+    "review": "docs/data-review.md",
+    "progress_evidence": "docs/evidence/dataset-v1-progress/README.md",
+    "storage": "docs/data-storage.md"
+  },
+  "qualification": "Milestone snapshot, not a background monitor or training approval. No research fit/final model test. Read actual worker manifest only when newer state must be verified; do not rerun experiments or full hash audit merely for a status question."
+}

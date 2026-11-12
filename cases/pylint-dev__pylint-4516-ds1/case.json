@@ -1,0 +1,64 @@
+{
+  "case_id": "pylint-dev__pylint-4516-ds1",
+  "source_case_id": "pylint-dev__pylint-4516",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4516",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "0b5a44359d8255c136af27c0ef5f5b196a526430",
+  "head": "base+repair:c688ec4cbf9888a21734684ea04ffc0e9d50007166be63c6e5845d4a004cd9a0",
+  "allowed_file": "pylint/lint/expand_modules.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4516-ds1/repair.patch",
+  "repair_patch_sha256": "c688ec4cbf9888a21734684ea04ffc0e9d50007166be63c6e5845d4a004cd9a0",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4516-ds1/test.patch",
+  "test_patch_sha256": "c627bf933bebacd8194814e53ce58bd83d4fc9a59d7eb05d5109dd9051a6a100",
+  "source_record_sha256": "49ab445b995662501b3856db36e7a9704e43680efabdf5c25a1f03aa61d88b5b",
+  "fail_to_pass": [
+    "tests/lint/unittest_expand_modules.py::test__is_in_ignore_list_re_match",
+    "tests/lint/unittest_expand_modules.py::test__is_in_ignore_list_re_nomatch",
+    "tests/lint/unittest_expand_modules.py::test_expand_modules[files_or_modules0-expected0]",
+    "tests/lint/unittest_expand_modules.py::test_expand_modules[files_or_modules1-expected1]"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "tests/lint/unittest_expand_modules.py"
+  ],
+  "frozen_test_files": [
+    "tests/lint/unittest_expand_modules.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

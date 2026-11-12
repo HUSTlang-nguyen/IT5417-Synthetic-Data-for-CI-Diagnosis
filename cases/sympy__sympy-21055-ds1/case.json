@@ -1,0 +1,68 @@
+{
+  "case_id": "sympy__sympy-21055-ds1",
+  "source_case_id": "sympy__sympy-21055",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-21055",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "748ce73479ee2cd5c861431091001cc18943c735",
+  "head": "base+repair:87d45465c20f16dc0cd141eef23a4ceefe22b5688a919209a9a3e3f508dde4fd",
+  "allowed_file": "sympy/assumptions/refine.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-21055-ds1/repair.patch",
+  "repair_patch_sha256": "87d45465c20f16dc0cd141eef23a4ceefe22b5688a919209a9a3e3f508dde4fd",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-21055-ds1/test.patch",
+  "test_patch_sha256": "4347276e1339d2eea1f7f7d983d9cec0678957eaf68846c820c65a82031dcdc2",
+  "source_record_sha256": "159450cf24fa207a1fab423aaa88ddeb16e2b6d53f1dae2f44e8b41402c3c5a4",
+  "fail_to_pass": [
+    "test_arg"
+  ],
+  "pass_to_pass": [
+    "test_Abs",
+    "test_pow1",
+    "test_pow2",
+    "test_exp",
+    "test_Piecewise",
+    "test_atan2",
+    "test_re",
+    "test_im",
+    "test_complex",
+    "test_sign",
+    "test_func_args",
+    "test_eval_refine",
+    "test_refine_issue_12724"
+  ],
+  "test_targets": [
+    "sympy/assumptions/tests/test_refine.py"
+  ],
+  "frozen_test_files": [
+    "sympy/assumptions/tests/test_refine.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

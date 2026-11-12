@@ -1,0 +1,79 @@
+{
+  "case_id": "sympy__sympy-20442-ds1",
+  "source_case_id": "sympy__sympy-20442",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-20442",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "1abbc0ac3e552cb184317194e5d5c5b9dd8fb640",
+  "head": "base+repair:e94292e05aa24871b2e6bdf194ae19cc157bed12b08a66f4f47c663146df2638",
+  "allowed_file": "sympy/physics/units/util.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-20442-ds1/repair.patch",
+  "repair_patch_sha256": "e94292e05aa24871b2e6bdf194ae19cc157bed12b08a66f4f47c663146df2638",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-20442-ds1/test.patch",
+  "test_patch_sha256": "fdaf67860062f560ecb269ef7849d2463be8f40f60ed55889302518fc2adbee5",
+  "source_record_sha256": "b15102fa57696ae30dfac0059f04d96d4a6571826a0e1c17e48dac1902dc66d2",
+  "fail_to_pass": [
+    "test_convert_to"
+  ],
+  "pass_to_pass": [
+    "test_str_repr",
+    "test_eq",
+    "test_Quantity_definition",
+    "test_abbrev",
+    "test_print",
+    "test_Quantity_eq",
+    "test_add_sub",
+    "test_quantity_abs",
+    "test_check_unit_consistency",
+    "test_mul_div",
+    "test_units",
+    "test_issue_quart",
+    "test_issue_5565",
+    "test_find_unit",
+    "test_Quantity_derivative",
+    "test_quantity_postprocessing",
+    "test_factor_and_dimension",
+    "test_dimensional_expr_of_derivative",
+    "test_get_dimensional_expr_with_function",
+    "test_binary_information",
+    "test_conversion_with_2_nonstandard_dimensions",
+    "test_eval_subs",
+    "test_issue_14932",
+    "test_issue_14547"
+  ],
+  "test_targets": [
+    "sympy/physics/units/tests/test_quantities.py"
+  ],
+  "frozen_test_files": [
+    "sympy/physics/units/tests/test_quantities.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

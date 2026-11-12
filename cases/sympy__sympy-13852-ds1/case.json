@@ -1,0 +1,59 @@
+{
+  "case_id": "sympy__sympy-13852-ds1",
+  "source_case_id": "sympy__sympy-13852",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-13852",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "c935e1d106743efd5bf0705fbeedbd18fadff4dc",
+  "head": "base+repair:8277db4ce7a0ffc136471678d415941d9ba4a060fbe0857db69cf123411b4a3d",
+  "allowed_file": "sympy/functions/special/zeta_functions.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13852-ds1/repair.patch",
+  "repair_patch_sha256": "8277db4ce7a0ffc136471678d415941d9ba4a060fbe0857db69cf123411b4a3d",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13852-ds1/test.patch",
+  "test_patch_sha256": "ae15160bf854a00e1bb5a97721a4b196f3492fe7ebdaaa09363069526463377c",
+  "source_record_sha256": "55abcf533e29c19c5790f48c4b1e5ebef53f0e88a910a73c2487f4d2928cd301",
+  "fail_to_pass": [
+    "test_polylog_values"
+  ],
+  "pass_to_pass": [
+    "test_zeta_eval",
+    "test_dirichlet_eta_eval",
+    "test_stieltjes",
+    "test_stieltjes_evalf"
+  ],
+  "test_targets": [
+    "sympy/functions/special/tests/test_zeta_functions.py"
+  ],
+  "frozen_test_files": [
+    "sympy/functions/special/tests/test_zeta_functions.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

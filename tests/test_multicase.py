@@ -4,8 +4,9 @@ import copy
 import json
 from pathlib import Path
 import tempfile
+import tarfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 from ci_demo import batch, multicase, ollama
 from ci_demo.common import write_json
 
@@ -18,6 +19,149 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_parameter_node_separators_are_literal_parameter_content(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "results.xml").write_text('<testsuite><testcase classname="tests.test_api.TestCase" name="test_it[a/b::C[inner]-expected]"/></testsuite>')
+            result = {"exit_code": 0, "timed_out": False, "junit": "results.xml"}
+            target = "tests/test_api.py::TestCase::test_it[a/b::C[inner]-expected]"
+            self.assertTrue(multicase.targets_match(result, root, [target], "pass"))
+            ok, rows = multicase.resolve_targets(result, root, [target], "pass")
+            self.assertTrue(ok)
+            self.assertEqual(rows[0]["resolution"], "exact")
+            self.assertFalse(multicase.resolve_targets(result, root, [target.replace("::C[", "::D[")], "pass")[0])
+
+    def test_scm_metadata_builds_both_revisions_without_changing_regular_install(self):
+        case = config()
+        normal = multicase.project_install_steps(case)
+        self.assertIn('"/source/head"', normal)
+        self.assertNotIn('"/source/base"', normal)
+        self.assertNotIn("--no-deps", normal)
+        self.assertEqual(multicase.project_install_steps({**case, "install_project": False}), "")
+        case.update(scm_build_version="6.2.1.dev4+ga7e38c5", install_project=True)
+        multicase.validate_case(case)
+        steps = multicase.project_install_steps(case)
+        self.assertIn("SETUPTOOLS_SCM_PRETEND_VERSION=6.2.1.dev4+ga7e38c5", steps)
+        self.assertEqual(steps.count("--no-deps"), 2)
+        self.assertIn('"/source/base"', steps)
+        self.assertIn('"/source/head"', steps)
+        for invalid in ("6.2\nRUN unsafe", "$(command)", None):
+            bad = {**case, "scm_build_version": invalid}
+            if invalid is None:
+                bad["scm_build_version"] = "6.2"
+                bad["install_project"] = False
+            with self.assertRaises(ValueError):
+                multicase.validate_case(bad)
+
+    def test_pinned_cached_commit_exports_offline_and_still_checks_identity(self):
+        import io
+        import tarfile
+        revision = "a" * 40
+        buffer = io.BytesIO()
+        with tarfile.open(fileobj=buffer, mode="w") as bundle:
+            data = b"fixture source text\n"
+            member = tarfile.TarInfo("package/api.py")
+            member.size = len(data)
+            bundle.addfile(member, io.BytesIO(data))
+        for cached in (True, False):
+            with self.subTest(cached=cached), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                with patch.object(multicase, "command", return_value={"exit_code": 0 if cached else 1, "timed_out": False}), \
+                     patch.object(multicase, "checked") as fetch, \
+                     patch.object(multicase.subprocess, "check_output", side_effect=[revision + "\n", buffer.getvalue()]):
+                    multicase.export_commit(root / "repo", revision, root / "export", root, "base", None)
+                    self.assertEqual((root / "export/package/api.py").read_bytes(), data)
+                    self.assertEqual(fetch.call_count, 0 if cached else 1)
+        with tempfile.TemporaryDirectory() as tmp, \
+             patch.object(multicase, "command", return_value={"exit_code": 0, "timed_out": False}), \
+             patch.object(multicase.subprocess, "check_output", return_value="b" * 40):
+            with self.assertRaises(ValueError):
+                multicase.export_commit(Path(tmp), revision, Path(tmp) / "export", Path(tmp), "base", None)
+
+    def test_top_level_pytest_harness_is_frozen_without_reclassifying_library_testing_modules(self):
+        self.assertTrue(multicase.is_test("testing/example_scripts/fixture.py"))
+        self.assertFalse(multicase.is_test("sympy/testing/runtests.py"))
+        self.assertFalse(multicase.is_test("src/_pytest/python.py"))
+        case = config()
+        case["pytest_version"] = "6.2.5"
+        multicase.validate_case(case)
+        case["allowed_file"] = "testing/fixture.py"
+        with self.assertRaises(ValueError):
+            multicase.validate_case(case)
+
+    def test_writable_cwd_keeps_source_readonly_and_test_ids_rooted(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            calls = []
+            def command(args, folder, name, **kwargs):
+                calls.append(args)
+                return {"exit_code": 0, "timed_out": False}
+            case = config()
+            case.update(test_workdir="work", system_tools=["git"])
+            multicase.validate_case(case)
+            with patch.object(multicase, "command", side_effect=command):
+                multicase.execute(case, {"image_id": "sha256:fixture"}, Path(tmp) / "out", "test")
+            args = calls[0]
+            self.assertEqual(args[args.index("--workdir") + 1], "/work")
+            self.assertIn("/work:rw,noexec,nosuid,size=64m,mode=1777", args)
+            self.assertIn("--rootdir=/source/head", args)
+            self.assertIn("/source/head/tests/test_api.py", args)
+            self.assertIn("--read-only", args)
+            self.assertIn("--network=none", args)
+            for field, value in (("test_workdir", "/source/head"), ("system_tools", ["curl"])):
+                with self.assertRaises(ValueError):
+                    multicase.validate_case({**case, field: value})
+
+    def test_heldout_case_generation_is_saved_and_refused_before_docker_or_model(self):
+        case = config()
+        case["experiment_role"] = "test"
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            with patch.object(multicase, "execute") as execute, patch.object(ollama, "model_info") as info, patch.object(ollama, "request") as request:
+                result = multicase.generate_case(case, "http://127.0.0.1:11434", folder=folder)
+            self.assertEqual(result["status"], "environment_error")
+            self.assertIn("Held-out", result["error"])
+            self.assertEqual(result["attempt_count"], 3)
+            self.assertEqual(result["attempts"], [])
+            execute.assert_not_called()
+            info.assert_not_called()
+            request.assert_not_called()
+
+    def test_archive_symlinks_preserve_internal_targets_and_refuse_escape_cycles_and_special_files(self):
+        source = tarfile.TarInfo("pkg/target.py")
+        link = tarfile.TarInfo("tests/alias.py")
+        link.type = tarfile.SYMTYPE
+        link.linkname = "../pkg/target.py"
+        self.assertEqual(multicase.archive_links(Mock(getmembers=lambda: [source, link])), {"tests/alias.py": "../pkg/target.py"})
+        for target in ("../../outside.py", "/etc/passwd", "alias.py", "C:/secrets", "../missing.py"):
+            link.linkname = target
+            with self.assertRaises(ValueError):
+                multicase.archive_links(Mock(getmembers=lambda: [source, link]))
+        link.linkname = "../pkg/target.py"
+        child = tarfile.TarInfo("tests/alias.py/child.py")
+        with self.assertRaises(ValueError):
+            multicase.archive_links(Mock(getmembers=lambda: [source, link, child]))
+        link.type = tarfile.LNKTYPE
+        with self.assertRaises(ValueError):
+            multicase.archive_links(Mock(getmembers=lambda: [source, link]))
+
+    def test_sympy_source_names_resolve_exactly_and_ambiguity_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "tests").mkdir()
+            (root / "tests/test_api.py").write_text("def test_a():\n    pass\ndef test_ab():\n    pass\n")
+            case = {"frozen_test_files": ["tests/test_api.py"], "fail_to_pass": ["test_a"], "pass_to_pass": ["test_ab"]}
+            self.assertEqual(multicase.source_function_targets(case, root), ["tests/test_api.py::test_a", "tests/test_api.py::test_ab"])
+            case.update(source_id_matching="exact_unique_function_name", test_targets=["tests/test_api.py"])
+            self.assertIn("def test_a", multicase.test_excerpt(case, root))
+            (root / "results.xml").write_text('<testsuite><testcase classname="tests.test_api" name="test_a"/></testsuite>')
+            result = {"timed_out": False, "junit": "results.xml"}
+            self.assertTrue(multicase.resolve_targets(result, root, ["test_a"], "pass", "exact_unique_function_name")[0])
+            self.assertFalse(multicase.resolve_targets(result, root, ["test"], "pass", "exact_unique_function_name")[0])
+            (root / "tests/test_other.py").write_text("def test_a():\n    pass\n")
+            case["frozen_test_files"].append("tests/test_other.py")
+            with self.assertRaises(ValueError):
+                multicase.source_function_targets(case, root)
+
     def test_windows_export_names_and_repo_identity_cannot_escape_cache(self):
         for value in ["../escape", "dir/.. /escape.py", "dir./module.py", "dir/NUL.py"]:
             with self.assertRaises(ValueError): multicase.safe_relative(value)
@@ -56,6 +200,22 @@ class CaseTests(unittest.TestCase):
             p.write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_error[required-Missing data]"/><testcase classname="tests.test_api.TestAPI" name="test_error[required-Missing other]"/></testsuite>')
             self.assertFalse(multicase.resolve_targets(result, root, [target], "pass", "exact_or_unique_truncated_param")[0])
             self.assertFalse(multicase.resolve_targets(result, root, ["tests/test_api.py::TestAPI::test_error"], "pass", "exact_or_unique_truncated_param")[0])
+
+    def test_site_diversity_uses_only_passing_source_tests_and_stable_case_identity(self):
+        original = "def unrelated(x):\n    return x + 1\n\n" + "\n" * 120 + "def target(x):\n"
+        original += "".join(f"    x = x + {i}\n" for i in range(40)) + "    return x\n"
+        sites = multicase.mutation_sites(original, 1, identity="case-a", test_context="assert target(2) == 3")
+        self.assertEqual(len(sites), 18)
+        self.assertTrue(all(s['line'] > 123 for s in sites))
+        self.assertEqual(sites, multicase.mutation_sites(original, 999, identity="case-a", test_context="assert target(2) == 3"))
+        other = multicase.mutation_sites(original, 1, identity="case-b", test_context="assert target(2) == 3")
+        self.assertNotEqual({s['line'] for s in sites}, {s['line'] for s in other})
+        context = multicase.site_context(original, sites[::3])
+        self.assertIn("LINE ", context)
+        self.assertIn("x = x +", context)
+        self.assertLessEqual(len(context), 3600)
+        fallback = multicase.mutation_sites(original, 1, identity="case-a", test_context="no matched source function")
+        self.assertEqual(len(fallback), 18)
 
     def test_declared_log_tmpfs_must_not_mask_source_or_tests(self):
         case = config(); case["writable_dirs"] = ["test_logs"]
@@ -198,6 +358,35 @@ class CaseTests(unittest.TestCase):
             self.assertTrue(all(kw["timeout"] == 180 and p["model"] == ollama.GENERATOR_MODEL for p, kw in calls))
             self.assertNotIn("SWE_GOLD_SENTINEL", (folder / "prompt.txt").read_text())
 
+    def test_site_prompt_revision_preserves_model_budget_and_reference_boundary(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); head=root/'head'; (head/'package').mkdir(parents=True)
+            (head/'package/api.py').write_bytes(b'def f(x):\n    return x\n')
+            reproduced=root/'reproduced'; reproduced.mkdir()
+            write_json(reproduced/'manifest.json', {'environment':{'test_hashes':{}}})
+            c=config(); c.update(generation_protocol=multicase.SITE_PROTOCOL, reference_label='GOLD_SENTINEL')
+            payloads=[]
+            def request(endpoint,path,payload=None,**kwargs):
+                if path=='/api/version':return '{}'
+                payloads.append(payload); raise TimeoutError('software fixture')
+            with patch.object(multicase,'run_path',return_value=reproduced), patch.object(multicase,'check_gate',return_value=head), \
+                 patch.object(multicase,'execute',return_value={}), patch.object(multicase,'test_passed',return_value=True), \
+                 patch.object(multicase,'test_excerpt',return_value='immutable test fixture'), \
+                 patch.object(ollama,'model_info',return_value={}), patch.object(ollama,'request',side_effect=request):
+                folder=root/'generation'; folder.mkdir()
+                result=multicase.generate_case(c,'http://127.0.0.1:11434',folder,'fixture')
+            self.assertEqual(result['prompt_revision'],multicase.SITE_PROMPT_REVISION)
+            self.assertEqual(result['protocol'],multicase.SITE_PROTOCOL)
+            self.assertEqual(len(payloads),3)
+            self.assertEqual([p['options']['seed'] for p in payloads],[5417,5418,5419])
+            for index,payload in enumerate(payloads,1):
+                self.assertEqual(payload['model'],ollama.GENERATOR_MODEL)
+                prompt=payload['messages'][0]['content']
+                self.assertIn('Do not append arbitrary numeric offsets',prompt)
+                self.assertIn("Do not force conditions with 'or True' or 'and False'",prompt)
+                self.assertNotIn('GOLD_SENTINEL',prompt)
+                self.assertEqual((folder/f'attempt-{index:02}'/'prompt.txt').read_text(),prompt)
+
     def test_tampered_candidate_is_refused_without_execution_or_raw_rewrite(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); generation = root / "generation"; d = generation / "attempt-01"; d.mkdir(parents=True)
@@ -214,6 +403,32 @@ class CaseTests(unittest.TestCase):
             execute.assert_not_called()
             self.assertEqual(result["status"], "environment_error")
             self.assertEqual((generation / "manifest.json").read_bytes(), saved)
+
+    def test_candidate_timeout_stops_repetition_but_restores_and_preserves_attempt_denominator(self):
+        from ci_demo.common import sha256
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); generation=root/'generation'; attempt=generation/'attempt-01'; attempt.mkdir(parents=True)
+            (generation/'original.py').write_bytes(b'def inert():\n    return 1\n')
+            (attempt/'candidate.py').write_bytes(b'def inert():\n    return 2\n')
+            raw={'kind':'synthetic_generation','status':'generation_finished','model':ollama.GENERATOR_MODEL,
+                 'source':config(),'passing_seed':{'source_hash':sha256(generation/'original.py')},
+                 'attempts':[{'index':1,'directory':'attempt-01','status':'awaiting_verification',
+                              'candidate_sha256':sha256(attempt/'candidate.py')},
+                             {'index':2,'directory':'attempt-02','status':'invalid_output'},
+                             {'index':3,'directory':'attempt-03','status':'invalid_output'}]}
+            write_json(generation/'manifest.json',raw)
+            passed={'exit_code':0,'timed_out':False,'container_removed':True}
+            timeout={'exit_code':None,'timed_out':True,'container_removed':True}
+            with patch.object(multicase,'run_path',return_value=generation), patch.object(multicase,'check_gate',return_value=root), \
+                 patch.object(multicase,'execute',side_effect=[passed,timeout,passed]) as execute, \
+                 patch.object(multicase,'test_passed',return_value=True):
+                result=multicase.verify_case('generation',root/'verified')
+            self.assertEqual([c.args[3] for c in execute.call_args_list],['baseline','candidate-1','restored'])
+            self.assertEqual(len(result['attempts']),3)
+            self.assertEqual(len(result['attempts'][0]['repetitions']),1)
+            self.assertEqual(result['attempts'][0]['rejection_reason'],'timeout')
+            self.assertEqual(result['attempts'][0]['restored'],passed)
+            self.assertEqual(result['status'],'verification_finished')
 
     def test_missing_passing_gate_is_saved_before_preflight_without_model_call(self):
         with tempfile.TemporaryDirectory() as tmp:

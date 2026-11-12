@@ -1,0 +1,95 @@
+{
+  "case_id": "pytest-dev__pytest-8447-ds1-eval-scm1",
+  "source_case_id": "pytest-dev__pytest-8447",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pytest-dev__pytest-8447",
+  "repo_url": "https://github.com/pytest-dev/pytest",
+  "base": "6447ca5f1e1f1e02fe1ac43621f642303f7bfe62",
+  "head": "base+repair:1751d4037a28151f5cde795a4c2636e90fa71eeafbfbb95c99bd5147d99ab134",
+  "allowed_file": "src/_pytest/main.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-8447-ds1-eval/repair.patch",
+  "repair_patch_sha256": "1751d4037a28151f5cde795a4c2636e90fa71eeafbfbb95c99bd5147d99ab134",
+  "test_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-8447-ds1-eval/test.patch",
+  "test_patch_sha256": "3fa1e9d26681398e3e2d39589f5de5af80e094d01a1bab0ae567a0e4c745cc58",
+  "source_record_sha256": "4e98b21e272989da7379f034140dc3686f6107e68d61deebd27179713b0b1186",
+  "fail_to_pass": [
+    "testing/test_nodes.py::test_subclassing_both_item_and_collector_deprecated"
+  ],
+  "pass_to_pass": [
+    "testing/test_nodes.py::test_iterparentnodeids[-expected0]",
+    "testing/test_nodes.py::test_iterparentnodeids[a-expected1]",
+    "testing/test_nodes.py::test_iterparentnodeids[aa/b-expected2]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c-expected3]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/bbb/c::D-expected4]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c::D::eee-expected5]",
+    "testing/test_nodes.py::test_iterparentnodeids[::xx-expected6]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c::D/d::e-expected7]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b::D:e:f::g-expected8]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b::c/d::e[/test]-expected9]",
+    "testing/test_nodes.py::test_node_from_parent_disallowed_arguments",
+    "testing/test_nodes.py::test__check_initialpaths_for_relpath",
+    "testing/test_nodes.py::test_node_warn_is_no_longer_only_pytest_warnings[DeprecationWarning-deprecated]",
+    "testing/test_nodes.py::test_node_warn_is_no_longer_only_pytest_warnings[PytestWarning-pytest]",
+    "testing/test_nodes.py::test_node_warning_enforces_warning_types",
+    "testing/test_nodes.py::test_failure_with_changed_cwd"
+  ],
+  "test_targets": [
+    "testing/test_nodes.py"
+  ],
+  "frozen_test_files": [
+    "testing/test_nodes.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Frozen reference tests on base/fixed; local reconstruction only",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [
+    "pytester"
+  ],
+  "install_project": true,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dependencies": [
+    "py==1.11.0",
+    "attrs==21.4.0",
+    "iniconfig==2.0.0",
+    "packaging==23.2",
+    "tomli==2.0.1",
+    "exceptiongroup==1.1.3",
+    "typing_extensions==4.12.2",
+    "pluggy==1.0.0",
+    "more-itertools==9.1.0",
+    "atomicwrites==1.4.1",
+    "wcwidth==0.2.13",
+    "mock==5.1.0",
+    "setuptools-scm==8.1.0"
+  ],
+  "environment_parent_case_id": "pytest-dev__pytest-8447-ds1-eval",
+  "environment_revision": "actual-git-scm-generated-metadata",
+  "scm_build_version": "6.3.0.dev526+g6447ca5f1",
+  "scm_version_derivation": {
+    "path": "runs\\source-version-metadata-20261112T005305285876Z\\versions.json",
+    "sha256": "e15cab85c177d2529a014da03b3047f6cc31ec356203ef0bca2b4f5ebfe9b3b1",
+    "tool": "setuptools-scm==8.1.0",
+    "method": "clean exact-commit checkout with full tag ancestry; no target-source setup/import on host"
+  }
+}

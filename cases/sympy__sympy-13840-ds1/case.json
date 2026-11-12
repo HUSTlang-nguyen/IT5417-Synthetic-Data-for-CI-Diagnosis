@@ -1,0 +1,77 @@
+{
+  "case_id": "sympy__sympy-13840-ds1",
+  "source_case_id": "sympy__sympy-13840",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-13840",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "8be967b5b2b81365c12030c41da68230e39cdf33",
+  "head": "base+repair:d88ae4a79fbf4583e292921ca2298193577fc48ec1208395b545f88cdf512b76",
+  "allowed_file": "sympy/printing/rcode.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13840-ds1/repair.patch",
+  "repair_patch_sha256": "d88ae4a79fbf4583e292921ca2298193577fc48ec1208395b545f88cdf512b76",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13840-ds1/test.patch",
+  "test_patch_sha256": "444e9e710e719c18c4ecf344c30a1536c7901498ed2f8b1cf82e96106dcb25ab",
+  "source_record_sha256": "210c046fb98562207584907d13c8b41ea5dc9f50f6300b14c67c4bb83c66e102",
+  "fail_to_pass": [
+    "test_rcode_functions"
+  ],
+  "pass_to_pass": [
+    "test_printmethod",
+    "test_rcode_sqrt",
+    "test_rcode_Pow",
+    "test_rcode_Max",
+    "test_rcode_constants_mathh",
+    "test_rcode_constants_other",
+    "test_rcode_Rational",
+    "test_rcode_Integer",
+    "test_rcode_exceptions",
+    "test_rcode_user_functions",
+    "test_rcode_boolean",
+    "test_rcode_Relational",
+    "test_rcode_Piecewise",
+    "test_rcode_sinc",
+    "test_rcode_Piecewise_deep",
+    "test_rcode_ITE",
+    "test_rcode_settings",
+    "test_dereference_printing",
+    "test_Matrix_printing",
+    "test_rcode_sgn",
+    "test_rcode_Assignment",
+    "test_rcode_For"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_rcode.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_rcode.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

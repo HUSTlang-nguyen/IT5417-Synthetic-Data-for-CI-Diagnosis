@@ -1,0 +1,70 @@
+{
+  "case_id": "pylint-dev__pylint-4812-ds1-env2",
+  "source_case_id": "pylint-dev__pylint-4812",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4812",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "47b483ae037e35c25e84b5b697303f2dd79a0e4e",
+  "head": "base+repair:df557208c417a5191b32465615a593c330a763fea8f0ba9d2b97e97fac22cb0f",
+  "allowed_file": "pylint/config/option_manager_mixin.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4812-ds1/repair.patch",
+  "repair_patch_sha256": "df557208c417a5191b32465615a593c330a763fea8f0ba9d2b97e97fac22cb0f",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4812-ds1/test.patch",
+  "test_patch_sha256": "b30f23772fe033837ce61331267634df781e3b403dad1d970c56511a2785f806",
+  "source_record_sha256": "78f3f385cdee10ff2900592ad92e4f42e7c92498c5bf94976005076c504628c2",
+  "fail_to_pass": [
+    "tests/test_config.py::test_can_read_env_variable"
+  ],
+  "pass_to_pass": [
+    "tests/test_config.py::test_can_read_ini",
+    "tests/test_config.py::test_can_read_setup_cfg",
+    "tests/test_config.py::test_can_read_toml",
+    "tests/test_config.py::test_can_read_toml_rich_types"
+  ],
+  "test_targets": [
+    "tests/test_config.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_config.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_revision": "pylint-python-dependencies-v2",
+  "environment_parent_case_id": "pylint-dev__pylint-4812-ds1"
+}

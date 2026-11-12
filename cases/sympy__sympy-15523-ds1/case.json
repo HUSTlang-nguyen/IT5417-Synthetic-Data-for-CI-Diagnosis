@@ -1,0 +1,58 @@
+{
+  "case_id": "sympy__sympy-15523-ds1",
+  "source_case_id": "sympy__sympy-15523",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-15523",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "61e5c20c02328815270ddda385f0108a2b40d24d",
+  "head": "base+repair:29ec6a35a26129e96d47f8b09be47c0997e461211d318cc9e4d45a39729500ab",
+  "allowed_file": "sympy/parsing/sympy_parser.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15523-ds1/repair.patch",
+  "repair_patch_sha256": "29ec6a35a26129e96d47f8b09be47c0997e461211d318cc9e4d45a39729500ab",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15523-ds1/test.patch",
+  "test_patch_sha256": "e108cfcea62877f494ea0f3219b36123058b8206ae12dc6666877091fd05b414",
+  "source_record_sha256": "3820017875915748b50be27ec000085575698e6fc37e040da5cb0e26389ed70e",
+  "fail_to_pass": [
+    "test_implicit_application"
+  ],
+  "pass_to_pass": [
+    "test_implicit_multiplication",
+    "test_function_exponentiation",
+    "test_symbol_splitting"
+  ],
+  "test_targets": [
+    "sympy/parsing/tests/test_implicit_multiplication_application.py"
+  ],
+  "frozen_test_files": [
+    "sympy/parsing/tests/test_implicit_multiplication_application.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

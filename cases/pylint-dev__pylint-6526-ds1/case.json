@@ -1,0 +1,70 @@
+{
+  "case_id": "pylint-dev__pylint-6526-ds1",
+  "source_case_id": "pylint-dev__pylint-6526",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-6526",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "0220a39f6d4dddd1bf8f2f6d83e11db58a093fbe",
+  "head": "base+repair:cb0145809ff58c001ac2e5c7ef79aa6abedad4ca3c6d16d09ed58e4ec5310c06",
+  "allowed_file": "pylint/lint/caching.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6526-ds1/repair.patch",
+  "repair_patch_sha256": "cb0145809ff58c001ac2e5c7ef79aa6abedad4ca3c6d16d09ed58e4ec5310c06",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6526-ds1/test.patch",
+  "test_patch_sha256": "1badccc5b4bb94d9d64f452061fe834e5ae6bf5ce9b54973d98ddbb136b903f4",
+  "source_record_sha256": "8515157d644de490a19a6cc872ad1dc7aa1b6e03e3795dc59eefc74e364ceff0",
+  "fail_to_pass": [
+    "tests/lint/test_caching.py::test__get_pdata_path_nix[/test.py-1-pylint_home0-expected0]",
+    "tests/lint/test_caching.py::test__get_pdata_path_nix[/test.py-1-pylint_home1-expected1]"
+  ],
+  "pass_to_pass": [
+    "tests/lint/test_caching.py::test__get_pdata_path[-1-pylint_home0-expected0]",
+    "tests/lint/test_caching.py::test__get_pdata_path[-2-pylint_home1-expected1]",
+    "tests/lint/test_caching.py::test__get_pdata_path[a/path-42-pylint_home2-expected2]",
+    "tests/lint/test_caching.py::test_save_and_load_result[.tests/]",
+    "tests/lint/test_caching.py::test_save_and_load_result[.tests/a/path/]",
+    "tests/lint/test_caching.py::test_save_and_load_not_a_linter_stats[.tests]",
+    "tests/lint/test_caching.py::test_save_and_load_not_a_linter_stats[.tests/a/path/]"
+  ],
+  "test_targets": [
+    "tests/lint/test_caching.py"
+  ],
+  "frozen_test_files": [
+    "tests/lint/test_caching.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.11.7",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

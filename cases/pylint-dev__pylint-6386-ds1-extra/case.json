@@ -1,0 +1,72 @@
+{
+  "case_id": "pylint-dev__pylint-6386-ds1-extra",
+  "source_case_id": "pylint-dev__pylint-6386",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-6386",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "754b487f4d892e3d4872b6fc7468a71db4e31c13",
+  "head": "base+repair:9f82c0b5df51c65fbbe78c3f24bda13c07571ab541c2e50d0ee15a9aabbeef45",
+  "allowed_file": "pylint/config/argument.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6386-ds1-extra/repair.patch",
+  "repair_patch_sha256": "9f82c0b5df51c65fbbe78c3f24bda13c07571ab541c2e50d0ee15a9aabbeef45",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6386-ds1-extra/test.patch",
+  "test_patch_sha256": "3759937a5549ed383ea878200baaced050baded89ce76ae9687b3f5e6604111c",
+  "source_record_sha256": "0e4e64370c8d731d0620f19eb2570a919dc39bff0d9422ecae75f5a9c010a51f",
+  "fail_to_pass": [
+    "tests/config/test_config.py::test_short_verbose"
+  ],
+  "pass_to_pass": [
+    "tests/config/test_config.py::test_can_read_toml_env_variable",
+    "tests/config/test_config.py::test_unknown_message_id",
+    "tests/config/test_config.py::test_unknown_option_name",
+    "tests/config/test_config.py::test_unknown_short_option_name",
+    "tests/config/test_config.py::test_unknown_confidence",
+    "tests/config/test_config.py::test_unknown_yes_no",
+    "tests/config/test_config.py::test_unknown_py_version"
+  ],
+  "test_targets": [
+    "tests/config/test_config.py"
+  ],
+  "frozen_test_files": [
+    "tests/config/test_config.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "dependencies": [
+    "astroid==2.11.7",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8",
+    "py==1.11.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

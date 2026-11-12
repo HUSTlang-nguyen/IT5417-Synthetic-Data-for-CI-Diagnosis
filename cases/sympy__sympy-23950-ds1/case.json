@@ -1,0 +1,59 @@
+{
+  "case_id": "sympy__sympy-23950-ds1",
+  "source_case_id": "sympy__sympy-23950",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-23950",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "88664e6e0b781d0a8b5347896af74b555e92891e",
+  "head": "base+repair:bf9d88158dd0259af5aba915bff9d3d8f361764f48661d32f3d7fda96ad7c7bd",
+  "allowed_file": "sympy/sets/contains.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23950-ds1/repair.patch",
+  "repair_patch_sha256": "bf9d88158dd0259af5aba915bff9d3d8f361764f48661d32f3d7fda96ad7c7bd",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23950-ds1/test.patch",
+  "test_patch_sha256": "b74f70da65ccedd320a10f8c3cac159d638bf860e071332c77770fa0be974134",
+  "source_record_sha256": "96fc3d735fcbcc2d0f19562fd4dd9cb09b41e707ae6b67ab4dc9a89641b8afc6",
+  "fail_to_pass": [
+    "test_as_set"
+  ],
+  "pass_to_pass": [
+    "test_contains_basic",
+    "test_issue_6194",
+    "test_issue_10326",
+    "test_binary_symbols"
+  ],
+  "test_targets": [
+    "sympy/sets/tests/test_contains.py"
+  ],
+  "frozen_test_files": [
+    "sympy/sets/tests/test_contains.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

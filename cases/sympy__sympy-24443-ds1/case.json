@@ -1,0 +1,56 @@
+{
+  "case_id": "sympy__sympy-24443-ds1",
+  "source_case_id": "sympy__sympy-24443",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-24443",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "809c53c077485ca48a206cee78340389cb83b7f1",
+  "head": "base+repair:c8074a439b71edbe81d1b7d7884f1b633a753f5e9ad6b142ee709802a3cd7ff7",
+  "allowed_file": "sympy/combinatorics/homomorphisms.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24443-ds1/repair.patch",
+  "repair_patch_sha256": "c8074a439b71edbe81d1b7d7884f1b633a753f5e9ad6b142ee709802a3cd7ff7",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24443-ds1/test.patch",
+  "test_patch_sha256": "85e02a8802c5b7b595023301187b3ef063036c59f5072eb5b478bcded400fd92",
+  "source_record_sha256": "c7305a7d353af89943e56e4681b713c8b047e3677d984249af4d1f3cba325d4e",
+  "fail_to_pass": [
+    "test_homomorphism"
+  ],
+  "pass_to_pass": [
+    "test_isomorphisms"
+  ],
+  "test_targets": [
+    "sympy/combinatorics/tests/test_homomorphisms.py"
+  ],
+  "frozen_test_files": [
+    "sympy/combinatorics/tests/test_homomorphisms.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

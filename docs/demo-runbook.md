@@ -97,6 +97,8 @@ Các lệnh batch không tự nhận biết đây là run mới ngoài `--resume
 
 V3 là opt-in `single-line-site-v3`: đọc AST tĩnh của source/test seed, cung cấp site ID và test excerpt, nhận path/site_id/replacement/explanation; không yêu cầu 7B tự gán nhãn. Renderer thêm lại indent/newline gốc theo hợp đồng và lưu per-attempt prompt/site catalog. Không parse/import/execute candidate trên host. Kết quả runner chưa chứng minh tuân thủ valid-syntax prompt; review đợt 02 đã phát hiện một syntax violation và giữ nguyên raw status.
 
+Dataset-v1 ghi thêm prompt revision `single-line-site-v3-quality-r2` cho lượt mới sau review train: cấm marker/offset tùy ý và điều kiện bị ép hằng. Model/options/seed/edit schema vẫn như v3. Run cũ không bị sửa hoặc gọi lại; xem protocol để phân biệt cohort prompt. Ràng buộc prompt không thay thế review tính hợp lý hoặc dedup.
+
 Profile hiệu chỉnh có ID mới `-r1`, source_case_id/trial_of/reason. Cumulative budget charge kế thừa từ parent, không cộng parent charge hai lần khi báo thời gian. Hai profile này không là hai PR/case nguồn mới. Pytest/version/plugins được khai báo và kiểm tra allowlist; runtime giữ plugin autoload disabled, logs/test_logs chỉ có tmpfs khai báo không che source/tests. Kết quả thất bại của profile gốc không bị sửa hoặc ghi đè.
 
 Audit grouping chỉ đọc các batch đã hoàn tất: repo/shared-commit group, exact hashes và lexical-edit suggestions. Nó không phê duyệt nhãn, xóa raw hoặc tự chia train/validation/test. [Tổng kết 02](development-summary.md#expansion-02) nêu số đo và giới hạn.
@@ -127,3 +129,13 @@ Nếu Ollama/PC chưa sẵn sàng, reproduce vẫn chạy riêng. Không dùng p
 - Một repo không đại diện AIDev. properr gồm Python và Rust, không phải bộ repo Python thuần.
 - Nhãn và tính hợp lý cần người duyệt; pass-fail-pass chưa tự xác nhận nguyên nhân hoặc tác giả.
 - Chưa có fine-tuning, interceptor, đối chứng pass/fail hoặc test độc lập cuối cùng.
+
+
+### Fresh-generation quality-r3 — before its first request
+
+`single-line-site-v3-quality-r3` replaces the always-near-line1 site preference for fresh workers. It prefers statically test-named source functions/classes, then chooses at most18 sites by SHA256(case identity,line), with whole-file fallback. Each attempt shows its own bounded source neighborhoods. This is a diversity heuristic, not measured test coverage; no gold repair, review/reference labels or heldout model feedback enter it. Model/options/seeds5417–5419, schema,180s requests and global600 cap stay fixed. The existing40-seed quality-r2 worker continues its loaded code; raw per-attempt prompts/revision and hash-verified implementation snapshots distinguish cohorts even when its on-disk implementation hash observes the newer file. New R3 requests are not yet measured. Software105tests:104pass/1skip.
+
+
+### Fresh verification timeout stop
+
+The next quality-r3 worker stops candidate repetitions after its first timeout, still executes restoration, and records `verification_policy=stop_repetitions_after_timeout_restore_still_required_v1`. Acceptance still requires three stable test failures; a timeout can never pass. Three generation attempts remain in the denominator, with incomplete repetition count visible. The in-flight quality-r2 cohort is unchanged. The prior waiting r3 queue was cancelled before calling run_batch and replaced to load the tested verifier; no completed seed is repeated. Software106:105pass/1skip.

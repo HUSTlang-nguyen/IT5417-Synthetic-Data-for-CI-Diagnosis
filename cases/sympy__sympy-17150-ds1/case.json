@@ -1,0 +1,88 @@
+{
+  "case_id": "sympy__sympy-17150-ds1",
+  "source_case_id": "sympy__sympy-17150",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-17150",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "dcc4430810a88d239d75f16c5c3403cd6926d666",
+  "head": "base+repair:f75095f13ab066d397bfb9b67284f357b7f4f073427cfedf60408e2aefd09a14",
+  "allowed_file": "sympy/functions/elementary/exponential.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-17150-ds1/repair.patch",
+  "repair_patch_sha256": "f75095f13ab066d397bfb9b67284f357b7f4f073427cfedf60408e2aefd09a14",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-17150-ds1/test.patch",
+  "test_patch_sha256": "68a53bbff16e2e24674a74e2feb116eeba3c3b2af2e7b0a70783a7cd53ba0ed0",
+  "source_record_sha256": "95f13625015d0689000a2e7c23f2709eab79df48a3ff0cb674a0b16f31ac99de",
+  "fail_to_pass": [
+    "test_log_base"
+  ],
+  "pass_to_pass": [
+    "test_exp_values",
+    "test_exp_log",
+    "test_exp_expand",
+    "test_exp__as_base_exp",
+    "test_exp_infinity",
+    "test_exp_subs",
+    "test_exp_conjugate",
+    "test_exp_rewrite",
+    "test_exp_leading_term",
+    "test_exp_taylor_term",
+    "test_exp_MatrixSymbol",
+    "test_exp_fdiff",
+    "test_log_values",
+    "test_log_symbolic",
+    "test_exp_assumptions",
+    "test_exp_AccumBounds",
+    "test_log_assumptions",
+    "test_log_hashing",
+    "test_log_sign",
+    "test_log_expand_complex",
+    "test_log_apply_evalf",
+    "test_log_expand",
+    "test_log_simplify",
+    "test_log_AccumBounds",
+    "test_lambertw",
+    "test_issue_5673",
+    "test_log_fdiff",
+    "test_log_taylor_term",
+    "test_exp_expand_NC",
+    "test_as_numer_denom",
+    "test_polar",
+    "test_log_product",
+    "test_issue_8866"
+  ],
+  "test_targets": [
+    "sympy/functions/elementary/tests/test_exponential.py"
+  ],
+  "frozen_test_files": [
+    "sympy/functions/elementary/tests/test_exponential.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

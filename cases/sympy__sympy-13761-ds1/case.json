@@ -1,0 +1,81 @@
+{
+  "case_id": "sympy__sympy-13761-ds1",
+  "source_case_id": "sympy__sympy-13761",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-13761",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "a5e6a101869e027e7930e694f8b1cfb082603453",
+  "head": "base+repair:fa56e873c31d6c8c5718bd655e5f741de2b06ab61c10c6df284d6450dafbeb4a",
+  "allowed_file": "sympy/functions/elementary/trigonometric.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13761-ds1/repair.patch",
+  "repair_patch_sha256": "fa56e873c31d6c8c5718bd655e5f741de2b06ab61c10c6df284d6450dafbeb4a",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13761-ds1/test.patch",
+  "test_patch_sha256": "f65aa5109d743a5dc6baaad041beefc0aedaf7eae8d3523b6f8c4c86f150010e",
+  "source_record_sha256": "9f71f78cd0096b21559f1a9261136831c2b77ae837252563bb7520d05724e3dd",
+  "fail_to_pass": [
+    "test_issue_13474"
+  ],
+  "pass_to_pass": [
+    "test_issue_3557",
+    "test_simplify_complex",
+    "test_simplify_ratio",
+    "test_simplify_measure",
+    "test_simplify_rational",
+    "test_simplify_issue_1308",
+    "test_issue_5652",
+    "test_simplify_fail1",
+    "test_hypersimp",
+    "test_nsimplify",
+    "test_issue_9448",
+    "test_extract_minus_sign",
+    "test_logcombine_complex_coeff",
+    "test_posify",
+    "test_issue_4194",
+    "test_as_content_primitive",
+    "test_signsimp",
+    "test_Piecewise",
+    "test_polymorphism",
+    "test_issue_6811",
+    "test_issue_6920",
+    "test_issue_7001",
+    "test_inequality_no_auto_simplify",
+    "test_issue_9398",
+    "test_issue_9324_simplify",
+    "test_simplify_function_inverse"
+  ],
+  "test_targets": [
+    "sympy/simplify/tests/test_simplify.py"
+  ],
+  "frozen_test_files": [
+    "sympy/simplify/tests/test_simplify.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

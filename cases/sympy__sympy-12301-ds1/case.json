@@ -1,0 +1,84 @@
+{
+  "case_id": "sympy__sympy-12301-ds1",
+  "source_case_id": "sympy__sympy-12301",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-12301",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "5155b7641fa389e10aeb5cfebcbefba02cb9221c",
+  "head": "base+repair:edfdfa34e271142c8f9805c95d55117469794034eace6b4a120501de923baa3e",
+  "allowed_file": "sympy/simplify/cse_main.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-12301-ds1/repair.patch",
+  "repair_patch_sha256": "edfdfa34e271142c8f9805c95d55117469794034eace6b4a120501de923baa3e",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-12301-ds1/test.patch",
+  "test_patch_sha256": "99b3f835ad9287e77cb1a6d0f64150a2576e7b8c711c38d8f8d9c6105c865766",
+  "source_record_sha256": "d5007d8e19e7da6a2643933c24e1fb5dc17c8b4c1139f55a4a426d594d670787",
+  "fail_to_pass": [
+    "test_issue_11230"
+  ],
+  "pass_to_pass": [
+    "test_numbered_symbols",
+    "test_preprocess_for_cse",
+    "test_postprocess_for_cse",
+    "test_cse_single",
+    "test_cse_single2",
+    "test_cse_not_possible",
+    "test_nested_substitution",
+    "test_subtraction_opt",
+    "test_multiple_expressions",
+    "test_bypass_non_commutatives",
+    "test_issue_10228",
+    "test_issue_4498",
+    "test_issue_4020",
+    "test_issue_4203",
+    "test_issue_6263",
+    "test_dont_cse_tuples",
+    "test_pow_invpow",
+    "test_postprocess",
+    "test_issue_4499",
+    "test_issue_6169",
+    "test_cse_MatrixSymbol",
+    "test_cse_MatrixExpr",
+    "test_Piecewise",
+    "test_name_conflict",
+    "test_name_conflict_cust_symbols",
+    "test_symbols_exhausted_error",
+    "test_issue_7840",
+    "test_issue_8891",
+    "test_hollow_rejection"
+  ],
+  "test_targets": [
+    "sympy/simplify/tests/test_cse.py"
+  ],
+  "frozen_test_files": [
+    "sympy/simplify/tests/test_cse.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

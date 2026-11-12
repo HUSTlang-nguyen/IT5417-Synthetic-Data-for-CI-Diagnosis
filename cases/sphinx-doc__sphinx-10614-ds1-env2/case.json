@@ -1,0 +1,86 @@
+{
+  "case_id": "sphinx-doc__sphinx-10614-ds1-env2",
+  "source_case_id": "sphinx-doc__sphinx-10614",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-10614",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "ac2b7599d212af7d04649959ce6926c63c3133fa",
+  "head": "base+repair:1128c4768da30ad17958def8839dcdf3921c820a3328b28d75d2e21c53e8d5f8",
+  "allowed_file": "sphinx/ext/inheritance_diagram.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-10614-ds1/repair.patch",
+  "repair_patch_sha256": "1128c4768da30ad17958def8839dcdf3921c820a3328b28d75d2e21c53e8d5f8",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-10614-ds1/test.patch",
+  "test_patch_sha256": "67701d18fdee1c802c86f12bafbedc42250bec185a6db83e06f5a9162ec8aa94",
+  "source_record_sha256": "5ea0d293038250733faa4aba58267c7ed8a1dc60d1464affe98992896c6f3962",
+  "fail_to_pass": [
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_svg_html"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram",
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_png_html",
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_latex",
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_latex_alias",
+    "tests/test_ext_inheritance_diagram.py::test_import_classes"
+  ],
+  "test_targets": [
+    "tests/test_ext_inheritance_diagram.py"
+  ],
+  "frozen_test_files": [
+    "tests/roots/test-ext-inheritance_diagram/conf.py",
+    "tests/roots/test-ext-inheritance_diagram/index.rst",
+    "tests/roots/test-ext-inheritance_diagram/subdir/index.rst",
+    "tests/roots/test-ext-inheritance_diagram/subdir/other.py",
+    "tests/roots/test-ext-inheritance_diagram/test.py",
+    "tests/test_ext_inheritance_diagram.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.18.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-10614-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ]
+}

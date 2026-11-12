@@ -1,0 +1,61 @@
+{
+  "case_id": "pydicom__pydicom-901-ds1-env2",
+  "source_case_id": "pydicom__pydicom-901",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-901",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "3746878d8edf1cbda6fbcf35eec69f9ba79301ca",
+  "head": "base+repair:2ccf2ce8d4191710b1132cc14cb13fb078b4e90d9f81bef0d7f478d4938029db",
+  "allowed_file": "pydicom/config.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pydicom__pydicom-901-ds1/repair.patch",
+  "repair_patch_sha256": "2ccf2ce8d4191710b1132cc14cb13fb078b4e90d9f81bef0d7f478d4938029db",
+  "test_patch": ".cache/dataset-v1-source/cases/pydicom__pydicom-901-ds1/test.patch",
+  "test_patch_sha256": "66402414b0355e583282282572a5126ab07e5780d56fd76c24972fbc3d096887",
+  "source_record_sha256": "658bc427c038a00dd63d4fc60d8ef41bb92f16843fcc6184e0724c94b4f256a4",
+  "fail_to_pass": [
+    "pydicom/tests/test_config.py::TestDebug::test_default",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_on_handler_null",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_off_handler_null",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_on_handler_stream",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_off_handler_stream"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "pydicom/tests/test_config.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_config.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pydicom__pydicom-901-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "test_workdir": "work"
+}

@@ -1,0 +1,82 @@
+{
+  "case_id": "sympy__sympy-18605-ds1",
+  "source_case_id": "sympy__sympy-18605",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-18605",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "c0a02c3c928dbbc42c008ed460bb662fc602f9d4",
+  "head": "base+repair:3366851d20c9fdb33478fb026cbe6a796578cc0a402fd062cf229c1e7aef0615",
+  "allowed_file": "sympy/tensor/indexed.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-18605-ds1/repair.patch",
+  "repair_patch_sha256": "3366851d20c9fdb33478fb026cbe6a796578cc0a402fd062cf229c1e7aef0615",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-18605-ds1/test.patch",
+  "test_patch_sha256": "c73c2cd756b36310b5cd594050127d540d150072c30f2ed9f10be972365c7bc3",
+  "source_record_sha256": "7d914bf79ad1f38e421d0a97c86915fa48aab5d02f5d3fab43f4f7af29fc3bba",
+  "fail_to_pass": [
+    "test_issue_18604"
+  ],
+  "pass_to_pass": [
+    "test_Idx_construction",
+    "test_Idx_properties",
+    "test_Idx_bounds",
+    "test_Idx_fixed_bounds",
+    "test_Idx_inequalities",
+    "test_Idx_func_args",
+    "test_Idx_subs",
+    "test_IndexedBase_sugar",
+    "test_IndexedBase_subs",
+    "test_IndexedBase_shape",
+    "test_IndexedBase_assumptions",
+    "test_IndexedBase_assumptions_inheritance",
+    "test_issue_17652",
+    "test_Indexed_constructor",
+    "test_Indexed_func_args",
+    "test_Indexed_subs",
+    "test_Indexed_properties",
+    "test_Indexed_shape_precedence",
+    "test_complex_indices",
+    "test_not_interable",
+    "test_Indexed_coeff",
+    "test_differentiation",
+    "test_indexed_series",
+    "test_indexed_is_constant",
+    "test_issue_12533",
+    "test_issue_12780",
+    "test_Subs_with_Indexed"
+  ],
+  "test_targets": [
+    "sympy/tensor/tests/test_indexed.py"
+  ],
+  "frozen_test_files": [
+    "sympy/tensor/tests/test_indexed.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "case_id": "sphinx-doc__sphinx-7757-ds1-env2-deps",
+  "source_case_id": "sphinx-doc__sphinx-7757",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-7757",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "212fd67b9f0b4fae6a7c3501fdf1a9a5b2801329",
+  "head": "base+repair:0b8d90b18ac2c259604830c6eea2f581084bfad368b88f0c7bb1a56c7cecfd78",
+  "allowed_file": "sphinx/util/inspect.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7757-ds1/repair.patch",
+  "repair_patch_sha256": "0b8d90b18ac2c259604830c6eea2f581084bfad368b88f0c7bb1a56c7cecfd78",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7757-ds1/test.patch",
+  "test_patch_sha256": "c41edb3864eadc3ba6c96fe6e5f3a64d42e8ed7780eab2cb6fa5b753a60ceed7",
+  "source_record_sha256": "2fb80020adcdd5f684bf18b1088f252580fea64c1d71d26520db1321f018fc86",
+  "fail_to_pass": [
+    "tests/test_util_inspect.py::test_signature_from_str_positionaly_only_args"
+  ],
+  "pass_to_pass": [
+    "tests/test_util_inspect.py::test_signature",
+    "tests/test_util_inspect.py::test_signature_partial",
+    "tests/test_util_inspect.py::test_signature_methods",
+    "tests/test_util_inspect.py::test_signature_partialmethod",
+    "tests/test_util_inspect.py::test_signature_annotations",
+    "tests/test_util_inspect.py::test_signature_annotations_py38",
+    "tests/test_util_inspect.py::test_signature_from_str_basic",
+    "tests/test_util_inspect.py::test_signature_from_str_default_values",
+    "tests/test_util_inspect.py::test_signature_from_str_annotations",
+    "tests/test_util_inspect.py::test_signature_from_str_complex_annotations",
+    "tests/test_util_inspect.py::test_signature_from_str_kwonly_args",
+    "tests/test_util_inspect.py::test_signature_from_str_invalid",
+    "tests/test_util_inspect.py::test_safe_getattr_with_default",
+    "tests/test_util_inspect.py::test_safe_getattr_with_exception",
+    "tests/test_util_inspect.py::test_safe_getattr_with_property_exception",
+    "tests/test_util_inspect.py::test_safe_getattr_with___dict___override",
+    "tests/test_util_inspect.py::test_dictionary_sorting",
+    "tests/test_util_inspect.py::test_set_sorting",
+    "tests/test_util_inspect.py::test_set_sorting_fallback",
+    "tests/test_util_inspect.py::test_frozenset_sorting",
+    "tests/test_util_inspect.py::test_frozenset_sorting_fallback",
+    "tests/test_util_inspect.py::test_dict_customtype",
+    "tests/test_util_inspect.py::test_isclassmethod",
+    "tests/test_util_inspect.py::test_isstaticmethod",
+    "tests/test_util_inspect.py::test_iscoroutinefunction",
+    "tests/test_util_inspect.py::test_isfunction",
+    "tests/test_util_inspect.py::test_isbuiltin",
+    "tests/test_util_inspect.py::test_isdescriptor",
+    "tests/test_util_inspect.py::test_isattributedescriptor",
+    "tests/test_util_inspect.py::test_isproperty",
+    "tests/test_util_inspect.py::test_unpartial",
+    "tests/test_util_inspect.py::test_getdoc_inherited_decorated_method",
+    "tests/test_util_inspect.py::test_is_builtin_class_method"
+  ],
+  "test_targets": [
+    "tests/test_util_inspect.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_util_inspect.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7757-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ]
+}

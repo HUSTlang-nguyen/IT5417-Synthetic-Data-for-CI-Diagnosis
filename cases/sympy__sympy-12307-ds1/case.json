@@ -1,0 +1,83 @@
+{
+  "case_id": "sympy__sympy-12307-ds1",
+  "source_case_id": "sympy__sympy-12307",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-12307",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "c9c6b85407a5d2b1bd5ee750e66b03c75ff35271",
+  "head": "base+repair:07625545b7f3d740cd6dac6be29e23c36176846b9c79b89acf4804205048ca81",
+  "allowed_file": "sympy/printing/fcode.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-12307-ds1/repair.patch",
+  "repair_patch_sha256": "07625545b7f3d740cd6dac6be29e23c36176846b9c79b89acf4804205048ca81",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-12307-ds1/test.patch",
+  "test_patch_sha256": "cde7e7b75a8a2fa1ad4cfcbac4e1cfb9a957b87201a70a16fc2c0ff0ca9da151",
+  "source_record_sha256": "dbb8a8829ad86a34f88861a966a0b75a4e0149d37304aa712bb8659347c0f221",
+  "fail_to_pass": [
+    "test_fcode_sign"
+  ],
+  "pass_to_pass": [
+    "test_printmethod",
+    "test_fcode_Pow",
+    "test_fcode_Rational",
+    "test_fcode_Integer",
+    "test_fcode_Float",
+    "test_fcode_functions",
+    "test_fcode_functions_with_integers",
+    "test_fcode_NumberSymbol",
+    "test_fcode_complex",
+    "test_implicit",
+    "test_not_fortran",
+    "test_user_functions",
+    "test_assign_to",
+    "test_line_wrapping",
+    "test_fcode_precedence",
+    "test_fcode_Logical",
+    "test_fcode_Xlogical",
+    "test_fcode_Relational",
+    "test_fcode_Piecewise",
+    "test_wrap_fortran",
+    "test_wrap_fortran_keep_d0",
+    "test_settings",
+    "test_free_form_code_line",
+    "test_free_form_continuation_line",
+    "test_free_form_comment_line",
+    "test_derived_classes",
+    "test_indent",
+    "test_Matrix_printing"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_fcode.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_fcode.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

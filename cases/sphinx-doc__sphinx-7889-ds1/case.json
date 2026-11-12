@@ -1,0 +1,76 @@
+{
+  "case_id": "sphinx-doc__sphinx-7889-ds1",
+  "source_case_id": "sphinx-doc__sphinx-7889",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-7889",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "ec9af606c6cfa515f946d74da9b51574f2f9b16f",
+  "head": "base+repair:a727a484adfbad40fecad3e54fcab9662064b0aa7a6ee6fdb1f2f3481afb5b44",
+  "allowed_file": "sphinx/ext/autodoc/mock.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7889-ds1/repair.patch",
+  "repair_patch_sha256": "a727a484adfbad40fecad3e54fcab9662064b0aa7a6ee6fdb1f2f3481afb5b44",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7889-ds1/test.patch",
+  "test_patch_sha256": "9ab028f6205f70e8513d29a21f7eeb1c3187bc745c69399b4377c459ddefdc47",
+  "source_record_sha256": "9eccc9ae67f4faa4d9fa7e45b38e0c0a8304d173207405d4181a85accc6ede44",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_mock.py::test_MockObject"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autodoc_mock.py::test_MockModule",
+    "tests/test_ext_autodoc_mock.py::test_mock",
+    "tests/test_ext_autodoc_mock.py::test_mock_does_not_follow_upper_modules",
+    "tests/test_ext_autodoc_mock.py::test_abc_MockObject",
+    "tests/test_ext_autodoc_mock.py::test_mock_decorator"
+  ],
+  "test_targets": [
+    "tests/test_ext_autodoc_mock.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_ext_autodoc_mock.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

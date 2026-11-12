@@ -1,0 +1,56 @@
+{
+  "case_id": "pylint-dev__astroid-2307-ds1",
+  "source_case_id": "pylint-dev__astroid-2307",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-2307",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "base": "1113d490ec4a94cdc1b35f45abfdaca9f19fa31e",
+  "head": "base+repair:807846aa684e16bcf853326197a01a74c5dcc85b9145d548ab4e9c8d49913e00",
+  "allowed_file": "astroid/brain/brain_typing.py",
+  "license": "LGPL-2.1-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__astroid-2307-ds1/repair.patch",
+  "repair_patch_sha256": "807846aa684e16bcf853326197a01a74c5dcc85b9145d548ab4e9c8d49913e00",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__astroid-2307-ds1/test.patch",
+  "test_patch_sha256": "893fa5c52bec39aa8ed94885fea2d39b29f48ab757802230da000b62e4424360",
+  "source_record_sha256": "fad628681cbd7ede4b11f367aeaa553eb48ed177b334e800d59171cf6c869022",
+  "fail_to_pass": [
+    "tests/brain/test_typing.py::test_infer_typevar"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "tests/brain/test_typing.py"
+  ],
+  "frozen_test_files": [
+    "tests/brain/test_typing.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "wrapt==1.15.0",
+    "lazy-object-proxy==1.9.0",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

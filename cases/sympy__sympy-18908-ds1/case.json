@@ -1,0 +1,69 @@
+{
+  "case_id": "sympy__sympy-18908-ds1",
+  "source_case_id": "sympy__sympy-18908",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-18908",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "5b92c4497fcc6f1df4aac23b9c001ff323ffb421",
+  "head": "base+repair:b151e7bbea5fb102b64bffd3a420c2a379db73438c646d66e1fc209d88808d5e",
+  "allowed_file": "sympy/printing/pycode.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-18908-ds1/repair.patch",
+  "repair_patch_sha256": "b151e7bbea5fb102b64bffd3a420c2a379db73438c646d66e1fc209d88808d5e",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-18908-ds1/test.patch",
+  "test_patch_sha256": "c70d618cfdd94c49f65fbddc5cf5d98553cfdfa301376367409b147de513d8e1",
+  "source_record_sha256": "7fbfd458a841879fe2ff89227c265d089d40e96e4ac94a3a99c5a268b2d3ada9",
+  "fail_to_pass": [
+    "test_airy"
+  ],
+  "pass_to_pass": [
+    "test_PythonCodePrinter",
+    "test_PythonCodePrinter_standard",
+    "test_MpmathPrinter",
+    "test_NumPyPrinter",
+    "test_SciPyPrinter",
+    "test_pycode_reserved_words",
+    "test_sqrt",
+    "test_printmethod",
+    "test_codegen_ast_nodes",
+    "test_issue_14283",
+    "test_NumPyPrinter_print_seq",
+    "test_issue_16535_16536",
+    "test_fresnel_integrals",
+    "test_beta"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_pycode.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_pycode.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

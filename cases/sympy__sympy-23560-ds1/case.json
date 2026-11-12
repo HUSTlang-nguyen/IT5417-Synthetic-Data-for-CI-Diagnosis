@@ -1,0 +1,59 @@
+{
+  "case_id": "sympy__sympy-23560-ds1",
+  "source_case_id": "sympy__sympy-23560",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-23560",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "b1cf21e12e84ecef87b45091e3a524b657033ad9",
+  "head": "base+repair:ea379a0f1ce6ae2291853bb23c9c2f2b315084d57f14032f6bc16aaedadea0bc",
+  "allowed_file": "sympy/geometry/util.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23560-ds1/repair.patch",
+  "repair_patch_sha256": "ea379a0f1ce6ae2291853bb23c9c2f2b315084d57f14032f6bc16aaedadea0bc",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23560-ds1/test.patch",
+  "test_patch_sha256": "adb24f2a6543a947f184d50b1f970104ba38ae8a1370c93713dd7aa7c04a0876",
+  "source_record_sha256": "c8cce48bfd5e9be8502c9507a890f3fb1e29d42ad88546320f60fa050c42e467",
+  "fail_to_pass": [
+    "test_idiff"
+  ],
+  "pass_to_pass": [
+    "test_intersection",
+    "test_convex_hull",
+    "test_centroid",
+    "test_farthest_points_closest_points"
+  ],
+  "test_targets": [
+    "sympy/geometry/tests/test_util.py"
+  ],
+  "frozen_test_files": [
+    "sympy/geometry/tests/test_util.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

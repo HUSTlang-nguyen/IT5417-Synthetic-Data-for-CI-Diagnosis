@@ -1,0 +1,58 @@
+{
+  "case_id": "sympy__sympy-15678-ds1",
+  "source_case_id": "sympy__sympy-15678",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-15678",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "31c68eef3ffef39e2e792b0ec92cd92b7010eb2a",
+  "head": "base+repair:0769ebfd97875932290614d591529f2bf2d8889cb72dfde57f972ace6d094fae",
+  "allowed_file": "sympy/geometry/util.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15678-ds1/repair.patch",
+  "repair_patch_sha256": "0769ebfd97875932290614d591529f2bf2d8889cb72dfde57f972ace6d094fae",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15678-ds1/test.patch",
+  "test_patch_sha256": "3058a203446ad8d1bce27c3fc7e4ec3d4d83b17b83d145791a27d05e99c7cc7a",
+  "source_record_sha256": "ae6d39cfc1471e78208eabd4ad7d6ff08d4979c15dfa6082e40eabe2135eb335",
+  "fail_to_pass": [
+    "test_idiff"
+  ],
+  "pass_to_pass": [
+    "test_intersection",
+    "test_convex_hull",
+    "test_centroid"
+  ],
+  "test_targets": [
+    "sympy/geometry/tests/test_util.py"
+  ],
+  "frozen_test_files": [
+    "sympy/geometry/tests/test_util.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

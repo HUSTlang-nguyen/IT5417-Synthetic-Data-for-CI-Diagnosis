@@ -1,0 +1,85 @@
+{
+  "case_id": "sympy__sympy-19007-ds1",
+  "source_case_id": "sympy__sympy-19007",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-19007",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "f9e030b57623bebdc2efa7f297c1b5ede08fcebf",
+  "head": "base+repair:38129c208a3166eb2b285ff3e2de46edfda395f5ee9d14b70ceb492797708741",
+  "allowed_file": "sympy/matrices/expressions/blockmatrix.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-19007-ds1/repair.patch",
+  "repair_patch_sha256": "38129c208a3166eb2b285ff3e2de46edfda395f5ee9d14b70ceb492797708741",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-19007-ds1/test.patch",
+  "test_patch_sha256": "8af98f1cfcd975a9344be6800115704d35d1fac6afcb253e0b41ea7342c0f620",
+  "source_record_sha256": "24570012e4858c3935c3e95aeda534044b0622776db4a046edd0d1fd101f4825",
+  "fail_to_pass": [
+    "test_block_index_symbolic",
+    "test_block_index_symbolic_nonzero",
+    "test_block_index_large"
+  ],
+  "pass_to_pass": [
+    "test_bc_matmul",
+    "test_bc_matadd",
+    "test_bc_transpose",
+    "test_bc_dist_diag",
+    "test_block_plus_ident",
+    "test_BlockMatrix",
+    "test_block_collapse_explicit_matrices",
+    "test_issue_17624",
+    "test_issue_18618",
+    "test_BlockMatrix_trace",
+    "test_BlockMatrix_Determinant",
+    "test_squareBlockMatrix",
+    "test_BlockDiagMatrix",
+    "test_blockcut",
+    "test_reblock_2x2",
+    "test_deblock",
+    "test_symbolic_indexing",
+    "test_add_index",
+    "test_mul_index",
+    "test_pow_index",
+    "test_transpose_index",
+    "test_Identity_index",
+    "test_block_index",
+    "test_slicing",
+    "test_errors",
+    "test_matrix_expression_to_indices"
+  ],
+  "test_targets": [
+    "sympy/matrices/expressions/tests/test_blockmatrix.py",
+    "sympy/matrices/expressions/tests/test_indexing.py"
+  ],
+  "frozen_test_files": [
+    "sympy/matrices/expressions/tests/test_blockmatrix.py",
+    "sympy/matrices/expressions/tests/test_indexing.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

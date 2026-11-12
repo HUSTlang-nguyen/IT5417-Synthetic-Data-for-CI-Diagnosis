@@ -1,0 +1,85 @@
+{
+  "case_id": "sympy__sympy-11400-ds1",
+  "source_case_id": "sympy__sympy-11400",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-11400",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "8dcb12a6cf500e8738d6729ab954a261758f49ca",
+  "head": "base+repair:7f79e0c6e6909a311c54215f3e858f057db77bb11248853e84095261195d6c1b",
+  "allowed_file": "sympy/printing/ccode.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-11400-ds1/repair.patch",
+  "repair_patch_sha256": "7f79e0c6e6909a311c54215f3e858f057db77bb11248853e84095261195d6c1b",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-11400-ds1/test.patch",
+  "test_patch_sha256": "e9398bf638c46e8c411f2eb3e8f096b92c4638ba896ac68d120fe810b7b1b0f4",
+  "source_record_sha256": "13cdc13727c6a1ecd4124ff30513d95275a76d15203410fb6e058a490cf704d8",
+  "fail_to_pass": [
+    "test_ccode_Relational",
+    "test_ccode_sinc"
+  ],
+  "pass_to_pass": [
+    "test_printmethod",
+    "test_ccode_sqrt",
+    "test_ccode_Pow",
+    "test_ccode_constants_mathh",
+    "test_ccode_constants_other",
+    "test_ccode_Rational",
+    "test_ccode_Integer",
+    "test_ccode_functions",
+    "test_ccode_inline_function",
+    "test_ccode_exceptions",
+    "test_ccode_user_functions",
+    "test_ccode_boolean",
+    "test_ccode_Piecewise",
+    "test_ccode_Piecewise_deep",
+    "test_ccode_ITE",
+    "test_ccode_settings",
+    "test_ccode_Indexed",
+    "test_ccode_Indexed_without_looking_for_contraction",
+    "test_ccode_loops_matrix_vector",
+    "test_dummy_loops",
+    "test_ccode_loops_add",
+    "test_ccode_loops_multiple_contractions",
+    "test_ccode_loops_addfactor",
+    "test_ccode_loops_multiple_terms",
+    "test_dereference_printing",
+    "test_Matrix_printing",
+    "test_ccode_reserved_words",
+    "test_ccode_sign",
+    "test_ccode_Assignment"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_ccode.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_ccode.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

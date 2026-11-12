@@ -1,0 +1,98 @@
+{
+  "case_id": "sphinx-doc__sphinx-7454-ds1",
+  "source_case_id": "sphinx-doc__sphinx-7454",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-7454",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "aca3f825f2e4a8817190f3c885a242a285aa0dba",
+  "head": "base+repair:64c14fd0407961972d0efeb9635587c1b050f7c2da3e86f3ce3a50e4a23c383e",
+  "allowed_file": "sphinx/domains/python.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7454-ds1/repair.patch",
+  "repair_patch_sha256": "64c14fd0407961972d0efeb9635587c1b050f7c2da3e86f3ce3a50e4a23c383e",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7454-ds1/test.patch",
+  "test_patch_sha256": "b8745900c44362aee705ebd130656cb71a02cb01d42e7d29c16bdada02a9fe6e",
+  "source_record_sha256": "90c3433315e48aee811c8863ea813e04ca78ec36bdb7be69b7df48215ada6fe2",
+  "fail_to_pass": [
+    "tests/test_domain_py.py::test_parse_annotation"
+  ],
+  "pass_to_pass": [
+    "tests/test_domain_py.py::test_function_signatures",
+    "tests/test_domain_py.py::test_domain_py_xrefs",
+    "tests/test_domain_py.py::test_domain_py_objects",
+    "tests/test_domain_py.py::test_resolve_xref_for_properties",
+    "tests/test_domain_py.py::test_domain_py_find_obj",
+    "tests/test_domain_py.py::test_get_full_qualified_name",
+    "tests/test_domain_py.py::test_pyfunction_signature",
+    "tests/test_domain_py.py::test_pyfunction_signature_full",
+    "tests/test_domain_py.py::test_pyfunction_signature_full_py38",
+    "tests/test_domain_py.py::test_optional_pyfunction_signature",
+    "tests/test_domain_py.py::test_pyexception_signature",
+    "tests/test_domain_py.py::test_exceptions_module_is_ignored",
+    "tests/test_domain_py.py::test_pydata_signature",
+    "tests/test_domain_py.py::test_pydata_signature_old",
+    "tests/test_domain_py.py::test_pyobject_prefix",
+    "tests/test_domain_py.py::test_pydata",
+    "tests/test_domain_py.py::test_pyfunction",
+    "tests/test_domain_py.py::test_pymethod_options",
+    "tests/test_domain_py.py::test_pyclassmethod",
+    "tests/test_domain_py.py::test_pystaticmethod",
+    "tests/test_domain_py.py::test_pyattribute",
+    "tests/test_domain_py.py::test_pydecorator_signature",
+    "tests/test_domain_py.py::test_pydecoratormethod_signature",
+    "tests/test_domain_py.py::test_module_index",
+    "tests/test_domain_py.py::test_module_index_submodule",
+    "tests/test_domain_py.py::test_module_index_not_collapsed",
+    "tests/test_domain_py.py::test_modindex_common_prefix"
+  ],
+  "test_targets": [
+    "tests/test_domain_py.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_domain_py.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

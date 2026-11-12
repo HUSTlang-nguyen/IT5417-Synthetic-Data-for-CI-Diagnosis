@@ -1,0 +1,57 @@
+{
+  "case_id": "sympy__sympy-24909-ds1",
+  "source_case_id": "sympy__sympy-24909",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-24909",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "d3b4158dea271485e3daa11bf82e69b8dab348ce",
+  "head": "base+repair:fc8ec06d7cb7e45260608aa65da67219b160cd101fdabc61d65ebe0206b2399c",
+  "allowed_file": "sympy/physics/units/prefixes.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24909-ds1/repair.patch",
+  "repair_patch_sha256": "fc8ec06d7cb7e45260608aa65da67219b160cd101fdabc61d65ebe0206b2399c",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-24909-ds1/test.patch",
+  "test_patch_sha256": "2337eacab354d4dff2b0085a67f74b17d4ffae49f1e6510a16016c1f13b7572e",
+  "source_record_sha256": "34d7385a3aeff8afff114af3f4697da052e1b01028d56650978ae32d8adc1321",
+  "fail_to_pass": [
+    "test_prefix_operations"
+  ],
+  "pass_to_pass": [
+    "test_prefix_unit",
+    "test_bases"
+  ],
+  "test_targets": [
+    "sympy/physics/units/tests/test_prefixes.py"
+  ],
+  "frozen_test_files": [
+    "sympy/physics/units/tests/test_prefixes.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

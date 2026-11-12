@@ -1,0 +1,81 @@
+{
+  "case_id": "sympy__sympy-21627-ds1",
+  "source_case_id": "sympy__sympy-21627",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-21627",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "126f80578140e752ad5135aac77b8ff887eede3e",
+  "head": "base+repair:b5ba97320a3af097a979e4fd2ec66ade3c7480c130a611a6c7aab137387144f2",
+  "allowed_file": "sympy/functions/elementary/complexes.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-21627-ds1/repair.patch",
+  "repair_patch_sha256": "b5ba97320a3af097a979e4fd2ec66ade3c7480c130a611a6c7aab137387144f2",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-21627-ds1/test.patch",
+  "test_patch_sha256": "92f1f2a16bb8e757c797091153e9b22a6adad18619fe24b971105098620c4b10",
+  "source_record_sha256": "0303319d0d1721fcb0b24542d331b235f11bcc6322c086387bc6baf56f1eed37",
+  "fail_to_pass": [
+    "test_Abs"
+  ],
+  "pass_to_pass": [
+    "test_re",
+    "test_im",
+    "test_sign",
+    "test_as_real_imag",
+    "test_Abs_rewrite",
+    "test_Abs_real",
+    "test_Abs_properties",
+    "test_abs",
+    "test_arg",
+    "test_arg_rewrite",
+    "test_adjoint",
+    "test_conjugate",
+    "test_conjugate_transpose",
+    "test_transpose",
+    "test_polarify",
+    "test_unpolarify",
+    "test_issue_4035",
+    "test_issue_3206",
+    "test_issue_4754_derivative_conjugate",
+    "test_derivatives_issue_4757",
+    "test_issue_11413",
+    "test_periodic_argument",
+    "test_principal_branch",
+    "test_issue_14216",
+    "test_issue_14238",
+    "test_zero_assumptions"
+  ],
+  "test_targets": [
+    "sympy/functions/elementary/tests/test_complexes.py"
+  ],
+  "frozen_test_files": [
+    "sympy/functions/elementary/tests/test_complexes.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

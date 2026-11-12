@@ -1,0 +1,65 @@
+{
+  "case_id": "sympy__sympy-20169-ds1",
+  "source_case_id": "sympy__sympy-20169",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-20169",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "706007ca2fe279020e099d36dd1db0e33123ac4c",
+  "head": "base+repair:f9913a6f630f5a42bef146202843efdf261c31ce57284795a2491144fee3ef9f",
+  "allowed_file": "sympy/physics/optics/utils.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-20169-ds1/repair.patch",
+  "repair_patch_sha256": "f9913a6f630f5a42bef146202843efdf261c31ce57284795a2491144fee3ef9f",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-20169-ds1/test.patch",
+  "test_patch_sha256": "351042fb62234d77825c0acbaa0745945775a195cd45fdb07fb51826640f66d5",
+  "source_record_sha256": "7df5d993fd77b5b5791f2a2307804ea95755a601e96b95fa4475c8157e180949",
+  "fail_to_pass": [
+    "test_lens_makers_formula",
+    "test_lens_makers_formula_thick_lens"
+  ],
+  "pass_to_pass": [
+    "test_refraction_angle",
+    "test_fresnel_coefficients",
+    "test_deviation",
+    "test_brewster_angle",
+    "test_critical_angle",
+    "test_mirror_formula",
+    "test_lens_formula",
+    "test_hyperfocal_distance",
+    "test_transverse_magnification"
+  ],
+  "test_targets": [
+    "sympy/physics/optics/tests/test_utils.py"
+  ],
+  "frozen_test_files": [
+    "sympy/physics/optics/tests/test_utils.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "case_id": "pydicom__pydicom-900-ds1",
+  "source_case_id": "pydicom__pydicom-900",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-900",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "3746878d8edf1cbda6fbcf35eec69f9ba79301ca",
+  "head": "base+repair:7151267ea22ff65f0520e1ca3c055af7b5a309091b4a34994c558f652c816319",
+  "allowed_file": "pydicom/dataelem.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pydicom__pydicom-900-ds1/repair.patch",
+  "repair_patch_sha256": "7151267ea22ff65f0520e1ca3c055af7b5a309091b4a34994c558f652c816319",
+  "test_patch": ".cache/dataset-v1-source/cases/pydicom__pydicom-900-ds1/test.patch",
+  "test_patch_sha256": "e5fc03a664adb2ea121701310cd1816c97b3215a5f0e89499978b6b3823a730a",
+  "source_record_sha256": "0a6fa01f0fa6f105ffe513192084d81f4f53c9817526850544a8472223c489c0",
+  "fail_to_pass": [
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_known_tags_with_UN_VR"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_VM_1",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_VM_2",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_DSFloat_conversion",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_backslash",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_UID",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_keyword",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_retired",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_description_group_length",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_description_unknown_private",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_description_unknown",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_equality_standard_element",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_equality_private_element",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_equality_sequence_element",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_equality_not_rlement",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_equality_inheritance",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_equality_class_members",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_inequality_standard",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_inequality_sequence",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_hash",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_repeater_str",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_str_no_vr",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_repr_seq",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_getitem_raises",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_repval_large_elem",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_repval_large_vm",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_repval_strange_type",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_private_tag_in_repeater_range",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_private_repeater_tag",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_unknown_tags_with_UN_VR",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_tag_with_long_value_UN_VR",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_empty_text_values",
+    "pydicom/tests/test_dataelem.py::TestDataElement::test_empty_binary_values",
+    "pydicom/tests/test_dataelem.py::TestRawDataElement::test_key_error",
+    "pydicom/tests/test_dataelem.py::TestRawDataElement::test_valid_tag",
+    "pydicom/tests/test_dataelem.py::TestRawDataElement::test_data_element_without_encoding",
+    "pydicom/tests/test_dataelem.py::TestRawDataElement::test_unknown_vr"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_dataelem.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_dataelem.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

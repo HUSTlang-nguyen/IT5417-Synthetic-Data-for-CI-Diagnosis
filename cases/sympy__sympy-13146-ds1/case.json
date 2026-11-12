@@ -1,0 +1,89 @@
+{
+  "case_id": "sympy__sympy-13146-ds1",
+  "source_case_id": "sympy__sympy-13146",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-13146",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "b678d8103e48fdb1af335dbf0080b3d5366f2d17",
+  "head": "base+repair:a1bec791584848a49b550faee3912152756191bba3c8f9f71de8e065f63ae40a",
+  "allowed_file": "sympy/core/operations.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13146-ds1/repair.patch",
+  "repair_patch_sha256": "a1bec791584848a49b550faee3912152756191bba3c8f9f71de8e065f63ae40a",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13146-ds1/test.patch",
+  "test_patch_sha256": "bb05eccceaac90174482b1662c34c6aa7864f6b83e98666339ae24b6e8004bcb",
+  "source_record_sha256": "a3c4e153db6126b549c499135902b3fdc1d802d4724662d233f96559629fe49b",
+  "fail_to_pass": [
+    "test_evalf_bugs"
+  ],
+  "pass_to_pass": [
+    "test_evalf_helpers",
+    "test_evalf_basic",
+    "test_cancellation",
+    "test_evalf_powers",
+    "test_evalf_rump",
+    "test_evalf_complex",
+    "test_evalf_complex_powers",
+    "test_evalf_exponentiation",
+    "test_evalf_complex_cancellation",
+    "test_evalf_trig_zero_detection",
+    "test_evalf_sum",
+    "test_evalf_divergent_series",
+    "test_evalf_product",
+    "test_evalf_py_methods",
+    "test_evalf_power_subs_bugs",
+    "test_evalf_arguments",
+    "test_implemented_function_evalf",
+    "test_evaluate_false",
+    "test_evalf_relational",
+    "test_issue_5486",
+    "test_issue_5486_bug",
+    "test_bugs",
+    "test_subs",
+    "test_old_docstring",
+    "test_scaled_zero",
+    "test_chop_value",
+    "test_infinities",
+    "test_to_mpmath",
+    "test_issue_4945",
+    "test_evalf_integral",
+    "test_issue_8821_highprec_from_str",
+    "test_issue_8853",
+    "test_issue_9326",
+    "test_issue_10323"
+  ],
+  "test_targets": [
+    "sympy/core/tests/test_evalf.py"
+  ],
+  "frozen_test_files": [
+    "sympy/core/tests/test_evalf.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

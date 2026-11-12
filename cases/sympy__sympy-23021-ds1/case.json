@@ -1,0 +1,56 @@
+{
+  "case_id": "sympy__sympy-23021-ds1",
+  "source_case_id": "sympy__sympy-23021",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-23021",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "706ab9045effd9886fcf3efd670644a592931b86",
+  "head": "base+repair:33de261ab4adbe61319ffe805ef1d65b9aae86c09452b4222b140d585849a3fa",
+  "allowed_file": "sympy/solvers/decompogen.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23021-ds1/repair.patch",
+  "repair_patch_sha256": "33de261ab4adbe61319ffe805ef1d65b9aae86c09452b4222b140d585849a3fa",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23021-ds1/test.patch",
+  "test_patch_sha256": "a8c66b16df8d5f84ab889874b9fedb78b56800ef47d579e0ee4600ea29e2f6fc",
+  "source_record_sha256": "09abae0422a4117d12ba6d2372e51ddea039d4b7bafa4239f039e21e103275fa",
+  "fail_to_pass": [
+    "test_decompogen"
+  ],
+  "pass_to_pass": [
+    "test_decompogen_poly"
+  ],
+  "test_targets": [
+    "sympy/solvers/tests/test_decompogen.py"
+  ],
+  "frozen_test_files": [
+    "sympy/solvers/tests/test_decompogen.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

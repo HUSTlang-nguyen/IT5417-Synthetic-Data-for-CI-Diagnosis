@@ -1,0 +1,78 @@
+{
+  "case_id": "pylint-dev__pylint-4669-ds1",
+  "source_case_id": "pylint-dev__pylint-4669",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4669",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "c2d03c6b3881a9df7353432b109523984adf06f9",
+  "head": "base+repair:de1d6d8828d3764171add0324bbbabec94b7405c7b3a97e18b1f0338e3820427",
+  "allowed_file": "pylint/checkers/similar.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4669-ds1/repair.patch",
+  "repair_patch_sha256": "de1d6d8828d3764171add0324bbbabec94b7405c7b3a97e18b1f0338e3820427",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4669-ds1/test.patch",
+  "test_patch_sha256": "80a2dda507bdd30f0a27790ec374ac7da799ad6098dc47c6e918828acaac4be3",
+  "source_record_sha256": "512f68ea72ef985f2b77d6f54964dfcde9763c831f1869f62c0be8a49c757fb0",
+  "fail_to_pass": [
+    "tests/checkers/unittest_similar.py::test_ignore_signatures_empty_functions_pass"
+  ],
+  "pass_to_pass": [
+    "tests/checkers/unittest_similar.py::test_ignore_comments",
+    "tests/checkers/unittest_similar.py::test_ignore_docsrings",
+    "tests/checkers/unittest_similar.py::test_ignore_imports",
+    "tests/checkers/unittest_similar.py::test_multiline_imports",
+    "tests/checkers/unittest_similar.py::test_ignore_multiline_imports",
+    "tests/checkers/unittest_similar.py::test_ignore_signatures_fail",
+    "tests/checkers/unittest_similar.py::test_ignore_signatures_pass",
+    "tests/checkers/unittest_similar.py::test_ignore_signatures_empty_functions_fail",
+    "tests/checkers/unittest_similar.py::test_no_hide_code_with_imports",
+    "tests/checkers/unittest_similar.py::test_ignore_nothing",
+    "tests/checkers/unittest_similar.py::test_lines_without_meaningful_content_do_not_trigger_similarity",
+    "tests/checkers/unittest_similar.py::test_help",
+    "tests/checkers/unittest_similar.py::test_no_args",
+    "tests/checkers/unittest_similar.py::test_get_map_data"
+  ],
+  "test_targets": [
+    "tests/checkers/unittest_similar.py"
+  ],
+  "frozen_test_files": [
+    "tests/checkers/unittest_similar.py",
+    "tests/input/similar_empty_func_1.py",
+    "tests/input/similar_empty_func_2.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "case_id": "sympy__sympy-12419-ds1",
+  "source_case_id": "sympy__sympy-12419",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-12419",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "479939f8c65c8c2908bbedc959549a257a7c0b0b",
+  "head": "base+repair:18794d75ba41397df2db6f4bad1c870a0d15be216987b0f594d5fdf11ded7f99",
+  "allowed_file": "sympy/matrices/expressions/matexpr.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-12419-ds1/repair.patch",
+  "repair_patch_sha256": "18794d75ba41397df2db6f4bad1c870a0d15be216987b0f594d5fdf11ded7f99",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-12419-ds1/test.patch",
+  "test_patch_sha256": "750840d1dc46b2982e8e62ac6dccd676a46b4fbf192db63276f104466d1c10f7",
+  "source_record_sha256": "5073276bebf84cfa39303f976066a751a96b0cc4a5a73fb4811edba304a1ff19",
+  "fail_to_pass": [
+    "test_Identity"
+  ],
+  "pass_to_pass": [
+    "test_shape",
+    "test_matexpr",
+    "test_subs",
+    "test_ZeroMatrix",
+    "test_ZeroMatrix_doit",
+    "test_Identity_doit",
+    "test_addition",
+    "test_multiplication",
+    "test_MatPow",
+    "test_MatrixSymbol",
+    "test_dense_conversion",
+    "test_free_symbols",
+    "test_zero_matmul",
+    "test_matadd_simplify",
+    "test_matmul_simplify",
+    "test_invariants",
+    "test_indexing",
+    "test_single_indexing",
+    "test_MatrixElement_commutative",
+    "test_MatrixSymbol_determinant",
+    "test_MatrixElement_diff",
+    "test_MatrixElement_doit",
+    "test_identity_powers",
+    "test_Zero_power",
+    "test_matrixelement_diff"
+  ],
+  "test_targets": [
+    "sympy/matrices/expressions/tests/test_matexpr.py"
+  ],
+  "frozen_test_files": [
+    "sympy/matrices/expressions/tests/test_matexpr.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

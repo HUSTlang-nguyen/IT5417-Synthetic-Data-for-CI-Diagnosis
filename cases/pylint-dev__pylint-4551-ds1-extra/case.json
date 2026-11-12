@@ -1,0 +1,73 @@
+{
+  "case_id": "pylint-dev__pylint-4551-ds1-extra",
+  "source_case_id": "pylint-dev__pylint-4551",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4551",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "99589b08de8c5a2c6cc61e13a37420a868c80599",
+  "head": "base+repair:06a5ae87f8794dff30b6733c4427cf46fed7ae67c545449b3168977be5cf215c",
+  "allowed_file": "pylint/pyreverse/diagrams.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4551-ds1-extra/repair.patch",
+  "repair_patch_sha256": "06a5ae87f8794dff30b6733c4427cf46fed7ae67c545449b3168977be5cf215c",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4551-ds1-extra/test.patch",
+  "test_patch_sha256": "ccdbb6351dd77464ac7429d8a43de3fc42088c03aed9618e5ba77bc8178fec87",
+  "source_record_sha256": "3696993ae37ac5a0663564d319d32e5207d60b8e500baa8f635d1399c8aa429d",
+  "fail_to_pass": [
+    "tests/unittest_pyreverse_writer.py::test_dot_files[packages_No_Name.dot]",
+    "tests/unittest_pyreverse_writer.py::test_dot_files[classes_No_Name.dot]",
+    "tests/unittest_pyreverse_writer.py::test_get_visibility[names0-special]",
+    "tests/unittest_pyreverse_writer.py::test_get_visibility[names1-private]",
+    "tests/unittest_pyreverse_writer.py::test_get_visibility[names2-public]",
+    "tests/unittest_pyreverse_writer.py::test_get_visibility[names3-protected]",
+    "tests/unittest_pyreverse_writer.py::test_get_annotation_annassign[a:",
+    "tests/unittest_pyreverse_writer.py::test_get_annotation_assignattr[def",
+    "tests/unittest_pyreverse_writer.py::test_infer_node_1",
+    "tests/unittest_pyreverse_writer.py::test_infer_node_2"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "tests/unittest_pyreverse_writer.py"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_pyreverse_writer.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8",
+    "py==1.11.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

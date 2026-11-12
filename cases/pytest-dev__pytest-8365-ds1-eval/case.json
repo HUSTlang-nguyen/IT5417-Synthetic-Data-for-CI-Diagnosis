@@ -1,0 +1,101 @@
+{
+  "case_id": "pytest-dev__pytest-8365-ds1-eval",
+  "source_case_id": "pytest-dev__pytest-8365",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pytest-dev__pytest-8365",
+  "repo_url": "https://github.com/pytest-dev/pytest",
+  "base": "4964b468c83c06971eb743fbc57cc404f760c573",
+  "head": "base+repair:76ce3f1ddc6897eca565ebe7a5941ebb3072d21e4e78e01aff0a291ab8130944",
+  "allowed_file": "src/_pytest/tmpdir.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-8365-ds1-eval/repair.patch",
+  "repair_patch_sha256": "76ce3f1ddc6897eca565ebe7a5941ebb3072d21e4e78e01aff0a291ab8130944",
+  "test_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-8365-ds1-eval/test.patch",
+  "test_patch_sha256": "0164e4bc25dec4af25eac2025b51cfdc426b234640daaa7320e62bb255a8be5d",
+  "source_record_sha256": "e133f1b12fbed6ee38ac826e2256f5d413050508a65b308adb00aacc14f35179",
+  "fail_to_pass": [
+    "testing/test_tmpdir.py::test_tmp_path_factory_handles_invalid_dir_characters"
+  ],
+  "pass_to_pass": [
+    "testing/test_tmpdir.py::TestTempdirHandler::test_mktemp",
+    "testing/test_tmpdir.py::TestTempdirHandler::test_tmppath_relative_basetemp_absolute",
+    "testing/test_tmpdir.py::test_get_user_uid_not_found",
+    "testing/test_tmpdir.py::TestNumberedDir::test_make",
+    "testing/test_tmpdir.py::TestNumberedDir::test_cleanup_lock_create",
+    "testing/test_tmpdir.py::TestNumberedDir::test_lock_register_cleanup_removal",
+    "testing/test_tmpdir.py::TestNumberedDir::test_cleanup_keep",
+    "testing/test_tmpdir.py::TestNumberedDir::test_cleanup_locked",
+    "testing/test_tmpdir.py::TestNumberedDir::test_cleanup_ignores_symlink",
+    "testing/test_tmpdir.py::TestNumberedDir::test_removal_accepts_lock",
+    "testing/test_tmpdir.py::TestRmRf::test_rm_rf",
+    "testing/test_tmpdir.py::TestRmRf::test_rm_rf_with_read_only_file",
+    "testing/test_tmpdir.py::TestRmRf::test_rm_rf_with_read_only_directory",
+    "testing/test_tmpdir.py::TestRmRf::test_on_rm_rf_error",
+    "testing/test_tmpdir.py::test_tmpdir_equals_tmp_path",
+    "testing/test_tmpdir.py::test_tmpdir_fixture",
+    "testing/test_tmpdir.py::TestConfigTmpdir::test_getbasetemp_custom_removes_old",
+    "testing/test_tmpdir.py::test_mktemp[mypath-True]",
+    "testing/test_tmpdir.py::test_mktemp[/mypath1-False]",
+    "testing/test_tmpdir.py::test_mktemp[./mypath1-True]",
+    "testing/test_tmpdir.py::test_mktemp[../mypath3-False]",
+    "testing/test_tmpdir.py::test_mktemp[../../mypath4-False]",
+    "testing/test_tmpdir.py::test_mktemp[mypath5/..-False]",
+    "testing/test_tmpdir.py::test_mktemp[mypath6/../mypath6-True]",
+    "testing/test_tmpdir.py::test_mktemp[mypath7/../mypath7/..-False]",
+    "testing/test_tmpdir.py::test_tmpdir_always_is_realpath",
+    "testing/test_tmpdir.py::test_tmp_path_always_is_realpath",
+    "testing/test_tmpdir.py::test_tmpdir_too_long_on_parametrization",
+    "testing/test_tmpdir.py::test_tmpdir_factory",
+    "testing/test_tmpdir.py::test_tmpdir_fallback_tox_env",
+    "testing/test_tmpdir.py::test_tmpdir_fallback_uid_not_found",
+    "testing/test_tmpdir.py::test_basetemp_with_read_only_files"
+  ],
+  "test_targets": [
+    "testing/test_tmpdir.py"
+  ],
+  "frozen_test_files": [
+    "testing/test_tmpdir.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Frozen reference tests on base/fixed; local reconstruction only",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [
+    "pytester"
+  ],
+  "install_project": false,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dependencies": [
+    "py==1.11.0",
+    "attrs==21.4.0",
+    "iniconfig==2.0.0",
+    "packaging==23.2",
+    "tomli==2.0.1",
+    "exceptiongroup==1.1.3",
+    "typing_extensions==4.12.2",
+    "pluggy==1.0.0",
+    "more-itertools==9.1.0",
+    "atomicwrites==1.4.1",
+    "wcwidth==0.2.13",
+    "mock==5.1.0"
+  ]
+}

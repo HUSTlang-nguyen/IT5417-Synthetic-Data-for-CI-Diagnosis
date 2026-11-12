@@ -343,3 +343,247 @@ Append entries in chronological order. Timezone: Asia/Bangkok. Record facts, evi
 
 - User explicitly requested commit/push of the prepared documentation diff on codex/w1-review-skill. Rechecked 320 links/fragments, 44 retained legacy anchors, source review transfer and 2518 protected file hashes; all passed. git diff --check passed. Prepared change set contains sixteen Markdown files, including README/case navigation; no cache, raw data, models or experiment changes.
 - Publish as one documentation commit on the existing codex branch; main is unchanged. Next research task remains W2-04, W3-03 waiting_user; no approval-state changes or experiment/software-suite reruns.
+
+## 2026-10-30T08:07:30+07:00 — User accepts expansion 01/02 review recommendations
+
+- User explicitly said "duyệt nhé" in direct response to the two-cohort recommendation checklist. Applied ci-data-review recording rules: accepted explained development keep/exclude recommendations and duplicate grouping, not formal gold/location/training approval or a reviewer identity inferred from account data.
+- Keep the three byte-distinct pydicom candidates for development; accept cohort-02 development recommendations. Exclude astroid-1196/02 from the valid-Python v3 subset while preserving its raw execution_verified status. Keep astroid-1268/03 extra, astroid-1866/01 X and pvlib-1072/02 +10K for development analysis, not training. Invalid/no-failure outputs remain unsuccessful evidence, not approved pass/negative samples.
+- Recorded scope/time/chat quote separately in docs/data-review.md; updated active README/summary/architecture/roadmap. W3-03 waiting_user -> doing because recommendation review is accepted but formal labels/locations/curation/training gates remain incomplete. W2-04 remains doing and is next. No label enum, final split, raw review stub or execution count changed; no model/Docker/test runs.
+
+- Approval-record validation passed: all 2518 previously protected current/original-checkout files still match SHA-256; existing review run IDs and digests retained. Decision anchor and formal pending boundaries checked; W2-04/W3-03 doing. git diff --check passed. Documentation-only diff remains uncommitted in this worktree.
+
+## 2026-11-12 — Persist planning discussion at user request (Asia/Bangkok)
+
+- Audit found the recent discussion existed only in chat; prior file checkpoint ended with the October expansion-disposition acceptance. Added docs/planning-session-2026-11-12.md and recovery pointers in architecture/implementation-plan. Historical log entries and existing user changes retained.
+- Recorded user-selected planning preferences: prioritize an SFT trial, allow marked silver for exploratory use, hold out repositories. Also recorded the subsequent explicit requirement to review a plan before execution and the cleared temporary goal; no 24-hour execution clock or new goal is active.
+- Persisted clarification of sample/input/target/provenance, source vs derived labels, silver vs gold, reviewer limits, 30–60 real/39-record minimum as a tiny pilot rather than sufficient research scale, 120-request ceiling/v3 meaning, and proposed training logs/timeouts vs unmeasured runtime. The 500-real example and hyperparameters remain proposals.
+- Fresh-base/adapters for dataset-v2 comparisons and High/Medium task routing are agent recommendations, not user-confirmed choices or applied settings. Next: present a revised decision-complete plan for user review; W2-04/W3-03 remain doing, no gates marked complete. Documentation-only operation: no model downloads/calls, Docker/tests, dataset exports or training.
+
+- Context validation: all local document file links resolve; 2518 previously inventoried evidence/config/source/test files match SHA-256; committed agent-log content remains a prefix after line-ending normalization. git diff --check passed. New context/checkpoint edits remain uncommitted; no push.
+
+## 2026-11-12 — Additional planning choices and localization priority
+
+- User selected target 60 real + 18–36 synthetic and preserving data gates rather than forcing undersized SFT. User wants class/file/function/explanation and explicitly challenged localization as secondary; record classification and file/function localization as joint central objectives. Counts per split, revised minimum sample gates, retrieval and checkpoint-selection metrics still require the final plan.
+- Recorded the annotation difficulty rationale, need to score localization separately, preserve retrieval misses in end-to-end denominators, and avoid oracle single-file context masquerading as repository localization. Updated planning record, architecture and roadmap; no runtime/model/training execution or approval inferred.
+
+## 2026-11-12 — Real dataset target revised to 250
+
+- User chose 250 real situations as the new target, superseding the earlier 60-real/30–60 pilot target. Count eligible independent fault situations, not repos, metadata rows, test cases/repetitions or generator calls. This is not an achieved count, a demonstrated sufficiency threshold or guaranteed 24-hour yield.
+- Updated planning record and current architecture/roadmap pointers. Preserve marked-silver exploratory use, repository-held-out evaluation, classification plus localization as central tasks and quality gates. Recalculate split/synthetic counts, generation budget and schedule in the revised plan; old 18–36 synthetic / 120-request limits are not automatically adopted. No final split, full-plan execution approval or new experiment.
+
+## 2026-11-12T02:19:29+07:00 — Authorized dataset v1 and SFT experiment begins
+
+- Explicit user goal supersedes planning-only stop. Created experiment-20261111T192045721211Z with 24-hour wall deadline 2026-11-13T02:19:29+07:00, fixed 250-real target, matched synthetic train, 600/1500 generator/diagnoser request caps and bounded stages. Saved 2504 prior raw/evidence/case/registry file hashes and dirty worktree inventory; preserved existing user changes.
+- Locked docs/experiment-protocol.md before model calls. Core remains stdlib; requirements-ml.txt pins optional isolated ML stack. Strict data gates prevent substituting undersized SFT; silver approvals are not human/expert gold.
+- Real preflight GPU: RTX 4070 SUPER, 12282 MiB total / 9631 MiB free; about 81 GiB disk free. Docker daemon and local Ollama initially down; started existing Docker Desktop and portable Ollama hidden. No old experiment rerun; no new model calls yet. Next: dataset inventory/repo role freeze, isolated ML setup and gated reproduction.
+
+
+## 2026-11-12T03:09:57+07:00 — Dataset v1 frontier, silver export and 3B runtime calibration
+
+- Continued active experiment `experiment-20261111T192045721211Z`; deadline unchanged at 13/11 02:19:29 +07. SWE-bench pinned revision e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6 has 21,527 screened metadata rows across source splits; many train rows lack reference tests and were not eligible. Frozen plan has 443 source candidates (300 train, 100 validation, 43 test), not verified samples or official benchmark scores.
+- Added locked operation/budget guards, serial reconstruction/resume, safe internal source-symlink preservation inside Linux images, reference-free retrieval/metrics, evidence-bound silver export and optional pinned local 3B runtime. Test `python -m unittest discover -v`: 75 tests, 74 pass/1 opt-in Docker skip; saved software-tests-75.txt. Actual new reconstructions run Docker; skipped host-suite integration is not presented as experimental absence.
+- `python -m ci_demo doctor`: doctor-20261111T194435414888Z confirms target GPU and Ollama available. First reconstruction frontier: 15 source cases, 7 strict-supported, 9 seed pass. Source F2P/P2P and immutable harness, not mere head pass, determine strict acceptance. Old pilots were not rerun.
+- Pylint first stopped on an internal source symlink; added constrained preservation rather than dropping its fixture. Later conftest logs showed missing appdirs/tomlkit. Plan-env2 creates 42 explicitly linked environment profiles with unchanged source/tests and repository roles; successful cases are skipped and source/profile denominators differ. Current bounded worker uses that plan; inspect live handle/current manifest before resume. Sphinx 11316 has a missing-git environment limitation; not relabeled as an application fault.
+- Applied ci-data-review to two initial strict-supported cases: SymPy 22914 missing builtin printer registry mappings (module-level representation defect), Sphinx 10353 missing TypeAliasForwardRef.__repr__ (reviewed causal absence). Exported separate inputs/references and hash-bound silver assessments; human gold pending. No raw artifacts edited. Initial exports are retrieval v1 prototypes, not final comparison data.
+- Isolated ML environment completed CUDA smoke; downloaded 3B revision 488639f1ff808d1d3d0ba301aef8c11461451ec5 and hashed every file. Calibration only on the SymPy train input: 16.750 s model load, 24.515 s inference, 1,635 input/199 output tokens, CUDA peak allocated 2,609,158,656 bytes / reserved 3,233,808,384 bytes. Output is Markdown-fenced and strict JSON parse fails; wrong retrieved files are preserved. No held-out prediction, M0 fit, synthetic generation or SFT yet. First process invocation failed before reservation/model load because of a request-role key mismatch; corrected key and retained both process logs, not a repeated model call.
+- Retrieval v2 removes pytest progress chatter and uses observed symbols/module names plus module-level context. It was developed from train calibration, receives no reference/patch, and is not evaluated by silently replacing prior inputs. Final export must select one input version before M1/M2/M5.
+- Evidence audit: 2504 protected files, 0 changed / 0 missing. Existing uncommitted user edits preserved; no push/merge. Next: finish bounded corrected frontier, inspect environment failures, expand strict-supported real collection and silver review, then finalize grouping/input version/data gates before any SFT.
+
+
+## 2026-11-12T03:24:55+07:00 — Seven silver records audited; next bounded reconstruction worker live
+
+- Read source/repair/logs for five additional cases and wrote evidence-bound silver assessments: Sphinx 9665 logic/value/restify; SymPy 23950 logic/value/Contains.as_set; Sphinx 8284 configuration-default/setup (medium class confidence and explicit logic overlap); Pylint 4970 logic/value/Similar.run; SymPy 11822 API/type/split_super_sub from proven None-to-regex flow, not exception-name guessing.
+- Exported seven unique situations through retrieval v2 in a separate cache tree: 3 train/3 validation/1 test; original two v1 prototypes unchanged and not extra situations. Draft real audit verifies input/reference hashes, raw manifest identity, unchanged curation source, repo/shared-commit groups and lexical-edit suggestions. It reports unmet size/split/class/near-duplicate gates, not training readiness.
+- Fixed metrics so even a correct guessed location gets no end-to-end localization/joint credit when retrieval omitted the reference. Classification remains separately scored. SymPy test excerpts now use exactly resolved source IDs; no model prompt/output/option/seed from old runs was changed. Added plan-lock mutation/role and dataset hash-boundary regression checks. Full suite: 77 tests, 76 pass/1 opt-in Docker skip; saved software-tests-77.txt.
+- Completed worker 27812: 27 attempted profiles across 23 source cases; 15 strict-supported and 17 unique seed-pass sources. Started next bounded worker session 87714 with --limit 60 after observing the old session terminal. At 03:22:51 +07, ongoing summary had 33 completed profiles/29 sources, 19 strict-supported, 22 seed pass; these are execution counts, not reviewed silver. Disk snapshot 48.09 GiB free; each next stage retains the 20-GiB guard.
+- Current worker handle/command saved in worker-checkpoint.json. Poll that confirmed-live handle before resume; no new worker while its OS lock is held. Next: keep collecting within real-stage budget, review further strict-supported cases, resolve source/profile/duplicate gates, then implement/run dataset-locked baselines and the matched synthetic/SFT stages. No M0 fit, held-out M1, synthetic model call or SFT result yet. Goal remains active; no push/merge.
+
+
+## 2026-11-12T06:44:47+07:00 — Continued after usage-limit interruption; data/environment and learning paths
+
+- Revalidated current clock/goal/deadline. No operation was reserved after previous bounded workers ended (87714 terminal 04:05; 89267 terminal 04:12). User retry resumes the same goal; absolute deadline remains 13/11 02:19:29 +07. Started worker 67862 with env-ready plan and --limit 120; live handle confirmed after pydicom and new Sphinx/Flask output. Snapshot counters: {'attempted': 124, 'attempted_source_cases': 114, 'strict_reproduced': 68, 'seed_pass': 79}.
+- Before interruption, source plan expanded to 468 identities (300 train/100 validation/68 test): 11 Flask/14 additional Pylint tasks from the same pinned source revision, up to five product Python files. Flask role assigned before execution/model predictions; existing roles unchanged. Later manifests pin environment correction lineage, not new fault identities. No research held-out prediction exists.
+- Diagnosed actual environment failures: pydicom scratch.dcm attempted under read-only source; moved declared CWD to existing /work tmpfs with absolute pytest targets and fixed rootdir. Initial tmpfs permission trial failed for UID 65534, so corrected mode to 1777 and linked -r1. That case now strictly reproduces; both failed profiles remain. pvlib missing mocker -> pinned pytest-mock and explicit plugin; head pass without source F2P is still not a real verified case. New Sphinx import probes need Git and Python-3.9 importlib-metadata; completed future recipes from pinned upstream pyproject runtime/test declarations, preserving raw older failures.
+- Added shared adapter guard refusing validation/test generation before Docker/model calls. Internal source symlinks, read-only source/tests, no-network, unprivileged UID, timeouts/resource bounds and fresh result-only writable mount remain enforced. No source/test was modified to force a pass.
+- Four more evidence-bound reviews exported (Pylint 4175/6517, Sphinx 9230, SymPy 23534): total 11 unique silver exports v2 (4/4/3 train/validation/test). SymPy 13757 mechanism confirmed but class-attribute scope quarantined, not forced to an invented faulty function. Human gold pending; no extra count for earlier input versions.
+- Implemented optional learning.py/sft.py: strict locked-data gates; response-only labels and pad masking; M0 train-only vectorizer; M1 validation; fresh independent QLoRA M2/M5 with actual exposures/tokens, loss/lr/grad logs, optimizer/RNG checkpoints, joint class/function checkpoint selection, and adapter tensor reload verification; final-test config lock requires all four completed models on one dataset/base/context. Saved responses are hash-checked on resume; no duplicate inference. Full actual SFT and final-test integration remain unexecuted because data gates are unmet.
+- Software suite in isolated ML env: 91 tests, 90 pass/1 opt-in Docker skip; saved software-tests-91-ml-env.txt. This includes real torch collator and sklearn fixture compatibility, not a research M0/SFT result. First compatibility invocation hit the known Windows temp permission restriction; repeated software-only tests with workspace TEMP/TMP, retaining the failure log.
+- Budget accounting correction is explicit: real/synthetic now charge union of recorded operation intervals (including in-flight time), so quota idle gaps do not consume their compute caps; old timestamps/caps and global deadline preserved, regression-tested. Two SFTs have separate two-hour caps; evaluation also avoids idle/double-counted nested requests. Earlier manual stage clocks cannot be reset by a later reservation.
+- Protected audit: 2504 inventoried; 0 raw changes/0 missing; 1 expected case-index documentation change recorded separately. No prune, pilot rerun, push or merge. Disk snapshot after resume was 117.60 GiB free; this is an observed external-state change, not cleanup performed here.
+- Next: keep source worker bounded/live-checked, batch silver review, implement generation/export scheduling from eligible train seeds, then finalize data/group gates and execute the four required comparisons. Goal remains active and target is unchanged.
+
+
+## 2026-11-12T07:29:14+07:00 — Silver review/export and bounded next frontier
+
+- 2026-11-12T07:29:14+07:00: 211 profile/201 source đã thử; 116 strict-supported/140 seed pass. 44 export silver retrieval-v2 ({'test': 14, 'train': 17, 'validation': 13}), 3 quarantine; chưa đủ gate 250 real/matched synthetic, chưa có research fit/SFT/test. Software ML: 93 tests, 92 pass/1 skip.
+- Full isolated ML test log saved as software-tests-93-ml-env.txt; 92 pass/1 opt-in integration skip. No research fit/SFT score.
+- Read code/repair/JUnit for manual review waves 4–8; every export binds exact raw manifest/log/source inventory/patch hashes. Class-attribute faults quarantine rather than invented existing functions; generator labels absent, actor unknown, human gold pending. Audit exact/lexical edit matches and shared-repo groups before final lock; current audit remains draft.
+- Prepared 57 pytest-source tasks from the same pinned revision, total 525 candidates; pytest role test before first execution/prediction. Recognize top-level testing/ as immutable harness; pytest version allowlist includes 6.2.5. Curation buffer caps reconstruction at 195/45/45 strict sources because execution success can still fail scope/dedup review. Final target remains 250 with approximate 175/37/38; no held-out model feedback used.
+- Source session 67862 confirmed live; queued 31217 automatically waits for source lock then handles three passing train seeds / at most nine7B calls. Check handles and manifests before another worker, no duplicate model calls.
+- No old evidence/model pilot rerun, push, merge, prune or gold approval. Next: inspect 7B frontier then source calibration/continued silver curation and eventual strict locked-data comparisons.
+
+
+## 2026-11-12T07:38:35+07:00 — Source frontier ended; 7B pilot and checkpoint contention correction
+
+- Source worker 67862 exited cleanly: 213 profiles /203 source identities, 117 strict-supported and 141 seed pass (train55/validation37/test25 strict). These are execution counts, not curated independent silver. Queued31217 acquired the execution lock and began a three-train-seed / nine-call 7B pilot. First SymPy seed has two runner-accepted attempts out of three; uniqueness/quality not yet reviewed.
+- Observed actual metadata-lock contention when generation froze its plan while a silver export finished. The output existed but its operation remained reserved. Added bounded waiting for short experiment metadata sections only; long-lived source/model locks remain fail-fast. Full software suite:94 tests,93pass/1skip; saved software-tests-94-ml-env.txt.
+- Reconciled Sphinx9320 completed export from existing artifacts after verifying original source/log/patch evidence and all exported input/reference/assessment hashes. No re-export, test rerun or model replay. Prior error traceback retained in tool output; review wave12 was not started by the failed process and resumes separately.
+- Next inspect completed pilot; continue source with predeclared curation buffer and finish evidence-bound silver review, then matched synthetic packaging before research training. No push/merge.
+
+
+## 2026-11-12T07:42:43+07:00 — 7B frontier saved; pytest transport and offline source fix
+
+- Synthetic pilot synthetic-batch-20261112T003552799235Z completed07:35:52–07:38:54: three train seeds, nine7B requests, four execution_verified attempts. SymPy22914 has2/3, astroid1364 zero, SymPy23950 2/3. Byte uniqueness and quality pending review; no calls repeated.
+- Three metadata-ranked pytest probes failed before Docker due GitHub DNS in restricted process. Pinned-commit prefetch with network access saved source-prefetch-20261112T004044224748Z:55unique commits/57source tasks,2.328s,exit0. Initial prefetch script assertion incorrectly assumed every task had a distinct base; failed before reservation/network, corrected without experiment replay. Shared-commit aliases remain for grouping.
+- Explicit -net1 profiles still attempted network despite cached objects, revealing unconditional fetch in export_commit. Fixed shared exporter to probe exact local commit, fetch only on cache miss, then still verify resolved identity before safe archive export. Source/patch/test bytes unchanged. Full suite95 tests:94pass/1skip, savedsoftware-tests-95-ml-env.txt.
+- New linked -cache1 profiles are a bounded runner-correction calibration, not additional source identities. No modification of prior errors. Next inspect real Docker outcomes before broader pytest frontier; continue silver and synthetic technical review.
+
+
+## 2026-11-12T07:56:12+07:00 — Pinned SCM metadata and current live handles
+
+- Existing pytest build probes correctly fail before collection because exported source lacks generated _pytest._version. Read each pinned pyproject: setuptools_scm write_to=src/_pytest/_version.py. No fake version file or test modification. Fetched full tag ancestry (source-version-history-20261112T004859143870Z,10.281s), then derived55versions from55clean exact-commit checkouts with setuptools-scm8.1.0 in isolated .cache/source-metadata. Saved source-version-metadata-20261112T005305285876Z/versions.json. No setup/import/test from target source on host.
+- Metadata derivation first hit restricted Windows Git MSYS access, then path length on checkout. Both failed operations/logs retained and explicitly finished failed. Third linked derivation enables core.longpaths in private cache clones, confirms clean HEAD and completes. It is tool metadata work, not new real samples or model calls.
+- Shared source exporter now skips unnecessary network on cached exact commits and verifies resolved identity. Optional safe scm_build_version installs both revisions using pinned version inside Docker, generating only upstream package build metadata. Ordinary installation behavior preserved. Full software suite96tests:95pass/1skip; saved software-tests-96-ml-env.txt. Actual pytest integration still pending.
+- Full plan-scm-ready has525source identities with57linked pytest SCM profiles, source/repair/tests/role unchanged. Calibration plan selects first3metadata-ranked tasks. Active source worker20353 continues24 existing-recipe profiles; queued54481 waits for its lock then runs3SCM probes. Both launch with Git/Docker access; previous restricted build attempts failed on Docker buildx access and remain separate profiles.
+- Pilot7B completed9requests/4byte-distinct runner-accepted attempts. Read all9diffs and saved assertion symptoms; generator explanation incorrectly says syntax for constant-call formatting, kept separate from labels. Synthetic hash-bound export/review implementation remains next work. No further generator call yet.
+- Protected audit0756:2504inventoried,0rawchanged/0missing;expectedcase-indexdocchangeonly. No pruning, push, merge or gold approval. Goal active; data and four research comparisons still incomplete.
+
+
+## 2026-11-12T07:56:13+07:00 — Silver review/export and bounded next frontier
+
+- 2026-11-12T07:56:13+07:00: 243 profile/224 source đã thử; 129 strict-supported/154 seed pass. 85 export silver retrieval-v2 ({'test': 18, 'train': 35, 'validation': 32}), 4 quarantine; chưa đủ gate 250 real/matched synthetic, chưa có research fit/SFT/test. Software ML: 96 tests, 95 pass/1 skip.
+- Full isolated ML test log saved as software-tests-96-ml-env.txt; 92 pass/1 opt-in integration skip. No research fit/SFT score.
+- Read code/repair/JUnit for manual review waves 4–8; every export binds exact raw manifest/log/source inventory/patch hashes. Class-attribute faults quarantine rather than invented existing functions; generator labels absent, actor unknown, human gold pending. Audit exact/lexical edit matches and shared-repo groups before final lock; current audit remains draft.
+- Prepared 57 pytest-source tasks from the same pinned revision, total 525 candidates; pytest role test before first execution/prediction. Recognize top-level testing/ as immutable harness; pytest version allowlist includes 6.2.5. Curation buffer caps reconstruction at 195/45/45 strict sources because execution success can still fail scope/dedup review. Final target remains 250 with approximate 175/37/38; no held-out model feedback used.
+- Source session20353 confirmed live; queued54481 waits for source lock then handles three pinned-SCM pytest probes. Prior generator31217 terminal9calls/4runneraccepted, quality pending. Check handles and manifests before another worker, no duplicate model calls.
+- No old evidence/model pilot rerun, push, merge, prune or gold approval. Next: inspect 7B frontier then source calibration/continued silver curation and eventual strict locked-data comparisons.
+
+
+## 2026-11-12T10:37:12+07:00 — Interrupted worker recovery and silver curation
+
+- 2026-11-12T10:37:12+07:00: 292 profile/270 source đã thử; 160 strict-supported/193 seed pass. 101 export real silver retrieval-v2 ({'test': 21, 'train': 45, 'validation': 35}), 5 quarantine; 4 synthetic silver đã xuất. Chưa đủ gate 250 real/matched synthetic, chưa có research fit/SFT/test. Software ML: 100 tests, 99 pass/1 skip.
+- Software-tests-100-ml-env.txt proves99pass/1skip. Correction to historical07:56:13 entry: its96-test suite had95pass/1skip, not92pass; old entry preserved.
+- Source50302/export75269 handles disappeared; external inventory found no matching workers and Docker daemon was unavailable. Cause unknown. Case12236 saved only successful fetch, no build/test: operation marked unknown with interruption-1035.json, no raw edits or replay. Last four wave16 exports were complete; two unstarted exports resumed separately after verifying operation/hash state. Docker Desktop/Ollama restarted using existing installation/cache. Source58016 confirmed live on new untouched cases, cap160. Deadline/caps/accounting unchanged, including interrupted in-flight time.
+- Seven-B wave2 completed20trainseeds/60newrequests/34runneraccepted; combined69requests/38accepted. Quality/byte/group review ongoing, not38 training samples. Four pilot candidates exported with evidence-bound silver,2/4 retrieval coverage before tokenization. One wrong qualified function assessment failed validation; corrected via separate superseding review2 after static AST inspection, old error/assessment retained. No model/test replay.
+- Shared synthetic exporter validates29hashes/protocol/trainseed/image/isolation/stablefails/restoration; overlay retrieves actual failing code without location-guided boost. Pytest parameter-ID parser preserves literal:: inside brackets for future runs; raw9066 qualification remains unchanged.
+- Real/manual code-log reviews continue; labels are silver, actor unknown, human gold pending. No research fit/SFT/held-out predictions, push, merge or prune. Next finish real/synthetic/group curation and locked-data gates.
+
+
+## 2026-11-12T11:51:11+07:00 — Evidence-bound dataset lock and train-only quality revision
+
+- 2026-11-12T11:51:11+07:00: 425 profiles/403 sources đã thử; 256 strict-supported/302 seed pass. Đã xuất 162 real silver {'train': 78, 'test': 41, 'validation': 43}, 22 synthetic silver; 9 real quarantine/16 synthetic loại sau review. 69 lời gọi7B/38 đạt runner. Software104:103pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+- Added selected real/synthetic evidence audit, automatic source groups/exact/lexical suggestions, immutable dataset-lock writer and hash-bound full-selection review check. Loader now verifies copied assessment hash as well as input/reference. Unit suite104:103pass/1opt-in skip; actual frontier audit25138 still running, no final lock claimed. Initial two software fixtures had newline/expected-repo mistakes; fixed inert fixtures and retained failed test logs, no research replay.
+- Train-only synthetic review excludes marker/offset/forced guards and duplicate Set.union/comp mechanisms. Four pilot plus eighteen wave2 records exported silver, human gold pending. No threshold chosen from model predictions. Queue3016 was stopped while waiting before any request beyond69; separate cancellation note preserved. Replacement73209 pins quality-r2 prompt revision, max40newtrainseeds/120calls, same7B/options/seeds and global600/deadline. Prompt change saved before calls as generation-policy-r2.json; old69responses unchanged.
+- Source58016 remains live, raw strict count is not curated independent dataset size. Interrupted12236 retained unknown. Real waves16–22 use saved code/patch/JUnit/hash evidence; class-level and multi-requirement situations quarantined instead of forced function labels. Multiple related observed functions are stored as one source situation.
+- Latest protected audit remains the dated0756 result, not a fresh raw-invariance claim. No push/merge/prune, diagnosis score or SFT result. Next finish real/synthetic curation and actual selected-evidence audit before final group/dataset gates.
+
+
+## 2026-11-12T12:16:29+07:00 — Real curation and completed frontier integrity audit
+
+- 2026-11-12T12:16:29+07:00: 448 profiles/426 sources đã thử; 274 strict-supported/320 seed pass. Đã xuất 254 real silver {'train': 170, 'test': 41, 'validation': 43}, 22 synthetic silver; 20 real quarantine/16 synthetic loại sau review. 69 lời gọi7B/38 đạt runner. Software104:103pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+- Selected-evidence audit168 finished successfully: no cross-split groups, exact source duplicates or candidate-byte duplicates; one lexical Vector sentinel family retained for explicit final adjudication. SHA256819c7b1a07b89525cb41c7794ac54ccc91ba566826a0972d66aff468f477f3d7. New protected-audit-20261112T1155.json confirms2504 protected files,0raw changes/0missing; expected cases/README.md documentation change only. This does not certify later artifacts or replace final audit.
+- Manual waves23–27 distinguish symbol/function/module causes, representation contracts and actual numeric errors. Semantic duplicates sympy22840/13185, astroid2307/2309 and1962/1959 are not independent real samples. Class-only settings/dispatch or multi-contract cases quarantine without fabricated causal functions. Module-level unit definitions use explicit<module>, consistent with existing protocol. No test/model replay for annotation.
+- Source74466 queued after generation73209: maximum30 untouched profiles, existing curation-buffer targets195/45/45 and all stage/storage/deadline gates unchanged. Current pydicom1439 base test actually took298.688s and failed; fixed result was still in flight when inspected, no strict-success inference. Export28990/52259 live at checkpoint.
+- Human gold remains pending; no research learning result, push, merge or cache pruning. Next finish real/synthetic selection and evidence/group lock before M0/M1/M2/M5.
+
+
+## 2026-11-12T12:21:26+07:00 — Pre-fit class-support selection rule
+
+- Saved selection-policy-decision.json and hashed dataset-v1-selection-policy.json before any research prediction: apply existing minimum10-per-learned-class gate without changing labels. Sparse real train classes remain in exported evidence/analysis but outside final training selection; heldout classes are not filtered. Stable source IDs choose175/37/38 after evidence/dedup; synthetic is matched and uses the same learned-class scope. No goal/gate reduction.
+- Source58016 finished267train profiles/184strict/206seedpass; pydicom1439 base/fixed did not satisfy strict reconstruction. Queue73209 now generating fresh train seeds; queued74466 waits for its completion. Review26/27 exports both finished. Tokenizer-only packaging preflight first hit exhausted wall-based ml_setup before reservation/model load; retry is charged to real-data packaging under existing real cap, not a setup budget reset.
+- Next inspect actual token audit and synthetic cohort; complete missing qualifying train cases and matched synthetic before final lock/SFT.
+
+
+## 2026-11-12T12:28:24+07:00 — Fresh-generation site diversity, without replay
+
+- Train-only review found repeated early-file functions across different source revisions because all dataset recipes set focus_line1. Added bounded static test-name preference and case-hash site diversification plus per-attempt source neighborhoods for future quality-r3 workers. Same7B/model options/seeds/token/request caps; no gold repair/reference or heldout model feedback. No improved yield claimed.
+- Software105tests:104pass/1skip; log preserved. Hash-verified recovery of pre-edit r2 source matches fac12415dd796d799e329c9511d8958ea1aa5daaf5c83d4618be6b63ea7bc283; both r2/r3 source snapshots saved. Current worker73209 stays on loadedr2 while disk source changes; recorded that its on-disk implementation hash is not a loaded-code digest. Raw records remain untouched.
+- Token-only preflight276records:0target overflow; all prepared inputs/targets within2048context/384response. A tokenizer warning concerned the untruncated raw log tokenization; only bounded prepared input is ever sent to a model. No inference or fit in that check.
+- Next finish current generation, queued source buffer and remaining silver/dedup; only fresh later workers use r3. Data gates remain unchanged.
+
+
+## 2026-11-12T12:31:20+07:00 — Synthetic duplicate reference erratum
+
+- Two just-written exclusion rationales mistyped the older Naturals generation ID. Read the frozen verification manifest to verify the correct parentgenerate-20261112T011430979067Z attempt2, wrote hash-bound review-reference-corrections-20261112T1231.json and linked it in canonical review. Original assessments/raw remain untouched; decisions and fault mechanisms unchanged. Future script text corrected, not rerun.
+
+
+## 2026-11-12T12:35:41+07:00 — Prompt compliance kept separate from execution acceptance
+
+- Synthetic review helper now accepts explicit pass/fail/uncertain and asserts included records are compliant/supported. New fabricated-extra candidate is excluded with prompt_compliance fail; the previously excluded tuple+1 record had the helper default pass, corrected via separate hash-bound review-compliance-erratum-20261112T1236.json. Raw and original assessments preserved, no extra sample/count or experiment replay.
+
+
+## 2026-11-12T12:36:58+07:00 — Curation frontier and serialized remaining workers
+
+- 2026-11-12T12:36:58+07:00: 450 profiles/428 sources đã thử; 274 strict-supported/321 seed pass. Đã xuất 254 real silver {'train': 170, 'test': 41, 'validation': 43}, 33 synthetic silver trước final selection; 20 real quarantine/26 synthetic loại sau review. 126 request7B đã reserve/63 đạt runner. Software105:104pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+- Real train đủ support hiện 168/175; lớp thưa giữ nguyên nhãn/evidence ngoài final train theo [selection policy](../data-manifests/dataset-v1-selection-policy.json), không lọc lớp heldout. Synthetic còn thiếu và phải final scope/dedup. Source58016 terminal; generator73209 đang dùng loaded quality-r2. Queue74466 chờ sinh xong rồi tối đa30profile theo target195/45/45 cũ; queue33970 chờ source rồi tối đa100freshseed/300calls quality-r3, trong tổng600/deadline. Audit168 đã đạt; audit276/session23046 vẫn chạy. Kiểm tra live handle trước resume, không gọi lại stage đã xong/unknown12236.
+- Canonical case index now points to525-source SCM-ready plan, not historical468. Final role targets175/37/38 remain; sparse train labels are retained outside selection, heldout unseen classes stay in metrics. Reviews0–14 of current wave3 complete, including duplicate/marker/arbitrary-reversal exclusions. New r3 queue records policy hash before calls; current r2 cohort unchanged.
+- Full software105:104pass/1skip; tokenizer-only276records had0target overflows. Audit276still in flight, no full-lock claim. Reference/compliance errata linked separately, original annotations/raw retained. No research model fit, gold approval, push/merge or cache pruning.
+- Next review actual subsequent candidates and finish missing real train/matched synthetic under original caps; then final evidence/group lock and actual model comparisons.
+
+
+## 2026-11-12T12:42:01+07:00 — Final-selection exceptions preserve exploratory evidence
+
+- Recorded hash-bound dataset-v1-selection-exclusions.json: two sparse-class real train records, one out-of-class configuration synthetic, and two previously qualified Set+integer exploratory perturbations stay outside final training selection. Read their exact diffs/assessments again; arbitrary arithmetic misuse has insufficient realism for the final subset, consistent with subsequent same-family exclusions. Original silver assessments/execution results unchanged; no deletion, relabeling or gold approval.
+- Later selection must apply these exceptions and still meet175qualifyingtrain/37validation/38test plus matched175 synthetic. Existing export count is therefore an upper bound before final dedup/quality selection, not a ready-to-train count.
+
+
+## 2026-11-12T12:47:22+07:00 — Fail-fast timeout verification for future cohort
+
+- Observed sympy19601 currentr2 candidate timeout; old loaded verifier continues its scheduled repetitions, raw untouched. Fresh verifier breaks only after timed_out, always restores, still requires3stablefails to accept. The fixture verifies1timeout repetition/restoration/3attempt denominator. Full106tests:105pass/1skip.
+- Cancelled waitingqueue33970 before any run_batch call while source74466stillwaiting. Saved cancellation note, r3-timeout source snapshot, verification-policy-timeout-stop-v1.json and full test log. Replacement queue loads the tested code, same100freshseeds/max300calls/global600/deadline; no replay.
+
+
+## 2026-11-12T12:55:07+07:00 — Input coverage limitation, no adaptive heldout tuning
+
+- Read tokenizer preflight276: maxinput1636/maxtarget127,0overflow. Any reference function present after tokenization54/170realtrain,8/43val,13/41test,9/22synthetic. This preliminary reference-aware data check is not model accuracy or a final test prediction. Do not change retrieval-v2/prompt or filter cases from these heldout counts. Selection stays stable-ID/support/quality based; misses remain end-to-end errors. Saved interpretation with exact audit SHA.
+- Fresh protected-audit-20261112T1252.json recorded12:51:50 verifies2504protectedfiles:0rawchanged/0missing; only expectedcaseREADME documentation differs. No old evidence rerun or mutation.
+
+
+## 2026-11-12T13:16:07+07:00 — Curation frontier and serialized remaining workers
+
+- 2026-11-12T13:16:07+07:00: 451 profiles/429 sources đã thử; 274 strict-supported/321 seed pass. Đã xuất 254 real silver {'train': 170, 'test': 41, 'validation': 43}, 47 synthetic silver trước final selection; 20 real quarantine/44 synthetic loại sau review. 189 request7B đã reserve/91 đạt runner. Software106:105pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+- Real train đủ support hiện 168/175; lớp thưa giữ nguyên nhãn/evidence ngoài final train theo [selection policy](../data-manifests/dataset-v1-selection-policy.json), không lọc lớp heldout. Synthetic còn thiếu và phải final scope/dedup. Source58016 terminal; generator73209 đã kết thúc120calls/53runneraccepted, review đủ40seed loaded quality-r2. Queue74466 xử lý tối đa30profile sau khi wave3 kết thúc theo target195/45/45 cũ; queue74601 chờ source rồi tối đa100freshseed/300calls quality-r3, trong tổng600/deadline. Audit168/276 đã kiểm tra hash/lineage; không cross-split hoặc trùng byte, còn final selection/group review. Kiểm tra live handle trước resume, không gọi lại stage đã xong/unknown12236.
+- Canonical case index now points to525-source SCM-ready plan, not historical468. Final role targets175/37/38 remain; sparse train labels are retained outside selection, heldout unseen classes stay in metrics. Reviews0–39 of current wave3 complete, including duplicate/marker/arbitrary-reversal exclusions. New r3 queue records policy hash before calls; current r2 cohort unchanged.
+- Full software106:105pass/1skip; tokenizer-only276records had0target overflows. Audit276completed; final selection not locked. Reference/compliance errata linked separately, original annotations/raw retained. No research model fit, gold approval, push/merge or cache pruning.
+- Next review actual subsequent candidates and finish missing real train/matched synthetic under original caps; then final evidence/group lock and actual model comparisons.
+
+
+## 2026-11-12T13:16:13+07:00 — Bounded progress evidence in project
+
+- Added committed-path interim checkpoint and exact106-test log copy with SHA match; no vendor source, raw dataset or weights copied. Completed276-record audit has no cross-split/exact-byte families, one lexical family pending final adjudication. Full40seed wave3 reviewed:120requests/53runneraccepted; curation is distinct from execution acceptance. Source74466 and next generator74601 remain serialized. No dataset lock/research fit/gold approval.
+
+
+## 2026-11-12T18:26:08+07:00 — Missing generation worker, no replay or budget reset
+
+- Source queue finished13:39:01:195train/45val/45test strict-supported. Current r3 batch has61completedseed records and24455in-flight;372total7Breservations. Tool handles vanished; external Win32 inventory found no Python worker and Docker ps empty, Docker processes created18:24. Cause unknown; last saved event16:07:41. Marked reserved verification unknown with separate SHA-bound interruption note, raw batch/manifest preserved. Gap remains charged; synthetic stage exhausted, no new requests authorized within original cap.
+- Current exports254real/47synthetic;11newstrictreal and completed r3 candidates await manual curation. Pure read/hash/export packaging uses remaining real-data stage, already used for tokenizer packaging, never inference or Docker. Quality/250real/matchedsynthetic gates unchanged; research models remain unrun. Earlier live-status wording corrected after OS check.
+
+
+## 2026-11-12T18:43:27+07:00 — Curation frontier and serialized remaining workers
+
+- 2026-11-12T18:43:27+07:00: 471 profiles/449 sources đã thử; 285 strict-supported/333 seed pass. Đã xuất 265 real silver {'train': 181, 'test': 41, 'validation': 43}, 105 synthetic silver trước final selection; 20 real quarantine/92 synthetic loại sau review. 372 request7B đã reserve/197 đạt runner. Software106:105pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+- Đã chọn250real(175train/37validation/38test) theo stable-ID; chưa là dataset lock. Có105synthetic export,102trong final class/quality scope: thiếu73/175. Source queue đã xong13:39. Generator mới bị gián đoạn, không còn worker;372lời gọi đã hoàn tất, một verification unknown24455. Stage sinh đã hết ngân sách gồm thời gian in-flight bị gián đoạn; không reset/replay/gọi mới. Đang audit352records lựa chọn; M0/M1/M2/M5 vẫn gated.
+- Canonical case index now points to525-source SCM-ready plan, not historical468. Final role targets175/37/38 remain; sparse train labels are retained outside selection, heldout unseen classes stay in metrics. Prior wave40seeds and all106accepted r3attempts fully reviewed, including duplicate/marker/arbitrary-reversal exclusions. New r3 queue records policy hash before calls; current r2 cohort unchanged.
+- Full software106:105pass/1skip; tokenizer-only276records had0target overflows. Audit276completed; partial selected352audit in flight, no learning lock. Reference/compliance errata linked separately, original annotations/raw retained. No research model fit, gold approval, push/merge or cache pruning.
+- Next review actual subsequent candidates and finish missing real train/matched synthetic under original caps; then final evidence/group lock and actual model comparisons.
+
+
+## 2026-11-12T18:43:27+07:00 — Real selection reached; synthetic deficit remains
+
+- All11newstrictreal cases reviewed/exported:265realcurated,181train/43val/41test. Qualifying train179; stable-ID policy selects250real=175/37/38,train134logic/value+41API/type. Fifteen unselected records retain reasons/evidence, heldout classes not filtered. Initial selector failed on metadata keyrepo_url before writing; corrected to actualrepo field, selection assertions passed.
+- R3 has60completeverification sessions, one environment-error case without sites and one interruptedverification,62batchcase entries. All106runneraccepted reviewed; total105syntheticexports,102inscope,deficit73. One valid-Python violation900attempt2 is excluded with separate static/JUnit/hash proof; the strict exporter correctly rejects it, no raw rewrite. One list-reversal exclusion overread the prompt string-only ban; separate SHA-bound erratum corrects compliance to pass while unsupported-plausibility exclusion remains.
+- Audit352read-only/session35613 in flight. Added real selection metadata and bounded project checkpoint/test proof. Frozen case/dataset JSON uses targeted-text attributes so Git newline filters cannot change pinned hashes. No new experiments, SFT, test predictions, gold approval, push/merge or prune.
+
+
+## 2026-11-12T18:45:43+07:00 — Historical evidence audit and metadata byte preservation
+
+- Protected2504files checked:0rawchanged/0missing. ExpectedcaseREADME andevidenceREADME index edits classified separately. First check used an older single-doc allowlist and reported evidenceREADME asrawchanged; retained that failed report and wrote corrected scope classification separately, without altering any protected artifact.
+- Git text attributes for frozen case/dataset JSON areunset, preserving pinned byte hashes; no re-normalization, staging or commit. Current software log remains106tests/105pass/1skip; no pipeline code changed in this documentation pass.
+
+
+## 2026-11-12T18:57:11+07:00 — User storage/status questions and Git publication authorization
+
+- User asked for measured storage, retention versus ML scoring, central dataset status/DVC-Drive advice and explicitly requested stash/commit/push. This supersedes the earlier no-push restriction for this handoff; no main merge or force push requested.
+- Read-only scan recorded DockerVHDX81.160GiBallocated, casecontexts19.842GiB/1.39Mfiles, MLenv7.771GiB,3B5.759GiB, originalmodelcache5.280GiB, originaltools3.587GiB, rawruns0.692GiB and exporteddata0.012GiB. No cleanup/prune. Summarized inventory in project, detailed per-run sizes retained local.
+- Added small current dataset-status.json with phase denominators/gates/pointers; documentation explains a status read differs from full evidence audit. DVC+Drive is a proposal only, no install/credentials/upload. ML train/validation/test consume packaged text and separate references, no per-model Docker rebuild; current raw validator still needs source inventories.
+- Token-only check352selected records finished18:51:06 with0targetoverflows/context2048/response384; no inference or fitting. The untruncated-log tokenizer warning does not mean a long sequence was fed to a model. Full evidence audit35613 still live.

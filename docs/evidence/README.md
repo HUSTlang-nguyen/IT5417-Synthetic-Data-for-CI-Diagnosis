@@ -20,3 +20,5 @@ Kết quả hỗ trợ giả thuyết dependency của PR tại local; không ph
 HTML structure/escaping đã kiểm bằng unit test. Chưa kiểm tra trực quan: browser policy phiên này chặn URL file://. Cần mở report.html rà tiếng Việt/bố cục trên máy đích.
 
 Run đầy đủ, cache, clone nguồn và weights bị ignore. Các log/tóm tắt nhỏ ở đây được commit để xem lại sau khi clone.
+
+- [Checkpoint dataset v1 ngày12/11](dataset-v1-progress/README.md): số liệu/hash và106kiểm thử(105pass/1skip), chưa phải kết quả SFT.

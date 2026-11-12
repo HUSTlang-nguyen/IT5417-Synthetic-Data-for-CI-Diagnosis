@@ -1,0 +1,90 @@
+{
+  "recorded_at": "2026-11-12T13:16:13+07:00",
+  "experiment_run_id": "experiment-20261111T192045721211Z",
+  "checkpoint": {
+    "recorded_at": "2026-11-12T13:16:07+07:00",
+    "source": {
+      "updated_at": "2026-11-12T13:15:58+07:00",
+      "plan_sha256": "1d6e01a857ece0f4c34f3a1b4b34ef6f58494746ebb4b84f6c24246367031918",
+      "by_role": {
+        "train": {
+          "selected": 300,
+          "attempted": 268,
+          "finished": 267,
+          "unknown": 1,
+          "attempted_source_cases": 265,
+          "strict_reproduced": 184,
+          "seed_pass": 206
+        },
+        "validation": {
+          "selected": 100,
+          "attempted": 69,
+          "finished": 69,
+          "attempted_source_cases": 66,
+          "strict_reproduced": 45,
+          "seed_pass": 49
+        },
+        "test": {
+          "selected": 125,
+          "attempted": 114,
+          "finished": 114,
+          "attempted_source_cases": 98,
+          "strict_reproduced": 45,
+          "seed_pass": 66
+        }
+      },
+      "qualification": "Reconstruction counts, not finalized silver labels or training eligibility"
+    },
+    "real_exports": 254,
+    "real_by_role": {
+      "train": 170,
+      "test": 41,
+      "validation": 43
+    },
+    "real_quarantined": 20,
+    "real_train_support": {
+      "logic/value": 128,
+      "API/type": 40,
+      "dependency/configuration": 1,
+      "syntax": 1
+    },
+    "qualifying_train_classes": [
+      "API/type",
+      "logic/value"
+    ],
+    "qualifying_real_train": 168,
+    "missing_real_train_to175": 7,
+    "synthetic_exports_before_final_selection": 47,
+    "synthetic_excluded": 44,
+    "generator_request_reservations": 189,
+    "runner_accepted": 91,
+    "software_tests": {
+      "total": 106,
+      "passed": 105,
+      "skipped": 1
+    },
+    "free_storage_gib": 42.174949645996094,
+    "deadline": "2026-11-13T02:19:29+07:00",
+    "research_models": "gated_not_run"
+  },
+  "software_test_log": {
+    "path": "software-tests-106.txt",
+    "sha256": "2a70b514265ccf8dbbacd638f742c5c080ee8bffca99cb8a03800cad466dc9dd"
+  },
+  "evidence_audit": {
+    "path": "runs/experiment-20261111T192045721211Z/selected-evidence-audit-2026-11-12T121717_0700.json",
+    "sha256": "64fed6c33e1bab375bea9215d8faea818aaad11b87834fbca3c4ccfc0ef92bb1",
+    "records": 276,
+    "cross_split_groups": [],
+    "exact_source_duplicate_families": [],
+    "exact_candidate_duplicate_families": [],
+    "lexical_edit_suggestions": [
+      [
+        "synthetic-generate-20261112T011147479110Z-2",
+        "synthetic-generate-20261112T011147479110Z-3"
+      ]
+    ],
+    "final_selection_locked": false
+  },
+  "qualification": "Interim actual artifact counts, not final dataset, gold labels, training approval or model accuracy. Raw artifacts stay local and immutable."
+}

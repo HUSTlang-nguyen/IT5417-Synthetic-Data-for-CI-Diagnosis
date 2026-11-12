@@ -1,0 +1,975 @@
+{
+  "schema_version": 1,
+  "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sphinx-doc/sphinx": "validation",
+    "pylint-dev/pylint": "test",
+    "pallets/flask": "test",
+    "pytest-dev/pytest": "test"
+  },
+  "selected": [
+    {
+      "case_id": "pytest-dev__pytest-7982-ds1-eval-net1",
+      "source_case_id": "pytest-dev__pytest-7982",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11148-ds1-eval-net1",
+      "source_case_id": "pytest-dev__pytest-11148",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9066-ds1-eval-net1",
+      "source_case_id": "pytest-dev__pytest-9066",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.0"
+    }
+  ],
+  "selected_counts": {
+    "train": 0,
+    "validation": 0,
+    "test": 3
+  },
+  "metadata_rows_screened": 21527,
+  "rejection_counts": {
+    "outside_declared_repo_scope": 20738,
+    "prior_case_do_not_rerun": 15,
+    "requires_small_python_production_patch": 122,
+    "test_patch_changes_non_test_source": 4
+  },
+  "selection_order": "production_file_count, production_patch_bytes, instance_id; independent of test/model outcomes",
+  "qualification": "Explicit cached-network corrective profiles for three DNS-only failures. Same source/test/repair and test role; prior attempts retained. No model call.",
+  "targets": {
+    "real": 250,
+    "train": 195,
+    "validation": 45,
+    "test": 45
+  },
+  "prior_exposed_repos_sha256": "37cc44b781d5294fdc34bf30ee56ddc939fe072751d55287b7fbf646ce6d3913",
+  "parent_plan_sha256": "6b9f80331943b367c2d60fda19b62bb03f454f5b08b97004cfee587c933e6d4c",
+  "created_at": "2026-11-12T07:41:16+07:00",
+  "environment_corrections": [
+    {
+      "parent_case_id": "pytest-dev__pytest-7982-ds1-eval",
+      "case_id": "pytest-dev__pytest-7982-ds1-eval-net1",
+      "previous_run_id": "reproduce-20261112T003921775421Z",
+      "source_case_id": "pytest-dev__pytest-7982",
+      "reason": "Previous run could not resolve GitHub; exact pinned source now prefetched with saved download log. No source/test/dependency changes."
+    },
+    {
+      "parent_case_id": "pytest-dev__pytest-11148-ds1-eval",
+      "case_id": "pytest-dev__pytest-11148-ds1-eval-net1",
+      "previous_run_id": "reproduce-20261112T003922946232Z",
+      "source_case_id": "pytest-dev__pytest-11148",
+      "reason": "Previous run could not resolve GitHub; exact pinned source now prefetched with saved download log. No source/test/dependency changes."
+    },
+    {
+      "parent_case_id": "pytest-dev__pytest-9066-ds1-eval",
+      "case_id": "pytest-dev__pytest-9066-ds1-eval-net1",
+      "previous_run_id": "reproduce-20261112T003924029310Z",
+      "source_case_id": "pytest-dev__pytest-9066",
+      "reason": "Previous run could not resolve GitHub; exact pinned source now prefetched with saved download log. No source/test/dependency changes."
+    }
+  ],
+  "added_source_cases": [
+    {
+      "case_id": "pallets__flask-4045-ds1-extra",
+      "source_case_id": "pallets__flask-4045",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/blueprints.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4074-ds1-extra",
+      "source_case_id": "pallets__flask-4074",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/app.py",
+        "src/flask/blueprints.py",
+        "src/flask/helpers.py",
+        "src/flask/wrappers.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4160-ds1-extra",
+      "source_case_id": "pallets__flask-4160",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/json/__init__.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4169-ds1-extra",
+      "source_case_id": "pallets__flask-4169",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/cli.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4544-ds1-extra",
+      "source_case_id": "pallets__flask-4544",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/cli.py"
+      ],
+      "source_version": "2.1"
+    },
+    {
+      "case_id": "pallets__flask-4575-ds1-extra",
+      "source_case_id": "pallets__flask-4575",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/__init__.py",
+        "src/flask/app.py",
+        "src/flask/helpers.py"
+      ],
+      "source_version": "2.2"
+    },
+    {
+      "case_id": "pallets__flask-4642-ds1-extra",
+      "source_case_id": "pallets__flask-4642",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/app.py",
+        "src/flask/cli.py",
+        "src/flask/debughelpers.py"
+      ],
+      "source_version": "2.2"
+    },
+    {
+      "case_id": "pallets__flask-4935-ds1-extra",
+      "source_case_id": "pallets__flask-4935",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/blueprints.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pallets__flask-4992-ds1-extra",
+      "source_case_id": "pallets__flask-4992",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/config.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pallets__flask-5014-ds1-extra",
+      "source_case_id": "pallets__flask-5014",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/blueprints.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pallets__flask-5063-ds1-extra",
+      "source_case_id": "pallets__flask-5063",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/cli.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pylint-dev__pylint-4492-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-4492",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/lint/pylinter.py",
+        "pylint/reporters/__init__.py",
+        "pylint/reporters/multi_reporter.py"
+      ],
+      "source_version": "2.8"
+    },
+    {
+      "case_id": "pylint-dev__pylint-4551-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-4551",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/pyreverse/diagrams.py",
+        "pylint/pyreverse/inspector.py",
+        "pylint/pyreverse/utils.py",
+        "pylint/pyreverse/writer.py"
+      ],
+      "source_version": "2.9"
+    },
+    {
+      "case_id": "pylint-dev__pylint-4661-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-4661",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/__init__.py"
+      ],
+      "source_version": "2.10"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5136-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5136",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/checkers/misc.py",
+        "pylint/lint/pylinter.py",
+        "pylint/message/__init__.py",
+        "pylint/message/message_handler_mix_in.py",
+        "pylint/typing.py"
+      ],
+      "source_version": "2.11"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5175-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5175",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/extensions/_check_docs_utils.py",
+        "pylint/extensions/docparams.py",
+        "pylint/reporters/text.py"
+      ],
+      "source_version": "2.11"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5201-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5201",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/option.py",
+        "pylint/lint/expand_modules.py",
+        "pylint/lint/pylinter.py",
+        "pylint/utils/utils.py"
+      ],
+      "source_version": "2.11"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5730-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5730",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "doc/exts/pylint_extensions.py",
+        "pylint/extensions/check_docs.py",
+        "pylint/lint/run.py"
+      ],
+      "source_version": "2.13"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5839-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5839",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/checkers/__init__.py",
+        "pylint/checkers/unsupported_version.py",
+        "pylint/constants.py",
+        "script/get_unused_message_id_category.py"
+      ],
+      "source_version": "2.13"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5951-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5951",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/pyreverse/dot_printer.py",
+        "pylint/pyreverse/main.py",
+        "pylint/pyreverse/utils.py"
+      ],
+      "source_version": "2.13"
+    },
+    {
+      "case_id": "pylint-dev__pylint-6386-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-6386",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/argument.py",
+        "pylint/config/arguments_manager.py",
+        "pylint/config/utils.py",
+        "pylint/lint/base_options.py"
+      ],
+      "source_version": "2.14"
+    },
+    {
+      "case_id": "pylint-dev__pylint-6412-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-6412",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/checkers/base_checker.py",
+        "pylint/interfaces.py",
+        "pylint/lint/pylinter.py",
+        "pylint/reporters/base_reporter.py"
+      ],
+      "source_version": "2.14"
+    },
+    {
+      "case_id": "pylint-dev__pylint-8281-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-8281",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/argument.py",
+        "pylint/config/option.py",
+        "pylint/lint/base_options.py",
+        "pylint/pyreverse/main.py"
+      ],
+      "source_version": "2.17"
+    },
+    {
+      "case_id": "pylint-dev__pylint-8898-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-8898",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/argument.py",
+        "pylint/utils/__init__.py",
+        "pylint/utils/utils.py"
+      ],
+      "source_version": "3.0"
+    },
+    {
+      "case_id": "pylint-dev__pylint-8929-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-8929",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/interfaces.py",
+        "pylint/lint/base_options.py",
+        "pylint/reporters/__init__.py",
+        "pylint/reporters/json_reporter.py",
+        "pylint/testutils/_primer/primer_run_command.py"
+      ],
+      "source_version": "3.0"
+    }
+  ],
+  "added_pytest_source_cases": [
+    {
+      "case_id": "pytest-dev__pytest-10051-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10051",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10081-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10081",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10115-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10115",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10343-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10343",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/warning_types.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10356-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10356",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/mark/structures.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10442-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10442",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py",
+        "src/_pytest/tmpdir.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10482-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10482",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/fixtures.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10552-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10552",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10624-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10624",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10758-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10758",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10893-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10893",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py",
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10988-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10988",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11041-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11041",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11044-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11044",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11125-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11125",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11143-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11143",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11148-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11148",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11160-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11160",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/recwarn.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11178-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11178",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11217-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11217",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/fixtures.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7481-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7481",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_io/terminalwriter.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7490-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7490",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/skipping.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7499-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7499",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_code/code.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7500-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7500",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7535-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7535",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_code/code.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7571-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7571",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7673-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7673",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7749-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7749",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7939-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7939",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/stepwise.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7982-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7982",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8022-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8022",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/main.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8033-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8033",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8124-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8124",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/hookspec.py",
+        "src/_pytest/skipping.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8250-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8250",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/faulthandler.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8365-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8365",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/tmpdir.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8399-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8399",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python.py",
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8422-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8422",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8447-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8447",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/main.py",
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8641-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8641",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8861-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8861",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/doctest.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8906-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8906",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8952-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8952",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8987-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8987",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/mark/expression.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9064-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9064",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/stepwise.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9066-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9066",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9133-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9133",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9249-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9249",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/mark/expression.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9279-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9279",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9359-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9359",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_code/source.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9475-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9475",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9624-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9624",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9646-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9646",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9681-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9681",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9709-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9709",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9780-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9780",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9798-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9798",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9911-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9911",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.2"
+    }
+  ],
+  "final_dataset_targets": {
+    "real": 250,
+    "train": 175,
+    "validation": 37,
+    "test": 38
+  },
+  "curation_buffer_reason": "Collect a bounded strict-reproduction surplus before final quality/duplicate filtering; final 250-real target and approximate 70/15/15 split remain unchanged. Class-attribute quarantines already show strict execution counts exceed usable function-level records. No model held-out result used."
+}

@@ -1,0 +1,77 @@
+{
+  "case_id": "sympy__sympy-17630-ds1",
+  "source_case_id": "sympy__sympy-17630",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-17630",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "58e78209c8577b9890e957b624466e5beed7eb08",
+  "head": "base+repair:d3bca3e20c8056ddd3473d79daaacd83a6bf0a7ede68a2dd2718e159a3207e9b",
+  "allowed_file": "sympy/matrices/expressions/matexpr.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-17630-ds1/repair.patch",
+  "repair_patch_sha256": "d3bca3e20c8056ddd3473d79daaacd83a6bf0a7ede68a2dd2718e159a3207e9b",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-17630-ds1/test.patch",
+  "test_patch_sha256": "534210411f2e68c4c70460ba311b6d0f56556d21cd88aa3016cc640c693d89f9",
+  "source_record_sha256": "bf45a234a9cc905c2513b8a8120c18c454eb0e6593393e20e91561a16b4c5e0d",
+  "fail_to_pass": [
+    "test_issue_17624",
+    "test_zero_matrix_add"
+  ],
+  "pass_to_pass": [
+    "test_bc_matmul",
+    "test_bc_matadd",
+    "test_bc_transpose",
+    "test_bc_dist_diag",
+    "test_block_plus_ident",
+    "test_BlockMatrix",
+    "test_block_collapse_explicit_matrices",
+    "test_BlockMatrix_trace",
+    "test_BlockMatrix_Determinant",
+    "test_squareBlockMatrix",
+    "test_BlockDiagMatrix",
+    "test_blockcut",
+    "test_reblock_2x2",
+    "test_deblock",
+    "test_sort_key",
+    "test_matadd_sympify",
+    "test_matadd_of_matrices",
+    "test_doit_args",
+    "test_generic_identity"
+  ],
+  "test_targets": [
+    "sympy/matrices/expressions/tests/test_blockmatrix.py",
+    "sympy/matrices/expressions/tests/test_matadd.py"
+  ],
+  "frozen_test_files": [
+    "sympy/matrices/expressions/tests/test_blockmatrix.py",
+    "sympy/matrices/expressions/tests/test_matadd.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

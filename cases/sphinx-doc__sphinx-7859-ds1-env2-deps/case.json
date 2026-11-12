@@ -1,0 +1,93 @@
+{
+  "case_id": "sphinx-doc__sphinx-7859-ds1-env2-deps",
+  "source_case_id": "sphinx-doc__sphinx-7859",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-7859",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "da395b413245e8001f576e547614dc6baa7d5575",
+  "head": "base+repair:ad819abeec88d56b4301f6968a28074303ddca62ddaa4243fe10828397906551",
+  "allowed_file": "sphinx/ext/autodoc/typehints.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7859-ds1/repair.patch",
+  "repair_patch_sha256": "ad819abeec88d56b4301f6968a28074303ddca62ddaa4243fe10828397906551",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-7859-ds1/test.patch",
+  "test_patch_sha256": "4d066e3732069ed7c3f79b2b0daf1682cb9db7fbe1f39a64396495cb543cc2f7",
+  "source_record_sha256": "f712267c7c2d878391bf1e6ee4ad2563d268515dd4ce765e9f0297ee296de813",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_for_invalid_node"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autodoc_configs.py::test_autoclass_content_class",
+    "tests/test_ext_autodoc_configs.py::test_autoclass_content_init",
+    "tests/test_ext_autodoc_configs.py::test_autoclass_content_both",
+    "tests/test_ext_autodoc_configs.py::test_autodoc_inherit_docstrings",
+    "tests/test_ext_autodoc_configs.py::test_autodoc_docstring_signature",
+    "tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_class",
+    "tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_init",
+    "tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_both",
+    "tests/test_ext_autodoc_configs.py::test_mocked_module_imports",
+    "tests/test_ext_autodoc_configs.py::test_autodoc_typehints_signature",
+    "tests/test_ext_autodoc_configs.py::test_autodoc_typehints_none",
+    "tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description",
+    "tests/test_ext_autodoc_configs.py::test_autodoc_default_options",
+    "tests/test_ext_autodoc_configs.py::test_autodoc_default_options_with_values"
+  ],
+  "test_targets": [
+    "tests/test_ext_autodoc_configs.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_ext_autodoc_configs.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7859-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ]
+}

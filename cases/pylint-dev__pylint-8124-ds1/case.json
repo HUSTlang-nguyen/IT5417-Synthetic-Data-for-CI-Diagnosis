@@ -1,0 +1,72 @@
+{
+  "case_id": "pylint-dev__pylint-8124-ds1",
+  "source_case_id": "pylint-dev__pylint-8124",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-8124",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "eb950615d77a6b979af6e0d9954fdb4197f4a722",
+  "head": "base+repair:1692bd97462eace4588671515e22002954183c3553e99f961b61d8bc74de699c",
+  "allowed_file": "pylint/checkers/imports.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-8124-ds1/repair.patch",
+  "repair_patch_sha256": "1692bd97462eace4588671515e22002954183c3553e99f961b61d8bc74de699c",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-8124-ds1/test.patch",
+  "test_patch_sha256": "60e1be0d9713a94f32d21763a555a3fd1d4d0c052f25fc0e46b8dfb3e3d0d343",
+  "source_record_sha256": "3405df1c6e7ad12b829a62b653333c2b575f25e54dd5a4573e6d27795abaca13",
+  "fail_to_pass": [
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_allow_reexport_package"
+  ],
+  "pass_to_pass": [
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_relative_beyond_top_level",
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_relative_beyond_top_level_two",
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_relative_beyond_top_level_three",
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_relative_beyond_top_level_four",
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_wildcard_import_init",
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_wildcard_import_non_init",
+    "tests/checkers/unittest_imports.py::TestImportsChecker::test_preferred_module"
+  ],
+  "test_targets": [
+    "tests/checkers/unittest_imports.py"
+  ],
+  "frozen_test_files": [
+    "tests/checkers/unittest_imports.py",
+    "tests/functional/i/import_aliasing.txt",
+    "tests/regrtest_data/allow_reexport/__init__.py",
+    "tests/regrtest_data/allow_reexport/file.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.14.2",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

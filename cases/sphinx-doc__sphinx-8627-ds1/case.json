@@ -1,0 +1,89 @@
+{
+  "case_id": "sphinx-doc__sphinx-8627-ds1",
+  "source_case_id": "sphinx-doc__sphinx-8627",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-8627",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "332d80ba8433aea41c3709fa52737ede4405072b",
+  "head": "base+repair:bffe3b37782b3e09b3634412fea9a411a3df7ab168c50ae52c9e6405f0eea0fe",
+  "allowed_file": "sphinx/util/typing.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-8627-ds1/repair.patch",
+  "repair_patch_sha256": "bffe3b37782b3e09b3634412fea9a411a3df7ab168c50ae52c9e6405f0eea0fe",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-8627-ds1/test.patch",
+  "test_patch_sha256": "0ed8650bfaa9412bc82c4767cbd8efff8408f7fed12de78b7caffdd10643184c",
+  "source_record_sha256": "5d146771d1c118d5313cd9e05678c1263bf3a92a7c1008d1326948a8ac46c110",
+  "fail_to_pass": [
+    "tests/test_util_typing.py::test_restify",
+    "tests/test_util_typing.py::test_stringify"
+  ],
+  "pass_to_pass": [
+    "tests/test_util_typing.py::test_restify_type_hints_containers",
+    "tests/test_util_typing.py::test_restify_type_hints_Callable",
+    "tests/test_util_typing.py::test_restify_type_hints_Union",
+    "tests/test_util_typing.py::test_restify_type_hints_typevars",
+    "tests/test_util_typing.py::test_restify_type_hints_custom_class",
+    "tests/test_util_typing.py::test_restify_type_hints_alias",
+    "tests/test_util_typing.py::test_restify_type_ForwardRef",
+    "tests/test_util_typing.py::test_restify_broken_type_hints",
+    "tests/test_util_typing.py::test_stringify_type_hints_containers",
+    "tests/test_util_typing.py::test_stringify_Annotated",
+    "tests/test_util_typing.py::test_stringify_type_hints_string",
+    "tests/test_util_typing.py::test_stringify_type_hints_Callable",
+    "tests/test_util_typing.py::test_stringify_type_hints_Union",
+    "tests/test_util_typing.py::test_stringify_type_hints_typevars",
+    "tests/test_util_typing.py::test_stringify_type_hints_custom_class",
+    "tests/test_util_typing.py::test_stringify_type_hints_alias",
+    "tests/test_util_typing.py::test_stringify_broken_type_hints"
+  ],
+  "test_targets": [
+    "tests/test_util_typing.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_util_typing.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "case_id": "pytest-dev__pytest-8250-ds1-eval-scm1",
+  "source_case_id": "pytest-dev__pytest-8250",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pytest-dev__pytest-8250",
+  "repo_url": "https://github.com/pytest-dev/pytest",
+  "base": "7f782c72ba157aaa26f74553ab328c898dab949c",
+  "head": "base+repair:afd15f710db14cfb5c324cc2a47d2708aa5c3b6a726305717aacabca1a4f6e15",
+  "allowed_file": "src/_pytest/faulthandler.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-8250-ds1-eval/repair.patch",
+  "repair_patch_sha256": "afd15f710db14cfb5c324cc2a47d2708aa5c3b6a726305717aacabca1a4f6e15",
+  "test_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-8250-ds1-eval/test.patch",
+  "test_patch_sha256": "4d4f50691d5abb78747284f3e7649225b43239e2f28fd64e03c2f15cef6c8c8c",
+  "source_record_sha256": "4d24c74d39448921debf487540f23e6152ef9ea584096c1372faa3c0290fdd25",
+  "fail_to_pass": [
+    "testing/test_faulthandler.py::test_get_stderr_fileno_invalid_fd"
+  ],
+  "pass_to_pass": [
+    "testing/test_faulthandler.py::test_cancel_timeout_on_hook[pytest_enter_pdb]",
+    "testing/test_faulthandler.py::test_cancel_timeout_on_hook[pytest_exception_interact]",
+    "testing/test_faulthandler.py::test_already_initialized[0]",
+    "testing/test_faulthandler.py::test_already_initialized[2]",
+    "testing/test_faulthandler.py::test_enabled",
+    "testing/test_faulthandler.py::test_crash_near_exit",
+    "testing/test_faulthandler.py::test_disabled",
+    "testing/test_faulthandler.py::test_timeout[False]"
+  ],
+  "test_targets": [
+    "testing/test_faulthandler.py"
+  ],
+  "frozen_test_files": [
+    "testing/test_faulthandler.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Frozen reference tests on base/fixed; local reconstruction only",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [
+    "pytester"
+  ],
+  "install_project": true,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dependencies": [
+    "py==1.11.0",
+    "attrs==21.4.0",
+    "iniconfig==2.0.0",
+    "packaging==23.2",
+    "tomli==2.0.1",
+    "exceptiongroup==1.1.3",
+    "typing_extensions==4.12.2",
+    "pluggy==1.0.0",
+    "more-itertools==9.1.0",
+    "atomicwrites==1.4.1",
+    "wcwidth==0.2.13",
+    "mock==5.1.0",
+    "setuptools-scm==8.1.0"
+  ],
+  "environment_parent_case_id": "pytest-dev__pytest-8250-ds1-eval",
+  "environment_revision": "actual-git-scm-generated-metadata",
+  "scm_build_version": "6.3.0.dev100+g7f782c72b",
+  "scm_version_derivation": {
+    "path": "runs\\source-version-metadata-20261112T005305285876Z\\versions.json",
+    "sha256": "e15cab85c177d2529a014da03b3047f6cc31ec356203ef0bca2b4f5ebfe9b3b1",
+    "tool": "setuptools-scm==8.1.0",
+    "method": "clean exact-commit checkout with full tag ancestry; no target-source setup/import on host"
+  }
+}

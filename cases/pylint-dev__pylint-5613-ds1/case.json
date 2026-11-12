@@ -1,0 +1,68 @@
+{
+  "case_id": "pylint-dev__pylint-5613-ds1",
+  "source_case_id": "pylint-dev__pylint-5613",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-5613",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "019794b808271d45f86a7014e9c91cb04458a47a",
+  "head": "base+repair:00e65ad449281c03f1ffc414a80e94196c36da55159fa5ebbbe65ac4a5368190",
+  "allowed_file": "pylint/__init__.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5613-ds1/repair.patch",
+  "repair_patch_sha256": "00e65ad449281c03f1ffc414a80e94196c36da55159fa5ebbbe65ac4a5368190",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5613-ds1/test.patch",
+  "test_patch_sha256": "fb117ba7b61e921767f12e8c75cda660e1b3fd2b42c671d6285a8b47034876f2",
+  "source_record_sha256": "80da26bec2ca556adf5983e677496b7bac7f6b3c77708fefbd1b851397aee613",
+  "fail_to_pass": [
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_pylint]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_pyreverse]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_symilar]"
+  ],
+  "pass_to_pass": [
+    "tests/test_pylint_runners.py::test_runner[run_epylint]",
+    "tests/test_pylint_runners.py::test_runner[run_pylint]",
+    "tests/test_pylint_runners.py::test_runner[run_pyreverse]",
+    "tests/test_pylint_runners.py::test_runner[run_symilar]"
+  ],
+  "test_targets": [
+    "tests/test_pylint_runners.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_pylint_runners.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.11.7",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

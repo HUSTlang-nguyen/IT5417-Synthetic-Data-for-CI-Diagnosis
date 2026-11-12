@@ -1,0 +1,58 @@
+{
+  "case_id": "sympy__sympy-23117-ds1",
+  "source_case_id": "sympy__sympy-23117",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-23117",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "c5cef2499d6eed024b0db5c792d6ec7c53baa470",
+  "head": "base+repair:05baa345b3ee6bb9d40b5eee0f5ef02cf18cfe23b79ea30a245212ea00ef9f89",
+  "allowed_file": "sympy/tensor/array/ndim_array.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23117-ds1/repair.patch",
+  "repair_patch_sha256": "05baa345b3ee6bb9d40b5eee0f5ef02cf18cfe23b79ea30a245212ea00ef9f89",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-23117-ds1/test.patch",
+  "test_patch_sha256": "41804ea686e4d707d7e9b0c7b53208f9d4eef59455ef27b29c630ae1afe8dad0",
+  "source_record_sha256": "0d0e59e5e3c2339d6f6f8f1da5d78575acefdf5397fbe9ad4f919212db498ad7",
+  "fail_to_pass": [
+    "test_issue_17851"
+  ],
+  "pass_to_pass": [
+    "test_array_negative_indices",
+    "test_issue_18361",
+    "test_issue_20222"
+  ],
+  "test_targets": [
+    "sympy/tensor/array/tests/test_ndim_array.py"
+  ],
+  "frozen_test_files": [
+    "sympy/tensor/array/tests/test_ndim_array.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

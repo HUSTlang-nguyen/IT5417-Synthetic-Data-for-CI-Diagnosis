@@ -1,0 +1,66 @@
+{
+  "case_id": "sympy__sympy-15809-ds1",
+  "source_case_id": "sympy__sympy-15809",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-15809",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "28d913d3cead6c5646307ffa6540b21d65059dfd",
+  "head": "base+repair:721408a9d86c5c95e2a1f6d495ba550be573a072e016f5ad14e2d36dce8ccda1",
+  "allowed_file": "sympy/functions/elementary/miscellaneous.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15809-ds1/repair.patch",
+  "repair_patch_sha256": "721408a9d86c5c95e2a1f6d495ba550be573a072e016f5ad14e2d36dce8ccda1",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-15809-ds1/test.patch",
+  "test_patch_sha256": "d1da05b0159385a2af25c2ed128efcb40bd292c64f20a4c9b90205ed293b422e",
+  "source_record_sha256": "cb39612d85de6f734efe37062028bf410c4da3b544831be415224d760c963481",
+  "fail_to_pass": [
+    "test_Min",
+    "test_Max"
+  ],
+  "pass_to_pass": [
+    "test_minmax_assumptions",
+    "test_issue_8413",
+    "test_root",
+    "test_real_root",
+    "test_rewrite_MaxMin_as_Heaviside",
+    "test_rewrite_MaxMin_as_Piecewise",
+    "test_issue_11099",
+    "test_issue_12638",
+    "test_instantiation_evaluation",
+    "test_rewrite_as_Abs"
+  ],
+  "test_targets": [
+    "sympy/functions/elementary/tests/test_miscellaneous.py"
+  ],
+  "frozen_test_files": [
+    "sympy/functions/elementary/tests/test_miscellaneous.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

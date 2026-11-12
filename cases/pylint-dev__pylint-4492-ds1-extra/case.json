@@ -1,0 +1,69 @@
+{
+  "case_id": "pylint-dev__pylint-4492-ds1-extra",
+  "source_case_id": "pylint-dev__pylint-4492",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4492",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "5ebbc30afbaa1a3c1e04fc86c3525edf9f579640",
+  "head": "base+repair:2e488eff45f6d25cf82d2a78eae8031fed1ff26e37cf0e8da1d038404ebfc68a",
+  "allowed_file": "pylint/lint/pylinter.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4492-ds1-extra/repair.patch",
+  "repair_patch_sha256": "2e488eff45f6d25cf82d2a78eae8031fed1ff26e37cf0e8da1d038404ebfc68a",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4492-ds1-extra/test.patch",
+  "test_patch_sha256": "816773590774dc66c363e345c9ad1f7c0511ad6f3caaaa5da7a32ed7ae3c5a21",
+  "source_record_sha256": "5bb5c9f1bcf067c29ff3c1cf6e418397c3fd932a4999452a3c5f943d4d6cbba1",
+  "fail_to_pass": [
+    "tests/unittest_reporting.py::test_multi_format_output"
+  ],
+  "pass_to_pass": [
+    "tests/unittest_reporting.py::test_template_option",
+    "tests/unittest_reporting.py::test_parseable_output_deprecated",
+    "tests/unittest_reporting.py::test_parseable_output_regression",
+    "tests/unittest_reporting.py::test_display_results_is_renamed"
+  ],
+  "test_targets": [
+    "tests/unittest_reporting.py"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_reporting.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8",
+    "py==1.11.0"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

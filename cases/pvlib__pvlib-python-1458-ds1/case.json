@@ -1,0 +1,68 @@
+{
+  "case_id": "pvlib__pvlib-python-1458-ds1",
+  "source_case_id": "pvlib__pvlib-python-1458",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1458",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "a0812b12584cfd5e662fa5aeb8972090763a671f",
+  "head": "base+repair:dbfa72ed15c97d05ec8478e89a424bdb476c70514a2c86ba759c5b713cf7f857",
+  "allowed_file": "pvlib/iotools/sodapro.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pvlib__pvlib-python-1458-ds1/repair.patch",
+  "repair_patch_sha256": "dbfa72ed15c97d05ec8478e89a424bdb476c70514a2c86ba759c5b713cf7f857",
+  "test_patch": ".cache/dataset-v1-source/cases/pvlib__pvlib-python-1458-ds1/test.patch",
+  "test_patch_sha256": "3c6c21f4c4257e44a8c5ac5c79e4867d9e64c950e74bb18330cd0208eb0e1c20",
+  "source_record_sha256": "8a495b5492eabbcda106065b28dce3e322baa5305638935598f40b4763f07c2d",
+  "fail_to_pass": [
+    "pvlib/tests/iotools/test_sodapro.py::test_get_cams[testfile0-index0-columns0-values0-dtypes0-mcclear]",
+    "pvlib/tests/iotools/test_sodapro.py::test_get_cams[testfile1-index1-columns1-values1-dtypes1-cams_radiation]",
+    "pvlib/tests/iotools/test_sodapro.py::test_get_cams_bad_request"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/iotools/test_sodapro.py::test_read_cams[testfile0-index0-columns0-values0-dtypes0]",
+    "pvlib/tests/iotools/test_sodapro.py::test_read_cams[testfile1-index1-columns1-values1-dtypes1]",
+    "pvlib/tests/iotools/test_sodapro.py::test_read_cams[testfile2-index2-columns2-values2-dtypes2]",
+    "pvlib/tests/iotools/test_sodapro.py::test_read_cams[testfile3-index3-columns3-values3-dtypes3]",
+    "pvlib/tests/iotools/test_sodapro.py::test_read_cams_integrated_unmapped_label",
+    "pvlib/tests/iotools/test_sodapro.py::test_read_cams_metadata"
+  ],
+  "test_targets": [
+    "pvlib/tests/iotools/test_sodapro.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/iotools/test_sodapro.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

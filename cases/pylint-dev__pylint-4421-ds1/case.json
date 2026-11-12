@@ -1,0 +1,71 @@
+{
+  "case_id": "pylint-dev__pylint-4421-ds1",
+  "source_case_id": "pylint-dev__pylint-4421",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4421",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "24b5159e00b8a380c1776dab6ce096df7bad79b1",
+  "head": "base+repair:ba134bcc32cedf3cb1f3ccad99d9c52c623b0f5b0306388ba7024457e394e270",
+  "allowed_file": "pylint/__pkginfo__.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4421-ds1/repair.patch",
+  "repair_patch_sha256": "ba134bcc32cedf3cb1f3ccad99d9c52c623b0f5b0306388ba7024457e394e270",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4421-ds1/test.patch",
+  "test_patch_sha256": "fcb42bd5b425a7f1496d815d4eb2b20de911f8f7f51bfeb29c4e1f0a0b7c691d",
+  "source_record_sha256": "392129c567870c56577e3e69e585d0be5621a463798e9fffd7675508c64bf14c",
+  "fail_to_pass": [
+    "tests/test_numversion.py::test_numversion[2.8.1-expected_numversion0]",
+    "tests/test_numversion.py::test_numversion[2.8.2+-expected_numversion1]",
+    "tests/test_numversion.py::test_numversion[3.0.0a0-expected_numversion2]",
+    "tests/test_numversion.py::test_numversion[3..0-expected_numversion3]",
+    "tests/test_numversion.py::test_numversion[1.a-expected_numversion4]",
+    "tests/test_numversion.py::test_numversion[-expected_numversion5]",
+    "tests/test_numversion.py::test_numversion[3.0.0b1-expected_numversion6]",
+    "tests/test_numversion.py::test_numversion[3.0.0rc1-expected_numversion7]",
+    "tests/test_numversion.py::test_numversion[3.0.0dev-234324234234f23abc4-expected_numversion8]",
+    "tests/test_numversion.py::test_numversion[pylint-2.4.7-expected_numversion9]",
+    "tests/test_numversion.py::test_numversion[2.8.3.dev3+g28c093c2.d20210428-expected_numversion10]"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "tests/test_numversion.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_numversion.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

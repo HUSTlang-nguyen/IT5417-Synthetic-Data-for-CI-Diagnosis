@@ -1,0 +1,66 @@
+{
+  "case_id": "sympy__sympy-16221-ds1",
+  "source_case_id": "sympy__sympy-16221",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-16221",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "8fc3b3a96b9f982ed6dc8f626129abee36bcda95",
+  "head": "base+repair:ab75fa1638d05a4cd82433e3085e9b162a14cb979107bbd441e49e80d1e7516c",
+  "allowed_file": "sympy/printing/mathematica.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-16221-ds1/repair.patch",
+  "repair_patch_sha256": "ab75fa1638d05a4cd82433e3085e9b162a14cb979107bbd441e49e80d1e7516c",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-16221-ds1/test.patch",
+  "test_patch_sha256": "b9665eaf8ef1f5020b22d7800d88c6b89627340a74862feacb071e97d1d3855a",
+  "source_record_sha256": "b7f89cbe2ad1e6c7aa26ce06241fe0322390d89f51394704af013052b4f4fda5",
+  "fail_to_pass": [
+    "test_NDArray"
+  ],
+  "pass_to_pass": [
+    "test_Integer",
+    "test_Rational",
+    "test_Function",
+    "test_Pow",
+    "test_Mul",
+    "test_constants",
+    "test_containers",
+    "test_matrices",
+    "test_Integral",
+    "test_Derivative",
+    "test_Sum"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_mathematica.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_mathematica.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

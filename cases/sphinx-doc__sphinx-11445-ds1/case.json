@@ -1,0 +1,80 @@
+{
+  "case_id": "sphinx-doc__sphinx-11445-ds1",
+  "source_case_id": "sphinx-doc__sphinx-11445",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-11445",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "71db08c05197545944949d5aa76cd340e7143627",
+  "head": "base+repair:951e9680cb0d3ba0ab4ebea2e6e4092167e5e7c273420e9aaecd8a8755585cde",
+  "allowed_file": "sphinx/util/rst.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-11445-ds1/repair.patch",
+  "repair_patch_sha256": "951e9680cb0d3ba0ab4ebea2e6e4092167e5e7c273420e9aaecd8a8755585cde",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-11445-ds1/test.patch",
+  "test_patch_sha256": "b8eeaa101b3c97e7a51666947c4456dafbbed133efb186d5f2550f5e48d53cf4",
+  "source_record_sha256": "cfa386e3baf01321ca425b3d6740b79a2e0b6acba89863a3b4cc617d6796ab46",
+  "fail_to_pass": [
+    "tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_with_newline",
+    "tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_without_newline"
+  ],
+  "pass_to_pass": [
+    "tests/test_util_rst.py::test_escape",
+    "tests/test_util_rst.py::test_append_epilog",
+    "tests/test_util_rst.py::test_prepend_prolog",
+    "tests/test_util_rst.py::test_prepend_prolog_with_CR",
+    "tests/test_util_rst.py::test_prepend_prolog_without_CR",
+    "tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections",
+    "tests/test_util_rst.py::test_textwidth",
+    "tests/test_util_rst.py::test_heading"
+  ],
+  "test_targets": [
+    "tests/test_util_rst.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_util_rst.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.18.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

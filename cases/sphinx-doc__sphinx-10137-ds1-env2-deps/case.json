@@ -1,0 +1,82 @@
+{
+  "case_id": "sphinx-doc__sphinx-10137-ds1-env2-deps",
+  "source_case_id": "sphinx-doc__sphinx-10137",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-10137",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "3d25662550aba00d6e2e43d3ff76dce958079368",
+  "head": "base+repair:064495de5d49d0a07a5843ccfb6b950d36d2580dea3df664753e324799ad8806",
+  "allowed_file": "sphinx/ext/extlinks.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-10137-ds1/repair.patch",
+  "repair_patch_sha256": "064495de5d49d0a07a5843ccfb6b950d36d2580dea3df664753e324799ad8806",
+  "test_patch": ".cache/dataset-v1-source/cases/sphinx-doc__sphinx-10137-ds1/test.patch",
+  "test_patch_sha256": "e81633836ff6788c82d3e63db3e1d7852bea3799d9f1a692090095f472986586",
+  "source_record_sha256": "1873515e192c009822b49aec66f5d7040f7006e20fda97c227e6add0b93110a1",
+  "fail_to_pass": [
+    "tests/test_ext_extlinks.py::test_all_replacements_suggested_if_multiple_replacements_possible"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_extlinks.py::test_extlinks_detect_candidates",
+    "tests/test_ext_extlinks.py::test_replaceable_uris_emit_extlinks_warnings"
+  ],
+  "test_targets": [
+    "tests/test_ext_extlinks.py"
+  ],
+  "frozen_test_files": [
+    "tests/roots/test-ext-extlinks-hardcoded-urls-multiple-replacements/index.rst",
+    "tests/test_ext_extlinks.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "docutils==0.17.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-10137-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ]
+}

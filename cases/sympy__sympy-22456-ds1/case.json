@@ -1,0 +1,84 @@
+{
+  "case_id": "sympy__sympy-22456-ds1",
+  "source_case_id": "sympy__sympy-22456",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-22456",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "a3475b3f9ac662cd425157dd3bdb93ad7111c090",
+  "head": "base+repair:cd5a33d194d79e63ebe1ff6a27fb5c40ad22d691122a68b01097555a3f1032b8",
+  "allowed_file": "sympy/codegen/ast.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-22456-ds1/repair.patch",
+  "repair_patch_sha256": "cd5a33d194d79e63ebe1ff6a27fb5c40ad22d691122a68b01097555a3f1032b8",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-22456-ds1/test.patch",
+  "test_patch_sha256": "0e7e2aba8dd7e6fd5244381f47b6857a71163f1c483f7e9b9785aebf546d6840",
+  "source_record_sha256": "ce398035493eaa5031fc779062f05a33aaf5d66c214d94da23d0c9d171bd0cec",
+  "fail_to_pass": [
+    "test_String"
+  ],
+  "pass_to_pass": [
+    "test_Assignment",
+    "test_AugAssign",
+    "test_Assignment_printing",
+    "test_CodeBlock",
+    "test_CodeBlock_topological_sort",
+    "test_CodeBlock_free_symbols",
+    "test_CodeBlock_cse",
+    "test_CodeBlock_cse__issue_14118",
+    "test_For",
+    "test_none",
+    "test_Comment",
+    "test_Node",
+    "test_Type",
+    "test_Type__from_expr",
+    "test_Type__cast_check__integers",
+    "test_Attribute",
+    "test_Variable",
+    "test_Pointer",
+    "test_Declaration",
+    "test_IntBaseType",
+    "test_FloatType",
+    "test_Type__cast_check__floating_point",
+    "test_Type__cast_check__complex_floating_point",
+    "test_While",
+    "test_Scope",
+    "test_Print",
+    "test_FunctionPrototype_and_FunctionDefinition",
+    "test_Return",
+    "test_FunctionCall"
+  ],
+  "test_targets": [
+    "sympy/codegen/tests/test_ast.py"
+  ],
+  "frozen_test_files": [
+    "sympy/codegen/tests/test_ast.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

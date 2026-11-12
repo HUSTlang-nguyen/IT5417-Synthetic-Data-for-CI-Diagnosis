@@ -1,0 +1,56 @@
+{
+  "case_id": "sympy__sympy-13043-ds1",
+  "source_case_id": "sympy__sympy-13043",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-13043",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "a3389a25ec84d36f5cf04a4f2562d820f131db64",
+  "head": "base+repair:fa205dd94783dc44a97d47e2f1a46a6efa57a235adb166367b34610d934f9c44",
+  "allowed_file": "sympy/integrals/intpoly.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13043-ds1/repair.patch",
+  "repair_patch_sha256": "fa205dd94783dc44a97d47e2f1a46a6efa57a235adb166367b34610d934f9c44",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13043-ds1/test.patch",
+  "test_patch_sha256": "99da78005b1c8053e0e96d68da287864ed671bad554c14ca92a2b9137dd2de15",
+  "source_record_sha256": "777c39a00f8c1d5ee389f02cc64602d60193fbb753a5616538f6656e35efe2d3",
+  "fail_to_pass": [
+    "test_decompose"
+  ],
+  "pass_to_pass": [
+    "test_best_origin"
+  ],
+  "test_targets": [
+    "sympy/integrals/tests/test_intpoly.py"
+  ],
+  "frozen_test_files": [
+    "sympy/integrals/tests/test_intpoly.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

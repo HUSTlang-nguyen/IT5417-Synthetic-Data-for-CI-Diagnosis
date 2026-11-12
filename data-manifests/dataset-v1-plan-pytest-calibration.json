@@ -1,0 +1,2557 @@
+{
+  "schema_version": 1,
+  "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sphinx-doc/sphinx": "validation",
+    "pylint-dev/pylint": "test",
+    "pallets/flask": "test",
+    "pytest-dev/pytest": "test"
+  },
+  "selected": [
+    {
+      "case_id": "pytest-dev__pytest-7982-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7982",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11148-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11148",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9066-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9066",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.0"
+    }
+  ],
+  "selected_counts": {
+    "train": 0,
+    "validation": 0,
+    "test": 3
+  },
+  "metadata_rows_screened": 21527,
+  "rejection_counts": {
+    "outside_declared_repo_scope": 20738,
+    "prior_case_do_not_rerun": 15,
+    "requires_small_python_production_patch": 122,
+    "test_patch_changes_non_test_source": 4
+  },
+  "selection_order": "production_file_count, production_patch_bytes, instance_id; independent of test/model outcomes",
+  "qualification": "Bounded first-three metadata-ranked pytest environment calibration only; not a replacement for the 525-source pool or a final dataset. No model calls or role changes.",
+  "targets": {
+    "real": 250,
+    "train": 195,
+    "validation": 45,
+    "test": 45
+  },
+  "prior_exposed_repos_sha256": "37cc44b781d5294fdc34bf30ee56ddc939fe072751d55287b7fbf646ce6d3913",
+  "parent_plan_sha256": "da4e51df73a3d4d1e8656001012f2a9afd3be1cfc7ce361dbf74fc5c760e9c37",
+  "created_at": "2026-11-12T07:39:21+07:00",
+  "environment_corrections": [
+    {
+      "source_case_id": "pylint-dev__pylint-7080",
+      "parent_case_id": "pylint-dev__pylint-7080-ds1",
+      "case_id": "pylint-dev__pylint-7080-ds1-env2",
+      "previous_run_id": "reproduce-20261111T194706857593Z",
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4175",
+      "parent_case_id": "pylint-dev__pylint-4175-ds1",
+      "case_id": "pylint-dev__pylint-4175-ds1-env2",
+      "previous_run_id": "reproduce-20261111T195103091523Z",
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6517",
+      "parent_case_id": "pylint-dev__pylint-6517-ds1",
+      "case_id": "pylint-dev__pylint-6517-ds1-env2",
+      "previous_run_id": "reproduce-20261111T195338286910Z",
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-8169",
+      "parent_case_id": "pylint-dev__pylint-8169-ds1",
+      "case_id": "pylint-dev__pylint-8169-ds1-env2",
+      "previous_run_id": "reproduce-20261111T195851784474Z",
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6903",
+      "parent_case_id": "pylint-dev__pylint-6903-ds1",
+      "case_id": "pylint-dev__pylint-6903-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-7993",
+      "parent_case_id": "pylint-dev__pylint-7993-ds1",
+      "case_id": "pylint-dev__pylint-7993-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4669",
+      "parent_case_id": "pylint-dev__pylint-4669-ds1",
+      "case_id": "pylint-dev__pylint-4669-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-5859",
+      "parent_case_id": "pylint-dev__pylint-5859-ds1",
+      "case_id": "pylint-dev__pylint-5859-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-8799",
+      "parent_case_id": "pylint-dev__pylint-8799-ds1",
+      "case_id": "pylint-dev__pylint-8799-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4812",
+      "parent_case_id": "pylint-dev__pylint-4812-ds1",
+      "case_id": "pylint-dev__pylint-4812-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6526",
+      "parent_case_id": "pylint-dev__pylint-6526-ds1",
+      "case_id": "pylint-dev__pylint-6526-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6506",
+      "parent_case_id": "pylint-dev__pylint-6506-ds1",
+      "case_id": "pylint-dev__pylint-6506-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-7277",
+      "parent_case_id": "pylint-dev__pylint-7277-ds1",
+      "case_id": "pylint-dev__pylint-7277-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6059",
+      "parent_case_id": "pylint-dev__pylint-6059-ds1",
+      "case_id": "pylint-dev__pylint-6059-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-5595",
+      "parent_case_id": "pylint-dev__pylint-5595-ds1",
+      "case_id": "pylint-dev__pylint-5595-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-5446",
+      "parent_case_id": "pylint-dev__pylint-5446-ds1",
+      "case_id": "pylint-dev__pylint-5446-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-8312",
+      "parent_case_id": "pylint-dev__pylint-8312-ds1",
+      "case_id": "pylint-dev__pylint-8312-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-7114",
+      "parent_case_id": "pylint-dev__pylint-7114-ds1",
+      "case_id": "pylint-dev__pylint-7114-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-7228",
+      "parent_case_id": "pylint-dev__pylint-7228-ds1",
+      "case_id": "pylint-dev__pylint-7228-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4858",
+      "parent_case_id": "pylint-dev__pylint-4858-ds1",
+      "case_id": "pylint-dev__pylint-4858-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4421",
+      "parent_case_id": "pylint-dev__pylint-4421-ds1",
+      "case_id": "pylint-dev__pylint-4421-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-5613",
+      "parent_case_id": "pylint-dev__pylint-5613-ds1",
+      "case_id": "pylint-dev__pylint-5613-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4703",
+      "parent_case_id": "pylint-dev__pylint-4703-ds1",
+      "case_id": "pylint-dev__pylint-4703-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-5743",
+      "parent_case_id": "pylint-dev__pylint-5743-ds1",
+      "case_id": "pylint-dev__pylint-5743-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-5231",
+      "parent_case_id": "pylint-dev__pylint-5231-ds1",
+      "case_id": "pylint-dev__pylint-5231-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6196",
+      "parent_case_id": "pylint-dev__pylint-6196-ds1",
+      "case_id": "pylint-dev__pylint-6196-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4339",
+      "parent_case_id": "pylint-dev__pylint-4339-ds1",
+      "case_id": "pylint-dev__pylint-4339-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6820",
+      "parent_case_id": "pylint-dev__pylint-6820-ds1",
+      "case_id": "pylint-dev__pylint-6820-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-8124",
+      "parent_case_id": "pylint-dev__pylint-8124-ds1",
+      "case_id": "pylint-dev__pylint-8124-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-8819",
+      "parent_case_id": "pylint-dev__pylint-8819-ds1",
+      "case_id": "pylint-dev__pylint-8819-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6357",
+      "parent_case_id": "pylint-dev__pylint-6357-ds1",
+      "case_id": "pylint-dev__pylint-6357-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6358",
+      "parent_case_id": "pylint-dev__pylint-6358-ds1",
+      "case_id": "pylint-dev__pylint-6358-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4604",
+      "parent_case_id": "pylint-dev__pylint-4604-ds1",
+      "case_id": "pylint-dev__pylint-4604-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-8757",
+      "parent_case_id": "pylint-dev__pylint-8757-ds1",
+      "case_id": "pylint-dev__pylint-8757-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6937",
+      "parent_case_id": "pylint-dev__pylint-6937-ds1",
+      "case_id": "pylint-dev__pylint-6937-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-8683",
+      "parent_case_id": "pylint-dev__pylint-8683-ds1",
+      "case_id": "pylint-dev__pylint-8683-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-7097",
+      "parent_case_id": "pylint-dev__pylint-7097-ds1",
+      "case_id": "pylint-dev__pylint-7097-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6528",
+      "parent_case_id": "pylint-dev__pylint-6528-ds1",
+      "case_id": "pylint-dev__pylint-6528-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4398",
+      "parent_case_id": "pylint-dev__pylint-4398-ds1",
+      "case_id": "pylint-dev__pylint-4398-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4516",
+      "parent_case_id": "pylint-dev__pylint-4516-ds1",
+      "case_id": "pylint-dev__pylint-4516-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-4330",
+      "parent_case_id": "pylint-dev__pylint-4330-ds1",
+      "case_id": "pylint-dev__pylint-4330-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pylint-dev__pylint-6556",
+      "parent_case_id": "pylint-dev__pylint-6556-ds1",
+      "case_id": "pylint-dev__pylint-6556-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Explicit bounded environment correction: missing appdirs/tomlkit in pinned Pylint harness; source/tests/patches unchanged"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1031",
+      "parent_case_id": "pydicom__pydicom-1031-ds1",
+      "case_id": "pydicom__pydicom-1031-ds1-env2",
+      "previous_run_id": "reproduce-20261111T202905869852Z",
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1093",
+      "parent_case_id": "pvlib__pvlib-python-1093-ds1",
+      "case_id": "pvlib__pvlib-python-1093-ds1-env2",
+      "previous_run_id": "reproduce-20261111T210112772007Z",
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1191",
+      "parent_case_id": "pvlib__pvlib-python-1191-ds1",
+      "case_id": "pvlib__pvlib-python-1191-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-811",
+      "parent_case_id": "pydicom__pydicom-811-ds1",
+      "case_id": "pydicom__pydicom-811-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11316",
+      "parent_case_id": "sphinx-doc__sphinx-11316-ds1",
+      "case_id": "sphinx-doc__sphinx-11316-ds1-env2",
+      "previous_run_id": "reproduce-20261111T195753380516Z",
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11266",
+      "parent_case_id": "sphinx-doc__sphinx-11266-ds1",
+      "case_id": "sphinx-doc__sphinx-11266-ds1-env2",
+      "previous_run_id": "reproduce-20261111T202513337894Z",
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1069",
+      "parent_case_id": "pydicom__pydicom-1069-ds1",
+      "case_id": "pydicom__pydicom-1069-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1416",
+      "parent_case_id": "pydicom__pydicom-1416-ds1",
+      "case_id": "pydicom__pydicom-1416-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11502",
+      "parent_case_id": "sphinx-doc__sphinx-11502-ds1",
+      "case_id": "sphinx-doc__sphinx-11502-ds1-env2",
+      "previous_run_id": "reproduce-20261111T203652939519Z",
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1539",
+      "parent_case_id": "pydicom__pydicom-1539-ds1",
+      "case_id": "pydicom__pydicom-1539-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1273",
+      "parent_case_id": "pvlib__pvlib-python-1273-ds1",
+      "case_id": "pvlib__pvlib-python-1273-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1216",
+      "parent_case_id": "pvlib__pvlib-python-1216-ds1",
+      "case_id": "pvlib__pvlib-python-1216-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9258",
+      "parent_case_id": "sphinx-doc__sphinx-9258-ds1",
+      "case_id": "sphinx-doc__sphinx-9258-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8264",
+      "parent_case_id": "sphinx-doc__sphinx-8264-ds1",
+      "case_id": "sphinx-doc__sphinx-8264-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9231",
+      "parent_case_id": "sphinx-doc__sphinx-9231-ds1",
+      "case_id": "sphinx-doc__sphinx-9231-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7889",
+      "parent_case_id": "sphinx-doc__sphinx-7889-ds1",
+      "case_id": "sphinx-doc__sphinx-7889-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7923",
+      "parent_case_id": "sphinx-doc__sphinx-7923-ds1",
+      "case_id": "sphinx-doc__sphinx-7923-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10466",
+      "parent_case_id": "sphinx-doc__sphinx-10466-ds1",
+      "case_id": "sphinx-doc__sphinx-10466-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7454",
+      "parent_case_id": "sphinx-doc__sphinx-7454-ds1",
+      "case_id": "sphinx-doc__sphinx-7454-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1782",
+      "parent_case_id": "pvlib__pvlib-python-1782-ds1",
+      "case_id": "pvlib__pvlib-python-1782-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8202",
+      "parent_case_id": "sphinx-doc__sphinx-8202-ds1",
+      "case_id": "sphinx-doc__sphinx-8202-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1608",
+      "parent_case_id": "pydicom__pydicom-1608-ds1",
+      "case_id": "pydicom__pydicom-1608-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10323",
+      "parent_case_id": "sphinx-doc__sphinx-10323-ds1",
+      "case_id": "sphinx-doc__sphinx-10323-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-839",
+      "parent_case_id": "pydicom__pydicom-839-ds1",
+      "case_id": "pydicom__pydicom-839-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8459",
+      "parent_case_id": "sphinx-doc__sphinx-8459-ds1",
+      "case_id": "sphinx-doc__sphinx-8459-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1192",
+      "parent_case_id": "pydicom__pydicom-1192-ds1",
+      "case_id": "pydicom__pydicom-1192-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9320",
+      "parent_case_id": "sphinx-doc__sphinx-9320-ds1",
+      "case_id": "sphinx-doc__sphinx-9320-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10137",
+      "parent_case_id": "sphinx-doc__sphinx-10137-ds1",
+      "case_id": "sphinx-doc__sphinx-10137-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9367",
+      "parent_case_id": "sphinx-doc__sphinx-9367-ds1",
+      "case_id": "sphinx-doc__sphinx-9367-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11544",
+      "parent_case_id": "sphinx-doc__sphinx-11544-ds1",
+      "case_id": "sphinx-doc__sphinx-11544-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1050",
+      "parent_case_id": "pydicom__pydicom-1050-ds1",
+      "case_id": "pydicom__pydicom-1050-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10457",
+      "parent_case_id": "sphinx-doc__sphinx-10457-ds1",
+      "case_id": "sphinx-doc__sphinx-10457-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10504",
+      "parent_case_id": "sphinx-doc__sphinx-10504-ds1",
+      "case_id": "sphinx-doc__sphinx-10504-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9673",
+      "parent_case_id": "sphinx-doc__sphinx-9673-ds1",
+      "case_id": "sphinx-doc__sphinx-9673-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8679",
+      "parent_case_id": "sphinx-doc__sphinx-8679-ds1",
+      "case_id": "sphinx-doc__sphinx-8679-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-900",
+      "parent_case_id": "pydicom__pydicom-900-ds1",
+      "case_id": "pydicom__pydicom-900-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7961",
+      "parent_case_id": "sphinx-doc__sphinx-7961-ds1",
+      "case_id": "sphinx-doc__sphinx-7961-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10435",
+      "parent_case_id": "sphinx-doc__sphinx-10435-ds1",
+      "case_id": "sphinx-doc__sphinx-10435-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9180",
+      "parent_case_id": "sphinx-doc__sphinx-9180-ds1",
+      "case_id": "sphinx-doc__sphinx-9180-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1633",
+      "parent_case_id": "pydicom__pydicom-1633-ds1",
+      "case_id": "pydicom__pydicom-1633-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9289",
+      "parent_case_id": "sphinx-doc__sphinx-9289-ds1",
+      "case_id": "sphinx-doc__sphinx-9289-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1194",
+      "parent_case_id": "pydicom__pydicom-1194-ds1",
+      "case_id": "pydicom__pydicom-1194-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8506",
+      "parent_case_id": "sphinx-doc__sphinx-8506-ds1",
+      "case_id": "sphinx-doc__sphinx-8506-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8697",
+      "parent_case_id": "sphinx-doc__sphinx-8697-ds1",
+      "case_id": "sphinx-doc__sphinx-8697-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-793",
+      "parent_case_id": "pydicom__pydicom-793-ds1",
+      "case_id": "pydicom__pydicom-793-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10321",
+      "parent_case_id": "sphinx-doc__sphinx-10321-ds1",
+      "case_id": "sphinx-doc__sphinx-10321-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8713",
+      "parent_case_id": "sphinx-doc__sphinx-8713-ds1",
+      "case_id": "sphinx-doc__sphinx-8713-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10320",
+      "parent_case_id": "sphinx-doc__sphinx-10320-ds1",
+      "case_id": "sphinx-doc__sphinx-10320-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9798",
+      "parent_case_id": "sphinx-doc__sphinx-9798-ds1",
+      "case_id": "sphinx-doc__sphinx-9798-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7440",
+      "parent_case_id": "sphinx-doc__sphinx-7440-ds1",
+      "case_id": "sphinx-doc__sphinx-7440-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8475",
+      "parent_case_id": "sphinx-doc__sphinx-8475-ds1",
+      "case_id": "sphinx-doc__sphinx-8475-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9350",
+      "parent_case_id": "sphinx-doc__sphinx-9350-ds1",
+      "case_id": "sphinx-doc__sphinx-9350-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8020",
+      "parent_case_id": "sphinx-doc__sphinx-8020-ds1",
+      "case_id": "sphinx-doc__sphinx-8020-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9207",
+      "parent_case_id": "sphinx-doc__sphinx-9207-ds1",
+      "case_id": "sphinx-doc__sphinx-9207-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9658",
+      "parent_case_id": "sphinx-doc__sphinx-9658-ds1",
+      "case_id": "sphinx-doc__sphinx-9658-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7814",
+      "parent_case_id": "sphinx-doc__sphinx-7814-ds1",
+      "case_id": "sphinx-doc__sphinx-7814-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8627",
+      "parent_case_id": "sphinx-doc__sphinx-8627-ds1",
+      "case_id": "sphinx-doc__sphinx-8627-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1193",
+      "parent_case_id": "pvlib__pvlib-python-1193-ds1",
+      "case_id": "pvlib__pvlib-python-1193-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10492",
+      "parent_case_id": "sphinx-doc__sphinx-10492-ds1",
+      "case_id": "sphinx-doc__sphinx-10492-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7859",
+      "parent_case_id": "sphinx-doc__sphinx-7859-ds1",
+      "case_id": "sphinx-doc__sphinx-7859-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10481",
+      "parent_case_id": "sphinx-doc__sphinx-10481-ds1",
+      "case_id": "sphinx-doc__sphinx-10481-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1738",
+      "parent_case_id": "pvlib__pvlib-python-1738-ds1",
+      "case_id": "pvlib__pvlib-python-1738-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11192",
+      "parent_case_id": "sphinx-doc__sphinx-11192-ds1",
+      "case_id": "sphinx-doc__sphinx-11192-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9309",
+      "parent_case_id": "sphinx-doc__sphinx-9309-ds1",
+      "case_id": "sphinx-doc__sphinx-9309-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-938",
+      "parent_case_id": "pydicom__pydicom-938-ds1",
+      "case_id": "pydicom__pydicom-938-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7350",
+      "parent_case_id": "sphinx-doc__sphinx-7350-ds1",
+      "case_id": "sphinx-doc__sphinx-7350-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8951",
+      "parent_case_id": "sphinx-doc__sphinx-8951-ds1",
+      "case_id": "sphinx-doc__sphinx-8951-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9281",
+      "parent_case_id": "sphinx-doc__sphinx-9281-ds1",
+      "case_id": "sphinx-doc__sphinx-9281-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10614",
+      "parent_case_id": "sphinx-doc__sphinx-10614-ds1",
+      "case_id": "sphinx-doc__sphinx-10614-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9711",
+      "parent_case_id": "sphinx-doc__sphinx-9711-ds1",
+      "case_id": "sphinx-doc__sphinx-9711-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8435",
+      "parent_case_id": "sphinx-doc__sphinx-8435-ds1",
+      "case_id": "sphinx-doc__sphinx-8435-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10551",
+      "parent_case_id": "sphinx-doc__sphinx-10551-ds1",
+      "case_id": "sphinx-doc__sphinx-10551-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10427",
+      "parent_case_id": "sphinx-doc__sphinx-10427-ds1",
+      "case_id": "sphinx-doc__sphinx-10427-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1413",
+      "parent_case_id": "pydicom__pydicom-1413-ds1",
+      "case_id": "pydicom__pydicom-1413-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8273",
+      "parent_case_id": "sphinx-doc__sphinx-8273-ds1",
+      "case_id": "sphinx-doc__sphinx-8273-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7985",
+      "parent_case_id": "sphinx-doc__sphinx-7985-ds1",
+      "case_id": "sphinx-doc__sphinx-7985-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10325",
+      "parent_case_id": "sphinx-doc__sphinx-10325-ds1",
+      "case_id": "sphinx-doc__sphinx-10325-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11109",
+      "parent_case_id": "sphinx-doc__sphinx-11109-ds1",
+      "case_id": "sphinx-doc__sphinx-11109-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-816",
+      "parent_case_id": "pydicom__pydicom-816-ds1",
+      "case_id": "pydicom__pydicom-816-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-866",
+      "parent_case_id": "pydicom__pydicom-866-ds1",
+      "case_id": "pydicom__pydicom-866-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11445",
+      "parent_case_id": "sphinx-doc__sphinx-11445-ds1",
+      "case_id": "sphinx-doc__sphinx-11445-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8863",
+      "parent_case_id": "sphinx-doc__sphinx-8863-ds1",
+      "case_id": "sphinx-doc__sphinx-8863-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8552",
+      "parent_case_id": "sphinx-doc__sphinx-8552-ds1",
+      "case_id": "sphinx-doc__sphinx-8552-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1224",
+      "parent_case_id": "pvlib__pvlib-python-1224-ds1",
+      "case_id": "pvlib__pvlib-python-1224-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8265",
+      "parent_case_id": "sphinx-doc__sphinx-8265-ds1",
+      "case_id": "sphinx-doc__sphinx-8265-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7615",
+      "parent_case_id": "sphinx-doc__sphinx-7615-ds1",
+      "case_id": "sphinx-doc__sphinx-7615-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10451",
+      "parent_case_id": "sphinx-doc__sphinx-10451-ds1",
+      "case_id": "sphinx-doc__sphinx-10451-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10191",
+      "parent_case_id": "sphinx-doc__sphinx-10191-ds1",
+      "case_id": "sphinx-doc__sphinx-10191-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8684",
+      "parent_case_id": "sphinx-doc__sphinx-8684-ds1",
+      "case_id": "sphinx-doc__sphinx-8684-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-980",
+      "parent_case_id": "pvlib__pvlib-python-980-ds1",
+      "case_id": "pvlib__pvlib-python-980-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9229",
+      "parent_case_id": "sphinx-doc__sphinx-9229-ds1",
+      "case_id": "sphinx-doc__sphinx-9229-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8579",
+      "parent_case_id": "sphinx-doc__sphinx-8579-ds1",
+      "case_id": "sphinx-doc__sphinx-8579-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9902",
+      "parent_case_id": "sphinx-doc__sphinx-9902-ds1",
+      "case_id": "sphinx-doc__sphinx-9902-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7975",
+      "parent_case_id": "sphinx-doc__sphinx-7975-ds1",
+      "case_id": "sphinx-doc__sphinx-7975-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9602",
+      "parent_case_id": "sphinx-doc__sphinx-9602-ds1",
+      "case_id": "sphinx-doc__sphinx-9602-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8282",
+      "parent_case_id": "sphinx-doc__sphinx-8282-ds1",
+      "case_id": "sphinx-doc__sphinx-8282-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7757",
+      "parent_case_id": "sphinx-doc__sphinx-7757-ds1",
+      "case_id": "sphinx-doc__sphinx-7757-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8611",
+      "parent_case_id": "sphinx-doc__sphinx-8611-ds1",
+      "case_id": "sphinx-doc__sphinx-8611-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10449",
+      "parent_case_id": "sphinx-doc__sphinx-10449-ds1",
+      "case_id": "sphinx-doc__sphinx-10449-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1349",
+      "parent_case_id": "pvlib__pvlib-python-1349-ds1",
+      "case_id": "pvlib__pvlib-python-1349-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-901",
+      "parent_case_id": "pydicom__pydicom-901-ds1",
+      "case_id": "pydicom__pydicom-901-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11489",
+      "parent_case_id": "sphinx-doc__sphinx-11489-ds1",
+      "case_id": "sphinx-doc__sphinx-11489-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8056",
+      "parent_case_id": "sphinx-doc__sphinx-8056-ds1",
+      "case_id": "sphinx-doc__sphinx-8056-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Install declared git tool; upstream package probes git on import, runtime still has no network"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1439",
+      "parent_case_id": "pydicom__pydicom-1439-ds1",
+      "case_id": "pydicom__pydicom-1439-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1140",
+      "parent_case_id": "pvlib__pvlib-python-1140-ds1",
+      "case_id": "pvlib__pvlib-python-1140-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1740",
+      "parent_case_id": "pvlib__pvlib-python-1740-ds1",
+      "case_id": "pvlib__pvlib-python-1740-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1458",
+      "parent_case_id": "pydicom__pydicom-1458-ds1",
+      "case_id": "pydicom__pydicom-1458-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1365",
+      "parent_case_id": "pydicom__pydicom-1365-ds1",
+      "case_id": "pydicom__pydicom-1365-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-800",
+      "parent_case_id": "pydicom__pydicom-800-ds1",
+      "case_id": "pydicom__pydicom-800-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1426",
+      "parent_case_id": "pvlib__pvlib-python-1426-ds1",
+      "case_id": "pvlib__pvlib-python-1426-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1000",
+      "parent_case_id": "pydicom__pydicom-1000-ds1",
+      "case_id": "pydicom__pydicom-1000-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Run unchanged source/tests from writable /work tmpfs with absolute test paths and fixed rootdir; source stays read-only"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1026",
+      "parent_case_id": "pvlib__pvlib-python-1026-ds1",
+      "case_id": "pvlib__pvlib-python-1026-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1160",
+      "parent_case_id": "pvlib__pvlib-python-1160-ds1",
+      "case_id": "pvlib__pvlib-python-1160-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1458",
+      "parent_case_id": "pvlib__pvlib-python-1458-ds1",
+      "case_id": "pvlib__pvlib-python-1458-ds1-env2",
+      "previous_run_id": null,
+      "reason": "Pin pytest-mock and explicitly enable its plugin while global plugin autoload remains disabled"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1031",
+      "parent_case_id": "pydicom__pydicom-1031-ds1-env2",
+      "case_id": "pydicom__pydicom-1031-ds1-env2-r1",
+      "previous_run_id": "reproduce-20261111T211119947505Z",
+      "reason": "Explicit runner-bug correction: /work tmpfs mode=1777 for UID 65534; observed PermissionError on scratch.dcm; old source/test and both failed profiles retained"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9258",
+      "parent_case_id": "sphinx-doc__sphinx-9258-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9258-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8264",
+      "parent_case_id": "sphinx-doc__sphinx-8264-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8264-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9231",
+      "parent_case_id": "sphinx-doc__sphinx-9231-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9231-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7889",
+      "parent_case_id": "sphinx-doc__sphinx-7889-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7889-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7923",
+      "parent_case_id": "sphinx-doc__sphinx-7923-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7923-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10466",
+      "parent_case_id": "sphinx-doc__sphinx-10466-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10466-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7454",
+      "parent_case_id": "sphinx-doc__sphinx-7454-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7454-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8202",
+      "parent_case_id": "sphinx-doc__sphinx-8202-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8202-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10323",
+      "parent_case_id": "sphinx-doc__sphinx-10323-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10323-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8459",
+      "parent_case_id": "sphinx-doc__sphinx-8459-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8459-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9320",
+      "parent_case_id": "sphinx-doc__sphinx-9320-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9320-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10137",
+      "parent_case_id": "sphinx-doc__sphinx-10137-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10137-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9367",
+      "parent_case_id": "sphinx-doc__sphinx-9367-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9367-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11544",
+      "parent_case_id": "sphinx-doc__sphinx-11544-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-11544-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10457",
+      "parent_case_id": "sphinx-doc__sphinx-10457-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10457-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10504",
+      "parent_case_id": "sphinx-doc__sphinx-10504-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10504-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9673",
+      "parent_case_id": "sphinx-doc__sphinx-9673-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9673-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8679",
+      "parent_case_id": "sphinx-doc__sphinx-8679-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8679-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7961",
+      "parent_case_id": "sphinx-doc__sphinx-7961-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7961-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10435",
+      "parent_case_id": "sphinx-doc__sphinx-10435-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10435-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9180",
+      "parent_case_id": "sphinx-doc__sphinx-9180-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9180-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9289",
+      "parent_case_id": "sphinx-doc__sphinx-9289-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9289-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8506",
+      "parent_case_id": "sphinx-doc__sphinx-8506-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8506-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8697",
+      "parent_case_id": "sphinx-doc__sphinx-8697-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8697-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10321",
+      "parent_case_id": "sphinx-doc__sphinx-10321-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10321-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8713",
+      "parent_case_id": "sphinx-doc__sphinx-8713-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8713-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10320",
+      "parent_case_id": "sphinx-doc__sphinx-10320-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10320-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9798",
+      "parent_case_id": "sphinx-doc__sphinx-9798-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9798-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7440",
+      "parent_case_id": "sphinx-doc__sphinx-7440-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7440-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8475",
+      "parent_case_id": "sphinx-doc__sphinx-8475-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8475-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9350",
+      "parent_case_id": "sphinx-doc__sphinx-9350-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9350-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8020",
+      "parent_case_id": "sphinx-doc__sphinx-8020-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8020-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9207",
+      "parent_case_id": "sphinx-doc__sphinx-9207-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9207-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9658",
+      "parent_case_id": "sphinx-doc__sphinx-9658-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9658-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7814",
+      "parent_case_id": "sphinx-doc__sphinx-7814-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7814-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8627",
+      "parent_case_id": "sphinx-doc__sphinx-8627-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8627-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10492",
+      "parent_case_id": "sphinx-doc__sphinx-10492-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10492-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7859",
+      "parent_case_id": "sphinx-doc__sphinx-7859-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7859-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10481",
+      "parent_case_id": "sphinx-doc__sphinx-10481-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10481-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11192",
+      "parent_case_id": "sphinx-doc__sphinx-11192-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-11192-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9309",
+      "parent_case_id": "sphinx-doc__sphinx-9309-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9309-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7350",
+      "parent_case_id": "sphinx-doc__sphinx-7350-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7350-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8951",
+      "parent_case_id": "sphinx-doc__sphinx-8951-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8951-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9281",
+      "parent_case_id": "sphinx-doc__sphinx-9281-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9281-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10614",
+      "parent_case_id": "sphinx-doc__sphinx-10614-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10614-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9711",
+      "parent_case_id": "sphinx-doc__sphinx-9711-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9711-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8435",
+      "parent_case_id": "sphinx-doc__sphinx-8435-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8435-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10551",
+      "parent_case_id": "sphinx-doc__sphinx-10551-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10551-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10427",
+      "parent_case_id": "sphinx-doc__sphinx-10427-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10427-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8273",
+      "parent_case_id": "sphinx-doc__sphinx-8273-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8273-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7985",
+      "parent_case_id": "sphinx-doc__sphinx-7985-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7985-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10325",
+      "parent_case_id": "sphinx-doc__sphinx-10325-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10325-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11109",
+      "parent_case_id": "sphinx-doc__sphinx-11109-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-11109-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11445",
+      "parent_case_id": "sphinx-doc__sphinx-11445-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-11445-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8863",
+      "parent_case_id": "sphinx-doc__sphinx-8863-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8863-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8552",
+      "parent_case_id": "sphinx-doc__sphinx-8552-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8552-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8265",
+      "parent_case_id": "sphinx-doc__sphinx-8265-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8265-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7615",
+      "parent_case_id": "sphinx-doc__sphinx-7615-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7615-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10451",
+      "parent_case_id": "sphinx-doc__sphinx-10451-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10451-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10191",
+      "parent_case_id": "sphinx-doc__sphinx-10191-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10191-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8684",
+      "parent_case_id": "sphinx-doc__sphinx-8684-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8684-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9229",
+      "parent_case_id": "sphinx-doc__sphinx-9229-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9229-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8579",
+      "parent_case_id": "sphinx-doc__sphinx-8579-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8579-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9902",
+      "parent_case_id": "sphinx-doc__sphinx-9902-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9902-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7975",
+      "parent_case_id": "sphinx-doc__sphinx-7975-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7975-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9602",
+      "parent_case_id": "sphinx-doc__sphinx-9602-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-9602-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8282",
+      "parent_case_id": "sphinx-doc__sphinx-8282-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8282-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7757",
+      "parent_case_id": "sphinx-doc__sphinx-7757-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-7757-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8611",
+      "parent_case_id": "sphinx-doc__sphinx-8611-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8611-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10449",
+      "parent_case_id": "sphinx-doc__sphinx-10449-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-10449-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11489",
+      "parent_case_id": "sphinx-doc__sphinx-11489-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-11489-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8056",
+      "parent_case_id": "sphinx-doc__sphinx-8056-ds1-env2",
+      "case_id": "sphinx-doc__sphinx-8056-ds1-env2-deps",
+      "previous_run_id": null,
+      "reason": "Complete pinned Sphinx Python 3.9 requirements before first execution, from upstream pyproject runtime/test declarations; no failed model request replay"
+    }
+  ],
+  "added_source_cases": [
+    {
+      "case_id": "pallets__flask-4045-ds1-extra",
+      "source_case_id": "pallets__flask-4045",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/blueprints.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4074-ds1-extra",
+      "source_case_id": "pallets__flask-4074",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/app.py",
+        "src/flask/blueprints.py",
+        "src/flask/helpers.py",
+        "src/flask/wrappers.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4160-ds1-extra",
+      "source_case_id": "pallets__flask-4160",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/json/__init__.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4169-ds1-extra",
+      "source_case_id": "pallets__flask-4169",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/cli.py"
+      ],
+      "source_version": "2.0"
+    },
+    {
+      "case_id": "pallets__flask-4544-ds1-extra",
+      "source_case_id": "pallets__flask-4544",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/cli.py"
+      ],
+      "source_version": "2.1"
+    },
+    {
+      "case_id": "pallets__flask-4575-ds1-extra",
+      "source_case_id": "pallets__flask-4575",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/__init__.py",
+        "src/flask/app.py",
+        "src/flask/helpers.py"
+      ],
+      "source_version": "2.2"
+    },
+    {
+      "case_id": "pallets__flask-4642-ds1-extra",
+      "source_case_id": "pallets__flask-4642",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/app.py",
+        "src/flask/cli.py",
+        "src/flask/debughelpers.py"
+      ],
+      "source_version": "2.2"
+    },
+    {
+      "case_id": "pallets__flask-4935-ds1-extra",
+      "source_case_id": "pallets__flask-4935",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/blueprints.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pallets__flask-4992-ds1-extra",
+      "source_case_id": "pallets__flask-4992",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/config.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pallets__flask-5014-ds1-extra",
+      "source_case_id": "pallets__flask-5014",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/blueprints.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pallets__flask-5063-ds1-extra",
+      "source_case_id": "pallets__flask-5063",
+      "repo": "pallets/flask",
+      "role": "test",
+      "product_files": [
+        "src/flask/cli.py"
+      ],
+      "source_version": "2.3"
+    },
+    {
+      "case_id": "pylint-dev__pylint-4492-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-4492",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/lint/pylinter.py",
+        "pylint/reporters/__init__.py",
+        "pylint/reporters/multi_reporter.py"
+      ],
+      "source_version": "2.8"
+    },
+    {
+      "case_id": "pylint-dev__pylint-4551-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-4551",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/pyreverse/diagrams.py",
+        "pylint/pyreverse/inspector.py",
+        "pylint/pyreverse/utils.py",
+        "pylint/pyreverse/writer.py"
+      ],
+      "source_version": "2.9"
+    },
+    {
+      "case_id": "pylint-dev__pylint-4661-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-4661",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/__init__.py"
+      ],
+      "source_version": "2.10"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5136-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5136",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/checkers/misc.py",
+        "pylint/lint/pylinter.py",
+        "pylint/message/__init__.py",
+        "pylint/message/message_handler_mix_in.py",
+        "pylint/typing.py"
+      ],
+      "source_version": "2.11"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5175-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5175",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/extensions/_check_docs_utils.py",
+        "pylint/extensions/docparams.py",
+        "pylint/reporters/text.py"
+      ],
+      "source_version": "2.11"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5201-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5201",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/option.py",
+        "pylint/lint/expand_modules.py",
+        "pylint/lint/pylinter.py",
+        "pylint/utils/utils.py"
+      ],
+      "source_version": "2.11"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5730-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5730",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "doc/exts/pylint_extensions.py",
+        "pylint/extensions/check_docs.py",
+        "pylint/lint/run.py"
+      ],
+      "source_version": "2.13"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5839-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5839",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/checkers/__init__.py",
+        "pylint/checkers/unsupported_version.py",
+        "pylint/constants.py",
+        "script/get_unused_message_id_category.py"
+      ],
+      "source_version": "2.13"
+    },
+    {
+      "case_id": "pylint-dev__pylint-5951-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-5951",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/pyreverse/dot_printer.py",
+        "pylint/pyreverse/main.py",
+        "pylint/pyreverse/utils.py"
+      ],
+      "source_version": "2.13"
+    },
+    {
+      "case_id": "pylint-dev__pylint-6386-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-6386",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/argument.py",
+        "pylint/config/arguments_manager.py",
+        "pylint/config/utils.py",
+        "pylint/lint/base_options.py"
+      ],
+      "source_version": "2.14"
+    },
+    {
+      "case_id": "pylint-dev__pylint-6412-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-6412",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/checkers/base_checker.py",
+        "pylint/interfaces.py",
+        "pylint/lint/pylinter.py",
+        "pylint/reporters/base_reporter.py"
+      ],
+      "source_version": "2.14"
+    },
+    {
+      "case_id": "pylint-dev__pylint-8281-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-8281",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/argument.py",
+        "pylint/config/option.py",
+        "pylint/lint/base_options.py",
+        "pylint/pyreverse/main.py"
+      ],
+      "source_version": "2.17"
+    },
+    {
+      "case_id": "pylint-dev__pylint-8898-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-8898",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/config/argument.py",
+        "pylint/utils/__init__.py",
+        "pylint/utils/utils.py"
+      ],
+      "source_version": "3.0"
+    },
+    {
+      "case_id": "pylint-dev__pylint-8929-ds1-extra",
+      "source_case_id": "pylint-dev__pylint-8929",
+      "repo": "pylint-dev/pylint",
+      "role": "test",
+      "product_files": [
+        "pylint/interfaces.py",
+        "pylint/lint/base_options.py",
+        "pylint/reporters/__init__.py",
+        "pylint/reporters/json_reporter.py",
+        "pylint/testutils/_primer/primer_run_command.py"
+      ],
+      "source_version": "3.0"
+    }
+  ],
+  "added_pytest_source_cases": [
+    {
+      "case_id": "pytest-dev__pytest-10051-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10051",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10081-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10081",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10115-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10115",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10343-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10343",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/warning_types.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10356-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10356",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/mark/structures.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10442-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10442",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py",
+        "src/_pytest/tmpdir.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10482-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10482",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/fixtures.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10552-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10552",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10624-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10624",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10758-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10758",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10893-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10893",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py",
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-10988-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-10988",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11041-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11041",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11044-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11044",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11125-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11125",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.4"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11143-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11143",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11148-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11148",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11160-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11160",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/recwarn.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11178-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11178",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11217-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-11217",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/fixtures.py"
+      ],
+      "source_version": "8.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7481-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7481",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_io/terminalwriter.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7490-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7490",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/skipping.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7499-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7499",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_code/code.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7500-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7500",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7535-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7535",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_code/code.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7571-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7571",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7673-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7673",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7749-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7749",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "source_version": "6.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7939-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7939",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/stepwise.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-7982-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-7982",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8022-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8022",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/main.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8033-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8033",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8124-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8124",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/hookspec.py",
+        "src/_pytest/skipping.py"
+      ],
+      "source_version": "6.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8250-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8250",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/faulthandler.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8365-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8365",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/tmpdir.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8399-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8399",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python.py",
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8422-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8422",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8447-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8447",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/main.py",
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8641-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8641",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "source_version": "6.3"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8861-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8861",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/doctest.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8906-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8906",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8952-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8952",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-8987-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-8987",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/mark/expression.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9064-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9064",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/stepwise.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9066-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9066",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9133-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9133",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9249-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9249",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/mark/expression.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9279-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9279",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9359-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9359",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/_code/source.py"
+      ],
+      "source_version": "7.0"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9475-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9475",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9624-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9624",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/unittest.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9646-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9646",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9681-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9681",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9709-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9709",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.1"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9780-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9780",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9798-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9798",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.2"
+    },
+    {
+      "case_id": "pytest-dev__pytest-9911-ds1-eval",
+      "source_case_id": "pytest-dev__pytest-9911",
+      "repo": "pytest-dev/pytest",
+      "role": "test",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "source_version": "7.2"
+    }
+  ],
+  "final_dataset_targets": {
+    "real": 250,
+    "train": 175,
+    "validation": 37,
+    "test": 38
+  },
+  "curation_buffer_reason": "Collect a bounded strict-reproduction surplus before final quality/duplicate filtering; final 250-real target and approximate 70/15/15 split remain unchanged. Class-attribute quarantines already show strict execution counts exceed usable function-level records. No model held-out result used."
+}

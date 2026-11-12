@@ -1,0 +1,80 @@
+{
+  "case_id": "pylint-dev__pylint-4703-ds1-env2",
+  "source_case_id": "pylint-dev__pylint-4703",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-4703",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "3a6f08e4a1155e5098c3bec2d779cb3e654a1b11",
+  "head": "base+repair:3ab7c82f90174e194e02c61824d8bac582f702f9a9ca4878a1a53db85c923faf",
+  "allowed_file": "pylint/checkers/imports.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4703-ds1/repair.patch",
+  "repair_patch_sha256": "3ab7c82f90174e194e02c61824d8bac582f702f9a9ca4878a1a53db85c923faf",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-4703-ds1/test.patch",
+  "test_patch_sha256": "10641006e4069e96057ab3f4ee1e320e11e146938abddc38b1b18bb42c004df8",
+  "source_record_sha256": "abb8bbe718c6a3f5adc4422bc389cef4d485fbee9e016353cf3f338de1be18cc",
+  "fail_to_pass": [
+    "tests/test_func.py::test_functionality[func_noerror_cycle]"
+  ],
+  "pass_to_pass": [
+    "tests/test_func.py::test_functionality[func_w0401_disabled_in_func.py]",
+    "tests/test_func.py::test_functionality[func_i0022.py]",
+    "tests/test_func.py::test_functionality[func_w0401.py]",
+    "tests/test_func.py::test_functionality[func_w0801.py]",
+    "tests/test_func.py::test_functionality[func_w0401_package]",
+    "tests/test_func.py::test_functionality[func_w0401_disabled.py]",
+    "tests/test_func.py::test_functionality[func_i0014.py]",
+    "tests/test_func.py::test_functionality[func_i0013.py]",
+    "tests/test_func.py::test_functionality[func_i0020.py]",
+    "tests/test_func.py::test_functionality[func_i0011.py]",
+    "tests/test_func.py::test_functionality[func_i0012.py]"
+  ],
+  "test_targets": [
+    "tests/test_func.py"
+  ],
+  "frozen_test_files": [
+    "tests/input/func_noerror_cycle/__init__.py",
+    "tests/input/func_noerror_cycle/a.py",
+    "tests/input/func_noerror_cycle/b.py",
+    "tests/test_func.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.7.3",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_revision": "pylint-python-dependencies-v2",
+  "environment_parent_case_id": "pylint-dev__pylint-4703-ds1"
+}

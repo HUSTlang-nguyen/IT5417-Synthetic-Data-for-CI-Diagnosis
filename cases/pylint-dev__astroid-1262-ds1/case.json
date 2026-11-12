@@ -1,0 +1,78 @@
+{
+  "case_id": "pylint-dev__astroid-1262-ds1",
+  "source_case_id": "pylint-dev__astroid-1262",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-1262",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "base": "e840a7c54d3d8b5be2db1e66f34a5368c64fc3f7",
+  "head": "base+repair:7fc790219557f418723e3b9af083432ee4d15b3d19fbbc329312ea389e6d7772",
+  "allowed_file": "astroid/nodes/scoped_nodes.py",
+  "license": "LGPL-2.1-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__astroid-1262-ds1/repair.patch",
+  "repair_patch_sha256": "7fc790219557f418723e3b9af083432ee4d15b3d19fbbc329312ea389e6d7772",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__astroid-1262-ds1/test.patch",
+  "test_patch_sha256": "b2a5aeecbdb34e78c8ee1e5ac2cf2a390f600fdc45ea27c1512de8d8d319eb6a",
+  "source_record_sha256": "43309a011dbb7cb6367b426a3cb62b83f1729907f40a58e527e3b7baa0cbe2aa",
+  "fail_to_pass": [
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_module"
+  ],
+  "pass_to_pass": [
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_container",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_name",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_attribute",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_call",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_assignment",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_mix_stmts",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_mix_nodes",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_ops",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_if",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_for",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_const",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_function",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_dict",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_try",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_subscript",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_import",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_with",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_while",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_string",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_comprehension",
+    "tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_class"
+  ],
+  "test_targets": [
+    "tests/unittest_nodes_lineno.py"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_nodes_lineno.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "wrapt==1.15.0",
+    "lazy-object-proxy==1.9.0",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

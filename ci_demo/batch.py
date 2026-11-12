@@ -26,22 +26,29 @@ def initial_budget_charge(plan):
 
 
 @contextmanager
-def batch_lock(path):
+def batch_lock(path, *, wait_seconds=0):
     """An OS lock releases on process death; never clear a live owner's lock."""
+    if not isinstance(wait_seconds, (int, float)) or not math.isfinite(wait_seconds) or wait_seconds < 0:
+        raise ValueError("Lock wait must be finite and nonnegative")
     path.parent.mkdir(parents=True, exist_ok=True)
     handle = path.open("a+b")
     if path.stat().st_size == 0: handle.write(b"0"); handle.flush()
     handle.seek(0)
-    try:
-        if os.name == "nt":
-            import msvcrt
-            msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
-        else:
-            import fcntl
-            fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    except OSError as exc:
-        handle.close()
-        raise RuntimeError("Batch is already running in another process") from exc
+    deadline = time.monotonic() + wait_seconds
+    while True:
+        try:
+            if os.name == "nt":
+                import msvcrt
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            break
+        except OSError as exc:
+            if time.monotonic() >= deadline:
+                handle.close()
+                raise RuntimeError("Batch is already running in another process") from exc
+            time.sleep(min(0.05, max(0, deadline - time.monotonic())))
     try:
         yield
     finally:

@@ -1,0 +1,41 @@
+{
+  "recorded_at": "2026-11-12T12:42:01+07:00",
+  "status": "final-selection-exceptions-not-new-assessments-or-gold",
+  "selection_policy_sha256": "9ad37074373c5d66b158d68154d33c8e0a4a2a65c098b99af5412a4904cac3ca",
+  "records": [
+    {
+      "sample_id": "sympy__sympy-13798",
+      "origin": "real_local_reconstruction",
+      "manifest_sha256": "ec411e8246c9f08ad698cc3efbefffd3641ce0f0149d7d2d2d43efc6a3882a3b",
+      "reason": "Sparse real train class has fewer than10 examples; preserve label/evidence, outside final selection under the pre-fit support policy."
+    },
+    {
+      "sample_id": "sympy__sympy-15011",
+      "origin": "real_local_reconstruction",
+      "manifest_sha256": "3824e189832072b4be93b796242fc95eef7cbb9061925b66760a66b41aa6fe89",
+      "reason": "Sparse real train class has fewer than10 examples; preserve label/evidence, outside final selection under the pre-fit support policy."
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003552980325Z-3",
+      "origin": "controlled_synthetic",
+      "manifest_sha256": "94a6b33c50731b6519944a691b9fcda936fdbcc97bbc7a99bdba621c8ff3c350",
+      "assessment_sha256": "1cc022472222d3b931622823e5345250b5581eb4dce7d85645da014e7a8a8d02",
+      "reason": "Outside the qualifying real-train class scope; source-supported configuration mutation retained in exploratory silver."
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003813437020Z-1",
+      "origin": "controlled_synthetic",
+      "manifest_sha256": "f61ce4bd0322b517c1cc13802450af472457d5e364530f021950fae9d6e97649",
+      "assessment_sha256": "e7f929c83e7dc78acf6be7d0a7b3fed23e3e5ba6b335f619a6ace8b5b8d1624c",
+      "reason": "Final training excludes the arbitrary Set+integer perturbation. Earlier exploratory silver assessment explicitly qualified its limited realism; preserve that assessment and its valid execution/type evidence."
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010935804329Z-3",
+      "origin": "controlled_synthetic",
+      "manifest_sha256": "2a757dacbf6afe51bc0c6b15386ced2b568fd5c75e12e814d55ce3e897f47a09",
+      "assessment_sha256": "63f728e39a1abe504271bc05f51dd840b4d65f0077adf2bdfcf897cf47648bb0",
+      "reason": "Final training excludes the arbitrary EmptySet+integer perturbation, consistent with later same-family exclusions. Earlier qualified exploratory silver and all raw artifacts remain unchanged."
+    }
+  ],
+  "qualification": "Exclusion from the future matched-training dataset does not delete or rewrite exploratory silver/raw evidence; all other records still require final full-selection quality/dedup review."
+}

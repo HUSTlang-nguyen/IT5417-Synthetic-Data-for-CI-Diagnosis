@@ -6,7 +6,13 @@ Sinh dữ liệu tổng hợp có kiểm chứng hỗ trợ chẩn đoán lỗi 
 
 Mục tiêu nghiên cứu dài hạn là đánh giá dữ liệu synthetic đối với phân loại/khoanh vùng lỗi trên dữ liệu thật. Milestone đầu là **demo pipeline Python trên một repo thật**; chưa có fine-tuning hoặc kết luận hiệu quả ML.
 
-Luồng demo W1: **AIDev record → repo/commit → seed pass → 7B sinh → Docker kiểm chứng → người duyệt → dữ liệu cho 3B chẩn đoán.** Generator duy nhất là `qwen2.5-coder:7b-instruct`; model chẩn đoán chính là `Qwen/Qwen2.5-Coder-3B-Instruct`, chưa triển khai/chạy. Model phụ đã bỏ khỏi workflow; evidence lịch sử giữ nguyên.
+Luồng demo W1: **AIDev record → repo/commit → seed pass → 7B sinh → Docker kiểm chứng → người duyệt → dữ liệu cho 3B chẩn đoán.** Generator duy nhất là `qwen2.5-coder:7b-instruct`; model chẩn đoán chính là `Qwen/Qwen2.5-Coder-3B-Instruct`. Model phụ đã bỏ khỏi workflow; evidence lịch sử giữ nguyên.
+
+**Dataset v1, cập nhật 12/11:** đã rà 265 real silver, chọn sơ bộ **250 real (175 train/37 validation/38 test)**; **102 synthetic** trong phạm vi lựa chọn, còn thiếu **73/175**. [Bằng chứng tiến độ](docs/evidence/dataset-v1-progress/README.md), [protocol](docs/experiment-protocol.md), [dataset card](docs/dataset-card.md) và [điểm tiếp tục](docs/implementation-plan.md#điểm-tiếp-tục-hiện-tại). Kiểm tra nhóm/evidence cuối đang chạy; dataset chưa khóa. Đợt sinh bị gián đoạn và hết ngân sách stage, không gọi lại lượt unknown. Chưa chạy M0/M1/M2/M5 nghiên cứu hoặc SFT. Core pipeline vẫn standard library; runtime ML dùng môi trường riêng và [dependency ghim](requirements-ml.txt).
+
+Đọc nhanh: [trạng thái dữ liệu hiện hành](data-manifests/dataset-v1-status.json), [dung lượng/giữ dữ liệu/DVC](docs/data-storage.md). Không cần chạy lại audit hoặc thí nghiệm để trả lời tiến độ từ checkpoint.
+
+Backend học tùy chọn: `python -m ci_demo.sft --dataset <locked-manifest> --model M0|M1|M2|M5`; final test dùng `--test-runs` với bốn run hoàn tất. Lệnh từ chối dataset chưa khóa hoặc chưa đủ gate. Đây là interface đã triển khai, chưa phải kết quả huấn luyện.
 
 properr PR #6: AIDev v5, bảng all_pull_request, record 3256868569. Repo nguồn có Python + Rust; code điều phối của đề tài viết bằng Python. Nguồn, revision, snapshot và giới hạn nằm trong cases/properr-6.
 
@@ -79,7 +85,7 @@ Kết quả thực đo của đợt 01:
 
 Đây là số liệu development; chưa phải nhãn gold, số mẫu được duyệt train hoặc accuracy chẩn đoán.
 
-[Đợt mở rộng 01](docs/development-summary.md#expansion-01) đã thử 9 case/6 repo từ AIDev và SWE Lite dev; 21 lượt 7B, 6 đạt thực thi nhưng chỉ 3 candidate khác byte. [Review kỹ thuật](docs/data-review.md#expansion-01) chờ người dùng; gold/training vẫn pending. W1 properr và evidence cũ giữ nguyên.
+[Đợt mở rộng 01](docs/development-summary.md#expansion-01) đã thử 9 case/6 repo từ AIDev và SWE Lite dev; 21 lượt 7B, 6 đạt thực thi nhưng chỉ 3 candidate khác byte. [Review kỹ thuật](docs/data-review.md#expansion-01) đã được người dùng đồng ý kiến nghị giữ/loại; gold/training vẫn pending. W1 properr và evidence cũ giữ nguyên.
 
 ```text
 python -m ci_demo batch --manifest data-manifests/expansion-01.json
@@ -90,6 +96,6 @@ Raw artifacts/patches/cache không đi theo clone; đọc [runbook](docs/demo-ru
 
 ### Kết quả đợt 02 đã chạy
 
-[Đợt 02](docs/development-summary.md#expansion-02): sàng lọc thêm 20 nguồn, thử 8 case mới và 2 profile hiệu chỉnh; 15 lượt 7B, 11 đạt runner/11 candidate khác byte ở astroid, pvlib và FastAPI. Một candidate gây lỗi cú pháp vi phạm prompt v3; [review](docs/data-review.md#expansion-02) nêu rõ kiến nghị curation.
+[Đợt 02](docs/development-summary.md#expansion-02): sàng lọc thêm 20 nguồn, thử 8 case mới và 2 profile hiệu chỉnh; 15 lượt 7B, 11 đạt runner/11 candidate khác byte ở astroid, pvlib và FastAPI. Một candidate gây lỗi cú pháp vi phạm prompt v3; người dùng đã đồng ý loại khỏi subset v3 valid-Python và giữ các mẫu nhân tạo cho phân tích development, chưa đưa vào train. [Xác nhận review](docs/data-review.md#xac-nhan-expansion-01-02) ghi phạm vi riêng khỏi gold/training.
 
 Cộng hai đợt: **40 nguồn sàng lọc, 17 case nguồn đã thử/10 repo, 36 lượt sinh, 17 lượt đạt runner/14 candidate khác byte**. Những số này chưa phải gold/training approval. [cases/README](cases/README.md) phân biệt source case với profile; [grouping snapshot](data-manifests/development-groups-v1.json) giữ development, chưa tạo split cuối.

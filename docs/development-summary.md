@@ -1,10 +1,20 @@
 # Tổng kết phát triển dữ liệu CI
 
-Cập nhật tổ chức tài liệu: 30/10/2026, Asia/Bangkok. Đây là bản tổng hợp từ evidence đã lưu; không chạy thí nghiệm mới. Đọc [bản review và kiến nghị](data-review.md) để xem nguyên nhân, bằng chứng và phần cần duyệt.
+
+<!-- dataset-v1-current:start -->
+## Checkpoint dataset v1 mới nhất
+
+2026-11-12T18:43:27+07:00: 471 profiles/449 sources đã thử; 285 strict-supported/333 seed pass. Đã xuất 265 real silver {'train': 181, 'test': 41, 'validation': 43}, 105 synthetic silver trước final selection; 20 real quarantine/92 synthetic loại sau review. 372 request7B đã reserve/197 đạt runner. Software106:105pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+
+Đã chọn250real(175train/37validation/38test) theo stable-ID; chưa là dataset lock. Có105synthetic export,102trong final class/quality scope: thiếu73/175. Source queue đã xong13:39. Generator mới bị gián đoạn, không còn worker;372lời gọi đã hoàn tất, một verification unknown24455. Stage sinh đã hết ngân sách gồm thời gian in-flight bị gián đoạn; không reset/replay/gọi mới. Đang audit352records lựa chọn; M0/M1/M2/M5 vẫn gated.
+
+[Checkpoint](../runs/experiment-20261111T192045721211Z/curation-checkpoint-2026-11-12T184327_0700.json). Token-only audit276:0target overflow/context2048-response384; chưa phải suy luận3B. Silver không là expert gold, raw evidence bất biến. Group/selection lock vẫn bắt buộc trước research fit. [Bằng chứng tiến độ trong project](evidence/dataset-v1-progress/README.md).
+<!-- dataset-v1-current:end -->
+Cập nhật tiến độ: 12/11/2026, Asia/Bangkok. Các cohort W1/expansion giữ số liệu lịch sử; vòng dataset v1 được báo riêng bên dưới. Đọc [bản review và kiến nghị](data-review.md) để xem nguyên nhân, bằng chứng và phần cần duyệt.
 
 ## Trạng thái hiện tại
 
-Workflow: **AIDev/SWE-bench development → ghim nguồn/commit/test → tái hiện local → seed pass → 7B sinh → Docker kiểm chứng → agent phân tích → người dùng review → dữ liệu cho 3B sau các cổng dữ liệu**. 7B là generator duy nhất; 3B là diagnoser dự kiến, chưa chạy. Đạt runner chưa có nghĩa được duyệt nhãn gold hoặc training.
+Workflow: **AIDev/SWE-bench development → ghim nguồn/commit/test → tái hiện local → seed pass → 7B sinh → Docker kiểm chứng → agent phân tích → người dùng review → dữ liệu cho 3B sau các cổng dữ liệu**. 7B là generator duy nhất. 3B đã có một lần calibration train trong vòng dataset v1; chưa có held-out evaluation hoặc SFT. Đạt runner chưa có nghĩa được duyệt nhãn gold hoặc training.
 
 | Phạm vi | Case nguồn đã thử / repo | Profile thử tái hiện | Seed pass | Lượt 7B thực hiện | Lượt đạt runner | Candidate khác byte đạt runner |
 |---|---|---:|---:|---:|---:|---:|
@@ -15,9 +25,26 @@ Workflow: **AIDev/SWE-bench development → ghim nguồn/commit/test → tái hi
 
 Hai expansion sàng lọc 40 case nguồn (20 mỗi đợt); W1 properr được báo riêng. Hai profile `-r1` không phải hai case nguồn mới. Một candidate đạt runner ở đợt 02 vi phạm yêu cầu syntax hợp lệ; raw acceptance được giữ, kiến nghị curation nằm trong review. Các tổng không phải số mẫu được duyệt train hay accuracy chẩn đoán.
 
-W1 đã được người dùng đồng ý kết luận/kiến nghị giữ-loại; review expansion 01/02 còn chờ. Mọi nhãn gold/vị trí chính thức và training eligibility vẫn pending. Kiểm thử phần mềm mới nhất đã lưu: **58 discovered, 57 pass, 1 legacy Docker opt-in skip**; đây là evidence có trước lần gom tài liệu, không phải lượt test mới.
+W1 đã được người dùng đồng ý kết luận/kiến nghị giữ-loại; kiến nghị giữ/loại của expansion 01/02 cũng đã được đồng ý (xem [xác nhận](data-review.md#xac-nhan-expansion-01-02)). Mọi nhãn gold/vị trí chính thức và training eligibility vẫn pending. Kiểm thử phần mềm mới nhất đã lưu: **58 discovered, 57 pass, 1 legacy Docker opt-in skip**; đây là evidence có trước lần gom tài liệu, không phải lượt test mới.
 
-**Bước tiếp theo: W2-04 (`doing`)** — hoàn thiện grouping/near-duplicate và protocol split, chọn nguồn đánh giá độc lập trước vòng train. W3-03 vẫn `waiting_user`; chưa có final split, inference 3B hoặc SFT.
+**Bước tiếp theo: W2-04 (`doing`)** — tiếp tục tái hiện/curation dataset v1, khóa grouping/near-duplicate và final input trước vòng train. W3-03 vẫn `doing`; calibration 3B không thay thế cổng dataset hoặc kết quả SFT.
+
+## Dataset v1 đang thực thi ngày 12/11
+
+Mục tiêu là 250 tình huống real và matched synthetic train theo [protocol](experiment-protocol.md), không cộng số liệu này vào hai expansion. [Dataset card](dataset-card.md) và manifest experiment ghi tình trạng chưa đủ gate.
+
+| Mốc đã lưu | Kết quả thực đạt |
+|---|---|
+| Metadata sàng lọc | 21.527 rows từ các split nguồn SWE-bench; không phải số case đạt |
+| Ứng viên ghim | 443 nguồn: 300 train/100 validation/43 test |
+| Frontier 15 case nguồn đầu | 7 strict-supported, 9 seed pass; báo trước các profile correction |
+| Silver export sơ bộ | 7 tình huống khác nhau theo retrieval v2: 3 train/3 validation/1 test; assessment gắn hash, chưa final dataset |
+| Runtime 3B trên một mẫu train | Load 16,750 s; inference 24,515 s; 1.635 input/199 output tokens; peak CUDA allocated 2,43 GiB |
+| Kết quả calibration | Output có Markdown, không đạt parser JSON; code truy xuất v1 sai vùng. Giữ nguyên artifact, không gọi đó là điểm M1 |
+| Software checkpoint | 77 tests: 76 pass/1 opt-in Docker skip; các lượt tái hiện mới thực sự chạy Docker |
+| Bảo toàn lịch sử | Audit 2.504 file được bảo vệ: 0 đổi hash, 0 thiếu |
+
+Các lượt tiếp theo tiếp tục được ghi trong [manifest experiment local](../runs/experiment-20261111T192045721211Z/manifest.json) và [summary tái hiện](../runs/experiment-20261111T192045721211Z/real-reproduction-summary.json). Profile env2 sửa dependency Pylint là lượt môi trường mới của cùng source identity; không tăng số case real độc lập. M0/M1 held-out/M2/M5 chưa hoàn thành; chưa sinh synthetic mới trong vòng này. Hai prototype retrieval v1 vẫn giữ nguyên; bảy tình huống đã xuất riêng thành retrieval v2, không cộng phiên bản input thành mẫu mới. Near-duplicate audit/final dataset lock còn pending.
 
 ## Mục lục
 

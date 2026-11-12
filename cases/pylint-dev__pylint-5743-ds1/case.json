@@ -1,0 +1,64 @@
+{
+  "case_id": "pylint-dev__pylint-5743-ds1",
+  "source_case_id": "pylint-dev__pylint-5743",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-5743",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "dc4c709e9bca44952decdb74d76cf4e62799890a",
+  "head": "base+repair:9bcb47b755a65896bb712aec6b67265c50d6a7339b6a063d3b891a48a3da7d29",
+  "allowed_file": "pylint/lint/pylinter.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5743-ds1/repair.patch",
+  "repair_patch_sha256": "9bcb47b755a65896bb712aec6b67265c50d6a7339b6a063d3b891a48a3da7d29",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-5743-ds1/test.patch",
+  "test_patch_sha256": "d37afd5de1e263835d27a5dc752a2c4e0c3a0ca7105438d4ae15b773f4843fd7",
+  "source_record_sha256": "8fd26f1d8d0b3c7f07d4befab6933ddb9a6a3b8014cc646f3699055e9e2bedb7",
+  "fail_to_pass": [
+    "tests/lint/test_utils.py::test_issue_template_on_fatal_errors"
+  ],
+  "pass_to_pass": [
+    "tests/lint/test_utils.py::test_prepare_crash_report",
+    "tests/lint/test_utils.py::test_get_fatal_error_message"
+  ],
+  "test_targets": [
+    "tests/lint/test_utils.py"
+  ],
+  "frozen_test_files": [
+    "tests/lint/test_utils.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.11.7",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

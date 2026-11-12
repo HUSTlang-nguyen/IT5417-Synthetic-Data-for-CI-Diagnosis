@@ -1,0 +1,68 @@
+{
+  "case_id": "pallets__flask-4160-ds1-extra",
+  "source_case_id": "pallets__flask-4160",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pallets__flask-4160",
+  "repo_url": "https://github.com/pallets/flask",
+  "base": "06cf349bb8b69d9946c3a6a64d32eb552cc7c28b",
+  "head": "base+repair:b518ca1a4ffcf2266255d3e23e57b0720a53637d572e68c1d4431dda81fc1b3a",
+  "allowed_file": "src/flask/json/__init__.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pallets__flask-4160-ds1-extra/repair.patch",
+  "repair_patch_sha256": "b518ca1a4ffcf2266255d3e23e57b0720a53637d572e68c1d4431dda81fc1b3a",
+  "test_patch": ".cache/dataset-v1-source/cases/pallets__flask-4160-ds1-extra/test.patch",
+  "test_patch_sha256": "faa768a8eeb8ac9ea5dcfe13a262b3a9a61ba45f9b739c732cd46e3cc5ef7be4",
+  "source_record_sha256": "2ecba4872ac86552a4af6da5ce8945f2978ed9064832eb9362918f45d23336b7",
+  "fail_to_pass": [
+    "tests/test_json.py::test_json_decimal"
+  ],
+  "pass_to_pass": [
+    "tests/test_json.py::test_json_as_unicode[True-\"\\\\u2603\"]",
+    "tests/test_json.py::test_json_as_unicode[False-\"\\u2603\"]",
+    "tests/test_json.py::test_json_dump_to_file",
+    "tests/test_json.py::test_jsonify_aware_datetimes[tz0]",
+    "tests/test_json.py::test_jsonify_aware_datetimes[tz1]",
+    "tests/test_json.py::test_jsonify_aware_datetimes[tz2]",
+    "tests/test_json.py::test_html_method"
+  ],
+  "test_targets": [
+    "tests/test_json.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_json.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned reference F2P/P2P on base/fixed; local reconstruction, not historical CI",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "7.4.4",
+  "install_project": false,
+  "dependencies": [
+    "Werkzeug==2.0.3",
+    "Jinja2==3.0.3",
+    "itsdangerous==2.0.1",
+    "click==8.0.4",
+    "MarkupSafe==2.0.1",
+    "blinker==1.6.2",
+    "importlib-metadata==6.8.0"
+  ],
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

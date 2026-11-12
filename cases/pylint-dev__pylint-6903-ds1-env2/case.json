@@ -1,0 +1,74 @@
+{
+  "case_id": "pylint-dev__pylint-6903-ds1-env2",
+  "source_case_id": "pylint-dev__pylint-6903",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-6903",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "ca80f03a43bc39e4cc2c67dc99817b3c9f13b8a6",
+  "head": "base+repair:4b0aa53db6637dcaab2ff2373a8ebf3495df12181640b7dd38e5bb19c0e9fbcd",
+  "allowed_file": "pylint/lint/run.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6903-ds1/repair.patch",
+  "repair_patch_sha256": "4b0aa53db6637dcaab2ff2373a8ebf3495df12181640b7dd38e5bb19c0e9fbcd",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-6903-ds1/test.patch",
+  "test_patch_sha256": "e69b5e44c833af7f8d83cc91d97fe7bf7ac47ac1c24bfa8ab2a3ee47cd60121a",
+  "source_record_sha256": "425177ca737f85d1fc91b58f0b27a518d072069e3ffcd6e0dbfdac1153244d82",
+  "fail_to_pass": [
+    "tests/test_pylint_runners.py::test_pylint_run_jobs_equal_zero_dont_crash_with_cpu_fraction"
+  ],
+  "pass_to_pass": [
+    "tests/test_pylint_runners.py::test_runner[run_epylint]",
+    "tests/test_pylint_runners.py::test_runner[run_pylint]",
+    "tests/test_pylint_runners.py::test_runner[run_pyreverse]",
+    "tests/test_pylint_runners.py::test_runner[run_symilar]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_epylint]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_pylint]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_pyreverse]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_symilar]"
+  ],
+  "test_targets": [
+    "tests/test_pylint_runners.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_pylint_runners.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.12.13",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_revision": "pylint-python-dependencies-v2",
+  "environment_parent_case_id": "pylint-dev__pylint-6903-ds1"
+}

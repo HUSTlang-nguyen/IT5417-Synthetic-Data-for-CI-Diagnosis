@@ -1,0 +1,77 @@
+{
+  "case_id": "pylint-dev__pylint-7228-ds1-env2",
+  "source_case_id": "pylint-dev__pylint-7228",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pylint-dev__pylint-7228",
+  "repo_url": "https://github.com/pylint-dev/pylint",
+  "base": "d597f252915ddcaaa15ccdfcb35670152cb83587",
+  "head": "base+repair:8b6796ff816cae34a8ba96c465e367f321f95931a64b9dff5932f0f9ab701d1b",
+  "allowed_file": "pylint/config/argument.py",
+  "license": "GPL-2.0-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-7228-ds1/repair.patch",
+  "repair_patch_sha256": "8b6796ff816cae34a8ba96c465e367f321f95931a64b9dff5932f0f9ab701d1b",
+  "test_patch": ".cache/dataset-v1-source/cases/pylint-dev__pylint-7228-ds1/test.patch",
+  "test_patch_sha256": "da6f88243695cdc4b089df886b2cd1ed73b1541ca257addf42533f3e01a83939",
+  "source_record_sha256": "db6991edcba4c3f36be764ea59d0456420fb234693da648d70c4a79b53bf22c8",
+  "fail_to_pass": [
+    "tests/config/test_config.py::test_regex_error",
+    "tests/config/test_config.py::test_csv_regex_error"
+  ],
+  "pass_to_pass": [
+    "tests/config/test_config.py::test_can_read_toml_env_variable",
+    "tests/config/test_config.py::test_unknown_message_id",
+    "tests/config/test_config.py::test_unknown_option_name",
+    "tests/config/test_config.py::test_unknown_short_option_name",
+    "tests/config/test_config.py::test_unknown_confidence",
+    "tests/config/test_config.py::test_empty_confidence",
+    "tests/config/test_config.py::test_unknown_yes_no",
+    "tests/config/test_config.py::test_unknown_py_version",
+    "tests/config/test_config.py::test_short_verbose",
+    "tests/config/test_config.py::test_argument_separator"
+  ],
+  "test_targets": [
+    "tests/config/test_config.py"
+  ],
+  "frozen_test_files": [
+    "tests/config/test_config.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "astroid==2.12.13",
+    "isort==5.10.1",
+    "mccabe==0.7.0",
+    "toml==0.10.2",
+    "tomli==2.0.1",
+    "dill==0.3.6",
+    "platformdirs==2.6.2",
+    "typing_extensions==4.12.2",
+    "appdirs==1.4.4",
+    "tomlkit==0.11.8"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_revision": "pylint-python-dependencies-v2",
+  "environment_parent_case_id": "pylint-dev__pylint-7228-ds1"
+}

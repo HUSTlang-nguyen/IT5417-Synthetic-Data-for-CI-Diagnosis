@@ -1,0 +1,104 @@
+{
+  "case_id": "pytest-dev__pytest-9911-ds1-eval-scm1",
+  "source_case_id": "pytest-dev__pytest-9911",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pytest-dev__pytest-9911",
+  "repo_url": "https://github.com/pytest-dev/pytest",
+  "base": "2ba8fd5bc50f293fea11a863c2b8c4dc3488762b",
+  "head": "base+repair:ce73002bc931f13f40f956b777d303d21026954dfebf97e409794bc7c389b950",
+  "allowed_file": "src/_pytest/python_api.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-9911-ds1-eval/repair.patch",
+  "repair_patch_sha256": "ce73002bc931f13f40f956b777d303d21026954dfebf97e409794bc7c389b950",
+  "test_patch": ".cache/dataset-v1-source/cases/pytest-dev__pytest-9911-ds1-eval/test.patch",
+  "test_patch_sha256": "94fe6cbb7e56d79ec15ada47187fc60c2d38dc0e5e04abdf8a284a280be274e4",
+  "source_record_sha256": "2a3cf8f980ac818be1cad16f4c5a45a11751b3aaf9a5cb975972fe00bbc77432",
+  "fail_to_pass": [
+    "testing/python/raises.py::TestRaises::test_raises_does_not_allow_none",
+    "testing/python/raises.py::TestRaises::test_raises_does_not_allow_empty_tuple"
+  ],
+  "pass_to_pass": [
+    "testing/python/raises.py::TestRaises::test_check_callable",
+    "testing/python/raises.py::TestRaises::test_raises",
+    "testing/python/raises.py::TestRaises::test_raises_function",
+    "testing/python/raises.py::TestRaises::test_raises_callable_no_exception",
+    "testing/python/raises.py::TestRaises::test_raises_falsey_type_error",
+    "testing/python/raises.py::TestRaises::test_raises_repr_inflight",
+    "testing/python/raises.py::TestRaises::test_noclass",
+    "testing/python/raises.py::TestRaises::test_invalid_arguments_to_raises",
+    "testing/python/raises.py::TestRaises::test_tuple",
+    "testing/python/raises.py::TestRaises::test_no_raise_message",
+    "testing/python/raises.py::TestRaises::test_raises_cyclic_reference[function]",
+    "testing/python/raises.py::TestRaises::test_raises_cyclic_reference[function_match]",
+    "testing/python/raises.py::TestRaises::test_raises_cyclic_reference[with]",
+    "testing/python/raises.py::TestRaises::test_raises_match",
+    "testing/python/raises.py::TestRaises::test_match_failure_string_quoting",
+    "testing/python/raises.py::TestRaises::test_match_failure_exact_string_message",
+    "testing/python/raises.py::TestRaises::test_raises_match_wrong_type",
+    "testing/python/raises.py::TestRaises::test_raises_exception_looks_iterable",
+    "testing/python/raises.py::TestRaises::test_raises_with_raising_dunder_class",
+    "testing/python/raises.py::TestRaises::test_raises_context_manager_with_kwargs",
+    "testing/python/raises.py::TestRaises::test_expected_exception_is_not_a_baseexception",
+    "testing/python/raises.py::TestRaises::test_raises_as_contextmanager",
+    "testing/python/raises.py::TestRaises::test_does_not_raise",
+    "testing/python/raises.py::TestRaises::test_does_not_raise_does_raise"
+  ],
+  "test_targets": [
+    "testing/python/raises.py"
+  ],
+  "frozen_test_files": [
+    "testing/python/raises.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Frozen reference tests on base/fixed; local reconstruction only",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "7.4.4",
+  "pytest_plugins": [
+    "pytester"
+  ],
+  "install_project": true,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dependencies": [
+    "py==1.11.0",
+    "attrs==21.4.0",
+    "iniconfig==2.0.0",
+    "packaging==23.2",
+    "tomli==2.0.1",
+    "exceptiongroup==1.1.3",
+    "typing_extensions==4.12.2",
+    "pluggy==1.6.0",
+    "more-itertools==9.1.0",
+    "atomicwrites==1.4.1",
+    "wcwidth==0.2.13",
+    "mock==5.1.0",
+    "setuptools-scm==8.1.0"
+  ],
+  "environment_parent_case_id": "pytest-dev__pytest-9911-ds1-eval",
+  "environment_revision": "actual-git-scm-generated-metadata",
+  "scm_build_version": "7.2.0.dev81+g2ba8fd5bc",
+  "scm_version_derivation": {
+    "path": "runs\\source-version-metadata-20261112T005305285876Z\\versions.json",
+    "sha256": "e15cab85c177d2529a014da03b3047f6cc31ec356203ef0bca2b4f5ebfe9b3b1",
+    "tool": "setuptools-scm==8.1.0",
+    "method": "clean exact-commit checkout with full tag ancestry; no target-source setup/import on host"
+  }
+}

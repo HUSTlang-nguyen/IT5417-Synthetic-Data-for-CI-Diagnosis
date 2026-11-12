@@ -1,0 +1,84 @@
+{
+  "case_id": "sympy__sympy-13978-ds1",
+  "source_case_id": "sympy__sympy-13978",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-13978",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "84c125972ad535b2dfb245f8d311d347b45e5b8a",
+  "head": "base+repair:8e1aba23cedfdaec36055e004539c3016dc868e52c624d051cb4f29712cecddd",
+  "allowed_file": "sympy/printing/octave.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13978-ds1/repair.patch",
+  "repair_patch_sha256": "8e1aba23cedfdaec36055e004539c3016dc868e52c624d051cb4f29712cecddd",
+  "test_patch": ".cache/dataset-v1-source/cases/sympy__sympy-13978-ds1/test.patch",
+  "test_patch_sha256": "cdebf29261409c9ee3e4231020a66ebabaa04392f2d737b68e098873ee582f4d",
+  "source_record_sha256": "aeaeca51eb301a0463bd7823b725ec72f4e93f9d9048262294b330b3a066aa21",
+  "fail_to_pass": [
+    "test_imag"
+  ],
+  "pass_to_pass": [
+    "test_Integer",
+    "test_Rational",
+    "test_Function",
+    "test_Pow",
+    "test_basic_ops",
+    "test_1_over_x_and_sqrt",
+    "test_mix_number_mult_symbols",
+    "test_mix_number_pow_symbols",
+    "test_constants",
+    "test_constants_other",
+    "test_boolean",
+    "test_Matrices",
+    "test_vector_entries_hadamard",
+    "test_MatrixSymbol",
+    "test_special_matrices",
+    "test_containers",
+    "test_octave_noninline",
+    "test_octave_piecewise",
+    "test_octave_piecewise_times_const",
+    "test_octave_matrix_assign_to",
+    "test_octave_matrix_assign_to_more",
+    "test_octave_matrix_1x1",
+    "test_octave_matrix_elements",
+    "test_octave_boolean",
+    "test_trick_indent_with_end_else_words",
+    "test_haramard",
+    "test_sparse",
+    "test_sinc",
+    "test_specfun"
+  ],
+  "test_targets": [
+    "sympy/printing/tests/test_octave.py"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_octave.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  }
+}

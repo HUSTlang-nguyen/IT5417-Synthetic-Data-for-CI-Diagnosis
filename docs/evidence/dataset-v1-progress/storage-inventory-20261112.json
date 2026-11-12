@@ -1,0 +1,240 @@
+{
+  "recorded_at": "2026-11-12T18:54:42+07:00",
+  "mode": "read_only_no_deletion",
+  "filesystem": {
+    "total_bytes": 511054966784,
+    "used_bytes": 461176590336,
+    "free_bytes": 49878376448
+  },
+  "directories": [
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\__pycache__",
+      "logical_bytes": 11058,
+      "gib": 0.0,
+      "files": 2,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\archives",
+      "logical_bytes": 5917919,
+      "gib": 0.006,
+      "files": 4,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\batch-locks",
+      "logical_bytes": 4,
+      "gib": 0.0,
+      "files": 4,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\case-contexts",
+      "logical_bytes": 21304693600,
+      "gib": 19.842,
+      "files": 1389537,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\data-tools",
+      "logical_bytes": 126032815,
+      "gib": 0.117,
+      "files": 2984,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\dataset-v1",
+      "logical_bytes": 13252370,
+      "gib": 0.012,
+      "files": 1488,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\dataset-v1-source",
+      "logical_bytes": 573685273,
+      "gib": 0.534,
+      "files": 1584,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\expansion",
+      "logical_bytes": 220446680,
+      "gib": 0.205,
+      "files": 177,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\expansion-02",
+      "logical_bytes": 72399929,
+      "gib": 0.067,
+      "files": 327,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\experiment-locks",
+      "logical_bytes": 1,
+      "gib": 0.0,
+      "files": 1,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\ml-v1",
+      "logical_bytes": 8343763294,
+      "gib": 7.771,
+      "files": 37532,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\models",
+      "logical_bytes": 6183464955,
+      "gib": 5.759,
+      "files": 23,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\passing-seeds",
+      "logical_bytes": 34500,
+      "gib": 0.0,
+      "files": 345,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\report-consolidation",
+      "logical_bytes": 693776,
+      "gib": 0.001,
+      "files": 9,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\skill-authoring",
+      "logical_bytes": 24209915,
+      "gib": 0.023,
+      "files": 1541,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\skill-validation-fixtures",
+      "logical_bytes": 0,
+      "gib": 0.0,
+      "files": 0,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\source-metadata",
+      "logical_bytes": 24756123,
+      "gib": 0.023,
+      "files": 1616,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\source-version-checkouts",
+      "logical_bytes": 258755775,
+      "gib": 0.241,
+      "files": 31851,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\sources-v2",
+      "logical_bytes": 385685499,
+      "gib": 0.359,
+      "files": 725,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\test-temp",
+      "logical_bytes": 0,
+      "gib": 0.0,
+      "files": 0,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\archives",
+      "logical_bytes": 177304,
+      "gib": 0.0,
+      "files": 2,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\docker-context",
+      "logical_bytes": 49710,
+      "gib": 0.0,
+      "files": 23,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\exports",
+      "logical_bytes": 48488,
+      "gib": 0.0,
+      "files": 22,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\models",
+      "logical_bytes": 5669150504,
+      "gib": 5.28,
+      "files": 15,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\runner-check",
+      "logical_bytes": 58080,
+      "gib": 0.0,
+      "files": 74,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\sources",
+      "logical_bytes": 85952,
+      "gib": 0.0,
+      "files": 27,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\test-temp",
+      "logical_bytes": 0,
+      "gib": 0.0,
+      "files": 0,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\.cache\\tools",
+      "logical_bytes": 3851765958,
+      "gib": 3.587,
+      "files": 76,
+      "skipped_links_or_unreadable": 0
+    },
+    {
+      "path": "C:\\Users\\neikh\\.codex\\worktrees\\a4f5\\IT5417-Synthetic-Data-for-CI-Diagnosis\\runs",
+      "logical_bytes": 742879427,
+      "files": 44205,
+      "skipped_links_or_unreadable": 0,
+      "gib": 0.692
+    },
+    {
+      "path": "C:\\Users\\neikh\\Documents\\GitHub\\IT5417-Synthetic-Data-for-CI-Diagnosis\\runs",
+      "logical_bytes": 380197,
+      "files": 297,
+      "skipped_links_or_unreadable": 0,
+      "gib": 0.0
+    }
+  ],
+  "docker_virtual_disks": [
+    {
+      "path": "C:\\Users\\neikh\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+      "logical_bytes": 87145054208,
+      "allocated_bytes": 87145054208,
+      "allocated_gib": 81.16
+    },
+    {
+      "path": "C:\\Users\\neikh\\AppData\\Local\\Docker\\wsl\\main\\ext4.vhdx",
+      "logical_bytes": 100663296,
+      "allocated_bytes": 100663296,
+      "allocated_gib": 0.094
+    }
+  ],
+  "qualification": "Directory sizes are logical file bytes, excluding junctions/symlinks; Docker images/cache are inside the VHDX and must not be added again to its allocation. No full-drive scan or cleanup.",
+  "detailed_local_inventory": {
+    "path": "runs/experiment-20261111T192045721211Z/storage-inventory-full-20261112.json",
+    "sha256": "d0acc36130e1d29006a67446e872c213c46cbdc17d5a1a0c6bc742b4e0ebbb82"
+  }
+}
