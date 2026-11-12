@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-11-12T19:31:30+07:00",
+  "selected_records": 351,
+  "selection_review_hash_binding": "passed",
+  "real": 250,
+  "synthetic": 101,
+  "synthetic_missing": 74,
+  "local_links_checked": 1258,
+  "missing_links": [],
+  "protected_files": 2504,
+  "raw_changed": [],
+  "missing_protected": [],
+  "software_tests": "106total/105pass/1skip_saved_log_no_pipeline_change_in_final_docs_pass",
+  "research_models": "not_run_gate_failure_verified",
+  "goal_complete": false
+}

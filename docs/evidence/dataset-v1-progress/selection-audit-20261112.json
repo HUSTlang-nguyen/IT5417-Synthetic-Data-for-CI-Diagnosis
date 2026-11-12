@@ -1,0 +1,50 @@
+{
+  "recorded_at": "2026-11-12T19:27:54+07:00",
+  "selection_path": "data-manifests/dataset-v1-curated-selection.json",
+  "selection_sha256": "a397151172f105ba373291994fb8e81fc2410ab13a4d77a93f1da2aa8d0e5eca",
+  "records": 351,
+  "real": 250,
+  "synthetic": 101,
+  "synthetic_deficit": 74,
+  "source_audit": {
+    "path": "runs/experiment-20261111T192045721211Z/curated-selection-evidence-audit-2026-11-12T184020_0700.json",
+    "sha256": "15e5396434876842df4936f395ff8987f51e0bb42d865b45c8a6d7594717fd63",
+    "completed_at": "2026-11-12T19:22:53+07:00",
+    "records": 352
+  },
+  "retained_export_hashes_rechecked": 351,
+  "group_review_sha256": "af61dc21d2ec5d9b3fb0692e373db576a26bc365302d662695c7e6b60ec8ef72",
+  "cross_split_groups": [],
+  "exact_source_duplicate_families": [],
+  "exact_candidate_duplicate_families": [],
+  "semantic_duplicate_removed": "synthetic-generate-20261112T061108089078Z-1",
+  "retained_related_lexical_family": [
+    "synthetic-generate-20261112T011147479110Z-2",
+    "synthetic-generate-20261112T011147479110Z-3"
+  ],
+  "token_preflight": {
+    "path": "runs/experiment-20261111T192045721211Z/token-selected-frontier-2026-11-12T185100_0700.json",
+    "sha256": "6cd2b84f9b3bb7d89c24d3915d70aa032817b53aba9f33243a2594f0584d7ff5",
+    "selected_subset_records": 351,
+    "target_overflows": 0,
+    "coverage": {
+      "real_local_reconstruction/train": {
+        "covered": 59,
+        "total": 175
+      },
+      "real_local_reconstruction/validation": {
+        "covered": 7,
+        "total": 37
+      },
+      "real_local_reconstruction/test": {
+        "covered": 12,
+        "total": 38
+      },
+      "controlled_synthetic/train": {
+        "covered": 44,
+        "total": 101
+      }
+    }
+  },
+  "qualification": "Evidence and group audit completed for this partial selection, inherited from352-record deep audit plus unchanged retained export hashes. Coverage is reference-aware data auditing, not model accuracy; no heldout tuning or retrieval-based exclusion. Learning gate remains unmet."
+}

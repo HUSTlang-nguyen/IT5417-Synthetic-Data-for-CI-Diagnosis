@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-11-12T19:27:54+07:00",
+  "status": "selection_exclusions_not_raw_or_assessment_edits",
+  "previous_version": "data-manifests/dataset-v1-selection-exclusions.json",
+  "previous_sha256": "81b2237c200ecffb2dffc6cb3fce34a31b18876490eccd1849bc5f95b754e7d4",
+  "selection_policy_sha256": "9ad37074373c5d66b158d68154d33c8e0a4a2a65c098b99af5412a4904cac3ca",
+  "records": [
+    {
+      "sample_id": "sympy__sympy-13798",
+      "origin": "real_local_reconstruction",
+      "manifest_sha256": "ec411e8246c9f08ad698cc3efbefffd3641ce0f0149d7d2d2d43efc6a3882a3b",
+      "reason": "Sparse real train class has fewer than10 examples; preserve label/evidence, outside final selection under the pre-fit support policy."
+    },
+    {
+      "sample_id": "sympy__sympy-15011",
+      "origin": "real_local_reconstruction",
+      "manifest_sha256": "3824e189832072b4be93b796242fc95eef7cbb9061925b66760a66b41aa6fe89",
+      "reason": "Sparse real train class has fewer than10 examples; preserve label/evidence, outside final selection under the pre-fit support policy."
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003552980325Z-3",
+      "origin": "controlled_synthetic",
+      "manifest_sha256": "94a6b33c50731b6519944a691b9fcda936fdbcc97bbc7a99bdba621c8ff3c350",
+      "assessment_sha256": "1cc022472222d3b931622823e5345250b5581eb4dce7d85645da014e7a8a8d02",
+      "reason": "Outside the qualifying real-train class scope; source-supported configuration mutation retained in exploratory silver."
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003813437020Z-1",
+      "origin": "controlled_synthetic",
+      "manifest_sha256": "f61ce4bd0322b517c1cc13802450af472457d5e364530f021950fae9d6e97649",
+      "assessment_sha256": "e7f929c83e7dc78acf6be7d0a7b3fed23e3e5ba6b335f619a6ace8b5b8d1624c",
+      "reason": "Final training excludes the arbitrary Set+integer perturbation. Earlier exploratory silver assessment explicitly qualified its limited realism; preserve that assessment and its valid execution/type evidence."
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010935804329Z-3",
+      "origin": "controlled_synthetic",
+      "manifest_sha256": "2a757dacbf6afe51bc0c6b15386ced2b568fd5c75e12e814d55ce3e897f47a09",
+      "assessment_sha256": "63f728e39a1abe504271bc05f51dd840b4d65f0077adf2bdfcf897cf47648bb0",
+      "reason": "Final training excludes the arbitrary EmptySet+integer perturbation, consistent with later same-family exclusions. Earlier qualified exploratory silver and all raw artifacts remain unchanged."
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T061108089078Z-1",
+      "origin": "controlled_synthetic",
+      "manifest_sha256": "d090f07abb8502751aa2767bcbce3ee042d17f5751e34ccd03365c3eb1e43c31",
+      "reason": "Full352record audit identified the same constant-versus-call printer mutation as earlier generate-20261112T003552980325Z attempt1: identical file/function/replacement and math.pi() failure despite revision-dependent surrounding bytes. Preserve exploratory assessment/raw; prefer earliest representative."
+    }
+  ]
+}

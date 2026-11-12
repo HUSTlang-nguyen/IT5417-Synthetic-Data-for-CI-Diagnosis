@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-11-12T18:57:11+07:00",
+  "updated_at": "2026-11-12T19:29:08+07:00",
   "experiment_run_id": "experiment-20261111T192045721211Z",
-  "status": "curation_complete_final_audit_running_learning_gated",
+  "status": "partial_data_audit_completed_learning_gated",
   "source": {
     "planned_candidates": 525,
     "attempted_source_cases": 449,
@@ -30,13 +30,13 @@
     "invalid_output": 13,
     "unknown_verification_attempts": 3,
     "curated_exports": 105,
-    "in_scope_selection": 102,
+    "in_scope_selection": 101,
     "required": 175,
-    "missing": 73
+    "missing": 74
   },
   "gates": {
     "real_count_and_class_support": "met",
-    "full_evidence_group_audit": "running_352records",
+    "full_evidence_group_audit": "completed_352_deep_audit_then351_subset_after_semantic_dedup",
     "matched_synthetic": "not_met",
     "learning_dataset_lock": "not_created",
     "gold_labels": "pending"
@@ -49,17 +49,19 @@
   },
   "execution": {
     "live_execution_workers": 0,
-    "live_read_only_audit_session": 35613,
     "synthetic_stage": "exhausted_includes_unknown_inflight_gap",
     "new_generation": "not_started_after_cap",
-    "deadline": "2026-11-13T02:19:29+07:00"
+    "deadline": "2026-11-13T02:19:29+07:00",
+    "read_only_audit": "finished19:22:53"
   },
   "pointers": {
     "real_selection": "data-manifests/dataset-v1-real-selection.json",
     "dataset_card": "docs/dataset-card.md",
     "review": "docs/data-review.md",
     "progress_evidence": "docs/evidence/dataset-v1-progress/README.md",
-    "storage": "docs/data-storage.md"
+    "storage": "docs/data-storage.md",
+    "curated_selection": "data-manifests/dataset-v1-curated-selection.json",
+    "selection_audit": "docs/evidence/dataset-v1-progress/selection-audit-20261112.json"
   },
   "qualification": "Milestone snapshot, not a background monitor or training approval. No research fit/final model test. Read actual worker manifest only when newer state must be verified; do not rerun experiments or full hash audit merely for a status question."
 }

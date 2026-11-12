@@ -2,13 +2,13 @@
 
 
 <!-- dataset-v1-current:start -->
-## Checkpoint hiện hành
+## Checkpoint dataset v1 hiện hành
 
-2026-11-12T18:43:27+07:00: 471 profiles/449 sources đã thử; 285 strict-supported/333 seed pass. Đã xuất 265 real silver {'train': 181, 'test': 41, 'validation': 43}, 105 synthetic silver trước final selection; 20 real quarantine/92 synthetic loại sau review. 372 request7B đã reserve/197 đạt runner. Software106:105pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+2026-11-12T19:30:07+07:00: chọn250real silver(175train/37validation/38test) từ265real đã rà;105synthetic export,101sau loại trừ cuối, thiếu74/175. Tổng372lời gọi7B/197lượt đạt runner. Software106:105pass/1skip. M0/M1/M2/M5 nghiên cứu chưa chạy; data gate chưa đạt.
 
-Đã chọn250real(175train/37validation/38test) theo stable-ID; chưa là dataset lock. Có105synthetic export,102trong final class/quality scope: thiếu73/175. Source queue đã xong13:39. Generator mới bị gián đoạn, không còn worker;372lời gọi đã hoàn tất, một verification unknown24455. Stage sinh đã hết ngân sách gồm thời gian in-flight bị gián đoạn; không reset/replay/gọi mới. Đang audit352records lựa chọn; M0/M1/M2/M5 vẫn gated.
+Audit352 hoàn tất19:22:53:hash/source/test/lineage đạt, không cross-split hoặc trùng byte. Loại thêm một semantic duplicate constant-printer, giữ351bản ghi với group review/selectionhash và retained-export hashes khớp. Đây là partial dataset, chưa là learning lock. Stage sinh đã hết budget; không replay unknown24455/resetcap/gọi mới.
 
-[Checkpoint](../runs/experiment-20261111T192045721211Z/curation-checkpoint-2026-11-12T184327_0700.json). Token-only audit276:0target overflow/context2048-response384; chưa phải suy luận3B. Silver không là expert gold, raw evidence bất biến. Group/selection lock vẫn bắt buộc trước research fit. [Bằng chứng tiến độ trong project](evidence/dataset-v1-progress/README.md).
+[Trạng thái](../data-manifests/dataset-v1-status.json) · [Audit](evidence/dataset-v1-progress/selection-audit-20261112.json) · [Kết quả và phần chưa đạt](results.md). Silver/goldpending; chưa mở finalmodeltest.
 <!-- dataset-v1-current:end -->
 Cập nhật 12/11/2026, Asia/Bangkok. Đây là manifest/card thăm dò đang xây dựng; chưa khóa dataset huấn luyện hoặc có kết quả SFT.
 
@@ -22,7 +22,7 @@ Lựa chọn hiện hành có [250 real với hash và lý do các mẫu ngoài 
 
 | Repository | Vai trò | Real được chọn | Synthetic trong phạm vi lựa chọn |
 |---|---|---:|---:|
-| SymPy | train | 158 | 89 |
+| SymPy | train | 158 | 88 |
 | pvlib | train | 6 | 4 |
 | astroid | train | 5 | 3 |
 | pydicom | train | 4 | 3 |
@@ -31,9 +31,9 @@ Lựa chọn hiện hành có [250 real với hash và lý do các mẫu ngoài 
 | Pylint | test | 19 | 0 |
 | pytest | test | 16 | 0 |
 | Flask | test | 3 | 0 |
-| **Tổng** | | **250** | **102** |
+| **Tổng** | | **250** | **101** |
 
-Các số synthetic trên chưa thay thế final group audit hoặc learning lock. Lựa chọn lệch mạnh về SymPy;102synthetic gồm96logic/value và6API/type, khác phân bố real train134/41. Không tự cân bằng lại hoặc suy lợi ích SFT từ số lượng này. Dataset v1 hiện dùng nguồn SWE-bench đã ghim; AIDev và các pilot/expansion cũ tiếp tục nằm ở phần development lịch sử.
+Các số synthetic trên đã có group review dựa fullaudit352vàsubset351; chưa đạt learning lock. Lựa chọn lệch mạnh về SymPy;101synthetic gồm95logic/value và6API/type, khác phân bố real train134/41. Không tự cân bằng lại hoặc suy lợi ích SFT từ số lượng này. Dataset v1 hiện dùng nguồn SWE-bench đã ghim; AIDev và các pilot/expansion cũ tiếp tục nằm ở phần development lịch sử.
 
 - SWE-bench revision `e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6`; metadata từ train/dev/test nguồn được sàng lọc cho protocol chẩn đoán tự chia. Không công bố điểm benchmark SWE-bench chính thức. Các bản nguồn thiếu test patch/F2P không đủ điều kiện.
 - [Plan ban đầu](../data-manifests/dataset-v1-plan.json): 443 ứng viên, gồm 300 train/100 validation/43 test. Train: SymPy, pydicom, pvlib, astroid, marshmallow; validation: Sphinx; test: Pylint. Repo đã phơi lộ trong phát triển trước đây không làm held-out mới. Không khẳng định repo chưa xuất hiện khi model nền pretrain.

@@ -1,0 +1,3187 @@
+{
+  "created_at": "2026-11-12T19:27:54+07:00",
+  "status": "insufficient_synthetic_not_learning_locked",
+  "real": 250,
+  "real_by_role": {
+    "train": 175,
+    "validation": 37,
+    "test": 38
+  },
+  "synthetic": 101,
+  "synthetic_required": 175,
+  "synthetic_deficit": 74,
+  "records": [
+    {
+      "sample_id": "marshmallow-code__marshmallow-1252",
+      "case_id": "marshmallow-code__marshmallow-1252-ds1",
+      "repo_url": "https://github.com/marshmallow-code/marshmallow",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/marshmallow-code__marshmallow-1252",
+      "manifest_sha256": "fe3c9c71ab470015eac6d7cb3d14947a8b32959db4531922096f55c473f165d6",
+      "group_id": "repo:marshmallow-code/marshmallow"
+    },
+    {
+      "sample_id": "marshmallow-code__marshmallow-1702",
+      "case_id": "marshmallow-code__marshmallow-1702-ds1",
+      "repo_url": "https://github.com/marshmallow-code/marshmallow",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/marshmallow-code__marshmallow-1702",
+      "manifest_sha256": "00c130b618dace4b4f9e2a7b8df89ee2853ad0ef191712bf02e84438f998256f",
+      "group_id": "repo:marshmallow-code/marshmallow"
+    },
+    {
+      "sample_id": "pallets__flask-4160",
+      "case_id": "pallets__flask-4160-ds1-extra",
+      "repo_url": "https://github.com/pallets/flask",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pallets__flask-4160",
+      "manifest_sha256": "c261e35d054b3c9585818148a7282790d9a6f244db53aacf85adae0e25c22edc",
+      "group_id": "repo:pallets/flask"
+    },
+    {
+      "sample_id": "pallets__flask-4575",
+      "case_id": "pallets__flask-4575-ds1-extra",
+      "repo_url": "https://github.com/pallets/flask",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pallets__flask-4575",
+      "manifest_sha256": "70c69e14a2fbe977c35d0e71cb5a60cd70000d8fd287858204cc2d07c031201e",
+      "group_id": "repo:pallets/flask"
+    },
+    {
+      "sample_id": "pallets__flask-5014",
+      "case_id": "pallets__flask-5014-ds1-extra",
+      "repo_url": "https://github.com/pallets/flask",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pallets__flask-5014",
+      "manifest_sha256": "4a2393c75ec46cdc9e1b3bc2c553b883284a3264148b991f28da4680f3905bc5",
+      "group_id": "repo:pallets/flask"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1216",
+      "case_id": "pvlib__pvlib-python-1216-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pvlib__pvlib-python-1216",
+      "manifest_sha256": "fced5a288515cd5a846610a67e5b1fdfc97c58d80be2462a81288c42818a9000",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1224",
+      "case_id": "pvlib__pvlib-python-1224-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pvlib__pvlib-python-1224",
+      "manifest_sha256": "6056c2bce0a606620cf76a777231c2b8d566f29f6f4995b5576f1e73be367b11",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1349",
+      "case_id": "pvlib__pvlib-python-1349-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pvlib__pvlib-python-1349",
+      "manifest_sha256": "08a2d62d2e3b079e173a6977c9b308e88165510ff0d5f4e084499cf2aa77b48c",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1738",
+      "case_id": "pvlib__pvlib-python-1738-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pvlib__pvlib-python-1738",
+      "manifest_sha256": "e3e9a1c13d6ae6f45a1f336fafb686e602bbbaf5ec955b10d567fbe3ab6ff6bd",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1782",
+      "case_id": "pvlib__pvlib-python-1782-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pvlib__pvlib-python-1782",
+      "manifest_sha256": "ffd13d872a9e57bf3d9772df07d5e5fbc9adc05382b03085abe56ba2803a9af2",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-980",
+      "case_id": "pvlib__pvlib-python-980-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pvlib__pvlib-python-980",
+      "manifest_sha256": "85359807b001b66f7a117e14bf6728a80ba356739ce0259a21d70d50568e29c9",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "pydicom__pydicom-1031",
+      "case_id": "pydicom__pydicom-1031-ds1-env2-r1",
+      "repo_url": "https://github.com/pydicom/pydicom",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pydicom__pydicom-1031",
+      "manifest_sha256": "fadc34de838bb05ed10f128a7882651b6dc2d37c6fd69d3f9272c9cd7eaacbb0",
+      "group_id": "repo:pydicom/pydicom"
+    },
+    {
+      "sample_id": "pydicom__pydicom-800",
+      "case_id": "pydicom__pydicom-800-ds1-env2",
+      "repo_url": "https://github.com/pydicom/pydicom",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pydicom__pydicom-800",
+      "manifest_sha256": "463a9a411c726381976555b7cb374a1f2ce7bb87694e0392dbe5f30bea8c2f31",
+      "group_id": "repo:pydicom/pydicom"
+    },
+    {
+      "sample_id": "pydicom__pydicom-900",
+      "case_id": "pydicom__pydicom-900-ds1-env2",
+      "repo_url": "https://github.com/pydicom/pydicom",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pydicom__pydicom-900",
+      "manifest_sha256": "5cdd803d883fd1d1cb839fa714bb809785f9af5c1cf4101264ab422704500d35",
+      "group_id": "repo:pydicom/pydicom"
+    },
+    {
+      "sample_id": "pydicom__pydicom-938",
+      "case_id": "pydicom__pydicom-938-ds1-env2",
+      "repo_url": "https://github.com/pydicom/pydicom",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pydicom__pydicom-938",
+      "manifest_sha256": "b25cd445467f19b80a410e3cae56e3ac3f34bc9cf50e5e628357f404fb428ff4",
+      "group_id": "repo:pydicom/pydicom"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1262",
+      "case_id": "pylint-dev__astroid-1262-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__astroid-1262",
+      "manifest_sha256": "38b0847f500bc8557204c54a98585a2ac1c8fce2f79b874df2cff999d1951a26",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1719",
+      "case_id": "pylint-dev__astroid-1719-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__astroid-1719",
+      "manifest_sha256": "183c16c5b8e3e675a5eca387defc0be3a215715c5eca559d8ddb9a484bb857c6",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1959",
+      "case_id": "pylint-dev__astroid-1959-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__astroid-1959",
+      "manifest_sha256": "f7500c5aac352afdee137afed95c353320d8c55feab896e0ffcab786496f94a4",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-2023",
+      "case_id": "pylint-dev__astroid-2023-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__astroid-2023",
+      "manifest_sha256": "ec44bf4e47a26c10cc75077ef1f113b78584b477715ad058dd37752264a2ca52",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-2309",
+      "case_id": "pylint-dev__astroid-2309-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__astroid-2309",
+      "manifest_sha256": "d48187f05eb0e05eadfabb2a70b0d6f9b084bab20f2a965efbf4e57b86e8759f",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4175",
+      "case_id": "pylint-dev__pylint-4175-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4175",
+      "manifest_sha256": "19b4ed1fea543434bbae5063cd0d77475bb444cd82b7139699835e1b42736e52",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4492",
+      "case_id": "pylint-dev__pylint-4492-ds1-extra",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4492",
+      "manifest_sha256": "ee38803e76317c7562b8b83a28d034a7d7f75a2decda68dcc97a64c11ec44847",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4661",
+      "case_id": "pylint-dev__pylint-4661-ds1-extra",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4661",
+      "manifest_sha256": "1be6e8a25afdc135dc3c93084196fd9a7251a28456ea2ff7ba7cd9ee3bd1b242",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4669",
+      "case_id": "pylint-dev__pylint-4669-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4669",
+      "manifest_sha256": "cde34c931807eb3bf33795b51b335f99310430037b8b9ea8f40be1512fbf7454",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4703",
+      "case_id": "pylint-dev__pylint-4703-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4703",
+      "manifest_sha256": "091ee19d1daf870b5bb59c8e6af65433ccec4daf64b34937a68163682780439a",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4812",
+      "case_id": "pylint-dev__pylint-4812-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4812",
+      "manifest_sha256": "57fb7ff31cae06067ec7ba54fb6ddb17ed6f5b487be6a9e5d9446e4127b7cced",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4858",
+      "case_id": "pylint-dev__pylint-4858-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4858",
+      "manifest_sha256": "bf7719ff183540dbf01141769c96498c0e04021f1dc5b06952b3b7f63defd502",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-4970",
+      "case_id": "pylint-dev__pylint-4970-ds1",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-4970",
+      "manifest_sha256": "3ece520c62c43b046080e426f3e7693af8f13efe767da871283b113c102cca02",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-5201",
+      "case_id": "pylint-dev__pylint-5201-ds1-extra",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-5201",
+      "manifest_sha256": "81c25e0b3ad4cf2faecb7b04f0997b51a153c84eb9befd4a19f27010c598e91a",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-5743",
+      "case_id": "pylint-dev__pylint-5743-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-5743",
+      "manifest_sha256": "343ed767864e3d3c1f7d412ac70f7b7729f3126444e4252e5972e690223d82dd",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-5859",
+      "case_id": "pylint-dev__pylint-5859-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-5859",
+      "manifest_sha256": "6062e8a982d76b1676b6bf7c0a25d8ebe2dfec24a791ca17aaef52279dce9e3e",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-6059",
+      "case_id": "pylint-dev__pylint-6059-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-6059",
+      "manifest_sha256": "928a3dbf53df6e9f5b973dbf475b999425f9a250788b32dacb3963fd0d005efc",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-6357",
+      "case_id": "pylint-dev__pylint-6357-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-6357",
+      "manifest_sha256": "5ae36fa423ed715e867c6111edfec289b716f67325e9aefbe27b1fb7406f11ce",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-6358",
+      "case_id": "pylint-dev__pylint-6358-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-6358",
+      "manifest_sha256": "29914d05442688355a016f07dab2af97d59348e5670bbf82f09ff559b0ff78b3",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-6386",
+      "case_id": "pylint-dev__pylint-6386-ds1-extra",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-6386",
+      "manifest_sha256": "b801f932282a38cbb6f946b5a0ffd31a8e279a3cf05899d976c99dc9d9e83d82",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-6506",
+      "case_id": "pylint-dev__pylint-6506-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-6506",
+      "manifest_sha256": "cbf1bebf1b8bdbd9251cda1d72e0e4a5c95f87742c2b132e1f79e332fcab371d",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-6517",
+      "case_id": "pylint-dev__pylint-6517-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-6517",
+      "manifest_sha256": "3ec1f923448a4471d3d4028edfb11665601728bf07adcfb84ae6fa8ba08606af",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-7228",
+      "case_id": "pylint-dev__pylint-7228-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-7228",
+      "manifest_sha256": "da856e7ab3356ad86171da1b15ef09f684c07d59b4c9ee2dfb86076f377863a9",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pylint-dev__pylint-7993",
+      "case_id": "pylint-dev__pylint-7993-ds1-env2",
+      "repo_url": "https://github.com/pylint-dev/pylint",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pylint-dev__pylint-7993",
+      "manifest_sha256": "2a75450a8b0f66044098bcdd327a5043a0d6f8a92f702374dbf470e67537b34e",
+      "group_id": "repo:pylint-dev/pylint"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-10081",
+      "case_id": "pytest-dev__pytest-10081-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-10081",
+      "manifest_sha256": "5e9b3abc3fe68f1363274fd9e2ef85f92dae121b0663d228ba16bc65a3c6bcda",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-10343",
+      "case_id": "pytest-dev__pytest-10343-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-10343",
+      "manifest_sha256": "f4fa985389bf8bce460079c491d94f5a04b443394516866f7b0c2323ce405122",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-10552",
+      "case_id": "pytest-dev__pytest-10552-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-10552",
+      "manifest_sha256": "13db367dd1b377dd4adaea7b4faad4fbc0a5c371f769e3ee14a20dfab4082465",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-10624",
+      "case_id": "pytest-dev__pytest-10624-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-10624",
+      "manifest_sha256": "86e1a887e019917d2d1e31a1363818f7b4b61224fca0d9f4786f0833546e8aa2",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7499",
+      "case_id": "pytest-dev__pytest-7499-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-7499",
+      "manifest_sha256": "cb89ae42c8f9ff7f801ae345288ef375dedc780b28044214e40315cf7979b554",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7500",
+      "case_id": "pytest-dev__pytest-7500-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-7500",
+      "manifest_sha256": "ce6270332f94ce3c9d3edc962b8f01300a25fd4cfa812498dddcb16c983fc6f5",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7535",
+      "case_id": "pytest-dev__pytest-7535-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-7535",
+      "manifest_sha256": "ca8e07c8cb985ef42b48c13a92a4c3b7c153d3a9818beac395d9ee94c2d1d7a4",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7673",
+      "case_id": "pytest-dev__pytest-7673-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-7673",
+      "manifest_sha256": "7ae39abfcf246e93c35607dbba1a3c090bb3485815fc4801c25169ac34ecccac",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7749",
+      "case_id": "pytest-dev__pytest-7749-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-7749",
+      "manifest_sha256": "1c33219cc9be8a66bf3e97a7dede3cb3c9d3c45fc018c44d99229b661eb1b634",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7982",
+      "case_id": "pytest-dev__pytest-7982-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-7982",
+      "manifest_sha256": "a81748caf3b17e9985b8195c59f5f89aa08bf3aadd02dd8c54de04f5a8087656",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-8250",
+      "case_id": "pytest-dev__pytest-8250-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-8250",
+      "manifest_sha256": "b9006705933c60cd06983497d1b76682d3f3ca540a9f473dcbcd5e6a992aac46",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-8365",
+      "case_id": "pytest-dev__pytest-8365-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-8365",
+      "manifest_sha256": "da0ea3196aa47a835e4b95550fcb5e5bf9c95a338df9db30c1c79a4d7bbe3872",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-8422",
+      "case_id": "pytest-dev__pytest-8422-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-8422",
+      "manifest_sha256": "3c1efc41323080aaa3d8c65be13bb206d531ab22816289e25642eb931c334f24",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-9064",
+      "case_id": "pytest-dev__pytest-9064-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-9064",
+      "manifest_sha256": "2b202debd73520e58a1d25362357b8c3a8013d29dfba67c15b4af119495793a2",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-9279",
+      "case_id": "pytest-dev__pytest-9279-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-9279",
+      "manifest_sha256": "a381c954bba0e57745314c79e48afa9f01b021f1ff9a47d47874cacbec8a04ca",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-9359",
+      "case_id": "pytest-dev__pytest-9359-ds1-eval-scm1",
+      "repo_url": "https://github.com/pytest-dev/pytest",
+      "role": "test",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/pytest-dev__pytest-9359",
+      "manifest_sha256": "52c8c6aaa274fc08f2d95edca6d08c9930a6794479312277afe9b1ce5062c08e",
+      "group_id": "repo:pytest-dev/pytest"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10320",
+      "case_id": "sphinx-doc__sphinx-10320-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-10320",
+      "manifest_sha256": "5a2c8a01d1cfa1b85e1222fbda11ba28e918651a2d1278df9e0e1193ce15573d",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10321",
+      "case_id": "sphinx-doc__sphinx-10321-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-10321",
+      "manifest_sha256": "453b0a1f12baf7ad84f9156d39e5d2b46fbce8963e8dad74e645eb7182ff9e9a",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10323",
+      "case_id": "sphinx-doc__sphinx-10323-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-10323",
+      "manifest_sha256": "214d7348cd455ed9bceb4208d58f70131eed0217cc76241158ec88628eed2b13",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10353",
+      "case_id": "sphinx-doc__sphinx-10353-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-10353",
+      "manifest_sha256": "6c8ab9f1607a5584d17eaad1cf18b5def8453f43184dbe22b823a227b469bb27",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10457",
+      "case_id": "sphinx-doc__sphinx-10457-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-10457",
+      "manifest_sha256": "2516dfb57f1859a8595e3e4c527a17d33211052b18ee359101b2aee2c3c76f50",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10466",
+      "case_id": "sphinx-doc__sphinx-10466-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-10466",
+      "manifest_sha256": "ccb9d822cd3baa396b3caa51d09d0e3c847c6eec2c3ac897b501f8eb7d8467e7",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7440",
+      "case_id": "sphinx-doc__sphinx-7440-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7440",
+      "manifest_sha256": "418e9e0ad839026f7ab0552dca95e94c26f6c3e7717d68bb9b9428269f89371c",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7454",
+      "case_id": "sphinx-doc__sphinx-7454-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7454",
+      "manifest_sha256": "d0c47697f9b192f7dd1dad2229902de46fa2b2db18b12b3e03c6a6ed3af1187e",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7738",
+      "case_id": "sphinx-doc__sphinx-7738-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7738",
+      "manifest_sha256": "26b2da0ba2e1e294582ce414966ddc911e1759f0d830c6af24f77d02d83f0210",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7814",
+      "case_id": "sphinx-doc__sphinx-7814-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7814",
+      "manifest_sha256": "c71ea31136f5038f0a78f15e91632bc6f8e13822cddd50b72b207cae8745300b",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7859",
+      "case_id": "sphinx-doc__sphinx-7859-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7859",
+      "manifest_sha256": "8a8478b5396334b07186a072deeec942ac65b2a138c768fe48b5b99d1c0ae325",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7889",
+      "case_id": "sphinx-doc__sphinx-7889-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7889",
+      "manifest_sha256": "eebb7426b1c77353c66920ff2b6c706ecb00059840ec35cd4b1693f7f445b3cc",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7923",
+      "case_id": "sphinx-doc__sphinx-7923-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7923",
+      "manifest_sha256": "c6e07dab573c391681482004d2e14737630a10e498b89434e7bc4d44075e52e7",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7961",
+      "case_id": "sphinx-doc__sphinx-7961-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-7961",
+      "manifest_sha256": "17f8912829521efcb63785ae66fdcb91750dd06b6e92c046de2c4684059c3cee",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8020",
+      "case_id": "sphinx-doc__sphinx-8020-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8020",
+      "manifest_sha256": "bd2a7126cf47fffd39211e1f23f7ed094a87065ad47b4131086694c2f5db5485",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8202",
+      "case_id": "sphinx-doc__sphinx-8202-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8202",
+      "manifest_sha256": "485c1b493c38c85f32cb7b9a28a4f1fdef14da861aabcae63f4bbf3ba185fd97",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8264",
+      "case_id": "sphinx-doc__sphinx-8264-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8264",
+      "manifest_sha256": "87f60e323f9a145f93dca5c33e108ff340a29ae0cc44346904d8f2f3986f0c1d",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8284",
+      "case_id": "sphinx-doc__sphinx-8284-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8284",
+      "manifest_sha256": "e75c0f236226553e340086e55d4fcce8b06ad2451a3f03afeb34b74f1083325b",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8459",
+      "case_id": "sphinx-doc__sphinx-8459-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8459",
+      "manifest_sha256": "1e47726f84180cb794462ba9251f235774b494b5bb6f46a8c9ebd89ed88f5a52",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8506",
+      "case_id": "sphinx-doc__sphinx-8506-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8506",
+      "manifest_sha256": "d80a6af9ad64842d5756af05a0f82676d89d2290f944c39b9dfd5053234ee897",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8595",
+      "case_id": "sphinx-doc__sphinx-8595-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8595",
+      "manifest_sha256": "20f94ce957aec6c320458bcf2087359251cdce709da2d2d4f1f5bef93effc5bc",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8627",
+      "case_id": "sphinx-doc__sphinx-8627-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8627",
+      "manifest_sha256": "b61cf512c674354ed802cd38991f434774471c3bbf92b57932bdd081169ade8b",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8679",
+      "case_id": "sphinx-doc__sphinx-8679-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8679",
+      "manifest_sha256": "7917cd3301c5e18d9320f53213cc44d6d03193da463a8886eb56149ebd508987",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8697",
+      "case_id": "sphinx-doc__sphinx-8697-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8697",
+      "manifest_sha256": "8a69d1b6ba855f24bddeb2a8d000962fa590f3491c6849c12f336e968a94de28",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8713",
+      "case_id": "sphinx-doc__sphinx-8713-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-8713",
+      "manifest_sha256": "850e33028604d42d747e5ba5b0d939b0bd81f51a1faa786aca17ea4e5f4d0db9",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9104",
+      "case_id": "sphinx-doc__sphinx-9104-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9104",
+      "manifest_sha256": "3cd8aee79731740b5cbedd35f55b39c97856ba0675744d0c3c47678cc2c4b380",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9180",
+      "case_id": "sphinx-doc__sphinx-9180-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9180",
+      "manifest_sha256": "cf2dd53f807abe2c71d1a0c3be65e4a6e12ce016de618e61c473bebc2635bcc5",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9207",
+      "case_id": "sphinx-doc__sphinx-9207-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9207",
+      "manifest_sha256": "268bd94a205e4aae840e5ba46bb300e6f04f4e4eb3b860d00e5e6ec7dbd57e00",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9230",
+      "case_id": "sphinx-doc__sphinx-9230-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9230",
+      "manifest_sha256": "36a7252197975011303bb7c4c63b0183f9b0c333acd547d9dc1f3886640e65de",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9231",
+      "case_id": "sphinx-doc__sphinx-9231-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9231",
+      "manifest_sha256": "338954f96047d8b4b90fafce635b75f27034cd225cc9a5292a4d39e29a304f63",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9258",
+      "case_id": "sphinx-doc__sphinx-9258-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9258",
+      "manifest_sha256": "f60fd8f65577e6dd7d1d184b12957367650625350f8a602b1c0c08291ff8d400",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9320",
+      "case_id": "sphinx-doc__sphinx-9320-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9320",
+      "manifest_sha256": "95cf7bab4c35af9d5b37b40632ba657b7eaeb50029e7126ae94e66856577e03b",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9350",
+      "case_id": "sphinx-doc__sphinx-9350-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9350",
+      "manifest_sha256": "52fd38b3d2e6799574e69c0b7ddded4efdf3a32f64391b86eac66c661b43854c",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9464",
+      "case_id": "sphinx-doc__sphinx-9464-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9464",
+      "manifest_sha256": "f1e9f1a0eaf824511817484694b4589c6b044104e0ec36defbcb9197eb4f66b3",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9591",
+      "case_id": "sphinx-doc__sphinx-9591-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9591",
+      "manifest_sha256": "d65fb4777634229000af0eafcb759c2b4dbd6a888d9c5906e5d1c1573f6473d5",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9658",
+      "case_id": "sphinx-doc__sphinx-9658-ds1-env2-deps",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9658",
+      "manifest_sha256": "7706c8de979996326b74426b62f14195488993855665f445e104535554c42894",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-9665",
+      "case_id": "sphinx-doc__sphinx-9665-ds1",
+      "repo_url": "https://github.com/sphinx-doc/sphinx",
+      "role": "validation",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sphinx-doc__sphinx-9665",
+      "manifest_sha256": "a404c5b8f69667663396325f1786728afbf2c5181d9d06d432b35b347ede7761",
+      "group_id": "repo:sphinx-doc/sphinx"
+    },
+    {
+      "sample_id": "sympy__sympy-11400",
+      "case_id": "sympy__sympy-11400-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11400",
+      "manifest_sha256": "00ec144547c318d44e2e4359ca0f2b13ee9b366aa1a5c164a47a23044cfca7dc",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11438",
+      "case_id": "sympy__sympy-11438-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11438",
+      "manifest_sha256": "c59a9ff53405efbc3cc539f55e4b324df79117d95a1369786c101c85a8ddcd77",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11618",
+      "case_id": "sympy__sympy-11618-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11618",
+      "manifest_sha256": "7b57d30298487bb331303631dd0956b60e36886a3b2d3f6b8273ee7f5180d02e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11788",
+      "case_id": "sympy__sympy-11788-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11788",
+      "manifest_sha256": "e45a92830e7ca0d4e5ff5cef45a146bbe4ab72f7fe95a572fe7c44d4cf284b6c",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11794",
+      "case_id": "sympy__sympy-11794-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11794",
+      "manifest_sha256": "5d9325f3c78ba96d6a79d1c784f87c566a28443c56eadd07cd33f5e592d2eee2",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11796",
+      "case_id": "sympy__sympy-11796-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11796",
+      "manifest_sha256": "2f5d16447c4e5b6a8d997c55a05b85de7c3c2ea5940b8ea1d0783b5f6a07c05a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11822",
+      "case_id": "sympy__sympy-11822-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11822",
+      "manifest_sha256": "e848f8ffe31d485b0da23e0c27416f1e13c06f9b0581a6809e72d52608fe693e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11831",
+      "case_id": "sympy__sympy-11831-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11831",
+      "manifest_sha256": "851d6b1379d63065f7d6240396f01b1be5ba03a1e2b6d49c86f5c4b57d911be7",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11870",
+      "case_id": "sympy__sympy-11870-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11870",
+      "manifest_sha256": "a974107a97b2db43422b3db6d6c0b4c613ccc4820e82972b3a09988455a860f6",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11897",
+      "case_id": "sympy__sympy-11897-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11897",
+      "manifest_sha256": "2eb562c52539037948e0bbf0b7703ee17f8965ba6f1543d1f38ec2c83b5c3f86",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-11919",
+      "case_id": "sympy__sympy-11919-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-11919",
+      "manifest_sha256": "97331f16fbf12aa8d07b8af4a96308bc57e5e009f9d0c56365301b3929499c7f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12096",
+      "case_id": "sympy__sympy-12096-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12096",
+      "manifest_sha256": "f41a2fdac0b3b4698c8b798dfa9e3a6e06c99825627ee3a699e47dda242fc0f6",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12171",
+      "case_id": "sympy__sympy-12171-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12171",
+      "manifest_sha256": "b96a1919eda974e8b27e640bbc93526d171751a2ee6a2e10045f339a79ee74c1",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12183",
+      "case_id": "sympy__sympy-12183-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12183",
+      "manifest_sha256": "a24b81598f3c6ac70c0ee1ca83bf33aa9f53995cd384f7859e54ff3bdedfa82d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12301",
+      "case_id": "sympy__sympy-12301-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12301",
+      "manifest_sha256": "eb1fb40236637a499474f0be613d56e2446c2dfbb3663cf4926868b3b2de5666",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12307",
+      "case_id": "sympy__sympy-12307-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12307",
+      "manifest_sha256": "2f64f01b251ec3164eae4db45be7357ea4e7546819f7c989522223054b9cdc86",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12419",
+      "case_id": "sympy__sympy-12419-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12419",
+      "manifest_sha256": "7b0a1bfe9c1388ef1a4d33bcc0d06eb757272bb001aab1a135f34beae38fd03c",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12428",
+      "case_id": "sympy__sympy-12428-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12428",
+      "manifest_sha256": "bb30fcd7e42958e27113fe20d6ee9149884ddb6c4792965f1601460af8d1647f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12454",
+      "case_id": "sympy__sympy-12454-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12454",
+      "manifest_sha256": "9e9cafaffae821964aedba997d4e4f932f72c2d84e2f7a81733632917ae60963",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12481",
+      "case_id": "sympy__sympy-12481-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12481",
+      "manifest_sha256": "5af1a87a88473228fae121505fdd4bdfe6da8c3d9c96ae545157d15b1623ad6e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-12529",
+      "case_id": "sympy__sympy-12529-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-12529",
+      "manifest_sha256": "296ca643e702c1e71f3a990716388204f86b391211b425f686a8fd8ac714ae19",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13031",
+      "case_id": "sympy__sympy-13031-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13031",
+      "manifest_sha256": "ad91aaaf107561a1a6a3961177b1a4aa4ee045cf80891708dc65433c662433dd",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13043",
+      "case_id": "sympy__sympy-13043-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13043",
+      "manifest_sha256": "29f8c2c5b389cffd792366e3947f34d9feda58bf493fc2f8d2cf9e48ef84d8d1",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13146",
+      "case_id": "sympy__sympy-13146-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13146",
+      "manifest_sha256": "af46bb2227d433c64f038ba1cb1a054b78f6c0f91229165504993b0f5b545492",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13173",
+      "case_id": "sympy__sympy-13173-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13173",
+      "manifest_sha256": "453de7bb40cf21462d837b61971d76e52783a4730bf553fe0982c9620e004c6e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13185",
+      "case_id": "sympy__sympy-13185-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13185",
+      "manifest_sha256": "d9e25713085d4e5229797f1ba721404be679b03a77d8f0d474661c50d88b0f41",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13198",
+      "case_id": "sympy__sympy-13198-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13198",
+      "manifest_sha256": "58d2571c597e0f2c3de14713a6d9543aa97f7de75e0792932646d4ea0cd4b28d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13309",
+      "case_id": "sympy__sympy-13309-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13309",
+      "manifest_sha256": "f2f6037c76fc91f93058ca105275c0f6e55b838f27032823aa539fe8ae5e2328",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13346",
+      "case_id": "sympy__sympy-13346-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13346",
+      "manifest_sha256": "45c471b79e313d7d1ab106612580ec86c193780573966080a580dc1a2a1b5cd7",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13361",
+      "case_id": "sympy__sympy-13361-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13361",
+      "manifest_sha256": "1937116c99ba28fc2d42dba64564bd5a1517fc8595cca831ba7dd9f3151b7f21",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13364",
+      "case_id": "sympy__sympy-13364-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13364",
+      "manifest_sha256": "64eb9f76db7686f018bb8de057b6126b7192d10686b19556788f48c46b1431ff",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13369",
+      "case_id": "sympy__sympy-13369-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13369",
+      "manifest_sha256": "d914dfb8b73b1b880ccf305f472803c58cf3e7ad2eecf0bdb1d57bed03a6dbd4",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13372",
+      "case_id": "sympy__sympy-13372-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13372",
+      "manifest_sha256": "47024dd09b6d7b403800201c671bfccc4aa4435648c8f6f0d3c7799e9d9d8409",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13437",
+      "case_id": "sympy__sympy-13437-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13437",
+      "manifest_sha256": "4e5ef8ecc609aa8c87f5fab0e3132dfb923423a5c0c1d822f3978b0c06f7342d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13471",
+      "case_id": "sympy__sympy-13471-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13471",
+      "manifest_sha256": "7063d69ead56c693eb13b9ac9b719bab6b4ceacad0b6f9b71770b603d78c7265",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13480",
+      "case_id": "sympy__sympy-13480-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13480",
+      "manifest_sha256": "d2302a170f9393ab652b268980d8998e59875859c8e31ed1c50bf0d63d8b0953",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13551",
+      "case_id": "sympy__sympy-13551-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13551",
+      "manifest_sha256": "0392f54541f448bf5cadf69b2a3f34b7b599688e9691f220e056ab43e2b8909d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13574",
+      "case_id": "sympy__sympy-13574-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13574",
+      "manifest_sha256": "00ffc97aadd8e916cb625fa9aa5dc7941da2376f6d6cc88f21d3790bd3b48736",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13581",
+      "case_id": "sympy__sympy-13581-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13581",
+      "manifest_sha256": "8157371cadb1ddd4b4cdc422488ad227b2caf655c9d054148d1b53c8569496da",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13615",
+      "case_id": "sympy__sympy-13615-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13615",
+      "manifest_sha256": "281bd1f1eb8883bc835f42b3bc6d5c562a249c7618eb91327a9e953db716e8be",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13647",
+      "case_id": "sympy__sympy-13647-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13647",
+      "manifest_sha256": "350390322e751ea01b2e70d68378bcfca3f3b36501dc836e4dd23ad30c3b3cd4",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13773",
+      "case_id": "sympy__sympy-13773-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13773",
+      "manifest_sha256": "36c95c4a1e8d434d7a943f472e1c888868d385fb49e8dfff5d0a9c29c2fd94af",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13840",
+      "case_id": "sympy__sympy-13840-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13840",
+      "manifest_sha256": "591e4e1feda81f3b8d535b531aeecdf3681f1489ed8173524f1e5426e8accd7a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13895",
+      "case_id": "sympy__sympy-13895-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13895",
+      "manifest_sha256": "b5758a2e67bd0f9b0816912fda34bcef718d33b29256623ee6ec00132aeac0b8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13915",
+      "case_id": "sympy__sympy-13915-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13915",
+      "manifest_sha256": "9890b8204d70dc507923d829dcd82d75fbfce4344e6b78580f0cdd126736d893",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13971",
+      "case_id": "sympy__sympy-13971-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13971",
+      "manifest_sha256": "3370b215afedfe57e7a1e8ffc9db4f084cbd8d74cfc1bb5c154f9fc7f15d2b31",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-13978",
+      "case_id": "sympy__sympy-13978-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-13978",
+      "manifest_sha256": "7d70a738e6b0fee091c18d516e19c4d6b143d5c81799d832bde17b90bb817c86",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14024",
+      "case_id": "sympy__sympy-14024-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14024",
+      "manifest_sha256": "45590fe0d5bc29f45c31451b2244f60e26e9884035120eb861a2ad104d097e31",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14031",
+      "case_id": "sympy__sympy-14031-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14031",
+      "manifest_sha256": "95373b9df9805b9822be83b25fd3713924d5007d4089557d732ad2c440c1e42a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14038",
+      "case_id": "sympy__sympy-14038-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14038",
+      "manifest_sha256": "e496bba29be5e96574ef7ab79d985a358eb003545af030508319e0548c0c84c5",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14070",
+      "case_id": "sympy__sympy-14070-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14070",
+      "manifest_sha256": "f2b299fcb9b9b9e6957c63818fed64facafc82339fc4ad11b223be40e9dac99a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14082",
+      "case_id": "sympy__sympy-14082-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14082",
+      "manifest_sha256": "152481db066a571414dd05e65a1ccd33da63d4c09d8481ceeeb8a0b67174ea82",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14104",
+      "case_id": "sympy__sympy-14104-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14104",
+      "manifest_sha256": "f97cf5f13761814fce1457a67174da3601af04c0b71f3ecd16b796f8d3d136ad",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14166",
+      "case_id": "sympy__sympy-14166-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14166",
+      "manifest_sha256": "b410ff58b56eb34142d47fd151eb1a6edc2cec7cb005786138653c8c3294f130",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14296",
+      "case_id": "sympy__sympy-14296-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14296",
+      "manifest_sha256": "06fdaeda734a5d262d55c9f7da44bdd72727939d1df85c45b3c8db0f7b70545f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14317",
+      "case_id": "sympy__sympy-14317-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14317",
+      "manifest_sha256": "eb1a49b2819548396d65ac304c12aad2fbef6df4ced1187085ad6cc227e26b34",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14333",
+      "case_id": "sympy__sympy-14333-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14333",
+      "manifest_sha256": "1003d67ba1182e70b16d1efcf94ac94927930b80fdf0328f2c44a30dc8e37b51",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14575",
+      "case_id": "sympy__sympy-14575-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14575",
+      "manifest_sha256": "49cbffa0a67caad72d470bf7b834ef24af43c3a3a90da200beccf4ee53388616",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14627",
+      "case_id": "sympy__sympy-14627-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14627",
+      "manifest_sha256": "5de81be4cf5868240ee4ce6a25d8d8f9fea2de8aa64bbeee60460203c6cd988e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14699",
+      "case_id": "sympy__sympy-14699-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14699",
+      "manifest_sha256": "f46969752a6c63a94f322b173f0467f0a2c640b42b053303493a1dabf3b8644f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14711",
+      "case_id": "sympy__sympy-14711-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14711",
+      "manifest_sha256": "ccef9455c7797d72e783e3c54c2da2753ffe9553604f416cdd598bb86fe5947b",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14774",
+      "case_id": "sympy__sympy-14774-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14774",
+      "manifest_sha256": "d62480cc00d78575af692700274d78be5e0cec6866f5a97c8a829b5505b91995",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14817",
+      "case_id": "sympy__sympy-14817-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14817",
+      "manifest_sha256": "5a85a00606bd9e60996438ec80fa497b4b4e70d3302b57ce0e83282922936d99",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-14976",
+      "case_id": "sympy__sympy-14976-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-14976",
+      "manifest_sha256": "3fcc8732303deed4442030abfbe1a8e6f097b4f9e4db9a10360dbb96b45bd46d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15017",
+      "case_id": "sympy__sympy-15017-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15017",
+      "manifest_sha256": "c047656c58c2c9b0b574836d639695b9dab215d35ce4e9da194028bf68be6d1e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15151",
+      "case_id": "sympy__sympy-15151-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15151",
+      "manifest_sha256": "354e8dc31b6b9fbd2c48d727cb222affb5c524d99373793fcbb82e88f58ad3e0",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15232",
+      "case_id": "sympy__sympy-15232-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15232",
+      "manifest_sha256": "6c0c858fd455dd4793d98ebff61ae85d958a309f5eb0246adff6ae0f3cbf6bc0",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15308",
+      "case_id": "sympy__sympy-15308-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15308",
+      "manifest_sha256": "11e67b0c95bae6f2d0e83e595e028eb49f417b75373a35203972e6f51ac830da",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15320",
+      "case_id": "sympy__sympy-15320-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15320",
+      "manifest_sha256": "41e3da25a1217363f2b43db7c001382dd3da3c1b73d6ac1b99b8715e82784313",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15346",
+      "case_id": "sympy__sympy-15346-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15346",
+      "manifest_sha256": "dd9c43bc58e38ab67b13f6a3aa972e8d19b4314ea94af39d2edc37b304055e49",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15349",
+      "case_id": "sympy__sympy-15349-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15349",
+      "manifest_sha256": "42c8bfd5260602a71fd5c75245aedaac55796be5f0f240ad87a051b12f26a258",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15523",
+      "case_id": "sympy__sympy-15523-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15523",
+      "manifest_sha256": "b4fdc2f9a4570543eb1b6a6de62634dcdd8f470b8539f785f3672c2fe6939b0a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15542",
+      "case_id": "sympy__sympy-15542-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15542",
+      "manifest_sha256": "043fe6c2bb1e14286c37c55b5b46a9bb826db472751b49f3548fba46b1e3ad38",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15567",
+      "case_id": "sympy__sympy-15567-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15567",
+      "manifest_sha256": "85fca97f7c121dcc53d55001d377a35ba77c18a0559e6c1b66583365ccdf9482",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15599",
+      "case_id": "sympy__sympy-15599-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15599",
+      "manifest_sha256": "e19827873be79bbf3d4503a677e0b12cbf2f4083dc95c35a633d8163bd01cd9a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15609",
+      "case_id": "sympy__sympy-15609-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15609",
+      "manifest_sha256": "4f902d653ad0ce6dbf9de7334e84cc7a9ed880f514c922124fa2a2012c604885",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15635",
+      "case_id": "sympy__sympy-15635-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15635",
+      "manifest_sha256": "0be9fd1fd3aa1e50339a6a9e13852046ff711ff1e39c8776ba1da667d9d3b871",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15678",
+      "case_id": "sympy__sympy-15678-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15678",
+      "manifest_sha256": "b278eddcd373628b4f47f646f7921f01bf374d3ce8c7d216708b30984cd3dc6a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-15685",
+      "case_id": "sympy__sympy-15685-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-15685",
+      "manifest_sha256": "9d46ec4bc96ebd079ed17b8874257925333f3826735173702657395b62dfa2a4",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-16221",
+      "case_id": "sympy__sympy-16221-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-16221",
+      "manifest_sha256": "e6da2455728ac4a0a83b2c89a406a2130a8df3740a36af66842c3c1ba2c4dccf",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-17067",
+      "case_id": "sympy__sympy-17067-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-17067",
+      "manifest_sha256": "55257ceb8474ef57ad1f4c6c03cfbde41f3f06222dd6d2c87b418c6c1cc17eca",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18273",
+      "case_id": "sympy__sympy-18273-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18273",
+      "manifest_sha256": "11abd569ef718348d0c0c602d6d37b98cdcd38b26e3d3ef98d69ceca2ade1710",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18478",
+      "case_id": "sympy__sympy-18478-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18478",
+      "manifest_sha256": "a270dd471c019c21cc5cde002177939b63c90a894f2ea95b9cf565c21607aedb",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18532",
+      "case_id": "sympy__sympy-18532-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18532",
+      "manifest_sha256": "20dd2511f5c3feb49708a9c009ab69053124ae6251cb7a2961f8f6724ddf7f6b",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18605",
+      "case_id": "sympy__sympy-18605-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18605",
+      "manifest_sha256": "1c9098f4cdd3fd9c6253866dd13c2c2721b93d466e7664d9d63078920081d721",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18621",
+      "case_id": "sympy__sympy-18621-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18621",
+      "manifest_sha256": "ec1301c1913853ef59531ecd90902bba78fc71f0de84e167b508ef426da5f3d6",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18630",
+      "case_id": "sympy__sympy-18630-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18630",
+      "manifest_sha256": "cf8eae9e7f86ffa8a192834bc6919af7eed9a953d13391f60e8e3a5f90af8866",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18633",
+      "case_id": "sympy__sympy-18633-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18633",
+      "manifest_sha256": "ba588e7a78f5aab63d75826851c0c0acd3cd81010c4bf60825bb9ca3d145dab1",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18650",
+      "case_id": "sympy__sympy-18650-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18650",
+      "manifest_sha256": "44731c1f55f93f45edd00514c6de24a077b5fb66974c37496f939007d06d5465",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18698",
+      "case_id": "sympy__sympy-18698-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18698",
+      "manifest_sha256": "c6d2a3b05a3e92e2930a28ee1ee7cf3d91179a0a69ca7d435748f0169eb327ae",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18728",
+      "case_id": "sympy__sympy-18728-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18728",
+      "manifest_sha256": "b9d2db5d69a9a1f0a1d81c70eb67c61271ecb68a72f12d513536fd7d35a03b7c",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18744",
+      "case_id": "sympy__sympy-18744-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18744",
+      "manifest_sha256": "c737db5548287d06c64e07e0346ea0f29b034b05fae33bb320d404c365245cab",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18810",
+      "case_id": "sympy__sympy-18810-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18810",
+      "manifest_sha256": "208ba9e99237d71c2fddf3d58e4b7a9ebc485f5c311e5cb3534538727a2dcfc9",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18835",
+      "case_id": "sympy__sympy-18835-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18835",
+      "manifest_sha256": "42c17ea853dadbaee6c9f819c9aa6bb060212bc4036eb45386c5f3c8bcebf96e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18903",
+      "case_id": "sympy__sympy-18903-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18903",
+      "manifest_sha256": "1af84ad011a5b5a1fecfa158ff226625c06b1c05b4ad69bbc4bc2ee64354631e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18908",
+      "case_id": "sympy__sympy-18908-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18908",
+      "manifest_sha256": "26f43811db16df66d7594d2927304a18c0e35cb5ee1055f964724f928e404525",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-18961",
+      "case_id": "sympy__sympy-18961-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-18961",
+      "manifest_sha256": "66e4beddf251a5fac5153fa90e1f648c88dcaacfc31663b1c27776eb862fc515",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19007",
+      "case_id": "sympy__sympy-19007-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19007",
+      "manifest_sha256": "5e0090f6da33bf197a6b8be8706a1e404a55054db41a238661acf7bfb9882033",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19016",
+      "case_id": "sympy__sympy-19016-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19016",
+      "manifest_sha256": "d54e55e35cd9eecc90d2d803a1421892ccc8771f0e549023f84515bd0e77cf8d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19040",
+      "case_id": "sympy__sympy-19040-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19040",
+      "manifest_sha256": "5c8e294783af6920dccde923b7d7f28ec4f976875f527ee8ff7a989b54057b88",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19110",
+      "case_id": "sympy__sympy-19110-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19110",
+      "manifest_sha256": "388bc83cb98363a0aa0f76895d2b09de6cfffd482df4d01d45b996ad59fcc4ce",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19254",
+      "case_id": "sympy__sympy-19254-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19254",
+      "manifest_sha256": "de46cbe81e33214fc08ba224d2991a33c455dafb877f49630c0b326204abe468",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19346",
+      "case_id": "sympy__sympy-19346-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19346",
+      "manifest_sha256": "be16318e1c572717a5797007236bd56980302f17754bc97e02f98fe23ea75bc8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19487",
+      "case_id": "sympy__sympy-19487-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19487",
+      "manifest_sha256": "1c89b4b0324721a01cebc67857fe9448bb767a2544f749a32abcf565e6cdabcb",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19495",
+      "case_id": "sympy__sympy-19495-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19495",
+      "manifest_sha256": "9272e358b10a9b61771990683ed62a0d73ef09029a4ac8d2b44bc09638e74a31",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19601",
+      "case_id": "sympy__sympy-19601-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19601",
+      "manifest_sha256": "638be2eafb6aeb931e37509ab3bcd420adb3f4bfb8ddb754e5e0f989a794c617",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19637",
+      "case_id": "sympy__sympy-19637-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19637",
+      "manifest_sha256": "6d3eb89317e28f6d01e93e77a7155c4e9e168fcdab6708522fb86bab1ffe5423",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19713",
+      "case_id": "sympy__sympy-19713-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19713",
+      "manifest_sha256": "2eb370b3d0e90e96f148e5ff3aa9202eb3654ecf2bda5a6ffe52594dc04896c3",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19885",
+      "case_id": "sympy__sympy-19885-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19885",
+      "manifest_sha256": "5907e94ea090bf8ed5b8fc4e9d6ada47656a68b505e48b542b127d90e5e90e4b",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-19954",
+      "case_id": "sympy__sympy-19954-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-19954",
+      "manifest_sha256": "09f92766a32caaa9a70f6aee621cad8e0edc19faa688c275e5d7d6413db2e62f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20154",
+      "case_id": "sympy__sympy-20154-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20154",
+      "manifest_sha256": "b40d92a324649b25bdb2dfeb902bae1d9571d090fe3739ae1b5606b588168501",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20169",
+      "case_id": "sympy__sympy-20169-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20169",
+      "manifest_sha256": "0289daba5e2196e2f89d824253c74cf1713e4bd1cc581bc85257dc63a26bf9b6",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20212",
+      "case_id": "sympy__sympy-20212-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20212",
+      "manifest_sha256": "ba45b953e2533626e4dd391510d1d87b4eb2c31ba39bda90f6000143644752fe",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20264",
+      "case_id": "sympy__sympy-20264-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20264",
+      "manifest_sha256": "df8ca2bc2b783315126a338cddc566d7c49760e0e7bba965210735d57779dd43",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20428",
+      "case_id": "sympy__sympy-20428-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20428",
+      "manifest_sha256": "2b365027eb441076ea123f13668d05bbc0f61b03fa80439f7a3b4ff029d31336",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20442",
+      "case_id": "sympy__sympy-20442-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20442",
+      "manifest_sha256": "6477f42323bd7b8b9911507edf166498544c85f36c00007356dd2f4b4e57fd71",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20476",
+      "case_id": "sympy__sympy-20476-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20476",
+      "manifest_sha256": "ff8ccec6e45fe2754083d4735c31ed59e9b1f9a3b7afed4252c57055ee0cfc1a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20565",
+      "case_id": "sympy__sympy-20565-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20565",
+      "manifest_sha256": "f03d0cd05b7de789b19b38e3183561daa4ac2bc1a8e58deba2f77827cfaa61fa",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20639",
+      "case_id": "sympy__sympy-20639-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20639",
+      "manifest_sha256": "e6d3df5a310e084706ed157cdfc3197400dcac10cddda044c52117c84397cb83",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20741",
+      "case_id": "sympy__sympy-20741-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20741",
+      "manifest_sha256": "72d8bd85e617a2c497019e4733da5ba601f19de9f684a5f2c39d3813a9615354",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-20801",
+      "case_id": "sympy__sympy-20801-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-20801",
+      "manifest_sha256": "8037409b19dfa4454e6711d53454a3c3be4daf57b3c642f61a840643071d9c52",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21055",
+      "case_id": "sympy__sympy-21055-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21055",
+      "manifest_sha256": "d892a8f130c55481043cb2e2503097ccffe19e7e4cae297275014382a7d79ba5",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21101",
+      "case_id": "sympy__sympy-21101-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21101",
+      "manifest_sha256": "13b4fdde04139d304ffb4ed1748ca5686753a23c490d14f4b719d099636c1d51",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21171",
+      "case_id": "sympy__sympy-21171-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21171",
+      "manifest_sha256": "a45b7482312ed2f63d5348efa6b9b6c449156fc4841449530a80e1ff5acaa69a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21208",
+      "case_id": "sympy__sympy-21208-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21208",
+      "manifest_sha256": "1b69c2274da4d68e14c2ec3038f04d02e195c80549517ae704f56d3993cadf6f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21313",
+      "case_id": "sympy__sympy-21313-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21313",
+      "manifest_sha256": "19da517fafb604decc5b428b62ecd95c0fb32aecf6521e8066c18c78594b21c1",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21379",
+      "case_id": "sympy__sympy-21379-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21379",
+      "manifest_sha256": "cb1a892486c0e17871655c86106eb9f45a48ab39ed7ad760722506aafb58eb0a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21567",
+      "case_id": "sympy__sympy-21567-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21567",
+      "manifest_sha256": "8841b3fb4f478221a2f2dcd1837d38bb78607c7d032cbe4a07fc1e083421293a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21612",
+      "case_id": "sympy__sympy-21612-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21612",
+      "manifest_sha256": "294ccb02e073ddba120a8cd0fa0bfee34aa037a4d744a5fb35579fbdff1bb187",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21614",
+      "case_id": "sympy__sympy-21614-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21614",
+      "manifest_sha256": "f7bfa0e503373e622bb15c694f531692a8d997dc32e445051533be953a111882",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21627",
+      "case_id": "sympy__sympy-21627-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21627",
+      "manifest_sha256": "283e74a2cfa6a30edde8e9579f815b6d37c09c6069c16d7b9b0ab280afaa51ae",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21806",
+      "case_id": "sympy__sympy-21806-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21806",
+      "manifest_sha256": "11166ef2201749fd7acb717061c61098f5ad59a1a85e37848be70aba42f8cb28",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21847",
+      "case_id": "sympy__sympy-21847-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21847",
+      "manifest_sha256": "daecddfc38807b84498dd7b2f9726c4f20b65bd64c5bbac335df7b427310ecfd",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21849",
+      "case_id": "sympy__sympy-21849-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21849",
+      "manifest_sha256": "7a957b9a72b85b51730857160e6338e96946a007766e4da0a5536d0eea21580b",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21864",
+      "case_id": "sympy__sympy-21864-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21864",
+      "manifest_sha256": "479b8674f16da0350b259348d800ed4920905a468e2fd50c73f70e0019d278a8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-21930",
+      "case_id": "sympy__sympy-21930-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-21930",
+      "manifest_sha256": "9869bf6906643d5a459c755b8adc88a272a7541fbf9e3d009af53cb4fab625e9",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-22005",
+      "case_id": "sympy__sympy-22005-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-22005",
+      "manifest_sha256": "0c4fa276b67d398ee518f0a23ef540a0f97d251803686d2a8335ed6f2e4b96e9",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-22402",
+      "case_id": "sympy__sympy-22402-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-22402",
+      "manifest_sha256": "8cce0cb0f782e6c5b0fe6ca7fc36238d646994599eb184b73d91d373566ef43b",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-22706",
+      "case_id": "sympy__sympy-22706-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-22706",
+      "manifest_sha256": "41a1f9b376462a9aaf6897abf7aed4d77769d2179b5d5bc80c8dc1ef04101748",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-22714",
+      "case_id": "sympy__sympy-22714-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-22714",
+      "manifest_sha256": "1edeaa71076658f4a008b0ed3cdbd97f268484beba6e705f494d5cfcb08b8b48",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-22914",
+      "case_id": "sympy__sympy-22914-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-22914",
+      "manifest_sha256": "3a8ed6757a83980713d95e04a6de06e117de56d909e4d4f2b0c6ffa6cb70588c",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-22934",
+      "case_id": "sympy__sympy-22934-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-22934",
+      "manifest_sha256": "8dfb0a754520dfe64c86112700837640d6000775e2e98d542df3e4a00c550c08",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23021",
+      "case_id": "sympy__sympy-23021-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23021",
+      "manifest_sha256": "9cb8498e31a8ec3ac382d97df5aa964b5b888fb1e2f9d18e2c4a127a5d8d1a04",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23117",
+      "case_id": "sympy__sympy-23117-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23117",
+      "manifest_sha256": "abf36e361f6febe7c61d94178da15ee0eaaf380e410f811aa7634e207741e83f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23262",
+      "case_id": "sympy__sympy-23262-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23262",
+      "manifest_sha256": "cdf931186fb6693a9956dbdbe224176b3b9551f71f282fe7b18ffa6b54f29011",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23534",
+      "case_id": "sympy__sympy-23534-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23534",
+      "manifest_sha256": "85d82655792718b7c09f5171e149db72f0ebda7b391261a56c41a38ff03436c8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23560",
+      "case_id": "sympy__sympy-23560-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23560",
+      "manifest_sha256": "1d17bc396c208c5050ccc888b74c8ead6484a9d03aab07c93d0c3caa34dcaf21",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23808",
+      "case_id": "sympy__sympy-23808-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23808",
+      "manifest_sha256": "46d998520f381440c05404e8671a45c75f5fab402d78ed2d977f6381f9dfcab8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23824",
+      "case_id": "sympy__sympy-23824-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23824",
+      "manifest_sha256": "6f4a4b59e35beace7a37ba97c3697a259f1d527895c5b2b6d53609d078e4a457",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-23950",
+      "case_id": "sympy__sympy-23950-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-23950",
+      "manifest_sha256": "d10f8ef5ee1418bfa41aeeed362d14ef31951f578ea73d855b091cb4e143c986",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24066",
+      "case_id": "sympy__sympy-24066-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24066",
+      "manifest_sha256": "65bd03142bcc2fc41b176d5d0d823fdc2aa18f0299ce49375f95a203f60fc752",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24152",
+      "case_id": "sympy__sympy-24152-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24152",
+      "manifest_sha256": "158b7cfa33098ff2314fa77ae96c4f24181756ed506b8718fc52e69eda71399c",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24213",
+      "case_id": "sympy__sympy-24213-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24213",
+      "manifest_sha256": "bbbcfbae5b1c99b0830a81b5c28d55687ed94d669d50f0930d34848201145e81",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24325",
+      "case_id": "sympy__sympy-24325-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24325",
+      "manifest_sha256": "e8478af9bc8dc7833b54a50207193cc80b539649174bdb810f5f7175add4b43d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24370",
+      "case_id": "sympy__sympy-24370-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24370",
+      "manifest_sha256": "727f4ca6f7f17e26465c6807cc26992c0bc464b274332b3cb2e9027e1cb90900",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24443",
+      "case_id": "sympy__sympy-24443-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24443",
+      "manifest_sha256": "8509a2795d8a74e3dba4b22a8f8b7e4da033d95680699e945b1fd4d4950c128f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24455",
+      "case_id": "sympy__sympy-24455-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24455",
+      "manifest_sha256": "b29ecb93ee572f81bca1fbac33275c1357fa6658acc6d50332822db867a71bce",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "sympy__sympy-24539",
+      "case_id": "sympy__sympy-24539-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/records-retrieval-v2/sympy__sympy-24539",
+      "manifest_sha256": "dd55b03b0ee6178acc97a3157fd8f1d234d11fe2767f97dac71ce182c54551ef",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003552980325Z-1",
+      "case_id": "sympy__sympy-22914-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T003552980325Z-1",
+      "manifest_sha256": "8d0eef0dd94ce2276d31a96db2fa7c0e389e04aa8fd0d1116b8e8419a07cc1ff",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003813437020Z-3",
+      "case_id": "sympy__sympy-23950-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T003813437020Z-3",
+      "manifest_sha256": "853e37e433609eaa0224747c53bd6dc08b7947251204d900f7967bddff209e51",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010206924992Z-1",
+      "case_id": "sympy__sympy-11822-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T010206924992Z-1",
+      "manifest_sha256": "76736311ae1ec461969cac45eee5d45a60ded7e36fe2d6e940879fd5c8f7a14e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010206924992Z-3",
+      "case_id": "sympy__sympy-11822-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T010206924992Z-3",
+      "manifest_sha256": "a53296167e33e26306ddf59d75b7729b7cd566afa4b3940990d32da47253a316",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010533449247Z-2",
+      "case_id": "sympy__sympy-11831-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T010533449247Z-2",
+      "manifest_sha256": "46792dd5eb493c449e56b0c017c0cb32eb8ea2524263f9baaa911f7cf4eb03fe",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010624991086Z-1",
+      "case_id": "sympy__sympy-19040-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T010624991086Z-1",
+      "manifest_sha256": "8aa1a900d7131b11a845b0a67178e469be04c32097803ad1fba42a4772b57fab",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010624991086Z-2",
+      "case_id": "sympy__sympy-19040-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T010624991086Z-2",
+      "manifest_sha256": "5f860c213e9bdfb8bbeca66f1481657886e2fb0b3b77ffd323309772b30bcd19",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010809498391Z-3",
+      "case_id": "pylint-dev__astroid-946-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T010809498391Z-3",
+      "manifest_sha256": "a7fc08c4347c048c31ca7b1c0f8fc1d859614590700f4d1b81af38a0d7f40c62",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011028947416Z-1",
+      "case_id": "sympy__sympy-13361-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011028947416Z-1",
+      "manifest_sha256": "796f6ad9066d3052caef28fe25dd53acc92b3f5f241bca05c01503269aa7b2f5",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011028947416Z-3",
+      "case_id": "sympy__sympy-13361-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011028947416Z-3",
+      "manifest_sha256": "b5e0bad11bb0ef535b484521dd1770337c4ddbdea9fb6b671543ee9138cc50b0",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011147479110Z-1",
+      "case_id": "sympy__sympy-14711-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011147479110Z-1",
+      "manifest_sha256": "9e583dd8003a36b81fd3a38c77c500eab0ecf11f63dbae35d68bffd293fc4a71",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011147479110Z-2",
+      "case_id": "sympy__sympy-14711-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011147479110Z-2",
+      "manifest_sha256": "cd93381f8dc3829e60ef9fdc45557b1c283a6ed4a3276e2bfefd666aa7941c5e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011147479110Z-3",
+      "case_id": "sympy__sympy-14711-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011147479110Z-3",
+      "manifest_sha256": "2be28eb3d6e54a1e4cea0170f9592da873d8da9165d85f17647281e129896345",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011430979067Z-1",
+      "case_id": "sympy__sympy-20565-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011430979067Z-1",
+      "manifest_sha256": "57e6b4eef58e1d4ca7f1fc8b4512adaa629edb38ec1d34d9d1b24c02c7dbb4bc",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011430979067Z-2",
+      "case_id": "sympy__sympy-20565-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011430979067Z-2",
+      "manifest_sha256": "b9f0f234e123197204b010afcdf09b5b534540217a6ded17fc1ee8cd4f67464e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011430979067Z-3",
+      "case_id": "sympy__sympy-20565-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011430979067Z-3",
+      "manifest_sha256": "eb199782c5b79704d509b8e26b71f1595392c9e092a470b0fdfaed85c2821736",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011847377871Z-3",
+      "case_id": "sympy__sympy-15567-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T011847377871Z-3",
+      "manifest_sha256": "31381f33a3390fa8d8569250487123618a31330604e4b1ea3825c9b752d204ee",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T012017682888Z-1",
+      "case_id": "sympy__sympy-15349-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T012017682888Z-1",
+      "manifest_sha256": "7c92f34ef5ed5145b3ad6522b0695baf19124bcdab4637f9749611ec9c4f4c13",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T012017682888Z-3",
+      "case_id": "sympy__sympy-15349-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T012017682888Z-3",
+      "manifest_sha256": "59060427e1cf1c831b9061e183d9e4fbc09160090ce081bb85951ce45e142817",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T051727604977Z-1",
+      "case_id": "sympy__sympy-19110-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T051727604977Z-1",
+      "manifest_sha256": "9f65e228fa79dd967ebfee208764ede8eca7f160c16ef3a754fa8298476ccd0a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T051727604977Z-2",
+      "case_id": "sympy__sympy-19110-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T051727604977Z-2",
+      "manifest_sha256": "586852ef953eb1dc263b8c079fc44959dac4a2f72e56a232cf4f0abf9dc9ec81",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T052010202820Z-1",
+      "case_id": "sympy__sympy-24370-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T052010202820Z-1",
+      "manifest_sha256": "810654a01f398373aa18a374673c1da287c8ca8be0876a3a2a8af5cc253b45dd",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T052239204538Z-2",
+      "case_id": "sympy__sympy-19016-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T052239204538Z-2",
+      "manifest_sha256": "835191285d51d0ed4555f3bab1ca7b1d98ef3dfb328aeac4f27a7137b79cfd73",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T052633680895Z-1",
+      "case_id": "sympy__sympy-21864-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T052633680895Z-1",
+      "manifest_sha256": "bcad80c2178abc3b66507aef85ad7cb5b6dd7eb53752c9303208c16744fb99a8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T052633680895Z-3",
+      "case_id": "sympy__sympy-21864-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T052633680895Z-3",
+      "manifest_sha256": "5101611772c88cb83037af16027ea75a9b11c6206f0a64f9befd8dc81b62e477",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T052750252431Z-1",
+      "case_id": "sympy__sympy-13647-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T052750252431Z-1",
+      "manifest_sha256": "6a64d2a0dddf325e11ebeb54434a68d351a234232856956e6b20bda70d993f21",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T052750252431Z-2",
+      "case_id": "sympy__sympy-13647-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T052750252431Z-2",
+      "manifest_sha256": "e590910764872c4af1da524a425340dbaf82bbcd3b9c6e43e04d448c3a2f1f95",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T052750252431Z-3",
+      "case_id": "sympy__sympy-13647-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T052750252431Z-3",
+      "manifest_sha256": "7eaf191d2ce6b0ddd19191aa58eedb6f932caf203a41661d6ebda2d5868bb91f",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T053058764952Z-2",
+      "case_id": "sympy__sympy-13978-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T053058764952Z-2",
+      "manifest_sha256": "a727a761fa017fc9290f96b1cb6bba1f72cb602bbbc72db1648110dc4d54b0ad",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T053058764952Z-3",
+      "case_id": "sympy__sympy-13978-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T053058764952Z-3",
+      "manifest_sha256": "d6048ddd41d755754baabe5e31c657f037d049594a68a2f1ec7d7dcefe38ff28",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T053440515290Z-3",
+      "case_id": "sympy__sympy-14699-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T053440515290Z-3",
+      "manifest_sha256": "90c39c2389d6b5bcf06d5f507303766106daab2e250f52a2014aa9bb08db52fa",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T053546065802Z-1",
+      "case_id": "sympy__sympy-11438-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T053546065802Z-1",
+      "manifest_sha256": "893dad4010d5646c86467713076c308863a75f62a85bd44831ab7ec8c057a564",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T055347815039Z-1",
+      "case_id": "sympy__sympy-21612-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T055347815039Z-1",
+      "manifest_sha256": "35dab04928d312d081b1db04916e9eef1baf8f6267311d3ce4a607caaef34035",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T055458799498Z-1",
+      "case_id": "sympy__sympy-18903-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T055458799498Z-1",
+      "manifest_sha256": "a8c253c4d1f9bcfb36e0a59dad70851725127638c63ea0325e0f662e2e339de4",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T055458799498Z-3",
+      "case_id": "sympy__sympy-18903-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T055458799498Z-3",
+      "manifest_sha256": "5328f4aa5458f09dc6ccc84409d152382a9ef697b5c313ebf33dd69f3b42ce9a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T055538584871Z-1",
+      "case_id": "sympy__sympy-13177-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T055538584871Z-1",
+      "manifest_sha256": "8f56c529c8928d1f892dbe5fec30d411ea1c07ea6d3c9d8a92e8813f56139641",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T060053656030Z-1",
+      "case_id": "sympy__sympy-22005-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T060053656030Z-1",
+      "manifest_sha256": "fce5da4a4d411cc28710a19cb01838bcae53abc500f845aa2f222ee2bbf33110",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T060053656030Z-2",
+      "case_id": "sympy__sympy-22005-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T060053656030Z-2",
+      "manifest_sha256": "f874a8c5898463686dc8c2eb777038212002153ee76e3fcaa497b57869dcc8fb",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T060145332874Z-1",
+      "case_id": "sympy__sympy-15017-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T060145332874Z-1",
+      "manifest_sha256": "55421873c32ae6b2668e6e68a8a7676cf35403f48fff2f657fff833f7db0c380",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T060145332874Z-2",
+      "case_id": "sympy__sympy-15017-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T060145332874Z-2",
+      "manifest_sha256": "4e64f30775f3abe80d5368fb5b2efe80490c0fbe9c19fae9c019c39a39e232b8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T060225527979Z-1",
+      "case_id": "sympy__sympy-14817-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T060225527979Z-1",
+      "manifest_sha256": "e627ea21ed159c236c3ee94081e3c0a716dbf0f7410b9976d0f681b3ec0fc9a1",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T060509047556Z-2",
+      "case_id": "sympy__sympy-15346-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T060509047556Z-2",
+      "manifest_sha256": "ddf2fbeb4eb81bdace6c0d0a740422de7b55b8c0b5783ba1a398eb810496c468",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T060856154884Z-2",
+      "case_id": "sympy__sympy-21627-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T060856154884Z-2",
+      "manifest_sha256": "9b8941441eb9fcdbc048ad85ef10ac0d2df0c599ffe0fb5b2cb807c26eb3654b",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064216205182Z-1",
+      "case_id": "sympy__sympy-18810-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064216205182Z-1",
+      "manifest_sha256": "3a7ec290058268925dd84795c62448b9f3b64929bf1ff1a508f329ff315e7a31",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064216205182Z-2",
+      "case_id": "sympy__sympy-18810-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064216205182Z-2",
+      "manifest_sha256": "1e39613c0ca19cd98e9ceb31c5de256b76cd68e4d1a38072c84561947cbc03ff",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064216205182Z-3",
+      "case_id": "sympy__sympy-18810-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064216205182Z-3",
+      "manifest_sha256": "59c14bf072d1d5f3f1a9ac522d42d53c46a5fbbc593fb5c2059b9da21ae834e3",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064346897382Z-1",
+      "case_id": "sympy__sympy-23824-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064346897382Z-1",
+      "manifest_sha256": "3fa86a13bc97e406c8775e9e60622baf97c086b15ef549a49183a7401f17bfbc",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064346897382Z-3",
+      "case_id": "sympy__sympy-23824-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064346897382Z-3",
+      "manifest_sha256": "3bfa9e9a7a1708803af2ca2c8a97bb71b1596d07311ed23e3d5fa300d156d1d5",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064546343496Z-1",
+      "case_id": "pvlib__pvlib-python-1216-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064546343496Z-1",
+      "manifest_sha256": "f0f201f438a02fb66150bd474dc01c1501c7b45b3dbc9044656da7fdb7f2e885",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064546343496Z-2",
+      "case_id": "pvlib__pvlib-python-1216-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064546343496Z-2",
+      "manifest_sha256": "90f760492291c9a2e7edfb08f9057f9f3468af02db8f8b1d9e8ed5c6379266cc",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064546343496Z-3",
+      "case_id": "pvlib__pvlib-python-1216-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064546343496Z-3",
+      "manifest_sha256": "4604056d9d998e2e6880b66c2493305100b367510c1583c7465e06ae80097123",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064754531948Z-1",
+      "case_id": "sympy__sympy-13369-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064754531948Z-1",
+      "manifest_sha256": "30e81a84113de011bc4e32110d426eb6e0932ec27c941ae92549da51d359c300",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064754531948Z-2",
+      "case_id": "sympy__sympy-13369-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064754531948Z-2",
+      "manifest_sha256": "44968deadb84be09d9d84617bc2c335c170669114bb2b2688ce21c763e2638df",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064754531948Z-3",
+      "case_id": "sympy__sympy-13369-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T064754531948Z-3",
+      "manifest_sha256": "7269b6863d610fafbe6e1a593adaf7f77ab9eb42acbed262ffb88b0e2ba51829",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T065150968266Z-2",
+      "case_id": "sympy__sympy-13915-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T065150968266Z-2",
+      "manifest_sha256": "fe232fa6b44de753e49e09aacce9a6a5a176e8e5e9bc482eb983acb66438731e",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T065551874265Z-1",
+      "case_id": "sympy__sympy-24213-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T065551874265Z-1",
+      "manifest_sha256": "8d3dc3e68969beb0722ee8a446bfda87a417169d298cf4a57c9a9e0579bd0036",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T065745468866Z-1",
+      "case_id": "pylint-dev__astroid-934-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T065745468866Z-1",
+      "manifest_sha256": "c3e4511e3a281841591b19779a870e61cf20d9e42161d4cd61644d8de4e4e8a1",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T070104961179Z-1",
+      "case_id": "marshmallow-code__marshmallow-1252-ds1",
+      "repo_url": "https://github.com/marshmallow-code/marshmallow",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T070104961179Z-1",
+      "manifest_sha256": "913039976c812adf30076f9f89b22287751ab1de0684ea8c9f36a04ac4d773a1",
+      "group_id": "repo:marshmallow-code/marshmallow"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T070104961179Z-2",
+      "case_id": "marshmallow-code__marshmallow-1252-ds1",
+      "repo_url": "https://github.com/marshmallow-code/marshmallow",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T070104961179Z-2",
+      "manifest_sha256": "e836432306651dccc3f1c07cb84d3be4a90336944fa610b2f29154534507b329",
+      "group_id": "repo:marshmallow-code/marshmallow"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T070104961179Z-3",
+      "case_id": "marshmallow-code__marshmallow-1252-ds1",
+      "repo_url": "https://github.com/marshmallow-code/marshmallow",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T070104961179Z-3",
+      "manifest_sha256": "47463f90d54e046f3ced01bb335af21d1e50efe39bd41cd0c407319a65882801",
+      "group_id": "repo:marshmallow-code/marshmallow"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T071234875048Z-1",
+      "case_id": "sympy__sympy-22714-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T071234875048Z-1",
+      "manifest_sha256": "a5031c439e584261c318927d2d8f19911585c78e90d5eaacc58c6603c47555e5",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T071234875048Z-3",
+      "case_id": "sympy__sympy-22714-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T071234875048Z-3",
+      "manifest_sha256": "5597eead37ded1b6accbe4a98921b4fcb14c3e301fa9fb6076291dfa6b3e03fe",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T071523813302Z-3",
+      "case_id": "sympy__sympy-13551-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T071523813302Z-3",
+      "manifest_sha256": "59c43298c1dedc84434cc3a0ba1c9ec39bd7845e310cf52fec370b9f70f2c353",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T071642800573Z-1",
+      "case_id": "sympy__sympy-20476-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T071642800573Z-1",
+      "manifest_sha256": "dd92d37437452b652c815ceb0f2397902f1988b924cd341a46bd2d8e0e26b077",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T071958343819Z-2",
+      "case_id": "pylint-dev__astroid-1719-ds1",
+      "repo_url": "https://github.com/pylint-dev/astroid",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T071958343819Z-2",
+      "manifest_sha256": "81061ca5d750ac863277aa2f54d02a922ebbe870cd5d97a98e6ec14fbc50250b",
+      "group_id": "repo:pylint-dev/astroid"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T072137641643Z-1",
+      "case_id": "sympy__sympy-18532-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T072137641643Z-1",
+      "manifest_sha256": "02036fc55bb848ec2ca27ef029d0100ddbbca30df3aef4765b7421d187d02d4b",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T072406672192Z-2",
+      "case_id": "pvlib__pvlib-python-1782-ds1-env2",
+      "repo_url": "https://github.com/pvlib/pvlib-python",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T072406672192Z-2",
+      "manifest_sha256": "07bbe60fe1b4a1621485a4a5d6b5b7d71436c2875cd1028bfcefd13f87f1bc0a",
+      "group_id": "repo:pvlib/pvlib-python"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T072634481697Z-2",
+      "case_id": "sympy__sympy-20801-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T072634481697Z-2",
+      "manifest_sha256": "0821668fadb64176387fb3ca3dead6ee187d0e86347fdeeef2e642392c7f1851",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T072946060850Z-1",
+      "case_id": "sympy__sympy-13372-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T072946060850Z-1",
+      "manifest_sha256": "5143344e49c6b6c23981381aac561da4e3c2344cb3905e753882bf5f123ecb66",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T072946060850Z-3",
+      "case_id": "sympy__sympy-13372-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T072946060850Z-3",
+      "manifest_sha256": "359126c7e79fdabbb4286a31e9a2b4d3f82eaeab3b227f6c0e593636c9c1268d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T073936830577Z-1",
+      "case_id": "sympy__sympy-24562-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T073936830577Z-1",
+      "manifest_sha256": "348ee4be21bf27b9e10cc9bafaab65e3e2d3eef254c3c290be34cabcb4c8c52c",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T074148548425Z-1",
+      "case_id": "sympy__sympy-13471-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T074148548425Z-1",
+      "manifest_sha256": "8dd5a8be7f4f17233837f0f7cfdf447615a8caa06c1083f5b60cc46aa876b4fa",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T074454909823Z-2",
+      "case_id": "sympy__sympy-13437-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T074454909823Z-2",
+      "manifest_sha256": "26bc88eafc14df1f3a64a90b7d662ebd3c33641b143bbb0d00bbbdf2fb48d456",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T074454909823Z-3",
+      "case_id": "sympy__sympy-13437-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T074454909823Z-3",
+      "manifest_sha256": "a33f21c95518ef2383d1d16a8c1113b6fe2e47037151d6743f619c1aa5634626",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T075456887029Z-1",
+      "case_id": "sympy__sympy-12481-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T075456887029Z-1",
+      "manifest_sha256": "6eeaeac611c6673d078e581857d09fa2cdb233e65a0ca7ba3b0c7482b4c6ccce",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T075646073138Z-1",
+      "case_id": "sympy__sympy-12454-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T075646073138Z-1",
+      "manifest_sha256": "f22a8dc656b3cfe960eda462af908c2af6813dd678953daf26dba5b21133bf51",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T075646073138Z-2",
+      "case_id": "sympy__sympy-12454-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T075646073138Z-2",
+      "manifest_sha256": "fb4824971c136b9fac6c37cd633b16492c002c3db4692118c18d39a2215f1c09",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T075943541191Z-2",
+      "case_id": "sympy__sympy-24539-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T075943541191Z-2",
+      "manifest_sha256": "b3b10c4a2c1d6eb6cc2e800dfc85149ed3353600ba05a65e79d9231d47ef8ca8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T075943541191Z-3",
+      "case_id": "sympy__sympy-24539-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T075943541191Z-3",
+      "manifest_sha256": "055cd9d711aa897df22bfd2dea603d032653e76e646805d7c1908576c6fb58a8",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T080139979659Z-1",
+      "case_id": "sympy__sympy-14082-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T080139979659Z-1",
+      "manifest_sha256": "92a96df00b68421221b1a907aee37cf9f3b14628101972b07225355a8e047425",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T080342935405Z-3",
+      "case_id": "sympy__sympy-15678-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T080342935405Z-3",
+      "manifest_sha256": "a3e1758047fe61b0f6390e74536e4e83b248c4d78d53e40868e963f6677b0c01",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T081209377240Z-1",
+      "case_id": "sympy__sympy-18633-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T081209377240Z-1",
+      "manifest_sha256": "28112f3b12db957d727c72adb9cfe30530b6f0fb0d92446ab00b1e985e5ff944",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T081209377240Z-3",
+      "case_id": "sympy__sympy-18633-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T081209377240Z-3",
+      "manifest_sha256": "4e011666efe0e00d49560e634ae05dde5f3c78c3aa6ba8881e85f0c773eb1957",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T081435556965Z-1",
+      "case_id": "sympy__sympy-15345-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T081435556965Z-1",
+      "manifest_sha256": "5350fcdc7ff5bd57f49a501909c1ab9fcaf4f8e5cded738601037ce980fc9319",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T081435556965Z-3",
+      "case_id": "sympy__sympy-15345-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T081435556965Z-3",
+      "manifest_sha256": "10ac4bb1cfbd9f218bfe10aa6eddb70743f239804f12f47559337624d055a6a4",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T081815994876Z-1",
+      "case_id": "pydicom__pydicom-900-ds1-env2",
+      "repo_url": "https://github.com/pydicom/pydicom",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T081815994876Z-1",
+      "manifest_sha256": "afaa213c2dd910dfa1647014b0db3a233e39d9c066b542e21b692d06aecd463b",
+      "group_id": "repo:pydicom/pydicom"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T082247390570Z-3",
+      "case_id": "sympy__sympy-15308-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T082247390570Z-3",
+      "manifest_sha256": "46761e57df93e85d6088fc45a61ade6cc8d1cc1df693bbfc04a49034dd761123",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T082650858569Z-1",
+      "case_id": "sympy__sympy-21313-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T082650858569Z-1",
+      "manifest_sha256": "4af6c390bbfbe6e61016d23d134e3e50e5e75c81e508b0421fa0986347d037f1",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T083156594681Z-1",
+      "case_id": "sympy__sympy-18273-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T083156594681Z-1",
+      "manifest_sha256": "d99863b60f8ce823a7f9b8fbf6922f7ff7d05601063704b1cfc56f9773b31eef",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T083156594681Z-2",
+      "case_id": "sympy__sympy-18273-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T083156594681Z-2",
+      "manifest_sha256": "8d73082344f58d942544fa8236e055a6d037a27e78c61966f2181631492c6a8d",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T083521600522Z-2",
+      "case_id": "sympy__sympy-12529-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T083521600522Z-2",
+      "manifest_sha256": "ccfc55bc0bb0472ab759733864b957c44cfb5374d70648c1b91e64153e2f2697",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T083521600522Z-3",
+      "case_id": "sympy__sympy-12529-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T083521600522Z-3",
+      "manifest_sha256": "d7cf3a15cc59f3e66e61b8c517cc1a0598da18bdef46bfc2f2b60607de9d3126",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T083809766300Z-3",
+      "case_id": "sympy__sympy-21208-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T083809766300Z-3",
+      "manifest_sha256": "bce2736632d9ccfae43d2087c2173543b10ee572a7c02648c8a7added938203c",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T085113076465Z-2",
+      "case_id": "sympy__sympy-13773-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T085113076465Z-2",
+      "manifest_sha256": "b79ed8620d3dae478e848eee11156b28f75019214cd5dbc0dc878a851d13da1a",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T085308580674Z-2",
+      "case_id": "sympy__sympy-24066-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T085308580674Z-2",
+      "manifest_sha256": "9d1495dffe3bd78e65b81878c57e72429d257a935b3d307ba616c3b103e6c819",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T085618818822Z-1",
+      "case_id": "sympy__sympy-13146-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T085618818822Z-1",
+      "manifest_sha256": "353767f258701be9d2d767b7892ab9cd0e5ad86f4fbce29a283cd3daf7c8ea93",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T085933079841Z-1",
+      "case_id": "pydicom__pydicom-1633-ds1-env2",
+      "repo_url": "https://github.com/pydicom/pydicom",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T085933079841Z-1",
+      "manifest_sha256": "e7c0d63eeaa2400402e34a31116b92109a3d517ff125bd0fb489daaecd491510",
+      "group_id": "repo:pydicom/pydicom"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T085933079841Z-3",
+      "case_id": "pydicom__pydicom-1633-ds1-env2",
+      "repo_url": "https://github.com/pydicom/pydicom",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T085933079841Z-3",
+      "manifest_sha256": "cb95f35a1e4369c8351fdef20ab9a9fdf224b3ceceb36f3f45661139c36af16d",
+      "group_id": "repo:pydicom/pydicom"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T090114194502Z-2",
+      "case_id": "sympy__sympy-12977-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T090114194502Z-2",
+      "manifest_sha256": "fea37f1549c1cd82bedc5390c4b50874c7c01e6f43920eef249f57f3dc374961",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T090258463434Z-2",
+      "case_id": "sympy__sympy-12428-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T090258463434Z-2",
+      "manifest_sha256": "4e31a93d555f3fdff517f35ca773e0266e16cfc7dcc67f22d9b32bf305b3e257",
+      "group_id": "repo:sympy/sympy"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T090258463434Z-3",
+      "case_id": "sympy__sympy-12428-ds1",
+      "repo_url": "https://github.com/sympy/sympy",
+      "role": "train",
+      "directory": ".cache/dataset-v1/synthetic-retrieval-v2/generate-20261112T090258463434Z-3",
+      "manifest_sha256": "e142930a141db2dd02459c95bf04b3300fd186a41d52fc2433f5110d395cb818",
+      "group_id": "repo:sympy/sympy"
+    }
+  ],
+  "full_audit": {
+    "path": "runs/experiment-20261111T192045721211Z/curated-selection-evidence-audit-2026-11-12T184020_0700.json",
+    "sha256": "15e5396434876842df4936f395ff8987f51e0bb42d865b45c8a6d7594717fd63",
+    "completed_at": "2026-11-12T19:22:53+07:00",
+    "records": 352
+  },
+  "group_review": {
+    "path": "runs/experiment-20261111T192045721211Z/partial-selection-group-review-351.json",
+    "sha256": "af61dc21d2ec5d9b3fb0692e373db576a26bc365302d662695c7e6b60ec8ef72",
+    "selection_sha256": "a871e29e5b5b8df6e5a4bd9cceb230d79e2ab5e9a7fa452bc36296a540bf674e"
+  },
+  "exclusions": "data-manifests/dataset-v1-selection-exclusions-v2.json",
+  "qualification": "Partial outcome under original budgets. Not accepted by locked-learning loader. Gold pending; no research M0/M1/M2/M5 scores."
+}

@@ -2,13 +2,13 @@
 
 
 <!-- dataset-v1-current:start -->
-## Checkpoint dataset v1 mới nhất
+## Checkpoint dataset v1 hiện hành
 
-2026-11-12T18:43:27+07:00: 471 profiles/449 sources đã thử; 285 strict-supported/333 seed pass. Đã xuất 265 real silver {'train': 181, 'test': 41, 'validation': 43}, 105 synthetic silver trước final selection; 20 real quarantine/92 synthetic loại sau review. 372 request7B đã reserve/197 đạt runner. Software106:105pass/1skip. Dataset chưa khóa; M0/M1/M2/M5 chưa chạy nghiên cứu.
+2026-11-12T19:30:07+07:00: chọn250real silver(175train/37validation/38test) từ265real đã rà;105synthetic export,101sau loại trừ cuối, thiếu74/175. Tổng372lời gọi7B/197lượt đạt runner. Software106:105pass/1skip. M0/M1/M2/M5 nghiên cứu chưa chạy; data gate chưa đạt.
 
-Đã chọn250real(175train/37validation/38test) theo stable-ID; chưa là dataset lock. Có105synthetic export,102trong final class/quality scope: thiếu73/175. Source queue đã xong13:39. Generator mới bị gián đoạn, không còn worker;372lời gọi đã hoàn tất, một verification unknown24455. Stage sinh đã hết ngân sách gồm thời gian in-flight bị gián đoạn; không reset/replay/gọi mới. Đang audit352records lựa chọn; M0/M1/M2/M5 vẫn gated.
+Audit352 hoàn tất19:22:53:hash/source/test/lineage đạt, không cross-split hoặc trùng byte. Loại thêm một semantic duplicate constant-printer, giữ351bản ghi với group review/selectionhash và retained-export hashes khớp. Đây là partial dataset, chưa là learning lock. Stage sinh đã hết budget; không replay unknown24455/resetcap/gọi mới.
 
-[Checkpoint](../runs/experiment-20261111T192045721211Z/curation-checkpoint-2026-11-12T184327_0700.json). Token-only audit276:0target overflow/context2048-response384; chưa phải suy luận3B. Silver không là expert gold, raw evidence bất biến. Group/selection lock vẫn bắt buộc trước research fit. [Bằng chứng tiến độ trong project](evidence/dataset-v1-progress/README.md).
+[Trạng thái](../data-manifests/dataset-v1-status.json) · [Audit](evidence/dataset-v1-progress/selection-audit-20261112.json) · [Kết quả và phần chưa đạt](results.md). Silver/goldpending; chưa mở finalmodeltest.
 <!-- dataset-v1-current:end -->
 Cập nhật tiến độ: 12/11/2026, Asia/Bangkok. Các cohort W1/expansion giữ số liệu lịch sử; vòng dataset v1 được báo riêng bên dưới. Đọc [bản review và kiến nghị](data-review.md) để xem nguyên nhân, bằng chứng và phần cần duyệt.
 

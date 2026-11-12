@@ -8,7 +8,9 @@ Mục tiêu nghiên cứu dài hạn là đánh giá dữ liệu synthetic đố
 
 Luồng demo W1: **AIDev record → repo/commit → seed pass → 7B sinh → Docker kiểm chứng → người duyệt → dữ liệu cho 3B chẩn đoán.** Generator duy nhất là `qwen2.5-coder:7b-instruct`; model chẩn đoán chính là `Qwen/Qwen2.5-Coder-3B-Instruct`. Model phụ đã bỏ khỏi workflow; evidence lịch sử giữ nguyên.
 
-**Dataset v1, cập nhật 12/11:** đã rà 265 real silver, chọn sơ bộ **250 real (175 train/37 validation/38 test)**; **102 synthetic** trong phạm vi lựa chọn, còn thiếu **73/175**. [Bằng chứng tiến độ](docs/evidence/dataset-v1-progress/README.md), [protocol](docs/experiment-protocol.md), [dataset card](docs/dataset-card.md) và [điểm tiếp tục](docs/implementation-plan.md#điểm-tiếp-tục-hiện-tại). Kiểm tra nhóm/evidence cuối đang chạy; dataset chưa khóa. Đợt sinh bị gián đoạn và hết ngân sách stage, không gọi lại lượt unknown. Chưa chạy M0/M1/M2/M5 nghiên cứu hoặc SFT. Core pipeline vẫn standard library; runtime ML dùng môi trường riêng và [dependency ghim](requirements-ml.txt).
+**Dataset v1, cập nhật 12/11:** đã rà 265 real silver, chọn sơ bộ **250 real (175 train/37 validation/38 test)**; **101 synthetic** trong phạm vi lựa chọn, còn thiếu **74/175**. [Bằng chứng tiến độ](docs/evidence/dataset-v1-progress/README.md), [protocol](docs/experiment-protocol.md), [dataset card](docs/dataset-card.md) và [điểm tiếp tục](docs/implementation-plan.md#điểm-tiếp-tục-hiện-tại). Đã hoàn tất kiểm tra nhóm/evidence cho lựa chọn hiện có; dataset chưa đạt cổng khóa để học. Đợt sinh bị gián đoạn và hết ngân sách stage, không gọi lại lượt unknown. Chưa chạy M0/M1/M2/M5 nghiên cứu hoặc SFT. Core pipeline vẫn standard library; runtime ML dùng môi trường riêng và [dependency ghim](requirements-ml.txt).
+
+[Kết quả thực đạt và phần chưa hoàn thành](docs/results.md).
 
 Đọc nhanh: [trạng thái dữ liệu hiện hành](data-manifests/dataset-v1-status.json), [dung lượng/giữ dữ liệu/DVC](docs/data-storage.md). Không cần chạy lại audit hoặc thí nghiệm để trả lời tiến độ từ checkpoint.
 
