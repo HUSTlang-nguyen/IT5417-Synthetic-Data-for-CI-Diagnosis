@@ -18,6 +18,7 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 - **Bàn giao mới nhất — setup pilot v1.1 hoàn tất, chưa chạy model:** người dùng muốn tự gọi từng lệnh M0/M1/M2/M5. [Protocol v1.1](experiment-protocol-v1.1.md), [manifest](../data-manifests/training-v1.1.json), [runbook](training-runbook.md), [readiness](evidence/dataset-v1-progress/manual-training-readiness-20261112.json) và [kiểm thử 116: 115 pass/1 skip](evidence/dataset-v1-progress/software-tests-manual-v11-final.txt). Dataset 250 real + 101 synthetic đã khóa riêng; không đổi số liệu, target/cap/unknown của vòng v1.0. Không gọi model, smoke hoặc Docker trong lượt setup.
 - **Task kế tiếp cụ thể: `waiting_user` — người dùng chạy `.\scripts\train.ps1 -Check`, rồi M0/M1 và smoke M2 trước hai SFT dài khi sẵn sàng.** Chỉ hỗ trợ từ run/log thật sau khi có lệnh; không tự bắt đầu train. Study thủ công chưa tạo, không có calendar cutoff, cap cộng dồn giữ hai giờ mỗi SFT/evaluation; xem protocol mới. Goal v1.0 vẫn thiếu 74 synthetic và chưa hoàn tất.
+- **Bàn giao Git:** code setup đã push tại `c0acbcc` trên `origin/codex/w1-review-skill`, chưa merge main. Pull chỉ mang code/tài liệu; runtime/data/model nằm local, lock ghim worktree đã chuẩn bị như [runbook](training-runbook.md).
 
 ### Checkpoint vòng thu thập v1.0 và lịch sử phát triển
 
