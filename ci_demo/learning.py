@@ -6,14 +6,16 @@ import json
 import math
 from pathlib import Path
 
-from .common import CACHE, now, read_json, sha256, write_json
+from .common import CACHE, ROOT, now, read_json, sha256, write_json
 from .curation import repo_key
 from .diagnosis import LABELS, locations
 from .ml import prepare_input
 
 
-def check_learning_gate(rows):
+def check_learning_gate(rows, *, protocol="v1.0", model=None):
     """Recompute gates from records instead of trusting a ready flag in a manifest."""
+    if protocol not in {"v1.0", "v1.1"} or model not in {None, "M0", "M1", "M2", "M5"}:
+        raise ValueError("Unknown learning protocol/model")
     real = [r for r in rows if r["origin"] == "real_local_reconstruction"]
     synthetic = [r for r in rows if r["origin"] == "controlled_synthetic"]
     if len(real) + len(synthetic) != len(rows):
@@ -26,8 +28,15 @@ def check_learning_gate(rows):
         raise ValueError("Real dataset size/split gate not met")
     if len(support) < 2 or any(n < 10 for n in support.values()):
         raise ValueError("Training class support gate not met")
-    if len(synthetic) != counts["train"] or any(r["role"] != "train" for r in synthetic):
+    if any(r["role"] != "train" for r in synthetic):
+        raise ValueError("Synthetic must be train-only")
+    if protocol == "v1.0" and len(synthetic) != counts["train"]:
         raise ValueError("Synthetic must be train-only and matched to real train")
+    if protocol == "v1.1":
+        if counts != {"train": 175, "validation": 37, "test": 38}:
+            raise ValueError("Pilot v1.1 requires frozen 175/37/38 real split")
+        if model in {None, "M5"} and len(synthetic) != 101:
+            raise ValueError("Pilot v1.1 mixed training requires 101 reviewed synthetic")
     groups = defaultdict(set)
     repos = defaultdict(set)
     for row in rows:
@@ -80,7 +89,7 @@ def lock_dataset(directories, review_path, destination):
     return manifest
 
 
-def load_locked_dataset(path, tokenizer, *, context=2048):
+def load_locked_dataset(path, tokenizer, *, context=2048, model=None):
     manifest = read_json(path)
     if manifest.get("status") != "locked" or manifest.get("group_review", {}).get("status") != "completed":
         raise ValueError("A locked dataset with completed group review is required")
@@ -113,7 +122,94 @@ def load_locked_dataset(path, tokenizer, *, context=2048):
         methods.add(meta["retrieval"]["method"])
     if len(methods) != 1:
         raise ValueError("Mixed retrieval versions in locked dataset")
-    return rows, check_learning_gate(rows)
+    return rows, check_learning_gate(rows, protocol=manifest.get("protocol", "v1.0"), model=model)
+
+
+def lock_reviewed_pilot(selection_path, destination):
+    """Bind v1.1 to the previously completed deep audit; never claim a new source scan."""
+    from .dataset import selection_hash
+    selection = read_json(selection_path)
+    source = selection["full_audit"]
+    audit_path = (ROOT / source["path"]).resolve()
+    review_path = (ROOT / selection["group_review"]["path"]).resolve()
+    if not all(p.is_relative_to(ROOT.resolve()) for p in (audit_path, review_path)):
+        raise ValueError("Pilot audit/review outside the project")
+    if sha256(audit_path) != source["sha256"] or sha256(review_path) != selection["group_review"]["sha256"]:
+        raise ValueError("Reviewed pilot audit/review changed")
+    parent = read_json(audit_path)
+    if parent.get("status") != "evidence_checked_group_review_pending":
+        raise ValueError("Pilot requires a completed evidence audit")
+    if any(parent[k] for k in ("cross_split_groups", "exact_source_duplicate_families", "exact_candidate_duplicate_families")):
+        raise ValueError("Pilot parent audit has unresolved groups/duplicates")
+    indexed = {r["sample_id"]: r for r in parent["records"]}
+    records, rows = [], []
+    for item in selection["records"]:
+        folder = (ROOT / item["directory"]).resolve()
+        if not folder.is_relative_to((CACHE / "dataset-v1").resolve()):
+            raise ValueError("Pilot export outside dataset cache")
+        record = {**item, "directory": str(folder)}
+        if record != indexed.get(item["sample_id"]) or sha256(folder / "manifest.json") != item["manifest_sha256"]:
+            raise ValueError("Pilot selection differs from audited record")
+        meta = read_json(folder / "manifest.json")
+        for name in ("input", "reference", "assessment"):
+            if sha256(folder / (name + ".json")) != meta[name + "_sha256"]:
+                raise ValueError("Reviewed pilot input/reference/assessment changed")
+        rows.append({**meta, "group_id": record["group_id"], "reference": read_json(folder / "reference.json")})
+        records.append(record)
+    review = read_json(review_path)
+    check_group_review(review, records)
+    ids = {r["sample_id"] for r in records}
+    wanted = {tuple(sorted(f)) for f in parent["lexical_edit_suggestions"] if len(ids.intersection(f)) > 1}
+    decided = {tuple(sorted(d["sample_ids"])) for d in review.get("lexical_family_decisions", [])
+               if d.get("decision") == "distinct_mechanisms" and d.get("reason", "").strip()}
+    if wanted != decided or len(review.get("lexical_family_decisions", [])) != len(wanted):
+        raise ValueError("Pilot lexical family not reviewed")
+    gate = check_learning_gate(rows, protocol="v1.1")
+    manifest = {"created_at": now(), "status": "locked", "protocol": "v1.1", "records": records, "gate": gate,
+                "selection_sha256": selection_hash(records),
+                "selection_source": {"path": str(Path(selection_path).resolve()), "sha256": sha256(selection_path)},
+                "evidence_audit": {"parent": source, "selected_records": len(records),
+                                   "qualification": "Inherited completed deep audit plus unchanged export hashes; no repeated source inventory scan"},
+                "group_review": {"status": "completed", "path": str(review_path), "sha256": sha256(review_path)},
+                "qualification": "User-authorized v1.1 pilot, marked silver not expert gold; v1.0 target remains unmet"}
+    destination = Path(destination)
+    if destination.exists():
+        saved = read_json(destination)
+        if any(saved.get(k) != manifest[k] for k in ("protocol", "records", "selection_sha256", "selection_source", "group_review")):
+            raise ValueError("Refuse to overwrite a different pilot lock")
+        return saved
+    write_json(destination, manifest)
+    return manifest
+
+
+def check_prepared_pilot(dataset_path):
+    """Check prepared metadata/bytes without importing or running a model."""
+    manifest = read_json(dataset_path)
+    if manifest.get("status") != "locked" or manifest.get("protocol") != "v1.1":
+        raise ValueError("Prepared pilot v1.1 lock missing")
+    spec = read_json(ROOT / "data-manifests" / "training-v1.1.json")
+    if sha256(dataset_path) != spec["dataset_sha256"]:
+        raise ValueError("Pilot lock hash differs from approved setup")
+    group = manifest["group_review"]
+    if sha256(group["path"]) != group["sha256"]:
+        raise ValueError("Pilot group review changed")
+    check_group_review(read_json(group["path"]), manifest["records"])
+    rows = []
+    for item in manifest["records"]:
+        folder = Path(item["directory"])
+        if not folder.resolve().is_relative_to((CACHE / "dataset-v1").resolve()):
+            raise ValueError("Prepared pilot export escaped cache")
+        meta = read_json(folder / "manifest.json")
+        if sha256(folder / "manifest.json") != item["manifest_sha256"]:
+            raise ValueError("Prepared pilot record changed")
+        for name in ("input", "reference", "assessment"):
+            if sha256(folder / (name + ".json")) != meta[name + "_sha256"]:
+                raise ValueError("Prepared pilot learning text changed")
+        rows.append({**meta, "group_id": item["group_id"], "reference": read_json(folder / "reference.json")})
+    gate = check_learning_gate(rows, protocol="v1.1")
+    return {"status": "ready_metadata_checked_no_model_run", "protocol": "v1.1", "dataset_sha256": sha256(dataset_path),
+            "gate": gate, "optimizer_updates_per_sft": update_budget(rows),
+            "qualification": "No model loaded, trained or evaluated; CUDA/backward runtime remains unmeasured"}
 
 
 def training_example(row, tokenizer):

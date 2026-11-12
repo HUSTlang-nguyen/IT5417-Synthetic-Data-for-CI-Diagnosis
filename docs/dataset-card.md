@@ -1,5 +1,6 @@
 # Dataset v1 — bản đang xây dựng
 
+**Bổ sung 12/11 — pilot v1.1 đã khóa:** lựa chọn 351 bản ghi (250 real + 101 synthetic) có lock riêng và [protocol v1.1](experiment-protocol-v1.1.md) cho người dùng tự chạy theo [runbook](training-runbook.md). Dữ liệu vẫn silver; chưa có model nghiên cứu hoặc gold labels. Số đếm/giới hạn repo bên dưới áp dụng cho lựa chọn này; các câu “chưa khóa” và thiếu 74 synthetic của checkpoint v1.0 giữ nghĩa với mục tiêu matched-175 ban đầu, không mô tả trạng thái lock pilot v1.1.
 
 <!-- dataset-v1-current:start -->
 ## Checkpoint dataset v1 hiện hành

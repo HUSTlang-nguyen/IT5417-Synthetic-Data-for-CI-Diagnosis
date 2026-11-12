@@ -1,0 +1,9 @@
+example attempt 1 generation_error
+example attempt 2 generation_error
+example attempt 3 generation_error
+test_three_model_timeouts_keep_denominator_and_exclude_reference_fields (tests.test_multicase.CaseTests.test_three_model_timeouts_keep_denominator_and_exclude_reference_fields) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.039s
+
+OK

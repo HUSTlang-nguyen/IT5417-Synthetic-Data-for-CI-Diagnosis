@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-12T20:19:03+07:00",
+  "models_run": false,
+  "manual_study_created": false,
+  "old_collection_manifest_unchanged": true,
+  "protected_files": 2518,
+  "protected_changes": [
+    "ci_demo\\batch.py",
+    "ci_demo\\multicase.py",
+    "tests\\test_multicase.py"
+  ],
+  "raw_changed": [],
+  "missing_protected": [],
+  "local_links_checked": 122,
+  "broken_links": [],
+  "software_tests": {
+    "total": 116,
+    "passed": 115,
+    "skip": 1
+  },
+  "qualification": "Protected source/test differences include earlier implementation changes; raw evidence/case files unchanged. No model/Docker/candidate execution or data re-curation."
+}

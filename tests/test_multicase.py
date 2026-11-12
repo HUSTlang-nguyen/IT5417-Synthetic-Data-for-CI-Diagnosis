@@ -352,7 +352,7 @@ class CaseTests(unittest.TestCase):
                 folder = root / "generation"; folder.mkdir()
                 result = multicase.generate_case(c, "http://127.0.0.1:11434", folder, "fixture")
             self.assertEqual(result["attempt_count"], 3)
-            self.assertEqual([a["status"] for a in result["attempts"]], ["generation_error"] * 3)
+            self.assertEqual([a["status"] for a in result["attempts"]], ["generation_error"] * 3, result.get("error"))
             self.assertEqual(len(calls), 3)
             self.assertEqual([p["options"]["seed"] for p, kw in calls], [5417, 5418, 5419])
             self.assertTrue(all(kw["timeout"] == 180 and p["model"] == ollama.GENERATOR_MODEL for p, kw in calls))

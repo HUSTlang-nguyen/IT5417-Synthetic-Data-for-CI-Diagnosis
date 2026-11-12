@@ -5,9 +5,9 @@ import importlib.util
 import unittest
 from unittest.mock import Mock, patch
 
-from ci_demo.common import sha256, write_json
+from ci_demo.common import sha256, write_json, read_json
 from ci_demo.ml import SYSTEM
-from ci_demo.sft import collate_examples, final_model_lock, predict_rows, run_learning
+from ci_demo.sft import CHECKPOINT_FILES, collate_examples, final_model_lock, predict_rows, resume_checkpoint, run_learning, seal_checkpoint
 
 
 class SFTTests(unittest.TestCase):
@@ -59,6 +59,7 @@ class SFTTests(unittest.TestCase):
                     result = predict_rows(experiment, None, None, [row], root / "phase", stage="evaluation", identity="fixture")
                     self.assertEqual(result["joint_top1"], 1)
                 inference.assert_not_called()
+
                 experiment.finish.assert_not_called()
                 (root / "result.json").write_text("tampered response")
                 with self.assertRaises(ValueError):
@@ -67,6 +68,33 @@ class SFTTests(unittest.TestCase):
                 row["prepared"]["prompt_sha256"] = "changed"
                 with self.assertRaises(ValueError):
                     predict_rows(experiment, None, None, [row], root / "phase", stage="evaluation", identity="fixture")
+
+    def test_resume_checkpoint_requires_full_state_hashes_and_ignores_incomplete_save(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);config={'max_steps':104,'dataset_sha256':'fixture-data'}
+            folder=root/'checkpoints/checkpoint-20';folder.mkdir(parents=True)
+            for name in CHECKPOINT_FILES:write_json(folder/name,{'fixture':name})
+            write_json(folder/'trainer_state.json',{'global_step':20})
+            write_json(folder/'experiment-config.json',config);seal_checkpoint(folder)
+            partial=root/'checkpoints/checkpoint-40';partial.mkdir();write_json(partial/'trainer_state.json',{'global_step':40})
+            self.assertEqual(resume_checkpoint(root,config),folder.resolve())
+            with self.assertRaises(ValueError):resume_checkpoint(root,{**config,'dataset_sha256':'changed'})
+            (folder/'optimizer.pt').write_bytes(b'tampered-fixture')
+            with self.assertRaises(ValueError):resume_checkpoint(root,config)
+
+    def test_explicit_prediction_resume_never_reissues_uncertain_request(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);key=hashlib.sha256(b'fixture').hexdigest()[:20];operation='fixture-'+key
+            write_json(root/'manifest.json',{'operations':{operation:{'status':'reserved'}}})
+            exp=Mock(manifest=root/'manifest.json')
+            row={'sample_id':'fixture','input_sha256':'fixture-input','prepared':{'prompt_sha256':'fixture-prompt'},
+                 'reference':{'sample_id':'fixture','cause_type':'logic/value','locations':[{'file':'f.py','function':'f'}],'retrieved_locations':[]}}
+            with patch('ci_demo.sft.infer') as inference:
+                metrics=predict_rows(exp,None,None,[row],root/'phase',stage='evaluation',identity='fixture',resume=True)
+            inference.assert_not_called();exp.reserve.assert_not_called()
+            exp.finish.assert_called_once_with(operation,'unknown',error='Unreturned prediction at explicit resume; not reissued')
+            saved=read_json(root/'phase/metrics.json');self.assertEqual(saved['requested'],1);self.assertEqual(saved['returned'],0)
 
 
 if __name__ == "__main__":

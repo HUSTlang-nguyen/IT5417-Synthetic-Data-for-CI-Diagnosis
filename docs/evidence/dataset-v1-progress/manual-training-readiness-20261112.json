@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-12T20:08:40+07:00",
+  "readiness": {
+    "status": "ready_metadata_checked_no_model_run",
+    "protocol": "v1.1",
+    "dataset_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
+    "gate": {
+      "real": 250,
+      "synthetic": 101,
+      "real_by_role": {
+        "train": 175,
+        "test": 38,
+        "validation": 37
+      },
+      "train_support": {
+        "logic/value": 134,
+        "API/type": 41
+      }
+    },
+    "optimizer_updates_per_sft": 104,
+    "qualification": "No model loaded, trained or evaluated; CUDA/backward runtime remains unmeasured"
+  },
+  "source_collection_manifest_sha256_before_and_after": "8a622c2e91d6b7727967159e9f301050088ce014c5ed78ca649925b18d096dfa",
+  "manual_study_created": false,
+  "model_loaded": false,
+  "research_fit_or_inference": false,
+  "qualification": "Metadata/hash/readiness check only; real CUDA backward/reload calibration remains for the user smoke command."
+}

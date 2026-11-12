@@ -1,5 +1,7 @@
 # Kết quả vòng dataset v1 — 12/11/2026
 
+**Cập nhật sau bàn giao:** đã triển khai [pilot thủ công v1.1](experiment-protocol-v1.1.md) dùng 101 synthetic hiện có theo yêu cầu người dùng, với lock riêng và [lệnh chạy](training-runbook.md). Chưa train hoặc mở model test. Báo cáo dưới đây giữ nguyên đánh giá mục tiêu v1.0, không coi pilot code setup là hoàn tất thí nghiệm cũ.
+
 **Đạt phần dữ liệu thật, chưa hoàn thành thí nghiệm SFT.** Đã chọn250real silver theo175train/37validation/38test; có101synthetic sau kiểm tra chất lượng và trùng lặp, thiếu74so với mục tiêu175. Cổng dữ liệu từ chối mở huấn luyện; không giảm mục tiêu hoặc dùng tập thiếu để báo hoàn thành.
 
 [Trạng thái hiện hành](../data-manifests/dataset-v1-status.json), [lựa chọn351bản ghi](../data-manifests/dataset-v1-curated-selection.json), [evidence/group audit](evidence/dataset-v1-progress/selection-audit-20261112.json), [dataset card](dataset-card.md), [protocol](experiment-protocol.md).

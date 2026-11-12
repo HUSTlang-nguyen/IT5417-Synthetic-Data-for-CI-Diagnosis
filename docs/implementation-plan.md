@@ -16,10 +16,15 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 ## Điểm tiếp tục hiện tại
 
+- **Bàn giao mới nhất — setup pilot v1.1 hoàn tất, chưa chạy model:** người dùng muốn tự gọi từng lệnh M0/M1/M2/M5. [Protocol v1.1](experiment-protocol-v1.1.md), [manifest](../data-manifests/training-v1.1.json), [runbook](training-runbook.md), [readiness](evidence/dataset-v1-progress/manual-training-readiness-20261112.json) và [kiểm thử 116: 115 pass/1 skip](evidence/dataset-v1-progress/software-tests-manual-v11-final.txt). Dataset 250 real + 101 synthetic đã khóa riêng; không đổi số liệu, target/cap/unknown của vòng v1.0. Không gọi model, smoke hoặc Docker trong lượt setup.
+- **Task kế tiếp cụ thể: `waiting_user` — người dùng chạy `.\scripts\train.ps1 -Check`, rồi M0/M1 và smoke M2 trước hai SFT dài khi sẵn sàng.** Chỉ hỗ trợ từ run/log thật sau khi có lệnh; không tự bắt đầu train. Study thủ công chưa tạo, không có calendar cutoff, cap cộng dồn giữ hai giờ mỗi SFT/evaluation; xem protocol mới. Goal v1.0 vẫn thiếu 74 synthetic và chưa hoàn tất.
+
+### Checkpoint vòng thu thập v1.0 và lịch sử phát triển
+
 - **Goal thực thi đã được duyệt ngày 12/11:** [protocol dataset v1/SFT](experiment-protocol.md) khóa mục tiêu 250 real, synthetic bằng real train, M0/M1/M2/M5 và thời hạn 13/11 02:19:29 +07. Điều này thay điểm dừng lập plan trước đó; W2-04 đang triển khai split/lineage, W4/W5 chỉ hoàn tất khi đủ gate và artifact thật. Run hiện hành tham chiếu qua `.cache/active-experiment.json`.
 
 - **Checkpoint thực thi:** 2026-11-12T19:30:07+07:00: chọn250real silver(175train/37validation/38test) từ265real đã rà;105synthetic export,101sau loại trừ cuối, thiếu74/175. Tổng372lời gọi7B/197lượt đạt runner. Software106:105pass/1skip. M0/M1/M2/M5 nghiên cứu chưa chạy; data gate chưa đạt.
-- **Task kế tiếp cụ thể:** bàn giao [kết quả thật](results.md) và phần thiếu74synthetic. Group review partial351đã xong; matched175synthetic và learning lock chưa đạt. Không tăng cap/replayunknown hoặc chạy M0/M1/M2/M5 trên tập thiếu. Muốn tiếp tục sinh cần quyết định ngân sách/thí nghiệm tiếp theo.
+- **Điểm dừng v1.0:** đã bàn giao [kết quả thật](results.md) và phần thiếu 74 synthetic. Group review partial351 đã xong; matched175 và lock theo v1.0 chưa đạt. Không tăng cap/replay unknown hoặc báo mục tiêu cũ đã hoàn tất. Pilot v1.1 được người dùng yêu cầu sau đó có gate/lock riêng; muốn tiếp tục sinh vẫn cần quyết định ngân sách/thí nghiệm tiếp theo.
 
 
 - **Mốc lập kế hoạch lịch sử:** [phiên thảo luận](planning-session-2026-11-12.md) giữ các lựa chọn và câu hỏi trước phê duyệt. Điểm dừng khi đó đã được goal thực thi thay thế; không dùng đoạn lịch sử này để dừng runtime hiện tại.
@@ -88,9 +93,9 @@ W2-03 chọn case và ghi nguồn/revision; W2-04 chốt vai trò train/validati
 
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
-| W4-01 | doing | Chốt protocol dựa phần phát triển W2/3: nhiệm vụ, splits, nhãn, model chẩn đoán, metric, ngân sách, seeds và cấu hình ưu tiên | `docs/experiment-protocol.md` version khóa + decision log. Chốt tách riêng hai trục thật-only/thật+synthetic và fail-only/pass+fail; nếu thiếu nguồn pass thì ghi chưa thực hiện, không tự coi head pass là một mẫu chẩn đoán đã có nhãn |
-| W4-02 | blocked | Đóng gói real train/validation/test và synthetic từ train groups theo schema thống nhất | Dataset version + manifests/checksums/source lineage + `docs/dataset-card.md`. Raw dataset bị ignore; chỉ metadata nhỏ hợp lệ đi vào Git |
-| W4-03 | doing | Kiểm tra leakage, near-duplicate, nhãn pending, trường đáp án lộ trong input (gồm gold patch/nhãn tham chiếu SWE-bench) và tính đầy đủ evidence | Lệnh kiểm tra có report: không giao nhóm/duplicate family giữa splits; validation/test thật không chứa synthetic; TF-IDF/statistics chỉ fit train. Không dùng validation/test làm seed sinh |
+| W4-01 | done (pilot v1.1) | Chốt protocol dựa phần phát triển W2/3: nhiệm vụ, splits, nhãn, model chẩn đoán, metric, ngân sách, seeds và cấu hình ưu tiên | [Protocol v1.1](experiment-protocol-v1.1.md), cấu hình seed/context/update và quyết định study thủ công. V1.0 giữ nguyên; chỉ real-only/real+synthetic được chuẩn bị, chưa có pass+fail ablation |
+| W4-02 | done (pilot v1.1); blocked (target v1.0) | Đóng gói real train/validation/test và synthetic từ train groups theo schema thống nhất | [Manifest v1.1](../data-manifests/training-v1.1.json) ghim lock 351, provenance/hash/group review và 175/37/38 real + 101 synthetic. Matched-175 v1.0 vẫn thiếu 74; không đóng goal cũ. Raw/cache/model ngoài Git |
+| W4-03 | done (lựa chọn pilot) | Kiểm tra leakage, near-duplicate, nhãn pending, trường đáp án lộ trong input và tính đầy đủ evidence | Deep audit 352 → subset 351 sau semantic dedup, review ràng buộc hash, không giao repo/group hoặc exact duplicates giữa splits; gold pending, silver dùng trong pilot có ghi rõ. [Readiness](evidence/dataset-v1-progress/manual-training-readiness-20261112.json); không lặp deep scan khi setup |
 
 **Cổng G4:** dataset/protocol được version hóa và kiểm tra tái lập. Tỷ lệ/chia tập/filter không đổi vì điểm test. Cross-validation theo nhóm trong development là tùy protocol/số liệu; synthetic chỉ nằm ở phần train tương ứng của mỗi fold nếu dùng, test cuối vẫn độc lập.
 
@@ -98,9 +103,9 @@ W2-03 chọn case và ghi nguồn/revision; W2-04 chốt vai trò train/validati
 
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
-| W5-01 | doing | Từ G4, implement loader/evaluation và M0 TF-IDF + Logistic Regression cho **phân loại** | CLI/config/report; pipeline fit train, metric có support/confusion matrix. Đây là baseline từ đề xuất nghiên cứu, không đánh giá khả năng sinh giải thích hoặc khoanh vùng bằng classifier |
-| W5-02 | doing | Chạy M1 prompt-only; pilot runtime model chẩn đoán chính Qwen2.5-Coder-3B-Instruct trước SFT, sau các cổng dữ liệu | Lưu checkpoint revision/chat template/context, tốc độ và VRAM thực đo. Generator 7B không thay vai trò chẩn đoán của 3B |
-| W5-03 | blocked | Khi dữ liệu/VRAM cho phép, chạy M2 SFT real-only và M5 real+verified-synthetic theo protocol | Config/checkpoint/log/chi phí; cùng checkpoint nền và input/validation; kiểm soát lượng dữ liệu/phân bố và công bố số token/update. Mọi thay đổi vì OOM tạo config mới |
+| W5-01 | waiting_user | M0 TF-IDF + Logistic Regression cho **phân loại**, code đã xong | `scripts/train.ps1 M0`; fit real train, support/confusion matrix, không localization. Chưa có run nghiên cứu |
+| W5-02 | waiting_user | M1 prompt-only, code đã xong; giữ phép calibration train cũ riêng | `scripts/train.ps1 M1`; pinned local 3B, request/raw/hash/timing/GPU logs, resume không gọi lại completed/uncertain request. Chưa có run nghiên cứu |
+| W5-03 | waiting_user | M2 real-only và M5 mixed pilot v1.1, setup đã xong | `scripts/train.ps1 M2 -Smoke` tùy chọn, rồi M2/M5 độc lập; 104 updates, checkpoint/resume/validation/GPU logs. 116 kiểm thử phần mềm: 115 pass/1 skip, backend giả lập resume từ 52 đến 104. CUDA backward/reload thực và thời gian train chưa đo; không tự chạy thay người dùng |
 | W5-04 | todo | Dùng validation chọn checkpoint/tham số theo protocol đã khóa; chưa mở test để sửa cấu hình | Bảng kết quả phát triển + cấu hình cuối. Nếu thiếu thời gian/dữ liệu, ghi thiếu thí nghiệm thay vì tạo kết quả hoặc kết luận hiệu quả |
 
 **Cổng G5:** có baseline thật và cấu hình cuối truy vết được. Chỉ nói tác dụng fine-tuning/synthetic khi đối chứng tương ứng tồn tại; hai lượt 7B đạt thực thi hiện tại chưa đủ thay thế dataset huấn luyện và chưa được duyệt để train.

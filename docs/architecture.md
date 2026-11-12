@@ -1,5 +1,16 @@
 # Architecture and context checkpoint
 
+## Current handoff — manual training v1.1, 12 November 2026
+
+User requested code setup only and will start M0/M1/M2/M5 separately. [Protocol v1.1](experiment-protocol-v1.1.md) and [runbook](training-runbook.md) supersede the learning-gated state **only for this separately versioned 250-real/101-synthetic pilot**. Original v1.0 matched-175 target remains unmet; no generation budget reset, new model execution or gold-label claim.
+
+- `learning.lock_reviewed_pilot` binds the retained 351 exports to the completed parent deep audit, group review and unchanged text hashes; `.cache/dataset-v1/locked-v1.1.json` is pinned in `data-manifests/training-v1.1.json`. V1.0 gates stay unchanged; v1.1 requires 175/37/38 real and 101 synthetic for mixed training. M0/M1/M2 consume real only. `--check` verifies prepared hashes without loading a model or starting a study.
+- `scripts/train.ps1 M0|M1|M2|M5` uses the isolated ML environment and `ci_demo.sft --manual`. First user model command creates one persistent manual study with a separate `.cache/manual-learning-v1.1.json`; original `.cache/active-experiment.json`/collection manifest stay untouched. Manual study has no calendar cutoff, cumulative two-hour caps per SFT and evaluation, 1,500 inference/zero generator requests and 20-GiB free-space guard. Unknown force-kill gaps remain chargeable; resume never resets caps.
+- M2/M5 each start fresh 3B NF4 LoRA, 104 updates; checkpoints every 20 plus 52/104, generation-based validation only at 52/104. Full optimizer/scheduler/RNG/adapter state is hashed before validation. `--resume RUN_ID` requires matching model/data/config/code/study and a complete checkpoint; new checkpoint paths preserve prior artifacts. Completed predictions/validation are reused with hashes; uncertain requests are counted as errors and not reissued. Interrupted M0 is not silently refit.
+- `--model M2 --smoke` is a separate three-update train-only calibration, never a completed research M2 or final-test input. All GPU learning commands record utilization, temperature, power and whole-GPU VRAM CSV via the existing `gpu_trace(detailed=True)`; the default generator monitor columns stay compatible. Training events, per-invocation arguments and exposure logs remain local.
+- Final test stays explicit after four completed models and checkpoint selection. Software validation: 116 tests, 115 passed/one opt-in Docker skip; inert Trainer integration covers interruption at 52/resume to 104 and no repeated validation. One older timeout-fixture failure occurred in the first full pass, did not reproduce in its diagnostic or final full suite; both logs retained. **Actual CUDA backward/optimizer/reload and training duration remain unmeasured**, for the user's smoke command.
+
+The checkpoint below describes the original collection study, not a prohibition on the newly approved manual pilot.
 
 <!-- dataset-v1-current:start -->
 ## Checkpoint dataset v1 hiện hành

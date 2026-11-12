@@ -68,6 +68,24 @@ class LearningTests(unittest.TestCase):
         rows[175]['group_id']='train'
         with self.assertRaises(ValueError):check_learning_gate(rows)
 
+    def test_v11_explicit_ratio_preserves_legacy_gate_and_model_dependencies(self):
+        rows=[{'sample_id':f'{role}-{i}','origin':'real_local_reconstruction','role':role,
+               'quality':'silver','group_id':role,'repo':'https://github.com/fixture/'+role,
+               'reference':{'cause_type':'API/type' if i%2 else 'logic/value',
+                            'locations':[{'file':'fixture.py','function':'cause'}]}}
+              for role,n in [('train',175),('validation',37),('test',38)] for i in range(n)]
+        for model in ['M0','M1','M2']:
+            self.assertEqual(check_learning_gate(rows,protocol='v1.1',model=model)['real'],250)
+        with self.assertRaises(ValueError):check_learning_gate(rows,protocol='v1.1',model='M5')
+        mixed=rows+[{**r,'sample_id':'synthetic-'+r['sample_id'],'origin':'controlled_synthetic'} for r in rows[:101]]
+        self.assertEqual(check_learning_gate(mixed,protocol='v1.1')['synthetic'],101)
+        self.assertEqual(update_budget(mixed),104)
+        with self.assertRaises(ValueError):check_learning_gate(mixed)
+        with self.assertRaises(ValueError):check_learning_gate(mixed[:-1],protocol='v1.1')
+        with self.assertRaises(ValueError):check_learning_gate(mixed,protocol='unapproved')
+        leaked=[*mixed[:-1],{**mixed[-1],'role':'test'}]
+        with self.assertRaises(ValueError):check_learning_gate(leaked,protocol='v1.1',model='M0')
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -135,6 +135,20 @@ class ExperimentTests(unittest.TestCase):
                 self.assertEqual(state["stage_limits_seconds"]["training_M2"], 7200)
                 self.assertEqual(state["stage_limits_seconds"]["training_M5"], 7200)
 
+    def test_only_manual_learning_can_omit_calendar_deadline_and_still_enforces_stage_cap(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=self.make(tmp,deadline=None,mode='manual_learning_v1.1',
+                stage_limits_seconds={'training_M2':60},stage_budget_modes={'training_M2':'operation_union'})
+            with patch('ci_demo.experiment.run_path',return_value=folder),patch('ci_demo.experiment.CACHE',Path(tmp)):
+                exp=Experiment('run');self.assertGreater(exp.check('training_M2'),59)
+                state=read_json(exp.manifest)
+                state['operations']={'spent':{'stage':'training_M2','reserved_at':(datetime.now(timezone.utc)-timedelta(seconds=90)).isoformat(),
+                                            'finished_at':datetime.now(timezone.utc).isoformat(),'status':'finished'}}
+                write_json(exp.manifest,state)
+                with self.assertRaises(BudgetStop):exp.check('training_M2')
+                state['mode']='not_manual';write_json(exp.manifest,state)
+                with self.assertRaises(ValueError):exp.check('training_M2')
+
 
 if __name__ == "__main__":
     unittest.main()

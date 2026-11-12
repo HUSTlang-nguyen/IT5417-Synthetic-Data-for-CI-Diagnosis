@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T19:29:08+07:00",
+  "updated_at": "2026-11-12T20:19:03+07:00",
   "experiment_run_id": "experiment-20261111T192045721211Z",
   "status": "partial_data_audit_completed_learning_gated",
   "source": {
@@ -63,5 +63,37 @@
     "curated_selection": "data-manifests/dataset-v1-curated-selection.json",
     "selection_audit": "docs/evidence/dataset-v1-progress/selection-audit-20261112.json"
   },
-  "qualification": "Milestone snapshot, not a background monitor or training approval. No research fit/final model test. Read actual worker manifest only when newer state must be verified; do not rerun experiments or full hash audit merely for a status question."
+  "qualification": "Milestone snapshot, not a background monitor or training approval. No research fit/final model test. Read actual worker manifest only when newer state must be verified; do not rerun experiments or full hash audit merely for a status question.",
+  "manual_training_v1_1": {
+    "status": "setup_ready_waiting_user_model_command",
+    "dataset_path": ".cache/dataset-v1/locked-v1.1.json",
+    "dataset_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
+    "real_by_role": {
+      "train": 175,
+      "validation": 37,
+      "test": 38
+    },
+    "synthetic_train": 101,
+    "optimizer_updates_each_sft": 104,
+    "configuration": "data-manifests/training-v1.1.json",
+    "protocol": "docs/experiment-protocol-v1.1.md",
+    "runbook": "docs/training-runbook.md",
+    "readiness": "docs/evidence/dataset-v1-progress/manual-training-readiness-20261112.json",
+    "software_tests": {
+      "total": 116,
+      "passed": 115,
+      "skipped": 1,
+      "failed": 0,
+      "log": "docs/evidence/dataset-v1-progress/software-tests-manual-v11-final.txt"
+    },
+    "models": {
+      "M0": "not_run",
+      "M1": "not_run",
+      "M2": "not_run",
+      "M5": "not_run"
+    },
+    "study_created": false,
+    "smoke_run": false,
+    "qualification": "Approved code setup only. Hardware backward/reload/time unmeasured; original v1.0 gates above remain unmet, silver not gold."
+  }
 }

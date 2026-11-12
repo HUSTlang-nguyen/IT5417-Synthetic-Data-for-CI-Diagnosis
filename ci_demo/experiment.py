@@ -8,7 +8,7 @@ import math
 import shutil
 
 from .batch import batch_lock, BudgetStop
-from .common import CACHE, now, read_json, run_path, write_json
+from .common import CACHE, ROOT, new_run, now, read_json, run_path, sha256, write_json
 
 
 class Experiment:
@@ -37,8 +37,13 @@ class Experiment:
                 left = max(left, end) if end is not None else left
                 used += max(0, (right - left).total_seconds())
                 end = max(end, right) if end is not None else right
-        remaining = min((datetime.fromisoformat(state["deadline"]) - timestamp).total_seconds(),
-                        state["stage_limits_seconds"][stage] - used)
+        if state.get("deadline") is None:
+            if state.get("mode") != "manual_learning_v1.1":
+                raise ValueError("Only an explicit manual learning study may omit a calendar deadline")
+            wall_remaining = float("inf")
+        else:
+            wall_remaining = (datetime.fromisoformat(state["deadline"]) - timestamp).total_seconds()
+        remaining = min(wall_remaining, state["stage_limits_seconds"][stage] - used)
         if state["status"] != "running" or remaining <= timeout or shutil.disk_usage(self.folder).free < 20 * 1024 ** 3:
             raise BudgetStop("Insufficient wall/stage budget or storage before " + stage)
         return timestamp, remaining
@@ -127,3 +132,39 @@ class Experiment:
 
 def active_experiment():
     return Experiment(read_json(CACHE / "active-experiment.json")["run_id"])
+
+
+def manual_learning_experiment(dataset_path):
+    """Start once, on the user's model command; never reset the collection experiment."""
+    specification_path = ROOT / "data-manifests" / "training-v1.1.json"
+    spec = read_json(specification_path)
+    dataset_path = Path(dataset_path).resolve()
+    if (spec.get("protocol") != "v1.1" or read_json(dataset_path).get("protocol") != "v1.1"
+            or sha256(dataset_path) != spec["dataset_sha256"]):
+        raise ValueError("Manual learning dataset differs from the prepared v1.1 lock")
+    pointer = CACHE / "manual-learning-v1.1.json"
+    with batch_lock(CACHE / "manual-learning-init.lock", wait_seconds=30):
+        if pointer.exists():
+            experiment = Experiment(read_json(pointer)["run_id"])
+            state = read_json(experiment.manifest)
+            if state.get("mode") != "manual_learning_v1.1" or state.get("specification_sha256") != sha256(specification_path):
+                raise ValueError("Existing manual study has a different policy; do not reset it")
+            return experiment
+        original = run_path(spec["source_experiment_run_id"])
+        if set(spec["model_metadata_sha256"]) != {"diagnoser-model.json", "diagnoser-file-sha256.json"}:
+            raise ValueError("Prepared model provenance inventory incomplete")
+        for name, expected in spec["model_metadata_sha256"].items():
+            if name not in {"diagnoser-model.json", "diagnoser-file-sha256.json"} or sha256(original / name) != expected:
+                raise ValueError("Prepared model provenance changed")
+        folder = new_run("manual-study")
+        limits = {"training_each": 7200, "training_M2": 7200, "training_M5": 7200, "evaluation": 7200}
+        write_json(folder / "manifest.json", {"kind": "dataset_sft_experiment", "run_id": folder.name,
+            "created_at": now(), "status": "running", "mode": "manual_learning_v1.1", "deadline": None,
+            "specification_sha256": sha256(specification_path), "dataset_sha256": sha256(dataset_path),
+            "stage_limits_seconds": limits, "stage_budget_modes": {k: "operation_union" for k in limits},
+            "request_limits": {"generator_7b": 0, "diagnoser_3b_inference": 1500}, "operations": {},
+            "qualification": "User starts models manually; no calendar cutoff, cumulative per-stage/request/storage caps retained. Original 24h collection experiment unchanged."})
+        for name in ("diagnoser-model.json", "diagnoser-file-sha256.json"):
+            (folder / name).write_bytes((original / name).read_bytes())
+        write_json(pointer, {"run_id": folder.name})
+        return Experiment(folder.name)

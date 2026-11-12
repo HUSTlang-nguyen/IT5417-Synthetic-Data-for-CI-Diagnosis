@@ -15,12 +15,13 @@ from .experiment import active_experiment
 
 
 @contextmanager
-def gpu_trace(folder):
+def gpu_trace(folder, *, detailed=False):
     output = folder / "whole-gpu-memory.csv"
     process = None
     with output.open("w", encoding="utf-8") as stream, (folder / "gpu-monitor.stderr.txt").open("w", encoding="utf-8") as errors:
         try:
-            process = subprocess.Popen(["nvidia-smi", "--query-gpu=timestamp,memory.used", "--format=csv,noheader,nounits", "--loop-ms=250"],
+            fields = "timestamp,utilization.gpu,temperature.gpu,power.draw,memory.used" if detailed else "timestamp,memory.used"
+            process = subprocess.Popen(["nvidia-smi", "--query-gpu=" + fields, "--format=csv,noheader,nounits", "--loop-ms=250"],
                 stdout=stream, stderr=errors, creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
         except OSError as exc:
             errors.write(str(exc))

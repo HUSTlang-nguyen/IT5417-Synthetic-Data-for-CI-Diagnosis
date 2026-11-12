@@ -12,9 +12,11 @@ Luồng demo W1: **AIDev record → repo/commit → seed pass → 7B sinh → Do
 
 [Kết quả thực đạt và phần chưa hoàn thành](docs/results.md).
 
+**Pilot v1.1 đã sẵn sàng để tự chạy, chưa train:** dùng 250 real + 101 synthetic đã rà theo [protocol riêng](docs/experiment-protocol-v1.1.md); mục tiêu v1.0 thiếu 74 synthetic giữ nguyên. Trong worktree đã chuẩn bị, chạy `.\scripts\train.ps1 -Check`, rồi từng lệnh `.\scripts\train.ps1 M0`, `.\scripts\train.ps1 M1`, `.\scripts\train.ps1 M2`, `.\scripts\train.ps1 M5` khi muốn. [Hướng dẫn đầy đủ: chạy, GPU, smoke và resume](docs/training-runbook.md). Hai adapter SFT độc lập; test cuối là lệnh riêng. Không tự chạy model khi kiểm tra sẵn sàng.
+
 Đọc nhanh: [trạng thái dữ liệu hiện hành](data-manifests/dataset-v1-status.json), [dung lượng/giữ dữ liệu/DVC](docs/data-storage.md). Không cần chạy lại audit hoặc thí nghiệm để trả lời tiến độ từ checkpoint.
 
-Backend học tùy chọn: `python -m ci_demo.sft --dataset <locked-manifest> --model M0|M1|M2|M5`; final test dùng `--test-runs` với bốn run hoàn tất. Lệnh từ chối dataset chưa khóa hoặc chưa đủ gate. Đây là interface đã triển khai, chưa phải kết quả huấn luyện.
+Backend học tùy chọn: `.cache/ml-v1/Scripts/python.exe -m ci_demo.sft --manual --model M0|M1|M2|M5`; final test dùng `--manual --test-runs` với bốn run hoàn tất. Lệnh từ chối dataset chưa khóa hoặc chưa đủ gate theo phiên bản protocol. Đây là interface đã triển khai, chưa phải kết quả huấn luyện. Pipeline thu thập/demo vẫn dùng CLI và ngân sách riêng.
 
 properr PR #6: AIDev v5, bảng all_pull_request, record 3256868569. Repo nguồn có Python + Rust; code điều phối của đề tài viết bằng Python. Nguồn, revision, snapshot và giới hạn nằm trong cases/properr-6.
 
