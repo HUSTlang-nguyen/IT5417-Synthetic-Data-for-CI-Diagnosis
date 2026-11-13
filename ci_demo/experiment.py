@@ -38,7 +38,7 @@ class Experiment:
                 used += max(0, (right - left).total_seconds())
                 end = max(end, right) if end is not None else right
         if state.get("deadline") is None:
-            if state.get("mode") != "manual_learning_v1.1":
+            if state.get("mode") not in {"manual_learning_v1.1", "manual_learning_v1.2"}:
                 raise ValueError("Only an explicit manual learning study may omit a calendar deadline")
             wall_remaining = float("inf")
         else:
@@ -134,20 +134,25 @@ def active_experiment():
     return Experiment(read_json(CACHE / "active-experiment.json")["run_id"])
 
 
-def manual_learning_experiment(dataset_path):
+def manual_learning_experiment(dataset_path, *, protocol="v1.1"):
     """Start once, on the user's model command; never reset the collection experiment."""
-    specification_path = ROOT / "data-manifests" / "training-v1.1.json"
+    if protocol not in {"v1.1", "v1.2"}:
+        raise ValueError("Unknown training protocol")
+    specification_path = ROOT / "data-manifests" / ("training-" + protocol + ".json")
     spec = read_json(specification_path)
+    if protocol == "v1.2":
+        from .continuation import load_spec
+        spec = load_spec(dataset_path)
     dataset_path = Path(dataset_path).resolve()
-    if (spec.get("protocol") != "v1.1" or read_json(dataset_path).get("protocol") != "v1.1"
+    if (spec.get("protocol") != protocol or read_json(dataset_path).get("protocol") != "v1.1"
             or sha256(dataset_path) != spec["dataset_sha256"]):
         raise ValueError("Manual learning dataset differs from the prepared v1.1 lock")
-    pointer = CACHE / "manual-learning-v1.1.json"
+    pointer = CACHE / ("manual-learning-" + protocol + ".json")
     with batch_lock(CACHE / "manual-learning-init.lock", wait_seconds=30):
         if pointer.exists():
             experiment = Experiment(read_json(pointer)["run_id"])
             state = read_json(experiment.manifest)
-            if state.get("mode") != "manual_learning_v1.1" or state.get("specification_sha256") != sha256(specification_path):
+            if state.get("mode") != "manual_learning_" + protocol or state.get("specification_sha256") != sha256(specification_path):
                 raise ValueError("Existing manual study has a different policy; do not reset it")
             return experiment
         original = run_path(spec["source_experiment_run_id"])
@@ -157,9 +162,9 @@ def manual_learning_experiment(dataset_path):
             if name not in {"diagnoser-model.json", "diagnoser-file-sha256.json"} or sha256(original / name) != expected:
                 raise ValueError("Prepared model provenance changed")
         folder = new_run("manual-study")
-        limits = {"training_each": 7200, "training_M2": 7200, "training_M5": 7200, "evaluation": 7200}
+        limits = spec["stage_limits_seconds"] if protocol == "v1.2" else {"training_each": 7200, "training_M2": 7200, "training_M5": 7200, "evaluation": 7200}
         write_json(folder / "manifest.json", {"kind": "dataset_sft_experiment", "run_id": folder.name,
-            "created_at": now(), "status": "running", "mode": "manual_learning_v1.1", "deadline": None,
+            "created_at": now(), "status": "running", "mode": "manual_learning_" + protocol, "deadline": None,
             "specification_sha256": sha256(specification_path), "dataset_sha256": sha256(dataset_path),
             "stage_limits_seconds": limits, "stage_budget_modes": {k: "operation_union" for k in limits},
             "request_limits": {"generator_7b": 0, "diagnoser_3b_inference": 1500}, "operations": {},

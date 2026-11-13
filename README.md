@@ -4,19 +4,23 @@ Sinh dữ liệu tổng hợp có kiểm chứng hỗ trợ chẩn đoán lỗi 
 
 ## Toàn đề tài và milestone hiện tại
 
-Mục tiêu nghiên cứu dài hạn là đánh giá dữ liệu synthetic đối với phân loại/khoanh vùng lỗi trên dữ liệu thật. Milestone đầu là **demo pipeline Python trên một repo thật**; chưa có fine-tuning hoặc kết luận hiệu quả ML.
+**Bộ bảo vệ giữa kỳ:** [slide HUST, báo cáo LaTeX, cheatsheet A4 và ghi chú ôn tập](docs/midterm/README.md). 24 slide chính +4 dự phòng cho 20 phút; báo cáo 11 trang nội dung. Các tệp PPTX/PDF và source LaTeX bàn giao tại `output/midterm/`; thông tin họ tên/MSSV trên bìa để trống.
+
+**13/11 — đã hoàn tất pilot và final test:** [validation](docs/evaluation-validation.md), [test/chi phí](docs/evaluation-results.md), [phân tích lỗi và synthetic](docs/evaluation-error-analysis.md). Trên cùng38realtest, M2 accuracy22/38, M5 24/38; joint cùng4/38. M1-P2 dùng **prompt mới**, giữ parser strict. Nhãn silver, chưa có gold. Các kết quả nhỏ chưa chứng minh synthetic có lợi tổng quát.
+
+Mục tiêu nghiên cứu dài hạn là đánh giá dữ liệu synthetic đối với phân loại/khoanh vùng lỗi trên dữ liệu thật. Milestone đầu là **demo pipeline Python trên một repo thật**; pilot SFT và đánh giá tiếp theo được version hóa riêng, không thay kết quả demo lịch sử.
 
 Luồng demo W1: **AIDev record → repo/commit → seed pass → 7B sinh → Docker kiểm chứng → người duyệt → dữ liệu cho 3B chẩn đoán.** Generator duy nhất là `qwen2.5-coder:7b-instruct`; model chẩn đoán chính là `Qwen/Qwen2.5-Coder-3B-Instruct`. Model phụ đã bỏ khỏi workflow; evidence lịch sử giữ nguyên.
 
-**Dataset v1, cập nhật 12/11:** đã rà 265 real silver, chọn sơ bộ **250 real (175 train/37 validation/38 test)**; **101 synthetic** trong phạm vi lựa chọn, còn thiếu **74/175**. [Bằng chứng tiến độ](docs/evidence/dataset-v1-progress/README.md), [protocol](docs/experiment-protocol.md), [dataset card](docs/dataset-card.md) và [điểm tiếp tục](docs/implementation-plan.md#điểm-tiếp-tục-hiện-tại). Đã hoàn tất kiểm tra nhóm/evidence cho lựa chọn hiện có; dataset chưa đạt cổng khóa để học. Đợt sinh bị gián đoạn và hết ngân sách stage, không gọi lại lượt unknown. Chưa chạy M0/M1/M2/M5 nghiên cứu hoặc SFT. Core pipeline vẫn standard library; runtime ML dùng môi trường riêng và [dependency ghim](requirements-ml.txt).
+**Dataset v1:** đã rà265real silver, khóa riêng cho pilot **250real (175train/37validation/38test) +101synthetic train**. Target matched175 của protocol v1.0 còn thiếu74; không coi pilot là hoàn tất mục tiêu cũ. [Bằng chứng](docs/evidence/dataset-v1-progress/README.md), [protocol gốc](docs/experiment-protocol.md), [dataset card](docs/dataset-card.md), [điểm tiếp tục](docs/implementation-plan.md#điểm-tiếp-tục-hiện-tại). Không gọi lại request unknown hoặc reset cap sinh. Core pipeline dùng standard library; ML có [dependency ghim](requirements-ml.txt) trong môi trường riêng.
 
 [Kết quả thực đạt và phần chưa hoàn thành](docs/results.md).
 
-**Pilot v1.1 đã sẵn sàng để tự chạy, chưa train:** dùng 250 real + 101 synthetic đã rà theo [protocol riêng](docs/experiment-protocol-v1.1.md); mục tiêu v1.0 thiếu 74 synthetic giữ nguyên. Trong worktree đã chuẩn bị, chạy `.\scripts\train.ps1 -Check`, rồi từng lệnh `.\scripts\train.ps1 M0`, `.\scripts\train.ps1 M1`, `.\scripts\train.ps1 M2`, `.\scripts\train.ps1 M5` khi muốn. [Hướng dẫn đầy đủ: chạy, GPU, smoke và resume](docs/training-runbook.md). Hai adapter SFT độc lập; test cuối là lệnh riêng. Không tự chạy model khi kiểm tra sẵn sàng.
+**Training đã hoàn tất:** [pilot v1.1](docs/experiment-protocol-v1.1.md), [continuation v1.2](docs/experiment-protocol-v1.2.md) đến tổng10epoch cho M2/M5. Cảhai chọn checkpointparent104 theo validation; không dùng adapterepoch10 để test. [Lệnh train/continue/resume và monitor](docs/training-runbook.md) được giữ để tái lập; không cần chạy lại để xem kết quả.
 
 Đọc nhanh: [trạng thái dữ liệu hiện hành](data-manifests/dataset-v1-status.json), [dung lượng/giữ dữ liệu/DVC](docs/data-storage.md). Không cần chạy lại audit hoặc thí nghiệm để trả lời tiến độ từ checkpoint.
 
-Backend học tùy chọn: `.cache/ml-v1/Scripts/python.exe -m ci_demo.sft --manual --model M0|M1|M2|M5`; final test dùng `--manual --test-runs` với bốn run hoàn tất. Lệnh từ chối dataset chưa khóa hoặc chưa đủ gate theo phiên bản protocol. Đây là interface đã triển khai, chưa phải kết quả huấn luyện. Pipeline thu thập/demo vẫn dùng CLI và ngân sách riêng.
+Backend học tùy chọn: `.cache/ml-v1/Scripts/python.exe -m ci_demo.sft --manual --model M0|M1|M2|M5`. Evaluation có [manifest riêng](data-manifests/evaluation-v1.json) và khóa test chung để ngăn trial thứhai; finaltest hiện đã hoàn tất. Chỉ đọc/tạo lại phân tích từ artifact bằng `python -m ci_demo.evaluation_report --run evaluation-20261112T210848574175Z`, không gọi model. Raw dataset/model/run nằm local ngoài Git; clone chỉ mang code/tài liệu và evidence nhỏ.
 
 properr PR #6: AIDev v5, bảng all_pull_request, record 3256868569. Repo nguồn có Python + Rust; code điều phối của đề tài viết bằng Python. Nguồn, revision, snapshot và giới hạn nằm trong cases/properr-6.
 

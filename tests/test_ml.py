@@ -3,6 +3,7 @@ import re
 import unittest
 from pathlib import Path
 import tempfile
+import importlib.util
 
 from ci_demo.ml import prepare_input, verify_checkpoint
 from ci_demo.common import sha256
@@ -30,6 +31,29 @@ class WordTokenizer:
 
 
 class MLProtocolTests(unittest.TestCase):
+    @unittest.skipUnless(importlib.util.find_spec('transformers'), 'Requires isolated ML environment')
+    def test_oversized_raw_log_is_cropped_without_model_length_warning(self):
+        from tokenizers import Tokenizer
+        from tokenizers.models import WordLevel
+        from tokenizers.pre_tokenizers import Whitespace
+        from transformers import PreTrainedTokenizerFast
+        backend = Tokenizer(WordLevel({'[UNK]': 0, 'log': 1, 'failure': 2}, unk_token='[UNK]'))
+        backend.pre_tokenizer = Whitespace()
+        tokenizer = PreTrainedTokenizerFast(tokenizer_object=backend, unk_token='[UNK]', model_max_length=32768)
+        tokenizer.chat_template = "{% for m in messages %}{{ m['role'] + ': ' + m['content'] + '\\n' }}{% endfor %}assistant:"
+        raw = 'log ' * 46148 + 'failure'
+        logger = 'transformers.tokenization_utils_base'
+        with self.assertLogs(logger, level='WARNING'):
+            full_ids = tokenizer.encode(raw, add_special_tokens=False)
+        self.assertEqual(len(full_ids), 46149)
+        tokenizer.deprecation_warnings.clear()
+        with self.assertNoLogs(logger, level='WARNING'):
+            prepared = prepare_input({'execution_log': raw, 'code': []}, tokenizer)
+        self.assertEqual(prepared['log_original_tokens'], 46149)
+        self.assertEqual(prepared['log_retained_tokens'], 640)
+        self.assertLessEqual(prepared['input_tokens'] + 384, 2048)
+        self.assertIn('failure', tokenizer.decode(prepared['input_ids']))
+
     def test_checkpoint_inventory_detects_changed_or_omitted_weights(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "model.safetensors"

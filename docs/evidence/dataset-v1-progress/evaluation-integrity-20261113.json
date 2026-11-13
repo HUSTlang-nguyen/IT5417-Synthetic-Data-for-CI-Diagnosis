@@ -1,0 +1,73 @@
+{
+  "recorded_at": "2026-11-13T04:39:26+07:00",
+  "run_id": "evaluation-20261112T210848574175Z",
+  "status": "evaluation_finished",
+  "finished_at": "2026-11-13T04:35:01+07:00",
+  "specification_sha256": "5684e021568fc27977acf4d36767fa99ab96b94558f6769c95912308f1ed5b0f",
+  "dataset_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
+  "test_lock_sha256": "a3e6dbbfc62f7b603657a3140832fcde512faea140cd2b508c7abeb2cd01a937",
+  "phase_responses": {
+    "test-M0": 0,
+    "test-M1-P2": 38,
+    "test-M2": 38,
+    "test-M5": 38,
+    "validation-M1-P2": 37
+  },
+  "new_request_states": {
+    "finished": 151
+  },
+  "master_invocations": [
+    {
+      "operation": "evaluation-20261112T210848574175Z-master-0",
+      "status": "failed",
+      "error": "BudgetStop('GPU busy or less than 6 GiB available; do not interfere with other work')"
+    },
+    {
+      "operation": "evaluation-20261112T210848574175Z-master-1",
+      "status": "failed",
+      "error": "BudgetStop('GPU busy or less than 6 GiB available; do not interfere with other work')"
+    },
+    {
+      "operation": "evaluation-20261112T210848574175Z-master-2",
+      "status": "failed",
+      "error": "BudgetStop('GPU busy or less than 6 GiB available; do not interfere with other work')"
+    },
+    {
+      "operation": "evaluation-20261112T210848574175Z-master-3",
+      "status": "finished",
+      "error": null
+    }
+  ],
+  "evaluation_budget_used_seconds": 1445.0,
+  "evaluation_budget_limit_seconds": 7200,
+  "study_role_requests": 373,
+  "study_role_limit": 1500,
+  "test_reference_support": {
+    "API/type": 9,
+    "logic/value": 21,
+    "dependency/configuration": 8
+  },
+  "source_artifacts_missing": 0,
+  "source_artifacts_changed": 0,
+  "paired_m2_m5": {
+    "classification_correct": {
+      "both_correct": 20,
+      "m2_only": 2,
+      "m5_only": 4,
+      "both_wrong": 12
+    },
+    "function_top1_correct": {
+      "both_correct": 5,
+      "m2_only": 1,
+      "m5_only": 2,
+      "both_wrong": 30
+    },
+    "joint_top1_correct": {
+      "both_correct": 3,
+      "m2_only": 1,
+      "m5_only": 1,
+      "both_wrong": 33
+    }
+  },
+  "qualification": "Read-only final integrity check. Model requests not retried. Resource-only failures preserved; same frozen trial resumed. Silver labels unchanged."
+}

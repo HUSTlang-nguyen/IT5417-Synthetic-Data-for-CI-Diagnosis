@@ -1,0 +1,153 @@
+{
+  "main_slides": 24,
+  "backup_slides": 4,
+  "planned_seconds": 1200,
+  "spoken_whitespace_units": 3519,
+  "timeline": [
+    {
+      "slide": 1,
+      "start": 0,
+      "end": 25,
+      "seconds": 25
+    },
+    {
+      "slide": 2,
+      "start": 25,
+      "end": 65,
+      "seconds": 40
+    },
+    {
+      "slide": 3,
+      "start": 65,
+      "end": 110,
+      "seconds": 45
+    },
+    {
+      "slide": 4,
+      "start": 110,
+      "end": 150,
+      "seconds": 40
+    },
+    {
+      "slide": 5,
+      "start": 150,
+      "end": 200,
+      "seconds": 50
+    },
+    {
+      "slide": 6,
+      "start": 200,
+      "end": 240,
+      "seconds": 40
+    },
+    {
+      "slide": 7,
+      "start": 240,
+      "end": 275,
+      "seconds": 35
+    },
+    {
+      "slide": 8,
+      "start": 275,
+      "end": 330,
+      "seconds": 55
+    },
+    {
+      "slide": 9,
+      "start": 330,
+      "end": 375,
+      "seconds": 45
+    },
+    {
+      "slide": 10,
+      "start": 375,
+      "end": 430,
+      "seconds": 55
+    },
+    {
+      "slide": 11,
+      "start": 430,
+      "end": 480,
+      "seconds": 50
+    },
+    {
+      "slide": 12,
+      "start": 480,
+      "end": 530,
+      "seconds": 50
+    },
+    {
+      "slide": 13,
+      "start": 530,
+      "end": 585,
+      "seconds": 55
+    },
+    {
+      "slide": 14,
+      "start": 585,
+      "end": 660,
+      "seconds": 75
+    },
+    {
+      "slide": 15,
+      "start": 660,
+      "end": 735,
+      "seconds": 75
+    },
+    {
+      "slide": 16,
+      "start": 735,
+      "end": 780,
+      "seconds": 45
+    },
+    {
+      "slide": 17,
+      "start": 780,
+      "end": 835,
+      "seconds": 55
+    },
+    {
+      "slide": 18,
+      "start": 835,
+      "end": 885,
+      "seconds": 50
+    },
+    {
+      "slide": 19,
+      "start": 885,
+      "end": 920,
+      "seconds": 35
+    },
+    {
+      "slide": 20,
+      "start": 920,
+      "end": 980,
+      "seconds": 60
+    },
+    {
+      "slide": 21,
+      "start": 980,
+      "end": 1025,
+      "seconds": 45
+    },
+    {
+      "slide": 22,
+      "start": 1025,
+      "end": 1085,
+      "seconds": 60
+    },
+    {
+      "slide": 23,
+      "start": 1085,
+      "end": 1145,
+      "seconds": 60
+    },
+    {
+      "slide": 24,
+      "start": 1145,
+      "end": 1200,
+      "seconds": 55
+    }
+  ],
+  "qualification": "Timing is planned, not an actual rehearsal. No model run or score changes."
+}

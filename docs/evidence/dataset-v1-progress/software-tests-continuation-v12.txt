@@ -1,0 +1,178 @@
+test_exact_plan_and_supported_models (tests.test_continuation.ContinuationTests.test_exact_plan_and_supported_models) ... ok
+test_final_lock_accepts_pinned_parent_selection_with_different_update_counts (tests.test_continuation.ContinuationTests.test_final_lock_accepts_pinned_parent_selection_with_different_update_counts) ... ok
+test_parent_checkpoint_rejects_tampered_or_missing_state (tests.test_continuation.ContinuationTests.test_parent_checkpoint_rejects_tampered_or_missing_state) ... ok
+test_real_cpu_trainer_preserves_optimizer_rng_data_and_scheduler_across_two_resumes (tests.test_continuation.ContinuationTests.test_real_cpu_trainer_preserves_optimizer_rng_data_and_scheduler_across_two_resumes) ... Warning: The following arguments do not match the ones in the `trainer_state.json` within the checkpoint directory: 
+	save_steps: 22 (from args) != 104 (from trainer_state.json)
+Warning: The following arguments do not match the ones in the `trainer_state.json` within the checkpoint directory: 
+	save_steps: 35 (from args) != 104 (from trainer_state.json)
+ok
+{'train_runtime': 0.3361, 'train_samples_per_second': 2475.316, 'train_steps_per_second': 309.415, 'train_loss': 0.0021322027135353824, 'epoch': 4.731428571428571}
+{'train_runtime': 0.3324, 'train_samples_per_second': 5294.285, 'train_steps_per_second': 661.786, 'train_loss': 0.0008443831720135428, 'epoch': 10.0}
+{'train_runtime': 0.3406, 'train_samples_per_second': 2443.016, 'train_steps_per_second': 305.377, 'train_loss': 0.0045236403552385476, 'epoch': 2.9855072463768115}
+{'train_runtime': 0.4958, 'train_samples_per_second': 5647.129, 'train_steps_per_second': 705.891, 'train_loss': 0.0017797250407082695, 'epoch': 10.0}
+{"fixture": true}
+test_v12_check_cannot_start_study_or_model (tests.test_continuation.ContinuationTests.test_v12_check_cannot_start_study_or_model) ... ok
+test_v12_rejects_legacy_models_smoke_and_context_before_study (tests.test_continuation.ContinuationTests.test_v12_rejects_legacy_models_smoke_and_context_before_study) ... usage: sft [-h] [--dataset DATASET] [--manual] [--protocol {v1.1,v1.2}]
+           [--resume LEARNING_RUN_ID] [--smoke]
+           (--model {M0,M1,M2,M5} | --test-runs RUN_ID RUN_ID RUN_ID RUN_ID | --check)
+           [--context {1024,2048}]
+sft: error: v1.2 requires --manual with M2/M5, --check or --test-runs; no smoke/context change
+usage: sft [-h] [--dataset DATASET] [--manual] [--protocol {v1.1,v1.2}]
+           [--resume LEARNING_RUN_ID] [--smoke]
+           (--model {M0,M1,M2,M5} | --test-runs RUN_ID RUN_ID RUN_ID RUN_ID | --check)
+           [--context {1024,2048}]
+sft: error: v1.2 requires --manual with M2/M5, --check or --test-runs; no smoke/context change
+usage: sft [-h] [--dataset DATASET] [--manual] [--protocol {v1.1,v1.2}]
+           [--resume LEARNING_RUN_ID] [--smoke]
+           (--model {M0,M1,M2,M5} | --test-runs RUN_ID RUN_ID RUN_ID RUN_ID | --check)
+           [--context {1024,2048}]
+sft: error: v1.2 requires --manual with M2/M5, --check or --test-runs; no smoke/context change
+usage: sft [-h] [--dataset DATASET] [--manual] [--protocol {v1.1,v1.2}]
+           [--resume LEARNING_RUN_ID] [--smoke]
+           (--model {M0,M1,M2,M5} | --test-runs RUN_ID RUN_ID RUN_ID RUN_ID | --check)
+           [--context {1024,2048}]
+sft: error: v1.2 requires --manual with M2/M5, --check or --test-runs; no smoke/context change
+ok
+test_lexical_edit_key_ignores_spacing_but_preserves_string_literal_values (tests.test_curation.CurationTests.test_lexical_edit_key_ignores_spacing_but_preserves_string_literal_values) ... ok
+test_shared_commit_unifies_aliases_across_sources_without_assigning_train (tests.test_curation.CurationTests.test_shared_commit_unifies_aliases_across_sources_without_assigning_train) ... ok
+test_draft_audit_preserves_small_sample_gates_and_rejects_changed_input (tests.test_dataset.DatasetTests.test_draft_audit_preserves_small_sample_gates_and_rejects_changed_input) ... ok
+test_review_and_repair_information_never_enters_exported_input (tests.test_dataset.DatasetTests.test_review_and_repair_information_never_enters_exported_input) ... ok
+test_silver_requires_causal_explanation_and_real_function_not_test_detection (tests.test_dataset.DatasetTests.test_silver_requires_causal_explanation_and_real_function_not_test_detection) ... ok
+test_environment_profiles_preserve_attempt_denominator_but_deduplicate_real_cases (tests.test_dataset_experiment.DatasetExperimentTests.test_environment_profiles_preserve_attempt_denominator_but_deduplicate_real_cases) ... ok
+test_plan_lock_refuses_source_patch_mutation_and_role_mismatch (tests.test_dataset_experiment.DatasetExperimentTests.test_plan_lock_refuses_source_patch_mutation_and_role_mismatch) ... ok
+train t1 reproduce-0 started
+t1 environment_error fixture
+validation v1 reproduce-1 started
+v1 environment_error fixture
+test e1 reproduce-2 started
+e1 environment_error fixture
+train t2 reproduce-3 started
+t2 environment_error fixture
+test_roles_are_interleaved_and_resume_never_replays_failure (tests.test_dataset_experiment.DatasetExperimentTests.test_roles_are_interleaved_and_resume_never_replays_failure) ... ok
+test_candidate_overlay_cannot_add_files_or_escape_repository (tests.test_diagnosis.DiagnosisTests.test_candidate_overlay_cannot_add_files_or_escape_repository) ... ok
+test_class_correct_does_not_mask_wrong_function (tests.test_diagnosis.DiagnosisTests.test_class_correct_does_not_mask_wrong_function) ... ok
+test_invalid_and_retrieval_miss_stay_in_localization_denominator (tests.test_diagnosis.DiagnosisTests.test_invalid_and_retrieval_miss_stay_in_localization_denominator) ... ok
+test_multiple_reference_locations_report_recall_and_bad_path_invalid (tests.test_diagnosis.DiagnosisTests.test_multiple_reference_locations_report_recall_and_bad_path_invalid) ... ok
+test_qualified_functions_are_parsed_without_execution (tests.test_diagnosis.DiagnosisTests.test_qualified_functions_are_parsed_without_execution) ... ok
+test_retrieval_ignores_pass_progress_and_can_retrieve_module_registry (tests.test_diagnosis.DiagnosisTests.test_retrieval_ignores_pass_progress_and_can_retrieve_module_registry) ... ok
+test_retrieval_uses_observed_stack_not_test_or_reference_location (tests.test_diagnosis.DiagnosisTests.test_retrieval_uses_observed_stack_not_test_or_reference_location) ... ok
+test_unknown_refs_not_silently_treated_as_gold_and_duplicate_ids_rejected (tests.test_diagnosis.DiagnosisTests.test_unknown_refs_not_silently_treated_as_gold_and_duplicate_ids_rejected) ... ok
+test_real_container_pass_fail_fail_fail_pass (tests.test_docker.DockerIntegrationTests.test_real_container_pass_fail_fail_fail_pass) ... skipped 'Set CI_DEMO_DOCKER_TESTS=1 after reproduce'
+test_deadline_and_invalid_role_reject_before_reservation (tests.test_experiment.ExperimentTests.test_deadline_and_invalid_role_reject_before_reservation) ... ok
+test_evaluation_budget_excludes_idle_gap_without_double_charging_nested_calls (tests.test_experiment.ExperimentTests.test_evaluation_budget_excludes_idle_gap_without_double_charging_nested_calls) ... ok
+test_later_reservation_cannot_reset_an_earlier_manual_stage_clock (tests.test_experiment.ExperimentTests.test_later_reservation_cannot_reset_an_earlier_manual_stage_clock) ... ok
+test_nested_stage_check_and_artifact_link_preserve_reservation (tests.test_experiment.ExperimentTests.test_nested_stage_check_and_artifact_link_preserve_reservation) ... ok
+test_only_manual_learning_can_omit_calendar_deadline_and_still_enforces_stage_cap (tests.test_experiment.ExperimentTests.test_only_manual_learning_can_omit_calendar_deadline_and_still_enforces_stage_cap) ... ok
+test_resume_completed_does_not_reserve_or_charge_second_model_call (tests.test_experiment.ExperimentTests.test_resume_completed_does_not_reserve_or_charge_second_model_call) ... ok
+test_short_checkpoint_contention_waits_without_weakening_worker_lock (tests.test_experiment.ExperimentTests.test_short_checkpoint_contention_waits_without_weakening_worker_lock) ... ok
+test_usage_limit_resume_charges_prior_work_and_preserves_deadline_and_caps (tests.test_experiment.ExperimentTests.test_usage_limit_resume_charges_prior_work_and_preserves_deadline_and_caps) ... ok
+attempt 1 invalid_output
+attempt 2 invalid_output
+attempt 3 invalid_output
+test_all_invalid_attempts_preserve_raw_output_and_denominator (tests.test_generation.GenerationTests.test_all_invalid_attempts_preserve_raw_output_and_denominator) ... ok
+test_rejection_classifies_timeout_and_no_regression (tests.test_generation.GenerationTests.test_rejection_classifies_timeout_and_no_regression) ... ok
+test_actual_m0_vectorizer_fits_train_only (tests.test_learning.LearningTests.test_actual_m0_vectorizer_fits_train_only) ... ok
+test_full_size_gate_still_rejects_unmatched_synthetic_or_related_split_leakage (tests.test_learning.LearningTests.test_full_size_gate_still_rejects_unmatched_synthetic_or_related_split_leakage) ... ok
+test_group_review_is_bound_to_records_not_just_a_completed_flag (tests.test_learning.LearningTests.test_group_review_is_bound_to_records_not_just_a_completed_flag) ... ok
+test_joint_checkpoint_selection_ties_choose_earlier_not_class_accuracy (tests.test_learning.LearningTests.test_joint_checkpoint_selection_ties_choose_earlier_not_class_accuracy) ... ok
+test_response_only_loss_and_no_silent_target_truncation (tests.test_learning.LearningTests.test_response_only_loss_and_no_silent_target_truncation) ... ok
+test_small_dataset_and_heldout_classifier_fit_are_blocked_before_ml_import (tests.test_learning.LearningTests.test_small_dataset_and_heldout_classifier_fit_are_blocked_before_ml_import) ... ok
+test_v11_explicit_ratio_preserves_legacy_gate_and_model_dependencies (tests.test_learning.LearningTests.test_v11_explicit_ratio_preserves_legacy_gate_and_model_dependencies) ... ok
+{"status": "fixture_ready"}
+test_check_command_never_starts_study_or_loads_model (tests.test_manual_training.ManualTrainingTests.test_check_command_never_starts_study_or_loads_model) ... ok
+test_gpu_monitor_collects_details_and_cleans_child_on_error (tests.test_manual_training.ManualTrainingTests.test_gpu_monitor_collects_details_and_cleans_child_on_error) ... ok
+test_manual_study_starts_once_and_preserves_collection_and_cumulative_caps (tests.test_manual_training.ManualTrainingTests.test_manual_study_starts_once_and_preserves_collection_and_cumulative_caps) ... ok
+test_resume_rejects_wrong_identity_before_model_operation (tests.test_manual_training.ManualTrainingTests.test_resume_rejects_wrong_identity_before_model_operation) ... ok
+test_reviewed_lock_reuses_exact_parent_subset_and_rejects_tampering (tests.test_manual_training.ManualTrainingTests.test_reviewed_lock_reuses_exact_parent_subset_and_rejects_tampering) ... ok
+run step 52/104 {'loss': 1.0}
+run step 104/104 {'loss': 1.0}
+test_sft_resumes_trainer_state_without_repeating_completed_validation (tests.test_manual_training.ManualTrainingTests.test_sft_resumes_trainer_state_without_repeating_completed_validation) ... ok
+test_checkpoint_inventory_detects_changed_or_omitted_weights (tests.test_ml.MLProtocolTests.test_checkpoint_inventory_detects_changed_or_omitted_weights) ... ok
+test_oversized_raw_log_is_cropped_without_model_length_warning (tests.test_ml.MLProtocolTests.test_oversized_raw_log_is_cropped_without_model_length_warning) ... ok
+test_prompt_budget_keeps_retrieval_order_without_reference_oracle (tests.test_ml.MLProtocolTests.test_prompt_budget_keeps_retrieval_order_without_reference_oracle) ... ok
+test_budget_carry_cannot_extend_the_six_hour_limit (tests.test_multicase.BatchTests.test_budget_carry_cannot_extend_the_six_hour_limit) ... ok
+test_disk_guard_stops_before_first_external_stage (tests.test_multicase.BatchTests.test_disk_guard_stops_before_first_external_stage) ... ok
+test_lock_refuses_concurrent_resume_and_releases (tests.test_multicase.BatchTests.test_lock_refuses_concurrent_resume_and_releases) ... ok
+test_resume_never_reissues_unknown_generation (tests.test_multicase.BatchTests.test_resume_never_reissues_unknown_generation) ... ok
+test_selection_preserves_source_quota_and_repo_cap (tests.test_multicase.BatchTests.test_selection_preserves_source_quota_and_repo_cap) ... ok
+test_archive_symlinks_preserve_internal_targets_and_refuse_escape_cycles_and_special_files (tests.test_multicase.CaseTests.test_archive_symlinks_preserve_internal_targets_and_refuse_escape_cycles_and_special_files) ... ok
+test_batch_report_escapes_errors_and_has_manifest_fallback (tests.test_multicase.CaseTests.test_batch_report_escapes_errors_and_has_manifest_fallback) ... ok
+example verified 1 verification_failed
+test_candidate_timeout_stops_repetition_but_restores_and_preserves_attempt_denominator (tests.test_multicase.CaseTests.test_candidate_timeout_stops_repetition_but_restores_and_preserves_attempt_denominator) ... ok
+test_case_loader_prefers_canonical_directory_and_keeps_legacy_fallback (tests.test_multicase.CaseTests.test_case_loader_prefers_canonical_directory_and_keeps_legacy_fallback) ... ok
+test_declared_log_tmpfs_must_not_mask_source_or_tests (tests.test_multicase.CaseTests.test_declared_log_tmpfs_must_not_mask_source_or_tests) ... ok
+test_dynamic_schema_does_not_mutate_legacy_schema (tests.test_multicase.CaseTests.test_dynamic_schema_does_not_mutate_legacy_schema) ... ok
+test_exact_edit_is_single_unique_allowlisted_change (tests.test_multicase.CaseTests.test_exact_edit_is_single_unique_allowlisted_change) ... ok
+test_gate_rejects_other_case_and_modified_tests (tests.test_multicase.CaseTests.test_gate_rejects_other_case_and_modified_tests) ... ok
+test_heldout_case_generation_is_saved_and_refused_before_docker_or_model (tests.test_multicase.CaseTests.test_heldout_case_generation_is_saved_and_refused_before_docker_or_model) ... ok
+test_junit_target_mapping_and_skip_not_a_pass (tests.test_multicase.CaseTests.test_junit_target_mapping_and_skip_not_a_pass) ... ok
+test_missing_passing_gate_is_saved_before_preflight_without_model_call (tests.test_multicase.CaseTests.test_missing_passing_gate_is_saved_before_preflight_without_model_call) ... ok
+test_parameter_node_separators_are_literal_parameter_content (tests.test_multicase.CaseTests.test_parameter_node_separators_are_literal_parameter_content) ... ok
+test_patch_applies_to_export_not_outer_repository (tests.test_multicase.CaseTests.test_patch_applies_to_export_not_outer_repository) ... ok
+test_patch_paths_refuse_traversal_and_metadata (tests.test_multicase.CaseTests.test_patch_paths_refuse_traversal_and_metadata) ... ok
+test_pinned_cached_commit_exports_offline_and_still_checks_identity (tests.test_multicase.CaseTests.test_pinned_cached_commit_exports_offline_and_still_checks_identity) ... ok
+test_runner_mounts_only_candidate_and_fresh_results (tests.test_multicase.CaseTests.test_runner_mounts_only_candidate_and_fresh_results) ... ok
+test_scm_metadata_builds_both_revisions_without_changing_regular_install (tests.test_multicase.CaseTests.test_scm_metadata_builds_both_revisions_without_changing_regular_install) ... ok
+test_site_diversity_uses_only_passing_source_tests_and_stable_case_identity (tests.test_multicase.CaseTests.test_site_diversity_uses_only_passing_source_tests_and_stable_case_identity) ... ok
+test_site_edits_preserve_indentation_crlf_and_refuse_undeclared_sites (tests.test_multicase.CaseTests.test_site_edits_preserve_indentation_crlf_and_refuse_undeclared_sites) ... ok
+example attempt 1 generation_error
+example attempt 2 generation_error
+example attempt 3 generation_error
+test_site_prompt_revision_preserves_model_budget_and_reference_boundary (tests.test_multicase.CaseTests.test_site_prompt_revision_preserves_model_budget_and_reference_boundary) ... ok
+test_sympy_source_names_resolve_exactly_and_ambiguity_is_rejected (tests.test_multicase.CaseTests.test_sympy_source_names_resolve_exactly_and_ambiguity_is_rejected) ... ok
+test_tampered_candidate_is_refused_without_execution_or_raw_rewrite (tests.test_multicase.CaseTests.test_tampered_candidate_is_refused_without_execution_or_raw_rewrite) ... ok
+example attempt 1 generation_error
+example attempt 2 generation_error
+example attempt 3 generation_error
+test_three_model_timeouts_keep_denominator_and_exclude_reference_fields (tests.test_multicase.CaseTests.test_three_model_timeouts_keep_denominator_and_exclude_reference_fields) ... ok
+test_top_level_pytest_harness_is_frozen_without_reclassifying_library_testing_modules (tests.test_multicase.CaseTests.test_top_level_pytest_harness_is_frozen_without_reclassifying_library_testing_modules) ... ok
+test_truncated_parameter_mapping_requires_unique_explicit_parameter_prefix (tests.test_multicase.CaseTests.test_truncated_parameter_mapping_requires_unique_explicit_parameter_prefix) ... ok
+test_undeclared_conftest_or_fixture_change_is_not_a_product_regression (tests.test_multicase.CaseTests.test_undeclared_conftest_or_fixture_change_is_not_a_product_regression) ... ok
+test_upstream_plural_test_suffix_and_explicit_plugin_recipe_are_bounded (tests.test_multicase.CaseTests.test_upstream_plural_test_suffix_and_explicit_plugin_recipe_are_bounded) ... ok
+test_validation_rejects_unsafe_or_unapproved_cases (tests.test_multicase.CaseTests.test_validation_rejects_unsafe_or_unapproved_cases) ... ok
+test_windows_export_names_and_repo_identity_cannot_escape_cache (tests.test_multicase.CaseTests.test_windows_export_names_and_repo_identity_cannot_escape_cache) ... ok
+test_writable_cwd_keeps_source_readonly_and_test_ids_rooted (tests.test_multicase.CaseTests.test_writable_cwd_keeps_source_readonly_and_test_ids_rooted) ... ok
+test_accepts_new_source_without_evaluating_it (tests.test_pipeline.ProposalTests.test_accepts_new_source_without_evaluating_it) ... ok
+test_case_is_pinned (tests.test_pipeline.ProposalTests.test_case_is_pinned) ... ok
+test_invalid_envelopes_and_unchanged (tests.test_pipeline.ProposalTests.test_invalid_envelopes_and_unchanged) ... ok
+test_local_endpoint_only (tests.test_pipeline.ProposalTests.test_local_endpoint_only) ... ok
+test_only_allowlisted_file (tests.test_pipeline.ProposalTests.test_only_allowlisted_file) ... ok
+test_addresses_vary_but_assertion_values_must_match (tests.test_pipeline.VerificationTests.test_addresses_vary_but_assertion_values_must_match) ... ok
+test_docker_is_constrained_and_no_shell (tests.test_pipeline.VerificationTests.test_docker_is_constrained_and_no_shell) ... ok
+test_missing_or_malformed_reports_do_not_pass (tests.test_pipeline.VerificationTests.test_missing_or_malformed_reports_do_not_pass) ... ok
+test_test_manifest_is_not_gold (tests.test_pipeline.VerificationTests.test_test_manifest_is_not_gold) ... ok
+test_three_matching_failures_and_restored_pass (tests.test_pipeline.VerificationTests.test_three_matching_failures_and_restored_pass) ... ok
+test_timeout_is_evidence_not_exception (tests.test_pipeline.VerificationTests.test_timeout_is_evidence_not_exception) ... ok
+test_7b_transport_preserves_prompt_options_and_seed (tests.test_session.SessionTests.test_7b_transport_preserves_prompt_options_and_seed) ... ok
+test_cli_stage_error_retains_run_id (tests.test_session.SessionTests.test_cli_stage_error_retains_run_id) ... ok
+test_compare_command_is_not_offered (tests.test_session.SessionTests.test_compare_command_is_not_offered) ... ok
+test_demo_pulls_and_generates_only_7b_and_preserves_stage_links (tests.test_session.SessionTests.test_demo_pulls_and_generates_only_7b_and_preserves_stage_links) ... ok
+test_download_failure_stops_before_generation_and_keeps_denominator (tests.test_session.SessionTests.test_download_failure_stops_before_generation_and_keeps_denominator) ... ok
+test_error_text_is_escaped_and_doctor_link_is_saved (tests.test_session.SessionTests.test_error_text_is_escaped_and_doctor_link_is_saved) ... ok
+test_existing_non_session_artifact_cannot_be_overwritten (tests.test_session.SessionTests.test_existing_non_session_artifact_cannot_be_overwritten) ... ok
+test_historical_reports_render_without_current_generation_configuration (tests.test_session.SessionTests.test_historical_reports_render_without_current_generation_configuration) ... ok
+test_initial_session_preserves_denominator_and_unknown_timing (tests.test_session.SessionTests.test_initial_session_preserves_denominator_and_unknown_timing) ... ok
+test_invalid_source_kind_model_and_indices_are_rejected (tests.test_session.SessionTests.test_invalid_source_kind_model_and_indices_are_rejected) ... ok
+test_missing_generation_id_and_reproduction_error_are_saved (tests.test_session.SessionTests.test_missing_generation_id_and_reproduction_error_are_saved) ... ok
+test_mixed_terminal_results_complete_but_pending_results_do_not (tests.test_session.SessionTests.test_mixed_terminal_results_complete_but_pending_results_do_not) ... ok
+test_other_models_are_rejected_before_any_pipeline_or_http_work (tests.test_session.SessionTests.test_other_models_are_rejected_before_any_pipeline_or_http_work) ... ok
+test_partial_environment_failure_has_unexecuted_not_successful_attempts (tests.test_session.SessionTests.test_partial_environment_failure_has_unexecuted_not_successful_attempts) ... ok
+test_preflight_is_checkpointed_before_doctor_and_failure_stops_calls (tests.test_session.SessionTests.test_preflight_is_checkpointed_before_doctor_and_failure_stops_calls) ... ok
+test_stage_failure_keeps_generation_id_and_never_retries (tests.test_session.SessionTests.test_stage_failure_keeps_generation_id_and_never_retries) ... ok
+test_verification_refuses_other_model_before_runner_or_evidence_changes (tests.test_session.SessionTests.test_verification_refuses_other_model_before_runner_or_evidence_changes) ... ok
+test_zero_accepted_is_complete_and_raw_source_is_unchanged (tests.test_session.SessionTests.test_zero_accepted_is_complete_and_raw_source_is_unchanged) ... ok
+test_actual_torch_collator_preserves_response_mask_and_padding (tests.test_sft.SFTTests.test_actual_torch_collator_preserves_response_mask_and_padding) ... ok
+test_draft_dataset_rejected_before_training_reservation (tests.test_sft.SFTTests.test_draft_dataset_rejected_before_training_reservation) ... ok
+test_explicit_prediction_resume_never_reissues_uncertain_request (tests.test_sft.SFTTests.test_explicit_prediction_resume_never_reissues_uncertain_request) ... ok
+test_prediction_resume_reads_completed_result_without_duplicate_call (tests.test_sft.SFTTests.test_prediction_resume_reads_completed_result_without_duplicate_call) ... ok
+test_resume_checkpoint_requires_full_state_hashes_and_ignores_incomplete_save (tests.test_sft.SFTTests.test_resume_checkpoint_requires_full_state_hashes_and_ignores_incomplete_save) ... ok
+test_test_lock_requires_all_completed_models_on_identical_dataset (tests.test_sft.SFTTests.test_test_lock_requires_all_completed_models_on_identical_dataset) ... ok
+test_heldout_generation_and_unsafe_execution_are_rejected (tests.test_synthetic_dataset.SyntheticDatasetTests.test_heldout_generation_and_unsafe_execution_are_rejected) ... ok
+test_saved_chain_overlay_exports_no_generator_or_reference_answer (tests.test_synthetic_dataset.SyntheticDatasetTests.test_saved_chain_overlay_exports_no_generator_or_reference_answer) ... ok
+test_selected_audit_checks_review_and_raw_hashes_and_detects_duplicate_edits (tests.test_synthetic_dataset.SyntheticDatasetTests.test_selected_audit_checks_review_and_raw_hashes_and_detects_duplicate_edits) ... ok
+test_completed_generation_and_verification_are_read_without_reissue (tests.test_synthetic_experiment.SyntheticExperimentTests.test_completed_generation_and_verification_are_read_without_reissue) ... ok
+
+----------------------------------------------------------------------
+Ran 123 tests in 13.893s
+
+OK (skipped=1)

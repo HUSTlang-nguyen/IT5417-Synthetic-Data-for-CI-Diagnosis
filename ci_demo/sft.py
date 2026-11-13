@@ -153,6 +153,17 @@ def _run_learning(dataset_path, name, *, context, resume, experiment, smoke):
               "system_prompt": SYSTEM, "implementation_sha256": sha256(__file__),
               "checkpoint_inventory_sha256": sha256(experiment.folder / "diagnoser-file-sha256.json")}
     state = read_json(experiment.manifest)
+    if state.get("mode") == "manual_learning_v1.2":
+        from .continuation import load_spec, training_plan
+        spec = load_spec(dataset_path)
+        if smoke or context != 2048:
+            raise ValueError("Continuation requires context 2048 and does not create smoke adapters")
+        plan = training_plan(name)
+        config.update(training_protocol="v1.2", continuation=plan,
+                      parent_run_id=spec["parents"][name]["run_id"],
+                      continuation_implementation_sha256=sha256(ROOT / "ci_demo/continuation.py"),
+                      specification_sha256=sha256(ROOT / "data-manifests/training-v1.2.json"))
+        logical += "-v1.2"
     previous = [(key, value) for key, value in state.get("operations", {}).items()
                 if key == logical or key.startswith(logical + "-resume-")]
     finished = [value for _, value in previous if value["status"] == "finished"]
@@ -186,6 +197,8 @@ def _run_learning(dataset_path, name, *, context, resume, experiment, smoke):
         folder = new_run("learning-" + ("smoke-" if smoke else "") + name.lower())
         manifest = {"kind": "diagnosis_learning", "run_id": folder.name, "created_at": now(),
                     "config": config, "experiment_run_id": experiment.folder.name, "logical_operation": logical}
+    manifest.pop("error", None)
+    manifest.pop("finished_at", None)
     manifest.update(status="running", current_operation=operation)
     write_json(folder / "manifest.json", manifest)
     print("Run:", folder.name, "Model:", name, "Artifacts:", folder, flush=True)
@@ -230,6 +243,12 @@ def _run_learning(dataset_path, name, *, context, resume, experiment, smoke):
                 manifest.update(status="validation_finished", validation_metrics=metrics)
             else:
                 manifest.update(train_sft(experiment, model_info, tokenizer, rows, train, validation, folder, stage, config, resume=bool(resume), invocation=operation, smoke=smoke))
+        if config.get("continuation"):
+            from .continuation import cost_record
+            manifest["cost_lineage"] = cost_record(config, experiment, stage)
+            summary = read_json(folder / "training-summary.json")
+            summary["cost_lineage"] = manifest["cost_lineage"]
+            write_json(folder / "training-summary.json", summary)
         manifest["finished_at"] = now()
         write_json(folder / "manifest.json", manifest)
         experiment.finish(operation, "finished", result={"run_id": folder.name, "artifact": str(folder.relative_to(ROOT)),
@@ -252,18 +271,27 @@ def train_sft(experiment, model_info, tokenizer, rows, train, validation, folder
     from peft import LoraConfig, PeftModel, get_peft_model, get_peft_model_state_dict, prepare_model_for_kbit_training, set_peft_model_state_dict
     from safetensors.torch import load_file
     examples = [training_example(row, tokenizer) for row in train]
-    updates = 3 if smoke else update_budget(rows)
+    from .continuation import ContinuationTrainerMixin, inherited_choices, project_file, checked_checkpoint
+    continuation = config.get("continuation")
+    updates = continuation["max_steps"] if continuation else 3 if smoke else update_budget(rows)
     midpoint = math.ceil(updates / 2)
+    validation_steps = continuation["validation_steps"] if continuation else [] if smoke else [midpoint, updates]
+    learning_rate = continuation["learning_rate"] if continuation else 1e-4
     configuration = {**config, "max_steps": updates, "real_train": sum(r["origin"] == "real_local_reconstruction" for r in train),
         "synthetic_train": sum(r["origin"] == "controlled_synthetic" for r in train), "lora_rank": 16, "lora_alpha": 32,
-        "lora_dropout": .05, "target_modules": "all-linear", "learning_rate": 1e-4, "batch_size": 1,
-        "gradient_accumulation_steps": 8, "loss": "response_only", "validation_steps": [] if smoke else [midpoint, updates]}
+        "lora_dropout": .05, "target_modules": "all-linear", "learning_rate": learning_rate, "batch_size": 1,
+        "gradient_accumulation_steps": 8, "loss": "response_only", "validation_steps": validation_steps}
     bound_json(folder / "training-config.json", configuration)
     bound_json(folder / "training-sample-ids.json", [r["sample_id"] for r in train])
+    if continuation and read_json(project_file("runs/" + config["parent_run_id"] + "/training-sample-ids.json")) != [r["sample_id"] for r in train]:
+        raise ValueError("Continuation training data order differs from parent")
     tracking = {"examples": 0, "input_tokens": 0, "target_tokens": 0, "exposures": Counter(),
                 "peak_allocated_bytes": 0, "peak_reserved_bytes": 0}
-    choices = []
+    choices = inherited_choices(config) if continuation else []
     checkpoint = resume_checkpoint(folder, configuration) if resume else None
+    if continuation and not resume:
+        checkpoint = project_file("runs/" + config["parent_run_id"] + "/checkpoints/checkpoint-104")
+        checked_checkpoint(checkpoint)
     resume_step = 0
     if checkpoint:
         tracking = read_json(checkpoint / "exposures.json")
@@ -307,10 +335,17 @@ def train_sft(experiment, model_info, tokenizer, rows, train, validation, folder
         write_json(folder / "checkpoint-selection.json", {"candidates": choices, "selected": select_checkpoint(choices),
                    "rule": "validation_joint_class_function_top1_then_earliest_step"})
 
-    if checkpoint and resume_step in {midpoint, updates}:
+    if continuation:
+        for choice in choices:
+            if sha256(ROOT / choice["metrics_path"]) != choice["metrics_sha256"]:
+                raise ValueError("Inherited validation metrics changed")
+        if not (folder / "checkpoint-selection.json").exists():
+            write_json(folder / "checkpoint-selection.json", {"candidates": choices, "selected": select_checkpoint(choices),
+                       "rule": "validation_joint_class_function_top1_then_earliest_step"})
+    if checkpoint and resume_step in validation_steps:
         validate(resume_step, checkpoint)
 
-    class TrackingTrainer(Trainer):
+    class TrackingTrainer(ContinuationTrainerMixin, Trainer):
         def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
             ids = inputs.pop("sample_ids")
             tracking["exposures"].update(ids)
@@ -330,6 +365,8 @@ def train_sft(experiment, model_info, tokenizer, rows, train, validation, folder
 
         def on_train_begin(self, args, state, control, **kwargs):
             self.started = time.monotonic()
+            if continuation:
+                state.save_steps = continuation["steps_per_epoch"]
 
         def on_log(self, args, state, control, logs=None, **kwargs):
             capture_memory()
@@ -343,7 +380,7 @@ def train_sft(experiment, model_info, tokenizer, rows, train, validation, folder
         def on_step_end(self, args, state, control, **kwargs):
             capture_memory()
             self.step_seconds = time.monotonic()-self.step_started
-            if state.global_step in {midpoint, updates}:
+            if state.global_step in validation_steps:
                 control.should_save = True
             return control
 
@@ -352,27 +389,33 @@ def train_sft(experiment, model_info, tokenizer, rows, train, validation, folder
             write_json(checkpoint / "experiment-config.json", configuration)
             write_json(checkpoint / "exposures.json", tracking)
             seal_checkpoint(checkpoint)
-            if smoke or state.global_step not in {midpoint, updates}:
+            if smoke or state.global_step not in validation_steps:
                 return
             validate(state.global_step, checkpoint)
 
     checkpoint_root = folder / "checkpoints"
     if resume:
         checkpoint_root = checkpoint_root / ("resume-" + str(time.time_ns()))
-    args = TrainingArguments(output_dir=str(checkpoint_root), max_steps=updates, learning_rate=1e-4,
+    args = TrainingArguments(output_dir=str(checkpoint_root), max_steps=updates, learning_rate=learning_rate,
         per_device_train_batch_size=1, gradient_accumulation_steps=8, seed=5417, data_seed=5417,
         bf16=True, fp16=False, optim="adamw_torch", lr_scheduler_type="linear", warmup_ratio=0,
         logging_strategy="steps", logging_steps=1, logging_nan_inf_filter=False,
-        save_strategy="steps", save_steps=min(20, midpoint), eval_strategy="no", report_to=[],
+        save_strategy="steps", save_steps=continuation["steps_per_epoch"] if continuation else min(20, midpoint), eval_strategy="no", report_to=[],
         gradient_checkpointing=True, gradient_checkpointing_kwargs={"use_reentrant": False},
         remove_unused_columns=False, dataloader_num_workers=0)
     write_json(folder / ("trainer-arguments-" + invocation + ".json"), args.to_dict())
     trainer = TrackingTrainer(model=model, args=args, train_dataset=examples,
         data_collator=lambda batch: collate_examples(batch, tokenizer.eos_token_id), callbacks=[EvidenceCallback()])
+    trainer.continuation_plan = continuation
+    trainer.continuation_bootstrap = bool(continuation and not resume)
+    trainer.continuation_folder = folder
     train_started = time.monotonic()
     result = trainer.train(resume_from_checkpoint=str(checkpoint) if checkpoint else None) if resume_step < updates else None
     capture_memory()
     train_seconds = time.monotonic()-train_started
+    if continuation and (tracking["examples"] != len(train) * 10 or set(tracking["exposures"]) != {r["sample_id"] for r in train}
+                         or any(n != 10 for n in tracking["exposures"].values())):
+        raise ValueError("Continuation did not reach exactly ten committed exposures per training sample")
     if result is not None:
         trainer.save_state()
     selected = ({"step": updates, "checkpoint": str((checkpoint_root / ("checkpoint-" + str(updates))).relative_to(ROOT))}
@@ -381,8 +424,13 @@ def train_sft(experiment, model_info, tokenizer, rows, train, validation, folder
         stream.write(json.dumps({"recorded_at": now(), "invocation": invocation, "resumed_checkpoint": str(checkpoint) if checkpoint else None,
             "committed_resume_step": resume_step, "load_seconds": load_seconds, "invocation_train_seconds": train_seconds,
             "qualification": "Checkpoint exposures count committed updates; discarded post-checkpoint work remains in prior event logs and is not erased"}) + "\n")
+    lineage = {}
+    if continuation:
+        parent = read_json(project_file("runs/" + config["parent_run_id"] + "/manifest.json"))
+        lineage = {"parent_run_id": parent["run_id"], "parent_train_including_validation_seconds": parent["train_including_validation_seconds"],
+                   "continuation_invocation_seconds": train_seconds, "qualification": "Parent and all child operation intervals must be included in total cost; resume does not erase prior invocations"}
     write_json(folder / "training-summary.json", {"tracking": tracking, "trainer_metrics": result.metrics if result else {"completed_from_final_checkpoint": True},
-               "load_seconds": load_seconds, "train_including_validation_seconds": train_seconds, "selected": selected})
+               "load_seconds": load_seconds, "train_including_validation_seconds": train_seconds, "selected": selected, "cost_lineage": lineage})
     del trainer, model
     gc.collect()
     torch.cuda.empty_cache()
@@ -426,6 +474,7 @@ def final_model_lock(dataset_path, run_ids):
     for name, record in models.items():
         folder = run_path(record["run_id"])
         raw = read_json(folder / "manifest.json")
+        config = raw["config"]
         if name == "M0":
             if sha256(folder / "classifier.joblib") != raw["classifier_sha256"]:
                 raise ValueError("M0 classifier changed")
@@ -435,7 +484,14 @@ def final_model_lock(dataset_path, run_ids):
                 raise ValueError("Selected adapter was not reload-verified")
             checkpoint = (ROOT / raw["selected_checkpoint"]).resolve()
             if not checkpoint.is_relative_to((folder / "checkpoints").resolve()):
-                raise ValueError("Selected adapter is outside its training run")
+                if config.get("training_protocol") == "v1.2":
+                    from .continuation import verify_selected_parent
+                    verify_selected_parent(checkpoint, name, dataset_path)
+                else:
+                    raise ValueError("Selected adapter is outside its training run")
+            elif config.get("training_protocol") == "v1.2":
+                from .continuation import checked_checkpoint
+                checked_checkpoint(checkpoint)
             selected = read_json(folder / "checkpoint-selection.json")["selected"]
             if selected["checkpoint"] != raw["selected_checkpoint"]:
                 raise ValueError("Selected checkpoint changed")
@@ -445,7 +501,29 @@ def final_model_lock(dataset_path, run_ids):
                 selection_sha256=sha256(folder / "checkpoint-selection.json"),
                 training_config_sha256=sha256(folder / "training-config.json"),
                 selected_exposures_sha256=sha256(checkpoint / "exposures.json"))
-    shared = ("max_steps", "learning_rate", "lora_rank", "lora_alpha", "lora_dropout", "target_modules", "batch_size", "gradient_accumulation_steps", "seed", "context")
+    protocols = {models[n]["config"].get("training_protocol", "v1.1") for n in ("M2", "M5")}
+    if len(protocols) != 1:
+        raise ValueError("Cannot mix legacy and continuation SFT runs")
+    shared = ("learning_rate", "lora_rank", "lora_alpha", "lora_dropout", "target_modules", "batch_size", "gradient_accumulation_steps", "seed", "context")
+    if protocols == {"v1.2"}:
+        from .continuation import load_spec, training_plan
+        spec = load_spec(dataset_path)
+        for name in ("M0", "M1"):
+            if models[name]["run_id"] != spec["parents"][name]["run_id"]:
+                raise ValueError("Continuation must reuse the pinned baselines")
+        for name in ("M2", "M5"):
+            config = models[name]["config"]
+            plan = training_plan(name)
+            raw = read_json(run_path(models[name]["run_id"]) / "manifest.json")
+            if (config.get("specification_sha256") != sha256(ROOT / "data-manifests/training-v1.2.json")
+                    or config.get("continuation") != plan or config.get("parent_run_id") != spec["parents"][name]["run_id"]
+                    or training[name].get("max_steps") != plan["max_steps"] or raw.get("updates") != plan["max_steps"]
+                    or raw.get("training", {}).get("examples") != plan["train_examples"] * 10):
+                raise ValueError("Continuation final model has wrong lineage or ten-epoch budget")
+        if models["M2"]["config"].get("specification_sha256") != models["M5"]["config"].get("specification_sha256"):
+            raise ValueError("Different continuation policies")
+    else:
+        shared += ("max_steps",)
     if any(training["M2"][key] != training["M5"][key] for key in shared):
         raise ValueError("SFT training conditions differ")
     return {"dataset_sha256": dataset_hash, "models": models, "test_policy": "one_final_test_after_all_configs_and_checkpoints_locked"}
@@ -518,6 +596,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dataset", default=str(CACHE / "dataset-v1" / "locked-v1.1.json"))
     parser.add_argument("--manual", action="store_true", help="User-started v1.1 study; collection run stays unchanged")
+    parser.add_argument("--protocol", choices=["v1.1", "v1.2"], default="v1.1")
     parser.add_argument("--resume", metavar="LEARNING_RUN_ID")
     parser.add_argument("--smoke", action="store_true", help="Three train updates and adapter reload on real train, no validation/test")
     mode = parser.add_mutually_exclusive_group(required=True)
@@ -526,15 +605,22 @@ def main():
     mode.add_argument("--check", action="store_true", help="Read readiness only; no study/model operation")
     parser.add_argument("--context", type=int, choices=[1024, 2048], default=2048)
     args = parser.parse_args()
+    if args.protocol == "v1.2" and (not args.manual or args.smoke or args.model in {"M0", "M1"} or args.context != 2048):
+        parser.error("v1.2 requires --manual with M2/M5, --check or --test-runs; no smoke/context change")
     if args.resume and not args.model:
         parser.error("--resume requires --model")
     if args.smoke and (args.model != "M2" or args.resume):
         parser.error("--smoke requires fresh --model M2")
     if args.check:
-        from .learning import check_prepared_pilot
-        print(json.dumps(check_prepared_pilot(args.dataset), ensure_ascii=False), flush=True)
+        if args.protocol == "v1.2":
+            from .continuation import check_ready
+            readiness = check_ready(args.dataset)
+        else:
+            from .learning import check_prepared_pilot
+            readiness = check_prepared_pilot(args.dataset)
+        print(json.dumps(readiness, ensure_ascii=False), flush=True)
         return
-    experiment = manual_learning_experiment(args.dataset) if args.manual else None
+    experiment = manual_learning_experiment(args.dataset, protocol=args.protocol) if args.manual else None
     result = evaluate_final_test(args.dataset, args.test_runs, experiment=experiment) if args.test_runs else run_learning(
         args.dataset, args.model, context=args.context, resume=args.resume, experiment=experiment, smoke=args.smoke)
     print(json.dumps(result, ensure_ascii=False), flush=True)

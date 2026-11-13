@@ -1,0 +1,23 @@
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Arial}{\setsansfont{Arial}}{\setsansfont{TeX Gyre Heros}}
+\IfFontExistsTF{Consolas}{\setmonofont{Consolas}}{\setmonofont{Latin Modern Mono}}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,booktabs,tabularx,array,graphicx,xcolor,tikz,fancyvrb,enumitem,hyperref,xurl,fancyhdr,setspace}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=black,pdftitle={Synthetic Data for CI Diagnosis — Giữa kỳ}}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{4pt}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=1.6em}
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\refname}{Tài liệu tham khảo}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\figurename}{Hình}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\topic}[1]{\par\medskip\noindent\textbf{#1}\par}
+\newcommand{\nextpage}{\clearpage}
+\pagestyle{fancy}\fancyhf{}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+\fancyhead[L]{\small IT5417 — Báo cáo giữa kỳ}
+\fancyhead[R]{\small Cập nhật 13/11/2026}

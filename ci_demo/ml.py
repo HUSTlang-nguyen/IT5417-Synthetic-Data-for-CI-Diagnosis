@@ -23,20 +23,23 @@ SYSTEM = ("Diagnose the technical cause of the observed CI failure using only th
           "If evidence is insufficient, say unknown and explain uncertainty.")
 
 
-def prepare_input(model_input, tokenizer, *, context=2048, max_new_tokens=384):
+def prepare_input(model_input, tokenizer, *, context=2048, max_new_tokens=384, include_messages=False):
     if context not in {1024, 2048} or max_new_tokens != 384:
         raise ValueError("Context/output budget differs from protocol")
-    encode = lambda value: tokenizer.encode(value, add_special_tokens=False)
+    # Raw text is counted before our head/tail crop; only the final prompt reaches the model.
+    encode = lambda value: tokenizer.encode(value, add_special_tokens=False, verbose=False)
     decode = lambda ids: tokenizer.decode(ids, skip_special_tokens=False)
     raw_log = encode(model_input["execution_log"])
     log_limit = 640 if context == 2048 else 224
     log_ids = raw_log if len(raw_log) <= log_limit else raw_log[:64] + raw_log[-(log_limit - 64):]
     log = decode(log_ids)
     selected = []
+    retained_messages = []
 
     def serialize():
         content = "EXECUTION LOG:\n" + log + "\nRETRIEVED PRODUCTION CODE:\n" + "\n\n".join(text for _, text in selected)
         messages = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": content}]
+        retained_messages[:] = messages
         return tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True)
 
     limit = context - max_new_tokens
@@ -60,13 +63,16 @@ def prepare_input(model_input, tokenizer, *, context=2048, max_new_tokens=384):
         ids = serialize()
     if len(ids) > limit:
         raise ValueError("Instruction/log cannot fit protocol context")
-    return {"input_ids": ids, "input_tokens": len(ids), "log_original_tokens": len(raw_log),
+    prepared = {"input_ids": ids, "input_tokens": len(ids), "log_original_tokens": len(raw_log),
             "log_retained_tokens": len(log_ids), "context": context, "max_new_tokens": max_new_tokens,
             "retrieved_locations_after_tokenization": [{"file": s["file"], "function": s["function"]} for s, _ in selected],
             "code_retention": [{"file": s["file"], "function": s["function"],
                                 "original_tokens": len(encode(s["text"])), "retained_tokens": len(encode(text))}
                                for s, text in selected],
             "prompt_sha256": hashlib.sha256(json.dumps(ids).encode()).hexdigest()}
+    if include_messages:
+        prepared["messages"] = retained_messages
+    return prepared
 
 
 def verify_checkpoint(model_info, inventory):

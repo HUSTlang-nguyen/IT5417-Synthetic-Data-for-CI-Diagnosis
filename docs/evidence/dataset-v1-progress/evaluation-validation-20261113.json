@@ -1,0 +1,330 @@
+{
+  "recorded_at": "2026-11-13T04:21:38+07:00",
+  "evaluation_run_id": "evaluation-20261112T210848574175Z",
+  "denominator": 37,
+  "scores": {
+    "M0": {
+      "macro_f1": 0.08354011579818031,
+      "classification_accuracy": 0.16216216216216217,
+      "per_class": {
+        "syntax": {
+          "support": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "dependency/configuration": {
+          "support": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "API/type": {
+          "support": 4,
+          "precision": 0.11428571428571428,
+          "recall": 1.0,
+          "f1": 0.20512820512820512
+        },
+        "logic/value": {
+          "support": 29,
+          "precision": 1.0,
+          "recall": 0.06896551724137931,
+          "f1": 0.12903225806451613
+        }
+      },
+      "confusion": {
+        "syntax": {},
+        "dependency/configuration": {
+          "API/type": 4
+        },
+        "API/type": {
+          "API/type": 4
+        },
+        "logic/value": {
+          "API/type": 27,
+          "logic/value": 2
+        }
+      },
+      "reference_quality": "silver_not_expert_gold",
+      "localization": "not_applicable_classifier_only"
+    },
+    "M1-P2": {
+      "counts": {
+        "total": 37,
+        "invalid_output": 1,
+        "unknown_output": 1,
+        "classification_missing_reference": 0,
+        "localization_missing_reference": 0,
+        "classification_eligible": 37,
+        "classification_correct": 29,
+        "localization_eligible": 37,
+        "file_top1_correct": 9,
+        "function_top1_correct": 6,
+        "file_recall1_sum": 9.0,
+        "function_recall1_sum": 6.0,
+        "file_top5_correct": 11,
+        "function_top5_correct": 6,
+        "file_recall5_sum": 11.0,
+        "function_recall5_sum": 6.0,
+        "joint_eligible": 37,
+        "joint_top1_correct": 4,
+        "retrieval_function_covered": 7,
+        "retrieval_file_covered": 11
+      },
+      "macro_f1": 0.364168618266979,
+      "classification_accuracy": 0.7837837837837838,
+      "per_class": {
+        "syntax": {
+          "support": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "dependency/configuration": {
+          "support": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "API/type": {
+          "support": 4,
+          "precision": 0.6666666666666666,
+          "recall": 0.5,
+          "f1": 0.5714285714285715
+        },
+        "logic/value": {
+          "support": 29,
+          "precision": 0.84375,
+          "recall": 0.9310344827586207,
+          "f1": 0.8852459016393444
+        }
+      },
+      "confusion": {
+        "syntax": {},
+        "dependency/configuration": {
+          "API/type": 1,
+          "logic/value": 3
+        },
+        "API/type": {
+          "logic/value": 2,
+          "API/type": 2
+        },
+        "logic/value": {
+          "logic/value": 27,
+          "<invalid>": 1,
+          "unknown": 1
+        }
+      },
+      "file_top1": 0.24324324324324326,
+      "file_top5": 0.2972972972972973,
+      "function_top1": 0.16216216216216217,
+      "function_top5": 0.16216216216216217,
+      "file_recall_at1": 0.24324324324324326,
+      "file_recall_at5": 0.2972972972972973,
+      "function_recall_at1": 0.16216216216216217,
+      "function_recall_at5": 0.16216216216216217,
+      "joint_top1": 0.10810810810810811,
+      "retrieval_function_coverage": 0.1891891891891892,
+      "retrieval_file_coverage": 0.2972972972972973,
+      "label_order": [
+        "syntax",
+        "dependency/configuration",
+        "API/type",
+        "logic/value"
+      ],
+      "reference_quality": "silver_not_expert_gold"
+    },
+    "M2": {
+      "counts": {
+        "total": 37,
+        "invalid_output": 0,
+        "unknown_output": 0,
+        "classification_missing_reference": 0,
+        "localization_missing_reference": 0,
+        "classification_eligible": 37,
+        "classification_correct": 28,
+        "localization_eligible": 37,
+        "file_top1_correct": 9,
+        "function_top1_correct": 5,
+        "file_recall1_sum": 9.0,
+        "function_recall1_sum": 5.0,
+        "file_top5_correct": 9,
+        "function_top5_correct": 5,
+        "file_recall5_sum": 9.0,
+        "function_recall5_sum": 5.0,
+        "joint_eligible": 37,
+        "joint_top1_correct": 4,
+        "retrieval_function_covered": 7,
+        "retrieval_file_covered": 11
+      },
+      "macro_f1": 0.3515151515151515,
+      "classification_accuracy": 0.7567567567567568,
+      "per_class": {
+        "syntax": {
+          "support": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "dependency/configuration": {
+          "support": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "API/type": {
+          "support": 4,
+          "precision": 0.36363636363636365,
+          "recall": 1.0,
+          "f1": 0.5333333333333333
+        },
+        "logic/value": {
+          "support": 29,
+          "precision": 0.9230769230769231,
+          "recall": 0.8275862068965517,
+          "f1": 0.8727272727272727
+        }
+      },
+      "confusion": {
+        "syntax": {},
+        "dependency/configuration": {
+          "logic/value": 2,
+          "API/type": 2
+        },
+        "API/type": {
+          "API/type": 4
+        },
+        "logic/value": {
+          "logic/value": 24,
+          "API/type": 5
+        }
+      },
+      "file_top1": 0.24324324324324326,
+      "file_top5": 0.24324324324324326,
+      "function_top1": 0.13513513513513514,
+      "function_top5": 0.13513513513513514,
+      "file_recall_at1": 0.24324324324324326,
+      "file_recall_at5": 0.24324324324324326,
+      "function_recall_at1": 0.13513513513513514,
+      "function_recall_at5": 0.13513513513513514,
+      "joint_top1": 0.10810810810810811,
+      "retrieval_function_coverage": 0.1891891891891892,
+      "retrieval_file_coverage": 0.2972972972972973,
+      "label_order": [
+        "syntax",
+        "dependency/configuration",
+        "API/type",
+        "logic/value"
+      ],
+      "reference_quality": "silver_not_expert_gold",
+      "requested": 37,
+      "returned": 37
+    },
+    "M5": {
+      "counts": {
+        "total": 37,
+        "invalid_output": 1,
+        "unknown_output": 0,
+        "classification_missing_reference": 0,
+        "localization_missing_reference": 0,
+        "classification_eligible": 37,
+        "classification_correct": 30,
+        "localization_eligible": 37,
+        "file_top1_correct": 9,
+        "function_top1_correct": 5,
+        "file_recall1_sum": 9.0,
+        "function_recall1_sum": 5.0,
+        "file_top5_correct": 9,
+        "function_top5_correct": 5,
+        "file_recall5_sum": 9.0,
+        "function_recall5_sum": 5.0,
+        "joint_eligible": 37,
+        "joint_top1_correct": 5,
+        "retrieval_function_covered": 7,
+        "retrieval_file_covered": 11
+      },
+      "macro_f1": 0.4059561128526646,
+      "classification_accuracy": 0.8108108108108109,
+      "per_class": {
+        "syntax": {
+          "support": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "dependency/configuration": {
+          "support": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "API/type": {
+          "support": 4,
+          "precision": 0.5714285714285714,
+          "recall": 1.0,
+          "f1": 0.7272727272727273
+        },
+        "logic/value": {
+          "support": 29,
+          "precision": 0.896551724137931,
+          "recall": 0.896551724137931,
+          "f1": 0.896551724137931
+        }
+      },
+      "confusion": {
+        "syntax": {},
+        "dependency/configuration": {
+          "logic/value": 3,
+          "API/type": 1
+        },
+        "API/type": {
+          "API/type": 4
+        },
+        "logic/value": {
+          "<invalid>": 1,
+          "logic/value": 26,
+          "API/type": 2
+        }
+      },
+      "file_top1": 0.24324324324324326,
+      "file_top5": 0.24324324324324326,
+      "function_top1": 0.13513513513513514,
+      "function_top5": 0.13513513513513514,
+      "file_recall_at1": 0.24324324324324326,
+      "file_recall_at5": 0.24324324324324326,
+      "function_recall_at1": 0.13513513513513514,
+      "function_recall_at5": 0.13513513513513514,
+      "joint_top1": 0.13513513513513514,
+      "retrieval_function_coverage": 0.1891891891891892,
+      "retrieval_file_coverage": 0.2972972972972973,
+      "label_order": [
+        "syntax",
+        "dependency/configuration",
+        "API/type",
+        "logic/value"
+      ],
+      "reference_quality": "silver_not_expert_gold",
+      "requested": 37,
+      "returned": 37
+    }
+  },
+  "source_metrics": {
+    "M0": {
+      "path": "runs\\learning-m0-20261112T133340821343Z\\validation-metrics.json",
+      "sha256": "81c65c65b7030c6666c4d5164a74744892725094fd782e3ec67c8965ce919331"
+    },
+    "M1-P2": {
+      "path": "runs\\evaluation-20261112T210848574175Z\\validation-M1-P2\\metrics.json",
+      "sha256": "4d4a88b219c4afaf196ed5da5ccc8cbfb8727d38c90ca875e1a5cf5a2d66c648"
+    },
+    "M2": {
+      "path": "runs\\learning-m2-20261112T135209594691Z\\validation-step-104\\metrics.json",
+      "sha256": "b755c18b62cfa8459ec1bc61e250ed413671faf2cd6e74482b7780c9a2f50c1b"
+    },
+    "M5": {
+      "path": "runs\\learning-m5-20261112T170153056333Z\\validation-step-104\\metrics.json",
+      "sha256": "df85d23eeeadb98e0340b6b9c34db07a03087152e693e5c10c5b1b3ccc08ebbc"
+    }
+  },
+  "qualification": "Strict JSON; M1-P2 prompt new, M2/M5 original; selected checkpoint104. M1 historical score0 kept. Not final-test outcomes."
+}

@@ -1,0 +1,106 @@
+{
+  "checked_at": "2026-11-13T03:40:49+07:00",
+  "models": {
+    "M2": {
+      "run_id": "learning-m2-20261112T183346316076Z",
+      "status": "training_finished",
+      "finished_at": "2026-11-13T02:09:56+07:00",
+      "updates": 220,
+      "epoch": 10,
+      "example_exposures": 1750,
+      "each_sample_seen": 10,
+      "selected_step": 104,
+      "selected_checkpoint": "runs\\learning-m2-20261112T135209594691Z\\checkpoints\\checkpoint-104",
+      "reload_and_adapter_hash_verified": true,
+      "validation": [
+        {
+          "step": 52,
+          "macro_f1": 0.19107142857142856,
+          "classification_accuracy": 0.3783783783783784,
+          "function_top1": 0.10810810810810811,
+          "joint_top1": 0.05405405405405406
+        },
+        {
+          "step": 104,
+          "macro_f1": 0.3515151515151515,
+          "classification_accuracy": 0.7567567567567568,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.10810810810810811
+        },
+        {
+          "step": 132,
+          "macro_f1": 0.3,
+          "classification_accuracy": 0.6486486486486487,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.10810810810810811
+        },
+        {
+          "step": 176,
+          "macro_f1": 0.31114551083591335,
+          "classification_accuracy": 0.6756756756756757,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.10810810810810811
+        },
+        {
+          "step": 220,
+          "macro_f1": 0.32264957264957267,
+          "classification_accuracy": 0.7027027027027027,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.10810810810810811
+        }
+      ]
+    },
+    "M5": {
+      "run_id": "learning-m5-20261112T192802699120Z",
+      "status": "training_finished",
+      "finished_at": "2026-11-13T03:38:20+07:00",
+      "updates": 350,
+      "epoch": 10,
+      "example_exposures": 2760,
+      "each_sample_seen": 10,
+      "selected_step": 104,
+      "selected_checkpoint": "runs\\learning-m5-20261112T170153056333Z\\checkpoints\\checkpoint-104",
+      "reload_and_adapter_hash_verified": true,
+      "validation": [
+        {
+          "step": 52,
+          "macro_f1": 0.35080645161290325,
+          "classification_accuracy": 0.8108108108108109,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.08108108108108109
+        },
+        {
+          "step": 104,
+          "macro_f1": 0.4059561128526646,
+          "classification_accuracy": 0.8108108108108109,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.13513513513513514
+        },
+        {
+          "step": 210,
+          "macro_f1": 0.3731443994601889,
+          "classification_accuracy": 0.7837837837837838,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.13513513513513514
+        },
+        {
+          "step": 280,
+          "macro_f1": 0.3731443994601889,
+          "classification_accuracy": 0.7837837837837838,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.13513513513513514
+        },
+        {
+          "step": 350,
+          "macro_f1": 0.3731443994601889,
+          "classification_accuracy": 0.7837837837837838,
+          "function_top1": 0.13513513513513514,
+          "joint_top1": 0.13513513513513514
+        }
+      ]
+    }
+  },
+  "final_model_lock_dry_check": "passed_read_only_no_lock_file_written",
+  "test_executed": false,
+  "qualification": "Existing silver validation metrics/hash and exposure checks only. No fitting, model inference, score normalization or held-out test."
+}

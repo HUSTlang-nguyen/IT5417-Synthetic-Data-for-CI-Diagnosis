@@ -1,0 +1,57 @@
+\documentclass[10pt,a4paper]{article}
+\input{common.tex}
+\geometry{margin=1.2cm}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}\setlength{\parskip}{3pt}
+\begin{document}
+\begin{center}
+{\Large\bfseries Synthetic Data for CI Diagnosis}\par
+{\small Tờ tra nhanh bảo vệ giữa kỳ — cập nhật 13/11/2026}
+\end{center}
+\textbf{Câu hỏi chính:} thêm synthetic đã kiểm chứng vào real train có giúp 3B chẩn đoán tốt hơn không?
+
+\begin{center}\resizebox{.98\linewidth}{!}{\input{architecture.tex}}\end{center}
+\textit{AIDev dùng ở development. Real pilot SFT lấy từ SWE-bench. Sơ đồ chỉ đường dữ liệu; raw/reference luôn tách khỏi input.}
+
+\textbf{Dữ liệu:} 250 real =175 train +37 validation +38 test; 101 synthetic chỉ ở train.\par
+M2 học 175 mẫu; M5 học 276 mẫu. Nhãn silver, chưa có expert gold. Mục tiêu 175 synthetic còn thiếu 74.
+
+\begin{minipage}[t]{.47\linewidth}
+\textbf{M0 đến M5 là gì?}\par
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+M0 & TF-IDF + Logistic Regression; chỉ phân loại\\
+M1 & Base 3B, prompt-only; P2 đổi prompt format\\
+M2 & 3B + QLoRA, 175 real train\\
+M3 & Đối chứng mất cân bằng; \textbf{chưa chạy}\\
+M4 & Synthetic chưa rà/lọc đầy đủ; \textbf{chưa chạy}\\
+M5 & 3B + QLoRA, 175 real +101 synthetic\\\bottomrule
+\end{tabularx}
+\smallskip
+\textbf{7B sinh, 3B chẩn đoán.}\par
+SFT học target JSON từ log/code. Base 4 bit giữ cố định; adapter LoRA được học.
+\end{minipage}\hfill
+\begin{minipage}[t]{.50\linewidth}
+\textbf{Đọc metric}\par
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Accuracy & Tỷ lệ đúng loại lỗi trên toàn bộ mẫu\\
+Macro-F1 & Trung bình F1 bốn lớp, mỗi lớp cùng trọng số; lớp support0 vẫn tính0\\
+File Top-1 & File ở vị trí đầu tiên khớp reference\\
+Hàm Top-1 & Cặp file/hàm đầu tiên khớp reference\\
+Joint & Cùng mẫu đúng cả loại và file/hàm Top-1\\\bottomrule
+\end{tabularx}
+\smallskip
+Top-5 xét trong 5 vị trí đầu. Invalid là output không hợp JSON/schema; vẫn tính trong mẫu số. M0 không có định vị.
+\end{minipage}
+
+\medskip\textbf{Final test: 38 real, một lần, nhãn silver}\par
+\begin{center}\input{test-table.tex}\end{center}
+File/Hàm/Joint là \textbf{số đúng/38}; Accuracy là \%; F1 trong [0,1]. M1-P2 prompt mới, M2/M5 prompt cũ. M5 tăng phân loại 2 mẫu nhưng joint không tăng; chưa đủ kết luận synthetic có lợi tổng quát.
+
+\textbf{Ba điểm cần nhớ khi trả lời}\par
+\textbf{Nhãn:} syntax; dependency/configuration; API/type; logic/value. Exception là triệu chứng, không tự quyết định nhãn. Stack trace/test có thể là nơi phát hiện, khác nơi gây lỗi.\par
+\textbf{Checkpoint:} đã tiêu tổng 10 epoch; vẫn chọn parent104: M2≈4,73 epoch, M5≈2,99 epoch. Chọn theo joint validation, hòa chọn sớm.\par
+\textbf{Retrieval:} reference hàm chỉ có trong 12/38 test. Scorer hiện chặn credit khi reference ngoài context; đúng tên vị trí chưa bảo đảm explanation đúng.
+
+\textbf{Cổng synthetic:} baseline pass; candidate fail ổn định 3 lần; restoration pass; sau đó rà nhãn, hợp lý và trùng lặp.\par
+\textbf{Tiếp theo:} cải thiện nhãn/retrieval trên development, mở rộng lớp/repo, làm M3/M4 và nhiều seed. Test 38 mẫu đã dùng, không chỉnh pipeline rồi chấm lại như test mới.
+\end{document}

@@ -1,0 +1,10 @@
+{
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Field.__init__"
+    }
+  ],
+  "explanation": "The constructor captures metadata=... inside arbitrary keyword metadata, nesting that mapping under a metadata key rather than exposing its entries. Saved field.metadata assertions show the extra nesting across field subclasses. An explicit metadata parameter merged with remaining keyword metadata preserves the expected mapping interface."
+}

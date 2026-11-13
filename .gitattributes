@@ -9,4 +9,6 @@ docs/evidence/dataset-v1-progress/software-tests*.txt -text whitespace=cr-at-eol
 docs/evidence/dataset-v1-progress/*.json -text whitespace=cr-at-eol
 data-manifests/dataset-v1*.json -text whitespace=cr-at-eol
 data-manifests/training-v1.1.json -text whitespace=cr-at-eol
+data-manifests/training-v1.2.json -text whitespace=cr-at-eol
+data-manifests/evaluation-v*.json -text whitespace=cr-at-eol
 cases/*/case.json -text whitespace=cr-at-eol

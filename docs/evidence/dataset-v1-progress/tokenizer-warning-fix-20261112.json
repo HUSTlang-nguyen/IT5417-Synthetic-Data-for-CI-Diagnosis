@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-12T20:37:10+07:00",
+  "reference_run": "learning-m0-20261112T133340821343Z",
+  "sample_id": "sympy__sympy-23808",
+  "raw_log_tokens": 46149,
+  "retained_log_tokens": 640,
+  "input_tokens": 1634,
+  "max_new_tokens": 384,
+  "prompt_sha256": "a669d75e460be1cfe61bd228574f3bf4e0738e32e0cc1847159ee32759d6e1a8",
+  "all_prepared_fields_equal_saved": true,
+  "long_sequence_warning_emitted": false,
+  "m0_artifacts_unchanged": true,
+  "qualification": "Read-only local tokenizer comparison; no model weights loaded, fitting, inference or test evaluation."
+}

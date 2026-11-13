@@ -1,0 +1,25 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=stealth, every node/.style={font=\small,align=center}]
+\node[draw,minimum height=.75cm,text width=2.8cm] (n00) at (0.0,0.0) {SWE-bench};
+\node[draw,minimum height=.75cm,text width=2.8cm] (n01) at (3.45,0.0) {Tái hiện base/fixed};
+\draw[->] (n00) -- (n01);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n02) at (6.9,0.0) {Real silver};
+\draw[->] (n01) -- (n02);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n03) at (10.350000000000001,0.0) {Chia theo repo};
+\draw[->] (n02) -- (n03);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n10) at (0.0,-1.2) {Seed pass của train};
+\node[draw,minimum height=.75cm,text width=2.8cm] (n11) at (3.45,-1.2) {Generator 7B};
+\draw[->] (n10) -- (n11);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n12) at (6.9,-1.2) {Docker và rà dữ liệu};
+\draw[->] (n11) -- (n12);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n13) at (10.350000000000001,-1.2) {Synthetic train};
+\draw[->] (n12) -- (n13);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n20) at (0.0,-2.4) {Real train (+ synthetic)};
+\node[draw,minimum height=.75cm,text width=2.8cm] (n21) at (3.45,-2.4) {SFT diagnoser 3B};
+\draw[->] (n20) -- (n21);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n22) at (6.9,-2.4) {Validation 37 real};
+\draw[->] (n21) -- (n22);
+\node[draw,minimum height=.75cm,text width=2.8cm] (n23) at (10.350000000000001,-2.4) {Test cuối 38 real};
+\draw[->] (n22) -- (n23);
+\draw[->,dashed] (n03.south) -- ++(0,-.22) -| (n10.north);
+\draw[->,dashed] (n13.south) -- ++(0,-.22) -| (n20.north);
+\end{tikzpicture}

@@ -1,0 +1,188 @@
+{
+  "checked_at": "2026-11-13T00:32:34+07:00",
+  "split": "validation",
+  "total": 37,
+  "reference_quality": "silver_not_expert_gold",
+  "models": {
+    "M0": {
+      "run_id": "learning-m0-20261112T133340821343Z",
+      "status": "validation_finished",
+      "selected_step": null,
+      "finished_at": "2026-11-12T20:33:56+07:00",
+      "metrics": {
+        "macro_f1": 0.08354011579818031,
+        "classification_accuracy": 0.16216216216216217,
+        "file_top1": null,
+        "function_top1": null,
+        "joint_top1": null
+      },
+      "counts": {
+        "total": 37,
+        "invalid_output": 0,
+        "unknown_output": 0,
+        "classification_missing_reference": 0,
+        "localization_missing_reference": 0,
+        "classification_eligible": 37,
+        "classification_correct": 6,
+        "localization_eligible": 37,
+        "file_top1_correct": 0,
+        "function_top1_correct": 0,
+        "file_recall1_sum": 0.0,
+        "function_recall1_sum": 0.0,
+        "file_top5_correct": 0,
+        "function_top5_correct": 0,
+        "file_recall5_sum": 0.0,
+        "function_recall5_sum": 0.0,
+        "joint_eligible": 37,
+        "joint_top1_correct": 0,
+        "retrieval_function_covered": 7,
+        "retrieval_file_covered": 11
+      },
+      "metrics_path": "runs\\learning-m0-20261112T133340821343Z\\validation-metrics.json",
+      "metrics_sha256": "81c65c65b7030c6666c4d5164a74744892725094fd782e3ec67c8965ce919331",
+      "saved_metrics_recomputed_match": true,
+      "provisional": false
+    },
+    "M1": {
+      "run_id": "learning-m1-20261112T134154381369Z",
+      "status": "validation_finished",
+      "selected_step": null,
+      "finished_at": "2026-11-12T20:47:57+07:00",
+      "metrics": {
+        "macro_f1": 0.0,
+        "classification_accuracy": 0.0,
+        "file_top1": 0.0,
+        "function_top1": 0.0,
+        "joint_top1": 0.0
+      },
+      "counts": {
+        "total": 37,
+        "invalid_output": 37,
+        "unknown_output": 0,
+        "classification_missing_reference": 0,
+        "localization_missing_reference": 0,
+        "classification_eligible": 37,
+        "classification_correct": 0,
+        "localization_eligible": 37,
+        "file_top1_correct": 0,
+        "function_top1_correct": 0,
+        "file_recall1_sum": 0.0,
+        "function_recall1_sum": 0.0,
+        "file_top5_correct": 0,
+        "function_top5_correct": 0,
+        "file_recall5_sum": 0.0,
+        "function_recall5_sum": 0.0,
+        "joint_eligible": 37,
+        "joint_top1_correct": 0,
+        "retrieval_function_covered": 7,
+        "retrieval_file_covered": 11
+      },
+      "metrics_path": "runs\\learning-m1-20261112T134154381369Z\\validation\\metrics.json",
+      "metrics_sha256": "bcc05e66b2588b2ade08174c98796faaf58c2269d72a10b4d97001402a0c1d4f",
+      "saved_metrics_recomputed_match": true,
+      "provisional": false,
+      "format_observations": {
+        "result_files": 37,
+        "parsed_null": 37,
+        "starts_markdown_fence": 37,
+        "output_at_token_cap": 0
+      }
+    },
+    "M2": {
+      "run_id": "learning-m2-20261112T135209594691Z",
+      "status": "training_finished",
+      "selected_step": 104,
+      "finished_at": "2026-11-12T21:29:06+07:00",
+      "metrics": {
+        "macro_f1": 0.3515151515151515,
+        "classification_accuracy": 0.7567567567567568,
+        "file_top1": 0.24324324324324326,
+        "function_top1": 0.13513513513513514,
+        "joint_top1": 0.10810810810810811
+      },
+      "counts": {
+        "total": 37,
+        "invalid_output": 0,
+        "unknown_output": 0,
+        "classification_missing_reference": 0,
+        "localization_missing_reference": 0,
+        "classification_eligible": 37,
+        "classification_correct": 28,
+        "localization_eligible": 37,
+        "file_top1_correct": 9,
+        "function_top1_correct": 5,
+        "file_recall1_sum": 9.0,
+        "function_recall1_sum": 5.0,
+        "file_top5_correct": 9,
+        "function_top5_correct": 5,
+        "file_recall5_sum": 9.0,
+        "function_recall5_sum": 5.0,
+        "joint_eligible": 37,
+        "joint_top1_correct": 4,
+        "retrieval_function_covered": 7,
+        "retrieval_file_covered": 11
+      },
+      "metrics_path": "runs\\learning-m2-20261112T135209594691Z\\validation-step-104\\metrics.json",
+      "metrics_sha256": "b755c18b62cfa8459ec1bc61e250ed413671faf2cd6e74482b7780c9a2f50c1b",
+      "saved_metrics_recomputed_match": true,
+      "provisional": false,
+      "format_observations": {
+        "result_files": 37,
+        "parsed_null": 0,
+        "starts_markdown_fence": 0,
+        "output_at_token_cap": 0
+      },
+      "adapter_reload_hash_matches": true
+    },
+    "M5": {
+      "run_id": "learning-m5-20261112T170153056333Z",
+      "status": "running",
+      "selected_step": 52,
+      "finished_at": null,
+      "metrics": {
+        "macro_f1": 0.35080645161290325,
+        "classification_accuracy": 0.8108108108108109,
+        "file_top1": 0.24324324324324326,
+        "function_top1": 0.13513513513513514,
+        "joint_top1": 0.08108108108108109
+      },
+      "counts": {
+        "total": 37,
+        "invalid_output": 0,
+        "unknown_output": 0,
+        "classification_missing_reference": 0,
+        "localization_missing_reference": 0,
+        "classification_eligible": 37,
+        "classification_correct": 30,
+        "localization_eligible": 37,
+        "file_top1_correct": 9,
+        "function_top1_correct": 5,
+        "file_recall1_sum": 9.0,
+        "function_recall1_sum": 5.0,
+        "file_top5_correct": 9,
+        "function_top5_correct": 5,
+        "file_recall5_sum": 9.0,
+        "function_recall5_sum": 5.0,
+        "joint_eligible": 37,
+        "joint_top1_correct": 3,
+        "retrieval_function_covered": 7,
+        "retrieval_file_covered": 11
+      },
+      "metrics_path": "runs\\learning-m5-20261112T170153056333Z\\validation-step-52\\metrics.json",
+      "metrics_sha256": "1069e7ca5affed96de29cbd6bae52b06486a01a232844b670fdb156b4f071cb9",
+      "saved_metrics_recomputed_match": true,
+      "provisional": true,
+      "format_observations": {
+        "result_files": 37,
+        "parsed_null": 0,
+        "starts_markdown_fence": 0,
+        "output_at_token_cap": 0
+      }
+    }
+  },
+  "majority_label": [
+    "logic/value",
+    29
+  ],
+  "qualification": "Saved validation predictions rescored without model execution or output normalization. M5 is provisional unless training_finished; no final-test access. Localization requires a retrieved reference location under the current scorer."
+}

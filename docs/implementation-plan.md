@@ -1,6 +1,6 @@
 # Kế hoạch thực thi theo tuần dành cho agent
 
-Cập nhật context: 12/11/2026, Asia/Bangkok; đang đóng gói kết quả vòng dataset v1. Đây là danh sách công việc để agent tiếp tục triển khai toàn đề tài, không chỉ mô tả kiến trúc hoặc ghi lại việc đã làm.
+Cập nhật context: 13/11/2026, Asia/Bangkok; đã chốt validation, final test và phân tích pilot. Đây là danh sách công việc để agent tiếp tục triển khai toàn đề tài, không chỉ mô tả kiến trúc hoặc ghi lại việc đã làm.
 
 ## Cách dùng khi bắt đầu hoặc khôi phục context
 
@@ -15,6 +15,30 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 **Lịch dự kiến:** sáu tuần tương đối theo thứ tự dưới đây; tuần 1 là chặng demo đầu đang khép lại. Chưa có deadline lịch được xác nhận, vì vậy không tự gán ngày kết thúc. Mỗi chặng có thể kéo dài; chỉ chuyển qua cổng nghiệm thu khi đủ bằng chứng. Task độc lập có thể chuẩn bị trước, nhưng không bỏ qua điều kiện dữ liệu/nhãn.
 
 ## Điểm tiếp tục hiện tại
+
+- **13/11 — W6-04 `done` (bộ tài liệu giữa kỳ):** [Tài liệu và hướng dẫn](midterm/README.md), outputtại`output/midterm/`:24slidechính+4backupHUST4:3,cónotes20phút; reportLaTeX11trangnộidung/14tổng; cheatsheet1A4; ghi chú6trang vàsourcezip. Đã render/đối chiếu số liệu,template/media vàhashhai ví dụ train; không model/train/Docker/testlại/Gitpush. **Tiếp theo: người dùng điền thông tin bìa, review/tập trình bày và trao đổi phần kiến thức còn thiếu.** Các checkpoint thực nghiệm giữ nguyên, không tự bắt đầu nghiên cứu mới.
+
+  Bổ sung theo yêu cầu: [lời thuyết trình đầy đủ](midterm/talk-script.md), PDF/Markdown ở `output/midterm/loi-thuyet-trinh.*`; mốc24slide tổng1200s,4phần dựphòng riêng. Thời gian là dự kiến, chưa nói thử đo thực tế; slide/kết quả không đổi.
+
+  Báo cáo PDF đã điền Nguyễn Hoàng Kiên — 20250735E và bỏ các dòng ngày cập nhật số liệu trên bìa/header; source LaTeX và archive đã đồng bộ. Bìa slide chưa đổi.
+
+  Theo yêu cầu tiếp theo, báo cáo dùng tên hiển thị M1 cho baseline prompt-only, bỏ đoạn bàn về thay đổi prompt. Giữ nguyên bảng số liệu, danh tính run và cấu hình/evidence đã khóa; không đổi các đầu ra khác.
+
+  Bàn giao Git được người dùng cho phép 13/11: đã giữ stash dự phòng và kiểm thử lại132tests (131pass/1skip); commit/push toàn bộ phần continuation/evaluation/tài liệu hiện có và đồng bộ main. Dataset/model/raw runs không đưa lên Git; task tiếp theo vẫn là review/tập trình bày.
+
+- **13/11 — ba phần evaluation đã hoàn tất:** [validation](evaluation-validation.md), [test/cost](evaluation-results.md), [phân tích lỗi/synthetic](evaluation-error-analysis.md). Run `evaluation-20261112T210848574175Z`, một trial38realtest;37+114=151request mới finished, giữ nguyên checkpointparent104 và parser. M1-P2 ghi rõ prompt mới. M2/M5accuracy22/38vs24/38, jointcùng4/38; silver/goldpending. [Receipt](evidence/dataset-v1-progress/evaluation-integrity-20261113.json);132softwaretests:131pass/1skip. **Task kế tiếp: W6-04 `waiting_user` — bàn phạm vi slide/báo cáo bảo vệ giữa kỳ.** Không tự chấm lại test, chọn lại model từ test, train/generate/Docker/push. Targetmatched175 và ablation chưa thực hiện vẫn chưa hoàn tất; các checkpoint cũ bên dưới giữ lịch sử.
+
+- **13/11 — continuation đã hoàn tất:** M2child183346đạt220updates/10epochs, M5child192802đạt350updates/10epochs; exposures/hash/reload đạt. Cảhai chọnparent104 vì joint không tăng; Macro-F1epoch10 giảm. [Evidence](evidence/dataset-v1-progress/continuation-validation-complete-20261113.json). **Task kế tiếp:** hoàn thiện giải trình M1formatinvalid và khóa lựa chọn, chuẩn bị để người dùng chấm38realtest bằng lệnh riêng; không tự mởtest hoặc tăngepochs. Sau đó W6-03phân tích lỗi/chi phí và W6-04báo cáo. Các checkpoint setup/waiting_user phía dưới giữ lịch sử, đã được mốc này thay thế.
+
+- **Continuation v1.2 setup hoàn tất 13/11:** [protocol](experiment-protocol-v1.2.md), [lệnh continue/resume](training-runbook.md#tiếp-tục-m2m5-đến-tổng-10-epoch), manifest ghim parent104. M2 thêm116updates→220, M5 thêm246→350; cùng tổng10epoch, LRcontinuation2e-5,3h/model. Full123tests:122pass/1skip; cả hai Check aliases pass, chưa tạo study hoặc gọi model. **Task kế tiếp `waiting_user`: người dùng tự chạy `train.ps1 M2 -Continue`, rồi M5; resume dùng `-Continue -Resume CHILD_RUN_ID`.** Giữ các kết quả pilot bên dưới; không tự train, test cuối hoặc push. Đề xuất fresh-base/176 cũ bị phương án continuation đã duyệt thay thế.
+
+- **Checkpoint 13/11 lúc00:39:** bốn model đã hoàn tất validation; M5 finished00:36:59, chọn104/reload/hash đạt. [Bảng cuối](results.md): M2F1 .3515/joint4/37; M5F1 .4060/joint5/37. **Task kế tiếp: chốt ngân sách học tiếp hoặc khóa pilot trước finaltest**. Đề xuất176updates mỗi SFT từ cùngbase (M2≈8epochs/M5≈5,03) mới là tư vấn, chưa duyệt/thực thi, không sửa protocol/cap104. Cần xử lý cách diễn giải M1formatinvalid và hạn chế retrieval/lớp trước kết luận; test cuối chưa mở.
+
+- **Checkpoint 13/11 lúc00:32:** đã đối chiếu [điểm validation bốn model](results.md), cùng37mẫu/prompt hashes, tính lại khớp. M5 đangrunning, step52 là tạm thời; chưa có kết quả chọn checkpoint cuối/reload. M1 strictJSONinvalid37/37 (raw đều Markdown-fenced), cần giải thích yếu tố format khi so SFT, không tự sửa parser/điểm. **Task kế tiếp: kiểm tra M5 hoàn tất rồi tổng hợp W5-04 trước final test**; không gọi lại model để kiểm tra điểm. [Evidence](evidence/dataset-v1-progress/validation-comparison-20261113.json).
+
+- **Checkpoint 21:30 ngày 12/11:** M0/M1 validation hoàn tất; M2 `learning-m2-20261112T135209594691Z` có training_finished21:29:06,104updates≈4,73epochs, chọn checkpoint104, reload/hash đạt. Validation37: accuracy28/37, Macro-F1 .3515, functionTop1 5/37, jointTop1 4/37. **Task kế tiếp: người dùng chạy M5**, chưa mở finaltest hoặc tăng ngân sách; M5 chưa có fit operation tại lần kiểm tra. [Evidence M2](evidence/dataset-v1-progress/m2-validation-20261112.json).
+
+- **Cập nhật 20:37 ngày 12/11:** người dùng đã chạy M0, run `learning-m0-20261112T133340821343Z` có `validation_finished`. Sửa cảnh báo tokenizer ở bước đếm raw log, không đổi prompt/crop/hyperparameter, không chạy lại M0. 16 kiểm thử liên quan pass; [đối chiếu prompt thật](evidence/dataset-v1-progress/tokenizer-warning-fix-20261112.json). Task tiếp theo vẫn do người dùng bắt đầu: M1 và smoke M2, rồi hai SFT theo [runbook](training-runbook.md); chưa mở final test.
 
 - **Bàn giao mới nhất — setup pilot v1.1 hoàn tất, chưa chạy model:** người dùng muốn tự gọi từng lệnh M0/M1/M2/M5. [Protocol v1.1](experiment-protocol-v1.1.md), [manifest](../data-manifests/training-v1.1.json), [runbook](training-runbook.md), [readiness](evidence/dataset-v1-progress/manual-training-readiness-20261112.json) và [kiểm thử 116: 115 pass/1 skip](evidence/dataset-v1-progress/software-tests-manual-v11-final.txt). Dataset 250 real + 101 synthetic đã khóa riêng; không đổi số liệu, target/cap/unknown của vòng v1.0. Không gọi model, smoke hoặc Docker trong lượt setup.
 - **Task kế tiếp cụ thể: `waiting_user` — người dùng chạy `.\scripts\train.ps1 -Check`, rồi M0/M1 và smoke M2 trước hai SFT dài khi sẵn sàng.** Chỉ hỗ trợ từ run/log thật sau khi có lệnh; không tự bắt đầu train. Study thủ công chưa tạo, không có calendar cutoff, cap cộng dồn giữ hai giờ mỗi SFT/evaluation; xem protocol mới. Goal v1.0 vẫn thiếu 74 synthetic và chưa hoàn tất.
@@ -104,10 +128,10 @@ W2-03 chọn case và ghi nguồn/revision; W2-04 chốt vai trò train/validati
 
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
-| W5-01 | waiting_user | M0 TF-IDF + Logistic Regression cho **phân loại**, code đã xong | `scripts/train.ps1 M0`; fit real train, support/confusion matrix, không localization. Chưa có run nghiên cứu |
-| W5-02 | waiting_user | M1 prompt-only, code đã xong; giữ phép calibration train cũ riêng | `scripts/train.ps1 M1`; pinned local 3B, request/raw/hash/timing/GPU logs, resume không gọi lại completed/uncertain request. Chưa có run nghiên cứu |
-| W5-03 | waiting_user | M2 real-only và M5 mixed pilot v1.1, setup đã xong | `scripts/train.ps1 M2 -Smoke` tùy chọn, rồi M2/M5 độc lập; 104 updates, checkpoint/resume/validation/GPU logs. 116 kiểm thử phần mềm: 115 pass/1 skip, backend giả lập resume từ 52 đến 104. CUDA backward/reload thực và thời gian train chưa đo; không tự chạy thay người dùng |
-| W5-04 | todo | Dùng validation chọn checkpoint/tham số theo protocol đã khóa; chưa mở test để sửa cấu hình | Bảng kết quả phát triển + cấu hình cuối. Nếu thiếu thời gian/dữ liệu, ghi thiếu thí nghiệm thay vì tạo kết quả hoặc kết luận hiệu quả |
+| W5-01 | done (pilot) | M0 TF-IDF + Logistic Regression cho **phân loại**, người dùng đã chạy | Classifier `learning-m0-20261112T133340821343Z` tái sử dụng; validation6/37,test9/38. Không localization hoặc refit. [Kết quả](evaluation-results.md) |
+| W5-02 | done (pilot) | M1 prompt-only, giữ kết quả cũ và lượt M1-P2 được duyệt riêng | M1 cũ37/37fencedJSON bị strictparser từ chối. M1-P2 **prompt mới**, cùng usercode/log; validation29/37,test16/38, invalid1/37và8/38. Không normalize response. [Giải trình](evaluation-validation.md) |
+| W5-03 | done (pilot) | M2/M5 parent và continuation do người dùng chạy | Parent104 và child đến220/350updates đều hoàn tất; cảhai chọnparent104, reload/hash đạt. [Evidence continuation](evidence/dataset-v1-progress/continuation-validation-complete-20261113.json); chỉ adapter đã chọn được test |
+| W5-04 | done (pilot evaluation v1) | Chốt validation, giải trình format M1 và phân biệt best/epoch10 | [Bảng validation](evaluation-validation.md), [manifest](../data-manifests/evaluation-v1.json). M2/M5 giữparent104 dù child10epoch; M1-P2 không làm đổi selection. Prompt khác nhau ghi rõ, strictparser và nhãn silver giữ nguyên |
 
 **Cổng G5:** có baseline thật và cấu hình cuối truy vết được. Chỉ nói tác dụng fine-tuning/synthetic khi đối chứng tương ứng tồn tại; hai lượt 7B đạt thực thi hiện tại chưa đủ thay thế dataset huấn luyện và chưa được duyệt để train.
 
@@ -116,9 +140,9 @@ W2-03 chọn case và ghi nguồn/revision; W2-04 chốt vai trò train/validati
 | ID | Trạng thái | Phụ thuộc / hành động | Đầu ra / điều kiện hoàn thành |
 |---|---|---|---|
 | W6-01 | todo | Thực hiện M3/M4 và fail-only/pass+fail theo protocol/tài nguyên; đánh dấu deferred kèm lý do nếu chưa thể | Bảng ablation có task/input/model/split/ngân sách tương ứng. M4 vẫn có thực thi/log; khác ở xác minh nhãn/lọc đầy đủ, không trộn mẫu thiếu an toàn hoặc thiếu input vào train |
-| W6-02 | todo | Sau G5 và các lựa chọn đã khóa, chấm test thật độc lập | Macro-F1 và từng lớp; Top-k đúng mẫu số nếu triển khai khoanh vùng; trạng thái pass/unknown chấm riêng. Lặp seeds theo khả năng, báo từng lượt và độ dao động, không chỉ điểm tốt nhất |
-| W6-03 | todo | Phân tích sai, slop/lộ đáp án, chất lượng nhãn, chi phí và giới hạn; đóng gói tái lập | `docs/results.md`, kết quả tổng hợp nhỏ, manifests và runbook khôi phục. Không quy cải thiện cho filtering nếu thiếu đối chứng phù hợp, không mặc định synthetic có lợi |
-| W6-04 | todo | Chuẩn bị báo cáo/demo và bảng giải trình GVHD từ kết quả thật | Outline không quá 20 slide, bảng sửa gì/ở đâu, demo live hoặc replay ghi rõ, danh sách giới hạn. Dựng slide theo yêu cầu thực tế và skill liên quan; giữ nguyên tài liệu gốc nếu chưa được yêu cầu sửa |
+| W6-02 | done (pilot evaluation v1) | Khóa trước suy luận, test một lần trên cùng38real | Run `evaluation-20261112T210848574175Z` giữ strictparser/checkpoint104/cohort và prompt riêng;114testrequest finished. [Bảng đầy đủ](evaluation-results.md), [receipt](evidence/dataset-v1-progress/evaluation-integrity-20261113.json). Không chấm checkpoint khác; silver, không phải gold benchmark |
+| W6-03 | done (pilot evaluation v1) | Phân tích lỗi và hiệu quả synthetic, parent+continuation cost | [Phân tích](evaluation-error-analysis.md):38case paired/format/retrieval/hash,8chuỗi causal chi tiết; M5 thắng4/thua2 về class, jointthắng1/thua1. M2/M5cost4387/6324s; không quy nhân quả từ một seed hoặc đổi nhãn sau test. M3/M4 và các ablation chưa làm vẫn riêng W6-01 |
+| W6-04 | done (giữa kỳ) | Bộ tài liệu theo kế hoạch đã duyệt, chờ người dùng review/tập trình bày | [Source/readme](midterm/README.md);28slide(24+4),notes1200s,reportLaTeX11trangchính/14tổng,cheatsheet1A4,ghi chú6trang,PDF/PPTX/sourcezip. Render,16bảngnative,9template-media và37rawhashhai ví dụđạt; nhãnsilver,khôngthínghiệmlại/push. Báo cáo cuối kỳ và cácablation chưa nằm trong mốc này |
 
 **Cổng G6:** các kết luận đều trỏ được đến thí nghiệm/evidence; hạn chế và phần chưa làm được ghi công khai. M6 sinh cho lớp hiếm, model chẩn đoán bổ sung và interceptor không mặc định là việc đã triển khai.
 

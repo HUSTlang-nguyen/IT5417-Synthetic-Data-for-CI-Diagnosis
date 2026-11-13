@@ -1,0 +1,117 @@
+\documentclass[12pt,a4paper]{article}
+\input{common.tex}
+\fancyhead[L]{\small IT5417 — Ghi chú ôn tập}
+\setstretch{1.1}
+\begin{document}
+\section*{1. SFT đang học điều gì?}
+\textbf{Cách nói ngắn khi bảo vệ:} em dùng mô hình3B đã huấn luyện sẵn, rồi dạy thêm bằng các cặp log/code và câu trả lời chẩn đoán. Em không train một mô hình ngôn ngữ từ đầu.
+
+\topic{Một mẫu train}
+Trong bài dự đoán giá từ OHLCV, bạn quen với input là chuỗi dữ liệu và target là giá/biến động tương lai. Ở đây input là văn bản log cộng code liên quan; target là một chuỗi JSON. Sự khác biệt khó nhất nằm ở việc xây target: repair patch và test chỉ hỗ trợ điều tra, không tự cho sẵn loại lỗi/cặp file-hàm/giải thích đúng theo bài toán này.
+
+Một case marshmallow có input cho thấy assertion metadata thất bại. Target silver chỉ ra API/type, \code{src/marshmallow/fields.py::Field.__init__}, cùng giải thích dictionary bị lồng thêm một cấp. Khi train, mô hình nhận system instruction, user log/code và assistant target. Khi sử dụng, chỉ có system và user; mô hình phải tự sinh assistant response.
+
+\topic{Response-only loss}
+Mô hình dự đoán token tiếp theo của target. Cấu hình response-only loss bỏ phần system/user khỏi mục tiêu loss, thường bằng nhãn mask. Điều đó không có nghĩa model không đọc input: target được dự đoán có điều kiện trên toàn context. Loss thấp chỉ nói model khớp chuỗi target tốt hơn trên dữ liệu đã học; không tự bảo đảm chẩn đoán đúng case mới.
+
+\topic{M1 và M2 khác nhau ở đâu?}
+M1 prompt-only giữ trọng số nền; hướng dẫn và log/code có thể đủ để model trả lời. M2 học thêm adapter từ175real. M5 học adapter riêng từ cùng base trên175real +101synthetic. M5 không phải M2 cộng thêm một adapter và không resume từ M2.
+
+\topic{Những câu dễ bị hỏi}
+\textbf{SFT có phải ghi nhớ mẫu không?} Có thể có ghi nhớ, nhất là dữ liệu nhỏ; vì vậy phải giữ riêng repo/group cho validation/test và báo giới hạn. Không gọi loss train thấp là khả năng tổng quát.\par
+\textbf{Model có tự tìm khắp repo không?} Chưa. Retrieval chọn code tĩnh trước, rồi model đọc đoạn được đóng gói trong context. Đây là một nguồn lỗi riêng.\par
+\textbf{Tại sao output là JSON?} Để lưu/chấm nhất quán loại lỗi và vị trí; không phải vì JSON tự làm lời giải thích đúng.
+
+\nextpage
+\section*{2. LoRA, QLoRA và bộ nhớ GPU}
+\textbf{Cách nói ngắn:} thay vì cập nhật toàn bộ trọng số3B, em giữ base cố định và chỉ học các ma trận nhỏ của LoRA. Base được lượng tử hóa4bit để vừa GPU; quá trình tính toán dùng BF16.
+
+\topic{LoRA là gì?}
+Với một trọng số nền \(W\), LoRA biểu diễn cập nhật bằng tích hai ma trận hạng thấp, thường viết \(W'=W+(\alpha/r)BA\). Base \(W\) được giữ cố định; các tham số trong \(A,B\) được tối ưu. Rank \(r\) quyết định kích thước phần cập nhật; không phải số lớp nhãn. Cấu hình đề tài dùng rank16, alpha32, dropout0,05 và các linear modules.
+
+\topic{QLoRA và 4bit}
+QLoRA kết hợp base lượng tử hóa với adapter trainable. NF4 là kiểu lượng tử hóa dùng cho trọng số nền; double quantization tiếp tục lượng tử hóa các hằng số lượng tử hóa. BF16 là độ chính xác tính toán, không phải thay NF4 thành16bit cho toàn bộ lưu trữ base. Không diễn giải4bit là mọi tensor, activation, gradient và optimizer state đều chỉ4bit.
+
+\topic{Tại sao vẫn tốn VRAM?}
+Ngoài base còn có activation, adapter/gradient, optimizer state, buffer và bộ nhớ allocator giữ lại. Context dài hơn thường làm activation và compute tăng. Batch/device1 + accumulation8 giảm nhu cầu giữ nhiều mẫu đồng thời, nhưng không làm quá trình train miễn phí hoặc tương đương tăng VRAM vật lý.
+
+\topic{Đọc số đo GPU}
+\begin{itemize}
+\item \textbf{Allocated:} phần bộ nhớ tensor đang được thư viện sử dụng.
+\item \textbf{Reserved:} bộ nhớ allocator đã giữ, có thể lớn hơn allocated.
+\item \textbf{VRAM toàn GPU:} gồm process khác và các phần không thể suy từ reserved của model.
+\end{itemize}
+Không dùng reserved để tuyên bố model chiếm đúng từng ấy VRAM vật lý. Log GPU, loss, learning rate, token và exposure được giữ trong artifact train.
+
+\topic{Câu hỏi bảo vệ}
+\textbf{Tại sao dùng3B?} Đây là lựa chọn local phù hợp phạm vi tài nguyên của pilot; chưa có thí nghiệm so kích thước model để khẳng định3B tối ưu.\par
+\textbf{Có chứng minh QLoRA tốt hơn full fine-tuning không?} Chưa; đề tài dùng QLoRA làm phương pháp triển khai, không nghiên cứu đối chứng hai cách fine-tune. Nguồn nền: LoRA và QLoRA, đã trích trong báo cáo.
+
+\nextpage
+\section*{3. Epoch, update và checkpoint}
+\textbf{Epoch} là một lượt qua tập train. \textbf{Microbatch} là nhóm mẫu xử lý trong một lần forward/backward. \textbf{Optimizer update} là lần cập nhật tham số sau tích lũy gradient. \textbf{Checkpoint} là trạng thái dùng để lưu và khôi phục quá trình học.
+
+Batch/device 1 và accumulation 8 tạo khoảng 8 mẫu/update trên một GPU; cuối epoch có thể ít hơn. M2 có \(\lceil175/8\rceil=22\) updates/epoch, M5 có \(\lceil276/8\rceil=35\). Không lấy 104 nhân 8 để khẳng định cả hai đã thấy 832 mẫu, vì có update cuối epoch chưa đủ 8 mẫu.
+\begin{center}
+\begin{tabular}{lrr}\toprule
+Mốc & M2 & M5\\\midrule
+Parent &104 updates &104 updates\\
+Epoch xấp xỉ ở parent &4,73 &2,99\\
+Đích 10 epoch &220 updates &350 updates\\
+Học thêm &116 updates &246 updates\\
+Exposure tổng &1750 &2760\\\bottomrule
+\end{tabular}\end{center}
+\topic{Continuation có giữ phần đã học không?}
+Có. Nó khôi phục adapter, optimizer moments, RNG, global step, exposure và vị trí dữ liệu từ parent104. Scheduler cũ đã hết lịch nên continuation dùng lịch riêng: bắt đầu LR \(2\times10^{-5}\), giảm tuyến tính về 0, không warmup. Resume run con bị gián đoạn giữ lịch đang chạy, không đặt lại LR. Đây không phải train lại từ base, cũng không phải một run được lên lịch 10 epoch ngay từ đầu.
+\topic{Đã chạy 10 epoch, tại sao test checkpoint104?}
+Quy tắc chọn theo joint validation, hòa chọn sớm hơn, được giữ trước test. Các mốc continuation không tăng joint; cả hai chọn parent104. Ngân sách đã tiêu là 10 epoch nhưng adapter được test tương ứng 4,73/2,99 epoch. Phải phân biệt hai thông tin này khi trình bày.
+\topic{Cùng epoch có phải cùng compute?}
+Không. M5 có nhiều mẫu hơn nên 10 epoch cần nhiều updates và token hơn. Ngay cả cùng updates cũng chưa chắc cùng token vì input/target dài khác nhau. Pilot chưa cô lập hoàn toàn ảnh hưởng dữ liệu khỏi ngân sách compute.
+\textbf{Có nên tăng epoch theo điểm test?} Không dùng test đã mở để ra quyết định đó rồi chấm lại như một đánh giá độc lập. Thay đổi tiếp theo cần protocol và đánh giá mới.
+
+\nextpage
+\section*{4. Dữ liệu thật, synthetic và nhãn}
+\textbf{Một mẫu là một tình huống lỗi, không phải cả repo.} Nhiều test fail có thể cùng một nguyên nhân. Ba lần chạy cùng candidate chỉ kiểm tra độ ổn định. Ba request generator tạo ba output nhưng chưa chắc là ba cơ chế độc lập.
+\topic{Nguồn nào cho sẵn gì?}
+SWE-bench có revision, repair patch, test patch và F2P/P2P. Dự án phải tái hiện rồi đọc code/log để xây loại lỗi và vị trí. AIDev cung cấp PR/provenance ở development; trường công cụ tạo PR không phải nhãn ai gây lỗi. Real pilot hiện lấy từ SWE-bench, log là tái hiện local.
+\topic{Silver và gold}
+Silver ở đây là nhãn có phân tích evidence, có nguồn và phần chưa chắc, chưa được xác nhận thành chuyên gia gold. Test pass/fail không tự xác nhận loại lỗi hoặc causal function. Bạn không cần tự nhận mình là chuyên gia: hãy nói rõ mức bằng chứng của pilot. Nâng chất lượng nhãn cần hướng dẫn rõ, rà độc lập, xử lý bất đồng và người có năng lực phù hợp; không chỉ đổi tên silver thành gold.
+\topic{Exception khác nguyên nhân}
+Synthetic pvlib bỏ \code{not} trong điều kiện broadcast. Scalar không nhân rộng cho nhiều array nên bị length check từ chối, phát \code{ValueError}. Nhãn logic/value mô tả sai điều khiển; không phải syntax vì Python vẫn hợp lệ. Không ánh xạ tên exception trực tiếp thành taxonomy.
+\topic{Chia tập và leakage}
+175 real train dùng học; 37 validation dùng chọn checkpoint; 38 test dùng chấm cuối. Synthetic chỉ từ train seed và chỉ thêm vào train. Repo/group được giữ riêng. Repair patch, target, edit-site hay assessment chứa thông tin đáp án nên nằm ngoài input. Stack trace có file/dòng là evidence hợp lệ theo bài toán.
+\topic{Số lượng hiện tại đủ cho điều gì?}
+250 real và 101 synthetic đủ triển khai pilot, chưa bảo đảm chất lượng tổng quát. Train tập trung 158/175 real và 88/101 synthetic từ SymPy, thiếu hai nhóm lớp. 197 lượt đạt runner không đồng nghĩa 197 mẫu train vì còn phải rà nhãn, tuân thủ, hợp lý và trùng lặp.
+
+\nextpage
+\section*{5. Cách đọc các metric}
+\textbf{Accuracy:} số đúng loại lỗi chia tổng mẫu. M5 đúng 24/38 nên accuracy 63,16\%. Luôn đoán logic/value đã đúng 21/38=55,26\%; do đó cần xem thêm từng lớp.
+
+\textbf{Precision:} trong các mẫu model gọi là lớp đó, bao nhiêu mẫu khớp reference. \textbf{Recall:} trong các mẫu reference thuộc lớp đó, model tìm đúng bao nhiêu. F1 cân bằng hai đại lượng:
+\[
+P=\frac{TP}{TP+FP},\quad R=\frac{TP}{TP+FN},\quad F1=\frac{2PR}{P+R}.
+\]
+\textbf{Macro-F1:} trung bình F1 từng lớp, không lấy trọng số theo số mẫu. Scorer dùng bốn lớp cố định; syntax support0 vẫn đóng góp0. Minh họa độc lập, \emph{không phải số đo}: nếu F1 bốn lớp là 0,8; 0,6; 0; 0 thì Macro-F1=0,35. Không coi 0,35 và 80\% accuracy là cùng đại lượng.
+\topic{File/hàm và Top-k}
+File Top-1 xét file đầu tiên; Hàm Top-1 xét cặp file/hàm đầu tiên. Đúng \code{Field.__init__} nhưng sai file hoặc thiếu \code{src/} vẫn không khớp chính xác. Top-5 xét tối đa năm vị trí đầu, không có nghĩa đúng năm mẫu.
+\topic{Joint: đúng loại + hàm}
+Trên cùng mẫu cần đúng loại và file/hàm Top-1 theo scorer đã khóa. M5 đúng 24 loại và 7 hàm nhưng chỉ 4 mẫu cùng đúng hai điều kiện, nên joint4/38=10,53\%. Không lấy \(24/38\times7/38\) để tính joint. Điểm này chưa xác nhận explanation đúng.
+\topic{Retrieval gate và invalid}
+Reference hàm có trong context12/38 test. Scorer không tính credit định vị khi reference vắng khỏi context; mỗi SFT có ba direct match bị gate này từ chối. Giữ điểm và báo giới hạn, không tự bỏ gate sau test. M1-P2 có 8 invalid do Markdown fences; parser strict không bỏ fence để cứu điểm. Unknown là từ chối kết luận, khác invalid; cả hai vẫn trong mẫu số.
+\textbf{M0 không có định vị:} dấu -- là không áp dụng, không phải 0\% cho một nhiệm vụ nó đã thực hiện.
+
+\nextpage
+\section*{6. Câu hỏi bảo vệ và cách trả lời}
+\topic{Đã làm được gì?}
+Em đã có pipeline Python nhiều repo, tái hiện base/fixed trong Docker, sinh bằng 7B trên train seed, kiểm chứng/rà dữ liệu, khóa 250 real +101 synthetic, chạy hai SFT3B và chấm test một lần. Log/hash cho phép truy vết. W1/expansion là development riêng, không cộng thành mẫu train mới.
+\topic{Synthetic có giúp không?}
+Trên 38 real test và một seed, M5 đúng loại 24 mẫu so với 22 của M2; Macro-F1 tăng 0,3132 lên 0,3375. Hàm tăng6 lên7, file giảm18 xuống16, joint cùng4/38. Em quan sát cải thiện nhẹ về phân loại, chưa khẳng định lợi ích tổng quát. Còn thiếu M3/M4, nhiều seed và kiểm soát compute/token.
+\topic{Vì sao định vị thấp?}
+Code có coverage thấp, scorer có gate visibility, model có thể trỏ nơi phát hiện thay vì nơi gây lỗi, và silver có giới hạn. Cần xem chuỗi evidence riêng; không quy tất cả cho model. Khác biệt M2/M5 chưa chứng minh synthetic cụ thể nào đã tạo cải thiện.
+\topic{Tại sao M1 cũ bằng 0 mà P2 cao hơn?}
+37 response cũ chứa JSON trong Markdown nên parser strict từ chối. P2 đổi hai đoạn system prompt, giữ user code/log và budget, không train. P2 vẫn có8 invalid test. Em ghi P2 riêng, không nói mọi model dùng cùng prompt hoặc mọi chênh lệch với SFT đều phản ánh kiến thức chẩn đoán.
+\topic{Đã xác định người hay AI gây lỗi chưa?}
+Chưa. Synthetic có provenance cho biết 7B tạo phép edit, nhưng không đồng nghĩa model biết quy tác giả trên lỗi thật. Actor của PR cũng chưa đủ chứng minh ai gây defect. Pilot chỉ học nguyên nhân kỹ thuật và file/hàm.
+\topic{Ưu tiên sau giữa kỳ và câu hỏi chưa biết}
+Em ưu tiên nhãn, retrieval, lớp/repo và đối chứng trên development, không chỉ tăng epoch. Nếu chưa có phép đo, nói rõ phần đã xác nhận và kiểm tra cần thêm: ``Hiện em chưa có ablation tách ảnh hưởng đó; kết quả này là quan sát.'' Không tự khẳng định hội tụ hay expert gold.
+\end{document}

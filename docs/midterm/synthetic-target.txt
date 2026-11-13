@@ -1,0 +1,10 @@
+{
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem._validate_per_array"
+    }
+  ],
+  "explanation": "The scalar-broadcast predicate now selects tuples instead of non-tuples. A system-wide scalar reaches length validation as a one-element tuple for multiple arrays, raising the saved length-mismatch ValueError."
+}

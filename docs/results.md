@@ -1,4 +1,40 @@
-# Kết quả vòng dataset v1 — 12/11/2026
+# Kết quả vòng dataset v1 — cập nhật 13/11/2026
+
+## Evaluation v1 — M1-P2 và final test
+
+[Validation đã chốt](evaluation-validation.md) dùng M1-P2 **prompt mới**, parser strict và user code/log cũ. M1-P2 accuracy29/37, Macro-F1 .3642, function6/37, joint4/37, invalid1/37; không chọn lại checkpoint M2/M5. M1 cũ giữ điểm0 do37/37 output có Markdown fence.
+
+**Final test hoàn tất một lần trên cùng38real**, run `evaluation-20261112T210848574175Z`: M0 accuracy9/38/F1 .1106; M1-P2 16/38/.2549; M2 22/38/.3132; M5 24/38/.3375. Joint M2/M5 cùng4/38, định vị hàm6/38 so với7/38; chưa đủ kết luận synthetic có lợi tổng quát. [Bảng test, từng lớp/repo và chi phí](evaluation-results.md), [phân tích lỗi](evaluation-error-analysis.md), [manifest](../data-manifests/evaluation-v1.json), [protocol](evaluation-protocol-v1.md), [receipt hash/request](evidence/dataset-v1-progress/evaluation-integrity-20261113.json). 151request mới finished, không gọi trùng; nhãn silver và gold pending. Kiểm thử phần mềm132:131pass/1skip. Các checkpoint dưới đây là lịch sử trước khi mở test.
+
+## Continuation v1.2 — cả hai đã học đủ tổng 10 epoch
+
+M2 hoàn tất02:09:56, M5 hoàn tất03:38:20ngày13/11+07. Globalupdates220/350, tổngexposures1750/2760, mỗi mẫu10lượt; adapterreload/hash và các metrics hash đạt. [Evidence hoàn tất](evidence/dataset-v1-progress/continuation-validation-complete-20261113.json). Kiểm tra tương thích final-model bằng hàm đọc thuần đạt; chưa ghi finaltestlock hoặc gọi model/test.
+
+| Model | Macro-F1 checkpoint104 | Macro-F1 epoch10 | Joint104 | Joint epoch10 | Checkpoint được chọn |
+|---|---:|---:|---:|---:|---|
+| M2 | 0,3515 | 0,3226 | 4/37 | 4/37 | Parent104, theo quy tắc hòa chọn sớm |
+| M5 | 0,4060 | 0,3731 | 5/37 | 5/37 | Parent104, theo quy tắc hòa chọn sớm |
+
+Định vị hàm vẫn5/37 cho cảhai ở các mốc mới. Chưa thấy lợi ích học tiếp theo metric hiện hành; không suy rằng thêm epoch sẽ khắc phục retrieval/nhãn hoặc rằng model đã hội tụ toàn cục. Điểm chính vẫn lấy checkpoint đã chọn, phân biệt với điểm epoch10. Các đoạn đề xuất176updates/fresh-base bên dưới là lịch sử trước khi người dùng chọn continuation; không được triển khai.
+
+## Pilot v1.1 — validation hoàn tất, kiểm tra 13/11/2026 lúc 00:39 +07
+
+Đã tính lại metric từ prediction đã lưu của cùng 37 real validation, đối chiếu input prompt hashes giống nhau giữa bốn model và reference hashes khớp. Không gọi model, chuẩn hóa output, đổi scorer hoặc mở final test. [Evidence cuối](evidence/dataset-v1-progress/validation-comparison-final-20261113.json); [snapshot lịch sử lúc M5 mới xong step52](evidence/dataset-v1-progress/validation-comparison-20261113.json) giữ nguyên.
+
+| Model | Trạng thái/checkpoint | Accuracy phân loại | Macro-F1 | File Top-1 | Hàm Top-1 | Joint loại/hàm Top-1 | Invalid |
+|---|---|---:|---:|---:|---:|---:|---:|
+| M0 | Validation hoàn tất | 6/37 = 16,22% | 0,0835 | Không áp dụng | Không áp dụng | Không áp dụng | 0/37 |
+| M1 | Validation hoàn tất | 0/37 | 0 | 0/37 | 0/37 | 0/37 | 37/37 |
+| M2 | Hoàn tất; chọn step104 | 28/37 = 75,68% | 0,3515 | 9/37 = 24,32% | 5/37 = 13,51% | 4/37 = 10,81% | 0/37 |
+| M5 | Hoàn tất; chọn step104 | 30/37 = 81,08% | 0,4060 | 9/37 = 24,32% | 5/37 = 13,51% | 5/37 = 13,51% | 1/37 |
+
+M1 có37response lưu và hash khớp, toàn bộ bắt đầu bằng Markdown fence và parsed=null; không chạm trần384output tokens. Điểm0 là kết quả end-to-end của parser JSON nghiêm ngặt, không chứng minh mọi suy luận nguyên nhân đều sai. Chưa sửa parser hoặc tự làm sạch response để đổi điểm. Vì SFT còn học tuân thủ JSON, không quy toàn bộ chênh lệch M1–M2 cho năng lực chẩn đoán.
+
+M5 hoàn tất00:36:59,104updates/2,9855epochs, adapter reload/hash đạt; cả M2/M5 chọn104. M5 từ52→104 giữaccuracy30/37 vàfunction5/37, Macro-F1 tăng .350806→.405956, joint3/37→5/37; có1invalid ở104. M2 từ52→104 tăng Macro-F1 .191071→.351515, joint2/37→4/37. Hai mốc chưa chứng minh hội tụ. Accuracy riêng cũng cần thận trọng: lớp logic/value chiếm29/37, dự đoán luôn lớp này cho accuracy78,38%. Macro-F1 hiện lấy trung bình cố định bốn lớp, gồm syntax không có support trong validation. Metric định vị yêu cầu vị trí reference có trong retrieved code; coverage hàm7/37 là hạn chế pipeline. M2/M5 đều không đoán đúng4mẫu dependency/configuration; train không có lớp đó. Thêm epoch trên cùng tập không bổ sung support lớp hoặc code bị thiếu. Dữ liệu silver và validation nhỏ chưa đủ kết luận tổng quát về synthetic; raw runs giữ nguyên.
+
+**Đề xuất, chưa phê duyệt/thực thi:** thử một ngân sách mới tổng176updates cho mỗi SFT, từ cùng base3B với lịch LR tương ứng; tương đương M2≈8epochs, M5≈5,03epochs, cao hơn hiện tại khoảng3,27 và2,04epochs. Đây là phép thử hữu hạn, không phải ngưỡng hội tụ đã đo. Giữ kết quả104 và protocol/cap hiện tại; cần phiên bản cấu hình riêng trước chạy, không dùng resume để gia hạn run đã xong. M0/M1 không có đề xuất thêm epoch. Tăng số mốc validation (khoảng35updates/lần, giữ104 và mốc cuối) để quan sát xu hướng; chưa sửa code hoặc bật early stopping. Chọn theo joint với quy tắc đã chốt ở protocol mới, không dùng final test để quyết định.
+
+## Kết quả lịch sử vòng thu thập v1.0
 
 **Cập nhật sau bàn giao:** đã triển khai [pilot thủ công v1.1](experiment-protocol-v1.1.md) dùng 101 synthetic hiện có theo yêu cầu người dùng, với lock riêng và [lệnh chạy](training-runbook.md). Chưa train hoặc mở model test. Báo cáo dưới đây giữ nguyên đánh giá mục tiêu v1.0, không coi pilot code setup là hoàn tất thí nghiệm cũ.
 

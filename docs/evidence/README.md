@@ -1,5 +1,9 @@
 # Bằng chứng nghiệm thu
 
+## Evaluation pilot — 13/11/2026
+
+[Bảng validation/test và chi phí](../evaluation-results.md), [phân tích lỗi](../evaluation-error-analysis.md), [receipt khóa/request/hash](dataset-v1-progress/evaluation-integrity-20261113.json). Một trial38realtest,151request mới, M1-P2 prompt mới; M2/M5giữparent104. Nhãn silver, không có phê duyệt gold. [Kiểm thử132:131pass/1skip](dataset-v1-progress/software-tests-evaluation-final-v1.txt). Các evidence PC/laptop dưới đây giữ nguyên số liệu lịch sử.
+
 ## PC RTX 4070 SUPER — cập nhật 29/10/2026, 12:52 +07
 
 [Evidence PC riêng](target-pc/README.md): tái hiện thật thành công, 22 software tests pass gồm Docker thật, đã chạy đủ sáu lượt LLM. 7B đạt kiểm chứng thực thi 2/3; 1.5B đạt 1/3. Nhãn/chất lượng vẫn chờ người duyệt; đây chưa là gold data hoặc đánh giá hiệu quả ML.

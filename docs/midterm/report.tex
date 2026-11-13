@@ -1,0 +1,304 @@
+\documentclass[12pt,a4paper]{article}
+\input{common.tex}
+\fancyhead[R]{}
+\hypersetup{pdfauthor={Nguyễn Hoàng Kiên - 20250735E}}
+\newcommand{\baselineModelName}{M1}
+\setstretch{1.12}
+\begin{document}
+\begin{titlepage}
+\centering
+{\large ĐẠI HỌC BÁCH KHOA HÀ NỘI\par}
+\vspace{1cm}
+{\large ĐỒ ÁN IT5417\par}
+\vspace{1.6cm}
+{\LARGE\bfseries BÁO CÁO TIẾN ĐỘ GIỮA KỲ\par}
+\vspace{1cm}
+{\Large\bfseries Sinh dữ liệu tổng hợp có kiểm chứng\par hỗ trợ chẩn đoán lỗi CI\par}
+\vspace{.7cm}
+{\large Synthetic Data for CI Diagnosis\par}
+\vfill
+\begin{tabular}{ll}
+Sinh viên thực hiện: & Nguyễn Hoàng Kiên\\[.35cm]
+Mã số sinh viên: & 20250735E\\[.35cm]
+Giảng viên hướng dẫn: & Vũ Thị Hương Giang
+\end{tabular}
+\vfill
+{Hà Nội, 2026\par}
+\end{titlepage}
+\pagenumbering{roman}
+\tableofcontents
+\clearpage\pagenumbering{arabic}
+
+% Nội dung chính trang 1
+\section{Bài toán và mục tiêu nghiên cứu}
+Trong quy trình tích hợp liên tục (Continuous Integration, CI), một thay đổi mã nguồn có thể làm bước kiểm tra hoặc test thất bại. Log thường chỉ ra exception, assertion hoặc nơi phát hiện lỗi. Để tìm nguyên nhân, người phát triển còn phải đọc mã nguồn và phân biệt lỗi chương trình với lỗi dependency, cấu hình hoặc môi trường thực thi. Ví dụ, một \code{TypeError} xuất hiện ở thư viện chuẩn chưa chắc có nguyên nhân ngay tại thư viện đó.
+
+Đề tài nghiên cứu việc dùng mô hình ngôn ngữ để hỗ trợ chẩn đoán các lỗi này. Với một log thực thi và phần mã nguồn liên quan, mô hình trả lời ba nội dung: loại nguyên nhân kỹ thuật, vị trí file/hàm và lời giải thích ngắn nối mã nguồn với hành vi đã quan sát. Phân loại và định vị đều là nhiệm vụ chính. Phiên bản hiện tại chưa dự đoán chính xác dòng lỗi và chưa phân loại người hay công cụ AI là bên gây lỗi.
+
+\topic{Câu hỏi nghiên cứu}
+Câu hỏi được ưu tiên là: khi bổ sung dữ liệu lỗi tổng hợp đã kiểm chứng thực thi vào dữ liệu lỗi thật, chất lượng chẩn đoán của cùng một mô hình nền có cải thiện không? So sánh chính là M2, SFT trên dữ liệu thật, với M5, SFT trên cùng dữ liệu thật cộng synthetic. M0 và M1 cung cấp các mốc tham chiếu đơn giản hơn. Các đối chứng M3/M4 thuộc kế hoạch nghiên cứu nhưng chưa được thực hiện trong pilot.
+
+\topic{Vai trò của SFT}
+Supervised fine-tuning (SFT) điều chỉnh một mô hình đã có sẵn bằng các cặp đầu vào và câu trả lời mong muốn. Trong đề tài, đầu vào gồm log và code truy xuất, còn target là JSON chẩn đoán. SFT học cách ánh xạ bằng chứng sang câu trả lời; đề tài không huấn luyện mô hình ngôn ngữ từ đầu. Mô hình sinh dữ liệu 7B và mô hình chẩn đoán 3B có hai vai trò khác nhau.
+
+\topic{Phạm vi giữa kỳ}
+Báo cáo trình bày pipeline Python đã xây dựng, các đợt thử nghiệm dữ liệu, dataset pilot đã khóa, hai cấu hình SFT và kết quả đánh giá đã hoàn tất. Dữ liệu thật ở đây là các tình huống từ dự án nguồn được tái hiện tại local; log tái hiện không được gọi là log CI lịch sử. Nhãn nguyên nhân là silver có phân tích bằng chứng, chưa phải expert gold. Các kết quả nhỏ hiện tại được dùng để kiểm tra tính khả thi và xác định điểm nghẽn, chưa chứng minh khả năng tổng quát.
+
+\nextpage
+% Trang 2
+\section{Cơ sở và nguồn dữ liệu}
+\topic{Nguồn dữ liệu và ý nghĩa của nhãn có sẵn}
+SWE-bench tập hợp các tình huống sửa lỗi từ issue và pull request của các dự án phần mềm\cite{swebench}. Dữ liệu cung cấp revision, repair patch, test patch và các test \code{FAIL_TO_PASS}/\code{PASS_TO_PASS}. Các thành phần này giúp tái hiện và đối chiếu trước/sau sửa. Repair patch cho biết một cách sửa tham chiếu, không tự xác nhận mọi dòng sửa là vị trí nguyên nhân; nguồn cũng không cung cấp sẵn taxonomy chẩn đoán của đề tài.
+
+AIDev cung cấp provenance ở mức pull request và thông tin công cụ tham gia tạo PR\cite{aidev}. Dự án đã sử dụng AIDev ở W1 và các đợt development để thử pipeline. Metadata về người/công cụ tạo PR không đủ chứng minh ai gây lỗi. Dataset real dùng cho pilot SFT hiện tại lấy từ SWE-bench; không trộn số đếm development trước đó vào số mẫu train/validation/test đã khóa.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{lXX}\toprule
+Nguồn & Thông tin được sử dụng & Phần phải phân tích thêm\\\midrule
+AIDev & PR, repo, commit và provenance & Giả thuyết lỗi, test tái hiện, nguyên nhân\\
+SWE-bench & Base revision, repair/test patch, F2P/P2P & Taxonomy, causal file/hàm, giải thích\\
+Synthetic & Candidate 7B và log kiểm chứng & Tính hợp lý, loại lỗi, vị trí, trùng lặp\\\bottomrule
+\end{tabularx}\end{center}
+
+\topic{Mô hình và cách thích nghi}
+Generator duy nhất của luồng hiện hành là \code{qwen2.5-coder:7b-instruct}. Diagnoser dùng \code{Qwen/Qwen2.5-Coder-3B-Instruct}\cite{qwen}. Hai adapter SFT độc lập khởi tạo từ cùng base 3B; M5 không học tiếp từ adapter M2. LoRA giữ trọng số nền và học các ma trận cập nhật hạng thấp\cite{lora}. QLoRA kết hợp base lượng tử hóa 4 bit với adapter trainable để giảm yêu cầu bộ nhớ\cite{qlora}. Cấu hình cụ thể của dự án được trình bày ở phần thực nghiệm.
+
+\topic{Đơn vị thống kê}
+Một case là một tình huống lỗi gắn với repo/revision và test mục tiêu, không phải cả repository. Một case có thể có nhiều profile môi trường và nhiều lượt sinh. Chạy lại ba lần cùng candidate để kiểm tra ổn định không tạo thêm ba mẫu độc lập. Báo cáo tách case nguồn, profile, request sinh, lượt đạt runner và candidate khác byte; lọc byte trùng vẫn chưa bảo đảm không trùng cơ chế lỗi.
+
+\nextpage
+% Trang 3
+\section{Phương pháp xây dựng dataset}
+\subsection{Kiến trúc và phân tách dữ liệu}
+Pipeline được điều phối bằng Python. Docker cô lập việc thực thi source và candidate. Model và source checkout được cache ngoài Git. Manifest lưu revision, test command, image identity, hash và liên kết log. Nhờ đó, một kết luận về dữ liệu có thể truy về đúng phiên bản mã đã chạy.
+
+\begin{figure}[h]\centering
+\resizebox{\linewidth}{!}{\input{architecture.tex}}
+\caption{Luồng pilot hiện tại. AIDev thuộc các đợt development trước đó. Synthetic chỉ đi từ seed của train tới train.}
+\end{figure}
+
+\topic{Ba lớp artifact}
+\begin{enumerate}
+\item \textbf{Raw evidence:} source/candidate, patch, request/response sinh, stdout/stderr, JUnit và manifest thực thi. Các artifact này được giữ nguyên.
+\item \textbf{Input chẩn đoán:} log thực thi và code liên quan do retrieval chọn, sau đó đóng gói trong giới hạn token. Retrieval không được đọc reference location hoặc repair patch để chọn code.
+\item \textbf{Reference và review:} nhãn nguyên nhân, causal file/hàm, giải thích, độ chắc chắn và phần chưa xác nhận. Đây là phần dùng để huấn luyện/chấm, không chèn vào input.
+\end{enumerate}
+
+\topic{Retrieval và giới hạn context}
+Retrieval v2 dựa trên failure section, stack trace, tên symbol và module quan sát được. Bộ đóng gói input dùng context 2.048 token và dành ngân sách output 384 token. Log dài và code đầy đủ vẫn có trong raw artifact; mô hình chỉ nhận phần đã đóng gói. Vì vậy một nguyên nhân có thể không nằm trong đoạn code mô hình thấy. Hiện tượng này cần được đo riêng, thay vì quy mọi lỗi định vị cho mô hình.
+
+\topic{Chống lộ đáp án}
+Gold repair patch, target JSON, assessment, site edit do generator chọn và giải thích phép sinh nằm ngoài input chẩn đoán. Stack trace có file/dòng là bằng chứng hợp lệ. Comment chỉ tạo rủi ro gợi đáp án nếu thực sự xuất hiện trong input; không lọc mẫu chỉ vì có từ khóa liên quan đến lỗi.
+
+\nextpage
+% Trang 4
+\subsection{Tái hiện dữ liệu thật và sàng lọc}
+Với SWE-bench, pipeline ghim base revision và áp cùng test patch cho cả bản base và bản đã áp repair patch. Cần quan sát được test cần sửa chuyển từ fail sang pass, trong khi các test cần giữ pass vẫn đạt. Lỗi cài đặt môi trường, collection error, timeout và lỗi ứng dụng là những trạng thái khác nhau; không gán nhãn lỗi chương trình cho một build thất bại vì thiếu dependency của harness.
+
+Các recipe môi trường khai báo dependency, đường dẫn, tài nguyên và test mục tiêu theo từng repo. Source, build context, image và passing gate được định danh theo repo/case/revision để tránh dùng nhầm seed hoặc môi trường của case khác. Profile sửa môi trường liên kết tới case gốc và giữ artifact lần thất bại; không tăng số case chỉ vì thử một profile mới.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{lX}\toprule
+Cổng kiểm tra & Điều kiện và cách xử lý\\\midrule
+Provenance & Có nguồn/revision, commit, test mục tiêu và evidence giấy phép\\
+Tái hiện & Base fail và fixed pass theo F2P/P2P trong harness đã ghim\\
+Bất biến & Hash source, test patch, repair patch và image khớp manifest\\
+Nhãn & Có chuỗi nguyên nhân được code/log hỗ trợ; thiếu bằng chứng giữ qualification\\
+Trùng lặp & Kiểm tra repo/group, source identity, byte trùng và trường hợp trùng cơ chế đã rà\\\bottomrule
+\end{tabularx}\end{center}
+
+\topic{Cách sử dụng repair patch}
+Repair patch là bằng chứng giúp người phân tích kiểm tra giả thuyết: thay đổi nào phù hợp với assertion hoặc exception đã quan sát? Một patch có thể sửa nhiều file, thêm test hoặc dọn code. Không lấy mọi dòng thay đổi làm causal label, cũng không đưa patch sửa vào model để model đoán đáp án đã có trong chính input.
+
+\topic{Bằng chứng được giữ}
+Mỗi mẫu có đường dẫn log local, exit status/JUnit, source/patch hash và manifest tái hiện. Việc rà dữ liệu chỉ đọc code, diff và artifact; không thực thi candidate trên host. Thiếu raw artifact hoặc hash không khớp phải được báo rõ, không tự chạy lại thí nghiệm để tạo một kết quả thay thế không có trong lịch sử.
+
+\topic{Điều đã xác nhận và phần còn giới hạn}
+Base fail/fixed pass hỗ trợ rằng harness phân biệt được hai phiên bản ở test đã chọn. Điều đó không chứng minh đây là toàn bộ hành vi CI gốc hoặc defect duy nhất trong repo. Kết luận về nguyên nhân vẫn cần phân tích bằng chứng riêng.
+
+\nextpage
+% Trang 5
+\subsection{Dataset pilot và cách chia tập}
+Pilot v1.1 khóa 250 tình huống real silver và 101 mẫu synthetic train, tổng 351 bản ghi. M2 học 175 real; M5 học cùng 175 real cộng 101 synthetic. Hai cấu hình dùng chung 37 validation và 38 test real. Các repo/group được gán vai trò trước dự đoán; synthetic chỉ sinh từ seed pass của train.
+
+\begin{center}
+\begin{tabular}{lrrrr}\toprule
+Tập & Real & Synthetic & Tổng & Mục đích\\\midrule
+Train M2 &175&0&175&SFT thật\\
+Train M5 &175&101&276&SFT thật + synthetic\\
+Validation &37&0&37&Chọn checkpoint\\
+Test &38&0&38&Đánh giá cuối\\\bottomrule
+\end{tabular}\end{center}
+
+\begin{center}\small
+\input{repo-table.tex}\end{center}
+
+Real train gồm 134 logic/value và 41 API/type; synthetic gồm 95 logic/value và 6 API/type. Mixed train do đó có 229 logic/value và 47 API/type. Không có mẫu train của syntax hoặc dependency/configuration. Validation có 29 logic/value, 4 API/type và 4 dependency/configuration; test có 21, 9 và 8 tương ứng, không có syntax.
+
+Mục tiêu matched-175 synthetic của protocol v1.0 còn thiếu 74 mẫu. Pilot v1.1 là lựa chọn riêng đã được chấp thuận với 101 synthetic hiện có; không đổi định nghĩa để gọi mục tiêu cũ đã hoàn tất. Các case development W1/expansion không được cộng vào 351 bản ghi này.
+
+\nextpage
+% Trang 6
+\subsection{Sinh và kiểm chứng dữ liệu tổng hợp}
+Generator 7B nhận seed đã pass của một case train. Giao thức hiện hành \code{single-line-site-v3} dùng danh mục edit site tạo tĩnh; model trả \code{path}, \code{site_id}, \code{replacement} và \code{explanation}. Renderer áp một dòng replacement tại site cho phép, giữ indentation và line ending. Giao thức này không yêu cầu generator tự gán taxonomy chẩn đoán. Các output W1/v2 được giữ với giao thức riêng, không ghi đè khi chuyển phiên bản.
+
+Prompt cung cấp code/test context theo case, giới hạn vị trí sửa và yêu cầu Python hợp lệ. Dự án giữ model/options/chuỗi seed đã công bố; không sửa response hoặc test để biến một lần sinh không đạt thành mẫu đạt. Output JSON lỗi, sai site, không làm test fail, timeout và lỗi môi trường đều được giữ trong tổng lượt.
+
+\topic{Vòng kiểm chứng một candidate}
+\begin{enumerate}
+\item Chạy passing seed làm baseline, kiểm tra source/image/test hash.
+\item Chạy nguyên candidate ba lần với cùng test; cần fail ổn định theo policy/signature.
+\item Khôi phục nguyên seed rồi chạy test để kiểm tra restoration pass.
+\item Rà tuân thủ prompt, causal label, tính hợp lý và trùng lặp trước khi đóng gói.
+\end{enumerate}
+
+Candidate chỉ chạy trong Docker không mạng, không đặc quyền, có giới hạn tài nguyên và timeout; source/tests/raw evidence được bảo vệ theo runner. Metadata và model calls được checkpoint trước/sau stage. Resume giữ công việc đã xong; request gián đoạn không rõ kết quả không được âm thầm gọi lại. Đây là cơ chế giữ mẫu số và truy vết, không phải một cách tăng tỷ lệ thành công.
+
+\topic{Execution-verified chưa đồng nghĩa dùng được để train}
+Một candidate có thể làm test fail nhưng sửa sai phạm vi, thêm comment gợi đáp án, có thay đổi phi thực tế hoặc trùng cơ chế với mẫu khác. Vì vậy kiểm chứng thực thi và curation là hai tầng khác nhau. Đợt thu thập v1 ghi nhận 372 request 7B và 197 lượt đạt runner; sau các bước đóng gói/rà/lọc, 101 synthetic được giữ trong pilot. Không lấy 197 làm số mẫu train cuối hoặc gọi tất cả các mẫu đó là gold.
+
+\topic{Ví dụ phép sinh}
+Ở mẫu pvlib được dùng trong báo cáo, 7B bỏ \code{not} trong điều kiện broadcast scalar. Candidate hợp cú pháp nhưng làm đường đi điều khiển sai; test báo \code{ValueError}. Nhãn silver là logic/value, cho thấy không thể ánh xạ tên exception trực tiếp thành loại nguyên nhân.
+
+\nextpage
+% Trang 7
+\subsection{Nhãn và hai mẫu dữ liệu cụ thể}
+Target chẩn đoán có \code{cause_type}, danh sách \code{locations} gồm file/hàm và \code{explanation}. Bốn nhóm nguyên nhân là syntax, dependency/configuration, API/type và logic/value; unknown dùng khi chưa đủ bằng chứng. Generator proposal, assessment có evidence và human gold là các trường riêng. Việc đã dùng silver trong pilot không làm các trường xác nhận chuyên gia tự chuyển sang gold.
+
+\topic{Real train: marshmallow-code\_\_marshmallow-1702}
+\code{Field.__init__} nhận \code{metadata=...} qua \code{**metadata}, rồi gán nguyên mapping đó vào \code{self.metadata}. Log local cho thấy dictionary bị lồng thêm một cấp:
+\begin{Verbatim}[fontsize=\footnotesize]
+assert field.metadata == {"description": "foo", "widget": "select"}
+# Observed in saved assertion:
+{'metadata': {'description': 'foo', 'widget': 'select'}}
+\end{Verbatim}
+Khối trên rút gọn assertion và giá trị quan sát từ log; dòng comment chỉ chú giải trong báo cáo, không phải log gốc. Reference silver là API/type tại \code{src/marshmallow/fields.py}, hàm \code{Field.__init__}. Repair chuyển metadata thành tham số rõ ràng và hợp nhất các keyword còn lại. Input không chứa repair hoặc nhãn này.
+
+\topic{Synthetic train: pvlib, attempt 1}
+Mẫu \code{synthetic-generate-20261112T064546343496Z-1} thay điều kiện:
+\begin{Verbatim}[fontsize=\small]
+# Passing seed (excerpt)
+if system_wide and not isinstance(values, tuple):
+    return (values,) * self.num_arrays
+# Candidate (excerpt)
+if system_wide and isinstance(values, tuple):
+    return (values,) * self.num_arrays
+\end{Verbatim}
+Scalar không còn được broadcast cho nhiều array, đi qua length check và phát \code{ValueError}: \texttt{Length mismatch for per-array parameter}. Reference là logic/value tại \code{pvlib/pvsystem.py::PVSystem._validate_per_array}. Đây là lỗi mới từ fixed seed, không phải lỗi lịch sử gốc của case1216. Diff trên chỉ giải thích phép sinh, không phải input chẩn đoán của pilot.
+
+\topic{Hình thức một target}
+\begin{Verbatim}[fontsize=\small]
+{"cause_type":"API/type",
+ "locations":[{"file":"src/marshmallow/fields.py",
+               "function":"Field.__init__"}],
+ "explanation":"..."}
+\end{Verbatim}
+Đây là sơ đồ rút gọn; explanation đầy đủ, nguyên văn và hashes nằm trong snapshot đi kèm. Trong SFT thực tế, target không dùng dấu ba chấm.
+
+\nextpage
+% Trang 8
+\section{Thiết kế thực nghiệm}
+\subsection{Các cấu hình và tham số huấn luyện}
+\begin{center}\small
+\begin{tabularx}{\linewidth}{llX}\toprule
+Cấu hình & Trạng thái & Vai trò\\\midrule
+M0 & Đã chạy & TF-IDF + Logistic Regression trên real train; chỉ phân loại\\
+M1 & Đã chạy & Base3B prompt-only, không cập nhật trọng số\\
+M2 & Đã chạy & Base3B + QLoRA trên175real\\
+M3 & Chưa chạy & Đối chứng xử lý mất cân bằng như class weights/resampling\\
+M4 & Chưa chạy & Real + synthetic đã thực thi nhưng chưa rà/lọc nhãn đầy đủ\\
+M5 & Đã chạy & Base3B + QLoRA trên175real +101synthetic đã rà\\\bottomrule
+\end{tabularx}\end{center}
+
+M4 không có nghĩa là chạy code không an toàn hoặc không có log. Đối chứng này nhằm phân biệt tác dụng của curation sau thực thi. Do M3/M4 chưa chạy, kết quả hiện tại không cô lập đầy đủ ảnh hưởng của mất cân bằng lớp và lọc chất lượng.
+
+Hai SFT dùng cùng base3B revision \code{488639f1ff808d1d3d0ba301aef8c11461451ec5}, hai adapter độc lập, cùng retrieval/parser và dataset lock. NF4 double quantization giữ base ở4bit; tính toán dùng BF16. LoRA rank16, alpha32, dropout0,05, áp trên các linear modules. Batch/device1, gradient accumulation8, seed5417, context2048, outputbudget384. Loss chỉ tính token câu trả lời target, không tính phần system/user vào mục tiêu SFT.
+
+\begin{center}\small
+\begin{tabular}{lrr}\toprule
+Ngân sách & M2 & M5\\\midrule
+Số mẫu mỗi epoch &175&276\\
+Updates mỗi epoch &22&35\\
+Parent đã chạy &104&104\\
+Đích continuation &220&350\\
+Updates học thêm &116&246\\
+Exposure tích lũy &1750&2760\\\bottomrule
+\end{tabular}\end{center}
+
+Parent dùng learning rate ban đầu \(10^{-4}\). Continuation khôi phục adapter, optimizer moments, RNG, global step và vị trí dữ liệu; thay riêng scheduler với LR bắt đầu \(2\times10^{-5}\), giảm tuyến tính về0, không warmup. Child có run/checkpoint riêng; không ghi đè parent. M2/M5 cùng tổng10epoch nhưng số updates/token khác nhau, không được mô tả là cùng compute.
+
+\nextpage
+% Trang 9
+\subsection{Chọn checkpoint và quy tắc đánh giá}
+Validation mới ở epoch 6, 8, 10; kế thừa kết quả step52/104 đã lưu và kiểm tra hash. Chọn checkpoint có joint class/function Top-1 cao nhất, hòa chọn global step sớm hơn. Cả hai chọn parent104: M2 tương ứng khoảng 4,73 epoch, M5 khoảng 2,99 epoch. Continuation đã học đủ 10 epoch nhưng không tăng joint; Macro-F1 epoch10 giảm từ 0,3515 xuống 0,3226 ở M2 và từ 0,4060 xuống 0,3731 ở M5.
+
+\topic{Các metric}
+Với cùng mẫu số \(N\), Accuracy là số dự đoán đúng loại lỗi chia \(N\). Precision, recall và F1 được tính riêng cho từng lớp. Macro-F1 là trung bình F1 của bốn lớp cố định, cho mỗi lớp cùng trọng số:
+\[
+F1_c=\frac{2P_cR_c}{P_c+R_c},\qquad
+\operatorname{MacroF1}=\frac14\sum_{c\in C}F1_c.
+\]
+Scorer gán0 khi precision/recall không xác định; lớp support0 vẫn nằm trong trung bình. Điều này giải thích vì sao accuracy có thể cao mà Macro-F1 còn thấp. File Top-1 yêu cầu file đầu tiên khớp reference; Hàm Top-1 yêu cầu cặp file/hàm đầu tiên khớp. Top-5 xét trong tối đa năm vị trí đầu. Joint yêu cầu đồng thời đúng loại và đúng cặp file/hàm Top-1 trên cùng mẫu, không phải tích hai tỷ lệ riêng.
+
+\topic{Cổng retrieval và output không hợp lệ}
+Scorer hiện còn yêu cầu reference nằm trong retrieved context để tính credit định vị. Reference hàm được thấy ở7/37validation và12/38test; reference file ở21/38test. Một số prediction trùng reference trực tiếp vẫn không được credit vì gate này. Báo cáo giữ nguyên scorer đã khóa và nêu riêng giới hạn; không sửa điểm sau test. Đây là chấm toàn pipeline, cần phân biệt với đo năng lực suy luận thuần của model.
+
+Parser chỉ nhận JSON hợp schema. Không tự bỏ Markdown fences hoặc sửa response trước chấm. Invalid/unknown vẫn nằm trong mẫu số; M0 chỉ có metric phân loại. Final test dùng cùng38real cho bốn model, cấu hình/checkpoint khóa trước suy luận, không chấm thêm checkpoint epoch10.
+
+\topic{Baseline M1 và tính hợp lệ của output}
+M1 dùng base3B theo phương pháp prompt-only, không cập nhật trọng số. Response chứa JSON trong Markdown vẫn bị parser strict từ chối. Vì vậy, cần đọc tỷ lệ invalid cùng các metric chẩn đoán; không quy toàn bộ chênh lệch với SFT cho khả năng xác định nguyên nhân lỗi.
+
+\nextpage
+% Trang 10
+\section{Kết quả và thảo luận}
+\topic{Validation, cùng 37 real silver}
+\begin{center}\small\input{validation-table.tex}\end{center}
+File T1, Hàm T1 và Joint trong bảng là số đúng, mẫu số 37. M0 không định vị. M1 có 1 invalid và 1 unknown. Luôn dự đoán logic/value đạt 29/37=78,38\% accuracy ở validation, cho thấy cần đọc thêm F1 và các metric định vị.
+
+\topic{Final test, cùng 38 real silver}
+\begin{center}\small\input{test-table.tex}\end{center}
+File T1, Hàm T1 và Joint có mẫu số 38. M2/M5 dùng checkpoint parent104 đã chọn trên validation. M1 có 8 response invalid, đều có Markdown fence. M2/M5 không có invalid. Luôn dự đoán lớp phổ biến nhất đạt 21/38=55,26\% accuracy, gần với 57,89\% của M2; vì vậy không dùng accuracy đơn độc làm kết luận.
+
+\topic{Hiệu quả synthetic quan sát được}
+M5 đúng loại 24 mẫu so với 22 của M2, tăng 5,26 điểm phần trăm; Macro-F1 tăng 0,0243. Định vị hàm tăng từ 6 lên 7, nhưng file giảm từ 18 xuống 16; joint giữ 4/38. Theo từng mẫu, về phân loại M5 thắng 4/thua 2; về hàm thắng 2/thua 1; về joint thắng 1/thua 1. Mức tăng class tập trung ở Pylint (10/19 lên 12/19); Pytest cùng 10/16 nhưng joint giảm từ 3/16 xuống 2/16. Không có cải thiện đồng đều.
+
+M5 tăng recall logic/value từ 15/21 lên 18/21, giảm API/type từ 7/9 xuống 6/9; cả hai không nhận đúng 8 test dependency/configuration. Mixed train làm tỷ trọng logic/value tăng từ 76,57\% lên 82,97\%. Cần xem sự thay đổi phân bố cùng kết quả; chưa đủ ablation để khẳng định một synthetic cụ thể gây ra một cải thiện cụ thể.
+
+\topic{Phân tích lỗi bằng evidence}
+Đã rà bảng 38 mẫu và phân tích sâu tám chuỗi code/patch/log. M5 định vị tốt hơn ở Pylint7993 nhưng kém hơn ở Pytest7499. Đúng loại/vị trí vẫn có thể giải thích sai; joint chưa đo chất lượng explanation.
+
+\nextpage
+% Trang 11
+\section{Tiến độ, giới hạn và hướng tiếp theo}
+\topic{Công việc đã hoàn tất}
+W1 hoàn thành pipeline trên properr, 7B đạt 2/3 lượt thực thi. Hai expansion development sàng lọc 40 case, thử 17 case trên 10 repo, sinh 36 lượt, có 17 lượt đạt và 14 candidate khác byte. Đây là các cohort phát triển riêng, không cộng vào 250 real/101 synthetic đã khóa. Sau đó đã có registry nhiều repo, runner cô lập, hash/evidence, curation, split theo nhóm, SFT M2/M5, continuation và final test một lần. Phần mềm có 132 kiểm thử: 131 pass và 1 Docker integration test opt-in được skip; đây không phải số test nguồn hoặc số mẫu ML.
+
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule
+Chi phí wall đã đo & Parent(s)& Continuation(s)& Tổng(s)\\\midrule
+M2 &2217&2170&4387\\
+M5 &2106&4218&6324\\\bottomrule
+\end{tabular}\end{center}
+Các số gồm chi phí phần học tiếp dù vẫn chọn parent104, và không cộng hai lần validation lồng nhau. Bốn phase suy luận tổng 1339,692s chưa gồm load. Evaluation tính hợp các operation là 1445/7200s, có 151 request finished (37 validation +114 test), không gọi trùng; role request study v1.2 là 373/1500. Wall time không phải GPU compute hoặc chi phí tiền.
+
+\topic{Giới hạn cần trình bày khi bảo vệ}
+\begin{itemize}
+\item Dataset nhỏ, một seed và số repo giữ riêng còn ít; train tập trung mạnh vào SymPy. Không suy rằng base chưa thấy các repo này khi pretraining.
+\item Nhãn silver chưa có expert gold; taxonomy thô có trường hợp diễn giải thay thế. Chưa có đánh giá độc lập về chất lượng explanation hoặc actor gây lỗi.
+\item Retrieval chỉ chứa reference function ở 12/38 test; visibility gate làm một số direct match không được credit. Đây là điểm nghẽn của input/chấm toàn pipeline.
+\item Chưa chạy M3/M4, chưa đủ matched175 synthetic và chưa kiểm soát compute/token ngang nhau. Adapter được chọn thuộc các epoch khác nhau.
+\end{itemize}
+
+\topic{Hướng tiếp theo}
+Ưu tiên rà nhãn và quy tắc causal absence/path trên development; mở rộng lớp/repo, cải thiện retrieval và định nghĩa phép chấm trước một đánh giá mới. Tiếp theo thực hiện đối chứng mất cân bằng/lọc dữ liệu và nhiều seed khi ngân sách cho phép. Test 38 mẫu hiện tại đã dùng để báo kết quả; không chỉnh prompt, nhãn hoặc chọn lại checkpoint rồi gọi đó là test mới.
+
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{swebench} C. E. Jimenez và cộng sự. \textit{SWE-bench: Can Language Models Resolve Real-World GitHub Issues?} ICLR2024. \url{https://arxiv.org/abs/2310.06770}.
+\bibitem{aidev} Hao Li và cộng sự. \textit{AIDev dataset card}. \url{https://huggingface.co/datasets/hao-li/AIDev}. Truy cập13/11/2026; dự án giữ revision nguồn riêng cho từngđợt.
+\bibitem{qwen} Qwen. \textit{Qwen2.5-Coder-3B-Instruct model card}. \url{https://huggingface.co/Qwen/Qwen2.5-Coder-3B-Instruct}.
+\bibitem{lora} E. J. Hu và cộng sự. \textit{LoRA: Low-Rank Adaptation of Large Language Models}.2021. \url{https://arxiv.org/abs/2106.09685}.
+\bibitem{qlora} T. Dettmers và cộng sự. \textit{QLoRA: Efficient Finetuning of Quantized LLMs}.2023. \url{https://arxiv.org/abs/2305.14314}.
+\bibitem{local} Artifact thực nghiệm của đề tài. \textit{Evaluation v1}, run\code{evaluation-20261112T210848574175Z}; datasetSHA-256\par\code{f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b}.\par Bảng validation/test, sourcehash và hai ví dụ train được lưu trong\code{docs/midterm/facts.json}; diễn giải đầy đủ tại\code{docs/evaluation-results.md} và\code{docs/evaluation-error-analysis.md}.
+\end{thebibliography}
+\end{document}

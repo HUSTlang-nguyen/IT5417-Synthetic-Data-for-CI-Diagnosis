@@ -1,0 +1,77 @@
+{
+  "checked_at": "2026-11-13T01:28:44+07:00",
+  "readiness": {
+    "status": "ready_continuation_no_model_run",
+    "training_protocol": "v1.2",
+    "dataset": {
+      "status": "ready_metadata_checked_no_model_run",
+      "protocol": "v1.1",
+      "dataset_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
+      "gate": {
+        "real": 250,
+        "synthetic": 101,
+        "real_by_role": {
+          "train": 175,
+          "test": 38,
+          "validation": 37
+        },
+        "train_support": {
+          "logic/value": 134,
+          "API/type": 41
+        }
+      },
+      "qualification": "Dataset bytes/gates checked; no model executed by this command"
+    },
+    "plans": {
+      "M2": {
+        "target_epochs": 10,
+        "train_examples": 175,
+        "steps_per_epoch": 22,
+        "max_steps": 220,
+        "parent_step": 104,
+        "remaining_updates": 116,
+        "learning_rate": 2e-05,
+        "validation_steps": [
+          132,
+          176,
+          220
+        ]
+      },
+      "M5": {
+        "target_epochs": 10,
+        "train_examples": 276,
+        "steps_per_epoch": 35,
+        "max_steps": 350,
+        "parent_step": 104,
+        "remaining_updates": 246,
+        "learning_rate": 2e-05,
+        "validation_steps": [
+          210,
+          280,
+          350
+        ]
+      }
+    },
+    "free_storage_gib": 56.583595275878906,
+    "stage_limits_seconds": {
+      "training_each": 10800,
+      "training_M2": 10800,
+      "training_M5": 10800,
+      "evaluation": 7200
+    }
+  },
+  "v12_study_created": false,
+  "models_run": false,
+  "gpu_execution": false,
+  "final_test_opened": false,
+  "parent_checkpoint_and_metadata_hashes": "matched_v12_spec",
+  "parent_sampler_prefix_exposures": "matched",
+  "original_collection_manifest_unchanged": true,
+  "local_links_checked": 112,
+  "software_tests": {
+    "total": 123,
+    "passed": 122,
+    "skipped": 1
+  },
+  "qualification": "CPU numeric fixture backend only. CUDA/PEFT continuation not run; user starts commands manually. No push."
+}
