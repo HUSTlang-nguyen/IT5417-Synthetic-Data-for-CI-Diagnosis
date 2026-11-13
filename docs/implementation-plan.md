@@ -24,7 +24,7 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
   Theo yêu cầu tiếp theo, báo cáo dùng tên hiển thị M1 cho baseline prompt-only, bỏ đoạn bàn về thay đổi prompt. Giữ nguyên bảng số liệu, danh tính run và cấu hình/evidence đã khóa; không đổi các đầu ra khác.
 
-  Bàn giao Git được người dùng cho phép 13/11: đã giữ stash dự phòng và kiểm thử lại132tests (131pass/1skip); commit/push toàn bộ phần continuation/evaluation/tài liệu hiện có và đồng bộ main. Dataset/model/raw runs không đưa lên Git; task tiếp theo vẫn là review/tập trình bày.
+  Bàn giao Git hoàn tất 13/11: giữ stash dự phòng, kiểm thử lại132tests (131pass/1skip), commit/push toàn bộ phần continuation/evaluation/tài liệu và đồng bộ main. Đã xác nhận remote main/codex cùng780300f trước commit ghi nhận bàn giao; hai worktree sạch. Dataset/model/raw runs không đưa lên Git; task tiếp theo vẫn là review/tập trình bày.
 
 - **13/11 — ba phần evaluation đã hoàn tất:** [validation](evaluation-validation.md), [test/cost](evaluation-results.md), [phân tích lỗi/synthetic](evaluation-error-analysis.md). Run `evaluation-20261112T210848574175Z`, một trial38realtest;37+114=151request mới finished, giữ nguyên checkpointparent104 và parser. M1-P2 ghi rõ prompt mới. M2/M5accuracy22/38vs24/38, jointcùng4/38; silver/goldpending. [Receipt](evidence/dataset-v1-progress/evaluation-integrity-20261113.json);132softwaretests:131pass/1skip. **Task kế tiếp: W6-04 `waiting_user` — bàn phạm vi slide/báo cáo bảo vệ giữa kỳ.** Không tự chấm lại test, chọn lại model từ test, train/generate/Docker/push. Targetmatched175 và ablation chưa thực hiện vẫn chưa hoàn tất; các checkpoint cũ bên dưới giữ lịch sử.
 
