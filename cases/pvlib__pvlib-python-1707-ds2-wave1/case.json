@@ -1,0 +1,97 @@
+{
+  "case_id": "pvlib__pvlib-python-1707-ds2-wave1",
+  "source_case_id": "pvlib__pvlib-python-1707",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1707",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "40e9e978c170bdde4eeee1547729417665dbc34c",
+  "head": "base+repair:e59ef7e4f9d4b98262066347448800074334e4a27810c65b1686e0e10f2e4917",
+  "allowed_file": "pvlib/iam.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1707-ds2-wave1/repair.patch",
+  "repair_patch_sha256": "e59ef7e4f9d4b98262066347448800074334e4a27810c65b1686e0e10f2e4917",
+  "test_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1707-ds2-wave1/test.patch",
+  "test_patch_sha256": "59a9961413ff1def45a927b3939cee682daead885984a753715238a0de9dd1f2",
+  "source_record_sha256": "1120911e5f20d0e55be624af6a683bd1b0597d1a1d8e00a6e94ca35d0cb603ae",
+  "fail_to_pass": [
+    "pvlib/tests/test_iam.py::test_physical_n1_L0"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/test_iam.py::test_ashrae",
+    "pvlib/tests/test_iam.py::test_ashrae_scalar",
+    "pvlib/tests/test_iam.py::test_physical",
+    "pvlib/tests/test_iam.py::test_physical_ar",
+    "pvlib/tests/test_iam.py::test_physical_noar",
+    "pvlib/tests/test_iam.py::test_physical_scalar",
+    "pvlib/tests/test_iam.py::test_martin_ruiz",
+    "pvlib/tests/test_iam.py::test_martin_ruiz_exception",
+    "pvlib/tests/test_iam.py::test_martin_ruiz_diffuse",
+    "pvlib/tests/test_iam.py::test_iam_interp",
+    "pvlib/tests/test_iam.py::test_sapm[45-0.9975036250000002]",
+    "pvlib/tests/test_iam.py::test_sapm[aoi1-expected1]",
+    "pvlib/tests/test_iam.py::test_sapm[aoi2-expected2]",
+    "pvlib/tests/test_iam.py::test_sapm_limits",
+    "pvlib/tests/test_iam.py::test_marion_diffuse_model",
+    "pvlib/tests/test_iam.py::test_marion_diffuse_kwargs",
+    "pvlib/tests/test_iam.py::test_marion_diffuse_invalid",
+    "pvlib/tests/test_iam.py::test_marion_integrate_scalar[sky-180-0.9596085829811408]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_scalar[horizon-1800-0.8329070417832541]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_scalar[ground-180-0.719823559106309]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_list[sky-180-expected0]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_list[horizon-1800-expected1]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_list[ground-180-expected2]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_series[sky-180-expected0]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_series[horizon-1800-expected1]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_series[ground-180-expected2]",
+    "pvlib/tests/test_iam.py::test_marion_integrate_ground_flat",
+    "pvlib/tests/test_iam.py::test_marion_integrate_invalid",
+    "pvlib/tests/test_iam.py::test_schlick",
+    "pvlib/tests/test_iam.py::test_schlick_diffuse"
+  ],
+  "test_targets": [
+    "pvlib/tests/test_iam.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/test_iam.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2",
+    "pytest-mock==3.11.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "pytest_mock"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pvlib__pvlib-python-1738-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pvlib__pvlib-python-1738-ds1-env2"
+}

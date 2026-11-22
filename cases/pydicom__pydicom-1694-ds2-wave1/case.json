@@ -1,0 +1,86 @@
+{
+  "case_id": "pydicom__pydicom-1694-ds2-wave1",
+  "source_case_id": "pydicom__pydicom-1694",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-1694",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "f8cf45b6c121e5a4bf4a43f71aba3bc64af3db9c",
+  "head": "base+repair:4683577ef522b982a3badb09f3b1a44c7018c09f61576941fcff112841ef31d3",
+  "allowed_file": "pydicom/dataset.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1694-ds2-wave1/repair.patch",
+  "repair_patch_sha256": "4683577ef522b982a3badb09f3b1a44c7018c09f61576941fcff112841ef31d3",
+  "test_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1694-ds2-wave1/test.patch",
+  "test_patch_sha256": "4f820ac8d8c3a49740abb36846f630cbda8e734223b2b88e97a19794b6eacda2",
+  "source_record_sha256": "ac0a5c3700e5a5f765a418ec173df5d7b08c8c7705b3118b31da38dccd579a74",
+  "fail_to_pass": [
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_suppress_invalid_tags_with_failed_dataelement"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_json.py::TestPersonName::test_json_pn_from_file",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_from_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_empty_value",
+    "pydicom/tests/test_json.py::TestPersonName::test_multi_value_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_dataelem_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_to_json",
+    "pydicom/tests/test_json.py::TestAT::test_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_value_in_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_tag_in_json",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_json_from_dicom_file",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_roundtrip",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataset_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataelement_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_sort_order",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_suppress_invalid_tags",
+    "pydicom/tests/test_json.py::TestSequence::test_nested_sequences",
+    "pydicom/tests/test_json.py::TestBinary::test_inline_binary",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_inline_binary",
+    "pydicom/tests/test_json.py::TestBinary::test_valid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_2",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_within_SQ",
+    "pydicom/tests/test_json.py::TestNumeric::test_numeric_values",
+    "pydicom/tests/test_json.py::TestNumeric::test_numeric_types"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_json.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_json.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pydicom__pydicom-1633-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "test_workdir": "work",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pydicom__pydicom-1633-ds1-env2"
+}

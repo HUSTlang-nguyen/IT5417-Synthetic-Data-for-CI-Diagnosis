@@ -16,6 +16,8 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 ## Điểm tiếp tục hiện tại
 
+- **23/11 Git/worker mới nhất:** gói351mẫu v1.1 đã pushcodex tại9f44bd9, main giữ289ddea. Đã verify archive từ chínhcommit ở đường dẫn khác. **Wave1 đang chạy session51624**,16case mới/4repo, log.cache/dataset-v2-wave1-live.txt; followđúnghandle, không duplicate. Lô60402đãterminal. V2vẫn chưa đạt count/class/repo gates; tiếp tục real collection, held-out recipes và uniformretrieval.
+
 - **23/11 — lô đầu đã kết thúc:**2case mới thử,1strict/seedpass(pydicom1256),1không đạt(pvlib1154fixed còn lỗi toleranceAOI ngoài targetrepair). Pydicom đã có prototype silver, chưa tính vào final v2. [Gói Git v1.1](../research-data/README.md) đủ351mẫu/~15.23MB,1053input/reference/assessment byte-identical, licenses/notices/provenance và relocationcheck đạt.138tests137pass/1skip. **Next: commit/push milestone lên codex; mở rộng recipe/tái hiện và retrieval đồng nhất; không merge main, không đánh dấu goal đủ1.700mẫu.** Worker60402đãterminal, các dòng live bên dưới là lịch sử.
 
 - **23/11 — lô tái hiện v2 đầu tiên đang chạy:** session60402, log.cache/dataset-v2-first-batch-live.txt, plan dataset-v2-first-recipes-ready.json. Firstcase pydicom1256, sau đópvlib1154; không mở worker trùng. Review50real/30synthetic xong:1270hash/77retain/3quarantinev2, xem[review](dataset-v2-development-review.md); user/goldpending,v1unchanged.138tests137pass/1skip trước chạy. **Next: poll60402 đến terminal, đọc evidence mới rồi mở rộng recipe; publication attribution vẫn cần hoàn thiện.**
