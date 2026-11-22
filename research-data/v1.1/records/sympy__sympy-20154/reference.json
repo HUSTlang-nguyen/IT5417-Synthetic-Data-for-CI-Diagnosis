@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-20154",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "partitions"
+    }
+  ],
+  "explanation": "Every yield returns the same mutable partition dictionary, which is modified on subsequent iteration. The saved list therefore contains repeated final {1:6} values, and uniq loses earlier partitions. Yielding copies preserves each emitted partition snapshot.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "uniq"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "partitions"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

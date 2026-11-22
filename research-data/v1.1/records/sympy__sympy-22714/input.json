@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 12 items\n\nsympy/geometry/tests/test_point.py::test_issue_22684 FAILED              [  8%]\nsympy/geometry/tests/test_point.py::test_point PASSED                    [ 16%]\nsympy/geometry/tests/test_point.py::test_point3D PASSED                  [ 25%]\nsympy/geometry/tests/test_point.py::test_Point2D PASSED                  [ 33%]\nsympy/geometry/tests/test_point.py::test_issue_9214 PASSED               [ 41%]\nsympy/geometry/tests/test_point.py::test_issue_11617 PASSED              [ 50%]\nsympy/geometry/tests/test_point.py::test_transform PASSED                [ 58%]\nsympy/geometry/tests/test_point.py::test_concyclic_doctest_bug PASSED    [ 66%]\nsympy/geometry/tests/test_point.py::test_arguments PASSED                [ 75%]\nsympy/geometry/tests/test_point.py::test_unit PASSED                     [ 83%]\nsympy/geometry/tests/test_point.py::test_dot PASSED                      [ 91%]\nsympy/geometry/tests/test_point.py::test__normalize_dimension PASSED     [100%]\n\n=================================== FAILURES ===================================\n_______________________________ test_issue_22684 _______________________________\n\n    def test_issue_22684():\n        # Used to give an error\n        with evaluate(False):\n>           Point(1, 2)\n\nsympy/geometry/tests/test_point.py:459: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ncls = <class 'sympy.geometry.point.Point'>, args = (1, 2), kwargs = {}\nevaluate = False, on_morph = 'ignore', coords = (1, 2), dim = 2\n\n    def __new__(cls, *args, **kwargs):\n        evaluate = kwargs.get('evaluate', global_parameters.evaluate)\n        on_morph = kwargs.get('on_morph', 'ignore')\n    \n        # unpack into coords\n        coords = args[0] if len(args) == 1 else args\n    \n        # check args and handle quickly handle Point instances\n        if isinstance(coords, Point):\n            # even if we're mutating the dimension of a point, we\n            # don't reevaluate its coordinates\n            evaluate = False\n            if len(coords) == kwargs.get('dim', len(coords)):\n                return coords\n    \n        if not is_sequence(coords):\n            raise TypeError(filldedent('''\n                Expecting sequence of coordinates, not `{}`'''\n                                       .format(func_name(coords))))\n        # A point where only `dim` is specified is initialized\n        # to zeros.\n        if len(coords) == 0 and kwargs.get('dim', None):\n            coords = (S.Zero,)*kwargs.get('dim')\n    \n        coords = Tuple(*coords)\n        dim = kwargs.get('dim', len(coords))\n    \n        if len(coords) < 2:\n            raise ValueError(filldedent('''\n                Point requires 2 or more coordinates or\n                keyword `dim` > 1.'''))\n        if len(coords) != dim:\n            message = (\"Dimension of {} needs to be changed \"\n                       \"from {} to {}.\").format(coords, len(coords), dim)\n            if on_morph == 'ignore':\n                pass\n            elif on_morph == \"error\":\n                raise ValueError(message)\n            elif on_morph == 'warn':\n                warnings.warn(message)\n            else:\n                raise ValueError(filldedent('''\n                        on_morph value should be 'error',\n                        'warn' or 'ignore'.'''))\n        if any(coords[dim:]):\n            raise ValueError('Nonzero coordinates cannot be removed.')\n        if any(a.is_number and im(a) for a in coords):\n>           raise ValueError('Imaginary coordinates are not permitted.')\nE           ValueError: Imaginary coordinates are not permitted.\n\nsympy/geometry/point.py:156: ValueError\n=============================== warnings summary ===============================\nsympy/geometry/tests/test_point.py::test_point\n  /source/base/sympy/geometry/point.py:148: UserWarning: Dimension of (0, 0) needs to be changed from 2 to 3.\n    warnings.warn(message)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/geometry/tests/test_point.py::test_issue_22684 - ValueError: Ima...\n=================== 1 failed, 11 passed, 1 warning in 1.52s ====================\n",
+  "code": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__new__",
+      "start_line": 109,
+      "end_line": 179,
+      "score": 1157.587035,
+      "text": "sympy/geometry/point.py::Point.__new__ lines 109-179\n    def __new__(cls, *args, **kwargs):\n        evaluate = kwargs.get('evaluate', global_parameters.evaluate)\n        on_morph = kwargs.get('on_morph', 'ignore')\n\n        # unpack into coords\n        coords = args[0] if len(args) == 1 else args\n\n        # check args and handle quickly handle Point instances\n        if isinstance(coords, Point):\n            # even if we're mutating the dimension of a point, we\n            # don't reevaluate its coordinates\n            evaluate = False\n            if len(coords) == kwargs.get('dim', len(coords)):\n                return coords\n\n        if not is_sequence(coords):\n            raise TypeError(filldedent('''\n                Expecting sequence of coordinates, not `{}`'''\n                                       .format(func_name(coords))))\n        # A point where only `dim` is specified is initialized\n        # to zeros.\n        if len(coords) == 0 and kwargs.get('dim', None):\n            coords = (S.Zero,)*kwargs.get('dim')\n\n        coords = Tuple(*coords)\n        dim = kwargs.get('dim', len(coords))\n\n        if len(coords) < 2:\n            raise ValueError(filldedent('''\n                Point requires 2 or more coordinates or\n                keyword `dim` > 1.'''))\n        if len(coords) != dim:\n            message = (\"Dimension of {} needs to be changed \"\n                       \"from {} to {}.\").format(coords, len(coords), dim)\n            if on_morph == 'ignore':\n                pass\n            elif on_morph == \"error\":\n                raise ValueError(message)\n            elif on_morph == 'warn':\n                warnings.warn(message)\n            else:\n                raise ValueError(filldedent('''\n                        on_morph value should be 'error',\n                        'warn' or 'ignore'.'''))\n        if any(coords[dim:]):\n            raise ValueError('Nonzero coordinates cannot be removed.')\n        if any(a.is_number and im(a) for a in coords):\n            raise ValueError('Imaginary coordinates are not permitted.')\n        if not all(isinstance(a, Expr) for a in coords):\n            raise TypeError('Coordinates must be valid SymPy expressions.')\n\n        # pad with zeros appropriately\n        coords = coords[:dim] + (S.Zero,)*(dim - len(coords))\n\n        # Turn any Floats into rationals and simplify\n        # any expressions before we instantiate\n        if evaluate:\n            coords = coords.xreplace({\n                f: simplify(nsimplify(f, rational=True))\n                 for f in coords.atoms(Float)})\n\n        # return 2D or 3D instances\n        if len(coords) == 2:\n            kwargs['_nocheck'] = True\n            return Point2D(*coords, **kwargs)\n        elif len(coords) == 3:\n            kwargs['_nocheck'] = True\n            return Point3D(*coords, **kwargs)\n\n        # the general Point\n        return GeometryEntity.__new__(cls, *coords)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point2D.__new__",
+      "start_line": 912,
+      "end_line": 916,
+      "score": 152.886751,
+      "text": "sympy/geometry/point.py::Point2D.__new__ lines 912-916\n    def __new__(cls, *args, _nocheck=False, **kwargs):\n        if not _nocheck:\n            kwargs['dim'] = 2\n            args = Point(*args, **kwargs)\n        return GeometryEntity.__new__(cls, *args)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point3D.__new__",
+      "start_line": 1119,
+      "end_line": 1123,
+      "score": 152.886751,
+      "text": "sympy/geometry/point.py::Point3D.__new__ lines 1119-1123\n    def __new__(cls, *args, _nocheck=False, **kwargs):\n        if not _nocheck:\n            kwargs['dim'] = 3\n            args = Point(*args, **kwargs)\n        return GeometryEntity.__new__(cls, *args)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.equals",
+      "start_line": 445,
+      "end_line": 450,
+      "score": 152.8,
+      "text": "sympy/geometry/point.py::Point.equals lines 445-450\n    def equals(self, other):\n        \"\"\"Returns whether the coordinates of self and other agree.\"\"\"\n        # a point is equal to another point if all its components are equal\n        if not isinstance(other, Point) or len(self) != len(other):\n            return False\n        return all(a.equals(b) for a, b in zip(self, other))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__neg__",
+      "start_line": 286,
+      "end_line": 289,
+      "score": 152.773501,
+      "text": "sympy/geometry/point.py::Point.__neg__ lines 286-289\n    def __neg__(self):\n        \"\"\"Negate the point.\"\"\"\n        coords = [-x for x in self.args]\n        return Point(coords, evaluate=False)",
+      "truncated": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-15542",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.distance"
+    }
+  ],
+  "explanation": "The base distance method coerces every argument through Point(p), including a Line2D. The saved point-line call raises a coordinate-sequence TypeError in Point construction. The repair distinguishes Point and other GeometryEntity values and delegates the latter distance calculation; eleven tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__new__"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.distance"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

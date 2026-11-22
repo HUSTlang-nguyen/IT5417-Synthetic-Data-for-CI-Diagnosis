@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012701089566Z",
+  "reviewed_at": "2026-11-12T11:39:08+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2fc7cdb328325398d3ae7e5182779f9626efda02845cd039092d34bf412bd68d",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "479c3b0c4e4a3a0be665d21f97885b6dfbc2d37835505255a023fc80feeee726",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a8135ef7cc8751b00fe815acf03a4339c584aebcaa83798466be18cf688927cd",
+    "historical-fixed.stdout.txt": "e91147f60cdf0bc8e13734a7cfef7b3dcb69277bc38179a7afb55dd88ccbb4dd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "fd2df69d04fae3262b5c942bd1ba778640d053314e258ea961705cafd77b07d6"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "src/_pytest/pathlib.py",
+      "function": "ensure_deletable"
+    }
+  ],
+  "mechanism": "The lock-eligibility check uses exists rather than checking a usable lock file with guarded is_file. In the saved inaccessible-lock simulation it proceeds to remove the lock and returns True when eligibility must be False. Guarding is_file errors preserves the conservative no-delete decision.",
+  "limitations": "The saved test mocks Path.is_file to raise OSError, while the old path does not call it. This is a controlled API/error-path oracle, not an observed filesystem permission incident; deletion itself was confined to the existing Docker scratch fixture.",
+  "observed_junit": {
+    "base": {
+      "cases": 60,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 60,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_pathlib::test_suppress_error_removing_lock",
+      "message": "AssertionError: assert not True  +  where True = ensure_deletable(PosixPath('/tmp/pytest-of-nobody/pytest-0/test_suppress_error_removing_l0/dir'), consider_lock_dead_if_created_before=(1794446830.3019269 + 30))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

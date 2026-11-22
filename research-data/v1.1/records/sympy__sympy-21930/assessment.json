@@ -1,0 +1,76 @@
+{
+  "run_id": "reproduce-20261112T041125325946Z",
+  "reviewed_at": "2026-11-12T12:02:39+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f93b008f2d7af3f356addf3216cf92df031afc800687bc19c231b778235ca979",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "686fb68272db38e33080595e8a833927f6e0e4c5f123f88a58f8451b31037257",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5f73fc88d11b46ceef31ee47bfdd7215b74e87e2cf74b7053e3a199934128f27",
+    "historical-fixed.stdout.txt": "cf799c504d3c87a953846ef2086ea9b488017c4cc909ecdaf9f2820c62c1a9b8",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f754f3eadf6cf5b3b5b3193297549cd5448b50026a003fbed70140e24df0bc9a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "AntiSymmetricTensor._latex"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "CreateBoson._latex"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "CreateFermion._latex"
+    }
+  ],
+  "mechanism": "The custom LaTeX methods emit superscript/subscript-bearing objects without wrapping the whole object in braces. Saved boson, fermion, tensor and compound-expression strings lack the required grouping. Bracing each custom object preserves that atomic rendering in surrounding notation.",
+  "limitations": "All three existing methods are supported by the saved create/create_f/Tensors failures. Six failing tests represent one related grouping contract; no external TeX compiler or physical operator evaluation was performed.",
+  "observed_junit": {
+    "base": {
+      "cases": 51,
+      "failures_or_errors": 6,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 51,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.tests.test_secondquant::test_create",
+      "message": "AssertionError: assert 'b^\\\\dagger_{i}' == '{b^\\\\dagger_{i}}'\n  - {b^\\dagger_{i}}\n  ? -             -\n  + b^\\dagger_{i}"
+    },
+    {
+      "test": "sympy.physics.tests.test_secondquant::test_commutation",
+      "message": "AssertionError: assert '\\\\left[a^\\\\d...a_{j}\\\\right]' == '\\\\left[{a^\\\\...a_{j}\\\\right]'\n  - \\left[{a^\\dagger_{a}} a_{i},{a^\\dagger_{b}} a_{j}\\right]\n  ?       -             -       -             -\n  + \\left[a^\\dagger_{a} a_{i},a^\\dagger_{b} a_{j}\\right]"
+    },
+    {
+      "test": "sympy.physics.tests.test_secondquant::test_create_f",
+      "message": "AssertionError: assert 'a^\\\\dagger_{p}' == '{a^\\\\dagger_{p}}'\n  - {a^\\dagger_{p}}\n  ? -             -\n  + a^\\dagger_{p}"
+    },
+    {
+      "test": "sympy.physics.tests.test_secondquant::test_NO",
+      "message": "AssertionError: assert '\\\\left\\\\{a^\\...{i}\\\\right\\\\}' == '\\\\left\\\\{{a^...i}}\\\\right\\\\}'\n  - \\left\\{{a^\\dagger_{a}} {a^\\dagger_{i}}\\right\\}\n  ?       -              ^^^             -\n  + \\left\\{a^\\dagger_{a} a^\\dagger_{i}\\right\\}\n  ?                     ^"
+    },
+    {
+      "test": "sympy.physics.tests.test_secondquant::test_Tensors",
+      "message": "AssertionError: assert 't^{ab}_{ij}' == '{t^{ab}_{ij}}'\n  - {t^{ab}_{ij}}\n  ? -           -\n  + t^{ab}_{ij}"
+    },
+    {
+      "test": "sympy.physics.tests.test_secondquant::test_issue_19661",
+      "message": "AssertionError: assert '- \\\\left[b_{...}^{2}\\\\right]' == '- \\\\left[b_{...}^{2}\\\\right]'\n  - - \\left[b_{0},{b^\\dagger_{0}}^{2}\\right]\n  ?               -             -\n  + - \\left[b_{0},b^\\dagger_{0}^{2}\\right]"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

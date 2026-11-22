@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: pyproject.toml\ncollecting ... collected 1 item\n\ntests/brain/test_typing.py::test_infer_typevar FAILED                    [100%]\n\n=================================== FAILURES ===================================\n______________________________ test_infer_typevar ______________________________\n\n    def test_infer_typevar() -> None:\n        \"\"\"\n        Regression test for: https://github.com/pylint-dev/pylint/issues/8802\n    \n        Test that an inferred `typing.TypeVar()` call produces a `nodes.ClassDef`\n        node.\n        \"\"\"\n        call_node = builder.extract_node(\n            \"\"\"\n        from typing import TypeVar\n        TypeVar('My.Type')\n        \"\"\"\n        )\n        with pytest.raises(InferenceError):\n>           call_node.inferred()\nE           Failed: DID NOT RAISE <class 'astroid.exceptions.InferenceError'>\n\ntests/brain/test_typing.py:28: Failed\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/brain/test_typing.py::test_infer_typevar - Failed: DID NOT RAISE...\n============================== 1 failed in 1.11s ===============================\n",
+  "code": [
+    {
+      "file": "astroid/builder.py",
+      "function": "extract_node._extract",
+      "start_line": 439,
+      "end_line": 443,
+      "score": 31.264911,
+      "text": "astroid/builder.py::extract_node._extract lines 439-443\n    def _extract(node: nodes.NodeNG | None) -> nodes.NodeNG | None:\n        if isinstance(node, nodes.Expr):\n            return node.value\n\n        return node",
+      "truncated": false
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef._infer_type_call",
+      "start_line": 2240,
+      "end_line": 2286,
+      "score": 31.25,
+      "text": "astroid/nodes/scoped_nodes/scoped_nodes.py::ClassDef._infer_type_call lines 2240-2286\n    def _infer_type_call(self, caller, context):\n        try:\n            name_node = next(caller.args[0].infer(context))\n        except StopIteration as e:\n            raise InferenceError(node=caller.args[0], context=context) from e\n        if isinstance(name_node, node_classes.Const) and isinstance(\n            name_node.value, str\n        ):\n            name = name_node.value\n        else:\n            return util.Uninferable\n\n        result = ClassDef(name)\n\n        # Get the bases of the class.\n        try:\n            class_bases = next(caller.args[1].infer(context))\n        except StopIteration as e:\n            raise InferenceError(node=caller.args[1], context=context) from e\n        if isinstance(class_bases, (node_classes.Tuple, node_classes.List)):\n            bases = []\n            for base in class_bases.itered():\n                inferred = next(base.infer(context=context), None)\n                if inferred:\n                    bases.append(\n                        node_classes.EvaluatedObject(original=base, value=inferred)\n                    )\n            result.bases = bases\n        else:\n            # There is currently no AST node that can represent an 'unknown'\n            # node (Uninferable is not an AST node), therefore we simply return Uninferable here\n            # although we know at least the name of the class.\n            return util.Uninferable\n\n        # Get the members of the class\n        try:\n            members = next(caller.args[2].infer(context))\n        except (InferenceError, StopIteration):\n            members = None\n\n        if members and isinstance(members, node_classes.Dict):\n            for attr, value in members.items:\n                if isinstance(attr, node_classes.Const) and isinstance(attr.value, str):\n                    result.locals[attr.value] = [value]\n\n        result.parent = caller.parent\n        return result",
+      "truncated": false
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef.fromlineno",
+      "start_line": 2165,
+      "end_line": 2178,
+      "score": 31.234427,
+      "text": "astroid/nodes/scoped_nodes/scoped_nodes.py::ClassDef.fromlineno lines 2165-2178\n    def fromlineno(self) -> int | None:\n        \"\"\"The first line that this node appears on in the source code.\"\"\"\n        if not PY38_PLUS or IS_PYPY and PY38 and not PYPY_7_3_11_PLUS:\n            # For Python < 3.8 the lineno is the line number of the first decorator.\n            # We want the class statement lineno. Similar to 'FunctionDef.fromlineno'\n            # PyPy (3.8): Fixed with version v7.3.11\n            lineno = self.lineno\n            if self.decorators is not None:\n                lineno += sum(\n                    node.tolineno - node.lineno + 1 for node in self.decorators.nodes\n                )\n\n            return lineno\n        return super().fromlineno",
+      "truncated": false
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef._inferred_bases",
+      "start_line": 2995,
+      "end_line": 3032,
+      "score": 31.221694,
+      "text": "astroid/nodes/scoped_nodes/scoped_nodes.py::ClassDef._inferred_bases lines 2995-3032\n    def _inferred_bases(self, context: InferenceContext | None = None):\n        # Similar with .ancestors, but the difference is when one base is inferred,\n        # only the first object is wanted. That's because\n        # we aren't interested in superclasses, as in the following\n        # example:\n        #\n        # class SomeSuperClass(object): pass\n        # class SomeClass(SomeSuperClass): pass\n        # class Test(SomeClass): pass\n        #\n        # Inferring SomeClass from the Test's bases will give\n        # us both SomeClass and SomeSuperClass, but we are interested\n        # only in SomeClass.\n\n        if context is None:\n            context = InferenceContext()\n        if not self.bases and self.qname() != \"builtins.object\":\n            yield builtin_lookup(\"object\")[1][0]\n            return\n\n        for stmt in self.bases:\n            try:\n                # Find the first non-None inferred base value\n                baseobj = next(\n                    b\n                    for b in stmt.infer(context=context.clone())\n                    if not (isinstance(b, Const) and b.value is None)\n                )\n            except (InferenceError, StopIteration):\n                continue\n            if isinstance(baseobj, bases.Instance):\n                baseobj = baseobj._proxied\n            if not isinstance(baseobj, ClassDef):\n                continue\n            if not baseobj.hide:\n                yield baseobj\n            else:\n                yield from baseobj.bases",
+      "truncated": false
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef.callable",
+      "start_line": 2219,
+      "end_line": 2225,
+      "score": 31.212678,
+      "text": "astroid/nodes/scoped_nodes/scoped_nodes.py::ClassDef.callable lines 2219-2225\n    def callable(self) -> bool:\n        \"\"\"Whether this node defines something that is callable.\n\n        :returns: Whether this defines something that is callable.\n            For a :class:`ClassDef` this is always ``True``.\n        \"\"\"\n        return True",
+      "truncated": false
+    }
+  ]
+}

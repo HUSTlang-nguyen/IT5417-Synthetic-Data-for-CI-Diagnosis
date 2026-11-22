@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-9279",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/_pytest/nodes.py",
+      "function": "Item.__init__"
+    }
+  ],
+  "explanation": "The cooperative constructor forwards name and parent as keywords to an Item/File multiple-inheritance chain whose legacy file constructor expects the first value positionally. Path propagation is lost and the saved stack reaches _imply_path with both path and fspath None. Positional forwarding preserves that compatibility contract.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/nodes.py",
+      "function": "_imply_path"
+    },
+    {
+      "file": "src/_pytest/nodes.py",
+      "function": "NodeMeta._create"
+    },
+    {
+      "file": "src/_pytest/nodes.py",
+      "function": "FSCollector.from_parent"
+    },
+    {
+      "file": "src/_pytest/nodes.py",
+      "function": "FSCollector.__init__"
+    },
+    {
+      "file": "src/_pytest/nodes.py",
+      "function": "Node.from_parent"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

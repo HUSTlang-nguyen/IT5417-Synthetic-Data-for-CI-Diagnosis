@@ -1,0 +1,58 @@
+{
+  "run_id": "reproduce-20261112T000736153484Z",
+  "reviewed_at": "2026-11-12T07:59:59+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "bacde4079ae3fabd8da63bcbe1e83c6468845151c09765035f74ff2589864286",
+    "license-evidence.json": "ac76d90023608476a0a20c368aa3001956212d6e8d81685ad92a7d810fa25f21",
+    "historical-base.stdout.txt": "802ee1fdb465a260e29a3b280ad1c82fde1cec99a568008862ca3bfc88dc9447",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "dcb618ee2e15c9540a1e4959cecfe045252eacca0f0340bd8937950163796c25",
+    "historical-fixed.stdout.txt": "bc08ba2793d929049aead99496455ce280dde08b44fa68c0e9053c6e47f987d8",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c651c7a597d6ac09394c13e2d80e78de34c9a23b3fa0dca1e2661918f3262bbb"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "ClassDocumenter._find_signature"
+    }
+  ],
+  "mechanism": "ClassDocumenter has no class-specific signature finder to remove constructor return annotations read from docstrings. Class signatures therefore retain -> None, which does not belong in the class declaration output. The new override strips the return for the first and subsequent constructor signatures.",
+  "limitations": "Explicit missing-definition location supported by the repair. The two test modes exercise the same unwanted annotation, not two independent faults.",
+  "observed_junit": {
+    "base": {
+      "cases": 29,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 29,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_ext_autodoc_configs::test_autoclass_content_and_docstring_signature_init",
+      "message": "AssertionError: assert ['', '.. py:m...gnature', ...] == ['', '.. py:m...gnature', ...]\n  At index 20 diff: '.. py:class:: E(foo: int, bar: int, baz: int) -> None' != '.. py:class:: E(foo: int, bar: int, baz: int)'\n  Full diff:\n    [\n     '',\n     '.. py:module:: target.docstring_signature',\n     '',\n     '',...\n  \n  ...Full output truncated (40 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "tests.test_ext_autodoc_configs::test_autoclass_content_and_docstring_signature_both",
+      "message": "AssertionError: assert ['', '.. py:m...gnature', ...] == ['', '.. py:m...gnature', ...]\n  At index 24 diff: '.. py:class:: E(foo: int, bar: int, baz: int) -> None' != '.. py:class:: E(foo: int, bar: int, baz: int)'\n  Full diff:\n    [\n     '',\n     '.. py:module:: target.docstring_signature',\n     '',\n     '',...\n  \n  ...Full output truncated (44 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "ClassDocumenter._find_signature"
+    }
+  ]
+}

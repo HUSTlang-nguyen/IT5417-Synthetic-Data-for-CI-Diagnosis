@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T053546065802Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "_is_int"
+    }
+  ],
+  "explanation": "The integer predicate returns False after as_int successfully validates its argument. Saved polynomial coefficients that are integers are consequently rejected by classify_diop with Coefficients should be Integers TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "classify_diop"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "diophantine"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

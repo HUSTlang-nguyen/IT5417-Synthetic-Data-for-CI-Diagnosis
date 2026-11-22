@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T071642800573Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TR8.f"
+    }
+  ],
+  "explanation": "The transform guard admits the no-sine case and rejects multiple sines by using len(s)<1. A no-progress transform recursively re-enters TR8 and the saved trace reaches RecursionError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TR8"
+    },
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TR8.f"
+    },
+    {
+      "file": "sympy/strategies/core.py",
+      "function": "minimize.minrule"
+    },
+    {
+      "file": "sympy/strategies/core.py",
+      "function": "chain.chain_rl"
+    },
+    {
+      "file": "sympy/simplify/simplify.py",
+      "function": "bottom_up"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

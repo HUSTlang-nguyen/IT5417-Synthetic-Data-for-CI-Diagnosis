@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-24539",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.as_expr"
+    }
+  ],
+  "explanation": "The else branch overwrites supplied symbols with ring defaults whenever their count is valid. The saved conversion requested u,v,w but returns x,y,z. Falling back only when no symbols are supplied preserves the caller mapping.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.__eq__"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.as_expr"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "ring"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.is_one"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.leading_expv"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

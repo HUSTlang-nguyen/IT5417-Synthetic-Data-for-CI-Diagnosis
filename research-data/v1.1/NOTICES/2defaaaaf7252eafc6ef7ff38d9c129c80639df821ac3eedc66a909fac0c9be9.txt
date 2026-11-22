@@ -1,0 +1,100 @@
+"""Base class for all the objects in SymPy"""
+from __future__ import annotations
+
+from collections import defaultdict
+from collections.abc import Mapping
+from itertools import chain, zip_longest
+
+from .assumptions import ManagedProperties
+from .cache import cacheit
+from .core import BasicMeta
+from .sympify import _sympify, sympify, SympifyError, _external_converter
+from .sorting import ordered
+from .kind import Kind, UndefinedKind
+from ._print_helpers import Printable
+
+from sympy.utilities.decorator import deprecated
+from sympy.utilities.exceptions import sympy_deprecation_warning
+from sympy.utilities.iterables import iterable, numbered_symbols
+from sympy.utilities.misc import filldedent, func_name
+
+from inspect import getmro
+
+
+def as_Basic(expr):
+    """Return expr as a Basic instance using strict sympify
+    or raise a TypeError; this is just a wrapper to _sympify,
+    raising a TypeError instead of a SympifyError."""
+    try:
+        return _sympify(expr)
+    except SympifyError:
+        raise TypeError(
+            'Argument must be a Basic object, not `%s`' % func_name(
+            expr))
+
+
+class Basic(Printable, metaclass=ManagedProperties):
+    """
+    Base class for all SymPy objects.
+
+    Notes and conventions
+    =====================
+
+    1) Always use ``.args``, when accessing parameters of some instance:
+
+    >>> from sympy import cot
+    >>> from sympy.abc import x, y
+
+    >>> cot(x).args
+    (x,)
+
+    >>> cot(x).args[0]
+    x
+
+    >>> (x*y).args
+    (x, y)
+
+    >>> (x*y).args[1]
+    y
+
+
+    2) Never use internal methods or variables (the ones prefixed with ``_``):
+
+    >>> cot(x)._args    # do not use this, use cot(x).args instead
+    (x,)
+
+
+    3)  By "SymPy object" we mean something that can be returned by
+        ``sympify``.  But not all objects one encounters using SymPy are
+        subclasses of Basic.  For example, mutable objects are not:
+
+        >>> from sympy import Basic, Matrix, sympify
+        >>> A = Matrix([[1, 2], [3, 4]]).as_mutable()
+        >>> isinstance(A, Basic)
+        False
+
+        >>> B = sympify(A)
+        >>> isinstance(B, Basic)
+        True
+    """
+    __slots__ = ('_mhash',              # hash value
+                 '_args',               # arguments
+                 '_assumptions'
+                )
+
+    _args: tuple[Basic, ...]
+    _mhash: int | None
+
+    # To be overridden with True in the appropriate subclasses
+    is_number = False
+    is_Atom = False
+    is_Symbol = False
+    is_symbol = False
+    is_Indexed = False
+    is_Dummy = False
+    is_Wild = False
+    is_Function = False
+    is_Add = False
+    is_Mul = False
+    is_Pow = False
+    is_Number = False

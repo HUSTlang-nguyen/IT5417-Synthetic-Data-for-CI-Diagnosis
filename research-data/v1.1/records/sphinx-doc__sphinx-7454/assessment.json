@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233904850227Z",
+  "reviewed_at": "2026-11-12T07:34:01+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b10cdc302532c519ffb8fa9eba582e1f9dd5a684b488ba21a829dfd87a68e690",
+    "license-evidence.json": "8dd0765a115cdb8942009d9cd8c4d4f8a9c2d128e5a114cbd873c13cb176f354",
+    "historical-base.stdout.txt": "023da5d61dfe5807cd1a6fc69657195cf95417e123745eb3a7b613514e59ad13",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f1cc4e307c11f091db5fd8c1cde661e13ea98e54bb3256a28059e3b784aabee5",
+    "historical-fixed.stdout.txt": "141afb049d825228546f63fd0c2f7bafe73ece08d5bd47fad765f90efcca9ce3",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f44ea913cd6772bc22848a34d8ac5645dcc8ed992b3c108251bca88599194ca1"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "_parse_annotation.make_xref"
+    }
+  ],
+  "mechanism": "The nested annotation-reference builder assigns class role to every target, including None. The saved node assertion requires object role for None, a singleton object rather than a class. Selecting obj for None and class otherwise fixes the reference metadata.",
+  "limitations": "The function is the nested make_xref, not the testing assert_node or the outer unparse dispatcher. A type-related target does not alone imply API/type classification.",
+  "observed_junit": {
+    "base": {
+      "cases": 28,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 28,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_py::test_parse_annotation",
+      "message": "AssertionError: The node[reftype] is not 'obj': 'class'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

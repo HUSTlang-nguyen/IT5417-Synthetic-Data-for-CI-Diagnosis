@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T050110407144Z",
+  "reviewed_at": "2026-11-12T12:15:31+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "45f564729cd07a34b78307779e54bfeb5fe06f4d9bbb154dac31fda8b586ef6f",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "58e8706bcdd40c026ffb02afaaaa0c8658425beda6c53f768a5a539fb5307ad1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "7124303b7cb36a74d56e45f10f02c109778d6851ffae4eb232e38c108a8e79aa",
+    "historical-fixed.stdout.txt": "b6857dd5aebece982c213825aea649097c196c2c0a7c539d6d67afbb9a8f0a08",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "561b58af4463b3f610cce4f53847590d705f6e0b8ccc2ff664325ea8415607d9"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Poly"
+    }
+  ],
+  "mechanism": "Printing a polynomial by converting it to a general expression discards the polynomial term order and coefficient/monomial separation. Saved LaTeX displays x/y instead of the required coefficient1/y followed by x, and groups terms in general-expression order. Printing Poly.terms directly retains its polynomial representation.",
+  "limitations": "These are output-format/order contract failures; the represented polynomial values can be equivalent.",
+  "observed_junit": {
+    "base": {
+      "cases": 118,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 118,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_Poly",
+      "message": "AssertionError: assert '\\\\operatorna...ht) \\\\right)}' == '\\\\operatorna...ht) \\\\right)}'\n  - \\operatorname{Poly}{\\left( \\frac{1}{y} x, x, domain=\\mathbb{Z}\\left(y\\right) \\right)}\n  ?                                  ^       ---\n  + \\operatorname{Poly}{\\left( \\frac{x}{y}, x, domain=\\mathbb{Z}\\left(y\\right) \\right)}\n  ?                                  ^    +"
+    },
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_Poly_order",
+      "message": "AssertionError: assert '\\\\operatorna...ht] \\\\right)}' == '\\\\operatorna...ht] \\\\right)}'\n  - \\operatorname{Poly}{\\left( a x^{5} + x^{4} + b x^{3} + 2 x^{2} + c x + 3, x, domain=\\mathbb{Z}\\left[a, b, c\\right] \\right)}\n  ?                                              ----------         ------\n  + \\operatorname{Poly}{\\left( a x^{5} + b x^{3} + c x + x^{4} + 2 x^{2} + 3, x, domain=\\mathbb{Z}\\left[a, b, c\\right] \\right)}\n  ?                                     ++++++++++++++++"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

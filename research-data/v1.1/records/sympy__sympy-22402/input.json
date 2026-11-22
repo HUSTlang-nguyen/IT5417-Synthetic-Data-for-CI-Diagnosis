@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 28 items\n\nsympy/functions/elementary/tests/test_complexes.py::test_arg FAILED      [  3%]\nsympy/functions/elementary/tests/test_complexes.py::test_re PASSED       [  7%]\nsympy/functions/elementary/tests/test_complexes.py::test_im PASSED       [ 10%]\nsympy/functions/elementary/tests/test_complexes.py::test_sign PASSED     [ 14%]\nsympy/functions/elementary/tests/test_complexes.py::test_as_real_imag PASSED [ 17%]\nsympy/functions/elementary/tests/test_complexes.py::test_Abs PASSED      [ 21%]\nsympy/functions/elementary/tests/test_complexes.py::test_Abs_rewrite PASSED [ 25%]\nsympy/functions/elementary/tests/test_complexes.py::test_Abs_real PASSED [ 28%]\nsympy/functions/elementary/tests/test_complexes.py::test_Abs_properties PASSED [ 32%]\nsympy/functions/elementary/tests/test_complexes.py::test_abs PASSED      [ 35%]\nsympy/functions/elementary/tests/test_complexes.py::test_arg_rewrite PASSED [ 39%]\nsympy/functions/elementary/tests/test_complexes.py::test_adjoint PASSED  [ 42%]\nsympy/functions/elementary/tests/test_complexes.py::test_conjugate PASSED [ 46%]\nsympy/functions/elementary/tests/test_complexes.py::test_conjugate_transpose PASSED [ 50%]\nsympy/functions/elementary/tests/test_complexes.py::test_transpose PASSED [ 53%]\nsympy/functions/elementary/tests/test_complexes.py::test_polarify PASSED [ 57%]\nsympy/functions/elementary/tests/test_complexes.py::test_unpolarify PASSED [ 60%]\nsympy/functions/elementary/tests/test_complexes.py::test_issue_4035 PASSED [ 64%]\nsympy/functions/elementary/tests/test_complexes.py::test_issue_3206 PASSED [ 67%]\nsympy/functions/elementary/tests/test_complexes.py::test_issue_4754_derivative_conjugate PASSED [ 71%]\nsympy/functions/elementary/tests/test_complexes.py::test_derivatives_issue_4757 PASSED [ 75%]\nsympy/functions/elementary/tests/test_complexes.py::test_issue_11413 PASSED [ 78%]\nsympy/functions/elementary/tests/test_complexes.py::test_periodic_argument PASSED [ 82%]\nsympy/functions/elementary/tests/test_complexes.py::test_principal_branch PASSED [ 85%]\nsympy/functions/elementary/tests/test_complexes.py::test_issue_14216 PASSED [ 89%]\nsympy/functions/elementary/tests/test_complexes.py::test_issue_14238 PASSED [ 92%]\nsympy/functions/elementary/tests/test_complexes.py::test_issue_22189 PASSED [ 96%]\nsympy/functions/elementary/tests/test_complexes.py::test_zero_assumptions PASSED [100%]\n\n=================================== FAILURES ===================================\n___________________________________ test_arg ___________________________________\n\n    def test_arg():\n        assert arg(0) is nan\n        assert arg(1) == 0\n        assert arg(-1) == pi\n        assert arg(I) == pi/2\n        assert arg(-I) == -pi/2\n        assert arg(1 + I) == pi/4\n        assert arg(-1 + I) == pi*Rational(3, 4)\n        assert arg(1 - I) == -pi/4\n        assert arg(exp_polar(4*pi*I)) == 4*pi\n        assert arg(exp_polar(-7*pi*I)) == -7*pi\n        assert arg(exp_polar(5 - 3*pi*I/4)) == pi*Rational(-3, 4)\n        f = Function('f')\n        assert not arg(f(0) + I*f(1)).atoms(re)\n    \n        # check nesting\n        x = Symbol('x')\n        assert arg(arg(arg(x))) is not S.NaN\n>       assert arg(arg(arg(arg(x)))) is S.NaN\nE       assert arg(arg(arg(arg(x)))) is nan\nE        +  where arg(arg(arg(arg(x)))) = arg(arg(arg(arg(x))))\nE        +    where arg(arg(arg(x))) = arg(arg(arg(x)))\nE        +      where arg(arg(x)) = arg(arg(x))\nE        +        where arg(x) = arg(x)\nE        +  and   nan = S.NaN\n\nsympy/functions/elementary/tests/test_complexes.py:614: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/functions/elementary/tests/test_complexes.py::test_arg - assert ...\n========================= 1 failed, 27 passed in 1.63s =========================\n",
+  "code": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg.eval",
+      "start_line": 734,
+      "end_line": 752,
+      "score": 50.928477,
+      "text": "sympy/functions/elementary/complexes.py::arg.eval lines 734-752\n    def eval(cls, arg):\n        if isinstance(arg, exp_polar):\n            return periodic_argument(arg, oo)\n        if not arg.is_Atom:\n            c, arg_ = factor_terms(arg).as_coeff_Mul()\n            if arg_.is_Mul:\n                arg_ = Mul(*[a if (sign(a) not in (-1, 1)) else\n                    sign(a) for a in arg_.args])\n            arg_ = sign(c)*arg_\n        else:\n            arg_ = arg\n        if any(i.is_extended_positive is None for i in arg_.atoms(AppliedUndef)):\n            return\n        x, y = arg_.as_real_imag()\n        rv = atan2(y, x)\n        if rv.is_number:\n            return rv\n        if arg_ != arg:\n            return cls(arg_, evaluate=False)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg._eval_rewrite_as_atan2",
+      "start_line": 759,
+      "end_line": 761,
+      "score": 50.666667,
+      "text": "sympy/functions/elementary/complexes.py::arg._eval_rewrite_as_atan2 lines 759-761\n    def _eval_rewrite_as_atan2(self, arg, **kwargs):\n        x, y = self.args[0].as_real_imag()\n        return atan2(y, x)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg._eval_derivative",
+      "start_line": 754,
+      "end_line": 757,
+      "score": 50.333333,
+      "text": "sympy/functions/elementary/complexes.py::arg._eval_derivative lines 754-757\n    def _eval_derivative(self, t):\n        x, y = self.args[0].as_real_imag()\n        return (x * Derivative(y, t, evaluate=True) - y *\n                    Derivative(x, t, evaluate=True)) / (x**2 + y**2)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/stats/drv_types.py",
+      "function": "FlorySchulzDistribution.check",
+      "start_line": 135,
+      "end_line": 136,
+      "score": 31.224745,
+      "text": "sympy/stats/drv_types.py::FlorySchulzDistribution.check lines 135-136\n    def check(a):\n        _value_check((0 < a, a < 1), \"a must be between 0 and 1\")",
+      "truncated": false
+    },
+    {
+      "file": "sympy/stats/drv_types.py",
+      "function": "GeometricDistribution.check",
+      "start_line": 207,
+      "end_line": 208,
+      "score": 31.224745,
+      "text": "sympy/stats/drv_types.py::GeometricDistribution.check lines 207-208\n    def check(p):\n        _value_check((0 < p, p <= 1), \"p must be between 0 and 1\")",
+      "truncated": false
+    }
+  ]
+}

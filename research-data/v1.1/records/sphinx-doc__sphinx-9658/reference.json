@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9658",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__init__"
+    }
+  ],
+  "explanation": "Mock instances initialize __qualname__ to the empty string instead of their generated name. Restifying unknown.secret.Class therefore loses Class and emits unknown.secret. The repair supplies __name__ during subclass creation and copies it into the instance qualified name.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "mock"
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify"
+    },
+    {
+      "file": "sphinx/search/__init__.py",
+      "function": "SearchLanguage.init"
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.read_bytes"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_startswith"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

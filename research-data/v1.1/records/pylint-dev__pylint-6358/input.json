@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 11 items\n\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_all PASSED [  9%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_file PASSED [ 18%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_file_double PASSED [ 27%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_two PASSED [ 36%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_disable_all PASSED [ 45%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_midle PASSED [ 54%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_end PASSED [ 63%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope PASSED [ 72%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope_double PASSED [ 81%]\ntests/test_similar.py::TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope_function PASSED [ 90%]\ntests/test_similar.py::TestSimilarCodeChecker::test_ignore_imports FAILED [100%]\n\n=================================== FAILURES ===================================\n__________________ TestSimilarCodeChecker.test_ignore_imports __________________\n\nself = <test_similar.TestSimilarCodeChecker object at 0x7e3cf5236520>\n\n    def test_ignore_imports(self) -> None:\n        \"\"\"Tests enabling ignore-imports works correctly.\"\"\"\n        path = join(DATA, \"ignore_imports\")\n>       self._runtest(\n            [path, \"-e=duplicate-code\", \"-d=unused-import\", \"--ignore-imports=y\"],\n            code=0,\n        )\n\ntests/test_similar.py:137: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <test_similar.TestSimilarCodeChecker object at 0x7e3cf5236520>\nargs = ['/source/base/tests/regrtest_data/duplicate_code/ignore_imports', '-e=duplicate-code', '-d=unused-import', '--ignore-imports=y']\ncode = 0\n\n    def _runtest(self, args: list[str], code: int) -> None:\n        \"\"\"Runs the tests and sees if output code is as expected.\"\"\"\n        out = StringIO()\n        pylint_code = self._run_pylint(args, out=out)\n        output = out.getvalue()\n        msg = f\"expected output status {code}, got {pylint_code}\"\n        if output is not None:\n            msg = f\"{msg}. Below pylint output: \\n{output}\"\n>       assert pylint_code == code, msg\nE       AssertionError: expected output status 0, got 8. Below pylint output: \nE         ************* Module ignore_imports.file_one\nE         tests/regrtest_data/duplicate_code/ignore_imports/file_one.py:1:0: R0801: Similar lines in 2 files\nE         ==ignore_imports.file_one:[0:5]\nE         ==ignore_imports.file_two:[0:5]\nE         import argparse\nE         import math\nE         import os\nE         import random\nE         import sys (duplicate-code)\nE         \nE         -----------------------------------\nE         Your code has been rated at 9.00/10\nE         \nE         \nE       assert 8 == 0\n\ntests/test_similar.py:33: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/astroid/interpreter/_import/util.py:6\n  /opt/venv/lib/python3.9/site-packages/astroid/interpreter/_import/util.py:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\npylint/checkers/utils.py:453: 152 warnings\n  /source/base/pylint/checkers/utils.py:453: DeprecationWarning: utils.check_messages will be removed in favour of calling utils.only_required_for_messages in pylint 3.0\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_similar.py::TestSimilarCodeChecker::test_ignore_imports - A...\n================== 1 failed, 10 passed, 153 warnings in 0.63s ==================\n",
+  "code": [
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "check_messages",
+      "start_line": 448,
+      "end_line": 459,
+      "score": 1132.69408,
+      "text": "pylint/checkers/utils.py::check_messages lines 448-459\ndef check_messages(*messages: str) -> Callable[[AstCallback], AstCallback]:\n    \"\"\"Kept for backwards compatibility, deprecated.\n\n    Use only_required_for_messages instead, which conveys the intent of the decorator much clearer.\n    \"\"\"\n    warnings.warn(\n        \"utils.check_messages will be removed in favour of calling \"\n        \"utils.only_required_for_messages in pylint 3.0\",\n        DeprecationWarning,\n    )\n\n    return only_required_for_messages(*messages)",
+      "truncated": false
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "only_required_for_messages",
+      "start_line": 430,
+      "end_line": 445,
+      "score": 131.3484,
+      "text": "pylint/checkers/utils.py::only_required_for_messages lines 430-445\ndef only_required_for_messages(*messages: str) -> Callable[[AstCallback], AstCallback]:\n    \"\"\"Decorator to store messages that are handled by a checker method as an\n    attribute of the function object.\n\n    This information is used by ``ASTWalker`` to decide whether to call the decorated\n    method or not. If none of the messages is enabled, the method will be skipped.\n    Therefore, the list of messages must be well maintained at all times!\n    This decorator only has an effect on ``visit_*`` and ``leave_*`` methods\n    of a class inheriting from ``BaseChecker`` and implementing ``IAstroidChecker``.\n    \"\"\"\n\n    def store_messages(func):\n        func.checks_msgs = messages\n        return func\n\n    return store_messages",
+      "truncated": false
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "only_required_for_messages.store_messages",
+      "start_line": 441,
+      "end_line": 443,
+      "score": 130.408248,
+      "text": "pylint/checkers/utils.py::only_required_for_messages.store_messages lines 441-443\n    def store_messages(func):\n        func.checks_msgs = messages\n        return func",
+      "truncated": false
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "is_inside_lambda",
+      "start_line": 239,
+      "end_line": 246,
+      "score": 102.042649,
+      "text": "pylint/checkers/utils.py::is_inside_lambda lines 239-246\ndef is_inside_lambda(node: nodes.NodeNG) -> bool:\n    \"\"\"Return whether the given node is inside a lambda.\"\"\"\n    warnings.warn(\n        \"utils.is_inside_lambda will be removed in favour of calling \"\n        \"utils.get_node_first_ancestor_of_type(x, nodes.Lambda) in pylint 3.0\",\n        DeprecationWarning,\n    )\n    return any(isinstance(parent, nodes.Lambda) for parent in node.node_ancestors())",
+      "truncated": false
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "safe_infer",
+      "start_line": 1214,
+      "end_line": 1249,
+      "score": 101.336306,
+      "text": "pylint/checkers/utils.py::safe_infer lines 1214-1249\ndef safe_infer(\n    node: nodes.NodeNG, context: InferenceContext | None = None\n) -> nodes.NodeNG | type[astroid.Uninferable] | None:\n    \"\"\"Return the inferred value for the given node.\n\n    Return None if inference failed or if there is some ambiguity (more than\n    one node has been inferred of different types).\n    \"\"\"\n    inferred_types: set[str | None] = set()\n    try:\n        infer_gen = node.infer(context=context)\n        value = next(infer_gen)\n    except astroid.InferenceError:\n        return None\n\n    if value is not astroid.Uninferable:\n        inferred_types.add(_get_python_type_of_node(value))\n\n    try:\n        for inferred in infer_gen:\n            inferred_type = _get_python_type_of_node(inferred)\n            if inferred_type not in inferred_types:\n                return None  # If there is ambiguity on the inferred node.\n            if (\n                isinstance(inferred, nodes.FunctionDef)\n                and inferred.args.args is not None\n                and isinstance(value, nodes.FunctionDef)\n                and value.args.args is not None\n                and len(inferred.args.args) != len(value.args.args)\n            ):\n                return None  # Different number of arguments indicates ambiguity\n    except astroid.InferenceError:\n        return None  # There is some kind of ambiguity\n    except StopIteration:\n        return value\n    return value if len(inferred_types) <= 1 else None",
+      "truncated": false
+    }
+  ]
+}

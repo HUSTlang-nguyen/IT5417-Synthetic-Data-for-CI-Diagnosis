@@ -1,0 +1,11 @@
+--- a/sympy/printing/octave.py
++++ b/sympy/printing/octave.py
+@@ -91,7 +91,7 @@
+ 
+ 
+     def _get_statement(self, codestring):
+-        return "%s;" % codestring
++        return "%s," % codestring
+ 
+ 
+     def _get_comment(self, text):

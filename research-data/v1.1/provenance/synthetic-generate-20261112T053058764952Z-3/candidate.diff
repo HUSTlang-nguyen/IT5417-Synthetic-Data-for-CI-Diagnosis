@@ -1,0 +1,11 @@
+--- a/sympy/printing/octave.py
++++ b/sympy/printing/octave.py
+@@ -128,7 +128,7 @@
+         # print complex numbers nicely in Octave
+         if (expr.is_number and expr.is_imaginary and
+                 (S.ImaginaryUnit*expr).is_Integer):
+-            return "%si" % self._print(-S.ImaginaryUnit*expr)
++            return "%si" % self._print(S.ImaginaryUnit*expr)
+ 
+         # cribbed from str.py
+         prec = precedence(expr)

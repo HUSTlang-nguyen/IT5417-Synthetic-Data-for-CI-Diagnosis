@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T072406672192Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/singlediode.py",
+      "function": "_lambertw"
+    }
+  ],
+  "explanation": "The tiny-negative open-circuit-voltage clamp compares v_oc with positive1e-12 while also requiring v_oc<0, making the scalar clamp unreachable. Saved near-zero negative voltage reaches golden-section bounds and raises upper>=lower ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/singlediode.py",
+      "function": "_lambertw"
+    },
+    {
+      "file": "pvlib/tools.py",
+      "function": "_golden_sect_DataFrame"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "singlediode"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

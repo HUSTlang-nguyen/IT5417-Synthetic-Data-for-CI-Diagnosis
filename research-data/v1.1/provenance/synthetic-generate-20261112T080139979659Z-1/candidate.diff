@@ -1,0 +1,11 @@
+--- a/sympy/integrals/rationaltools.py
++++ b/sympy/integrals/rationaltools.py
+@@ -221,7 +221,7 @@
+     def _include_sign(c, sqf):
+         if (c < 0) == True:
+             h, k = sqf[0]
+-            sqf[0] = h*c, k
++            sqf[0] = h*c, k + 1
+ 
+     C, res_sqf = res.sqf_list()
+     _include_sign(C, res_sqf)

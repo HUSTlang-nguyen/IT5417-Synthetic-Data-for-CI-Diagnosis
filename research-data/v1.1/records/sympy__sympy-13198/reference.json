@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-13198",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_factor_list"
+    },
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dmp_factor_list"
+    }
+  ],
+  "explanation": "When converting exact factors back to an inexact domain, normalization divides each factor by the cleared denominator and omits the corresponding coefficient adjustment. Saved univariate/multivariate factor-list assertions report wrong normalized leading coefficients/factors. Normalizing by each factor maximum norm and accumulating its multiplicity in the coefficient preserves the required factorization representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "FreeModule.convert"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

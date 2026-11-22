@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-20428",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/domains/expressiondomain.py",
+      "function": "ExpressionDomain.Expression.__bool__"
+    }
+  ],
+  "explanation": "Expression-domain truthiness tests structural inequality against zero. A mathematically zero but unsimplified expression can therefore be retained as a nonzero polynomial coefficient. Consulting the is_zero assumption instead makes the tested polynomial compare equal to Poly(0).",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "GroebnerBasis.domain"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "GroebnerBasis.polys"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.domain"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.gen"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.__call__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,70 @@
+{
+  "run_id": "reproduce-20261112T050458399373Z",
+  "reviewed_at": "2026-11-12T12:16:11+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e99cf278ee45a4cfb2a5a0a3bad09136c32cc4e817fea09cc60f14f1003b0558",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "6ab57d0431f1162d1c2d55a6b2eae60dbd67b12de80402dc54ce3ad39143e711",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9dacd41cc34164feeb3a077c284cd1c7edaed67819941686cb9149d12d830e5b",
+    "historical-fixed.stdout.txt": "37f5316144f787fe9740680603f19cf15040f2ad0d35fb5e45b75da74bcf3399",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5c43e1cd709b3877e29e9b202c16faac86d4c15531628c576c9d674a03e07261"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "coth._eval_expand_trig"
+    },
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "ReciprocalHyperbolicFunction._eval_expand_trig"
+    }
+  ],
+  "mechanism": "Coth and reciprocal hyperbolic classes lack trig-expansion handlers. Saved expand_trig leaves coth(2*x) and csch(x+y) unchanged instead of the required identities. The added coth expansion and reciprocal forwarding provide those forms.",
+  "limitations": "Both missing definitions are supported by saved failures. Three failing tests are one related expansion-support source task, not three independent cases.",
+  "observed_junit": {
+    "base": {
+      "cases": 60,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 60,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.elementary.tests.test_hyperbolic::test_coth",
+      "message": "assert coth(2*x) == (((coth(x) ** 2) + 1) / (2 * coth(x)))\n +  where coth(2*x) = expand_trig(coth(2*x))\n +    where coth(2*x) = coth((2 * x))\n +  and   coth(x) = coth(x)\n +  and   coth(x) = coth(x)"
+    },
+    {
+      "test": "sympy.functions.elementary.tests.test_hyperbolic::test_csch",
+      "message": "assert csch(x + y) == (1 / ((sinh(x) * cosh(y)) + (cosh(x) * sinh(y))))\n +  where csch(x + y) = expand_trig(csch(x + y))\n +    where csch(x + y) = csch((x + y))\n +  and   sinh(x) = sinh(x)\n +  and   cosh(y) = cosh(y)\n +  and   cosh(x) = cosh(x)\n +  and   sinh(y) = sinh(y)"
+    },
+    {
+      "test": "sympy.functions.elementary.tests.test_hyperbolic::test_sech",
+      "message": "assert sech(x + y) == (1 / ((cosh(x) * cosh(y)) + (sinh(x) * sinh(y))))\n +  where sech(x + y) = expand_trig(sech(x + y))\n +    where sech(x + y) = sech((x + y))\n +  and   cosh(x) = cosh(x)\n +  and   cosh(y) = cosh(y)\n +  and   sinh(x) = sinh(x)\n +  and   sinh(y) = sinh(y)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "coth._eval_expand_trig"
+    },
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "ReciprocalHyperbolicFunction._eval_expand_trig"
+    }
+  ]
+}

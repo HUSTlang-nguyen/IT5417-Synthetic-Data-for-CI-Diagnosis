@@ -1,0 +1,42 @@
+{
+  "run_id": "reproduce-20261111T203603533522Z",
+  "reviewed_at": "2026-11-12T07:19:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b4f530793e0d0320911f64bba6871a5d1259245f5b20490a6ee92acacf52b624",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "7c62948e090ef49aa4a4d69fb29d7665acd7a5014958d20ab4297dcef95472ab",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "3ea84813c9ab58cba7b6a8c2b2cb9d59769b0bb6fc1adfd45055298cbfbaa316",
+    "historical-fixed.stdout.txt": "9611e3c1296c372d16873371784a51a5122baf007be4d3646c827f78b3ad2b65",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b9ac93e3de486ead31ba0ab53e2242afa32594566d202d6c9b663f5a33b1b303"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__add__"
+    }
+  ],
+  "mechanism": "Vector.__add__ sends scalar zero into the general vector-only validator before handling the additive identity. The validator rejects the int and raises TypeError even though vector+0 is supported by the test contract. Returning self for zero avoids the invalid validation path.",
+  "limitations": "The traceback ends in _check_vector, but the causal missing special case belongs to Vector.__add__. The label follows that data flow, not merely the TypeError text.",
+  "observed_junit": {
+    "base": {
+      "cases": 3,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 3,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: TypeError: A Vector must be supplied"
+}

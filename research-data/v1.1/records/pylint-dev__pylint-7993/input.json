@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 11 items\n\ntests/reporters/unittest_reporting.py::test_template_option PASSED       [  9%]\ntests/reporters/unittest_reporting.py::test_template_option_default PASSED [ 18%]\ntests/reporters/unittest_reporting.py::test_template_option_end_line PASSED [ 27%]\ntests/reporters/unittest_reporting.py::test_template_option_non_existing PASSED [ 36%]\ntests/reporters/unittest_reporting.py::test_template_option_with_header FAILED [ 45%]\ntests/reporters/unittest_reporting.py::test_deprecation_set_output PASSED [ 54%]\ntests/reporters/unittest_reporting.py::test_parseable_output_deprecated PASSED [ 63%]\ntests/reporters/unittest_reporting.py::test_parseable_output_regression PASSED [ 72%]\ntests/reporters/unittest_reporting.py::test_multi_format_output PASSED   [ 81%]\ntests/reporters/unittest_reporting.py::test_multi_reporter_independant_messages PASSED [ 90%]\ntests/reporters/unittest_reporting.py::test_display_results_is_renamed PASSED [100%]\n\n=================================== FAILURES ===================================\n_______________________ test_template_option_with_header _______________________\n\nlinter = Checker 'main' (responsible for 'F0001', 'F0002', 'F0010', 'F0011', 'I0001', 'I0010', 'I0011', 'I0013', 'I0020', 'I0021', 'I0022', 'E0001', 'E0011', 'W0012', 'R0022', 'E0013', 'E0014', 'E0015')\n\n    def test_template_option_with_header(linter: PyLinter) -> None:\n        output = StringIO()\n        linter.reporter.out = output\n        linter.config.msg_template = '{{ \"Category\": \"{category}\" }}'\n        linter.open()\n        linter.set_current_module(\"my_mod\")\n    \n        linter.add_message(\"C0301\", line=1, args=(1, 2))\n        linter.add_message(\n            \"line-too-long\", line=2, end_lineno=2, end_col_offset=4, args=(3, 4)\n        )\n    \n        out_lines = output.getvalue().split(\"\\n\")\n>       assert out_lines[1] == '{ \"Category\": \"convention\" }'\nE       assert '\" }' == '{ \"Category\": \"convention\" }'\nE         - { \"Category\": \"convention\" }\nE         + \" }\n\ntests/reporters/unittest_reporting.py:126: AssertionError\n=============================== warnings summary ===============================\ntests/reporters/unittest_reporting.py::test_template_option_with_header\n  /source/base/pylint/reporters/text.py:181: UserWarning: Don't recognize the argument '{ \"Category\"' in the --msg-template. Are you sure it is supported on the current version of pylint?\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/reporters/unittest_reporting.py::test_template_option_with_header\n=================== 1 failed, 10 passed, 1 warning in 0.20s ====================\n",
+  "code": [
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "TextReporter.on_set_current_module",
+      "start_line": 166,
+      "end_line": 186,
+      "score": 1102.857738,
+      "text": "pylint/reporters/text.py::TextReporter.on_set_current_module lines 166-186\n    def on_set_current_module(self, module: str, filepath: str | None) -> None:\n        \"\"\"Set the format template to be used and check for unrecognized arguments.\"\"\"\n        template = str(self.linter.config.msg_template or self._template)\n\n        # Return early if the template is the same as the previous one\n        if template == self._template:\n            return\n\n        # Set template to the currently selected template\n        self._template = template\n\n        # Check to see if all parameters in the template are attributes of the Message\n        arguments = re.findall(r\"\\{(.+?)(:.*)?\\}\", template)\n        for argument in arguments:\n            if argument[0] not in MESSAGE_FIELDS:\n                warnings.warn(\n                    f\"Don't recognize the argument '{argument[0]}' in the --msg-template. \"\n                    \"Are you sure it is supported on the current version of pylint?\"\n                )\n                template = re.sub(r\"\\{\" + argument[0] + r\"(:.*?)?\\}\", \"\", template)\n        self._fixed_template = template",
+      "truncated": false
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "ParseableTextReporter.__init__",
+      "start_line": 224,
+      "end_line": 229,
+      "score": 101.649916,
+      "text": "pylint/reporters/text.py::ParseableTextReporter.__init__ lines 224-229\n    def __init__(self, output: TextIO | None = None) -> None:\n        warnings.warn(\n            f\"{self.name} output format is deprecated. This is equivalent to --msg-template={self.line_format}\",\n            DeprecationWarning,\n        )\n        super().__init__(output)",
+      "truncated": false
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "colorize_ansi",
+      "start_line": 103,
+      "end_line": 111,
+      "score": 101.507557,
+      "text": "pylint/reporters/text.py::colorize_ansi lines 103-111\ndef colorize_ansi(\n    msg: str,\n    msg_style: str | None = ...,\n    style: str = ...,\n    *,\n    color: str | None = ...,\n) -> str:\n    # Remove for pylint 3.0\n    ...",
+      "truncated": false
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "register",
+      "start_line": 311,
+      "end_line": 315,
+      "score": 101.264911,
+      "text": "pylint/reporters/text.py::register lines 311-315\ndef register(linter: PyLinter) -> None:\n    linter.register_reporter(TextReporter)\n    linter.register_reporter(ParseableTextReporter)\n    linter.register_reporter(VSTextReporter)\n    linter.register_reporter(ColorizedTextReporter)",
+      "truncated": false
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "colorize_ansi",
+      "start_line": 114,
+      "end_line": 149,
+      "score": 101.230915,
+      "text": "pylint/reporters/text.py::colorize_ansi lines 114-149\ndef colorize_ansi(\n    msg: str,\n    msg_style: MessageStyle | str | None = None,\n    style: str = \"\",\n    **kwargs: str | None,\n) -> str:\n    r\"\"\"colorize message by wrapping it with ANSI escape codes\n\n    :param msg: the message string to colorize\n\n    :param msg_style: the message style\n        or color (for backwards compatibility): the color of the message style\n\n    :param style: the message's style elements, this will be deprecated\n\n    :param \\**kwargs: used to accept `color` parameter while it is being deprecated\n\n    :return: the ANSI escaped string\n    \"\"\"\n    # TODO: 3.0: Remove deprecated typing and only accept MessageStyle as parameter\n    if not isinstance(msg_style, MessageStyle):\n        warnings.warn(\n            \"In pylint 3.0, the colorize_ansi function of Text reporters will only accept a MessageStyle parameter\",\n            DeprecationWarning,\n        )\n        color = kwargs.get(\"color\")\n        style_attrs = tuple(_splitstrip(style))\n        msg_style = MessageStyle(color or msg_style, style_attrs)\n    # If both color and style are not defined, then leave the text as is\n    if msg_style.color is None and len(msg_style.style) == 0:\n        return msg\n    escape_code = _get_ansi_code(msg_style)\n    # If invalid (or unknown) color, don't wrap msg with ANSI codes\n    if escape_code:\n        return f\"{escape_code}{msg}{ANSI_RESET}\"\n    return msg",
+      "truncated": false
+    }
+  ]
+}

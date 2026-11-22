@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-22706",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_Mul"
+    }
+  ],
+  "explanation": "After splitting an unevaluated product into numerator and denominator factors, the printer indexes n[0] without checking that the numerator list is nonempty. A reciprocal-only form raises the saved IndexError. Guarding the list and supplying numerator1 handles that boundary.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_Mul"
+    },
+    {
+      "file": "sympy/printing/str.py",
+      "function": "sstr"
+    },
+    {
+      "file": "sympy/core/_print_helpers.py",
+      "function": "Printable.__str__"
+    },
+    {
+      "file": "sympy/printing/printer.py",
+      "function": "_PrintFunction.__call__"
+    },
+    {
+      "file": "sympy/printing/printer.py",
+      "function": "Printer.doprint"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

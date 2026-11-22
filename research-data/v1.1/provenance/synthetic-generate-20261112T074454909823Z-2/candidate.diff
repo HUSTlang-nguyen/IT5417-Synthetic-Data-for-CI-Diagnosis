@@ -1,0 +1,11 @@
+--- a/sympy/functions/combinatorial/numbers.py
++++ b/sympy/functions/combinatorial/numbers.py
+@@ -249,7 +249,7 @@
+     @staticmethod
+     def _calc_bernoulli(n):
+         s = 0
+-        a = int(binomial(n + 3, n - 6))
++        a = int(binomial(n + 3, n - 7))
+         for j in range(1, n//6 + 1):
+             s += a * bernoulli(n - 6*j)
+             # Avoid computing each binomial coefficient from scratch

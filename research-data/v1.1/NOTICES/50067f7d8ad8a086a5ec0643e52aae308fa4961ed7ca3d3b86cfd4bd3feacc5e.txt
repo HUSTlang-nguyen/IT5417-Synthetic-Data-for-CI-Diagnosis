@@ -1,0 +1,100 @@
+"""Solvers of systems of polynomial equations. """
+
+from sympy.core import S
+from sympy.polys import Poly, groebner, roots
+from sympy.polys.polytools import parallel_poly_from_expr
+from sympy.polys.polyerrors import (ComputationFailed,
+    PolificationFailed, CoercionFailed)
+from sympy.simplify import rcollect
+from sympy.utilities import default_sort_key, postfixes
+from sympy.utilities.misc import filldedent
+
+
+class SolveFailed(Exception):
+    """Raised when solver's conditions weren't met. """
+
+
+def solve_poly_system(seq, *gens, **args):
+    """
+    Solve a system of polynomial equations.
+
+    Parameters
+    ==========
+
+    seq: a list/tuple/set
+        Listing all the equations that are needed to be solved
+    gens: generators
+        generators of the equations in seq for which we want the
+        solutions
+    args: Keyword arguments
+        Special options for solving the equations
+
+    Returns
+    =======
+
+    List[Tuple]
+        A List of tuples. Solutions for symbols that satisfy the
+        equations listed in seq
+
+    Examples
+    ========
+
+    >>> from sympy import solve_poly_system
+    >>> from sympy.abc import x, y
+
+    >>> solve_poly_system([x*y - 2*y, 2*y**2 - x**2], x, y)
+    [(0, 0), (2, -sqrt(2)), (2, sqrt(2))]
+
+    """
+    try:
+        polys, opt = parallel_poly_from_expr(seq, *gens, **args)
+    except PolificationFailed as exc:
+        raise ComputationFailed('solve_poly_system', len(seq), exc)
+
+    if len(polys) == len(opt.gens) == 2:
+        f, g = polys
+
+        if all(i <= 2 for i in f.degree_list() + g.degree_list()):
+            try:
+                return solve_biquadratic(f, g, opt)
+            except SolveFailed:
+                pass
+
+    return solve_generic(polys, opt)
+
+
+def solve_biquadratic(f, g, opt):
+    """Solve a system of two bivariate quadratic polynomial equations.
+
+    Parameters
+    ==========
+
+    f: a single Expr or Poly
+        First equation
+    g: a single Expr or Poly
+        Second Equation
+    opt: an Options object
+        For specifying keyword arguments and generators
+
+    Returns
+    =======
+
+    List[Tuple]
+        A List of tuples. Solutions for symbols that satisfy the
+        equations listed in seq.
+
+    Examples
+    ========
+
+    >>> from sympy.polys import Options, Poly
+    >>> from sympy.abc import x, y
+    >>> from sympy.solvers.polysys import solve_biquadratic
+    >>> NewOption = Options((x, y), {'domain': 'ZZ'})
+
+    >>> a = Poly(y**2 - 4 + x, y, x, domain='ZZ')
+    >>> b = Poly(y*2 + 3*x - 7, y, x, domain='ZZ')
+    >>> solve_biquadratic(a, b, NewOption)
+    [(1/3, 3), (41/27, 11/9)]
+
+    >>> a = Poly(y + x**2 - 3, y, x, domain='ZZ')
+    >>> b = Poly(-y + x - 4, y, x, domain='ZZ')

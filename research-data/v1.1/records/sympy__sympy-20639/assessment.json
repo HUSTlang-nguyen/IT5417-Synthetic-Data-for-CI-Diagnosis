@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T063539965533Z",
+  "reviewed_at": "2026-11-12T18:29:35+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "38511dfe135ae2a4a4685947ec89b465c84697774424f199b83caf5392f0a9bb",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "7ffdffa54dc1a81931d2011bd01f942ba6bd1ff29e6fdf65f49cd767faf893d6",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0828cfb3ebd35a8e1341087bdb3046031bce0c555823a2ab689fa008c542082c",
+    "historical-fixed.stdout.txt": "1609136a4be528829171da3c511b07e5028ef6201c8fb156a5ce2507da880002",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5f2147a64f7b430c8fd9bce4542e1412bea67551140750126d7480e7bbab47f5"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_Pow"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_nth_root"
+    }
+  ],
+  "mechanism": "The power printer admits reciprocal non-rational atomic exponents to nth-root notation, whose helper then extracts a denominator-like component rather than representing the full exponent. Saved reciprocal-pi and reciprocal-exp examples render misleading root indices. The repair restricts dispatch and passes/prints the actual root, with141tests passing.",
+  "limitations": "The observations are representation assertions, not incorrect numerical exponentiation. Two adjacent functions share the dispatch/formatting contract; no assertion that either changed block alone suffices.",
+  "observed_junit": {
+    "base": {
+      "cases": 141,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 141,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.pretty.tests.test_pretty::test_issue_6285",
+      "message": "AssertionError: assert 'pi___\\n\\\\/ x ' == ' 1 \\n --\\n pi\\nx  '\n  + pi___\n  + \\/ x \n  -  1 \n  -  --\n  -  pi\n  - x"
+    },
+    {
+      "test": "sympy.printing.pretty.tests.test_pretty::test_issue_17616",
+      "message": "AssertionError: assert '-1____\\n\\\\/ pi ' == '  / -1\\\\\\n  \\\\e  /\\npi     '\n  + -1____\n  + \\/ pi \n  -   / -1\\\n  -   \\e  /\n  - pi"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

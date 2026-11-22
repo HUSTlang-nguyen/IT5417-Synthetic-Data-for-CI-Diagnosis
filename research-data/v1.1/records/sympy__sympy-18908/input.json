@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 15 items\n\nsympy/printing/tests/test_pycode.py::test_airy FAILED                    [  6%]\nsympy/printing/tests/test_pycode.py::test_PythonCodePrinter PASSED       [ 13%]\nsympy/printing/tests/test_pycode.py::test_PythonCodePrinter_standard PASSED [ 20%]\nsympy/printing/tests/test_pycode.py::test_MpmathPrinter PASSED           [ 26%]\nsympy/printing/tests/test_pycode.py::test_NumPyPrinter PASSED            [ 33%]\nsympy/printing/tests/test_pycode.py::test_SciPyPrinter PASSED            [ 40%]\nsympy/printing/tests/test_pycode.py::test_pycode_reserved_words PASSED   [ 46%]\nsympy/printing/tests/test_pycode.py::test_sqrt PASSED                    [ 53%]\nsympy/printing/tests/test_pycode.py::test_printmethod PASSED             [ 60%]\nsympy/printing/tests/test_pycode.py::test_codegen_ast_nodes PASSED       [ 66%]\nsympy/printing/tests/test_pycode.py::test_issue_14283 PASSED             [ 73%]\nsympy/printing/tests/test_pycode.py::test_NumPyPrinter_print_seq PASSED  [ 80%]\nsympy/printing/tests/test_pycode.py::test_issue_16535_16536 PASSED       [ 86%]\nsympy/printing/tests/test_pycode.py::test_fresnel_integrals PASSED       [ 93%]\nsympy/printing/tests/test_pycode.py::test_beta PASSED                    [100%]\n\n=================================== FAILURES ===================================\n__________________________________ test_airy ___________________________________\n\n    def test_airy():\n        from sympy import airyai, airybi\n    \n        expr1 = airyai(x)\n        expr2 = airybi(x)\n    \n        prntr = SciPyPrinter()\n>       assert prntr.doprint(expr1) == 'scipy.special.airy(x)[0]'\nE       AssertionError: assert '  # Not supp...ai\\nairyai(x)' == 'scipy.special.airy(x)[0]'\nE         - scipy.special.airy(x)[0]\nE         +   # Not supported in Python with SciPy:\nE         +   # airyai\nE         + airyai(x)\n\nsympy/printing/tests/test_pycode.py:295: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/printing/tests/test_pycode.py::test_airy - AssertionError: asser...\n=================== 1 failed, 14 passed, 1 warning in 0.23s ====================\n",
+  "code": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_assoc_legendre",
+      "start_line": 942,
+      "end_line": 947,
+      "score": 51.154701,
+      "text": "sympy/printing/pycode.py::SciPyPrinter._print_assoc_legendre lines 942-947\n    def _print_assoc_legendre(self, expr):\n        return \"{0}({2}, {1}, {3})\".format(\n            self._module_format('scipy.special.lpmv'),\n            self._print(expr.args[0]),\n            self._print(expr.args[1]),\n            self._print(expr.args[2]))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_fresnels",
+      "start_line": 963,
+      "end_line": 966,
+      "score": 51.154701,
+      "text": "sympy/printing/pycode.py::SciPyPrinter._print_fresnels lines 963-966\n    def _print_fresnels(self, expr):\n        return \"{0}({1})[0]\".format(\n                self._module_format(\"scipy.special.fresnel\"),\n                self._print(expr.args[0]))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_fresnelc",
+      "start_line": 968,
+      "end_line": 971,
+      "score": 51.154701,
+      "text": "sympy/printing/pycode.py::SciPyPrinter._print_fresnelc lines 968-971\n    def _print_fresnelc(self, expr):\n        return \"{0}({1})[1]\".format(\n                self._module_format(\"scipy.special.fresnel\"),\n                self._print(expr.args[0]))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_lowergamma",
+      "start_line": 949,
+      "end_line": 954,
+      "score": 51.1094,
+      "text": "sympy/printing/pycode.py::SciPyPrinter._print_lowergamma lines 949-954\n    def _print_lowergamma(self, expr):\n        return \"{0}({2})*{1}({2}, {3})\".format(\n            self._module_format('scipy.special.gamma'),\n            self._module_format('scipy.special.gammainc'),\n            self._print(expr.args[0]),\n            self._print(expr.args[1]))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_uppergamma",
+      "start_line": 956,
+      "end_line": 961,
+      "score": 51.1094,
+      "text": "sympy/printing/pycode.py::SciPyPrinter._print_uppergamma lines 956-961\n    def _print_uppergamma(self, expr):\n        return \"{0}({2})*{1}({2}, {3})\".format(\n            self._module_format('scipy.special.gamma'),\n            self._module_format('scipy.special.gammaincc'),\n            self._print(expr.args[0]),\n            self._print(expr.args[1]))",
+      "truncated": false
+    }
+  ]
+}

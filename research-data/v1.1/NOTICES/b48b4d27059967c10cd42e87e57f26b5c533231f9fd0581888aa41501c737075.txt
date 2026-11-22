@@ -1,0 +1,100 @@
+from functools import reduce
+
+from sympy.core.basic import Basic
+from sympy.core.containers import Tuple
+from sympy.core.expr import Expr
+from sympy.core.function import Lambda
+from sympy.core.logic import fuzzy_not, fuzzy_or, fuzzy_and
+from sympy.core.numbers import oo
+from sympy.core.relational import Eq
+from sympy.core.singleton import Singleton, S
+from sympy.core.symbol import Dummy, symbols, Symbol
+from sympy.core.sympify import _sympify, sympify, converter
+from sympy.logic.boolalg import And
+from sympy.sets.sets import (Set, Interval, Union, FiniteSet,
+    ProductSet)
+from sympy.utilities.misc import filldedent
+from sympy.utilities.iterables import cartes
+
+
+class Rationals(Set, metaclass=Singleton):
+    """
+    Represents the rational numbers. This set is also available as
+    the Singleton, S.Rationals.
+
+    Examples
+    ========
+
+    >>> from sympy import S
+    >>> S.Half in S.Rationals
+    True
+    >>> iterable = iter(S.Rationals)
+    >>> [next(iterable) for i in range(12)]
+    [0, 1, -1, 1/2, 2, -1/2, -2, 1/3, 3, -1/3, -3, 2/3]
+    """
+
+    is_iterable = True
+    _inf = S.NegativeInfinity
+    _sup = S.Infinity
+    is_empty = False
+    is_finite_set = False
+
+    def _contains(self, other):
+        if not isinstance(other, Expr):
+            return False
+        return other.is_rational
+
+    def __iter__(self):
+        from sympy.core.numbers import igcd, Rational
+        yield S.Zero
+        yield S.One
+        yield S.NegativeOne
+        d = 2
+        while True:
+            for n in range(d):
+                if igcd(n, d) == 1:
+                    yield Rational(n, d)
+                    yield Rational(d, n)
+                    yield Rational(-n, d)
+                    yield Rational(-d, n)
+            d += 1
+
+    @property
+    def _boundary(self):
+        return S.Reals
+
+
+class Naturals(Set, metaclass=Singleton):
+    """
+    Represents the natural numbers (or counting numbers) which are all
+    positive integers starting from 1. This set is also available as
+    the Singleton, S.Naturals.
+
+    Examples
+    ========
+
+    >>> from sympy import S, Interval, pprint
+    >>> 5 in S.Naturals
+    True
+    >>> iterable = iter(S.Naturals)
+    >>> next(iterable)
+    1
+    >>> next(iterable)
+    2
+    >>> next(iterable)
+    3
+    >>> pprint(S.Naturals.intersect(Interval(0, 10)))
+    {1, 2, ..., 10}
+
+    See Also
+    ========
+
+    Naturals0 : non-negative integers (i.e. includes 0, too)
+    Integers : also includes negative integers
+    """
+
+    is_iterable = True
+    _inf = S.One
+    _sup = S.Infinity
+    is_empty = False
+    is_finite_set = False

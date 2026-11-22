@@ -1,0 +1,100 @@
+"""
+Adaptive numerical evaluation of SymPy expressions, using mpmath
+for mathematical functions.
+"""
+from __future__ import print_function, division
+
+import math
+
+import mpmath.libmp as libmp
+from mpmath import (
+    make_mpc, make_mpf, mp, mpc, mpf, nsum, quadts, quadosc, workprec)
+from mpmath import inf as mpmath_inf
+from mpmath.libmp import (from_int, from_man_exp, from_rational, fhalf,
+        fnan, fnone, fone, fzero, mpf_abs, mpf_add,
+        mpf_atan, mpf_atan2, mpf_cmp, mpf_cos, mpf_e, mpf_exp, mpf_log, mpf_lt,
+        mpf_mul, mpf_neg, mpf_pi, mpf_pow, mpf_pow_int, mpf_shift, mpf_sin,
+        mpf_sqrt, normalize, round_nearest, to_int, to_str)
+from mpmath.libmp import bitcount as mpmath_bitcount
+from mpmath.libmp.backend import MPZ
+from mpmath.libmp.libmpc import _infs_nan
+from mpmath.libmp.libmpf import dps_to_prec, prec_to_dps
+from mpmath.libmp.gammazeta import mpf_bernoulli
+
+from .compatibility import SYMPY_INTS, range
+from .sympify import sympify
+from .singleton import S
+
+from sympy.utilities.iterables import is_sequence
+
+LG10 = math.log(10, 2)
+rnd = round_nearest
+
+
+def bitcount(n):
+    """Return smallest integer, b, such that |n|/2**b < 1.
+    """
+    return mpmath_bitcount(abs(int(n)))
+
+# Used in a few places as placeholder values to denote exponents and
+# precision levels, e.g. of exact numbers. Must be careful to avoid
+# passing these to mpmath functions or returning them in final results.
+INF = float(mpmath_inf)
+MINUS_INF = float(-mpmath_inf)
+
+# ~= 100 digits. Real men set this to INF.
+DEFAULT_MAXPREC = 333
+
+
+class PrecisionExhausted(ArithmeticError):
+    pass
+
+#----------------------------------------------------------------------------#
+#                                                                            #
+#              Helper functions for arithmetic and complex parts             #
+#                                                                            #
+#----------------------------------------------------------------------------#
+
+"""
+An mpf value tuple is a tuple of integers (sign, man, exp, bc)
+representing a floating-point number: [1, -1][sign]*man*2**exp where
+sign is 0 or 1 and bc should correspond to the number of bits used to
+represent the mantissa (man) in binary notation, e.g.
+
+>>> from sympy.core.evalf import bitcount
+>>> sign, man, exp, bc = 0, 5, 1, 3
+>>> n = [1, -1][sign]*man*2**exp
+>>> n, bitcount(man)
+(10, 3)
+
+A temporary result is a tuple (re, im, re_acc, im_acc) where
+re and im are nonzero mpf value tuples representing approximate
+numbers, or None to denote exact zeros.
+
+re_acc, im_acc are integers denoting log2(e) where e is the estimated
+relative accuracy of the respective complex part, but may be anything
+if the corresponding complex part is None.
+
+"""
+
+
+def fastlog(x):
+    """Fast approximation of log2(x) for an mpf value tuple x.
+
+    Notes: Calculated as exponent + width of mantissa. This is an
+    approximation for two reasons: 1) it gives the ceil(log2(abs(x)))
+    value and 2) it is too high by 1 in the case that x is an exact
+    power of 2. Although this is easy to remedy by testing to see if
+    the odd mpf mantissa is 1 (indicating that one was dealing with
+    an exact power of 2) that would decrease the speed and is not
+    necessary as this is only being used as an approximation for the
+    number of bits in x. The correct return value could be written as
+    "x[2] + (x[3] if x[1] != 1 else 0)".
+        Since mpf tuples always have an odd mantissa, no check is done
+    to see if the mantissa is a multiple of 2 (in which case the
+    result would be too large by 1).
+
+    Examples
+    ========
+
+    >>> from sympy import log

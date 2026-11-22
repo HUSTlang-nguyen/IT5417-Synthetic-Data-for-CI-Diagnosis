@@ -1,0 +1,100 @@
+# Copyright 2008-2021 pydicom authors. See LICENSE file for details.
+"""Special classes for DICOM value representations (VR)"""
+
+import datetime
+from decimal import Decimal
+from enum import Enum, unique
+import re
+import sys
+from math import floor, isfinite, log10
+from typing import (
+    TypeVar, Type, Tuple, Optional, List, Dict, Union, Any, Callable,
+    MutableSequence, Sequence, cast, Iterator
+)
+import warnings
+
+# don't import datetime_conversion directly
+from pydicom import config
+from pydicom.multival import MultiValue
+
+
+# can't import from charset or get circular import
+default_encoding = "iso8859"
+
+# Delimiters for text strings and person name that reset the encoding.
+# See PS3.5, Section 6.1.2.5.3
+# Note: We use character codes for Python 3
+# because those are the types yielded if iterating over a byte string.
+
+# Characters/Character codes for text VR delimiters: LF, CR, TAB, FF
+TEXT_VR_DELIMS = {0x0d, 0x0a, 0x09, 0x0c}
+
+# Character/Character code for PN delimiter: name part separator '^'
+# (the component separator '=' is handled separately)
+PN_DELIMS = {0x5e}
+
+# maximum allowed value length for string VRs
+# VRs with a maximum length of 2^32 (UR and UT) are not checked
+MAX_VALUE_LEN = {
+    "AE": 16,
+    "CS": 16,
+    "DS": 16,
+    "IS": 12,
+    "LO": 64,
+    "LT": 10240,
+    "SH": 16,
+    "ST": 1024,
+    "UI": 64
+}
+
+
+def _range_regex(regex: str) -> str:
+    """Compose a regex that allows ranges of the given regex,
+    as defined for VRs DA, DT and TM in PS 3.4, C.2.2.2.5.
+    """
+    return fr"^{regex}$|^\-{regex} ?$|^{regex}\- ?$|^{regex}\-{regex} ?$"
+
+
+# regular expressions to match valid values for some VRs
+VR_REGEXES = {
+    "AE": r"^[\x20-\x7e]*$",
+    "AS": r"^\d\d\d[DWMY]$",
+    "CS": r"^[A-Z0-9 _]*$",
+    "DS": r"^ *[+\-]?(\d+|\d+\.\d*|\.\d+)([eE][+\-]?\d+)? *$",
+    "IS": r"^ *[+\-]?\d+ *$",
+    "DA": _range_regex(r"\d{4}(0[1-9]|1[0-2])([0-2]\d|3[01])"),
+    "DT": _range_regex(
+        r"\d{4}((0[1-9]|1[0-2])(([0-2]\d|3[01])(([01]\d|2[0-3])"
+        r"([0-5]\d((60|[0-5]\d)(\.\d{1,6} ?)?)?)?)?)?)?([+-][01]\d\d\d)?"),
+    "TM": _range_regex(
+        r"([01]\d|2[0-3])([0-5]\d((60|[0-5]\d)(\.\d{1,6} ?)?)?)?"),
+    "UI": r"^(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*$",
+    "UR": r"^[A-Za-z_\d:/?#\[\]@!$&'()*+,;=%\-.~]* *$"
+}
+
+STR_VR_REGEXES = {vr: re.compile(regex) for (vr, regex) in VR_REGEXES.items()}
+BYTE_VR_REGEXES = {vr: re.compile(regex.encode())
+                   for (vr, regex) in VR_REGEXES.items()}
+
+
+def validate_vr_length(vr: str, value: Union[str, bytes]) -> Tuple[bool, str]:
+    """Validate the value length for a given VR.
+
+    Parameters
+    ----------
+    vr : str
+        The value representation to validate against.
+    value : str or bytes
+        The value to validate.
+
+    Returns
+    -------
+        A tuple of a boolean validation result and the error message.
+    """
+    max_length = MAX_VALUE_LEN.get(vr, 0)
+    if max_length > 0:
+        value_length = len(value)
+        if value_length > max_length:
+            return False, (
+                f"The value length ({value_length}) exceeds the "
+                f"maximum length of {max_length} allowed for VR {vr}."

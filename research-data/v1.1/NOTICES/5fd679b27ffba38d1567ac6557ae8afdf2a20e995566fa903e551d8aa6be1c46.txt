@@ -1,0 +1,100 @@
+""" Caching facility for SymPy """
+from __future__ import print_function, division
+
+from distutils.version import LooseVersion as V
+
+class _cache(list):
+    """ List of cached functions """
+
+    def print_cache(self):
+        """print cache info"""
+
+        for item in self:
+            name = item.__name__
+            myfunc = item
+            while hasattr(myfunc, '__wrapped__'):
+                if hasattr(myfunc, 'cache_info'):
+                    info = myfunc.cache_info()
+                    break
+                else:
+                    myfunc = myfunc.__wrapped__
+            else:
+                info = None
+
+            print(name, info)
+
+    def clear_cache(self):
+        """clear cache content"""
+        for item in self:
+            myfunc = item
+            while hasattr(myfunc, '__wrapped__'):
+                if hasattr(myfunc, 'cache_clear'):
+                    myfunc.cache_clear()
+                    break
+                else:
+                    myfunc = myfunc.__wrapped__
+
+# global cache registry:
+CACHE = _cache()
+# make clear and print methods available
+print_cache = CACHE.print_cache
+clear_cache = CACHE.clear_cache
+
+from sympy.core.compatibility import lru_cache
+from functools import update_wrapper
+
+try:
+    import fastcache
+    from warnings import warn
+    # the version attribute __version__ is not present for all versions
+    if not hasattr(fastcache, '__version__'):
+        warn("fastcache version >= 0.4.0 required", UserWarning)
+        raise ImportError
+        # ensure minimum required version of fastcache is present
+    if V(fastcache.__version__) < '0.4.0':
+        warn("fastcache version >= 0.4.0 required, detected {}"\
+             .format(fastcache.__version__), UserWarning)
+        raise ImportError
+    # Do not use fastcache if running under pypy
+    import platform
+    if platform.python_implementation() == 'PyPy':
+        raise ImportError
+    lru_cache = fastcache.clru_cache
+
+except ImportError:
+
+    def __cacheit(maxsize):
+        """caching decorator.
+
+           important: the result of cached function must be *immutable*
+
+
+           Examples
+           ========
+
+           >>> from sympy.core.cache import cacheit
+           >>> @cacheit
+           ... def f(a, b):
+           ...    return a+b
+
+           >>> @cacheit
+           ... def f(a, b):
+           ...    return [a, b] # <-- WRONG, returns mutable object
+
+           to force cacheit to check returned results mutability and consistency,
+           set environment variable SYMPY_USE_CACHE to 'debug'
+        """
+        def func_wrapper(func):
+            cfunc = lru_cache(maxsize, typed=True)(func)
+
+            # wraps here does not propagate all the necessary info
+            # for py2.7, use update_wrapper below
+            def wrapper(*args, **kwargs):
+                try:
+                    retval = cfunc(*args, **kwargs)
+                except TypeError:
+                    retval = func(*args, **kwargs)
+                return retval
+
+            wrapper.cache_info = cfunc.cache_info
+            wrapper.cache_clear = cfunc.cache_clear

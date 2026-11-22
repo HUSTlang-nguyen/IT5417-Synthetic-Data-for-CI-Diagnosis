@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T042449511241Z",
+  "reviewed_at": "2026-11-12T12:10:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d381a633291de768c9d53b9a293730405caec37f7a33b5021837ea48e43f55b7",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "4490f128f45329ccae52acb44340d39af33fa0672fc4ca9d52853be50456f81a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "756c57698d2faff2dc9a689913074f349c7da386bdf797a764cbaa3b74b22ebf",
+    "historical-fixed.stdout.txt": "d5b2be3ee7d21879775ff75d9113e7fbb486ff16b89e4d4594bcef6b23065814",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "274848448745d70d83748ad9a9b42d6e98d0e0b58a8f255462d9d36f713ce82e"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/assumptions/refine.py",
+      "function": "refine_arg"
+    }
+  ],
+  "mechanism": "The refinement dispatcher has no argument-angle handler, so refine(arg(x),Q.positive(x)) remains arg(x) instead of0. Adding the sign-aware arg handler and its registry entry supplies the expected refinement.",
+  "limitations": "Explicit missing definition supported by the added function and saved positive-argument test. The negative branch is in the repair but not the first observed assertion.",
+  "observed_junit": {
+    "base": {
+      "cases": 14,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 14,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.assumptions.tests.test_refine::test_arg",
+      "message": "assert arg(x) == 0\n +  where arg(x) = refine(arg(x), Q.positive(x))\n +    where arg(x) = arg(x)\n +    and   Q.positive(x) = Q.positive(x)\n +      where Q.positive = <sympy.assumptions.ask.AssumptionKeys object at 0x784d4b8d61c0>.positive"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/assumptions/refine.py",
+      "function": "refine_arg"
+    }
+  ]
+}

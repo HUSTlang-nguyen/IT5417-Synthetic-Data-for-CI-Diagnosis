@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-10323",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/directives/code.py",
+      "function": "LiteralIncludeReader.read"
+    }
+  ],
+  "explanation": "Dedent runs after prepend and append filters, so it removes characters from the user-supplied boundary lines as well as indentation from included source. The saved class Foo line becomes ass Foo and its comment loses its prefix. Applying dedent before the boundary filters preserves their content.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.parent"
+    },
+    {
+      "file": "sphinx/directives/code.py",
+      "function": "LiteralIncludeReader.append_filter"
+    },
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "_All.append"
+    },
+    {
+      "file": "sphinx/directives/code.py",
+      "function": "LiteralIncludeReader.prepend_filter"
+    },
+    {
+      "file": "sphinx/directives/code.py",
+      "function": "LiteralIncludeReader.dedent_filter"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "pylint-dev__pylint-6506",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/config/config_initialization.py",
+      "function": "_config_initialization"
+    }
+  ],
+  "explanation": "The unknown-option branch emits a linter message and raises an internal _UnrecognizedOptionError instead of routing the invalid option through argparse error handling. The parser error path supplies the expected user-facing error and exit behavior.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/config/config_initialization.py",
+      "function": "_config_initialization"
+    },
+    {
+      "file": "pylint/lint/run.py",
+      "function": "Run.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

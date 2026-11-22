@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T044933921870Z",
+  "reviewed_at": "2026-11-12T12:14:00+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d969499cf7bb9efdebf73fc9821e7cae62736ae9ddd3539841e47bafe7898577",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "dcb9b70028948b75b960ce5f0ac16670fe38f02652c42796b29b3062418f526d",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "75d161e928cd515d35b7280e540c8ec8f5a271342e71c7a479f030c7d23bf6f9",
+    "historical-fixed.stdout.txt": "165d7722d128147b384f2e217e74211647973f95abb57106417ea98d958e774f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "0bc932cb990dfbe0e22588a9cdf581c6e4b6bdea01538592edc469931b1d1e56"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/units/systems/cgs.py",
+      "function": "<module>"
+    }
+  ],
+  "mechanism": "Module-level SI/CGS scale registrations use incorrect powers of10 and speed-of-light factors. The saved statcoulomb conversion is100 times the expected coulomb/2997924580. Correcting the registered scales fixes this first conversion assertion.",
+  "limitations": "Explicit module-level causal location, not an invented function. The patch corrects additional electrical units, while the single saved test first observes charge conversion.",
+  "observed_junit": {
+    "base": {
+      "cases": 1,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 1,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.units.tests.test_unit_system_cgs_gauss::test_conversion_to_from_si",
+      "message": "assert 5*coulomb/149896229 == (coulomb / 2997924580)\n +  where 5*coulomb/149896229 = convert_to(statcoulomb, coulomb, <UnitSystem: (centimeter, gram, second)>)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

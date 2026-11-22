@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T085933079841Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__ne__"
+    }
+  ],
+  "explanation": "The inequality method returns equality directly instead of negating it. Saved DSfloat/string inequality assertions invert their expected Boolean result.",
+  "retrieved_locations": [
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__new__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__init__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__repr__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__str__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__hash__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

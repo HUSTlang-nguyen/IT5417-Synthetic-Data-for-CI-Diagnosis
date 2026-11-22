@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T234921954503Z",
+  "reviewed_at": "2026-11-12T07:40:48+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f0ea6df3f99af006d036dcd783f09131f28e60987629037d047fab1b518f9fdf",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "c1f1998222b60cad80e7a791719a81ec191795d3654af093bd3c22debe545fea",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "af807deafa5c472cbe3a7f51e9fa1232ed5a3db1f4f23af6eced3a55c89280b6",
+    "historical-fixed.stdout.txt": "1eb5ca7df3c25521b3c88866c40f07d969b65a7b169888dc61e36836874a3bc4",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "aad3e3e1d91506764bdddbb2c69f0ca50eb24c1043d3982c428dd6a6f5c6f016"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "Similar.__init__"
+    }
+  ],
+  "mechanism": "The similarity engine copies option values into independent attributes at construction rather than sharing the linters current configuration. Later --ignore-imports=y therefore leaves its private ignore_imports false, and it reports duplicate imports with exit status eight. Linking the engines namespace to linter.config keeps the option observed by append_stream and matching routines current.",
+  "limitations": "The repair changes several consumers and removes the custom setter; the central cause is stale duplicated configuration, with the constructor as its originating function. API/state-propagation logic is an alternate coarse class. The related 6357 preprocessing defect is not the same cause.",
+  "observed_junit": {
+    "base": {
+      "cases": 11,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 11,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_similar.TestSimilarCodeChecker::test_ignore_imports",
+      "message": "AssertionError: expected output status 0, got 8. Below pylint output: \n  ************* Module ignore_imports.file_one\n  tests/regrtest_data/duplicate_code/ignore_imports/file_one.py:1:0: R0801: Similar lines in 2 files\n  ==ignore_imports.file_one:[0:5]\n  ==ignore_imports.file_two:[0:5]\n  import argparse\n  import math\n  import os\n  import random\n  import sys (duplicate-code)\n  \n  -----------------------------------\n  Your code has been rated at 9.00/10\n  \n  \nassert 8 == 0"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T210940635480Z",
+  "reviewed_at": "2026-11-12T07:29:02+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "9f8c059afa5e0f887dafbe02950eb78e028ca6551a9e04a96dcf229a47db8a98",
+    "license-evidence.json": "1b3ebb9908afadb5819a38e5e138ea2e332864ec7c0690ac4cc21564a72d2372",
+    "historical-base.stdout.txt": "0cc03492537f5cd97b96718c56603e536cf1ba9ec42ba7b38f39d4b0767b944e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "eda15cc5f433f277881b36ba47ac4edee0a20587459d82788bfeaabe0a955ca5",
+    "historical-fixed.stdout.txt": "4a1ec28524fbcf684572034cbc5f43dd4507984f3b3c6dedf606cc1a3ad62945",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b89df34216ba7d74d4ebe2652fee3c0c257ec20159d43e2d58558e5c02f54c21"
+  },
+  "cause_type": "API/type",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.__init__"
+    }
+  ],
+  "mechanism": "The blueprint constructor rejects dotted names but accepts an empty name, violating the argument-validation contract. The saved pytest.raises block therefore observes no ValueError. Adding the nonempty-name check rejects the invalid argument at construction.",
+  "limitations": "This is input/API validation rather than an exception emitted by a missing dependency. Logic/value would also describe the missing branch at a coarser granularity.",
+  "observed_junit": {
+    "base": {
+      "cases": 60,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 60,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_blueprints::test_empty_name_not_allowed",
+      "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

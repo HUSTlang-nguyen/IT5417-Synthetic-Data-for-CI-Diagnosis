@@ -1,0 +1,42 @@
+{
+  "run_id": "reproduce-20261111T202213231638Z",
+  "reviewed_at": "2026-11-12T07:17:26+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a2381845449ac760e197c0947893bb19e7274814389feaa1241fbd26ef1d5681",
+    "license-evidence.json": "8dd0765a115cdb8942009d9cd8c4d4f8a9c2d128e5a114cbd873c13cb176f354",
+    "historical-base.stdout.txt": "9ce3bb95fb13a38d2942f44594aee9bf2dd3fb29d4979cd7c2af149a3c3ecbda",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "bc981178d371d99f9967cf7b577f9285875789546011adcb1b013031d141661c",
+    "historical-fixed.stdout.txt": "bb777391bfab170e00b4beb7b078bb839fceb3d03f93ad8a23448cbfa764fc97",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "a37cbfcba21f45e0aa591a6ebad1e68201f53d6505970e2131dd3add096ab7f5"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/ext/napoleon/docstring.py",
+      "function": "GoogleDocstring._escape_args_and_kwargs"
+    }
+  ],
+  "mechanism": "Trailing underscores are escaped unconditionally, although the active configuration does not request stripping signature backslashes. The docstring output gains an unwanted backslash. Conditioning that escape on strip_signature_backslash preserves the expected parameter spelling.",
+  "limitations": "This is a conditional escaping rule in product code, not a missing runtime dependency. The log compares expected arg_ against actual escaped arg.",
+  "observed_junit": {
+    "base": {
+      "cases": 31,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 31,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: AssertionError: '\\n:ivar arg_: some description\\n:vartype arg_: type\\n' != '\\n:ivar arg\\\\_: some description\\n:vartype arg\\\\_: type\\n'\n  \n- :ivar arg_: some description\n+ :ivar arg\\_: some description\n?          +\n- :vartype arg_: type\n+ :vartype arg\\_: type\n?             +"
+}

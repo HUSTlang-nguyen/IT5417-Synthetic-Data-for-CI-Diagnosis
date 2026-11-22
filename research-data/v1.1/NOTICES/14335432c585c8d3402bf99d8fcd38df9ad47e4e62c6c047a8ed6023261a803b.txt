@@ -1,0 +1,100 @@
+"""Printing subsystem driver
+
+SymPy's printing system works the following way: Any expression can be
+passed to a designated Printer who then is responsible to return an
+adequate representation of that expression.
+
+**The basic concept is the following:**
+
+1.  Let the object print itself if it knows how.
+2.  Take the best fitting method defined in the printer.
+3.  As fall-back use the emptyPrinter method for the printer.
+
+Which Method is Responsible for Printing?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The whole printing process is started by calling ``.doprint(expr)`` on the printer
+which you want to use. This method looks for an appropriate method which can
+print the given expression in the given style that the printer defines.
+While looking for the method, it follows these steps:
+
+1.  **Let the object print itself if it knows how.**
+
+    The printer looks for a specific method in every object. The name of that method
+    depends on the specific printer and is defined under ``Printer.printmethod``.
+    For example, StrPrinter calls ``_sympystr`` and LatexPrinter calls ``_latex``.
+    Look at the documentation of the printer that you want to use.
+    The name of the method is specified there.
+
+    This was the original way of doing printing in sympy. Every class had
+    its own latex, mathml, str and repr methods, but it turned out that it
+    is hard to produce a high quality printer, if all the methods are spread
+    out that far. Therefore all printing code was combined into the different
+    printers, which works great for built-in SymPy objects, but not that
+    good for user defined classes where it is inconvenient to patch the
+    printers.
+
+2.  **Take the best fitting method defined in the printer.**
+
+    The printer loops through expr classes (class + its bases), and tries
+    to dispatch the work to ``_print_<EXPR_CLASS>``
+
+    e.g., suppose we have the following class hierarchy::
+
+            Basic
+            |
+            Atom
+            |
+            Number
+            |
+        Rational
+
+    then, for ``expr=Rational(...)``, the Printer will try
+    to call printer methods in the order as shown in the figure below::
+
+        p._print(expr)
+        |
+        |-- p._print_Rational(expr)
+        |
+        |-- p._print_Number(expr)
+        |
+        |-- p._print_Atom(expr)
+        |
+        `-- p._print_Basic(expr)
+
+    if ``._print_Rational`` method exists in the printer, then it is called,
+    and the result is returned back. Otherwise, the printer tries to call
+    ``._print_Number`` and so on.
+
+3.  **As a fall-back use the emptyPrinter method for the printer.**
+
+    As fall-back ``self.emptyPrinter`` will be called with the expression. If
+    not defined in the Printer subclass this will be the same as ``str(expr)``.
+
+.. _printer_example:
+
+Example of Custom Printer
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the example below, we have a printer which prints the derivative of a function
+in a shorter form.
+
+.. code-block:: python
+
+    from sympy.core.symbol import Symbol
+    from sympy.printing.latex import LatexPrinter, print_latex
+    from sympy.core.function import UndefinedFunction, Function
+
+
+    class MyLatexPrinter(LatexPrinter):
+        \"\"\"Print derivative of a function of symbols in a shorter form.
+        \"\"\"
+        def _print_Derivative(self, expr):
+            function, *vars = expr.args
+            if not isinstance(type(function), UndefinedFunction) or \\
+               not all(isinstance(i, Symbol) for i in vars):
+                return super()._print_Derivative(expr)
+
+            # If you want the printer to work correctly for nested
+            # expressions then use self._print() instead of str() or latex().
+            # See the example of nested modulo below in the custom printing

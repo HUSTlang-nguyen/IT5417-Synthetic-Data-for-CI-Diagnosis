@@ -1,0 +1,11 @@
+--- a/sympy/physics/vector/frame.py
++++ b/sympy/physics/vector/frame.py
+@@ -135,7 +135,7 @@
+         if indices is not None:
+             if not isinstance(indices, (tuple, list)):
+                 raise TypeError('Supply the indices as a list')
+-            if len(indices) != 3:
++            if len(indices) != 4:
+                 raise ValueError('Supply 3 indices')
+             for i in indices:
+                 if not isinstance(i, string_types):

@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T08:34:09+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "pylint-dev__pylint-6386",
+  "case_id": "pylint-dev__pylint-6386-ds1-extra",
+  "run_id": "reproduce-20261112T001300157930Z",
+  "role": "test",
+  "repo": "https://github.com/pylint-dev/pylint",
+  "group_id": "https://github.com/pylint-dev/pylint",
+  "source_commit": "754b487f4d892e3d4872b6fc7468a71db4e31c13",
+  "image_id": "sha256:fd46e273d98fd6cdd722dba28e2416d90183d34c36fc0613aee69b2bf68b4b2b",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "b1f18749d306c6084f29b3b4568decf9bf98390293ddfb4791055fa026640153",
+  "input_content_sha256": "e545989139a6161cd2ac6f7229b0cf27d45863063973c61779b9c45797558a8d",
+  "reference_sha256": "e9f1607c46a74a6b938248e3ed18397d2e27fe69e5132e857f649e65aabe7963",
+  "assessment_sha256": "507c9c325822879742d376b6b0d24bf7c9ee73c723fe69aed41ee6dbcc56f301",
+  "evidence_hashes": {
+    "manifest.json": "f0325dbc8f710bc4d0314ced447bc0e92ac7d3fa7c57f972d4bc499479ee3fc3",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "b75e4c379d9eb5c82cd0ed83a7b3fe7d23fd25811ba790c00bb58bd8e08ebd22",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2dbf64b643aa3165d53b47939d9f625f2fb7ffc996f68e2e93559ef9d7726958",
+    "historical-fixed.stdout.txt": "8e839d856854e9d7cb2aabc8f1d50d8e986908fcd0a3778fb99c36f5c983167b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c207edc663841017fc43d37e6608d22c61da18b8a0569fdf464a4417f4c36dc0"
+  },
+  "retrieval": {
+    "production_files_scanned": 355,
+    "ranked_function_count": 2092,
+    "characters": 6000,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

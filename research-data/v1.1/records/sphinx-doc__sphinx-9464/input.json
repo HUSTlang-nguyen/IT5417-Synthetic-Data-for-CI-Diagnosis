@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-4.2.0+, docutils-0.17.1\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 24 items\n\ntests/test_util_typing.py::test_restify PASSED                           [  4%]\ntests/test_util_typing.py::test_restify_type_hints_containers PASSED     [  8%]\ntests/test_util_typing.py::test_restify_type_hints_Callable PASSED       [ 12%]\ntests/test_util_typing.py::test_restify_type_hints_Union PASSED          [ 16%]\ntests/test_util_typing.py::test_restify_type_hints_typevars PASSED       [ 20%]\ntests/test_util_typing.py::test_restify_type_hints_custom_class PASSED   [ 25%]\ntests/test_util_typing.py::test_restify_type_hints_alias PASSED          [ 29%]\ntests/test_util_typing.py::test_restify_type_ForwardRef PASSED           [ 33%]\ntests/test_util_typing.py::test_restify_type_Literal PASSED              [ 37%]\ntests/test_util_typing.py::test_restify_type_union_operator SKIPPED      [ 41%]\ntests/test_util_typing.py::test_restify_broken_type_hints PASSED         [ 45%]\ntests/test_util_typing.py::test_stringify PASSED                         [ 50%]\ntests/test_util_typing.py::test_stringify_type_hints_containers PASSED   [ 54%]\ntests/test_util_typing.py::test_stringify_type_hints_pep_585 FAILED      [ 58%]\ntests/test_util_typing.py::test_stringify_Annotated PASSED               [ 62%]\ntests/test_util_typing.py::test_stringify_type_hints_string PASSED       [ 66%]\ntests/test_util_typing.py::test_stringify_type_hints_Callable PASSED     [ 70%]\ntests/test_util_typing.py::test_stringify_type_hints_Union PASSED        [ 75%]\ntests/test_util_typing.py::test_stringify_type_hints_typevars PASSED     [ 79%]\ntests/test_util_typing.py::test_stringify_type_hints_custom_class PASSED [ 83%]\ntests/test_util_typing.py::test_stringify_type_hints_alias PASSED        [ 87%]\ntests/test_util_typing.py::test_stringify_type_Literal PASSED            [ 91%]\ntests/test_util_typing.py::test_stringify_type_union_operator SKIPPED    [ 95%]\ntests/test_util_typing.py::test_stringify_broken_type_hints PASSED       [100%]\n\n=================================== FAILURES ===================================\n______________________ test_stringify_type_hints_pep_585 _______________________\n\n    @pytest.mark.skipif(sys.version_info < (3, 9), reason='python 3.9+ is required.')\n    def test_stringify_type_hints_pep_585():\n>       assert stringify(list[int]) == \"list[int]\"\nE       AssertionError: assert 'list' == 'list[int]'\nE         - list[int]\nE         + list\n\ntests/test_util_typing.py:180: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_util_typing.py::test_stringify_type_hints_pep_585 - Asserti...\n=================== 1 failed, 21 passed, 2 skipped in 0.14s ====================\n",
+  "code": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify",
+      "start_line": 287,
+      "end_line": 320,
+      "score": 30.544331,
+      "text": "sphinx/util/typing.py::stringify lines 287-320\ndef stringify(annotation: Any) -> str:\n    \"\"\"Stringify type annotation object.\"\"\"\n    from sphinx.util import inspect  # lazy loading\n\n    if isinstance(annotation, str):\n        if annotation.startswith(\"'\") and annotation.endswith(\"'\"):\n            # might be a double Forward-ref'ed type.  Go unquoting.\n            return annotation[1:-1]\n        else:\n            return annotation\n    elif isinstance(annotation, TypeVar):\n        if annotation.__module__ == 'typing':\n            return annotation.__name__\n        else:\n            return '.'.join([annotation.__module__, annotation.__name__])\n    elif inspect.isNewType(annotation):\n        # Could not get the module where it defined\n        return annotation.__name__\n    elif not annotation:\n        return repr(annotation)\n    elif annotation is NoneType:\n        return 'None'\n    elif annotation in INVALID_BUILTIN_CLASSES:\n        return INVALID_BUILTIN_CLASSES[annotation]\n    elif (getattr(annotation, '__module__', None) == 'builtins' and\n          hasattr(annotation, '__qualname__')):\n        return annotation.__qualname__\n    elif annotation is Ellipsis:\n        return '...'\n\n    if sys.version_info >= (3, 7):  # py37+\n        return _stringify_py37(annotation)\n    else:\n        return _stringify_py36(annotation)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/util/requests.py",
+      "function": "_get_user_agent",
+      "start_line": 92,
+      "end_line": 100,
+      "score": 0.970143,
+      "text": "sphinx/util/requests.py::_get_user_agent lines 92-100\ndef _get_user_agent(config: Config) -> str:\n    if config.user_agent:\n        return config.user_agent\n    else:\n        return ' '.join([\n            'Sphinx/%s' % sphinx.__version__,\n            'requests/%s' % requests.__version__,\n            'python/%s' % '.'.join(map(str, sys.version_info[:3])),\n        ])",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/intersphinx.py",
+      "function": "inspect_main.MockApp.warn",
+      "start_line": 417,
+      "end_line": 418,
+      "score": 0.948683,
+      "text": "sphinx/ext/intersphinx.py::inspect_main.MockApp.warn lines 417-418\n        def warn(self, msg: str) -> None:\n            print(msg, file=sys.stderr)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/cmd/make_mode.py",
+      "function": "run_make_mode",
+      "start_line": 158,
+      "end_line": 167,
+      "score": 0.944911,
+      "text": "sphinx/cmd/make_mode.py::run_make_mode lines 158-167\ndef run_make_mode(args: List[str]) -> int:\n    if len(args) < 3:\n        print('Error: at least 3 arguments (builder, source '\n              'dir, build dir) are required.', file=sys.stderr)\n        return 1\n    make = Make(args[1], args[2], args[3:])\n    run_method = 'build_' + args[0]\n    if hasattr(make, run_method):\n        return getattr(make, run_method)()\n    return make.run_generic_build(args[0])",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "rollback_sysmodules",
+      "start_line": 251,
+      "end_line": 259,
+      "score": 0.917663,
+      "text": "sphinx/testing/fixtures.py::rollback_sysmodules lines 251-259\ndef rollback_sysmodules():\n    \"\"\"Rollback sys.modules to before testing to unload modules during tests.\"\"\"\n    try:\n        sysmodules = list(sys.modules)\n        yield\n    finally:\n        for modname in list(sys.modules):\n            if modname not in sysmodules:\n                sys.modules.pop(modname)",
+      "truncated": false
+    }
+  ]
+}

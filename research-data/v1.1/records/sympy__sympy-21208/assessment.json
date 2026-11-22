@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T035753153601Z",
+  "reviewed_at": "2026-11-12T11:56:42+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "caf45c07c81382ed7f1dcd1977798036e38010ed2c8e406db90c2f95f791c7f9",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "0cd2963f09f3c4401b0e02fe63d3753a32304796ebdc3bdf458499ec25384ee1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "1f803f43a64570110f7b39d16abb96b83e5a633d0e02cb02d48f89b3d4c652c8",
+    "historical-fixed.stdout.txt": "0f59e2fa8aa8f8a32cc337130dab1c85b573a1f31b6060c67ec9796b72929587",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "bdaf7eeef730b05a41b3053141224b5d9d944ac6f9565b93e22bbf5cdd9cdf80"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_matrix_derivative"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_LeftRightArgs.build"
+    }
+  ],
+  "mechanism": "Matrix differentiation calls doit on intermediate derivative expressions before the intended matrix differentiation is complete. This prematurely changes dependence and the saved vector loses derivative terms. Leaving the intermediate objects unevaluated through both builder stages preserves the expected derivatives.",
+  "limitations": "Both existing sites apply the same premature-evaluation step. The exact intermediate expression sequence is inferred from code/patch; the saved final matrices directly prove lost derivative terms.",
+  "observed_junit": {
+    "base": {
+      "cases": 37,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 37,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.expressions.tests.test_matexpr::test_issue_21195",
+      "message": "assert Matrix([\\n[-si...[         0]]) == Matrix([\\n[   ...t), (t, 3))]])\n  Full diff:\n    Matrix([\n  - [             -sin(x(t))*Derivative(x(t), t) - sin(x(t))],\n  - [(tan(x(t))**2 + 1)*Derivative(x(t), (t, 2)) + cos(x(t))],\n  - [              sin(t)*cos(x(t))*Derivative(x(t), (t, 3))]],\n  + [-sin(x(t))],\n  + [ cos(x(t))],\n  + [         0]],\n    )"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

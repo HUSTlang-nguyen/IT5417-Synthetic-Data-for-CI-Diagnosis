@@ -1,0 +1,100 @@
+"""
+This module defines tensors with abstract index notation.
+
+The abstract index notation has been first formalized by Penrose.
+
+Tensor indices are formal objects, with a tensor type; there is no
+notion of index range, it is only possible to assign the dimension,
+used to trace the Kronecker delta; the dimension can be a Symbol.
+
+The Einstein summation convention is used.
+The covariant indices are indicated with a minus sign in front of the index.
+
+For instance the tensor ``t = p(a)*A(b,c)*q(-c)`` has the index ``c``
+contracted.
+
+A tensor expression ``t`` can be called; called with its
+indices in sorted order it is equal to itself:
+in the above example ``t(a, b) == t``;
+one can call ``t`` with different indices; ``t(c, d) == p(c)*A(d,a)*q(-a)``.
+
+The contracted indices are dummy indices, internally they have no name,
+the indices being represented by a graph-like structure.
+
+Tensors are put in canonical form using ``canon_bp``, which uses
+the Butler-Portugal algorithm for canonicalization using the monoterm
+symmetries of the tensors.
+
+If there is a (anti)symmetric metric, the indices can be raised and
+lowered when the tensor is put in canonical form.
+"""
+
+from __future__ import print_function, division
+
+from typing import Any, Dict as tDict, List, Set
+
+from abc import abstractmethod, ABCMeta
+from collections import defaultdict
+import operator
+import itertools
+from sympy import Rational, prod, Integer, default_sort_key
+from sympy.combinatorics import Permutation
+from sympy.combinatorics.tensor_can import get_symmetric_group_sgs, \
+    bsgs_direct_product, canonicalize, riemann_bsgs
+from sympy.core import Basic, Expr, sympify, Add, Mul, S
+from sympy.core.assumptions import ManagedProperties
+from sympy.core.compatibility import reduce, SYMPY_INTS
+from sympy.core.containers import Tuple, Dict
+from sympy.core.decorators import deprecated
+from sympy.core.symbol import Symbol, symbols
+from sympy.core.sympify import CantSympify, _sympify
+from sympy.core.operations import AssocOp
+from sympy.matrices import eye
+from sympy.utilities.exceptions import SymPyDeprecationWarning
+from sympy.utilities.decorator import memoize_property
+import warnings
+
+
+@deprecated(useinstead=".replace_with_arrays", issue=15276, deprecated_since_version="1.4")
+def deprecate_data():
+    pass
+
+@deprecated(useinstead=".substitute_indices()", issue=17515,
+            deprecated_since_version="1.5")
+def deprecate_fun_eval():
+    pass
+
+@deprecated(useinstead="tensor_heads()", issue=17108,
+            deprecated_since_version="1.5")
+def deprecate_TensorType():
+    pass
+
+
+class _IndexStructure(CantSympify):
+    """
+    This class handles the indices (free and dummy ones). It contains the
+    algorithms to manage the dummy indices replacements and contractions of
+    free indices under multiplications of tensor expressions, as well as stuff
+    related to canonicalization sorting, getting the permutation of the
+    expression and so on. It also includes tools to get the ``TensorIndex``
+    objects corresponding to the given index structure.
+    """
+
+    def __init__(self, free, dum, index_types, indices, canon_bp=False):
+        self.free = free
+        self.dum = dum
+        self.index_types = index_types
+        self.indices = indices
+        self._ext_rank = len(self.free) + 2*len(self.dum)
+        self.dum.sort(key=lambda x: x[0])
+
+    @staticmethod
+    def from_indices(*indices):
+        """
+        Create a new ``_IndexStructure`` object from a list of ``indices``
+
+        ``indices``     ``TensorIndex`` objects, the indices. Contractions are
+                        detected upon construction.
+
+        Examples
+        ========

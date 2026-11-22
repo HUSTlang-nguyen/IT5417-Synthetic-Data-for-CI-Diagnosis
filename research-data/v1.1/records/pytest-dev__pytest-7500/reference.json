@@ -1,0 +1,31 @@
+{
+  "sample_id": "pytest-dev__pytest-7500",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/pathlib.py",
+      "function": "ensure_deletable"
+    }
+  ],
+  "explanation": "The lock-eligibility check uses exists rather than checking a usable lock file with guarded is_file. In the saved inaccessible-lock simulation it proceeds to remove the lock and returns True when eligibility must be False. Guarding is_file errors preserves the conservative no-delete decision.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "pytest_configure"
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "<module>"
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "record_testsuite_property"
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "pytest_addoption"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

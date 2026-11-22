@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T043830806790Z",
+  "reviewed_at": "2026-11-12T12:10:58+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f375dfa55ad4973b43bb5c2389d4ce1fae3074ef2ab7da1d28f2764c56692b38",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "ee4a0507dc5f973f963dfbe8e3cf0889f50eea2e4f2a01a53d6de9b89d72cff2",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "82f814c3bdcc23fab4c5723cefe3910072d11e42f8211e779a43ed40854619da",
+    "historical-fixed.stdout.txt": "7a77e165e2ce5c611631d920b6ead9c959790aa552e3cca9ab177502e9a71afd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "de9d3820b265b253e2be0133d57b95ad82f4f2a699a5ea32da9c7cf355b57740"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/parsing/sympy_parser.py",
+      "function": "_implicit_application"
+    }
+  ],
+  "mechanism": "The implicit-call transformation mistakes a tokenizer NEWLINE after a standalone callable name for an argument. Saved parsing of factorial becomes a zero-argument call and raises TypeError rather than returning the function. Excluding NEWLINE from implicit application prevents insertion of the empty call.",
+  "limitations": "The full saved test identifies standalone factorial as the failing case. The patch also changes lambda notation, but that separate branch is not the observed failure.",
+  "observed_junit": {
+    "base": {
+      "cases": 4,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 4,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.parsing.tests.test_implicit_multiplication_application::test_implicit_application",
+      "message": "TypeError: factorial takes exactly 1 argument (0 given)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

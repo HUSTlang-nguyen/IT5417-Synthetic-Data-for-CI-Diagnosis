@@ -1,0 +1,11 @@
+--- a/sympy/ntheory/factor_.py
++++ b/sympy/ntheory/factor_.py
+@@ -226,7 +226,7 @@
+                     cross = min(
+                         multiplicity(p.q, n.p),
+                         multiplicity(p.p, n.q))
+-                    return like - cross
++                    return like + cross
+             except AttributeError:
+                 pass
+         raise ValueError('expecting ints or fractions, got %s and %s' % (p, n))

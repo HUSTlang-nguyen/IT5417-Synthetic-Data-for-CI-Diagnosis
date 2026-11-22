@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T034603959060Z",
+  "reviewed_at": "2026-11-12T11:52:33+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "cd284246d7be84f5030db93cc5ea4cb1065352be78cf5ce1f2fd972b3f485ef4",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "c8ac45e14c94d58f8331be1110779fc92caa570b3bbf0ff3d17ac14711bafbe9",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a54cd497f04e27fd5e3f2c4626f2413427b10f2722b297c693db9848b486f8e6",
+    "historical-fixed.stdout.txt": "b86054ee30e7c0901addb724495ef464b6b5f8cd25ec27ea0de801c2e5318cfd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ed536b992e9422dddf54c7c9ac2e16b896328583217442335926d8c0a0892278"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/combinatorial/numbers.py",
+      "function": "bell.eval"
+    }
+  ],
+  "mechanism": "The Bell evaluator handles finite nonnegative integers but omits an infinity case, leaving bell(oo) unevaluated. The saved assertion requires infinity. The new explicit infinity branch supplies that boundary behavior.",
+  "limitations": "The repair also adds invalid-negative/noninteger checks, but those later assertions are not separately proven by the first failure. Do not locate the cause in the nearby incomplete-polynomial helper.",
+  "observed_junit": {
+    "base": {
+      "cases": 16,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 16,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.combinatorial.tests.test_comb_numbers::test_bell",
+      "message": "assert bell(oo) == oo\n +  where bell(oo) = bell(oo)\n +  and   oo = S.Infinity"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

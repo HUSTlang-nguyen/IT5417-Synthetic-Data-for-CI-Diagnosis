@@ -1,0 +1,27 @@
+{
+  "sample_id": "pytest-dev__pytest-7499",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "ExceptionInfo.match"
+    }
+  ],
+  "explanation": "The mismatch diagnostic still uses the old Pattern ... does not match text and lacks the revised punctuation/escaping hint. Saved assertions require the Regex pattern ... message and fail on the difference. Building the required diagnostic in this method restores the contract.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "RaisesContext.__exit__"
+    },
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "ExceptionInfo.match"
+    },
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

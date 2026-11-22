@@ -1,0 +1,11 @@
+--- a/sympy/printing/latex.py
++++ b/sympy/printing/latex.py
+@@ -2437,7 +2437,7 @@
+     $\left [ 2 / x, \quad y\right ]$
+ 
+     """
+-    if symbol_names is None:
++    if symbol_names is not None:
+         symbol_names = {}
+ 
+     settings = {

@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+import collections
+from sympy.core.add import Add
+from sympy.core.basic import Basic, Atom
+from sympy.core.expr import Expr
+from sympy.core.function import count_ops
+from sympy.core.logic import fuzzy_and
+from sympy.core.power import Pow
+from sympy.core.symbol import Symbol, Dummy, symbols
+from sympy.core.numbers import Integer, ilcm, Float
+from sympy.core.singleton import S
+from sympy.core.sympify import sympify
+from sympy.core.compatibility import is_sequence, default_sort_key, range, \
+    NotIterable
+
+from sympy.polys import PurePoly, roots, cancel, gcd
+from sympy.simplify import simplify as _simplify, signsimp, nsimplify
+from sympy.utilities.iterables import flatten, numbered_symbols
+from sympy.functions.elementary.miscellaneous import sqrt, Max, Min
+from sympy.functions import exp, factorial
+from sympy.printing import sstr
+from sympy.core.compatibility import reduce, as_int, string_types
+from sympy.assumptions.refine import refine
+from sympy.core.decorators import call_highest_priority
+from sympy.core.decorators import deprecated
+from sympy.utilities.exceptions import SymPyDeprecationWarning
+
+from types import FunctionType
+
+
+def _iszero(x):
+    """Returns True if x is zero."""
+    return x.is_zero
+
+
+class MatrixError(Exception):
+    pass
+
+
+class ShapeError(ValueError, MatrixError):
+    """Wrong matrix shape"""
+    pass
+
+
+class NonSquareMatrixError(ShapeError):
+    pass
+
+
+class DeferredVector(Symbol, NotIterable):
+    """A vector whose components are deferred (e.g. for use with lambdify)
+
+    Examples
+    ========
+
+    >>> from sympy import DeferredVector, lambdify
+    >>> X = DeferredVector( 'X' )
+    >>> X
+    X
+    >>> expr = (X[0] + 2, X[2] + 3)
+    >>> func = lambdify( X, expr)
+    >>> func( [1, 2, 3] )
+    (3, 6)
+    """
+
+    def __getitem__(self, i):
+        if i == -0:
+            i = 0
+        if i < 0:
+            raise IndexError('DeferredVector index out of range')
+        component_name = '%s[%d]' % (self.name, i)
+        return Symbol(component_name)
+
+    def __str__(self):
+        return sstr(self)
+
+    def __repr__(self):
+        return "DeferredVector('%s')" % (self.name)
+
+
+class MatrixRequired(object):
+    """All subclasses of matrix objects must implement the
+    required matrix properties listed here."""
+    rows = None
+    cols = None
+    shape = None
+    _simplify = None
+
+    @classmethod
+    def _new(cls, *args, **kwargs):
+        """`_new` must, at minimum, be callable as
+        `_new(rows, cols, mat) where mat is a flat list of the
+        elements of the matrix."""
+        raise NotImplementedError("Subclasses must implement this.")
+
+    def __eq__(self, other):
+        raise NotImplementedError("Subclasses must impliment this.")
+
+    def __getitem__(self, key):
+        """Implementations of __getitem__ should accept ints, in which

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T085113076465Z-2",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixArithmetic.__matmul__"
+    }
+  ],
+  "explanation": "The unsupported-operand fallback adds an isinstance check against Matrix, a name absent in this module. Saved matrix-multiplication execution raises NameError before returning NotImplemented.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixArithmetic.__matmul__"
+    },
+    {
+      "file": "sympy/core/decorators.py",
+      "function": "call_highest_priority.priority_decorator.binary_op_wrapper"
+    },
+    {
+      "file": "sympy/core/decorators.py",
+      "function": "call_highest_priority"
+    },
+    {
+      "file": "sympy/core/decorators.py",
+      "function": "call_highest_priority.priority_decorator"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

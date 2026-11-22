@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9464",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify"
+    }
+  ],
+  "explanation": "The builtins annotation branch returns only __qualname__, discarding PEP-585 generic arguments. list[int] is therefore displayed as list. When __args__ is present, repr preserves the parameterized type.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify"
+    },
+    {
+      "file": "sphinx/util/requests.py",
+      "function": "_get_user_agent"
+    },
+    {
+      "file": "sphinx/ext/intersphinx.py",
+      "function": "inspect_main.MockApp.warn"
+    },
+    {
+      "file": "sphinx/cmd/make_mode.py",
+      "function": "run_make_mode"
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "rollback_sysmodules"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

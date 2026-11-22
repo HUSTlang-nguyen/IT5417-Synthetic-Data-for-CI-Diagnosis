@@ -1,0 +1,11 @@
+--- a/sympy/algebras/quaternion.py
++++ b/sympy/algebras/quaternion.py
+@@ -65,7 +65,7 @@
+ 
+     @property
+     def a(self):
+-        return self._a
++        return self._b
+ 
+     @property
+     def b(self):

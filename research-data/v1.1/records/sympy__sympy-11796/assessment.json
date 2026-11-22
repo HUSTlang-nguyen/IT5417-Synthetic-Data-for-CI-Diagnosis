@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000217380512Z",
+  "reviewed_at": "2026-11-12T07:45:26+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d1236b0b95d645060eb73f808846a3b67b1e91174a343029ee9869fb366ebed2",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "b0e30475327e1d6d75ad5a14c9bb4d816cb6208571b82f4e60c564cf8804f2ee",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "d82edea250094feba49af88da93948a0d986f0c5c003b0c8c7f540fbc1256498",
+    "historical-fixed.stdout.txt": "d097836bd4dae8b31f004d20acf1b1f9f8f00c79f98982386cdb427439723507",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "972ffd0d262c440ef100d7da5f98a35527bea3ba1fa1612d90d3dbcb5fc07c14"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Interval.__new__"
+    }
+  ],
+  "mechanism": "The equal-closed-endpoints shortcut returns a singleton before excluding infinite endpoints. Interval(oo,oo) consequently becomes {oo}, though infinity is not an included real point and this interval must be empty. An explicit infinity check before the singleton return fixes the boundary case.",
+  "limitations": "The observed wrong singleton and branch order directly support the location; no unrelated interval algorithms are labeled.",
+  "observed_junit": {
+    "base": {
+      "cases": 63,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 63,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.sets.tests.test_sets::test_interval_arguments",
+      "message": "assert {oo} == EmptySet()\n  Full diff:\n  - EmptySet()\n  + {oo}"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

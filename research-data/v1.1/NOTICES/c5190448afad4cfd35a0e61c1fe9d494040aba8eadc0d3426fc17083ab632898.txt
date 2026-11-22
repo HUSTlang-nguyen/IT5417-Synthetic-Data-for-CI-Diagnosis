@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+import decimal
+import fractions
+import math
+import warnings
+import re as regex
+from collections import defaultdict
+
+from .containers import Tuple
+from .sympify import converter, sympify, _sympify, SympifyError, _convert_numpy_types
+from .singleton import S, Singleton
+from .expr import Expr, AtomicExpr
+from .decorators import _sympifyit
+from .cache import cacheit, clear_cache
+from .logic import fuzzy_not
+from sympy.core.compatibility import (
+    as_int, integer_types, long, string_types, with_metaclass, HAS_GMPY,
+    SYMPY_INTS, int_info)
+import mpmath
+import mpmath.libmp as mlib
+from mpmath.libmp import mpf_pow, mpf_pi, mpf_e, phi_fixed
+from mpmath.ctx_mp import mpnumeric
+from mpmath.libmp.libmpf import (
+    finf as _mpf_inf, fninf as _mpf_ninf,
+    fnan as _mpf_nan, fzero as _mpf_zero, _normalize as mpf_normalize,
+    prec_to_dps)
+from sympy.utilities.misc import debug, filldedent
+from .evaluate import global_evaluate
+
+from sympy.utilities.exceptions import SymPyDeprecationWarning
+
+rnd = mlib.round_nearest
+
+_LOG2 = math.log(2)
+
+
+def comp(z1, z2, tol=None):
+    """Return a bool indicating whether the error between z1 and z2 is <= tol.
+
+    If ``tol`` is None then True will be returned if there is a significant
+    difference between the numbers: ``abs(z1 - z2)*10**p <= 1/2`` where ``p``
+    is the lower of the precisions of the values. A comparison of strings will
+    be made if ``z1`` is a Number and a) ``z2`` is a string or b) ``tol`` is ''
+    and ``z2`` is a Number.
+
+    When ``tol`` is a nonzero value, if z2 is non-zero and ``|z1| > 1``
+    the error is normalized by ``|z1|``, so if you want to see if the
+    absolute error between ``z1`` and ``z2`` is <= ``tol`` then call this
+    as ``comp(z1 - z2, 0, tol)``.
+    """
+    if type(z2) is str:
+        if not isinstance(z1, Number):
+            raise ValueError('when z2 is a str z1 must be a Number')
+        return str(z1) == z2
+    if not z1:
+        z1, z2 = z2, z1
+    if not z1:
+        return True
+    if not tol:
+        if tol is None:
+            if type(z2) is str and getattr(z1, 'is_Number', False):
+                return str(z1) == z2
+            a, b = Float(z1), Float(z2)
+            return int(abs(a - b)*10**prec_to_dps(
+                min(a._prec, b._prec)))*2 <= 1
+        elif all(getattr(i, 'is_Number', False) for i in (z1, z2)):
+            return z1._prec == z2._prec and str(z1) == str(z2)
+        raise ValueError('exact comparison requires two Numbers')
+    diff = abs(z1 - z2)
+    az1 = abs(z1)
+    if z2 and az1 > 1:
+        return diff/az1 <= tol
+    else:
+        return diff <= tol
+
+
+def mpf_norm(mpf, prec):
+    """Return the mpf tuple normalized appropriately for the indicated
+    precision after doing a check to see if zero should be returned or
+    not when the mantissa is 0. ``mpf_normlize`` always assumes that this
+    is zero, but it may not be since the mantissa for mpf's values "+inf",
+    "-inf" and "nan" have a mantissa of zero, too.
+
+    Note: this is not intended to validate a given mpf tuple, so sending
+    mpf tuples that were not created by mpmath may produce bad results. This
+    is only a wrapper to ``mpf_normalize`` which provides the check for non-
+    zero mpfs that have a 0 for the mantissa.
+    """
+    sign, man, expt, bc = mpf
+    if not man:
+        # hack for mpf_normalize which does not do this;
+        # it assumes that if man is zero the result is 0
+        # (see issue 6639)
+        if not bc:
+            return _mpf_zero
+        else:
+            # don't change anything; this should already
+            # be a well formed mpf tuple
+            return mpf

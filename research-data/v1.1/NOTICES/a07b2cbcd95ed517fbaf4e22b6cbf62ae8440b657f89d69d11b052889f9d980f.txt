@@ -1,0 +1,100 @@
+"""
+A Printer for generating readable representation of most sympy classes.
+"""
+
+from __future__ import print_function, division
+
+from typing import Any, Dict
+
+from sympy.core import S, Rational, Pow, Basic, Mul
+from sympy.core.mul import _keep_coeff
+from .printer import Printer
+from sympy.printing.precedence import precedence, PRECEDENCE
+
+from mpmath.libmp import prec_to_dps, to_str as mlib_to_str
+
+from sympy.utilities import default_sort_key
+
+
+class StrPrinter(Printer):
+    printmethod = "_sympystr"
+    _default_settings = {
+        "order": None,
+        "full_prec": "auto",
+        "sympy_integers": False,
+        "abbrev": False,
+        "perm_cyclic": True,
+        "min": None,
+        "max": None,
+    }  # type: Dict[str, Any]
+
+    _relationals = dict()  # type: Dict[str, str]
+
+    def parenthesize(self, item, level, strict=False):
+        if (precedence(item) < level) or ((not strict) and precedence(item) <= level):
+            return "(%s)" % self._print(item)
+        else:
+            return self._print(item)
+
+    def stringify(self, args, sep, level=0):
+        return sep.join([self.parenthesize(item, level) for item in args])
+
+    def emptyPrinter(self, expr):
+        if isinstance(expr, str):
+            return expr
+        elif isinstance(expr, Basic):
+            return repr(expr)
+        else:
+            return str(expr)
+
+    def _print_Add(self, expr, order=None):
+        if self.order == 'none':
+            terms = list(expr.args)
+        else:
+            terms = self._as_ordered_terms(expr, order=order)
+
+        PREC = precedence(expr)
+        l = []
+        for term in terms:
+            t = self._print(term)
+            if t.startswith('-'):
+                sign = "-"
+                t = t[1:]
+            else:
+                sign = "+"
+            if precedence(term) < PREC:
+                l.extend([sign, "(%s)" % t])
+            else:
+                l.extend([sign, t])
+        sign = l.pop(0)
+        if sign == '+':
+            sign = ""
+        return sign + ' '.join(l)
+
+    def _print_BooleanTrue(self, expr):
+        return "True"
+
+    def _print_BooleanFalse(self, expr):
+        return "False"
+
+    def _print_Not(self, expr):
+        return '~%s' %(self.parenthesize(expr.args[0],PRECEDENCE["Not"]))
+
+    def _print_And(self, expr):
+        return self.stringify(expr.args, " & ", PRECEDENCE["BitwiseAnd"])
+
+    def _print_Or(self, expr):
+        return self.stringify(expr.args, " | ", PRECEDENCE["BitwiseOr"])
+
+    def _print_Xor(self, expr):
+        return self.stringify(expr.args, " ^ ", PRECEDENCE["BitwiseXor"])
+
+    def _print_AppliedPredicate(self, expr):
+        return '%s(%s)' % (self._print(expr.func), self._print(expr.arg))
+
+    def _print_Basic(self, expr):
+        l = [self._print(o) for o in expr.args]
+        return expr.__class__.__name__ + "(%s)" % ", ".join(l)
+
+    def _print_BlockMatrix(self, B):
+        if B.blocks.shape == (1, 1):

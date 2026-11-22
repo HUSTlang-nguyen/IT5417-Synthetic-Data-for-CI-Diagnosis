@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-15523",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/parsing/sympy_parser.py",
+      "function": "_implicit_application"
+    }
+  ],
+  "explanation": "The implicit-call transformation mistakes a tokenizer NEWLINE after a standalone callable name for an argument. Saved parsing of factorial becomes a zero-argument call and raises TypeError rather than returning the function. Excluding NEWLINE from implicit application prevents insertion of the empty call.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/function.py",
+      "function": "Function.__new__"
+    },
+    {
+      "file": "sympy/parsing/sympy_parser.py",
+      "function": "parse_expr"
+    },
+    {
+      "file": "sympy/parsing/sympy_parser.py",
+      "function": "eval_expr"
+    },
+    {
+      "file": "sympy/core/cache.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

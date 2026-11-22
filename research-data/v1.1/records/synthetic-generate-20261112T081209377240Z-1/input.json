@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 13 items\n\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_full_linearity PASSED [  7%]\nsympy/tensor/tests/test_tensor_operators.py::test_invalid_partial_derivative_valence PASSED [ 15%]\nsympy/tensor/tests/test_tensor_operators.py::test_tensor_partial_deriv PASSED [ 23%]\nsympy/tensor/tests/test_tensor_operators.py::test_replace_arrays_partial_derivative FAILED [ 30%]\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_sum_rule PASSED [ 38%]\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_constant_factor_rule PASSED [ 46%]\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_product_rule PASSED [ 53%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_expr_by_symbol PASSED [ 61%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_single_tensors_by_scalar PASSED [ 69%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_single_1st_rank_tensors_by_tensor PASSED [ 76%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_single_2nd_rank_tensors_by_tensor PASSED [ 84%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_divergence_type PASSED [ 92%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_expr1 PASSED [100%]\n\n=================================== FAILURES ===================================\n____________________ test_replace_arrays_partial_derivative ____________________\n\n    def test_replace_arrays_partial_derivative():\n    \n        x, y, z, t = symbols(\"x y z t\")\n    \n        # d(A^i)/d(A_j) = d(g^ik A_k)/d(A_j) = g^ik delta_jk\n        expr = PartialDerivative(A(i), A(-j))\n        assert expr.get_free_indices() == [i, j]\n        assert expr.get_indices() == [i, j]\n        assert expr.replace_with_arrays({A(i): [x, y], L: diag(1, 1)}, [i, j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(i): [x, y], L: diag(1, -1)}, [i, j]) == Array([[1, 0], [0, -1]])\n        assert expr.replace_with_arrays({A(-i): [x, y], L: diag(1, 1)}, [i, j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(-i): [x, y], L: diag(1, -1)}, [i, j]) == Array([[1, 0], [0, -1]])\n    \n        expr = PartialDerivative(A(i), A(j))\n        assert expr.get_free_indices() == [i, -j]\n        assert expr.get_indices() == [i, -j]\n        assert expr.replace_with_arrays({A(i): [x, y]}, [i, -j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(i): [x, y], L: diag(1, 1)}, [i, -j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(i): [x, y], L: diag(1, -1)}, [i, -j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(-i): [x, y], L: diag(1, 1)}, [i, -j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(-i): [x, y], L: diag(1, -1)}, [i, -j]) == Array([[1, 0], [0, 1]])\n    \n        expr = PartialDerivative(A(-i), A(-j))\n        expr.get_free_indices() == [-i, j]\n        expr.get_indices() == [-i, j]\n        assert expr.replace_with_arrays({A(-i): [x, y]}, [-i, j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(-i): [x, y], L: diag(1, 1)}, [-i, j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(-i): [x, y], L: diag(1, -1)}, [-i, j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(i): [x, y], L: diag(1, 1)}, [-i, j]) == Array([[1, 0], [0, 1]])\n        assert expr.replace_with_arrays({A(i): [x, y], L: diag(1, -1)}, [-i, j]) == Array([[1, 0], [0, 1]])\n    \n        expr = PartialDerivative(A(i), A(i))\n        assert expr.get_free_indices() == []\n        assert expr.get_indices() == [L_0, -L_0]\n>       assert expr.replace_with_arrays({A(i): [x, y], L: diag(1, 1)}, []) == 2\nE       assert [[1, 0], [0, 1]] == 2\nE        +  where [[1, 0], [0, 1]] = <bound method TensExpr.replace_with_arrays of PartialDerivative(A(L_0), A(L_0))>({A(i): [x, y], L: Matrix([\\n[1, 0],\\n[0, 1]])}, [])\nE        +    where <bound method TensExpr.replace_with_arrays of PartialDerivative(A(L_0), A(L_0))> = PartialDerivative(A(L_0), A(L_0)).replace_with_arrays\n\nsympy/tensor/tests/test_tensor_operators.py:91: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/tensor/tests/test_tensor_operators.py::test_replace_arrays_partial_derivative\n=================== 1 failed, 12 passed, 1 warning in 0.79s ====================\n",
+  "code": [
+    {
+      "file": "sympy/tensor/tensor.py",
+      "function": "TensorElement.get_indices",
+      "start_line": 3938,
+      "end_line": 3939,
+      "score": 31.788854,
+      "text": "sympy/tensor/tensor.py::TensorElement.get_indices lines 3938-3939\n    def get_indices(self):\n        return self.get_free_indices()",
+      "truncated": false
+    },
+    {
+      "file": "sympy/utilities/codegen.py",
+      "function": "ResultBase.__init__",
+      "start_line": 385,
+      "end_line": 387,
+      "score": 31.788854,
+      "text": "sympy/utilities/codegen.py::ResultBase.__init__ lines 385-387\n    def __init__(self, expr, result_var):\n        self.expr = expr\n        self.result_var = result_var",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    }
+  ]
+}

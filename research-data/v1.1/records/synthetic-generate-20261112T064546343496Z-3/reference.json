@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T064546343496Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "_unwrap_single_value.f"
+    }
+  ],
+  "explanation": "Inside the length1 guard, the wrapper returns index1 instead of0. The saved singleton tuple cannot supply that index and raises IndexError.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.fuentes_celltemp"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.noct_sam_celltemp"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.pvsyst_celltemp"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.sapm_celltemp"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.faiman_celltemp"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

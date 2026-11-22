@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T045046053870Z",
+  "reviewed_at": "2026-11-12T12:14:24+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "fb4214c247a09f9270227e2e5a09e4292f25d50c503667e915675cb058c89888",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "585fdda580284d562e5021e7557990c26b2e1c81595a7b9c8bf0cd975a62c0a9",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a10dbeccee6c5d26e34236320d49b33da8fdf05eef1e11c922b82f98f4cefad0",
+    "historical-fixed.stdout.txt": "5fd03695af2bc4e057b3fe2ce9520842f242ea603a476ae3dbc5e52d4d141bcf",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "fbf7f86f6a38c5db803581d1840e873c18cbc8145dca2cc787a31dae82fcca7a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/units/definitions.py",
+      "function": "<module>"
+    }
+  ],
+  "mechanism": "The SI definitions assign gram the neutral mass scale and kilogram a1000 multiplier, inconsistent with the SI base-unit convention used by the system printer. Saved print_unit_base returns an action unit with an extra1/1000. Registering kilogram as the base and gram as kilogram/1000 preserves that convention.",
+  "limitations": "Explicit module-level unit definitions; UnitSystem.print_unit_base detects the mismatch but is not the changed causal location. Other unit-system designs are outside this saved SI contract.",
+  "observed_junit": {
+    "base": {
+      "cases": 6,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 6,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.units.tests.test_unitsystem::test_print_unit_base",
+      "message": "assert kilogram*meter**2/(1000*second) == (((meter ** 2) * kilogram) * (second ** -1))\n +  where kilogram*meter**2/(1000*second) = <bound method UnitSystem.print_unit_base of <UnitSystem: (A, meter, kilogram, second)>>(Js)\n +    where <bound method UnitSystem.print_unit_base of <UnitSystem: (A, meter, kilogram, second)>> = <UnitSystem: (A, meter, kilogram, second)>.print_unit_base"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

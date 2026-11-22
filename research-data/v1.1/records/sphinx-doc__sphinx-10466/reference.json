@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-10466",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/builders/gettext.py",
+      "function": "Catalog.__iter__"
+    }
+  ],
+  "explanation": "Message positions are emitted directly from metadata entries, so duplicate origins appear more than once. The saved catalog assertion includes a repeated filename/line pair. Deduplicating and sorting positions yields the unique deterministic locations while retaining UUID processing separately.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.isfile"
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.parent"
+    },
+    {
+      "file": "sphinx/testing/comparer.py",
+      "function": "PathComparer.diff"
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.basename"
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.unlink"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

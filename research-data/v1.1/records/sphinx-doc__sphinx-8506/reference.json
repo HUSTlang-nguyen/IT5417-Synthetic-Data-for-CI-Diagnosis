@@ -1,0 +1,27 @@
+{
+  "sample_id": "sphinx-doc__sphinx-8506",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/domains/std.py",
+      "function": "<module>"
+    }
+  ],
+  "explanation": "The option-description regex excludes a leading opening bracket from the option-name group. A valid [enable=]PATTERN form is therefore not parsed into the expected name and argument nodes. Allowing brackets in that group, with complementary optional-suffix handling, restores the documented structure.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "warning"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

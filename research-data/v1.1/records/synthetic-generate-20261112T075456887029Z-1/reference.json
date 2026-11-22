@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T075456887029Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/permutations.py",
+      "function": "Permutation.rank_trotterjohnson"
+    }
+  ],
+  "explanation": "The ranking scan counts elements greater than j rather than smaller. Saved adjacent Trotter-Johnson permutations rank as0,19,4,4,-5 rather than0through4.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

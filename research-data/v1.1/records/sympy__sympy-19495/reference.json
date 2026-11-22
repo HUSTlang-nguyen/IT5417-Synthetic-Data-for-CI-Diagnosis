@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-19495",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/conditionset.py",
+      "function": "ConditionSet._eval_subs"
+    }
+  ],
+  "explanation": "When substitution makes the condition true, the base rebuilds using the replacement value as a bound symbol and filters it through Contains. The saved negative-interval example incorrectly becomes EmptySet instead of the interval. The repair preserves the original bound symbol and normal constructor behavior; all nine tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/conditionset.py",
+      "function": "ConditionSet._eval_subs"
+    },
+    {
+      "file": "sympy/sets/conditionset.py",
+      "function": "ConditionSet.__new__"
+    },
+    {
+      "file": "sympy/sets/conditionset.py",
+      "function": "ConditionSet.dummy_eq"
+    },
+    {
+      "file": "sympy/sets/conditionset.py",
+      "function": "ConditionSet.as_relational"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

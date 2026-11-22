@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T041918330560Z",
+  "reviewed_at": "2026-11-12T12:08:00+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f7956dbf15890c5cda262780d942002ab0156440def604e8a96598ce944990c2",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "c7da93de1c9719571b2adba6d9cc7dcbd34e6f1b8edf0deb38f75200349400b2",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "d5aed801c0c40c3475c5769ba5bd9585f71613e535ff6d1bfaccecb649f7c597",
+    "historical-fixed.stdout.txt": "d46a3fb2fa4de9b82333c8842f6a5042c6d2ff511e1c8c4958ede1925a53ba67",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "0b9e8774b16c0a9ae31e45d3cdc17bf65f78253a846dc137d8320be5c0c3b54f"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_airyai"
+    }
+  ],
+  "mechanism": "The SciPy printer lacks an Airy handler, falls back to unsupported-function output and emits airyai(x) rather than scipy.special.airy(x)[0]. The dedicated handler supplies the target API call and component.",
+  "limitations": "Explicit missing definition. The patch adds all four Airy components, but the first saved assertion directly proves only airyai; no generated code was executed in review.",
+  "observed_junit": {
+    "base": {
+      "cases": 15,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 15,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_pycode::test_airy",
+      "message": "AssertionError: assert '  # Not supp...ai\\nairyai(x)' == 'scipy.special.airy(x)[0]'\n  - scipy.special.airy(x)[0]\n  +   # Not supported in Python with SciPy:\n  +   # airyai\n  + airyai(x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_airyai"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+--- a/sympy/matrices/common.py
++++ b/sympy/matrices/common.py
+@@ -1975,7 +1975,7 @@
+     def __matmul__(self, other):
+         other = _matrixify(other)
+         if not getattr(other, 'is_Matrix', False) and not getattr(other, 'is_MatrixLike', False):
+-            return NotImplemented
++            return NotImplemented if not isinstance(other, Matrix) else self.__mul__(other)
+ 
+         return self.__mul__(other)
+ 

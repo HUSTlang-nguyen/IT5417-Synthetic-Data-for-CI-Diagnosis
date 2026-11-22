@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T052750252431Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping._eval_col_del.entry"
+    }
+  ],
+  "explanation": "Column deletion keeps the source element when j equals the deleted column, using <= instead of <. Saved deletion of column1 retains values2,5,8 and drops the last column instead of shifting3,6,9 left.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

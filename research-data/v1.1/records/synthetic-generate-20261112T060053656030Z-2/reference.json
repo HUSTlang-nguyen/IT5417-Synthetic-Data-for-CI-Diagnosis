@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T060053656030Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_poly_system"
+    }
+  ],
+  "explanation": "The special biquadratic dispatch requires degrees at most1 instead of2. Quadratic systems fall back to the generic solver, and the saved solutions have a different structural form from the required fast-path normal form.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_poly_system"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.diff"
+    },
+    {
+      "file": "sympy/logic/boolalg.py",
+      "function": "BooleanFunction.diff"
+    },
+    {
+      "file": "examples/beginner/limits_examples.py",
+      "function": "show"
+    },
+    {
+      "file": "sympy/assumptions/cnf.py",
+      "function": "EncodedCNF.symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

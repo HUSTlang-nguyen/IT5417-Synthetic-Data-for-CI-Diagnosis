@@ -1,0 +1,11 @@
+--- a/sympy/printing/str.py
++++ b/sympy/printing/str.py
+@@ -30,7 +30,7 @@
+     _relationals = dict()  # type: Dict[str, str]
+ 
+     def parenthesize(self, item, level, strict=False):
+-        if (precedence(item) < level) or ((not strict) and precedence(item) <= level):
++        if (precedence(item) <= level) or ((not strict) and precedence(item) < level):
+             return "(%s)" % self._print(item)
+         else:
+             return self._print(item)

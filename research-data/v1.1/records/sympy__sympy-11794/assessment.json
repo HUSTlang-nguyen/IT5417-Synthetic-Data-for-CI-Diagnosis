@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T002244353579Z",
+  "reviewed_at": "2026-11-12T10:38:23+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "79e6fdc6ad52233aaafb2adaa6e76f11a2a91894a7a0fd576c1ffd4b9306e33a",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "d83ed5df8fcfa918bab4c18f218341bd72c2f2bed51c23aae7e67fe82f985608",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "61b70f5dfa952de6098883647ea0807c50399bebf0ea43a23dec788aae8a2c7f",
+    "historical-fixed.stdout.txt": "d25e7065016da2564a9b572f7ded1447da95efdcb09d6c1781df8cc4001de0a2",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7b4cf0751683ace49ebb321edac8c993148f6ead0b42ccb0d0f584123b27f62d"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_SingularityFunction"
+    }
+  ],
+  "mechanism": "The ASCII branch falls back to generic function notation, printing SingularityFunction(x, 0, n), while its contract requires the bracket notation with exponent already supported by the Unicode branch. Building the bracketed shift and exponent in the ASCII branch produces the expected form.",
+  "limitations": "This is output-format behavior, not a fault in symbolic evaluation of the singularity function.",
+  "observed_junit": {
+    "base": {
+      "cases": 82,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 82,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.pretty.tests.test_pretty::test_SingularityFunction",
+      "message": "AssertionError: assert 'SingularityFunction(x, 0, n)' == '   n\\n<x> '\n  + SingularityFunction(x, 0, n)\n  -    n\n  - <x>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,11 @@
+--- a/sympy/utilities/iterables.py
++++ b/sympy/utilities/iterables.py
+@@ -249,7 +249,7 @@
+ 
+        `itertools.product <https://docs.python.org/3/library/itertools.html#itertools.product>`_
+     '''
+-    if len(iterables) == 0:
++    if len(iterables) == 1:
+         yield ()
+         return
+     elif len(iterables) == 1:

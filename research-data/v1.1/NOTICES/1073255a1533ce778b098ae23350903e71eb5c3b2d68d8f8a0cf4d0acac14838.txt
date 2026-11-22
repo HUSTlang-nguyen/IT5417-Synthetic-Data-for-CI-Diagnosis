@@ -1,0 +1,100 @@
+"""
+Integer factorization
+"""
+from __future__ import print_function, division
+
+import random
+import math
+
+from .primetest import isprime
+from .generate import sieve, primerange, nextprime
+from sympy.core import sympify
+from sympy.core.evalf import bitcount
+from sympy.core.logic import fuzzy_and
+from sympy.core.numbers import igcd, ilcm, Rational
+from sympy.core.power import integer_nthroot, Pow
+from sympy.core.mul import Mul
+from sympy.core.compatibility import as_int, SYMPY_INTS, range
+from sympy.core.singleton import S
+from sympy.core.function import Function
+from sympy.core.expr import Expr
+
+small_trailing = [i and max(int(not i % 2**j) and j for j in range(1, 8))
+    for i in range(256)]
+
+
+def smoothness(n):
+    """
+    Return the B-smooth and B-power smooth values of n.
+
+    The smoothness of n is the largest prime factor of n; the power-
+    smoothness is the largest divisor raised to its multiplicity.
+
+    >>> from sympy.ntheory.factor_ import smoothness
+    >>> smoothness(2**7*3**2)
+    (3, 128)
+    >>> smoothness(2**4*13)
+    (13, 16)
+    >>> smoothness(2)
+    (2, 2)
+
+    See Also
+    ========
+
+    factorint, smoothness_p
+    """
+
+    if n == 1:
+        return (1, 1)  # not prime, but otherwise this causes headaches
+    facs = factorint(n)
+    return max(facs), max(m**facs[m] for m in facs)
+
+
+def smoothness_p(n, m=-1, power=0, visual=None):
+    """
+    Return a list of [m, (p, (M, sm(p + m), psm(p + m)))...]
+    where:
+
+    1. p**M is the base-p divisor of n
+    2. sm(p + m) is the smoothness of p + m (m = -1 by default)
+    3. psm(p + m) is the power smoothness of p + m
+
+    The list is sorted according to smoothness (default) or by power smoothness
+    if power=1.
+
+    The smoothness of the numbers to the left (m = -1) or right (m = 1) of a
+    factor govern the results that are obtained from the p +/- 1 type factoring
+    methods.
+
+        >>> from sympy.ntheory.factor_ import smoothness_p, factorint
+        >>> smoothness_p(10431, m=1)
+        (1, [(3, (2, 2, 4)), (19, (1, 5, 5)), (61, (1, 31, 31))])
+        >>> smoothness_p(10431)
+        (-1, [(3, (2, 2, 2)), (19, (1, 3, 9)), (61, (1, 5, 5))])
+        >>> smoothness_p(10431, power=1)
+        (-1, [(3, (2, 2, 2)), (61, (1, 5, 5)), (19, (1, 3, 9))])
+
+    If visual=True then an annotated string will be returned:
+
+        >>> print(smoothness_p(21477639576571, visual=1))
+        p**i=4410317**1 has p-1 B=1787, B-pow=1787
+        p**i=4869863**1 has p-1 B=2434931, B-pow=2434931
+
+    This string can also be generated directly from a factorization dictionary
+    and vice versa:
+
+        >>> factorint(17*9)
+        {3: 2, 17: 1}
+        >>> smoothness_p(_)
+        'p**i=3**2 has p-1 B=2, B-pow=2\\np**i=17**1 has p-1 B=2, B-pow=16'
+        >>> smoothness_p(_)
+        {3: 2, 17: 1}
+
+    The table of the output logic is:
+
+        ====== ====== ======= =======
+        |              Visual
+        ------ ----------------------
+        Input  True   False   other
+        ====== ====== ======= =======
+        dict    str    tuple   str

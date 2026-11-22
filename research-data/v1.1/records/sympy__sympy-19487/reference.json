@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19487",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "sign._eval_rewrite_as_Abs"
+    }
+  ],
+  "explanation": "The sign class lacks an Abs rewrite handler. Calling rewrite(Abs) therefore leaves sign(y) unchanged instead of yielding the zero-aware Piecewise expression with y/Abs(y). The new handler implements that missing rewrite.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "Abs._eval_derivative"
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "sign.doit"
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "conjugate._eval_derivative"
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "sign._eval_conjugate"
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "sign._eval_is_nonnegative"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

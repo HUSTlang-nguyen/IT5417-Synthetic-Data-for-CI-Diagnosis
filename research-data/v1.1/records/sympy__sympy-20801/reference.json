@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-20801",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__eq__"
+    }
+  ],
+  "explanation": "The zero shortcut returns not other before rejecting Boolean objects. Floating zero consequently compares equal to symbolic False in the saved assertion. Moving that shortcut after Boolean and numeric type handling preserves the intended distinction.",
+  "retrieved_locations": [
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    },
+    {
+      "file": "sympy/polys/orderings.py",
+      "function": "InverseOrder.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

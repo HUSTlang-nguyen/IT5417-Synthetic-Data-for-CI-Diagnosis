@@ -1,0 +1,11 @@
+--- a/sympy/polys/polyroots.py
++++ b/sympy/polys/polyroots.py
+@@ -996,7 +996,7 @@
+                 _update_dict(result, r, 1)
+         else:
+             _, factors = Poly(f.as_expr()).factor_list()
+-            if len(factors) == 1 and f.degree() == 2:
++            if len(factors) == 1 and f.degree() == 3:
+                 for r in roots_quadratic(f):
+                     _update_dict(result, r, 1)
+             else:

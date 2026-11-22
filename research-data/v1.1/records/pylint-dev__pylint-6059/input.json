@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 2 items\n\ntests/checkers/unittest_base_checker.py::test_base_checker_doc PASSED    [ 50%]\ntests/checkers/unittest_base_checker.py::test_base_checker_ordering FAILED [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_base_checker_ordering __________________________\n\n    def test_base_checker_ordering() -> None:\n        \"\"\"Test ordering of checkers based on their __gt__ method.\"\"\"\n        fake_checker_1 = OtherBasicChecker()\n        fake_checker_2 = LessBasicChecker()\n        fake_checker_3 = DifferentBasicChecker()\n        assert fake_checker_1 < fake_checker_3\n        assert fake_checker_2 < fake_checker_3\n>       assert fake_checker_1 == fake_checker_2\nE       AssertionError: assert Checker 'basic' (responsible for 'W0001') == Checker 'basic' (responsible for 'W0001')\n\ntests/checkers/unittest_base_checker.py:88: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/astroid/interpreter/_import/util.py:6\n  /opt/venv/lib/python3.9/site-packages/astroid/interpreter/_import/util.py:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/checkers/unittest_base_checker.py::test_base_checker_ordering - ...\n==================== 1 failed, 1 passed, 1 warning in 0.05s ====================\n",
+  "code": [
+    {
+      "file": "pylint/checkers/base_checker.py",
+      "function": "BaseChecker.__gt__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 30.904534,
+      "text": "pylint/checkers/base_checker.py::BaseChecker.__gt__ lines 62-64\n    def __gt__(self, other):\n        \"\"\"Permit to sort a list of Checker by name.\"\"\"\n        return f\"{self.name}{self.msgs}\" > (f\"{other.name}{other.msgs}\")",
+      "truncated": false
+    },
+    {
+      "file": "doc/data/messages/a/assert-on-tuple/good.py",
+      "function": "<module>",
+      "start_line": 1,
+      "end_line": 3,
+      "score": 1.414214,
+      "text": "doc/data/messages/a/assert-on-tuple/good.py::<module> lines 1-3\nx, y = (1, None)\nassert x\nassert y",
+      "truncated": false
+    },
+    {
+      "file": "pylint/extensions/comparison_placement.py",
+      "function": "<module>",
+      "start_line": 5,
+      "end_line": 21,
+      "score": 1.278019,
+      "text": "pylint/extensions/comparison_placement.py::<module> lines 5-21\n\"\"\"Checks for yoda comparisons (variable before constant)\nSee https://en.wikipedia.org/wiki/Yoda_conditions\n\"\"\"\n\n\nfrom typing import TYPE_CHECKING\n\nfrom astroid import nodes\n\nfrom pylint.checkers import BaseChecker, utils\nfrom pylint.interfaces import IAstroidChecker\n\nif TYPE_CHECKING:\n    from pylint.lint import PyLinter\n\nREVERSED_COMPS = {\"<\": \">\", \"<=\": \">=\", \">\": \"<\", \">=\": \"<=\"}\nCOMPARISON_OPERATORS = frozenset((\"==\", \"!=\", \"<\", \">\", \"<=\", \">=\"))",
+      "truncated": false
+    },
+    {
+      "file": "pylint/message/message.py",
+      "function": "Message.format",
+      "start_line": 88,
+      "end_line": 94,
+      "score": 1.251086,
+      "text": "pylint/message/message.py::Message.format lines 88-94\n    def format(self, template: str) -> str:\n        \"\"\"Format the message according to the given template.\n\n        The template format is the one of the format method :\n        cf. https://docs.python.org/2/library/string.html#formatstrings\n        \"\"\"\n        return template.format(**self._asdict())",
+      "truncated": false
+    },
+    {
+      "file": "pylint/checkers/refactoring/refactoring_checker.py",
+      "function": "ConsiderUsingWithStack.clear_all",
+      "start_line": 183,
+      "end_line": 186,
+      "score": 1.206045,
+      "text": "pylint/checkers/refactoring/refactoring_checker.py::ConsiderUsingWithStack.clear_all lines 183-186\n    def clear_all(self) -> None:\n        \"\"\"Convenience method to clear all stacks.\"\"\"\n        for stack in self:\n            stack.clear()",
+      "truncated": false
+    }
+  ]
+}

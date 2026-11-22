@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T071523813302Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/concrete/products.py",
+      "function": "Product.doit"
+    }
+  ],
+  "explanation": "The interval direction uses b+a rather than b-a. Reversed bounds are not normalized with reciprocal factors, and the saved Karr-convention forward/reverse product fails to cancel to1.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

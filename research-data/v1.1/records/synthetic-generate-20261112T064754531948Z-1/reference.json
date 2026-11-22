@@ -1,0 +1,31 @@
+{
+  "sample_id": "synthetic-generate-20261112T064754531948Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/polyroots.py",
+      "function": "roots"
+    }
+  ],
+  "explanation": "List coefficients are assigned exponents starting at len(f)+1 rather than len(f)-1. The polynomial gains two zero roots, and the saved cubic helper receives too many roots to unpack into two values.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polyroots.py",
+      "function": "roots_cubic"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

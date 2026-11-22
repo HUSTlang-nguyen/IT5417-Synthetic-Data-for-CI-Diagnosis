@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 32 items\n\ntests/test_helpers.py::TestSendfile::test_send_file PASSED               [  3%]\ntests/test_helpers.py::TestSendfile::test_static_file PASSED             [  6%]\ntests/test_helpers.py::TestSendfile::test_send_from_directory PASSED     [  9%]\ntests/test_helpers.py::TestUrlFor::test_url_for_with_anchor PASSED       [ 12%]\ntests/test_helpers.py::TestUrlFor::test_url_for_with_scheme PASSED       [ 15%]\ntests/test_helpers.py::TestUrlFor::test_url_for_with_scheme_not_external PASSED [ 18%]\ntests/test_helpers.py::TestUrlFor::test_url_for_with_alternating_schemes PASSED [ 21%]\ntests/test_helpers.py::TestUrlFor::test_url_with_method PASSED           [ 25%]\ntests/test_helpers.py::test_redirect_no_app PASSED                       [ 28%]\ntests/test_helpers.py::test_redirect_with_app FAILED                     [ 31%]\ntests/test_helpers.py::TestNoImports::test_name_with_import_error PASSED [ 34%]\ntests/test_helpers.py::TestStreaming::test_streaming_with_context PASSED [ 37%]\ntests/test_helpers.py::TestStreaming::test_streaming_with_context_as_decorator PASSED [ 40%]\ntests/test_helpers.py::TestStreaming::test_streaming_with_context_and_custom_close PASSED [ 43%]\ntests/test_helpers.py::TestStreaming::test_stream_keeps_session PASSED   [ 46%]\ntests/test_helpers.py::TestHelpers::test_get_debug_flag[-False-False] PASSED [ 50%]\ntests/test_helpers.py::TestHelpers::test_get_debug_flag[0-False-False] PASSED [ 53%]\ntests/test_helpers.py::TestHelpers::test_get_debug_flag[False-False-False] PASSED [ 56%]\ntests/test_helpers.py::TestHelpers::test_get_debug_flag[No-False-False] PASSED [ 59%]\ntests/test_helpers.py::TestHelpers::test_get_debug_flag[True-True-True] PASSED [ 62%]\ntests/test_helpers.py::TestHelpers::test_get_env[-production-False] PASSED [ 65%]\ntests/test_helpers.py::TestHelpers::test_get_env[production-production-False] PASSED [ 68%]\ntests/test_helpers.py::TestHelpers::test_get_env[development-development-True] PASSED [ 71%]\ntests/test_helpers.py::TestHelpers::test_get_env[other-other-False] PASSED [ 75%]\ntests/test_helpers.py::TestHelpers::test_make_response PASSED            [ 78%]\ntests/test_helpers.py::TestHelpers::test_open_resource[r] PASSED         [ 81%]\ntests/test_helpers.py::TestHelpers::test_open_resource[rb] PASSED        [ 84%]\ntests/test_helpers.py::TestHelpers::test_open_resource[rt] PASSED        [ 87%]\ntests/test_helpers.py::TestHelpers::test_open_resource_exceptions[w] PASSED [ 90%]\ntests/test_helpers.py::TestHelpers::test_open_resource_exceptions[x] PASSED [ 93%]\ntests/test_helpers.py::TestHelpers::test_open_resource_exceptions[a] PASSED [ 96%]\ntests/test_helpers.py::TestHelpers::test_open_resource_exceptions[r+] PASSED [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_redirect_with_app ____________________________\n\napp = <Flask 'flask_test'>\n\n    def test_redirect_with_app(app):\n        def redirect(location, code=302):\n            raise ValueError\n    \n        app.redirect = redirect\n    \n        with app.app_context(), pytest.raises(ValueError):\n>           flask.redirect(\"other\")\nE           Failed: DID NOT RAISE <class 'ValueError'>\n\ntests/test_helpers.py:174: Failed\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_helpers.py::test_redirect_with_app - Failed: DID NOT RAISE ...\n========================= 1 failed, 31 passed in 0.22s =========================\n",
+  "code": [
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.app_context",
+      "start_line": 1954,
+      "end_line": 1973,
+      "score": 30.894427,
+      "text": "src/flask/app.py::Flask.app_context lines 1954-1973\n    def app_context(self) -> AppContext:\n        \"\"\"Create an :class:`~flask.ctx.AppContext`. Use as a ``with``\n        block to push the context, which will make :data:`current_app`\n        point at this application.\n\n        An application context is automatically pushed by\n        :meth:`RequestContext.push() <flask.ctx.RequestContext.push>`\n        when handling a request, and when running a CLI command. Use\n        this to manually create a context outside of these situations.\n\n        ::\n\n            with app.app_context():\n                init_db()\n\n        See :doc:`/appcontext`.\n\n        .. versionadded:: 0.9\n        \"\"\"\n        return AppContext(self)",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.async_to_sync",
+      "start_line": 1610,
+      "end_line": 1631,
+      "score": 30.848528,
+      "text": "src/flask/app.py::Flask.async_to_sync lines 1610-1631\n    def async_to_sync(\n        self, func: t.Callable[..., t.Coroutine]\n    ) -> t.Callable[..., t.Any]:\n        \"\"\"Return a sync function that will run the coroutine function.\n\n        .. code-block:: python\n\n            result = app.async_to_sync(func)(*args, **kwargs)\n\n        Override this method to change how the app converts async code\n        to be synchronously callable.\n\n        .. versionadded:: 2.0\n        \"\"\"\n        try:\n            from asgiref.sync import async_to_sync as asgiref_async_to_sync\n        except ImportError:\n            raise RuntimeError(\n                \"Install Flask with the 'async' extra in order to use async views.\"\n            ) from None\n\n        return asgiref_async_to_sync(func)",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.test_cli_runner",
+      "start_line": 985,
+      "end_line": 1000,
+      "score": 30.811107,
+      "text": "src/flask/app.py::Flask.test_cli_runner lines 985-1000\n    def test_cli_runner(self, **kwargs: t.Any) -> \"FlaskCliRunner\":\n        \"\"\"Create a CLI runner for testing CLI commands.\n        See :ref:`testing-cli`.\n\n        Returns an instance of :attr:`test_cli_runner_class`, by default\n        :class:`~flask.testing.FlaskCliRunner`. The Flask app object is\n        passed as the first argument.\n\n        .. versionadded:: 1.0\n        \"\"\"\n        cls = self.test_cli_runner_class\n\n        if cls is None:\n            from .testing import FlaskCliRunner as cls  # type: ignore\n\n        return cls(self, **kwargs)  # type: ignore",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.request_context",
+      "start_line": 1975,
+      "end_line": 1989,
+      "score": 30.70014,
+      "text": "src/flask/app.py::Flask.request_context lines 1975-1989\n    def request_context(self, environ: dict) -> RequestContext:\n        \"\"\"Create a :class:`~flask.ctx.RequestContext` representing a\n        WSGI environment. Use a ``with`` block to push the context,\n        which will make :data:`request` point at this request.\n\n        See :doc:`/reqcontext`.\n\n        Typically you should not call this from your own code. A request\n        context is automatically pushed by the :meth:`wsgi_app` when\n        handling a request. Use :meth:`test_request_context` to create\n        an environment and context instead of this method.\n\n        :param environ: a WSGI environment\n        \"\"\"\n        return RequestContext(self, environ)",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask._find_error_handler",
+      "start_line": 1268,
+      "end_line": 1289,
+      "score": 30.648886,
+      "text": "src/flask/app.py::Flask._find_error_handler lines 1268-1289\n    def _find_error_handler(self, e: Exception) -> t.Optional[\"ErrorHandlerCallable\"]:\n        \"\"\"Return a registered error handler for an exception in this order:\n        blueprint handler for a specific code, app handler for a specific code,\n        blueprint handler for an exception class, app handler for an exception\n        class, or ``None`` if a suitable handler is not found.\n        \"\"\"\n        exc_class, code = self._get_exc_class_and_code(type(e))\n        names = (*request.blueprints, None)\n\n        for c in (code, None) if code is not None else (None,):\n            for name in names:\n                handler_map = self.error_handler_spec[name][c]\n\n                if not handler_map:\n                    continue\n\n                for cls in exc_class.__mro__:\n                    handler = handler_map.get(cls)\n\n                    if handler is not None:\n                        return handler\n        return None",
+      "truncated": false
+    }
+  ]
+}

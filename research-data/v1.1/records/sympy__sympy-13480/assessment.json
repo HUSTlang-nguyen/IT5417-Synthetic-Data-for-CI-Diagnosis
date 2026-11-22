@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001330448197Z",
+  "reviewed_at": "2026-11-12T08:34:22+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "fe502dca65b086c7b987bb700643990274111421d8a9066e13cc3a3a65c25b5c",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "84eab227ac69fc41c67d176837c520fe8e142e4555e63d9a3245ffbe49504aa4",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a257fd06635119868b39c71cf18db6661056df00edc412755f697badafc83b1b",
+    "historical-fixed.stdout.txt": "18a2239562bdf752deb9251c8e86e6f73a21479021993bc10e862a5f5c8f064e",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "32b21022f53fa4e0d6739f6c25192f86af28c0e253e646cef0e5513b73b8a775"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "coth.eval"
+    }
+  ],
+  "mechanism": "The additive periodicity branch computes cothm but tests the unbound name cotm. Reaching that branch raises the saved NameError before it can select coth(x) or tanh(x). Testing the variable actually assigned removes the runtime name error.",
+  "limitations": "This is a valid-Python identifier mismatch in an existing evaluator, not a parser syntax failure or missing dependency. The broad logic/value category is provisional; the specific mechanism and NameError are retained.",
+  "observed_junit": {
+    "base": {
+      "cases": 44,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 44,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.elementary.tests.test_hyperbolic::test_coth",
+      "message": "NameError: name 'cotm' is not defined"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

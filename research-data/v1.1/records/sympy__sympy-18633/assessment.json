@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035136322696Z",
+  "reviewed_at": "2026-11-12T11:53:01+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c17cf5eac002c1e4dcf31f68400baf86530630741eb828cf60d1b6721fd77f18",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "546c19a78d458c5cd2182984dafe623cc0f46bbafdeb5d9c5db9a4c74056663e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "86736397111317d9188549fc471df5326a23edd42bfdd0c2e65be057399ebfd9",
+    "historical-fixed.stdout.txt": "17839f764110f0b3961c290e8e668aeaff3e755ccd65d9480ee75df63c8ef3ca",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7175df34c05ac7298e94609cf54ca159594ef2b10c2a70c65c12205103d79645"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/tensor/toperators.py",
+      "function": "PartialDerivative._expand_partial_derivative"
+    }
+  ],
+  "mechanism": "Derivative expansion handles tensor sums/products but has no constant-expression zero case. PartialDerivative(42,D(j)) remains unevaluated instead of becoming zero in the saved linearity test. Detecting the absence of free symbols supplies that result.",
+  "limitations": "The constructor also sympifies input in the repair; the shown failure specifically supports the missing constant branch in expansion.",
+  "observed_junit": {
+    "base": {
+      "cases": 13,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 13,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.tensor.tests.test_tensor_operators::test_expand_partial_derivative_full_linearity",
+      "message": "assert (PartialDerivative(42, D(j)) and not PartialDerivative(42, D(j)))\n +  where PartialDerivative(42, D(j)) = <bound method PartialDerivative._expand_partial_derivative of PartialDerivative(42, D(j))>()\n +    where <bound method PartialDerivative._expand_partial_derivative of PartialDerivative(42, D(j))> = PartialDerivative(42, D(j))._expand_partial_derivative"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

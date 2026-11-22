@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T064754531948Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/polyroots.py",
+      "function": "roots"
+    }
+  ],
+  "explanation": "The quadratic fallback is entered for degree3 instead of2. The unchanged quadratic helper receives four coefficients and the saved cubic calls raise too-many-values-to-unpack ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polyroots.py",
+      "function": "roots_quadratic"
+    },
+    {
+      "file": "sympy/polys/polyroots.py",
+      "function": "roots_quartic"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

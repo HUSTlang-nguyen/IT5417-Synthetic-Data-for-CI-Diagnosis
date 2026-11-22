@@ -1,0 +1,73 @@
+{
+  "created_at": "2026-11-23T02:22:46+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test"
+  },
+  "selected": [
+    {
+      "source_case_id": "pydicom__pydicom-1256",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "49a3da4a3d9c24d7e8427a25048a1c7d5c4f7724",
+      "source_version": "2.1",
+      "product_files": [
+        "pydicom/jsonrep.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_json.py"
+      ],
+      "repair_bytes": 549,
+      "f2p_count": 1,
+      "p2p_count": 22,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1256-ds2",
+      "case_sha256": "3013fd2f12105515d9756626466d782be1e0e8c4486813305e2464b1806acb8f"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1154",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "0b8f24c265d76320067a5ee908a57d475cd1bb24",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/irradiance.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_irradiance.py"
+      ],
+      "repair_bytes": 713,
+      "f2p_count": 1,
+      "p2p_count": 97,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1154-ds2-env-ready",
+      "case_sha256": "840d0c29c7e01817a91416f7324ff5ac34c28f36d62b1844a960fc5d099631a5"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "First bounded train-reproduction batch, new source IDs not attempted in v1; recipe inherited only from same repo/source version. Pinned source license verification still mandatory before build.",
+  "parent_plan_sha256": "262e41363ab7f2fedd8139b83d10f466c6ca64865f469f614199c90f13be9c31"
+}

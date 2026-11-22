@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-14070",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/simplify.py",
+      "function": "logcombine.f"
+    }
+  ],
+  "explanation": "The combiner constructs combined logarithms with normal evaluation enabled. That evaluation expands the newly formed rational logarithm back into the separate terms, undoing the requested combination. The saved result remains log(3)-log(2) instead of unevaluated log(3/2). Disabling evaluation for those constructed logs preserves the combined form.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T010624991086Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_trial_division"
+    }
+  ],
+  "explanation": "The remainder-zero test not r is replaced with r==1. The polynomial remainder representation no longer enters the exact-division branch, leaving multiplicities zero and producing the observed wrong factorization-dependent predicates.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.root"
+    },
+    {
+      "file": "sympy/polys/rootoftools.py",
+      "function": "ComplexRootOf._postprocess_root"
+    },
+    {
+      "file": "sympy/polys/rootoftools.py",
+      "function": "ComplexRootOf.__new__"
+    },
+    {
+      "file": "sympy/polys/rootoftools.py",
+      "function": "rootof"
+    },
+    {
+      "file": "sympy/polys/rootoftools.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

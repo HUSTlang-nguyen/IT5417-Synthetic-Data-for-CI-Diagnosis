@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T201047538784Z",
+  "reviewed_at": "2026-11-12T03:45:53+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "c306df608bfd427a86ea7da3cf754e72148e18558d7a6fe442720de7a25a6e1f",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "c22cd74297868f83674cebe02d32bc18143f1a181d41e5ff700e5095d20a3384",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "827b94c21493b53cc8d49595afab61f882ca92cca4c4b16ef3de12eea7314e94",
+    "historical-fixed.stdout.txt": "f3b08c87c35650f5a5711f0c43856cb5e8c914c115ef9054ac9ca6b82982b704",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5fb61d6e8cb72bc9735a70a45ab850e1f000d124f5e39a0adfac1d77ff8b777a"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "mechanism": "The iterable-input branch of symbols recursively calls symbols(name, **args) but omits the explicit keyword-only cls argument. Recursive calls therefore revert to Symbol even when the caller requested Function; forwarding cls preserves the requested constructor class.",
+  "evidence_reason": "Read symbols signature at symbol.py:586 and recursive branch at lines 793-794. Base test_symbol.py:298 observes Symbol instead of UndefinedFunction for symbols((q:2,u:2), cls=Function). Fixed: 12 passed and source F2P/P2P resolve.",
+  "limitations": "The wrong object type is demonstrated by the explicit constructor argument and type assertion, not inferred from an exception category. The first failing assertion does not prove all possible custom classes."
+}

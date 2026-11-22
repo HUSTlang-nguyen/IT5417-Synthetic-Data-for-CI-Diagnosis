@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18633",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/tensor/toperators.py",
+      "function": "PartialDerivative._expand_partial_derivative"
+    }
+  ],
+  "explanation": "Derivative expansion handles tensor sums/products but has no constant-expression zero case. PartialDerivative(42,D(j)) remains unevaluated instead of becoming zero in the saved linearity test. Detecting the absence of free symbols supplies that result.",
+  "retrieved_locations": [
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    },
+    {
+      "file": "sympy/polys/orderings.py",
+      "function": "InverseOrder.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T055458799498Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "RoundFunction.eval"
+    }
+  ],
+  "explanation": "The special base-case guard accepts definitely finite operands instead of definitely nonfinite ones. Saved floor(zoo) and ceiling(zoo) lose their expected immediate zoo result and remain unevaluated calls.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_Eq"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "ceiling._eval_Eq"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "frac._eval_Eq"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "frac._eval_is_finite"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_rewrite_as_ceiling"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-5201",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.make_options"
+    }
+  ],
+  "explanation": "The ignore-paths option stores its value under the custom destination ignore_list_paths_re, while get_global_option resolves the option name to ignore_paths. The saved six parameterized expansion tests raise AttributeError looking up that absent attribute. Removing the mismatched destination and using the common option retrieval aligns the configuration names.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/utils/utils.py",
+      "function": "get_global_option"
+    },
+    {
+      "file": "pylint/testutils/decorator.py",
+      "function": "set_config"
+    },
+    {
+      "file": "pylint/testutils/decorator.py",
+      "function": "set_config._wrapper"
+    },
+    {
+      "file": "pylint/config/options_provider_mixin.py",
+      "function": "OptionsProviderMixIn.get_option_def"
+    },
+    {
+      "file": "pylint/testutils/decorator.py",
+      "function": "set_config._wrapper._forward"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

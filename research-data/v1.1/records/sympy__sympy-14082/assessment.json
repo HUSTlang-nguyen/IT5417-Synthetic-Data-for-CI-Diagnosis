@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T034931882515Z",
+  "reviewed_at": "2026-11-12T11:51:23+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "3d96a535f26a6594520ede4b0b272e26743d2346b605b0db525a038565a10b59",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "6fcf6de4214b648ac3f4fe8e975b91df99ee0949c77d97ec9a0e72f73ce9f273",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4cbae2992dbf6a8417a437d0f7ce48a5038cc3fd5bcacb723c0fc57a673f468c",
+    "historical-fixed.stdout.txt": "aef917bccf5763778612fde97bef988bac2b1245603c2dbecfab28644754e746",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "02bfc5728bed3b9e23eaafb5b3c896deb325900083bdc2587075301ea2aa5098"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/integrals/rationaltools.py",
+      "function": "log_to_real"
+    }
+  ],
+  "mechanism": "Conjugate-root contributions are retained only when a root is provably positive. Real symbolic roots with unknown sign are skipped, removing atan contributions and making the saved integral zero. Pairing opposite nonzero roots by sign structure retains one representative without requiring proven positivity.",
+  "limitations": "The saved assertions show missing terms, not merely an unsimplified equivalent expression. Broad branch behavior outside the paired-root repair remains unmeasured.",
+  "observed_junit": {
+    "base": {
+      "cases": 9,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 9,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.integrals.tests.test_rationaltools::test_issues_8246_12050_13501_14080",
+      "message": "assert 0 == atan(x/a)\n +  where 0 = integrate((a / ((x ** 2) + (a ** 2))), x)\n +  and   atan(x/a) = atan((x / a))"
+    },
+    {
+      "test": "sympy.integrals.tests.test_rationaltools::test_issue_6308",
+      "message": "assert x == (x - ((((a0 ** 2) + (k ** 2)) * atan(x/sqrt(a0**2 + 1))) / sqrt(a0**2 + 1)))\n +  where x = integrate(((((x ** 2) + 1) - (k ** 2)) / (((x ** 2) + 1) + (a0 ** 2))), x)\n +  and   atan(x/sqrt(a0**2 + 1)) = atan((x / sqrt(a0**2 + 1)))\n +    where sqrt(a0**2 + 1) = sqrt(((a0 ** 2) + 1))\n +  and   sqrt(a0**2 + 1) = sqrt(((a0 ** 2) + 1))"
+    },
+    {
+      "test": "sympy.integrals.tests.test_rationaltools::test_issue_5907",
+      "message": "assert x/(2*a**4 + 2*a**2*x**2) == ((x / ((2 * (a ** 4)) + ((2 * (a ** 2)) * (x ** 2)))) + (atan(x/a) / (2 * (a ** 3))))\n +  where x/(2*a**4 + 2*a**2*x**2) = integrate((1 / (((x ** 2) + (a ** 2)) ** 2)), x)\n +  and   atan(x/a) = atan((x / a))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

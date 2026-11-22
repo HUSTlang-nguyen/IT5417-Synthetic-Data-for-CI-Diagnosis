@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T043511738444Z",
+  "reviewed_at": "2026-11-12T12:11:34+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2d0c39259057a328032e32e9e89c335e566072fbd63bc2c869632c667c5d3517",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "655a9f0da8de5dd9df1a163a61108855faffb67ee923aad04f368fc7ae375fb2",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "28957f326a08e8eddeb4bed977050994c565bff775e869e45a74eb93abf232ea",
+    "historical-fixed.stdout.txt": "0fadaef48ca8f6f894522bfb2821abb48c5eba2d070205b6d057ce278c7c7ae1",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "798fe60397693825a4195d35dbe01099ed5b1397cb6e7e593f490c3eb6d034d7"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer._eval_power"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Rational._eval_power"
+    }
+  ],
+  "mechanism": "Negative-exponent handling derives a sign factor from the exponent numerator modulo denominator plus a fixed minus sign. Saved negative bases raised to -10/3 have the wrong symbolic phase in both Integer and Rational branches. Preserving (-1)**expt uses the full signed exponent.",
+  "limitations": "Both existing methods have distinct saved failing tests for the same sign rule. Related source13895 changes positive-root factor extraction, while this case changes the negative-exponent branch.",
+  "observed_junit": {
+    "base": {
+      "cases": 85,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 85,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_powers_Integer",
+      "message": "assert (-2 ** -10/3) == (((-1 ** 2/3) * (2 ** 2/3)) / 16)\n +  where -10/3 = Rational(-10, 3)\n +  and   2/3 = Rational(2, 3)\n +  and   2/3 = Rational(2, 3)"
+    },
+    {
+      "test": "sympy.core.tests.test_numbers::test_powers_Rational",
+      "message": "assert (-3/2 ** -10/3) == ((((8 * (-1 ** 2/3)) * (2 ** 1/3)) * (3 ** 2/3)) / 81)\n +  where -3/2 = Rational(-3, 2)\n +  and   -10/3 = Rational(-10, 3)\n +  and   2/3 = Rational(2, 3)\n +  and   1/3 = Rational(1, 3)\n +  and   2/3 = Rational(2, 3)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

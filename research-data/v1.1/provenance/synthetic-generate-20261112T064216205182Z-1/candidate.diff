@@ -1,0 +1,11 @@
+--- a/sympy/utilities/iterables.py
++++ b/sympy/utilities/iterables.py
+@@ -57,7 +57,7 @@
+     """
+     from sympy.tensor.array import NDimArray
+     if levels is not None:
+-        if not levels:
++        if levels is None or levels <= 0:
+             return iterable
+         elif levels > 0:
+             levels -= 1

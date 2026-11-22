@@ -1,0 +1,42 @@
+{
+  "run_id": "reproduce-20261111T202555799166Z",
+  "reviewed_at": "2026-11-12T07:17:36+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "500e3a14fb3574ebf620aabd99f515789c1f9583dc63002ff8e9702498fe64b9",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "3332c86259e083904efbad42a66de35df41630130b1204b1cb50cb21e3f2bad3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "3f2a464b8ced98cdf2ef3d6f78fd61213e2e73f918a8ff91a6949dab74c1f79d",
+    "historical-fixed.stdout.txt": "35f0fd6ffdbed46e0ff427275bf395d09ed635e5515622c7cb948d339343d120",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "1c57099d791fd16aad2d88951e533a58b4d20a79579da3d5adff1cb6c21fe6b2"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "pylint/config/option_manager_mixin.py",
+      "function": "OptionsManagerMixIn.read_config_file"
+    }
+  ],
+  "mechanism": "The configuration loader expands a home-directory marker but not environment variables in the supplied path. It checks the literal ${tmp_path_env} as a filename and raises does-not-exist even though variable expansion points to the fixture configuration. Applying expandvars after expanduser resolves the intended path.",
+  "limitations": "The configuration-path mechanism is directly supported, while a logic/value label is a plausible alternative taxonomy granularity. Do not treat this product expansion defect as a missing file in the Docker setup.",
+  "observed_junit": {
+    "base": {
+      "cases": 5,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 5,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: OSError: The config file ${tmp_path_env} doesn't exist!"
+}

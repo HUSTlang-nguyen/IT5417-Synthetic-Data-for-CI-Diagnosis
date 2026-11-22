@@ -1,0 +1,100 @@
+"""
+    sphinx.testing.util
+    ~~~~~~~~~~~~~~~~~~~
+
+    Sphinx test suite utilities
+
+    :copyright: Copyright 2007-2020 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
+import os
+import re
+import sys
+import warnings
+from io import StringIO
+from typing import Any, Dict, Generator, IO, List, Pattern
+from xml.etree import ElementTree
+
+from docutils import nodes
+from docutils.nodes import Node
+from docutils.parsers.rst import directives, roles
+
+from sphinx import application, locale
+from sphinx.builders.latex import LaTeXBuilder
+from sphinx.deprecation import RemovedInSphinx40Warning
+from sphinx.pycode import ModuleAnalyzer
+from sphinx.testing.path import path
+from sphinx.util.osutil import relpath
+
+
+__all__ = [
+    'Struct',
+    'SphinxTestApp', 'SphinxTestAppWrapperForSkipBuilding',
+    'remove_unicode_literals',
+]
+
+
+def assert_re_search(regex: Pattern, text: str, flags: int = 0) -> None:
+    if not re.search(regex, text, flags):
+        assert False, '%r did not match %r' % (regex, text)
+
+
+def assert_not_re_search(regex: Pattern, text: str, flags: int = 0) -> None:
+    if re.search(regex, text, flags):
+        assert False, '%r did match %r' % (regex, text)
+
+
+def assert_startswith(thing: str, prefix: str) -> None:
+    if not thing.startswith(prefix):
+        assert False, '%r does not start with %r' % (thing, prefix)
+
+
+def assert_node(node: Node, cls: Any = None, xpath: str = "", **kwargs: Any) -> None:
+    if cls:
+        if isinstance(cls, list):
+            assert_node(node, cls[0], xpath=xpath, **kwargs)
+            if cls[1:]:
+                if isinstance(cls[1], tuple):
+                    assert_node(node, cls[1], xpath=xpath, **kwargs)
+                else:
+                    assert isinstance(node, nodes.Element), \
+                        'The node%s does not have any children' % xpath
+                    assert len(node) == 1, \
+                        'The node%s has %d child nodes, not one' % (xpath, len(node))
+                    assert_node(node[0], cls[1:], xpath=xpath + "[0]", **kwargs)
+        elif isinstance(cls, tuple):
+            assert isinstance(node, (list, nodes.Element)), \
+                'The node%s does not have any items' % xpath
+            assert len(node) == len(cls), \
+                'The node%s has %d child nodes, not %r' % (xpath, len(node), len(cls))
+            for i, nodecls in enumerate(cls):
+                path = xpath + "[%d]" % i
+                assert_node(node[i], nodecls, xpath=path, **kwargs)
+        elif isinstance(cls, str):
+            assert node == cls, 'The node %r is not %r: %r' % (xpath, cls, node)
+        else:
+            assert isinstance(node, cls), \
+                'The node%s is not subclass of %r: %r' % (xpath, cls, node)
+
+    if kwargs:
+        assert isinstance(node, nodes.Element), \
+            'The node%s does not have any attributes' % xpath
+
+        for key, value in kwargs.items():
+            assert key in node, \
+                'The node%s does not have %r attribute: %r' % (xpath, key, node)
+            assert node[key] == value, \
+                'The node%s[%s] is not %r: %r' % (xpath, key, value, node[key])
+
+
+def etree_parse(path: str) -> Any:
+    with warnings.catch_warnings(record=False):
+        warnings.filterwarnings("ignore", category=DeprecationWarning)
+        return ElementTree.parse(path)
+
+
+class Struct:
+    def __init__(self, **kwargs: Any) -> None:
+        self.__dict__.update(kwargs)
+
+

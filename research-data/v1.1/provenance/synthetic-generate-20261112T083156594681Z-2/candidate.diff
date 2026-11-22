@@ -1,0 +1,11 @@
+--- a/sympy/simplify/cse_main.py
++++ b/sympy/simplify/cse_main.py
+@@ -766,7 +766,7 @@
+                 m = m.as_immutable()
+             reduced_exprs[i] = m
+ 
+-    if postprocess is None:
++    if postprocess is not None:
+         return replacements, reduced_exprs
+ 
+     return postprocess(replacements, reduced_exprs)

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233317893272Z",
+  "reviewed_at": "2026-11-12T07:30:27+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "60ec9da81fae96237e07bba3bb2fddc50520ce4da1b3f2a6aab1912052120420",
+    "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+    "historical-base.stdout.txt": "d6ffcf1a893a32ae39dfb9bdf872900668e3849b575a6cd05a0fbd14fa64d93b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "267fd8fffb28f1c35ef84b60df34c76769cfc30f1cca3499535dccf58a0dbd03",
+    "historical-fixed.stdout.txt": "34a5c16ff3cbfe31d19bffe7924723fb93c06211e6debd7abd0078c3f734f649",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "41a86db841ebc39927da269c190b37ffd09648f81244dddb9f4c2c9ae17818e8"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "_stringify_py37"
+    }
+  ],
+  "mechanism": "The annotation formatter assumes any truthy __args__ is a list or tuple and iterates it. The tested BrokenType has a type object in that field, so iteration raises TypeError. Checking the supported container types before processing arguments permits the safe fallback.",
+  "limitations": "The source defines the malformed third-party annotation deliberately; this is defensive API/type handling, not a missing dependency or invalid Python grammar.",
+  "observed_junit": {
+    "base": {
+      "cases": 10,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 10,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_util_typing::test_stringify_broken_type_hints",
+      "message": "TypeError: 'type' object is not iterable"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

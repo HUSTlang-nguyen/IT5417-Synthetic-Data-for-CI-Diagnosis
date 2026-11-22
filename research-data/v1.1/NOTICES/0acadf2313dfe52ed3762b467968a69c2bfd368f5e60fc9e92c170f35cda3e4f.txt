@@ -1,0 +1,100 @@
+import functools
+import inspect
+import logging
+import os
+import sys
+import typing as t
+import weakref
+from datetime import timedelta
+from itertools import chain
+from threading import Lock
+from types import TracebackType
+
+from werkzeug.datastructures import Headers
+from werkzeug.datastructures import ImmutableDict
+from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import BadRequestKeyError
+from werkzeug.exceptions import HTTPException
+from werkzeug.exceptions import InternalServerError
+from werkzeug.routing import BuildError
+from werkzeug.routing import Map
+from werkzeug.routing import MapAdapter
+from werkzeug.routing import RequestRedirect
+from werkzeug.routing import RoutingException
+from werkzeug.routing import Rule
+from werkzeug.wrappers import Response as BaseResponse
+
+from . import cli
+from . import json
+from .config import Config
+from .config import ConfigAttribute
+from .ctx import _AppCtxGlobals
+from .ctx import AppContext
+from .ctx import RequestContext
+from .globals import _request_ctx_stack
+from .globals import g
+from .globals import request
+from .globals import session
+from .helpers import _split_blueprint_path
+from .helpers import get_debug_flag
+from .helpers import get_env
+from .helpers import get_flashed_messages
+from .helpers import get_load_dotenv
+from .helpers import locked_cached_property
+from .helpers import url_for
+from .json import jsonify
+from .logging import create_logger
+from .scaffold import _endpoint_from_view_func
+from .scaffold import _sentinel
+from .scaffold import find_package
+from .scaffold import Scaffold
+from .scaffold import setupmethod
+from .sessions import SecureCookieSessionInterface
+from .sessions import SessionInterface
+from .signals import appcontext_tearing_down
+from .signals import got_request_exception
+from .signals import request_finished
+from .signals import request_started
+from .signals import request_tearing_down
+from .templating import DispatchingJinjaLoader
+from .templating import Environment
+from .typing import BeforeFirstRequestCallable
+from .typing import ResponseReturnValue
+from .typing import TeardownCallable
+from .typing import TemplateFilterCallable
+from .typing import TemplateGlobalCallable
+from .typing import TemplateTestCallable
+from .wrappers import Request
+from .wrappers import Response
+
+if t.TYPE_CHECKING:  # pragma: no cover
+    import typing_extensions as te
+    from .blueprints import Blueprint
+    from .testing import FlaskClient
+    from .testing import FlaskCliRunner
+    from .typing import ErrorHandlerCallable
+
+if sys.version_info >= (3, 8):
+    iscoroutinefunction = inspect.iscoroutinefunction
+else:
+
+    def iscoroutinefunction(func: t.Any) -> bool:
+        while inspect.ismethod(func):
+            func = func.__func__
+
+        while isinstance(func, functools.partial):
+            func = func.func
+
+        return inspect.iscoroutinefunction(func)
+
+
+def _make_timedelta(value: t.Optional[timedelta]) -> t.Optional[timedelta]:
+    if value is None or isinstance(value, timedelta):
+        return value
+
+    return timedelta(seconds=value)
+
+
+class Flask(Scaffold):
+    """The flask object implements a WSGI application and acts as the central
+    object.  It is passed the name of the module or package of the

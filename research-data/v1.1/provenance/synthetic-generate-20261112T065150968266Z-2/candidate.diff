@@ -1,0 +1,11 @@
+--- a/sympy/core/mul.py
++++ b/sympy/core/mul.py
+@@ -176,7 +176,7 @@
+         from sympy.calculus.util import AccumBounds
+         from sympy.matrices.expressions import MatrixExpr
+         rv = None
+-        if len(seq) == 2:
++        if len(seq) == 3:
+             a, b = seq
+             if b.is_Rational:
+                 a, b = b, a

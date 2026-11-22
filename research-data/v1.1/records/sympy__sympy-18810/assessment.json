@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T005342541043Z",
+  "reviewed_at": "2026-11-12T11:36:32+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e7f430fada8bad7ed744f075f8c93ca5be093e64e90ab5d8b80723838a06a91e",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "b68cad3e5f16506264f36ec56270933e79ba1d112c9550f153b6e803b508bd6b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "d498f6356f336138909e90e889058ce5674a80b3b22e53eb67c2637f9ffdd4ca",
+    "historical-fixed.stdout.txt": "f4af409eaa471447408feb99f6bd4b6d21c0821df84fa11920111f4565be9e34",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "9962b49b49bd1515070e910c2978014bea6dd18d2dbdb28646a91a07dc2d5aef"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "generate_derangements"
+    }
+  ],
+  "mechanism": "The generator compares candidates with the first sorted multiset permutation instead of the actual input order, and skips that first candidate. For input ba it emits ba instead of the true derangement ab. Comparing each candidate with the original perm fixes both assumptions.",
+  "limitations": "The failing reversed two-element example directly exposes the wrong reference ordering; larger counts already passing do not make the algorithm correct for unsorted inputs.",
+  "observed_junit": {
+    "base": {
+      "cases": 41,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 41,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.utilities.tests.test_iterables::test_derangements",
+      "message": "AssertionError: assert [['b', 'a']] == [['a', 'b']]\n  At index 0 diff: ['b', 'a'] != ['a', 'b']\n  Full diff:\n  - [['a', 'b']]\n  ?    ^    ^\n  + [['b', 'a']]\n  ?    ^    ^"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-23534",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "explanation": "The iterable-input branch of symbols recursively calls symbols(name, **args) but omits the explicit keyword-only cls argument. Recursive calls therefore revert to Symbol even when the caller requested Function; forwarding cls preserves the requested constructor class.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol.__new__"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

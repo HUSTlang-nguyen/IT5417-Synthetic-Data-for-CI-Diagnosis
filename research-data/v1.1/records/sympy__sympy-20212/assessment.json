@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T204418540999Z",
+  "reviewed_at": "2026-11-12T07:23:14+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6077a6004253d1f0fcb7b407fdf8d3b7219d8a4fdf70c01e25bc5b96c9341971",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "59ae9dc199338ff836218f9a856251b5be272b6c7b8d51cca7984b7044ec41bd",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b9be88ef7f53190d0b5bdaabd9e36e0e7f8ada23a86e3cfe0c15ea0d795133b7",
+    "historical-fixed.stdout.txt": "bb5f13177e2d5a52181c9e4cb28513e41f12228c3db22a7fb4979dbc26ee61ea",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "3229b0091dbbc9d21bcbd74f4722a34802da9a2aace80f5161fcc5b25f656c9d"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow.__new__"
+    }
+  ],
+  "mechanism": "The evaluated power constructor lacks the zero-to-negative-infinity boundary case. Consequently 0**-oo is not reduced to ComplexInfinity as required by the test. The explicit branch returns that singleton before the generic power evaluation.",
+  "limitations": "The final singleton mismatch is proven. No claim about every infinite-power expression or internal numeric intermediate is made.",
+  "observed_junit": {
+    "base": {
+      "cases": 33,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 33,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_power::test_zero",
+      "message": "assert (0 ** -oo) is zoo"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

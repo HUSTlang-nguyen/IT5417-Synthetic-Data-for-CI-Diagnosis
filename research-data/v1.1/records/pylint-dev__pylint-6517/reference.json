@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-6517",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/config/argument.py",
+      "function": "_confidence_transformer"
+    }
+  ],
+  "explanation": "An empty confidence option is passed through the CSV parser as an empty list instead of expanding to all supported confidence levels. An early empty-input branch returns CONFIDENCE_LEVEL_NAMES as required by the option semantics.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/config/__init__.py",
+      "function": "save_results"
+    },
+    {
+      "file": "pylint/config/__init__.py",
+      "function": "load_results"
+    },
+    {
+      "file": "pylint/config/__init__.py",
+      "function": "<module>"
+    },
+    {
+      "file": "pylint/interfaces.py",
+      "function": "Interface.__init__"
+    },
+    {
+      "file": "pylint/config/arguments_provider.py",
+      "function": "UnsupportedAction.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

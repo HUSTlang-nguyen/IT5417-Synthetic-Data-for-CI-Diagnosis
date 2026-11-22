@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-12529",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/ntheory/factor_.py",
+      "function": "totient.eval"
+    }
+  ],
+  "explanation": "The evaluator validates positive integers only after n.is_Integer succeeds. Unsupported noninteger/non-expression inputs fall through unevaluated instead of raising the required ValueError in the saved test. The additional guard enforces the API domain for those other inputs.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/pytest.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

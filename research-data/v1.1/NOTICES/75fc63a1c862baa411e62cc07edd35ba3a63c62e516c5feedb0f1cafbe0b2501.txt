@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+
+from sympy import Derivative
+from sympy.core.function import UndefinedFunction, AppliedUndef
+from sympy.core.symbol import Symbol
+from sympy.interactive.printing import init_printing
+from sympy.printing.conventions import split_super_sub
+from sympy.printing.latex import LatexPrinter, translate
+from sympy.printing.pretty.pretty import PrettyPrinter
+from sympy.printing.str import StrPrinter
+
+__all__ = ['vprint', 'vsstrrepr', 'vsprint', 'vpprint', 'vlatex',
+           'init_vprinting']
+
+
+class VectorStrPrinter(StrPrinter):
+    """String Printer for vector expressions. """
+
+    def _print_Derivative(self, e):
+        from sympy.physics.vector.functions import dynamicsymbols
+        t = dynamicsymbols._t
+        if (bool(sum([i == t for i in e.variables])) &
+                isinstance(type(e.args[0]), UndefinedFunction)):
+            ol = str(e.args[0].func)
+            for i, v in enumerate(e.variables):
+                ol += dynamicsymbols._str
+            return ol
+        else:
+            return StrPrinter().doprint(e)
+
+    def _print_Function(self, e):
+        from sympy.physics.vector.functions import dynamicsymbols
+        t = dynamicsymbols._t
+        if isinstance(type(e), UndefinedFunction):
+            return StrPrinter().doprint(e).replace("(%s)" % t, '')
+        return e.func.__name__ + "(%s)" % self.stringify(e.args, ", ")
+
+
+class VectorStrReprPrinter(VectorStrPrinter):
+    """String repr printer for vector expressions."""
+    def _print_str(self, s):
+        return repr(s)
+
+
+class VectorLatexPrinter(LatexPrinter):
+    """Latex Printer for vector expressions. """
+
+    def _print_Function(self, expr, exp=None):
+        from sympy.physics.vector.functions import dynamicsymbols
+        func = expr.func.__name__
+        t = dynamicsymbols._t
+
+        if hasattr(self, '_print_' + func) and \
+            not isinstance(type(expr), UndefinedFunction):
+            return getattr(self, '_print_' + func)(expr, exp)
+        elif isinstance(type(expr), UndefinedFunction) and (expr.args == (t,)):
+
+            name, supers, subs = split_super_sub(func)
+            name = translate(name)
+            supers = [translate(sup) for sup in supers]
+            subs = [translate(sub) for sub in subs]
+
+            if len(supers) != 0:
+                supers = r"^{%s}" % "".join(supers)
+            else:
+                supers = r""
+
+            if len(subs) != 0:
+                subs = r"_{%s}" % "".join(subs)
+            else:
+                subs = r""
+
+            if exp:
+                supers += r"^{%s}" % self._print(exp)
+
+            return r"%s" % (name + supers + subs)
+        else:
+            args = [str(self._print(arg)) for arg in expr.args]
+            # How inverse trig functions should be displayed, formats are:
+            # abbreviated: asin, full: arcsin, power: sin^-1
+            inv_trig_style = self._settings['inv_trig_style']
+            # If we are dealing with a power-style inverse trig function
+            inv_trig_power_case = False
+            # If it is applicable to fold the argument brackets
+            can_fold_brackets = self._settings['fold_func_brackets'] and \
+                len(args) == 1 and \
+                not self._needs_function_brackets(expr.args[0])
+
+            inv_trig_table = ["asin", "acos", "atan", "acot"]
+
+            # If the function is an inverse trig function, handle the style
+            if func in inv_trig_table:
+                if inv_trig_style == "abbreviated":
+                    func = func
+                elif inv_trig_style == "full":
+                    func = "arc" + func[1:]
+                elif inv_trig_style == "power":
+                    func = func[1:]
+                    inv_trig_power_case = True
+

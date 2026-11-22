@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T011430979067Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals._contains"
+    }
+  ],
+  "explanation": "Membership tests is_integer instead of is_rational. Noninteger rationals such as one-half are consequently rejected, exactly as the saved assertion shows.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Complexes.sets"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals.__iter__"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals._boundary"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals._eval_is_subset"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals0._eval_is_subset"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

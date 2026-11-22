@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T061918476285Z",
+  "reviewed_at": "2026-11-12T18:28:30+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c0107a0a22df30ac54fdd0618423a040fe82aba377a6bafb0dc36a71e0973b81",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "38f841de86d0898d39d99f4c665557cc9a78d565e70e20fb4b4b85ccbf5c436c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4b472151702e28fe204f47f369d04bc06f73b7995b2b8b0d46e7f789c4dc5d81",
+    "historical-fixed.stdout.txt": "e8fb5a44fcf0455ffac76a02b2f33401df049c88c11e1c84a82fcf82fbbc040b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c554028fa34e76aab0a750298dcac8f4a127055a4bf9b451c6b47f87e309a536"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "opt_cse._match_common_args.update"
+    },
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "tree_cse"
+    }
+  ],
+  "mechanism": "Common-argument extraction builds unevaluated unit-power/product wrappers even when take equals1, and the final reduced-expression rebuilding leaves hollow nested products. The saved issue11230 result contains a nested Mul where the contract forbids it; the repair changes both extraction and rebuilding, and thirty selected tests pass.",
+  "limitations": "Two related internal functions are proposed for one normalization fault. The saved single failing assertion does not isolate which changed block alone is sufficient; no ablation or new execution was performed.",
+  "observed_junit": {
+    "base": {
+      "cases": 30,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 30,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.simplify.tests.test_cse::test_issue_11230",
+      "message": "assert not True\n +  where True = any(<generator object test_issue_11230.<locals>.<genexpr> at 0x72b8e602b3c0>)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

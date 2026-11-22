@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 24 items\n\ntests/unittest_nodes_lineno.py::TestEndLinenoNotSet::test_end_lineno_not_set SKIPPED [  4%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_container PASSED [  8%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_name PASSED [ 12%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_attribute PASSED [ 16%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_call PASSED [ 20%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_assignment PASSED [ 25%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_mix_stmts PASSED [ 29%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_mix_nodes PASSED [ 33%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_ops PASSED [ 37%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_if PASSED [ 41%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_for PASSED [ 45%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_const PASSED [ 50%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_function PASSED [ 54%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_dict PASSED [ 58%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_try PASSED [ 62%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_subscript PASSED [ 66%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_import PASSED [ 70%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_with PASSED [ 75%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_while PASSED [ 79%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_string PASSED [ 83%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_match SKIPPED [ 87%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_comprehension PASSED [ 91%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_class PASSED [ 95%]\ntests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_module FAILED [100%]\n\n=================================== FAILURES ===================================\n__________________ TestLinenoColOffset.test_end_lineno_module __________________\n\n    @staticmethod\n    def test_end_lineno_module() -> None:\n        \"\"\"Tests for Module\"\"\"\n        code = \"\"\"print()\"\"\"\n        module = astroid.parse(code)\n        assert isinstance(module, nodes.Module)\n        assert module.lineno == 0\n>       assert module.col_offset is None\nE       AttributeError: 'Module' object has no attribute 'col_offset'\n\ntests/unittest_nodes_lineno.py:1233: AttributeError\n=============================== warnings summary ===============================\nastroid/interpreter/_import/util.py:6\n  /source/base/astroid/interpreter/_import/util.py:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/unittest_nodes_lineno.py::TestLinenoColOffset::test_end_lineno_module\n============== 1 failed, 21 passed, 2 skipped, 1 warning in 0.95s ==============\n",
+  "code": [
+    {
+      "file": "astroid/interpreter/_import/util.py",
+      "function": "<module>",
+      "start_line": 5,
+      "end_line": 8,
+      "score": 1101.224745,
+      "text": "astroid/interpreter/_import/util.py::<module> lines 5-8\ntry:\n    import pkg_resources\nexcept ImportError:\n    pkg_resources = None",
+      "truncated": false
+    },
+    {
+      "file": "astroid/interpreter/_import/util.py",
+      "function": "is_namespace",
+      "start_line": 11,
+      "end_line": 16,
+      "score": 100.948683,
+      "text": "astroid/interpreter/_import/util.py::is_namespace lines 11-16\ndef is_namespace(modname):\n    return (\n        pkg_resources is not None\n        and hasattr(pkg_resources, \"_namespace_packages\")\n        and modname in pkg_resources._namespace_packages\n    )",
+      "truncated": false
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes.py",
+      "function": "Module.statement",
+      "start_line": 669,
+      "end_line": 689,
+      "score": 31.224745,
+      "text": "astroid/nodes/scoped_nodes.py::Module.statement lines 669-689\n    def statement(\n        self, *, future: Literal[None, True] = None\n    ) -> Union[\"NoReturn\", \"Module\"]:\n        \"\"\"The first parent node, including self, marked as statement node.\n\n        When called on a :class:`Module` with the future parameter this raises an error.\n\n        TODO: Deprecate the future parameter and only raise StatementMissing\n\n        :raises StatementMissing: If no self has no parent attribute and future is True\n        \"\"\"\n        if future:\n            raise StatementMissing(target=self)\n        warnings.warn(\n            \"In astroid 3.0.0 NodeNG.statement() will return either a nodes.Statement \"\n            \"or raise a StatementMissing exception. nodes.Module will no longer be \"\n            \"considered a statement. This behaviour can already be triggered \"\n            \"by passing 'future=True' to a statement() call.\",\n            DeprecationWarning,\n        )\n        return self",
+      "truncated": false
+    },
+    {
+      "file": "astroid/builder.py",
+      "function": "parse",
+      "start_line": 271,
+      "end_line": 285,
+      "score": 31.219989,
+      "text": "astroid/builder.py::parse lines 271-285\ndef parse(code, module_name=\"\", path=None, apply_transforms=True):\n    \"\"\"Parses a source string in order to obtain an astroid AST from it\n\n    :param str code: The code for the module.\n    :param str module_name: The name for the module, if any\n    :param str path: The path for the module\n    :param bool apply_transforms:\n        Apply the transforms for the give code. Use it if you\n        don't want the default transforms to be applied.\n    \"\"\"\n    code = textwrap.dedent(code)\n    builder = AstroidBuilder(\n        manager=AstroidManager(), apply_transforms=apply_transforms\n    )\n    return builder.string_build(code, modname=module_name, path=path)",
+      "truncated": false
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes.py",
+      "function": "Module.fully_defined",
+      "start_line": 650,
+      "end_line": 659,
+      "score": 31.154701,
+      "text": "astroid/nodes/scoped_nodes.py::Module.fully_defined lines 650-659\n    def fully_defined(self):\n        \"\"\"Check if this module has been build from a .py file.\n\n        If so, the module contains a complete representation,\n        including the code.\n\n        :returns: True if the module has been built from a .py file.\n        :rtype: bool\n        \"\"\"\n        return self.file is not None and self.file.endswith(\".py\")",
+      "truncated": false
+    }
+  ]
+}

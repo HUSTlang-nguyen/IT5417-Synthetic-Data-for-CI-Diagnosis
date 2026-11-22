@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-6.0.1.dev112+g75af2bfa0, py-1.11.0, pluggy-1.0.0 -- /opt/venv/bin/python\nrootdir: /source/base, configfile: pyproject.toml\ncollecting ... collected 15 items\n\ntesting/logging/test_fixture.py::test_change_level PASSED                [  6%]\ntesting/logging/test_fixture.py::test_with_statement PASSED              [ 13%]\ntesting/logging/test_fixture.py::test_log_access PASSED                  [ 20%]\ntesting/logging/test_fixture.py::test_messages PASSED                    [ 26%]\ntesting/logging/test_fixture.py::test_record_tuples PASSED               [ 33%]\ntesting/logging/test_fixture.py::test_unicode PASSED                     [ 40%]\ntesting/logging/test_fixture.py::test_clear PASSED                       [ 46%]\ntesting/logging/test_fixture.py::test_caplog_captures_for_all_stages PASSED [ 53%]\ntesting/logging/test_fixture.py::test_fixture_help PASSED                [ 60%]\ntesting/logging/test_fixture.py::test_change_level_undo PASSED           [ 66%]\ntesting/logging/test_fixture.py::test_change_level_undos_handler_level FAILED [ 73%]\ntesting/logging/test_fixture.py::test_ini_controls_global_log_level PASSED [ 80%]\ntesting/logging/test_fixture.py::test_caplog_can_override_global_log_level PASSED [ 86%]\ntesting/logging/test_fixture.py::test_caplog_captures_despite_exception PASSED [ 93%]\ntesting/logging/test_fixture.py::test_log_report_captures_according_to_config_option_upon_failure PASSED [100%]\n\n=================================== FAILURES ===================================\n____________________ test_change_level_undos_handler_level _____________________\n\ntestdir = <Testdir local('/tmp/pytest-of-nobody/pytest-0/test_change_level_undos_handler_level0')>\n\n    def test_change_level_undos_handler_level(testdir: Testdir) -> None:\n        \"\"\"Ensure that 'set_level' is undone after the end of the test (handler).\n    \n        Issue #7569. Tests the handler level specifically.\n        \"\"\"\n        testdir.makepyfile(\n            \"\"\"\n            import logging\n    \n            def test1(caplog):\n                assert caplog.handler.level == 0\n                caplog.set_level(9999)\n                caplog.set_level(41)\n                assert caplog.handler.level == 41\n    \n            def test2(caplog):\n                assert caplog.handler.level == 0\n    \n            def test3(caplog):\n                assert caplog.handler.level == 0\n                caplog.set_level(43)\n                assert caplog.handler.level == 43\n        \"\"\"\n        )\n        result = testdir.runpytest()\n>       result.assert_outcomes(passed=3)\nE       AssertionError: assert {'errors': 0,...pped': 0, ...} == {'errors': 0,...pped': 0, ...}\nE         Omitting 4 identical items, use -vv to show\nE         Differing items:\nE         {'failed': 2} != {'failed': 0}\nE         {'passed': 1} != {'passed': 3}\nE         Full diff:\nE           {\nE            'errors': 0,...\nE         \nE         ...Full output truncated (13 lines hidden), use '-vv' to show\n\n/source/base/testing/logging/test_fixture.py:82: AssertionError\n----------------------------- Captured stdout call -----------------------------\n============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-6.0.1.dev112+g75af2bfa0, py-1.11.0, pluggy-1.0.0\nrootdir: /tmp/pytest-of-nobody/pytest-0/test_change_level_undos_handler_level0\ncollected 3 items\n\ntest_change_level_undos_handler_level.py .FF                             [100%]\n\n=================================== FAILURES ===================================\n____________________________________ test2 _____________________________________\n\ncaplog = <_pytest.logging.LogCaptureFixture object at 0x710fa67e54f0>\n\n    def test2(caplog):\n>       assert caplog.handler.level == 0\nE       assert 9999 == 0\nE        +  where 9999 = <LogCaptureHandler (Level 9999)>.level\nE        +    where <LogCaptureHandler (Level 9999)> = <_pytest.logging.LogCaptureFixture object at 0x710fa67e54f0>.handler\n\ntest_change_level_undos_handler_level.py:10: AssertionError\n____________________________________ test3 _____________________________________\n\ncaplog = <_pytest.logging.LogCaptureFixture object at 0x710fa671ef40>\n\n    def test3(caplog):\n>       assert caplog.handler.level == 0\nE       assert 9999 == 0\nE        +  where 9999 = <LogCaptureHandler (Level 9999)>.level\nE        +    where <LogCaptureHandler (Level 9999)> = <_pytest.logging.LogCaptureFixture object at 0x710fa671ef40>.handler\n\ntest_change_level_undos_handler_level.py:13: AssertionError\n=========================== short test summary info ============================\nFAILED test_change_level_undos_handler_level.py::test2 - assert 9999 == 0\nFAILED test_change_level_undos_handler_level.py::test3 - assert 9999 == 0\n========================= 2 failed, 1 passed in 0.01s ==========================\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED testing/logging/test_fixture.py::test_change_level_undos_handler_level\n========================= 1 failed, 14 passed in 0.40s =========================\n",
+  "code": [
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "RunResult.assert_outcomes",
+      "start_line": 537,
+      "end_line": 567,
+      "score": 31.859339,
+      "text": "src/_pytest/pytester.py::RunResult.assert_outcomes lines 537-567\n    def assert_outcomes(\n        self,\n        passed: int = 0,\n        skipped: int = 0,\n        failed: int = 0,\n        errors: int = 0,\n        xpassed: int = 0,\n        xfailed: int = 0,\n    ) -> None:\n        \"\"\"Assert that the specified outcomes appear with the respective\n        numbers (0 means it didn't occur) in the text output from a test run.\"\"\"\n        __tracebackhide__ = True\n\n        d = self.parseoutcomes()\n        obtained = {\n            \"passed\": d.get(\"passed\", 0),\n            \"skipped\": d.get(\"skipped\", 0),\n            \"failed\": d.get(\"failed\", 0),\n            \"errors\": d.get(\"errors\", 0),\n            \"xpassed\": d.get(\"xpassed\", 0),\n            \"xfailed\": d.get(\"xfailed\", 0),\n        }\n        expected = {\n            \"passed\": passed,\n            \"skipped\": skipped,\n            \"failed\": failed,\n            \"errors\": errors,\n            \"xpassed\": xpassed,\n            \"xfailed\": xfailed,\n        }\n        assert obtained == expected",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/logging.py",
+      "function": "LogCaptureFixture._finalize",
+      "start_line": 351,
+      "end_line": 361,
+      "score": 31.539601,
+      "text": "src/_pytest/logging.py::LogCaptureFixture._finalize lines 351-361\n    def _finalize(self) -> None:\n        \"\"\"Finalize the fixture.\n\n        This restores the log levels changed by :meth:`set_level`.\n        \"\"\"\n        # Restore log levels.\n        if self._initial_handler_level is not None:\n            self.handler.setLevel(self._initial_handler_level)\n        for logger_name, level in self._initial_logger_levels.items():\n            logger = logging.getLogger(logger_name)\n            logger.setLevel(level)",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "Code.source",
+      "start_line": 96,
+      "end_line": 99,
+      "score": 31.5,
+      "text": "src/_pytest/_code/code.py::Code.source lines 96-99\n    def source(self) -> \"Source\":\n        \"\"\"Return a _pytest._code.Source object for the code object's source only.\"\"\"\n        # return source only for that part of code\n        return Source(self.raw)",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/logging.py",
+      "function": "caplog",
+      "start_line": 469,
+      "end_line": 482,
+      "score": 31.490712,
+      "text": "src/_pytest/logging.py::caplog lines 469-482\ndef caplog(request: FixtureRequest) -> Generator[LogCaptureFixture, None, None]:\n    \"\"\"Access and control log capturing.\n\n    Captured logs are available through the following properties/methods::\n\n    * caplog.messages        -> list of format-interpolated log messages\n    * caplog.text            -> string containing formatted log output\n    * caplog.records         -> list of logging.LogRecord instances\n    * caplog.record_tuples   -> list of (logger_name, level, message) tuples\n    * caplog.clear()         -> clear captured records and formatted log output string\n    \"\"\"\n    result = LogCaptureFixture(request.node)\n    yield result\n    result._finalize()",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Testdir.getitems",
+      "start_line": 1151,
+      "end_line": 1158,
+      "score": 31.485563,
+      "text": "src/_pytest/pytester.py::Testdir.getitems lines 1151-1158\n    def getitems(self, source) -> List[Item]:\n        \"\"\"Return all test items collected from the module.\n\n        Writes the source to a Python file and runs pytest's collection on\n        the resulting module, returning all test items contained within.\n        \"\"\"\n        modcol = self.getmodulecol(source)\n        return self.genitems([modcol])",
+      "truncated": false
+    }
+  ]
+}

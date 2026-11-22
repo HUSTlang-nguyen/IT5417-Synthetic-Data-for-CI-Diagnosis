@@ -1,0 +1,100 @@
+"""Implementation of :class:`Domain` class. """
+
+
+from typing import Any, Optional, Type
+
+from sympy.core import Basic, sympify
+from sympy.core.compatibility import HAS_GMPY, is_sequence, ordered
+from sympy.core.decorators import deprecated
+from sympy.polys.domains.domainelement import DomainElement
+from sympy.polys.orderings import lex
+from sympy.polys.polyerrors import UnificationFailed, CoercionFailed, DomainError
+from sympy.polys.polyutils import _unify_gens, _not_a_coeff
+from sympy.utilities import default_sort_key, public
+
+@public
+class Domain:
+    """Superclass for all domains in the polys domains system.
+
+    See :ref:`polys-domainsintro` for an introductory explanation of the
+    domains system.
+
+    The :py:class:`~.Domain` class is an abstract base class for all of the
+    concrete domain types. There are many different :py:class:`~.Domain`
+    subclasses each of which has an associated ``dtype`` which is a class
+    representing the elements of the domain. The coefficients of a
+    :py:class:`~.Poly` are elements of a domain which must be a subclass of
+    :py:class:`~.Domain`.
+
+    Examples
+    ========
+
+    The most common example domains are the integers :ref:`ZZ` and the
+    rationals :ref:`QQ`.
+
+    >>> from sympy import Poly, symbols, Domain
+    >>> x, y = symbols('x, y')
+    >>> p = Poly(x**2 + y)
+    >>> p
+    Poly(x**2 + y, x, y, domain='ZZ')
+    >>> p.domain
+    ZZ
+    >>> isinstance(p.domain, Domain)
+    True
+    >>> Poly(x**2 + y/2)
+    Poly(x**2 + 1/2*y, x, y, domain='QQ')
+
+    The domains can be used directly in which case the domain object e.g.
+    (:ref:`ZZ` or :ref:`QQ`) can be used as a constructor for elements of
+    ``dtype``.
+
+    >>> from sympy import ZZ, QQ
+    >>> ZZ(2)
+    2
+    >>> ZZ.dtype  # doctest: +SKIP
+    <class 'int'>
+    >>> type(ZZ(2))  # doctest: +SKIP
+    <class 'int'>
+    >>> QQ(1, 2)
+    1/2
+    >>> type(QQ(1, 2))  # doctest: +SKIP
+    <class 'sympy.polys.domains.pythonrational.PythonRational'>
+
+    The corresponding domain elements can be used with the arithmetic
+    operations ``+,-,*,**`` and depending on the domain some combination of
+    ``/,//,%`` might be usable. For example in :ref:`ZZ` both ``//`` (floor
+    division) and ``%`` (modulo division) can be used but ``/`` (true
+    division) can not. Since :ref:`QQ` is a :py:class:`~.Field` its elements
+    can be used with ``/`` but ``//`` and ``%`` should not be used. Some
+    domains have a :py:meth:`~.Domain.gcd` method.
+
+    >>> ZZ(2) + ZZ(3)
+    5
+    >>> ZZ(5) // ZZ(2)
+    2
+    >>> ZZ(5) % ZZ(2)
+    1
+    >>> QQ(1, 2) / QQ(2, 3)
+    3/4
+    >>> ZZ.gcd(ZZ(4), ZZ(2))
+    2
+    >>> QQ.gcd(QQ(2,7), QQ(5,3))
+    1/21
+    >>> ZZ.is_Field
+    False
+    >>> QQ.is_Field
+    True
+
+    There are also many other domains including:
+
+        1. :ref:`GF(p)` for finite fields of prime order.
+        2. :ref:`RR` for real (floating point) numbers.
+        3. :ref:`CC` for complex (floating point) numbers.
+        4. :ref:`QQ(a)` for algebraic number fields.
+        5. :ref:`K[x]` for polynomial rings.
+        6. :ref:`K(x)` for rational function fields.
+        7. :ref:`EX` for arbitrary expressions.
+
+    Each domain is represented by a domain object and also an implementation
+    class (``dtype``) for the elements of the domain. For example the
+    :ref:`K[x]` domains are represented by a domain object which is an

@@ -1,0 +1,100 @@
+# Licensed under the LGPL: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+# For details: https://github.com/PyCQA/astroid/blob/main/LICENSE
+# Copyright (c) https://github.com/PyCQA/astroid/blob/main/CONTRIBUTORS.txt
+
+"""Module for some node classes. More nodes in scoped_nodes.py"""
+
+from __future__ import annotations
+
+import abc
+import itertools
+import sys
+import typing
+import warnings
+from collections.abc import Generator, Iterable, Mapping
+from functools import lru_cache
+from typing import TYPE_CHECKING, Any, Callable, ClassVar, Optional, TypeVar, Union
+
+from astroid import decorators, util
+from astroid.bases import Instance, _infer_stmts
+from astroid.const import _EMPTY_OBJECT_MARKER, Context
+from astroid.context import InferenceContext
+from astroid.exceptions import (
+    AstroidIndexError,
+    AstroidTypeError,
+    AstroidValueError,
+    InferenceError,
+    NoDefault,
+    ParentMissingError,
+)
+from astroid.manager import AstroidManager
+from astroid.nodes import _base_nodes
+from astroid.nodes.const import OP_PRECEDENCE
+from astroid.nodes.node_ng import NodeNG
+from astroid.typing import (
+    ConstFactoryResult,
+    InferBinaryOp,
+    InferenceErrorInfo,
+    InferenceResult,
+    SuccessfulInferenceResult,
+)
+
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
+
+if TYPE_CHECKING:
+    from astroid import nodes
+    from astroid.nodes import LocalsDictNodeNG
+
+if sys.version_info >= (3, 8):
+    from functools import cached_property
+else:
+    from astroid.decorators import cachedproperty as cached_property
+
+
+def _is_const(value) -> bool:
+    return isinstance(value, tuple(CONST_CLS))
+
+
+_NodesT = TypeVar("_NodesT", bound=NodeNG)
+_BadOpMessageT = TypeVar("_BadOpMessageT", bound=util.BadOperationMessage)
+
+AssignedStmtsPossibleNode = Union["List", "Tuple", "AssignName", "AssignAttr", None]
+AssignedStmtsCall = Callable[
+    [
+        _NodesT,
+        AssignedStmtsPossibleNode,
+        Optional[InferenceContext],
+        Optional[typing.List[int]],
+    ],
+    Any,
+]
+InferBinaryOperation = Callable[
+    [_NodesT, Optional[InferenceContext]],
+    typing.Generator[Union[InferenceResult, _BadOpMessageT], None, None],
+]
+InferLHS = Callable[
+    [_NodesT, Optional[InferenceContext]],
+    typing.Generator[InferenceResult, None, Optional[InferenceErrorInfo]],
+]
+InferUnaryOp = Callable[[_NodesT, str], ConstFactoryResult]
+
+
+@decorators.raise_if_nothing_inferred
+def unpack_infer(stmt, context: InferenceContext | None = None):
+    """recursively generate nodes inferred by the given statement.
+    If the inferred value is a list or a tuple, recurse on the elements
+    """
+    if isinstance(stmt, (List, Tuple)):
+        for elt in stmt.elts:
+            if elt is util.Uninferable:
+                yield elt
+                continue
+            yield from unpack_infer(elt, context)
+        return {"node": stmt, "context": context}
+    # if inferred is a final node, return it and stop
+    inferred = next(stmt.infer(context), util.Uninferable)
+    if inferred is stmt:
+        yield inferred

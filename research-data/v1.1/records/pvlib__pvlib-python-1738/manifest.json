@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T12:10:20+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "pvlib__pvlib-python-1738",
+  "case_id": "pvlib__pvlib-python-1738-ds1-env2",
+  "run_id": "reproduce-20261112T042530881414Z",
+  "role": "train",
+  "repo": "https://github.com/pvlib/pvlib-python",
+  "group_id": "https://github.com/pvlib/pvlib-python",
+  "source_commit": "275e6718caf7486cb5b7dcf29acd59499ad51f7f",
+  "image_id": "sha256:4c1ee0d03918d1c9175bd7e67f9ebe744d26c1b9660a6747a2b435781a087c76",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "58a79050e71ca60af9b11821d9fa24a4c9908f02dc9d7b3d201bdc834668909e",
+  "input_content_sha256": "b85daf8c9d4570ceac1745588618cfe0eb6d58951b597b353ec4538c02758bc2",
+  "reference_sha256": "5503d7016b5f4abcc109446939a5270bb1d1e2063f10720fea5c10f146650f61",
+  "assessment_sha256": "4066bb319b98de6d87f97fae39e43dfef2d54baee8f50051dcd0aadb0800695b",
+  "evidence_hashes": {
+    "manifest.json": "c7fe014fdc2bf93b06c145eb4455f0b8345df37d346a3e5c62cf868351ae6995",
+    "license-evidence.json": "0ee51d42931dbc7a38ee94a188f2f18e50d1102cf301030d20ad4bf393973cbe",
+    "historical-base.stdout.txt": "28c8df303c028dcdb452bf3ce2bb2709ba3ddcf4e9edb01603c53025499cfde8",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "962e075aedb31baf6877f80e888a65dbe78c583c53499982d9a82d1167a8be86",
+    "historical-fixed.stdout.txt": "3e90d43d5468a19bdda2fbb1d2146187d89f1481de76c7caa8535e4526ca9a11",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5a6a6729db9c2eed76e5787b738394b1ff9714e115d581b74cb1f34ab88f6b58"
+  },
+  "retrieval": {
+    "production_files_scanned": 86,
+    "ranked_function_count": 747,
+    "characters": 6000,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

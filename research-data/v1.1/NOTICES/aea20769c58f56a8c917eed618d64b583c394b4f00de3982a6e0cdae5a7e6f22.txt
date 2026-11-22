@@ -1,0 +1,100 @@
+from sympy import (S, Dummy, Lambda, symbols, Interval, Intersection, Set,
+                   EmptySet, FiniteSet, Union, ComplexRegion)
+from sympy.multipledispatch import dispatch
+from sympy.sets.conditionset import ConditionSet
+from sympy.sets.fancysets import (Integers, Naturals, Reals, Range,
+    ImageSet, Rationals)
+from sympy.sets.sets import UniversalSet, imageset, ProductSet
+
+
+@dispatch(ConditionSet, ConditionSet)  # type: ignore # noqa:F811
+def intersection_sets(a, b): # noqa:F811
+    return None
+
+@dispatch(ConditionSet, Set)  # type: ignore # noqa:F811
+def intersection_sets(a, b): # noqa:F811
+    return ConditionSet(a.sym, a.condition, Intersection(a.base_set, b))
+
+@dispatch(Naturals, Integers)  # type: ignore # noqa:F811
+def intersection_sets(a, b): # noqa:F811
+    return a
+
+@dispatch(Naturals, Naturals)  # type: ignore # noqa:F811
+def intersection_sets(a, b): # noqa:F811
+    return a if a is S.Naturals else b
+
+@dispatch(Interval, Naturals)  # type: ignore # noqa:F811
+def intersection_sets(a, b): # noqa:F811
+    return intersection_sets(b, a)
+
+@dispatch(ComplexRegion, Set)  # type: ignore # noqa:F811
+def intersection_sets(self, other): # noqa:F811
+    if other.is_ComplexRegion:
+        # self in rectangular form
+        if (not self.polar) and (not other.polar):
+            return ComplexRegion(Intersection(self.sets, other.sets))
+
+        # self in polar form
+        elif self.polar and other.polar:
+            r1, theta1 = self.a_interval, self.b_interval
+            r2, theta2 = other.a_interval, other.b_interval
+            new_r_interval = Intersection(r1, r2)
+            new_theta_interval = Intersection(theta1, theta2)
+
+            # 0 and 2*Pi means the same
+            if ((2*S.Pi in theta1 and S.Zero in theta2) or
+               (2*S.Pi in theta2 and S.Zero in theta1)):
+                new_theta_interval = Union(new_theta_interval,
+                                           FiniteSet(0))
+            return ComplexRegion(new_r_interval*new_theta_interval,
+                                polar=True)
+
+
+    if other.is_subset(S.Reals):
+        new_interval = []
+        x = symbols("x", cls=Dummy, real=True)
+
+        # self in rectangular form
+        if not self.polar:
+            for element in self.psets:
+                if S.Zero in element.args[1]:
+                    new_interval.append(element.args[0])
+            new_interval = Union(*new_interval)
+            return Intersection(new_interval, other)
+
+        # self in polar form
+        elif self.polar:
+            for element in self.psets:
+                if S.Zero in element.args[1]:
+                    new_interval.append(element.args[0])
+                if S.Pi in element.args[1]:
+                    new_interval.append(ImageSet(Lambda(x, -x), element.args[0]))
+                if S.Zero in element.args[0]:
+                    new_interval.append(FiniteSet(0))
+            new_interval = Union(*new_interval)
+            return Intersection(new_interval, other)
+
+@dispatch(Integers, Reals)  # type: ignore # noqa:F811
+def intersection_sets(a, b): # noqa:F811
+    return a
+
+@dispatch(Range, Interval)  # type: ignore # noqa:F811
+def intersection_sets(a, b): # noqa:F811
+    from sympy.functions.elementary.integers import floor, ceiling
+    if not all(i.is_number for i in b.args[:2]):
+        return
+
+    # In case of null Range, return an EmptySet.
+    if a.size == 0:
+        return S.EmptySet
+
+    # trim down to self's size, and represent
+    # as a Range with step 1.
+    start = ceiling(max(b.inf, a.inf))
+    if start not in b:
+        start += 1
+    end = floor(min(b.sup, a.sup))
+    if end not in b:
+        end -= 1
+    return intersection_sets(a, Range(start, end + 1))
+

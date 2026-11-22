@@ -1,0 +1,100 @@
+""" Caching facility for SymPy """
+from importlib import import_module
+from typing import Callable
+
+class _cache(list):
+    """ List of cached functions """
+
+    def print_cache(self):
+        """print cache info"""
+
+        for item in self:
+            name = item.__name__
+            myfunc = item
+            while hasattr(myfunc, '__wrapped__'):
+                if hasattr(myfunc, 'cache_info'):
+                    info = myfunc.cache_info()
+                    break
+                else:
+                    myfunc = myfunc.__wrapped__
+            else:
+                info = None
+
+            print(name, info)
+
+    def clear_cache(self):
+        """clear cache content"""
+        for item in self:
+            myfunc = item
+            while hasattr(myfunc, '__wrapped__'):
+                if hasattr(myfunc, 'cache_clear'):
+                    myfunc.cache_clear()
+                    break
+                else:
+                    myfunc = myfunc.__wrapped__
+
+
+# global cache registry:
+CACHE = _cache()
+# make clear and print methods available
+print_cache = CACHE.print_cache
+clear_cache = CACHE.clear_cache
+
+from functools import lru_cache, wraps
+
+def __cacheit(maxsize):
+    """caching decorator.
+
+        important: the result of cached function must be *immutable*
+
+
+        Examples
+        ========
+
+        >>> from sympy import cacheit
+        >>> @cacheit
+        ... def f(a, b):
+        ...    return a+b
+
+        >>> @cacheit
+        ... def f(a, b): # noqa: F811
+        ...    return [a, b] # <-- WRONG, returns mutable object
+
+        to force cacheit to check returned results mutability and consistency,
+        set environment variable SYMPY_USE_CACHE to 'debug'
+    """
+    def func_wrapper(func):
+        cfunc = lru_cache(maxsize, typed=True)(func)
+
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            try:
+                retval = cfunc(*args, **kwargs)
+            except TypeError as e:
+                if not e.args or not e.args[0].startswith('unhashable type:'):
+                    raise
+                retval = func(*args, **kwargs)
+            return retval
+
+        wrapper.cache_info = cfunc.cache_info
+        wrapper.cache_clear = cfunc.cache_clear
+
+        CACHE.append(wrapper)
+        return wrapper
+
+    return func_wrapper
+########################################
+
+
+def __cacheit_nocache(func):
+    return func
+
+
+def __cacheit_debug(maxsize):
+    """cacheit + code to check cache consistency"""
+    def func_wrapper(func):
+        cfunc = __cacheit(maxsize)(func)
+
+        @wraps(func)
+        def wrapper(*args, **kw_args):
+            # always call function itself and compare it with cached version

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-14166",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Order"
+    }
+  ],
+  "explanation": "The Order printer emits a calligraphic O while the tested notation contract requires plain O. The return format therefore differs by the mathcal wrapper. Replacing only that wrapper matches the exact saved expected LaTeX string.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

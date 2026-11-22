@@ -1,0 +1,23 @@
+{
+  "sample_id": "marshmallow-code__marshmallow-1252",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "from_iso"
+    }
+  ],
+  "explanation": "The fallback datetime parser truncates a fractional-seconds string at26 characters regardless of actual fraction length. A short fraction leaves part of the timezone suffix in the strptime input, which raises the saved unconverted-data ValueError. Isolating the fractional digits removes that suffix before parsing.",
+  "retrieved_locations": [
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "from_iso"
+    },
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

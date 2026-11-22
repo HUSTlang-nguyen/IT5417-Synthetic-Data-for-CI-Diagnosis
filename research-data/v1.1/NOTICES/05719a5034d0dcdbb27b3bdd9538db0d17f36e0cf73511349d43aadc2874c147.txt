@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from sympy import Basic, Symbol, symbols, lambdify
+from .util import interpolate, rinterpolate, create_bounds, update_bounds
+from sympy.utilities.iterables import sift
+
+
+class ColorGradient(object):
+    colors = [0.4, 0.4, 0.4], [0.9, 0.9, 0.9]
+    intervals = 0.0, 1.0
+
+    def __init__(self, *args):
+        if len(args) == 2:
+            self.colors = list(args)
+            self.intervals = [0.0, 1.0]
+        elif len(args) > 0:
+            if len(args) % 2 != 0:
+                raise ValueError("len(args) should be even")
+            self.colors = [args[i] for i in range(1, len(args), 2)]
+            self.intervals = [args[i] for i in range(0, len(args), 2)]
+        assert len(self.colors) == len(self.intervals)
+
+    def copy(self):
+        c = ColorGradient()
+        c.colors = [e[::] for e in self.colors]
+        c.intervals = self.intervals[::]
+        return c
+
+    def _find_interval(self, v):
+        m = len(self.intervals)
+        i = 0
+        while i < m - 1 and self.intervals[i] <= v:
+            i += 1
+        return i
+
+    def _interpolate_axis(self, axis, v):
+        i = self._find_interval(v)
+        v = rinterpolate(self.intervals[i - 1], self.intervals[i], v)
+        return interpolate(self.colors[i - 1][axis], self.colors[i][axis], v)
+
+    def __call__(self, r, g, b):
+        c = self._interpolate_axis
+        return c(0, r), c(1, g), c(2, b)
+
+default_color_schemes = {}  # defined at the bottom of this file
+
+
+class ColorScheme(object):
+
+    def __init__(self, *args, **kwargs):
+        self.args = args
+        self.f, self.gradient = None, ColorGradient()
+
+        if len(args) == 1 and not isinstance(args[0], Basic) and callable(args[0]):
+            self.f = args[0]
+        elif len(args) == 1 and isinstance(args[0], str):
+            if args[0] in default_color_schemes:
+                cs = default_color_schemes[args[0]]
+                self.f, self.gradient = cs.f, cs.gradient.copy()
+            else:
+                self.f = lambdify('x,y,z,u,v', args[0])
+        else:
+            self.f, self.gradient = self._interpret_args(args)
+        self._test_color_function()
+        if not isinstance(self.gradient, ColorGradient):
+            raise ValueError("Color gradient not properly initialized. "
+                             "(Not a ColorGradient instance.)")
+
+    def _interpret_args(self, args):
+        f, gradient = None, self.gradient
+        atoms, lists = self._sort_args(args)
+        s = self._pop_symbol_list(lists)
+        s = self._fill_in_vars(s)
+
+        # prepare the error message for lambdification failure
+        f_str = ', '.join(str(fa) for fa in atoms)
+        s_str = (str(sa) for sa in s)
+        s_str = ', '.join(sa for sa in s_str if sa.find('unbound') < 0)
+        f_error = ValueError("Could not interpret arguments "
+                             "%s as functions of %s." % (f_str, s_str))
+
+        # try to lambdify args
+        if len(atoms) == 1:
+            fv = atoms[0]
+            try:
+                f = lambdify(s, [fv, fv, fv])
+            except TypeError:
+                raise f_error
+
+        elif len(atoms) == 3:
+            fr, fg, fb = atoms
+            try:
+                f = lambdify(s, [fr, fg, fb])
+            except TypeError:
+                raise f_error
+
+        else:
+            raise ValueError("A ColorScheme must provide 1 or 3 "
+                             "functions in x, y, z, u, and/or v.")
+

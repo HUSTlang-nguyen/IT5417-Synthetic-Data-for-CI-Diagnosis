@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T082650858569Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/handlers/functions.py",
+      "function": "_set_function"
+    }
+  ],
+  "explanation": "The no-singularity interval branch requires one singularity instead of zero. A regular interval enters the splitting path and saved imageset execution indexes sing[-1] on an empty list.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "ComplexRegion.from_real"
+    },
+    {
+      "file": "sympy/sets/handlers/functions.py",
+      "function": "_set_function"
+    },
+    {
+      "file": "sympy/sets/handlers/intersection.py",
+      "function": "intersection_sets"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

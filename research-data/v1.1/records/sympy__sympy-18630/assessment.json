@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T042608752201Z",
+  "reviewed_at": "2026-11-12T12:07:09+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2a640be111eadf022fac4790836955530182d2b0e9ee9691325323760bfaf29e",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "c24fc463500e5c72598b27dd9a5177419978060c1399a3af3ccf2719085118af",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5ead574db60f76ef0da6f74fc6ea8c8881031a5be6dcdf93151adbdd98567556",
+    "historical-fixed.stdout.txt": "127579686321ef2588c6add7dede41116b880eac0fa99ba09269a6710491e95d",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "a3f0b3ac274dc1aa11ef3df67e50eafcc0939455ca4e34e79c145a07bb17411a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper._eval_nseries"
+    }
+  ],
+  "mechanism": "The hypergeometric class lacks a dedicated series handler at zero. Generic expansion leaves hyper(...,0) unevaluated in the saved coefficients instead of the explicit constant1,9/20,81/1120. The added rising-factorial series builds the expected coefficients.",
+  "limitations": "Explicit missing definition; this is incomplete symbolic series evaluation, not evidence of numeric convergence for arbitrary parameters.",
+  "observed_junit": {
+    "base": {
+      "cases": 12,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 12,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.special.tests.test_hyper::test_limits",
+      "message": "assert hyper((1,), (4/3, 5/3), 0) + 9*k**2*hyper((2,), (7/3, 8/3), 0)/20 + 81*k**4*hyper((3,), (10/3, 11/3), 0)/1120 + O(k**6) == (((1 + ((9 * (k ** 2)) / 20)) + ((81 * (k ** 4)) / 1120)) + O(k**6))\n +  where hyper((1,), (4/3, 5/3), 0) + 9*k**2*hyper((2,), (7/3, 8/3), 0)/20 + 81*k**4*hyper((3,), (10/3, 11/3), 0)/1120 + O(k**6) = <bound method Expr.series of hyper((1,), (4/3, 5/3), k**2)>(k)\n +    where <bound method Expr.series of hyper((1,), (4/3, 5/3), k**2)> = hyper((1,), (4/3, 5/3), k**2).series\n +      where hyper((1,), (4/3, 5/3), k**2) = hyper((1,), (4/3, 5/3), (k ** 2))\n +  and   O(k**6) = O((k ** 6))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper._eval_nseries"
+    }
+  ]
+}

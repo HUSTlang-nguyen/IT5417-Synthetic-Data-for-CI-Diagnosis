@@ -1,0 +1,100 @@
+import itertools
+from sympy.combinatorics.fp_groups import FpGroup, FpSubgroup, simplify_presentation
+from sympy.combinatorics.free_groups import FreeGroup
+from sympy.combinatorics.perm_groups import PermutationGroup
+from sympy.core.numbers import igcd
+from sympy.ntheory.factor_ import totient
+from sympy.core.singleton import S
+
+class GroupHomomorphism:
+    '''
+    A class representing group homomorphisms. Instantiate using `homomorphism()`.
+
+    References
+    ==========
+
+    .. [1] Holt, D., Eick, B. and O'Brien, E. (2005). Handbook of computational group theory.
+
+    '''
+
+    def __init__(self, domain, codomain, images):
+        self.domain = domain
+        self.codomain = codomain
+        self.images = images
+        self._inverses = None
+        self._kernel = None
+        self._image = None
+
+    def _invs(self):
+        '''
+        Return a dictionary with `{gen: inverse}` where `gen` is a rewriting
+        generator of `codomain` (e.g. strong generator for permutation groups)
+        and `inverse` is an element of its preimage
+
+        '''
+        image = self.image()
+        inverses = {}
+        for k in list(self.images.keys()):
+            v = self.images[k]
+            if not (v in inverses
+                    or v.is_identity):
+                inverses[v] = k
+        if isinstance(self.codomain, PermutationGroup):
+            gens = image.strong_gens
+        else:
+            gens = image.generators
+        for g in gens:
+            if g in inverses or g.is_identity:
+                continue
+            w = self.domain.identity
+            if isinstance(self.codomain, PermutationGroup):
+                parts = image._strong_gens_slp[g][::-1]
+            else:
+                parts = g
+            for s in parts:
+                if s in inverses:
+                    w = w*inverses[s]
+                else:
+                    w = w*inverses[s**-1]**-1
+            inverses[g] = w
+
+        return inverses
+
+    def invert(self, g):
+        '''
+        Return an element of the preimage of ``g`` or of each element
+        of ``g`` if ``g`` is a list.
+
+        Explanation
+        ===========
+
+        If the codomain is an FpGroup, the inverse for equal
+        elements might not always be the same unless the FpGroup's
+        rewriting system is confluent. However, making a system
+        confluent can be time-consuming. If it's important, try
+        `self.codomain.make_confluent()` first.
+
+        '''
+        from sympy.combinatorics import Permutation
+        from sympy.combinatorics.free_groups import FreeGroupElement
+        if isinstance(g, (Permutation, FreeGroupElement)):
+            if isinstance(self.codomain, FpGroup):
+                g = self.codomain.reduce(g)
+            if self._inverses is None:
+                self._inverses = self._invs()
+            image = self.image()
+            w = self.domain.identity
+            if isinstance(self.codomain, PermutationGroup):
+                gens = image.generator_product(g)[::-1]
+            else:
+                gens = g
+            # the following can't be "for s in gens:"
+            # because that would be equivalent to
+            # "for s in gens.array_form:" when g is
+            # a FreeGroupElement. On the other hand,
+            # when you call gens by index, the generator
+            # (or inverse) at position i is returned.
+            for i in range(len(gens)):
+                s = gens[i]
+                if s.is_identity:
+                    continue

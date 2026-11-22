@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-7738",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/ext/napoleon/docstring.py",
+      "function": "GoogleDocstring._escape_args_and_kwargs"
+    }
+  ],
+  "explanation": "Trailing underscores are escaped unconditionally, although the active configuration does not request stripping signature backslashes. The docstring output gains an unwanted backslash. Conditioning that escape on strip_signature_backslash preserves the expected parameter spelling.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/transforms/__init__.py",
+      "function": "SphinxTransform.config"
+    },
+    {
+      "file": "sphinx/util/docutils.py",
+      "function": "SphinxDirective.config"
+    },
+    {
+      "file": "sphinx/util/docutils.py",
+      "function": "SphinxRole.config"
+    },
+    {
+      "file": "sphinx/ext/napoleon/docstring.py",
+      "function": "NumpyDocstring.__init__"
+    },
+    {
+      "file": "sphinx/ext/napoleon/docstring.py",
+      "function": "NumpyDocstring._consume_returns_section"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

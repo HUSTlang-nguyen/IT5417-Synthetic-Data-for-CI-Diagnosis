@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-24325",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/units/systems/cgs.py",
+      "function": "<module>"
+    }
+  ],
+  "explanation": "Module-level SI/CGS scale registrations use incorrect powers of10 and speed-of-light factors. The saved statcoulomb conversion is100 times the expected coulomb/2997924580. Correcting the registered scales fixes this first conversion assertion.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.convert_to"
+    },
+    {
+      "file": "sympy/physics/units/util.py",
+      "function": "convert_to"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_default_unit_system"
+    },
+    {
+      "file": "sympy/stats/frv.py",
+      "function": "FinitePSpace.where"
+    },
+    {
+      "file": "sympy/parsing/autolev/_antlr/autolevparser.py",
+      "function": "AutolevParser.UnitsContext.UnitSystem"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

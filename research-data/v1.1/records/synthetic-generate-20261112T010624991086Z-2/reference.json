@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T010624991086Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_trial_division"
+    }
+  ],
+  "explanation": "Each successful division removes one factor from f but increments multiplicity k by two. The accumulated exponent therefore disagrees with the number of divisions, corrupting downstream factorization predicates shown in the saved failures.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "intervals"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.ground_roots"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "_torational_factor_list"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.real_roots"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.all_roots"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

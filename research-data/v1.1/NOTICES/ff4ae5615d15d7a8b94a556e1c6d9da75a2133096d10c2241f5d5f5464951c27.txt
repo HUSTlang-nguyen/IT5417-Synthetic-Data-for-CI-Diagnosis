@@ -1,0 +1,100 @@
+"""Computations with ideals of polynomial rings."""
+
+from __future__ import print_function, division
+
+from sympy.core.compatibility import reduce
+from sympy.polys.polyerrors import CoercionFailed
+
+
+class Ideal(object):
+    """
+    Abstract base class for ideals.
+
+    Do not instantiate - use explicit constructors in the ring class instead:
+
+    >>> from sympy import QQ
+    >>> from sympy.abc import x
+    >>> QQ.old_poly_ring(x).ideal(x+1)
+    <x + 1>
+
+    Attributes
+
+    - ring - the ring this ideal belongs to
+
+    Non-implemented methods:
+
+    - _contains_elem
+    - _contains_ideal
+    - _quotient
+    - _intersect
+    - _union
+    - _product
+    - is_whole_ring
+    - is_zero
+    - is_prime, is_maximal, is_primary, is_radical
+    - is_principal
+    - height, depth
+    - radical
+
+    Methods that likely should be overridden in subclasses:
+
+    - reduce_element
+    """
+
+    def _contains_elem(self, x):
+        """Implementation of element containment."""
+        raise NotImplementedError
+
+    def _contains_ideal(self, I):
+        """Implementation of ideal containment."""
+        raise NotImplementedError
+
+    def _quotient(self, J):
+        """Implementation of ideal quotient."""
+        raise NotImplementedError
+
+    def _intersect(self, J):
+        """Implementation of ideal intersection."""
+        raise NotImplementedError
+
+    def is_whole_ring(self):
+        """Return True if ``self`` is the whole ring."""
+        raise NotImplementedError
+
+    def is_zero(self):
+        """Return True if ``self`` is the zero ideal."""
+        raise NotImplementedError
+
+    def _equals(self, J):
+        """Implementation of ideal equality."""
+        return self._contains_ideal(J) and J._contains_ideal(self)
+
+    def is_prime(self):
+        """Return True if ``self`` is a prime ideal."""
+        raise NotImplementedError
+
+    def is_maximal(self):
+        """Return True if ``self`` is a maximal ideal."""
+        raise NotImplementedError
+
+    def is_radical(self):
+        """Return True if ``self`` is a radical ideal."""
+        raise NotImplementedError
+
+    def is_primary(self):
+        """Return True if ``self`` is a primary ideal."""
+        raise NotImplementedError
+
+    def is_principal(self):
+        """Return True if ``self`` is a principal ideal."""
+        raise NotImplementedError
+
+    def radical(self):
+        """Compute the radical of ``self``."""
+        raise NotImplementedError
+
+    def depth(self):
+        """Compute the depth of ``self``."""
+        raise NotImplementedError
+
+    def height(self):

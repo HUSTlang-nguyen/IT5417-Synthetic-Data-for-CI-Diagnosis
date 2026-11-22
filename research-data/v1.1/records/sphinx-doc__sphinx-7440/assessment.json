@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T004731706912Z",
+  "reviewed_at": "2026-11-12T10:42:39+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c35577f46edf57d3247c13c86b4e50ee510eb5bcdb041e62b45af90dea92e624",
+    "license-evidence.json": "8dd0765a115cdb8942009d9cd8c4d4f8a9c2d128e5a114cbd873c13cb176f354",
+    "historical-base.stdout.txt": "31da005ead62e0a21bd0ff1bfe3d9339b9c2cd4f31a0cd7008867a35bcf830b5",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "bfcf6753c199b70c566abd3316e2c1c1a53787e0ad45aea695d749b3c5a91315",
+    "historical-fixed.stdout.txt": "f8b637beed77b9c84df1e91949793322a3895fdff2b15096c823f202cf2fa3df",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ac4cb6bdf57566e01be2e1b5aaa46f3757d5ddeee3f21d56abd70808265a7b77"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/std.py",
+      "function": "make_glossary_term"
+    }
+  ],
+  "mechanism": "Glossary registration lowercases the term text before storing the object, so the saved domain inventory contains term2 instead of TERM2. Storing the original spelling preserves the required case-sensitive object name.",
+  "limitations": "The repair also removes lowercase=True from the class-level term role. The saved inventory failure directly supports the registration function; the separate lookup-side change is acknowledged rather than invented as another existing function.",
+  "observed_junit": {
+    "base": {
+      "cases": 14,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 14,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_std::test_glossary",
+      "message": "AssertionError: assert ('TERM2', 'TERM2', 'term', 'index', 'term-TERM2', -1) in [('term1', 'term1', 'term', 'index', 'term-term1', -1), ('term2', 'term2', 'term', 'index', 'term-TERM2', -1), ('term3', 'term3', 'term', 'index', 'term-term3', -1), ('term4', 'term4', 'term', 'index', 'term-term4', -1), ('genindex', i'Index', 'label', 'genindex', '', -1), ('modindex', i'Module Index', 'label', 'py-modindex', '', -1), ...]"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

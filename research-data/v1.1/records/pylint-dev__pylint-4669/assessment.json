@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T201848395177Z",
+  "reviewed_at": "2026-11-12T06:50:50+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "88607437b14b64de0287287f7590b05d8aa4bd250fe4a9e51dc0b3be2999ad87",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "0bf83a4023479ddefa84c20f9efaeed4a6b37b03681c1bb7f6502987cae137cd",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "674248749933864f61c6f151e05d5d77764692d51eae05ba59d2c82c9fda0e6c",
+    "historical-fixed.stdout.txt": "f25f723f1177e922d44655cca949769cbf48df275e19a6cd3661afd379601bfd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "dbc261c65f8c34a4532beb79c12871d6537b7f4df7f4a39453823c1f0c2371cb"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "stripped_lines"
+    }
+  ],
+  "mechanism": "Signature-line collection ignores functions with empty AST bodies. Their signature lines therefore remain in duplicate-code comparison even with ignore-signatures enabled. Using the function end line when no body exists includes those lines in the ignored range.",
+  "evidence_reason": "Read stripped_lines at similar.py:221-233 and the body-empty range repair. Base test similar signatures reports six similar lines and 42.86 percent instead of zero duplicates. Fixed has 15 passed, with expected source IDs resolved.",
+  "limitations": "The source test fixtures use empty functions whose AST body handling differs from a normal executable body; the review identifies signature filtering, not a syntax failure."
+}

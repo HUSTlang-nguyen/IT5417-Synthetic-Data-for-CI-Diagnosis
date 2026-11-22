@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19040",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dmp_ext_factor"
+    }
+  ],
+  "explanation": "The factorization routine saves the original normalized polynomial in F and overwrites f with its square-free part, then takes the norm of that transformed f. On the observed complex-extension example this loses a factor. Taking the norm of preserved F instead restores factorization whose expansion matches the original polynomial.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "GroebnerBasis.polys"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "factor"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

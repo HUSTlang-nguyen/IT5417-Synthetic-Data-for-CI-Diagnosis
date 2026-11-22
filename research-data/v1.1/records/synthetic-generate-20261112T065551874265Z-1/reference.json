@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T065551874265Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    }
+  ],
+  "explanation": "The dimensionless normalization test is negated. Non-dimensionless function arguments are mapped to Dimension(1), so the saved invalid exponential expression passes a check that should raise ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity._collect_factor_and_dimension"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.convert_to"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_dimension"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_scale_factor"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.dimension"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

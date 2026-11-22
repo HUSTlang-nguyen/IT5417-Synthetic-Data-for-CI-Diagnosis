@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-7982",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/pathlib.py",
+      "function": "visit"
+    }
+  ],
+  "explanation": "Directory traversal explicitly refuses to follow symbolic links when checking whether an entry is a directory. The symlinked test directory is therefore not recursed into, and the nested pytest run reports one test instead of two. Following directory links restores the required collection.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester._makefile"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "RunResult.assert_outcomes"
+    },
+    {
+      "file": "bench/manyparam.py",
+      "function": "test_it"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.getitems"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.mkpydir"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

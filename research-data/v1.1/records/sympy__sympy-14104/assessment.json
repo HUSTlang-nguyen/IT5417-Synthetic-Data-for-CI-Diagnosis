@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T013324956206Z",
+  "reviewed_at": "2026-11-12T11:47:17+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "051b3ad77096e5aa4273a38f791e0a506303a31b90f702b792b0241d616d4e96",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "1510c73e50ed5a207f51df1afa0014b88bba0d4c0fd0a64633cf633bfaa62648",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c177667b6b839d13edc5e986c7306e6cc9557aa5d1ef7a120c02934733a5bc45",
+    "historical-fixed.stdout.txt": "16585b42d9acf57f0a31b9fcd93b7d51c562315e19efc7da5fe43ef0acfa6ed2",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f30bc80a4da74ddaa23db0dc21d30817954e9a61619cec2807901bec3bf858ff"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_DiracDelta"
+    }
+  ],
+  "mechanism": "Derivative-delta formatting returns the lower-level stringPict after concatenation instead of prettyForm. Multiplication later reads its missing binding metadata as None and compares it with an integer, causing the saved TypeError. Keeping prettyForm preserves the composition interface.",
+  "limitations": "The stringpict multiplication line is the detection site; the causal reference is the producer of the wrong form type.",
+  "observed_junit": {
+    "base": {
+      "cases": 107,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 107,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.pretty.tests.test_pretty::test_deltas",
+      "message": "TypeError: '>' not supported between instances of 'NoneType' and 'int'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

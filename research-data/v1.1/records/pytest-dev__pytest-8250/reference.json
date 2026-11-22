@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-8250",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks._get_stderr_fileno"
+    }
+  ],
+  "explanation": "The stderr wrapper returns fileno -1 without raising, so the helper returns that invalid descriptor and never reaches the original-stderr fallback. The saved assertion expects descriptor2. Detecting -1 and using the existing fallback restores the wrapper contract.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks._get_stderr_fileno"
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_unconfigure"
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_configure"
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_exception_interact"
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_runtest_protocol"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

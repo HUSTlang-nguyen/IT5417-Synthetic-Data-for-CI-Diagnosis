@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-4.3.0+, docutils-0.17.1\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 25 items\n\ntests/test_util_typing.py::test_restify FAILED                           [  4%]\ntests/test_util_typing.py::test_restify_type_hints_containers PASSED     [  8%]\ntests/test_util_typing.py::test_restify_type_hints_Callable PASSED       [ 12%]\ntests/test_util_typing.py::test_restify_type_hints_Union PASSED          [ 16%]\ntests/test_util_typing.py::test_restify_type_hints_typevars PASSED       [ 20%]\ntests/test_util_typing.py::test_restify_type_hints_custom_class PASSED   [ 24%]\ntests/test_util_typing.py::test_restify_type_hints_alias PASSED          [ 28%]\ntests/test_util_typing.py::test_restify_type_ForwardRef PASSED           [ 32%]\ntests/test_util_typing.py::test_restify_type_Literal PASSED              [ 36%]\ntests/test_util_typing.py::test_restify_pep_585 PASSED                   [ 40%]\ntests/test_util_typing.py::test_restify_type_union_operator SKIPPED      [ 44%]\ntests/test_util_typing.py::test_restify_broken_type_hints PASSED         [ 48%]\ntests/test_util_typing.py::test_stringify PASSED                         [ 52%]\ntests/test_util_typing.py::test_stringify_type_hints_containers PASSED   [ 56%]\ntests/test_util_typing.py::test_stringify_type_hints_pep_585 PASSED      [ 60%]\ntests/test_util_typing.py::test_stringify_Annotated PASSED               [ 64%]\ntests/test_util_typing.py::test_stringify_type_hints_string PASSED       [ 68%]\ntests/test_util_typing.py::test_stringify_type_hints_Callable PASSED     [ 72%]\ntests/test_util_typing.py::test_stringify_type_hints_Union PASSED        [ 76%]\ntests/test_util_typing.py::test_stringify_type_hints_typevars PASSED     [ 80%]\ntests/test_util_typing.py::test_stringify_type_hints_custom_class PASSED [ 84%]\ntests/test_util_typing.py::test_stringify_type_hints_alias PASSED        [ 88%]\ntests/test_util_typing.py::test_stringify_type_Literal PASSED            [ 92%]\ntests/test_util_typing.py::test_stringify_type_union_operator SKIPPED    [ 96%]\ntests/test_util_typing.py::test_stringify_broken_type_hints PASSED       [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_restify _________________________________\n\n    def test_restify():\n        assert restify(int) == \":py:class:`int`\"\n        assert restify(str) == \":py:class:`str`\"\n        assert restify(None) == \":py:obj:`None`\"\n        assert restify(Integral) == \":py:class:`numbers.Integral`\"\n        assert restify(Struct) == \":py:class:`struct.Struct`\"\n        assert restify(TracebackType) == \":py:class:`types.TracebackType`\"\n        assert restify(Any) == \":py:obj:`~typing.Any`\"\n>       assert restify('str') == \"str\"\nE       assert \"'str'\" == 'str'\nE         - str\nE         + 'str'\nE         ? +   +\n\ntests/test_util_typing.py:51: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_util_typing.py::test_restify - assert \"'str'\" == 'str'\n=================== 1 failed, 22 passed, 2 skipped in 0.18s ====================\n",
+  "code": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "Struct.__init__",
+      "start_line": 93,
+      "end_line": 94,
+      "score": 31.06066,
+      "text": "sphinx/testing/util.py::Struct.__init__ lines 93-94\n    def __init__(self, **kwargs: Any) -> None:\n        self.__dict__.update(kwargs)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify",
+      "start_line": 107,
+      "end_line": 145,
+      "score": 30.768221,
+      "text": "sphinx/util/typing.py::restify lines 107-145\ndef restify(cls: Optional[Type]) -> str:\n    \"\"\"Convert python class to a reST reference.\"\"\"\n    from sphinx.util import inspect  # lazy loading\n\n    try:\n        if cls is None or cls is NoneType:\n            return ':py:obj:`None`'\n        elif cls is Ellipsis:\n            return '...'\n        elif cls in INVALID_BUILTIN_CLASSES:\n            return ':py:class:`%s`' % INVALID_BUILTIN_CLASSES[cls]\n        elif inspect.isNewType(cls):\n            if sys.version_info > (3, 10):\n                # newtypes have correct module info since Python 3.10+\n                print(cls, type(cls), dir(cls))\n                return ':py:class:`%s.%s`' % (cls.__module__, cls.__name__)\n            else:\n                return ':py:class:`%s`' % cls.__name__\n        elif UnionType and isinstance(cls, UnionType):\n            if len(cls.__args__) > 1 and None in cls.__args__:\n                args = ' | '.join(restify(a) for a in cls.__args__ if a)\n                return 'Optional[%s]' % args\n            else:\n                return ' | '.join(restify(a) for a in cls.__args__)\n        elif cls.__module__ in ('__builtin__', 'builtins'):\n            if hasattr(cls, '__args__'):\n                return ':py:class:`%s`\\\\ [%s]' % (\n                    cls.__name__,\n                    ', '.join(restify(arg) for arg in cls.__args__),\n                )\n            else:\n                return ':py:class:`%s`' % cls.__name__\n        else:\n            if sys.version_info >= (3, 7):  # py37+\n                return _restify_py37(cls)\n            else:\n                return _restify_py36(cls)\n    except (AttributeError, TypeError):\n        return repr(cls)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/util/jsdump.py",
+      "function": "dump",
+      "start_line": 103,
+      "end_line": 104,
+      "score": 1.511858,
+      "text": "sphinx/util/jsdump.py::dump lines 103-104\ndef dump(obj: Any, f: IO) -> None:\n    f.write(dumps(obj))",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/errors.py",
+      "function": "SphinxParallelError.__init__",
+      "start_line": 107,
+      "end_line": 109,
+      "score": 1.414214,
+      "text": "sphinx/errors.py::SphinxParallelError.__init__ lines 107-109\n    def __init__(self, message: str, traceback: Any) -> None:\n        self.message = message\n        self.traceback = traceback",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/autosummary/generate.py",
+      "function": "ModuleScanner.__init__",
+      "start_line": 176,
+      "end_line": 178,
+      "score": 1.414214,
+      "text": "sphinx/ext/autosummary/generate.py::ModuleScanner.__init__ lines 176-178\n    def __init__(self, app: Any, obj: Any) -> None:\n        self.app = app\n        self.object = obj",
+      "truncated": false
+    }
+  ]
+}

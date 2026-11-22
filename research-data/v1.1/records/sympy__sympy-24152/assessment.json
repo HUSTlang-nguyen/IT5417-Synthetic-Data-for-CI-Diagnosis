@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041741658155Z",
+  "reviewed_at": "2026-11-12T12:07:11+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "47736f4d8ea44e0d34419f0fdd82834c5db4d5ad4ac3b6e6bc41c9487b636698",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "1e05e71279e2a1a2fc2e0c570e851d5f773307bfbee9d798fe7c44b6234e3f47",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "21b69b55db35ccdbdb6c4e97ffb04f76873bca4dd548c72bbffcda2f03bdfd5b",
+    "historical-fixed.stdout.txt": "c2d48374bbbe33d5e5a610fe42e78bbfd8ab42f61590c3876870403fdb422baa",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "189ab7e2ff52e782e2a37402d9556bee9fc0080f858c2d5e13e53b3218579d2a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/quantum/tensorproduct.py",
+      "function": "TensorProduct._eval_expand_tensorproduct"
+    }
+  ],
+  "mechanism": "Expansion recurses only when an intermediate is directly a TensorProduct. A negative scalar wraps that tensor product in Mul, so the remaining sum stays undistributed. The saved (A-B)x(B-A) output retains -Bx(-A+B) instead of all four terms. Separating commutative scalar and tensor factors allows recursive distribution.",
+  "limitations": "This is an incomplete symbolic expansion, not a numeric matrix multiplication error.",
+  "observed_junit": {
+    "base": {
+      "cases": 7,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 7,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.quantum.tests.test_tensorproduct::test_tensor_product_expand",
+      "message": "assert -AxA + AxB - Bx(-A + B) == (((AxB - AxA) - BxB) + BxA)\n +  where -AxA + AxB - Bx(-A + B) = <bound method Expr.expand of (A - B)x(-A + B)>(tensorproduct=True)\n +    where <bound method Expr.expand of (A - B)x(-A + B)> = (A - B)x(-A + B).expand\n +      where (A - B)x(-A + B) = TP((A - B), (B - A))\n +  and   AxB = TP(A, B)\n +  and   AxA = TP(A, A)\n +  and   BxB = TP(B, B)\n +  and   BxA = TP(B, A)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

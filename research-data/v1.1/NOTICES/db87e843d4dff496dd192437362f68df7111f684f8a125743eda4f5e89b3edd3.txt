@@ -1,0 +1,100 @@
+"""Access and control log capturing."""
+import logging
+import os
+import re
+import sys
+from contextlib import contextmanager
+from io import StringIO
+from typing import AbstractSet
+from typing import Dict
+from typing import Generator
+from typing import List
+from typing import Mapping
+from typing import Optional
+from typing import Tuple
+from typing import TypeVar
+from typing import Union
+
+import pytest
+from _pytest import nodes
+from _pytest._io import TerminalWriter
+from _pytest.capture import CaptureManager
+from _pytest.compat import nullcontext
+from _pytest.config import _strtobool
+from _pytest.config import Config
+from _pytest.config import create_terminal_writer
+from _pytest.config.argparsing import Parser
+from _pytest.fixtures import FixtureRequest
+from _pytest.main import Session
+from _pytest.pathlib import Path
+from _pytest.store import StoreKey
+from _pytest.terminal import TerminalReporter
+
+
+DEFAULT_LOG_FORMAT = "%(levelname)-8s %(name)s:%(filename)s:%(lineno)d %(message)s"
+DEFAULT_LOG_DATE_FORMAT = "%H:%M:%S"
+_ANSI_ESCAPE_SEQ = re.compile(r"\x1b\[[\d;]+m")
+caplog_handler_key = StoreKey["LogCaptureHandler"]()
+caplog_records_key = StoreKey[Dict[str, List[logging.LogRecord]]]()
+
+
+def _remove_ansi_escape_sequences(text: str) -> str:
+    return _ANSI_ESCAPE_SEQ.sub("", text)
+
+
+class ColoredLevelFormatter(logging.Formatter):
+    """A logging formatter which colorizes the %(levelname)..s part of the
+    log format passed to __init__."""
+
+    LOGLEVEL_COLOROPTS = {
+        logging.CRITICAL: {"red"},
+        logging.ERROR: {"red", "bold"},
+        logging.WARNING: {"yellow"},
+        logging.WARN: {"yellow"},
+        logging.INFO: {"green"},
+        logging.DEBUG: {"purple"},
+        logging.NOTSET: set(),
+    }  # type: Mapping[int, AbstractSet[str]]
+    LEVELNAME_FMT_REGEX = re.compile(r"%\(levelname\)([+-.]?\d*s)")
+
+    def __init__(self, terminalwriter: TerminalWriter, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self._original_fmt = self._style._fmt
+        self._level_to_fmt_mapping = {}  # type: Dict[int, str]
+
+        assert self._fmt is not None
+        levelname_fmt_match = self.LEVELNAME_FMT_REGEX.search(self._fmt)
+        if not levelname_fmt_match:
+            return
+        levelname_fmt = levelname_fmt_match.group()
+
+        for level, color_opts in self.LOGLEVEL_COLOROPTS.items():
+            formatted_levelname = levelname_fmt % {
+                "levelname": logging.getLevelName(level)
+            }
+
+            # add ANSI escape sequences around the formatted levelname
+            color_kwargs = {name: True for name in color_opts}
+            colorized_formatted_levelname = terminalwriter.markup(
+                formatted_levelname, **color_kwargs
+            )
+            self._level_to_fmt_mapping[level] = self.LEVELNAME_FMT_REGEX.sub(
+                colorized_formatted_levelname, self._fmt
+            )
+
+    def format(self, record: logging.LogRecord) -> str:
+        fmt = self._level_to_fmt_mapping.get(record.levelno, self._original_fmt)
+        self._style._fmt = fmt
+        return super().format(record)
+
+
+class PercentStyleMultiline(logging.PercentStyle):
+    """A logging style with special support for multiline messages.
+
+    If the message of a record consists of multiple lines, this style
+    formats the message as if each line were logged separately.
+    """
+
+    def __init__(self, fmt: str, auto_indent: Union[int, str, bool, None]) -> None:
+        super().__init__(fmt)
+        self._auto_indent = self._get_auto_indent(auto_indent)

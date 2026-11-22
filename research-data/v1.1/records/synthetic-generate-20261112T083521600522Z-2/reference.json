@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T083521600522Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/ntheory/factor_.py",
+      "function": "perfect_power"
+    }
+  ],
+  "explanation": "The small-exponent floating-screen guard is reversed. Very large logn/e now reaches2.0**(logn/e) and the saved perfect-power call raises OverflowError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/ntheory/factor_.py",
+      "function": "perfect_power"
+    },
+    {
+      "file": "sympy/ntheory/factor_.py",
+      "function": "factorint"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

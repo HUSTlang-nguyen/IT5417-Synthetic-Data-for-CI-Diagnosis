@@ -1,0 +1,11 @@
+--- a/sympy/combinatorics/permutations.py
++++ b/sympy/combinatorics/permutations.py
+@@ -2379,7 +2379,7 @@
+             k = 1
+             i = 0
+             while perm[i] != j:
+-                if perm[i] < j:
++                if perm[i] > j:
+                     k += 1
+                 i += 1
+             j1 = j + 1

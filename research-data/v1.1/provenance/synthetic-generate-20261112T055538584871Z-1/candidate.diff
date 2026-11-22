@@ -1,0 +1,11 @@
+--- a/sympy/core/mod.py
++++ b/sympy/core/mod.py
+@@ -36,7 +36,7 @@
+             to be less than or equal q.
+             """
+ 
+-            if p.is_infinite or q.is_infinite or p is nan or q is nan:
++            if p.is_infinite or q.is_infinite or p is nan or q is not nan:
+                 return nan
+             if (p == q or p == -q or
+                     p.is_Pow and p.exp.is_integer and p.base == q and q.is_integer

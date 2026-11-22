@@ -1,0 +1,11 @@
+--- a/sympy/matrices/expressions/matexpr.py
++++ b/sympy/matrices/expressions/matexpr.py
+@@ -132,7 +132,7 @@
+             raise NonSquareMatrixError("Power of non-square matrix %s" % self)
+         elif self.is_Identity:
+             return self
+-        elif other == S.Zero:
++        elif other == S.One:
+             return Identity(self.rows)
+         elif other == S.One:
+             return self

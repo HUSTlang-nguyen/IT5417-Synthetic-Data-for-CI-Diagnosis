@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-14104",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_DiracDelta"
+    }
+  ],
+  "explanation": "Derivative-delta formatting returns the lower-level stringPict after concatenation instead of prettyForm. Multiplication later reads its missing binding metadata as None and compares it with an integer, causing the saved TypeError. Keeping prettyForm preserves the composition interface.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter.doprint"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_Mul"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "pretty"
+    },
+    {
+      "file": "sympy/printing/pretty/stringpict.py",
+      "function": "prettyForm.__mul__"
+    },
+    {
+      "file": "sympy/printing/printer.py",
+      "function": "Printer._print"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

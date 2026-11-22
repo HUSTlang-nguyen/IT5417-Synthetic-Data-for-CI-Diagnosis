@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19346",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_dict"
+    }
+  ],
+  "explanation": "The representation printer has no dictionary-specific handler, so keys and values use ordinary string forms such as x:y instead of reconstructible Symbol constructors. The saved srepr dictionary assertion fails. Recursively printing each key/value supplies the required representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "srepr"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

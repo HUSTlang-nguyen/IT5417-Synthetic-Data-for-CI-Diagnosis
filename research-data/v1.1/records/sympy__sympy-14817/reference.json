@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-14817",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_MatAdd"
+    }
+  ],
+  "explanation": "The matrix-sum printer assumes item.args[0] is a scalar coefficient. For a matrix symbol that argument is its textual name; sympifying a name such as y* raises the saved SympifyError. Extracting the scalar coefficient with as_coeff_mmul avoids parsing the matrix name as an expression.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "pretty"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter.doprint"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_MatAdd"
+    },
+    {
+      "file": "sympy/core/sympify.py",
+      "function": "sympify"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

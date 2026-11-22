@@ -1,0 +1,19 @@
+{
+  "sample_id": "sympy__sympy-21171",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_SingularityFunction"
+    }
+  ],
+  "explanation": "The printer dispatch supplies an exp keyword for powered expressions, but this handler accepts only expr. The saved powered SingularityFunction raises unexpected-keyword TypeError. Accepting exp and formatting the outer exponent restores the printer interface.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "latex"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,100 @@
+# Copyright 2008-2018 pydicom authors. See LICENSE file for details.
+"""Handle alternate character sets for character strings."""
+import codecs
+import re
+import warnings
+
+from pydicom import compat, config
+from pydicom.compat import in_py2
+from pydicom.valuerep import PersonNameUnicode, text_VRs, TEXT_VR_DELIMS
+
+# default encoding if no encoding defined - corresponds to ISO IR 6 / ASCII
+default_encoding = "iso8859"
+
+# Map DICOM Specific Character Set to python equivalent
+python_encoding = {
+
+    # default character set for DICOM
+    '': default_encoding,
+
+    # alias for latin_1 too (iso_ir_6 exists as an alias to 'ascii')
+    'ISO_IR 6': default_encoding,
+    'ISO_IR 13': 'shift_jis',
+
+    # these also have iso_ir_1XX aliases in python 2.7
+    'ISO_IR 100': 'latin_1',
+    'ISO_IR 101': 'iso8859_2',
+    'ISO_IR 109': 'iso8859_3',
+    'ISO_IR 110': 'iso8859_4',
+    'ISO_IR 126': 'iso_ir_126',  # Greek
+    'ISO_IR 127': 'iso_ir_127',  # Arabic
+    'ISO_IR 138': 'iso_ir_138',  # Hebrew
+    'ISO_IR 144': 'iso_ir_144',  # Russian
+    'ISO_IR 148': 'iso_ir_148',  # Turkish
+    'ISO_IR 166': 'iso_ir_166',  # Thai
+    'ISO 2022 IR 6': 'iso8859',  # alias for latin_1 too
+    'ISO 2022 IR 13': 'shift_jis',
+    'ISO 2022 IR 87': 'iso2022_jp',
+    'ISO 2022 IR 100': 'latin_1',
+    'ISO 2022 IR 101': 'iso8859_2',
+    'ISO 2022 IR 109': 'iso8859_3',
+    'ISO 2022 IR 110': 'iso8859_4',
+    'ISO 2022 IR 126': 'iso_ir_126',
+    'ISO 2022 IR 127': 'iso_ir_127',
+    'ISO 2022 IR 138': 'iso_ir_138',
+    'ISO 2022 IR 144': 'iso_ir_144',
+    'ISO 2022 IR 148': 'iso_ir_148',
+    'ISO 2022 IR 149': 'euc_kr',
+    'ISO 2022 IR 159': 'iso-2022-jp',
+    'ISO 2022 IR 166': 'iso_ir_166',
+    'ISO 2022 IR 58': 'iso_ir_58',
+    'ISO_IR 192': 'UTF8',  # from Chinese example, 2008 PS3.5 Annex J p1-4
+    'GB18030': 'GB18030',
+    'ISO 2022 GBK': 'GBK',  # from DICOM correction CP1234
+    'ISO 2022 58': 'GB2312',  # from DICOM correction CP1234
+    'GBK': 'GBK',  # from DICOM correction CP1234
+}
+
+# these encodings cannot be used with code extensions
+# see DICOM Standard, Part 3, Table C.12-5
+# and DICOM Standard, Part 5, Section 6.1.2.5.4, item d
+STAND_ALONE_ENCODINGS = ('ISO_IR 192', 'GBK', 'GB18030')
+
+# the escape character used to mark the start of escape sequences
+ESC = b'\x1b'
+
+# Map Python encodings to escape sequences as defined in PS3.3 in tables
+# C.12-3 (single-byte) and C.12-4 (multi-byte character sets).
+CODES_TO_ENCODINGS = {
+    ESC + b'(B': default_encoding,  # used to switch to ASCII G0 code element
+    ESC + b'-A': 'latin_1',
+    ESC + b')I': 'shift_jis',  # switches to ISO-IR 13
+    ESC + b'(J': 'shift_jis',  # switches to ISO-IR 14 (shift_jis handles both)
+    ESC + b'$B': 'iso2022_jp',
+    ESC + b'-B': 'iso8859_2',
+    ESC + b'-C': 'iso8859_3',
+    ESC + b'-D': 'iso8859_4',
+    ESC + b'-F': 'iso_ir_126',
+    ESC + b'-G': 'iso_ir_127',
+    ESC + b'-H': 'iso_ir_138',
+    ESC + b'-L': 'iso_ir_144',
+    ESC + b'-M': 'iso_ir_148',
+    ESC + b'-T': 'iso_ir_166',
+    ESC + b'$)C': 'euc_kr',
+    ESC + b'$(D': 'iso-2022-jp',
+    ESC + b'$)A': 'iso_ir_58',
+}
+
+ENCODINGS_TO_CODES = {v: k for k, v in CODES_TO_ENCODINGS.items()}
+ENCODINGS_TO_CODES['shift_jis'] = ESC + b')I'
+
+# Multi-byte character sets except Korean are handled by Python.
+# To decode them, the escape sequence shall be preserved in the input byte
+# string, and will be removed during decoding by Python.
+handled_encodings = ('iso2022_jp',
+                     'iso-2022-jp',
+                     'iso_ir_58')
+
+
+def _encode_to_jis_x_0201(value, errors='strict'):
+    """Convert a unicode string into JIS X 0201 byte string using shift_jis

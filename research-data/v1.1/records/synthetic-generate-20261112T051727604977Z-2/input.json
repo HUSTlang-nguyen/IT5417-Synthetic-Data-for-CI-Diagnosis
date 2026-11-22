@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 45 items\n\nsympy/matrices/expressions/tests/test_matexpr.py::test_ZeroMatrix PASSED [  2%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrix_symbol_creation PASSED [  4%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_zero_matrix_creation PASSED [  6%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_one_matrix_creation PASSED [  8%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_identity_matrix_creation PASSED [ 11%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_shape PASSED      [ 13%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matexpr PASSED    [ 15%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_subs PASSED       [ 17%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_ZeroMatrix_doit PASSED [ 20%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_OneMatrix PASSED  [ 22%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_OneMatrix_doit PASSED [ 24%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_OneMatrix_mul PASSED [ 26%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_Identity PASSED   [ 28%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_Identity_doit PASSED [ 31%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_addition PASSED   [ 33%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_multiplication PASSED [ 35%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatPow FAILED     [ 37%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSymbol PASSED [ 40%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_dense_conversion PASSED [ 42%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_free_symbols PASSED [ 44%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_zero_matmul PASSED [ 46%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matadd_simplify PASSED [ 48%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matmul_simplify PASSED [ 51%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_invariants PASSED [ 53%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_indexing PASSED   [ 55%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_single_indexing PASSED [ 57%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_commutative PASSED [ 60%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSymbol_determinant PASSED [ 62%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_diff PASSED [ 64%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_doit PASSED [ 66%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_identity_powers PASSED [ 68%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_Zero_power PASSED [ 71%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrixelement_diff PASSED [ 73%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_with_values PASSED [ 75%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_inv PASSED        [ 77%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_2749 PASSED [ 80%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_2750 PASSED [ 82%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_7842 PASSED [ 84%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_generic_zero_matrix PASSED [ 86%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_generic_identity PASSED [ 88%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatMul_postprocessor PASSED [ 91%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatAdd_postprocessor PASSED [ 93%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_simplify_matrix_expressions PASSED [ 95%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_exp PASSED        [ 97%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_invalid_args PASSED [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_MatPow __________________________________\n\n    def test_MatPow():\n        A = MatrixSymbol('A', n, n)\n    \n        AA = MatPow(A, 2)\n        assert AA.exp == 2\n        assert AA.base == A\n        assert (A**n).exp == n\n    \n        assert A**0 == Identity(n)\n>       assert A**1 == A\nE       assert I == A\nE         Full diff:\nE         - A\nE         + I\n\nsympy/matrices/expressions/tests/test_matexpr.py:286: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/matrices/expressions/tests/test_matexpr.py::test_MatPow - assert...\n=================== 1 failed, 44 passed, 1 warning in 1.06s ====================\n",
+  "code": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity._eval_transpose",
+      "start_line": 884,
+      "end_line": 885,
+      "score": 51.0,
+      "text": "sympy/matrices/expressions/matexpr.py::Identity._eval_transpose lines 884-885\n    def _eval_transpose(self):\n        return self",
+      "truncated": false
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity._eval_inverse",
+      "start_line": 890,
+      "end_line": 891,
+      "score": 51.0,
+      "text": "sympy/matrices/expressions/matexpr.py::Identity._eval_inverse lines 890-891\n    def _eval_inverse(self):\n        return self",
+      "truncated": false
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity.conjugate",
+      "start_line": 893,
+      "end_line": 894,
+      "score": 51.0,
+      "text": "sympy/matrices/expressions/matexpr.py::Identity.conjugate lines 893-894\n    def conjugate(self):\n        return self",
+      "truncated": false
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.shape",
+      "start_line": 796,
+      "end_line": 797,
+      "score": 50.894427,
+      "text": "sympy/matrices/expressions/matexpr.py::MatrixSymbol.shape lines 796-797\n    def shape(self):\n        return self.args[1:3]",
+      "truncated": false
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.name",
+      "start_line": 800,
+      "end_line": 801,
+      "score": 50.894427,
+      "text": "sympy/matrices/expressions/matexpr.py::MatrixSymbol.name lines 800-801\n    def name(self):\n        return self.args[0].name",
+      "truncated": false
+    }
+  ]
+}

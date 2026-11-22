@@ -1,0 +1,11 @@
+--- a/sympy/functions/combinatorial/numbers.py
++++ b/sympy/functions/combinatorial/numbers.py
+@@ -278,7 +278,7 @@
+                     else:
+                         return sym - S.Half
+                 # Bernoulli numbers
+-                elif sym is None:
++                elif sym is None and n.is_even:
+                     if n.is_odd:
+                         return S.Zero
+                     n = int(n)

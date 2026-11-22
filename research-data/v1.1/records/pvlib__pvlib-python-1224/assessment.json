@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T044556287228Z",
+  "reviewed_at": "2026-11-12T12:13:00+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "811d51c1eb99a604dad8739388795f4d1c97fb95274f04530439e6e6eba043fa",
+    "license-evidence.json": "1fd90d3e1719cdf1291ae0330bb742b84ffebfa08abdd285e58bc07e3ea4f46c",
+    "historical-base.stdout.txt": "c0eeedf2851b326ad848c4b67080ec3cb73ee53f6422140da8b0ed02a482ddc8",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f3c67c93460f1463b2f6c9544d0f3f44156887c779ab98f17a71e2880e57abf5",
+    "historical-fixed.stdout.txt": "c14d0ec26cda0c044a8c80a38d3144cb11c4b73fb5e224c78b338c0a6e8213db",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "588afdd8655ea002440dfcb923010a61cac4f12bf8b1c9493ab087bc20a5a729"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.__init__"
+    }
+  ],
+  "mechanism": "Construction accepts arrays=[] and creates an empty system although the API requires at least one Array. The saved test does not raise ValueError. A distinct empty-collection guard rejects this input while preserving arrays=None as the one-array default.",
+  "limitations": "This is missing argument validation, not evidence that default construction or the environment failed.",
+  "observed_junit": {
+    "base": {
+      "cases": 223,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 223,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pvlib.tests.test_pvsystem::test_PVSystem_at_least_one_array",
+      "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

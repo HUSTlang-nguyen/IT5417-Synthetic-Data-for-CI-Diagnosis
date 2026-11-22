@@ -1,0 +1,100 @@
+import builtins
+import os
+import shutil
+import sys
+from typing import IO, Any, Callable, List
+
+FILESYSTEMENCODING = sys.getfilesystemencoding() or sys.getdefaultencoding()
+
+
+def getumask() -> int:
+    """Get current umask value"""
+    umask = os.umask(0)  # Note: Change umask value temporarily to obtain it
+    os.umask(umask)
+
+    return umask
+
+
+UMASK = getumask()
+
+
+class path(str):
+    """
+    Represents a path which behaves like a string.
+    """
+
+    @property
+    def parent(self) -> "path":
+        """
+        The name of the directory the file or directory is in.
+        """
+        return self.__class__(os.path.dirname(self))
+
+    def basename(self) -> str:
+        return os.path.basename(self)
+
+    def abspath(self) -> "path":
+        """
+        Returns the absolute path.
+        """
+        return self.__class__(os.path.abspath(self))
+
+    def isabs(self) -> bool:
+        """
+        Returns ``True`` if the path is absolute.
+        """
+        return os.path.isabs(self)
+
+    def isdir(self) -> bool:
+        """
+        Returns ``True`` if the path is a directory.
+        """
+        return os.path.isdir(self)
+
+    def isfile(self) -> bool:
+        """
+        Returns ``True`` if the path is a file.
+        """
+        return os.path.isfile(self)
+
+    def islink(self) -> bool:
+        """
+        Returns ``True`` if the path is a symbolic link.
+        """
+        return os.path.islink(self)
+
+    def ismount(self) -> bool:
+        """
+        Returns ``True`` if the path is a mount point.
+        """
+        return os.path.ismount(self)
+
+    def rmtree(self, ignore_errors: bool = False, onerror: Callable = None) -> None:
+        """
+        Removes the file or directory and any files or directories it may
+        contain.
+
+        :param ignore_errors:
+            If ``True`` errors are silently ignored, otherwise an exception
+            is raised in case an error occurs.
+
+        :param onerror:
+            A callback which gets called with the arguments `func`, `path` and
+            `exc_info`. `func` is one of :func:`os.listdir`, :func:`os.remove`
+            or :func:`os.rmdir`. `path` is the argument to the function which
+            caused it to fail and `exc_info` is a tuple as returned by
+            :func:`sys.exc_info`.
+        """
+        shutil.rmtree(self, ignore_errors=ignore_errors, onerror=onerror)
+
+    def copytree(self, destination: str, symlinks: bool = False) -> None:
+        """
+        Recursively copy a directory to the given `destination`. If the given
+        `destination` does not exist it will be created.
+
+        :param symlinks:
+            If ``True`` symbolic links in the source tree result in symbolic
+            links in the destination tree otherwise the contents of the files
+            pointed to by the symbolic links are copied.
+        """
+        shutil.copytree(self, destination, symlinks=symlinks)

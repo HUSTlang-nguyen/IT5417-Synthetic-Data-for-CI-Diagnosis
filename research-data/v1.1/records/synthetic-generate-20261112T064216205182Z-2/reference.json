@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T064216205182Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "generate_derangements"
+    }
+  ],
+  "explanation": "Removing not reverses the fixed-point rejection predicate. The saved six-element call yields455 permutations with fixed points rather than265 derangements.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "generate_derangements"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "capture"
+    },
+    {
+      "file": "sympy/plotting/pygletplot/color_scheme.py",
+      "function": "ColorGradient.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

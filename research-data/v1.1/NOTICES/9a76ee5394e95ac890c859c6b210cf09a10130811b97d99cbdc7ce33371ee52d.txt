@@ -1,0 +1,100 @@
+# Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+# Copyright (c) https://github.com/PyCQA/pylint/blob/main/CONTRIBUTORS.txt
+
+"""Some functions that may be useful for various checkers."""
+
+from __future__ import annotations
+
+import builtins
+import itertools
+import numbers
+import re
+import string
+import warnings
+from collections.abc import Iterable
+from functools import lru_cache, partial
+from re import Match
+from typing import Callable, TypeVar
+
+import _string
+import astroid.objects
+from astroid import TooManyLevelsError, nodes
+from astroid.context import InferenceContext
+
+from pylint.checkers.base_checker import BaseChecker
+from pylint.constants import TYPING_TYPE_CHECKS_GUARDS
+
+COMP_NODE_TYPES = (
+    nodes.ListComp,
+    nodes.SetComp,
+    nodes.DictComp,
+    nodes.GeneratorExp,
+)
+EXCEPTIONS_MODULE = "builtins"
+ABC_MODULES = {"abc", "_py_abc"}
+ABC_METHODS = {
+    "abc.abstractproperty",
+    "abc.abstractmethod",
+    "abc.abstractclassmethod",
+    "abc.abstractstaticmethod",
+}
+TYPING_PROTOCOLS = frozenset(
+    {"typing.Protocol", "typing_extensions.Protocol", ".Protocol"}
+)
+ITER_METHOD = "__iter__"
+AITER_METHOD = "__aiter__"
+NEXT_METHOD = "__next__"
+GETITEM_METHOD = "__getitem__"
+CLASS_GETITEM_METHOD = "__class_getitem__"
+SETITEM_METHOD = "__setitem__"
+DELITEM_METHOD = "__delitem__"
+CONTAINS_METHOD = "__contains__"
+KEYS_METHOD = "keys"
+
+# Dictionary which maps the number of expected parameters a
+# special method can have to a set of special methods.
+# The following keys are used to denote the parameters restrictions:
+#
+# * None: variable number of parameters
+# * number: exactly that number of parameters
+# * tuple: these are the odd ones. Basically it means that the function
+#          can work with any number of arguments from that tuple,
+#          although it's best to implement it in order to accept
+#          all of them.
+_SPECIAL_METHODS_PARAMS = {
+    None: ("__new__", "__init__", "__call__"),
+    0: (
+        "__del__",
+        "__repr__",
+        "__str__",
+        "__bytes__",
+        "__hash__",
+        "__bool__",
+        "__dir__",
+        "__len__",
+        "__length_hint__",
+        "__iter__",
+        "__reversed__",
+        "__neg__",
+        "__pos__",
+        "__abs__",
+        "__invert__",
+        "__complex__",
+        "__int__",
+        "__float__",
+        "__index__",
+        "__trunc__",
+        "__floor__",
+        "__ceil__",
+        "__enter__",
+        "__aenter__",
+        "__getnewargs_ex__",
+        "__getnewargs__",
+        "__getstate__",
+        "__reduce__",
+        "__copy__",
+        "__unicode__",
+        "__nonzero__",
+        "__await__",
+        "__aiter__",

@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T083156594681Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "postprocess_for_cse"
+    }
+  ],
+  "explanation": "The callback-presence guard is inverted: absent postprocessors are invoked, and saved CSE postprocessing raises NoneType-not-callable TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "postprocess_for_cse"
+    },
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "cse"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

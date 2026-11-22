@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19885",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/solvers.py",
+      "function": "_gauss_jordan_solve"
+    }
+  ],
+  "explanation": "Repeated column swaps construct a free-variable permutation inconsistent with the ordered nonpivot columns used to build the parametric solution. Saved solver assertions place tau parameters in different rows. Building pivots plus ordered nonpivots and using that same list for coefficients preserves alignment.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/holonomic/linearsolver.py",
+      "function": "NewMatrix.gauss_jordan_solve"
+    },
+    {
+      "file": "examples/advanced/fem.py",
+      "function": "ReferenceSimplex.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

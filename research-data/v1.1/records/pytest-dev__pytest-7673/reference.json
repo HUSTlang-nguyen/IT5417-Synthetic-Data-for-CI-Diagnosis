@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-7673",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/logging.py",
+      "function": "LogCaptureFixture.set_level"
+    }
+  ],
+  "explanation": "Each set_level call overwrites the saved original handler level. Two calls in one test preserve the first requested level as the restoration value, so subsequent tests start with the wrong level. Saving the initial handler level only once permits teardown to restore zero.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "RunResult.assert_outcomes"
+    },
+    {
+      "file": "src/_pytest/logging.py",
+      "function": "LogCaptureFixture._finalize"
+    },
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "Code.source"
+    },
+    {
+      "file": "src/_pytest/logging.py",
+      "function": "caplog"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Testdir.getitems"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

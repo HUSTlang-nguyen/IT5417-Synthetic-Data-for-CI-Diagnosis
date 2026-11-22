@@ -1,0 +1,11 @@
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -54,7 +54,7 @@
+     @property
+     def _use_unicode(self):
+         if self._settings['use_unicode']:
+-            return True
++            return False
+         else:
+             return pretty_use_unicode()
+ 

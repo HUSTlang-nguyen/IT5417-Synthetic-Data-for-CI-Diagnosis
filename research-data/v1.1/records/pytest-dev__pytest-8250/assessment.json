@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012646787229Z",
+  "reviewed_at": "2026-11-12T11:39:03+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "8fdc59ec8468e96f552713bb2c186c9ab4f0b9baa44b622245141df9187f0d2d",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "cc1c8ad6fe0f549ef52a7e1c324c7186a372462ded68c43df6fb2e61bc2c650a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "84ad174eadcdc00b8391bcbc7319af1cf5edea34330918eaa5874a139b2c67c3",
+    "historical-fixed.stdout.txt": "51dc6d0c9bb85b8bfa4601c082d95c54ed20885d82b5d3122f5eefb9df6ba436",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "8bd82c54524b6b392582c67fe35a3175e7e8b4367cd68fac728eaac71dd0b518"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks._get_stderr_fileno"
+    }
+  ],
+  "mechanism": "The stderr wrapper returns fileno -1 without raising, so the helper returns that invalid descriptor and never reaches the original-stderr fallback. The saved assertion expects descriptor2. Detecting -1 and using the existing fallback restores the wrapper contract.",
+  "limitations": "The test simulates a Twisted-style wrapper; it does not run a Twisted service or induce a real interpreter crash.",
+  "observed_junit": {
+    "base": {
+      "cases": 10,
+      "failures_or_errors": 1,
+      "skipped": 1
+    },
+    "head": {
+      "cases": 10,
+      "failures_or_errors": 0,
+      "skipped": 1
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_faulthandler::test_get_stderr_fileno_invalid_fd",
+      "message": "assert -1 == 2\n  +-1\n  -2"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

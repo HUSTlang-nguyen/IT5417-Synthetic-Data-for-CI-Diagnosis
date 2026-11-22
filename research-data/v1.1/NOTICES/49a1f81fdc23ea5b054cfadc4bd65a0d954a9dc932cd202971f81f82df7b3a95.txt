@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from .sympify import sympify, _sympify, SympifyError
+from .basic import Basic, Atom
+from .singleton import S
+from .evalf import EvalfMixin, pure_complex
+from .decorators import _sympifyit, call_highest_priority
+from .cache import cacheit
+from .compatibility import reduce, as_int, default_sort_key, range
+from mpmath.libmp import mpf_log, prec_to_dps
+
+from collections import defaultdict
+
+class Expr(Basic, EvalfMixin):
+    """
+    Base class for algebraic expressions.
+
+    Everything that requires arithmetic operations to be defined
+    should subclass this class, instead of Basic (which should be
+    used only for argument storage and expression manipulation, i.e.
+    pattern matching, substitutions, etc).
+
+    See Also
+    ========
+
+    sympy.core.basic.Basic
+    """
+
+    __slots__ = []
+
+    @property
+    def _diff_wrt(self):
+        """Is it allowed to take derivative wrt to this instance.
+
+        This determines if it is allowed to take derivatives wrt this object.
+        Subclasses such as Symbol, Function and Derivative should return True
+        to enable derivatives wrt them. The implementation in Derivative
+        separates the Symbol and non-Symbol _diff_wrt=True variables and
+        temporarily converts the non-Symbol vars in Symbols when performing
+        the differentiation.
+
+        Note, see the docstring of Derivative for how this should work
+        mathematically. In particular, note that expr.subs(yourclass, Symbol)
+        should be well-defined on a structural level, or this will lead to
+        inconsistent results.
+
+        Examples
+        ========
+
+        >>> from sympy import Expr
+        >>> e = Expr()
+        >>> e._diff_wrt
+        False
+        >>> class MyClass(Expr):
+        ...     _diff_wrt = True
+        ...
+        >>> (2*MyClass()).diff(MyClass())
+        2
+        """
+        return False
+
+    @cacheit
+    def sort_key(self, order=None):
+
+        coeff, expr = self.as_coeff_Mul()
+
+        if expr.is_Pow:
+            expr, exp = expr.args
+        else:
+            expr, exp = expr, S.One
+
+        if expr.is_Dummy:
+            args = (expr.sort_key(),)
+        elif expr.is_Atom:
+            args = (str(expr),)
+        else:
+            if expr.is_Add:
+                args = expr.as_ordered_terms(order=order)
+            elif expr.is_Mul:
+                args = expr.as_ordered_factors(order=order)
+            else:
+                args = expr.args
+
+            args = tuple(
+                [ default_sort_key(arg, order=order) for arg in args ])
+
+        args = (len(args), tuple(args))
+        exp = exp.sort_key(order=order)
+
+        return expr.class_key(), args, exp, coeff
+
+    # ***************
+    # * Arithmetics *
+    # ***************
+    # Expr and its sublcasses use _op_priority to determine which object
+    # passed to a binary special method (__mul__, etc.) will handle the
+    # operation. In general, the 'call_highest_priority' decorator will choose
+    # the object with the highest _op_priority to handle the call.
+    # Custom subclasses that want to define their own binary special methods
+    # should set an _op_priority value that is higher than the default.

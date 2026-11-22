@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T034322891785Z",
+  "reviewed_at": "2026-11-12T11:50:42+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "fdeb7a289dff908e4f235a6195f9d4c5b2df563202ab5e603c240d7644249b24",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "4939ce026e412b0034ef798be5f97ffad25b7da892e72c906d6c79e4b6ec3b1c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "766299f23228b60773f9fd46784a7c0ac3986de6686d516934d7f85da6df9722",
+    "historical-fixed.stdout.txt": "bf11a121cf6b99e988bc57d3c9ae8cdf426ba754f58ee884b4e961746ab95cfb",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b2fbd48d8219c9f4c9ac9f745b8bb3933cf421368a66d2652840d04da8e7d892"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_dict"
+    }
+  ],
+  "mechanism": "The representation printer has no dictionary-specific handler, so keys and values use ordinary string forms such as x:y instead of reconstructible Symbol constructors. The saved srepr dictionary assertion fails. Recursively printing each key/value supplies the required representation.",
+  "limitations": "Explicit missing-definition reference. A set handler is also added by the repair, but the saved failing case shown here proves the dictionary path only.",
+  "observed_junit": {
+    "base": {
+      "cases": 41,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 41,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_repr::test_dict",
+      "message": "assert '{x: y}' == \"{Symbol('x'): Symbol('y')}\"\n  - {Symbol('x'): Symbol('y')}\n  + {x: y}"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_dict"
+    }
+  ]
+}

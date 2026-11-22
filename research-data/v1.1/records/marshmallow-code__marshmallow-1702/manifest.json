@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T12:15:38+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "marshmallow-code__marshmallow-1702",
+  "case_id": "marshmallow-code__marshmallow-1702-ds1",
+  "run_id": "reproduce-20261112T045454708980Z",
+  "role": "train",
+  "repo": "https://github.com/marshmallow-code/marshmallow",
+  "group_id": "https://github.com/marshmallow-code/marshmallow",
+  "source_commit": "fa6c7379468f59d4568e29cbbeb06b797d656215",
+  "image_id": "sha256:ebb930b61a642f755bf155085b06e0bd9771cb45b8dbabe17805cf4120b8f724",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "01c05f244e22167ef8d141ddf7764628891e62d3df23cd7a473c90fb0e32eac4",
+  "input_content_sha256": "79ef1357bb178639333b44f7ef04fd648525f28d368aafa799dbacf5126dc52e",
+  "reference_sha256": "fcbd58640f4cbf6dd70423c640595d33934af26a4f490bbcdff89fdf87042dfd",
+  "assessment_sha256": "ac260266d66e91a21324737913f790eeb0636b52d61306ab1415a11b67d722a5",
+  "evidence_hashes": {
+    "manifest.json": "991a60c3911fa7104f008cb8a5d3d91698fcf8d9a510867e60df6d53eee18126",
+    "license-evidence.json": "cea264c30f3deb571abd5d24ca6478c88c1aab4612e30607d00692701458a6b6",
+    "historical-base.stdout.txt": "38c875f14df2119effb542a6258033bb560ef65ee45c2b71c0c3b56731b6568a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "1dd1171aeeaf9f080c212c19595909f842ff9b3c9b09d9e6b88623ae09f39a5f",
+    "historical-fixed.stdout.txt": "d22a1180f38de6a5f31891fa9094fc192abedf61ae5dda8b87d6c04a0bc04b0f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "2b70c883d2fc1e04ad7647703c6a7346bcbbb754f75ae3e35aee1acaa88cbcd7"
+  },
+  "retrieval": {
+    "production_files_scanned": 21,
+    "ranked_function_count": 195,
+    "characters": 5675,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

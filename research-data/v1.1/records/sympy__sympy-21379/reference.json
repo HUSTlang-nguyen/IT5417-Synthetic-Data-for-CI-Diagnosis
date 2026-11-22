@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-21379",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/core/mod.py",
+      "function": "Mod.eval"
+    }
+  ],
+  "explanation": "Modulo simplification unconditionally invokes polynomial gcd on operands that can contain Piecewise. That optional optimization rejects such generators and leaks the saved PolynomialError. Catching that unsupported polynomial path and retaining neutral gcd1 allows the general symbolic modulo operation to continue.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "_parallel_poly_from_expr"
+    },
+    {
+      "file": "sympy/core/mod.py",
+      "function": "Mod.eval"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

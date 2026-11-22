@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-13574",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/dense.py",
+      "function": "randMatrix"
+    }
+  ],
+  "explanation": "The symmetric constructor initially mirrors entries, then sparsifies and shuffles the entire flat storage independently. Saved sparse symmetric requests no longer equal their transpose. Sampling upper-triangle positions and mirroring each selected value preserves symmetry.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

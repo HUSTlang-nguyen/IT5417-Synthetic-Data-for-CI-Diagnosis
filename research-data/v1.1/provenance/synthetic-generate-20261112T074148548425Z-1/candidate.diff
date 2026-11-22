@@ -1,0 +1,11 @@
+--- a/sympy/core/numbers.py
++++ b/sympy/core/numbers.py
+@@ -1514,7 +1514,7 @@
+             p = -p
+         if not gcd:
+             gcd = igcd(abs(p), q)
+-        if gcd > 1:
++        if gcd > 2:
+             p //= gcd
+             q //= gcd
+         if q == 1:

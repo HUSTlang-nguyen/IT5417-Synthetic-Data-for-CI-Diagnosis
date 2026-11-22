@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T070104961179Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "isoformat"
+    }
+  ],
+  "explanation": "The timezone-null guard is inverted, so an aware datetime is passed to UTC.localize rather than astimezone. The saved aware-date call raises Not naive datetime ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "UTC.localize"
+    },
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "isoformat"
+    },
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T045409215014Z",
+  "reviewed_at": "2026-11-12T12:15:30+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "57a72246d706e0ad4abb9987b678d10cf6d94cf03c1184033a8120cd8dd38611",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "1af158d395c32879007c5a4d1225b6b525a85dc2937b61d630c4ae97d058c13e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "454fa4ebba78e822cd5131f52135c177bb3c0d44d0e2ce4e63dd6e84f2a403c5",
+    "historical-fixed.stdout.txt": "f278a9e84ec6732411e129a310d61e0a26cd7af93cf84b3ecbf26e657913afa2",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "cf5babc6d15d040a0f771a6e62a16e5e0bd7091dca64bc8e053b4305aded9737"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/blockmatrix.py",
+      "function": "BlockMatrix._entry"
+    }
+  ],
+  "mechanism": "Block selection treats an undecidable symbolic boundary comparison as if the index were inside the first block. Saved A[0,0] or A[i,j] prematurely becomes A1[...] even when block sizes/indices do not establish membership. Returning an unevaluated whole-matrix element preserves the unknown boundary.",
+  "limitations": "Three tests concern one symbolic-boundary mechanism. This differs from Identity._entry index equality and DiagonalMatrix wrong-column indexing, though all are related matrix-index families.",
+  "observed_junit": {
+    "base": {
+      "cases": 29,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 29,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.expressions.tests.test_indexing::test_block_index_symbolic",
+      "message": "assert A1[0, 0] == Matrix([\\n[A1, A2],\\n[A3, A4]])[0, 0]\n +  where Matrix([\\n[A1, A2],\\n[A3, A4]])[0, 0] = MatrixElement(Matrix([\\n[A1, A2],\\n[A3, A4]]), 0, 0)"
+    },
+    {
+      "test": "sympy.matrices.expressions.tests.test_indexing::test_block_index_symbolic_nonzero",
+      "message": "assert A1[i, j] == Matrix([\\n[A1, A2],\\n[A3, A4]])[i, j]\n +  where Matrix([\\n[A1, A2],\\n[A3, A4]])[i, j] = MatrixElement(Matrix([\\n[A1, A2],\\n[A3, A4]]), i, j)"
+    },
+    {
+      "test": "sympy.matrices.expressions.tests.test_indexing::test_block_index_large",
+      "message": "assert A5[i, i] == Matrix([\\n[A1, A2, A3],\\n[A4, A5, A6],\\n[A7, A8, A9]])[i + n, i + n]\n +  where Matrix([\\n[A1, A2, A3],\\n[A4, A5, A6],\\n[A7, A8, A9]])[i + n, i + n] = MatrixElement(Matrix([\\n[A1, A2, A3],\\n[A4, A5, A6],\\n[A7, A8, A9]]), (n + i), (n + i))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

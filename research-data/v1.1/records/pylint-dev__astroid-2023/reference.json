@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__astroid-2023",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "astroid/nodes/node_classes.py",
+      "function": "are_exclusive"
+    }
+  ],
+  "explanation": "The exclusivity check treats any different child containers of an If as mutually exclusive branches. A walrus assignment in If.test can execute with either body, yet saved tests report it exclusive with body calls. Checking child attributes and exempting the test expression preserves control-flow coexistence.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/nodes/node_classes.py",
+      "function": "Call.kwargs"
+    },
+    {
+      "file": "astroid/nodes/node_classes.py",
+      "function": "NamedExpr.frame"
+    },
+    {
+      "file": "astroid/nodes/node_classes.py",
+      "function": "NamedExpr.postinit"
+    },
+    {
+      "file": "astroid/nodes/node_classes.py",
+      "function": "are_exclusive"
+    },
+    {
+      "file": "astroid/nodes/node_classes.py",
+      "function": "Call.starargs"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

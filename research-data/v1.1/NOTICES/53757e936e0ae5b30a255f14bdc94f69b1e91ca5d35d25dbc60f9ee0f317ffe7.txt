@@ -1,0 +1,100 @@
+"""Utility functions for geometrical entities.
+
+Contains
+========
+intersection
+convex_hull
+closest_points
+farthest_points
+are_coplanar
+are_similar
+
+"""
+from __future__ import division, print_function
+
+from sympy import Function, Symbol, solve
+from sympy.core.compatibility import (
+    is_sequence, range, string_types, ordered)
+from sympy.core.containers import OrderedSet
+from .point import Point, Point2D
+
+
+def find(x, equation):
+    """
+    Checks whether the parameter 'x' is present in 'equation' or not.
+    If it is present then it returns the passed parameter 'x' as a free
+    symbol, else, it returns a ValueError.
+    """
+
+    free = equation.free_symbols
+    xs = [i for i in free if (i.name if type(x) is str else i) == x]
+    if not xs:
+        raise ValueError('could not find %s' % x)
+    if len(xs) != 1:
+        raise ValueError('ambiguous %s' % x)
+    return xs[0]
+
+
+def _ordered_points(p):
+    """Return the tuple of points sorted numerically according to args"""
+    return tuple(sorted(p, key=lambda x: x.args))
+
+
+def are_coplanar(*e):
+    """ Returns True if the given entities are coplanar otherwise False
+
+    Parameters
+    ==========
+
+    e: entities to be checked for being coplanar
+
+    Returns
+    =======
+
+    Boolean
+
+    Examples
+    ========
+
+    >>> from sympy import Point3D, Line3D
+    >>> from sympy.geometry.util import are_coplanar
+    >>> a = Line3D(Point3D(5, 0, 0), Point3D(1, -1, 1))
+    >>> b = Line3D(Point3D(0, -2, 0), Point3D(3, 1, 1))
+    >>> c = Line3D(Point3D(0, -1, 0), Point3D(5, -1, 9))
+    >>> are_coplanar(a, b, c)
+    False
+
+    """
+    from sympy.geometry.line import LinearEntity3D
+    from sympy.geometry.point import Point3D
+    from sympy.geometry.plane import Plane
+    # XXX update tests for coverage
+
+    e = set(e)
+    # first work with a Plane if present
+    for i in list(e):
+        if isinstance(i, Plane):
+            e.remove(i)
+            return all(p.is_coplanar(i) for p in e)
+
+    if all(isinstance(i, Point3D) for i in e):
+        if len(e) < 3:
+            return False
+
+        # remove pts that are collinear with 2 pts
+        a, b = e.pop(), e.pop()
+        for i in list(e):
+            if Point3D.are_collinear(a, b, i):
+                e.remove(i)
+
+        if not e:
+            return False
+        else:
+            # define a plane
+            p = Plane(a, b, e.pop())
+            for i in e:
+                if i not in p:
+                    return False
+            return True
+    else:
+        pt3d = []

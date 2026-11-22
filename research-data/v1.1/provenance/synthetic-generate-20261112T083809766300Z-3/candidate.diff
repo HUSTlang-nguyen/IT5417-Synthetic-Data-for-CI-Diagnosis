@@ -1,0 +1,11 @@
+--- a/sympy/matrices/expressions/matexpr.py
++++ b/sympy/matrices/expressions/matexpr.py
+@@ -792,7 +792,7 @@
+ 
+     @property
+     def name(self):
+-        return self.args[0].name
++        return self.args[1].name
+ 
+     def _entry(self, i, j, **kwargs):
+         return MatrixElement(self, i, j)

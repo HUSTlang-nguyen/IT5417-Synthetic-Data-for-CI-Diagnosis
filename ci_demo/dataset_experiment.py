@@ -14,8 +14,18 @@ def freeze_plan(experiment, path):
     destination = experiment.folder / ("source-plan-lock.json" if path.name == "dataset-v1-plan.json" else "source-plan-lock-" + path.stem + ".json")
     plan = read_json(path)
     identities = [row["case_id"] for row in plan["selected"]]
-    if len(identities) != len(set(identities)) or plan["targets"]["real"] != 250:
+    from .data_study import DataStudy
+    target = 1000 if isinstance(experiment, DataStudy) else 250
+    if len(identities) != len(set(identities)) or plan["targets"]["real"] != target:
         raise ValueError("Duplicate profile or changed real-data target")
+    if isinstance(experiment, DataStudy):
+        binding = read_json(experiment.manifest)['source_role_lock']
+        if sha256(ROOT / binding['path']) != binding['sha256']:
+            raise ValueError('Source-role lock changed')
+        roles = read_json(ROOT / binding['path'])
+        allowed = {(r['source_case_id'],r['repo'],r['role']) for r in roles['selected']}
+        if plan['repo_roles'] != roles['repo_roles'] or any((r['source_case_id'],r['repo'],r['role']) not in allowed for r in plan['selected']):
+            raise ValueError('Recipe plan differs from frozen source roles')
     if destination.exists():
         locked = read_json(destination)
         if locked["plan_sha256"] != sha256(path):
@@ -25,6 +35,8 @@ def freeze_plan(experiment, path):
         for row in plan["selected"]:
             identity = row["case_id"]
             case = case_config(identity)
+            if row.get('case_sha256') and row['case_sha256'] != sha256(ROOT / 'cases' / identity / 'case.json'):
+                raise ValueError('Prepared recipe changed before source lock')
             if (case["experiment_role"] != row["role"] or plan["repo_roles"].get(row["repo"]) != row["role"]
                     or case["repo_url"] != "https://github.com/" + row["repo"]
                     or case["source_case_id"] != row["source_case_id"]):
@@ -135,10 +147,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--limit", type=int, help="Maximum new cases this invocation; completed cases are skipped")
     parser.add_argument("--plan", default="data-manifests/dataset-v1-plan.json", help="Explicit immutable source/profile plan")
+    parser.add_argument('--study-v2', action='store_true', help='Use the separate dataset-v2 study and limits')
     args = parser.parse_args()
     if args.limit is not None and args.limit < 1:
         parser.error("--limit must be positive")
-    experiment = active_experiment()
+    if args.study_v2:
+        from .data_study import DataStudy
+        from .common import CACHE
+        experiment = DataStudy(read_json(CACHE / 'dataset-v2-active.json')['run_id'])
+    else:
+        experiment = active_experiment()
     with batch_lock(experiment.lock, wait_seconds=30):
         plan = freeze_plan(experiment, ROOT / args.plan)
     plan["_locked_plan_sha256"] = sha256(ROOT / args.plan)

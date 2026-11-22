@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-10081",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/unittest.py",
+      "function": "TestCaseFunction.runtest"
+    }
+  ],
+  "explanation": "The debug teardown postponement checks only whether the test method is skipped, not its unittest class. Class-skipped tests therefore acquire explicit teardown work and the saved tracking list records tearDown despite the skip. Considering the parent class skip prevents that lifecycle error.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.getitem"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.getitems"
+    },
+    {
+      "file": "src/_pytest/monkeypatch.py",
+      "function": "MonkeyPatch.setattr"
+    },
+    {
+      "file": "src/_pytest/monkeypatch.py",
+      "function": "MonkeyPatch.setattr"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.inline_runsource"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-14082",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/integrals/rationaltools.py",
+      "function": "log_to_real"
+    }
+  ],
+  "explanation": "Conjugate-root contributions are retained only when a root is provably positive. Real symbolic roots with unknown sign are skipped, removing atan contributions and making the saved integral zero. Pairing opposite nonzero roots by sign structure retains one representative without requiring proven positivity.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "FreeModule.convert"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T011430979067Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals._contains"
+    }
+  ],
+  "explanation": "The Expr type guard is inverted. Basic() no longer returns False and instead yields its unknown is_rational value None, which the membership operator cannot convert to a Boolean. The saved TypeError matches that path.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.__contains__"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

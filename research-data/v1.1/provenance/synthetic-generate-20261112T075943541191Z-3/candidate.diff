@@ -1,0 +1,11 @@
+--- a/sympy/polys/rings.py
++++ b/sympy/polys/rings.py
+@@ -301,7 +301,7 @@
+ 
+     def monomial_basis(self, i):
+         """Return the ith-basis element. """
+-        basis = [0]*self.ngens
++        basis = [1]*self.ngens
+         basis[i] = 1
+         return tuple(basis)
+ 

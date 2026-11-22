@@ -1,0 +1,100 @@
+# Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+
+import os
+import sys
+import warnings
+
+from pylint import __pkginfo__, config, extensions, interfaces
+from pylint.constants import full_version
+from pylint.lint.pylinter import PyLinter
+from pylint.lint.utils import ArgumentPreprocessingError, preprocess_options
+from pylint.utils import utils
+
+try:
+    import multiprocessing
+except ImportError:
+    multiprocessing = None  # type: ignore
+
+
+def _cpu_count() -> int:
+    """Use sched_affinity if available for virtualized or containerized environments."""
+    sched_getaffinity = getattr(os, "sched_getaffinity", None)
+    # pylint: disable=not-callable,using-constant-test
+    if sched_getaffinity:
+        return len(sched_getaffinity(0))
+    if multiprocessing:
+        return multiprocessing.cpu_count()
+    return 1
+
+
+def cb_list_extensions(option, optname, value, parser):
+    """List all the extensions under pylint.extensions"""
+
+    for filename in os.listdir(os.path.dirname(extensions.__file__)):
+        if filename.endswith(".py") and not filename.startswith("_"):
+            extension_name, _, _ = filename.partition(".")
+            print(f"pylint.extensions.{extension_name}")
+    sys.exit(0)
+
+
+def cb_list_confidence_levels(option, optname, value, parser):
+    for level in interfaces.CONFIDENCE_LEVELS:
+        print("%-18s: %s" % level)
+    sys.exit(0)
+
+
+def cb_init_hook(optname, value):
+    """exec arbitrary code to set sys.path for instance"""
+    exec(value)  # pylint: disable=exec-used
+
+
+UNUSED_PARAM_SENTINEL = object()
+
+
+class Run:
+    """helper class to use as main for pylint :
+
+    run(*sys.argv[1:])
+    """
+
+    LinterClass = PyLinter
+    option_groups = (
+        (
+            "Commands",
+            "Options which are actually commands. Options in this \
+group are mutually exclusive.",
+        ),
+    )
+
+    @staticmethod
+    def _return_one(*args):  # pylint: disable=unused-argument
+        return 1
+
+    def __init__(
+        self,
+        args,
+        reporter=None,
+        exit=True,
+        do_exit=UNUSED_PARAM_SENTINEL,
+    ):  # pylint: disable=redefined-builtin
+        self._rcfile = None
+        self._output = None
+        self._version_asked = False
+        self._plugins = []
+        self.verbose = None
+        try:
+            preprocess_options(
+                args,
+                {
+                    # option: (callback, takearg)
+                    "version": (self.version_asked, False),
+                    "init-hook": (cb_init_hook, True),
+                    "rcfile": (self.cb_set_rcfile, True),
+                    "load-plugins": (self.cb_add_plugins, True),
+                    "verbose": (self.cb_verbose_mode, False),
+                    "output": (self.cb_set_output, True),
+                },
+            )
+        except ArgumentPreprocessingError as ex:
+            print(ex, file=sys.stderr)

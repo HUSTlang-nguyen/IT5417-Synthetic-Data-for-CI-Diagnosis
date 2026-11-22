@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-10320",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "ClassDocumenter._find_signature"
+    }
+  ],
+  "explanation": "ClassDocumenter has no class-specific signature finder to remove constructor return annotations read from docstrings. Class signatures therefore retain -> None, which does not belong in the class declaration output. The new override strips the return for the first and subsequent constructor signatures.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "app"
+    },
+    {
+      "file": "sphinx/application.py",
+      "function": "TemplateBridge.init"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "SphinxTestApp.__init__"
+    },
+    {
+      "file": "sphinx/search/en.py",
+      "function": "SearchEnglish.init"
+    },
+    {
+      "file": "sphinx/search/__init__.py",
+      "function": "SearchLanguage.init"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

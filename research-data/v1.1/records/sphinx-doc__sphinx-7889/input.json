@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-3.2.0, docutils-0.16\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 6 items\n\ntests/test_ext_autodoc_mock.py::test_MockModule PASSED                   [ 16%]\ntests/test_ext_autodoc_mock.py::test_MockObject FAILED                   [ 33%]\ntests/test_ext_autodoc_mock.py::test_mock PASSED                         [ 50%]\ntests/test_ext_autodoc_mock.py::test_mock_does_not_follow_upper_modules PASSED [ 66%]\ntests/test_ext_autodoc_mock.py::test_abc_MockObject PASSED               [ 83%]\ntests/test_ext_autodoc_mock.py::test_mock_decorator PASSED               [100%]\n\n=================================== FAILURES ===================================\n_______________________________ test_MockObject ________________________________\n\n    def test_MockObject():\n        mock = _MockObject()\n        assert isinstance(mock.some_attr, _MockObject)\n        assert isinstance(mock.some_method, _MockObject)\n        assert isinstance(mock.attr1.attr2, _MockObject)\n        assert isinstance(mock.attr1.attr2.meth(), _MockObject)\n    \n        # subclassing\n        class SubClass(mock.SomeClass):\n            \"\"\"docstring of SubClass\"\"\"\n    \n            def method(self):\n                return \"string\"\n    \n        obj = SubClass()\n        assert SubClass.__doc__ == \"docstring of SubClass\"\n        assert isinstance(obj, SubClass)\n        assert obj.method() == \"string\"\n        assert isinstance(obj.other_method(), SubClass)\n    \n        # parametrized type\n        T = TypeVar('T')\n    \n>       class SubClass2(mock.SomeClass[T]):\n\ntests/test_ext_autodoc_mock.py:59: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsphinx/ext/autodoc/mock.py:56: in __getitem__\n    return _make_subclass(key, self.__display_name__, self.__class__)()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nname = ~T, module = '_MockObject.SomeClass'\nsuperclass = <class '_MockObject.SomeClass'>, attributes = None\n\n    def _make_subclass(name: str, module: str, superclass: Any = _MockObject,\n                       attributes: Any = None) -> Any:\n>       attrs = {'__module__': module, '__display_name__': module + '.' + name}\nE       TypeError: can only concatenate str (not \"TypeVar\") to str\n\nsphinx/ext/autodoc/mock.py:73: TypeError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_ext_autodoc_mock.py::test_MockObject - TypeError: can only ...\n========================= 1 failed, 5 passed in 0.06s ==========================\n",
+  "code": [
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_make_subclass",
+      "start_line": 71,
+      "end_line": 76,
+      "score": 1133.75,
+      "text": "sphinx/ext/autodoc/mock.py::_make_subclass lines 71-76\ndef _make_subclass(name: str, module: str, superclass: Any = _MockObject,\n                   attributes: Any = None) -> Any:\n    attrs = {'__module__': module, '__display_name__': module + '.' + name}\n    attrs.update(attributes or {})\n\n    return type(name, (superclass,), attrs)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__getitem__",
+      "start_line": 55,
+      "end_line": 56,
+      "score": 1133.162278,
+      "text": "sphinx/ext/autodoc/mock.py::_MockObject.__getitem__ lines 55-56\n    def __getitem__(self, key: str) -> \"_MockObject\":\n        return _make_subclass(key, self.__display_name__, self.__class__)()",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__getattr__",
+      "start_line": 58,
+      "end_line": 59,
+      "score": 132.84605,
+      "text": "sphinx/ext/autodoc/mock.py::_MockObject.__getattr__ lines 58-59\n    def __getattr__(self, key: str) -> \"_MockObject\":\n        return _make_subclass(key, self.__display_name__, self.__class__)()",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__new__",
+      "start_line": 30,
+      "end_line": 38,
+      "score": 132.294157,
+      "text": "sphinx/ext/autodoc/mock.py::_MockObject.__new__ lines 30-38\n    def __new__(cls, *args: Any, **kwargs: Any) -> Any:\n        if len(args) == 3 and isinstance(args[1], tuple):\n            superclass = args[1][-1].__class__\n            if superclass is cls:\n                # subclassing MockObject\n                return _make_subclass(args[0], superclass.__display_name__,\n                                      superclass=superclass, attributes=args[2])\n\n        return super().__new__(cls)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__repr__",
+      "start_line": 67,
+      "end_line": 68,
+      "score": 132.041241,
+      "text": "sphinx/ext/autodoc/mock.py::_MockObject.__repr__ lines 67-68\n    def __repr__(self) -> str:\n        return self.__display_name__",
+      "truncated": false
+    }
+  ]
+}

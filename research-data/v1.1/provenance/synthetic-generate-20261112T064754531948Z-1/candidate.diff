@@ -1,0 +1,11 @@
+--- a/sympy/polys/polyroots.py
++++ b/sympy/polys/polyroots.py
+@@ -866,7 +866,7 @@
+ 
+         x = Dummy('x')
+ 
+-        poly, i = {}, len(f) - 1
++        poly, i = {}, len(f) + 1
+ 
+         for coeff in f:
+             poly[i], i = sympify(coeff), i - 1

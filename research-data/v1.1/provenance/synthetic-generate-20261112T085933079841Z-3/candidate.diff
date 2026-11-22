@@ -1,0 +1,11 @@
+--- a/pydicom/valuerep.py
++++ b/pydicom/valuerep.py
+@@ -915,7 +915,7 @@
+         if self.auto_format and hasattr(self, 'original_string'):
+             return f"'{self.original_string}'"
+ 
+-        return f"'{super().__repr__()}'"
++        return f"{super().__repr__()}"
+ 
+ 
+ class DSdecimal(Decimal):

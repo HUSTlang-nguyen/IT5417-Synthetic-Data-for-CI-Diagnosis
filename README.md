@@ -1,5 +1,7 @@
 # IT5417 — Synthetic Data for CI Diagnosis
 
+Dataset pilot portable: [research-data/v1.1](research-data/README.md),351mẫu silver (~15.23MB), đọc/validate không cần raw runs, model hay Docker. [Goal dữ liệu v2](docs/dataset-v2-plan.md) và [snapshot tiến độ](data-manifests/dataset-v2-status.json) tách riêng; v2 chưa khóa đầy đủ.
+
 Sinh dữ liệu tổng hợp có kiểm chứng hỗ trợ chẩn đoán lỗi CI trong quy trình cộng tác người–agent.
 
 ## Toàn đề tài và milestone hiện tại

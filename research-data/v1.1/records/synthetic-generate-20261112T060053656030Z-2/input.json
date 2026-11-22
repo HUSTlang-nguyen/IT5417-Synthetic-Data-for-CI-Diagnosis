@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 3 items\n\nsympy/solvers/tests/test_polysys.py::test_solve_poly_system PASSED       [ 33%]\nsympy/solvers/tests/test_polysys.py::test_solve_biquadratic FAILED       [ 66%]\nsympy/solvers/tests/test_polysys.py::test_solve_triangulated PASSED      [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_solve_biquadratic ____________________________\n\n    def test_solve_biquadratic():\n        x0, y0, x1, y1, r = symbols('x0 y0 x1 y1 r')\n    \n        f_1 = (x - 1)**2 + (y - 1)**2 - r**2\n        f_2 = (x - 2)**2 + (y - 2)**2 - r**2\n        s = sqrt(2*r**2 - 1)\n        a = (3 - s)/2\n        b = (3 + s)/2\n>       assert solve_poly_system([f_1, f_2], x, y) == [(a, b), (b, a)]\nE       AssertionError: assert [(-(sqrt(2*r*...*r**2 - 1)/2)] == [(3/2 - sqrt(...*r**2 - 1)/2)]\nE         At index 0 diff: (-(sqrt(2*r**2 - 1) - 3)/2, sqrt(2*r**2 - 1)/2 + 3/2) != (3/2 - sqrt(2*r**2 - 1)/2, sqrt(2*r**2 - 1)/2 + 3/2)\nE         Full diff:\nE           [\nE         -  (3/2 - sqrt(2*r**2 - 1)/2, sqrt(2*r**2 - 1)/2 + 3/2),\nE         ?   ---- ^\nE         +  (-(sqrt(2*r**2 - 1) - 3)/2, sqrt(2*r**2 - 1)/2 + 3/2),\nE         ?    ^               +++++...\nE         \nE         ...Full output truncated (5 lines hidden), use '-vv' to show\n\nsympy/solvers/tests/test_polysys.py:66: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/solvers/tests/test_polysys.py::test_solve_biquadratic - Assertio...\n========================= 1 failed, 2 passed in 0.67s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_poly_system",
+      "start_line": 17,
+      "end_line": 63,
+      "score": 50.645497,
+      "text": "sympy/solvers/polysys.py::solve_poly_system lines 17-63\ndef solve_poly_system(seq, *gens, **args):\n    \"\"\"\n    Solve a system of polynomial equations.\n\n    Parameters\n    ==========\n\n    seq: a list/tuple/set\n        Listing all the equations that are needed to be solved\n    gens: generators\n        generators of the equations in seq for which we want the\n        solutions\n    args: Keyword arguments\n        Special options for solving the equations\n\n    Returns\n    =======\n\n    List[Tuple]\n        A List of tuples. Solutions for symbols that satisfy the\n        equations listed in seq\n\n    Examples\n    ========\n\n    >>> from sympy import solve_poly_system\n    >>> from sympy.abc import x, y\n\n    >>> solve_poly_system([x*y - 2*y, 2*y**2 - x**2], x, y)\n    [(0, 0), (2, -sqrt(2)), (2, sqrt(2))]\n\n    \"\"\"\n    try:\n        polys, opt = parallel_poly_from_expr(seq, *gens, **args)\n    except PolificationFailed as exc:\n        raise ComputationFailed('solve_poly_system', len(seq), exc)\n\n    if len(polys) == len(opt.gens) == 2:\n        f, g = polys\n\n        if all(i <= 1 for i in f.degree_list() + g.degree_list()):\n            try:\n                return solve_biquadratic(f, g, opt)\n            except SolveFailed:\n                pass\n\n    return solve_generic(polys, opt)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.diff",
+      "start_line": 3524,
+      "end_line": 3526,
+      "score": 30.948683,
+      "text": "sympy/core/expr.py::Expr.diff lines 3524-3526\n    def diff(self, *symbols, **assumptions):\n        assumptions.setdefault(\"evaluate\", True)\n        return _derivative_dispatch(self, *symbols, **assumptions)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/logic/boolalg.py",
+      "function": "BooleanFunction.diff",
+      "start_line": 523,
+      "end_line": 525,
+      "score": 30.948683,
+      "text": "sympy/logic/boolalg.py::BooleanFunction.diff lines 523-525\n    def diff(self, *symbols, **assumptions):\n        assumptions.setdefault(\"evaluate\", True)\n        return Derivative(self, *symbols, **assumptions)",
+      "truncated": false
+    },
+    {
+      "file": "examples/beginner/limits_examples.py",
+      "function": "show",
+      "start_line": 15,
+      "end_line": 16,
+      "score": 30.894427,
+      "text": "examples/beginner/limits_examples.py::show lines 15-16\ndef show(computed, correct):\n    print(\"computed:\", computed, \"correct:\", correct)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/assumptions/cnf.py",
+      "function": "EncodedCNF.symbols",
+      "start_line": 417,
+      "end_line": 418,
+      "score": 30.894427,
+      "text": "sympy/assumptions/cnf.py::EncodedCNF.symbols lines 417-418\n    def symbols(self):\n        return self._symbols",
+      "truncated": false
+    }
+  ]
+}

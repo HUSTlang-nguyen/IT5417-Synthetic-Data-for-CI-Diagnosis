@@ -1,0 +1,11 @@
+--- a/sympy/printing/conventions.py
++++ b/sympy/printing/conventions.py
+@@ -27,7 +27,7 @@
+        ('var', ['sup'], ['sub1', 'sub2'])
+ 
+     """
+-    if len(text) == 0:
++    if len(text) == 1:
+         return text, [], []
+ 
+     pos = 0

@@ -1,0 +1,35 @@
+{
+  "sample_id": "pallets__flask-5014",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.__init__"
+    }
+  ],
+  "explanation": "The blueprint constructor rejects dotted names but accepts an empty name, violating the argument-validation contract. The saved pytest.raises block therefore observes no ValueError. Adding the nonempty-name check rejects the invalid argument at construction.",
+  "retrieved_locations": [
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_test.register_template"
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_filter.register_template"
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_global.register_template"
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.register_blueprint"
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_test"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

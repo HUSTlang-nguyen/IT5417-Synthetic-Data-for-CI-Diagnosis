@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-8284",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "sphinx/builders/manpage.py",
+      "function": "setup"
+    }
+  ],
+  "explanation": "setup registers man_make_section_directory with default False. ManualPageBuilder therefore chooses a flat manpage filename instead of the section subdirectory required by the default layout contract. Registering True selects the section directory branch.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.read_text"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "warning"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "BuiltinTemplateLoader.init"
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.text"
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.write_text"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

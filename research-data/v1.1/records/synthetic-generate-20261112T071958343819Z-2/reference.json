@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T071958343819Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.inspect_build"
+    }
+  ],
+  "explanation": "The default module-name guard is inverted. A missing name is no longer replaced by module.__name__, disrupting builtins-module construction; the saved import-time test collection raises KeyError for the builtins cache entry.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/manager.py",
+      "function": "AstroidManager.builtins_module"
+    },
+    {
+      "file": "astroid/brain/brain_builtin_inference.py",
+      "function": "_extend_builtins"
+    },
+    {
+      "file": "astroid/brain/brain_builtin_inference.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

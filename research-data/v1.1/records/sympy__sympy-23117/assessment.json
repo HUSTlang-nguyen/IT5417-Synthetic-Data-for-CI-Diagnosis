@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T045823825027Z",
+  "reviewed_at": "2026-11-12T12:14:44+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6a237d300b166a267c7ccee26efab55e6921089008d05ba92ab23f61f542884a",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "05d312ccbe08f7ece8e9fb7462a7f5e8771cb21e0ee7681b3b0707cd5803a3b7",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "af748d698bec29899db3008dcbf63d4833f98e04c95ed3b7c1449169a9c568c0",
+    "historical-fixed.stdout.txt": "275a03b41478cadc713312f12553cd5a7ad57ed6ff49ef0edbd50779177ca7dd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4a17c9819d7d6763d7bcb2169e9b04b6a5737bd3d039cdcafb1874d4b1270fd3"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray._scan_iterable_shape.f"
+    }
+  ],
+  "mechanism": "Recursive shape scanning unpacks zip of an empty comprehension as two values. Saved array_type([]) raises expected2-got0 ValueError. Returning empty flattened contents and shape(0,) before unpacking supports the empty-array input.",
+  "limitations": "Other patch changes concern integer indexing; the first failure occurs during empty construction, so _parse_index is not the causal location for this observation.",
+  "observed_junit": {
+    "base": {
+      "cases": 4,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 4,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.tensor.array.tests.test_ndim_array::test_issue_17851",
+      "message": "ValueError: not enough values to unpack (expected 2, got 0)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

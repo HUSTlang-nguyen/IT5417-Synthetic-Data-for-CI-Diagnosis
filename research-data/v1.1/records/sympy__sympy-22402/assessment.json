@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T050548645104Z",
+  "reviewed_at": "2026-11-12T12:16:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "05e640e0ab92c2eba36418a36faed6b2372a269cb8447393f01cb5bb5bf86fb8",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "60aeb1c99c2033ad9f6ccc955028c83e6b69f0762d2fd5f6a32ddafa76e248b3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5cc6cd69e31f564cb449c56c8896d9f542d4a34981e37dc64c65da41cacfc3a7",
+    "historical-fixed.stdout.txt": "bc1858ec0b3e25567cd09e84649000e688aafe9dacb6a3230bf617a44d7b5af0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4b8113f4689bc6cbd7bab95307bd06a2bfc587eb2b786ca6da7d45c0f31575e2"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg.eval"
+    }
+  ],
+  "mechanism": "The argument evaluator does not bound nested arg applications whose values force an undefined angle. Saved arg(arg(arg(arg(x)))) remains nested instead of NaN. Inspecting the nesting and real-valued intermediate recognizes the undefined case.",
+  "limitations": "The saved oracle concerns four nesting levels for an unconstrained symbol. The patch also covers the three-level real-input case; the first failure does not independently establish every branch.",
+  "observed_junit": {
+    "base": {
+      "cases": 28,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 28,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.elementary.tests.test_complexes::test_arg",
+      "message": "assert arg(arg(arg(arg(x)))) is nan\n +  where arg(arg(arg(arg(x)))) = arg(arg(arg(arg(x))))\n +    where arg(arg(arg(x))) = arg(arg(arg(x)))\n +      where arg(arg(x)) = arg(arg(x))\n +        where arg(x) = arg(x)\n +  and   nan = S.NaN"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

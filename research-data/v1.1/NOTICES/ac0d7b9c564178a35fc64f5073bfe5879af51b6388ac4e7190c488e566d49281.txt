@@ -1,0 +1,100 @@
+"""Plotting module for Sympy.
+
+A plot is represented by the ``Plot`` class that contains a reference to the
+backend and a list of the data series to be plotted. The data series are
+instances of classes meant to simplify getting points and meshes from sympy
+expressions. ``plot_backends`` is a dictionary with all the backends.
+
+This module gives only the essential. For all the fancy stuff use directly
+the backend. You can get the backend wrapper for every plot from the
+``_backend`` attribute. Moreover the data series classes have various useful
+methods like ``get_points``, ``get_segments``, ``get_meshes``, etc, that may
+be useful if you wish to use another plotting library.
+
+Especially if you need publication ready graphs and this module is not enough
+for you - just get the ``_backend`` attribute and add whatever you want
+directly to it. In the case of matplotlib (the common way to graph data in
+python) just copy ``_backend.fig`` which is the figure and ``_backend.ax``
+which is the axis and work on them as you would on any other matplotlib object.
+
+Simplicity of code takes much greater importance than performance. Don't use it
+if you care at all about performance. A new backend instance is initialized
+every time you call ``show()`` and the old one is left to the garbage collector.
+"""
+
+from __future__ import print_function, division
+
+import inspect
+from collections import Callable
+import warnings
+import sys
+
+from sympy import sympify, Expr, Tuple, Dummy, Symbol
+from sympy.external import import_module
+from sympy.core.compatibility import range
+from sympy.utilities.decorator import doctest_depends_on
+from sympy.utilities.iterables import is_sequence
+from .experimental_lambdify import (vectorized_lambdify, lambdify)
+
+# N.B.
+# When changing the minimum module version for matplotlib, please change
+# the same in the `SymPyDocTestFinder`` in `sympy/utilities/runtests.py`
+
+# Backend specific imports - textplot
+from sympy.plotting.textplot import textplot
+
+# Global variable
+# Set to False when running tests / doctests so that the plots don't show.
+_show = True
+
+
+def unset_show():
+    global _show
+    _show = False
+
+##############################################################################
+# The public interface
+##############################################################################
+
+def _arity(f):
+    """
+    Python 2 and 3 compatible version that do not raise a Deprecation warning.
+    """
+    if sys.version_info < (3,):
+        return len(inspect.getargspec(f)[0])
+    else:
+       param = inspect.signature(f).parameters.values()
+       return len([p for p in param if p.kind == p.POSITIONAL_OR_KEYWORD])
+
+
+class Plot(object):
+    """The central class of the plotting module.
+
+    For interactive work the function ``plot`` is better suited.
+
+    This class permits the plotting of sympy expressions using numerous
+    backends (matplotlib, textplot, the old pyglet module for sympy, Google
+    charts api, etc).
+
+    The figure can contain an arbitrary number of plots of sympy expressions,
+    lists of coordinates of points, etc. Plot has a private attribute _series that
+    contains all data series to be plotted (expressions for lines or surfaces,
+    lists of points, etc (all subclasses of BaseSeries)). Those data series are
+    instances of classes not imported by ``from sympy import *``.
+
+    The customization of the figure is on two levels. Global options that
+    concern the figure as a whole (eg title, xlabel, scale, etc) and
+    per-data series options (eg name) and aesthetics (eg. color, point shape,
+    line type, etc.).
+
+    The difference between options and aesthetics is that an aesthetic can be
+    a function of the coordinates (or parameters in a parametric plot). The
+    supported values for an aesthetic are:
+    - None (the backend uses default values)
+    - a constant
+    - a function of one variable (the first coordinate or parameter)
+    - a function of two variables (the first and second coordinate or
+    parameters)
+    - a function of three variables (only in nonparametric 3D plots)
+    Their implementation depends on the backend so they may not work in some
+    backends.

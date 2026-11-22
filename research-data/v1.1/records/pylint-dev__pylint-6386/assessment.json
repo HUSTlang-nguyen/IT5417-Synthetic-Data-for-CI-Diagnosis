@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001300157930Z",
+  "reviewed_at": "2026-11-12T08:34:07+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f0325dbc8f710bc4d0314ced447bc0e92ac7d3fa7c57f972d4bc499479ee3fc3",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "b75e4c379d9eb5c82cd0ed83a7b3fe7d23fd25811ba790c00bb58bd8e08ebd22",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2dbf64b643aa3165d53b47939d9f625f2fb7ffc996f68e2e93559ef9d7726958",
+    "historical-fixed.stdout.txt": "8e839d856854e9d7cb2aabc8f1d50d8e986908fcd0a3778fb99c36f5c983167b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c207edc663841017fc43d37e6608d22c61da18b8a0569fdf464a4417f4c36dc0"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/config/utils.py",
+      "function": "_preprocess_options"
+    }
+  ],
+  "mechanism": "The preprocessing loop recognizes only arguments starting with two hyphens, and its callback map lacks the -v alias. The short verbose flag therefore reaches ordinary argparse handling, which expects an argument and exits with status 2. Processing single-hyphen options and registering -v reaches the existing no-value verbose callback.",
+  "limitations": "The patch also carries metavar metadata through argument wrappers. The saved failing test specifically supports the short-option preprocessing defect; those other changes are not counted as independent faults.",
+  "observed_junit": {
+    "base": {
+      "cases": 8,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 8,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.config.test_config::test_short_verbose",
+      "message": "SystemExit: 2"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

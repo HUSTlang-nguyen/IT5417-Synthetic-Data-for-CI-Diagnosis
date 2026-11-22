@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13364",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.__pow__"
+    }
+  ],
+  "explanation": "The power method and its binary sympification wrapper accept only the exponent. Three-argument pow passes an additional modulus and raises the saved takes2-not3 TypeError before modular exponentiation. Accepting the optional modulus and handling it separately restores that operator interface.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/plotting/plot.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

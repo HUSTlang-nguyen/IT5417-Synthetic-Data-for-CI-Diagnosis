@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T004844313974Z",
+  "reviewed_at": "2026-11-12T10:43:08+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6e67607433c57ad2ef2dfdd8b9df547dfc480357f122c8889439cdf8986329a9",
+    "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+    "historical-base.stdout.txt": "1f7435330b2047872cc435873b4f8cf3c2e841a219f7972667b281e4e6c568bb",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8956394ffed76b03a26c5df8d30b6351e8113ddc5d4be9620b758e41c0e660cf",
+    "historical-fixed.stdout.txt": "02b10b660f09eb673f92c06dc63466fddc860154a1a84a5dd1942c45840425c9",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "3f5075b9e11caa9a5437b4c307b5326854f42e0d231fa33c4c61fdad90d40bfc"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "_parse_annotation.unparse"
+    }
+  ],
+  "mechanism": "The AST annotation visitor lacks Constant/Ellipsis handling. An ellipsis in Tuple[int,...] reaches the unsupported branch, and the outer fallback turns the entire annotation into one cross-reference instead of the expected six nodes. Supporting the literal AST variants preserves structured annotation rendering.",
+  "limitations": "The raised SyntaxError is an internal unsupported-node signal, caught by the product, not invalid Python source. Compatibility branches for older runtimes are in the repair but not separately exercised by the saved Python3.9 run.",
+  "observed_junit": {
+    "base": {
+      "cases": 30,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 30,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_py::test_parse_annotation",
+      "message": "AssertionError: The node has 1 child nodes, not 6"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

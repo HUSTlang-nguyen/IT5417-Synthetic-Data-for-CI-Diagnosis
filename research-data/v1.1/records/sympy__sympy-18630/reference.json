@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18630",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper._eval_nseries"
+    }
+  ],
+  "explanation": "The hypergeometric class lacks a dedicated series handler at zero. Generic expansion leaves hyper(...,0) unevaluated in the saved coefficients instead of the explicit constant1,9/20,81/1120. The added rising-factorial series builds the expected coefficients.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper.convergence_statement"
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper.eval"
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper._eval_expand_func"
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper._diffargs"
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper.eta"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

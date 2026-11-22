@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T044225364921Z",
+  "reviewed_at": "2026-11-12T12:12:26+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "8c98b49925820c0d829d48b526508fbb10ac0c5f1728c841a7cd06aef95df04d",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "bce1874eedb3d324cd5e7355fe756f820a0541ec62bd9260aa920f3feccdf343",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ecb85acbe9a62ced9fab3e40f9bb23e5bdc0f672c36a428f4e22cae07e45e951",
+    "historical-fixed.stdout.txt": "89b9c066e9f2e8fe6e7afe88b8d61b0091e4466534e51c68c397f2b3a2491a38",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "8d7f3ae5925c8a57fcc806f7229aa3e9522b0963eabbf041c12ed6b747dd9643"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_is_zero"
+    }
+  ],
+  "mechanism": "The zero predicate applies real positive/negative infinity reasoning to complex infinity. Saved Pow(1/2,zoo,evaluate=False).is_zero returns False where the oracle requires unknown None. Requiring extended-real infinity preserves uncertainty for that indeterminate exponent.",
+  "limitations": "Other changes address finite operands and a separate realness predicate. The first saved assertion supports the complex-infinity zero-predicate branch only.",
+  "observed_junit": {
+    "base": {
+      "cases": 85,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 85,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_arit::test_Pow_is_zero",
+      "message": "assert False is None\n +  where False = (1/2)**zoo.is_zero\n +    where (1/2)**zoo = Pow(1/2, zoo, evaluate=False)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

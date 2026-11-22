@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T072137641643Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.rewrite"
+    }
+  ],
+  "explanation": "The no-arguments guard is inverted. A supplied rewrite rule returns self immediately and the saved cosine-to-exponential assertion remains unchanged.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.matches"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.as_content_primitive"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic._compare_pretty"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.sort_key"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.__getstate__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19713",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/polys/fields.py",
+      "function": "FracField.field_new"
+    }
+  ],
+  "explanation": "Conversion accepts a fraction only when its field equals the outer field, overlooking values belonging to that field underlying coefficient domain. Saved F2(a+b) reaches NotImplementedError even though a+b belongs to the valid nested ground field. Ground-element conversion handles the nested representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/fields.py",
+      "function": "FracField.field_new"
+    },
+    {
+      "file": "sympy/polys/fields.py",
+      "function": "FracField.from_expr"
+    },
+    {
+      "file": "sympy/polys/domains/fractionfield.py",
+      "function": "FractionField.new"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.__call__"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

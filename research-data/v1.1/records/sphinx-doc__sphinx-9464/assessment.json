@@ -1,0 +1,42 @@
+{
+  "run_id": "reproduce-20261111T203441177910Z",
+  "reviewed_at": "2026-11-12T07:18:45+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ed334fd6b33f60d3a906e35e3e465aa395f652c723d4e91a215a4d16deab8386",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "438ff1abf0a92faf853be1dca92b9b9691336d160168b3c6e1137ddf01cef399",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "cd27f30da23201c4bf53ce8ec9ae92ddd60faebb43538d0824b387b5d0e88fcc",
+    "historical-fixed.stdout.txt": "23e9a84303d023d429a8563949efeac2b08117b86df7e1597116c9e66b95dad1",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "860ccc089a6cebc040c968c9af86aca6694c79f32f086f629a3ea7c3899e5846"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify"
+    }
+  ],
+  "mechanism": "The builtins annotation branch returns only __qualname__, discarding PEP-585 generic arguments. list[int] is therefore displayed as list. When __args__ is present, repr preserves the parameterized type.",
+  "limitations": "The input object is accepted; the defect is its string representation, not an incompatible runtime type or syntax error.",
+  "observed_junit": {
+    "base": {
+      "cases": 24,
+      "failures_or_errors": 1,
+      "skipped": 2
+    },
+    "head": {
+      "cases": 24,
+      "failures_or_errors": 0,
+      "skipped": 2
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: AssertionError: assert 'list' == 'list[int]'\n  - list[int]\n  + list"
+}

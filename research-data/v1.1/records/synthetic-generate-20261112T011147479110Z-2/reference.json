@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T011147479110Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__add__"
+    }
+  ],
+  "explanation": "Addition recognizes scalar1 instead of the additive identity0. A.x+0 no longer returns the vector and instead sends0 to _check_vector, which raises the saved TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "_check_vector"
+    },
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__add__"
+    },
+    {
+      "file": "sympy/physics/vector/printing.py",
+      "function": "VectorLatexPrinter._print_Derivative"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/physics/vector/printing.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

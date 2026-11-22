@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T200516893096Z",
+  "reviewed_at": "2026-11-12T03:44:06+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "3613d5b15b998e6b57885e91dd44e3b043a29f95aabe04f4fad858e93bb07b52",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "e728b59dc0ed5d43ab6bca81cec67c46ca55d167cb6fc4c40a4ad036265812f0",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2f4852b48e866445231af5e0690d91bf132eff7e8ecd0c1154d1ae994aaef466",
+    "historical-fixed.stdout.txt": "a85844b615359e1f9c6584bfccc17933e814702255eb5acdae1012ba027b1d0a",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "351b590aa940586b95e03e86330762ef1c84a74f1b0a327d35442c858f8aeec8"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/lint/parallel.py",
+      "function": "check_parallel"
+    }
+  ],
+  "mechanism": "check_parallel first lets map/reduce checkers update linter.stats, then overwrites those reducer-produced statistics by merging only worker stats. Including the existing linter.stats in the merge preserves reducer messages and restores single-process/parallel equivalence.",
+  "evidence_reason": "Read _merge_mapreduce_data at parallel.py:91-109 and check_parallel at lines 162-163. Base has 18 parametrized map/reduce assertion failures; first expected by_msg contains parallel-test-check:1 but observed Counter is empty. Fixed: 45 passed, source F2P/P2P resolve.",
+  "limitations": "Several parametrized failures are one shared statistics-loss fault, not 18 independent real situations. The error was in value aggregation, not a failure to launch Docker workers."
+}

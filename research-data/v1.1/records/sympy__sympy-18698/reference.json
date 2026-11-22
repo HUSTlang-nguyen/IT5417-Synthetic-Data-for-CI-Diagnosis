@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18698",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "_symbolic_factor_list"
+    }
+  ],
+  "explanation": "The square-free factor helper emits separate factors having the same multiplicity instead of combining them into one square-free component. Saved sqf_list(x*(x+y)) returns two exponent1 factors instead of the single product x**2+x*y. Grouping factors by multiplicity preserves the square-free decomposition convention.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "GroebnerBasis.polys"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "factor_list"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "sqf_list"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.sqf_list"
+    },
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "Poly.factor_list"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

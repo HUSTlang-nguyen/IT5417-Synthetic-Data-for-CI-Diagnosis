@@ -1,0 +1,62 @@
+{
+  "run_id": "reproduce-20261112T043627469181Z",
+  "reviewed_at": "2026-11-12T12:11:56+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "716c24a629b7d3a71e8a31b3670754aa80579e12c49808b2d56cd63070b1ea50",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "337c45b3b38b71f1b921af00a6f8ba2ef3ad09ef5f9e01250dfbb1a5ed80b388",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a5ffa448c18247c789c24499add336e7e3395ff358137d01b9764263c5078bf9",
+    "historical-fixed.stdout.txt": "2bb8028df06f25b246ee3fdbea4c0f2e5befc9928d07732bf533c4c64b3e0bfa",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "41e578ae894565f166cb4bf1cd43ef11dde308bb1f8f30e8fa71a4745c953322"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matmul.py",
+      "function": "distribute_monom"
+    }
+  ],
+  "mechanism": "Canonicalization lacks the rule distributing a rational coefficient over a matrix sum. Saved expressions remain MatMul 2*(X+Y) instead of the expected MatAdd and expanded string. The added rule supplies that canonical matrix representation.",
+  "limitations": "Explicit missing function plus rule registration. The undistributed expression can be mathematically equivalent; no numerical matrix discrepancy is claimed.",
+  "observed_junit": {
+    "base": {
+      "cases": 132,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 132,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.expressions.tests.test_matexpr::test_simplify_matrix_expressions",
+      "message": "AssertionError: assert <class 'sympy.matrices.expressions.matmul.MatMul'> == MatAdd\n +  where <class 'sympy.matrices.expressions.matmul.MatMul'> = type(2*(C*D + 2*D*C))"
+    },
+    {
+      "test": "sympy.printing.tests.test_str::test_MatMul_MatAdd",
+      "message": "AssertionError: assert '2*(X + Y)' == '2*X + 2*Y'\n  - 2*X + 2*Y\n  ?       --\n  + 2*(X + Y)\n  ?   +     +"
+    },
+    {
+      "test": "sympy.printing.tests.test_str::test_MatrixSymbol_printing",
+      "message": "AssertionError: assert '-(A + B) + A*B' == '-A + A*B - B'\n  - -A + A*B - B\n  + -(A + B) + A*B"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/matrices/expressions/matmul.py",
+      "function": "distribute_monom"
+    }
+  ]
+}

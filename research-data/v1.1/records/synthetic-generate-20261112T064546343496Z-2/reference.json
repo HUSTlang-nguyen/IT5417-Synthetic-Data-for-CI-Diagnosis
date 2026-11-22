@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T064546343496Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "_unwrap_single_value.f"
+    }
+  ],
+  "explanation": "The wrapper unwraps length2 instead of length1. A single-array result stays a tuple and the saved caller comparing it with a float raises TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "Array.get_cell_temperature"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.get_cell_temperature"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

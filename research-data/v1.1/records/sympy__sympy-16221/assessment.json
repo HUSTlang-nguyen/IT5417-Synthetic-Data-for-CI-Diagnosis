@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T062054559584Z",
+  "reviewed_at": "2026-11-12T18:29:10+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "61d9bde2d134724c8992efe238ab2fcf76cf09547044fb9e0ecf1fcd3f00de49",
+    "license-evidence.json": "47c987b33ed7e9a969e8ebf1629797e95721d8260d833ce867a59a478d1f8afe",
+    "historical-base.stdout.txt": "ce7cf3215fe2bae31efbbc74f320c7730a84db54c381c2a26c15b2408646b28a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "56031486acf553fba9bc9a1448d5c9b34ffc2ea1b4e3c576afc979f23bbd51bf",
+    "historical-fixed.stdout.txt": "f86c18d41d89d752e32d50133d47471970d590240e3f336a0f9cd8762eb9264b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d622b827d1835a45d176118e82234ecc51b49bad2cfde5fe06c37d2fcac5fd44"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_ImmutableDenseNDimArray"
+    }
+  ],
+  "mechanism": "The base Mathematica printer lacks its dense N-dimensional-array dispatch. The saved array output falls back to Python square-bracket representation instead of Mathematica brace lists; the repair adds a dense-array method using tolist and normal printing, and twelve tests pass.",
+  "limitations": "The proposed method is absent in base and is explicitly marked a missing definition, not an invented existing source line. Sparse-array support is also added by the patch but the displayed first failing assertion directly demonstrates dense arrays.",
+  "observed_junit": {
+    "base": {
+      "cases": 12,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 12,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_mathematica::test_NDArray",
+      "message": "AssertionError: assert '[[[1, 2, 3, ...22, 23, 24]]]' == '{{{1, 2, 3, ...22, 23, 24}}}'\n  - {{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}}, {{13, 14, 15, 16}, {17, 18, 19, 20}, {21, 22, 23, 24}}}\n  ? ^^^          ^  ^          ^  ^             ^^  ^^              ^  ^              ^  ^              ^^^\n  + [[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]], [[13, 14, 15, 16], [17, 18, 19, 20], [21, 22, 23, 24]]]\n  ? ^^^          ^  ^          ^  ^             ^^  ^^              ^  ^              ^  ^              ^^^"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_ImmutableDenseNDimArray"
+    }
+  ]
+}

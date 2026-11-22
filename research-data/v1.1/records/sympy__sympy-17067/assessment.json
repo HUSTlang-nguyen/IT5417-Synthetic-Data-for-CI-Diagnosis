@@ -1,0 +1,42 @@
+{
+  "run_id": "reproduce-20261111T203815724060Z",
+  "reviewed_at": "2026-11-12T07:19:40+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7a230fd64ccc965eae9136c701822a15f30fd30d43a5a58507cdc6dd3365e813",
+    "license-evidence.json": "47c987b33ed7e9a969e8ebf1629797e95721d8260d833ce867a59a478d1f8afe",
+    "historical-base.stdout.txt": "6e2dbe7d615cd793ea7bc3562e285e8758a9648ebb3c3389f264873ee58d649d",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a2b6d3bf01f4bac202f9317b5ae111dc9f5ff75794421bcbe367f07c8a5f9028",
+    "historical-fixed.stdout.txt": "3051323ea9303a706efed0240e27e5b764e1aa27ad76cc4dde6c10a0f13c92c3",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "70550efe1674872ad9246faada6a604d907140f7d69fb54116abf6bf7f0a58d1"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie.f"
+    }
+  ],
+  "mechanism": "The nested cosine-product transformation matches a rational expression as a single product instead of separating numerator and denominator. Reciprocal factors enter the product identity incorrectly, changing the tested cosine ratio. Splitting once into f(numerator)/f(denominator) prevents that cross-part rewrite.",
+  "limitations": "The source branch and changed symbolic result support this mechanism; a full algebraic proof of every transformation case was not performed. No new test or instrumentation was run during review.",
+  "observed_junit": {
+    "base": {
+      "cases": 26,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 26,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: assert 4*sin(x/2)*cos(x)/sin(2*x) == cos(x)/cos(x/2)\n +  where 4*sin(x/2)*cos(x)/sin(2*x) = TRmorrie(cos(x)/cos(x/2))"
+}

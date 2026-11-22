@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T010016777213Z",
+  "reviewed_at": "2026-11-12T11:38:06+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "812bed7bcc59373fb8c5d8fc621c0b260d81265c20eea2669922b41baad16c29",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "1a4f88f1c21e086578bee8796f42b84ce363c2b975d670023664b94f2a8b03d3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "bfaf25b3a38a1176f4cfd804b363c0b533e8702b58bc9c14f312d7235bee5dec",
+    "historical-fixed.stdout.txt": "81842b918fc3f8410e210c6c40074fc7f31d363f4630d31b14c04efb56918ab8",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "83dde6f137327d66bb7a68025ea8f70d7c58e408f029831c472f1efd3ee642a8"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/pathlib.py",
+      "function": "visit"
+    }
+  ],
+  "mechanism": "Directory traversal explicitly refuses to follow symbolic links when checking whether an entry is a directory. The symlinked test directory is therefore not recursed into, and the nested pytest run reports one test instead of two. Following directory links restores the required collection.",
+  "limitations": "The saved local filesystem supports the symlink test; one separate skipped test is retained. This does not claim all platforms or symlink-cycle behavior were evaluated.",
+  "observed_junit": {
+    "base": {
+      "cases": 80,
+      "failures_or_errors": 1,
+      "skipped": 1
+    },
+    "head": {
+      "cases": 80,
+      "failures_or_errors": 0,
+      "skipped": 1
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_collection::test_collect_symlink_dir",
+      "message": "AssertionError: assert {'errors': 0,...pped': 0, ...} == {'errors': 0,...pped': 0, ...}\n  Omitting 5 identical items, use -vv to show\n  Differing items:\n  {'passed': 1} != {'passed': 2}\n  Full diff:\n    {\n     'errors': 0,\n     'failed': 0,...\n  \n  ...Full output truncated (9 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

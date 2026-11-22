@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012843354590Z",
+  "reviewed_at": "2026-11-12T11:39:27+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b4e19ee4764cb47fd8cb34cccf078505d2646b5974fc2d5b0dfeb1327c1945f9",
+    "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+    "historical-base.stdout.txt": "7753a4dccf402fc862213b212e146e254c53c43a8e88f0f03500b21e48c92ab3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b046c77bdadb2df22d7c1a7a56f93829cbc115af735e836a425e98f2ab805810",
+    "historical-fixed.stdout.txt": "1de1dfdc7d8138e3a3d3d5bfdad3ca99cca01d2e644e20bd5841a5f9a934b3a1",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e738b9b636122a50e7d8af807a5a49d33c3a46b30606c2ba126737e3002369ac"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxMapping._repr_compare"
+    }
+  ],
+  "mechanism": "The relative-difference diagnostic divides by the expected mapping value without handling zero. A zero expected value triggers the saved ZeroDivisionError while formatting, replacing the useful comparison details. Using infinity for that zero-denominator case preserves the diagnostic.",
+  "limitations": "This is diagnostic arithmetic, not proof that pytest approximate equality itself returns the wrong Boolean.",
+  "observed_junit": {
+    "base": {
+      "cases": 82,
+      "failures_or_errors": 1,
+      "skipped": 16
+    },
+    "head": {
+      "cases": 82,
+      "failures_or_errors": 0,
+      "skipped": 16
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.python.approx.TestApprox::test_dict_for_div_by_zero",
+      "message": "AssertionError: Regex message length doesn't match obtained.\n  Obtained:\n    (pytest_assertion plugin: representation of details failed: /source/base/src/_pytest/python_api.py:274: ZeroDivisionError: float division by zero.\n     Probably an object has a faulty __repr__.)\n  \n  Expected regex:\n    comparison failed. Mismatched elements: 1 / 1:\n    Max absolute difference: [+-]?([0-9]*[.])?[0-9]+\\s*\n    Max relative difference: inf\n    Index \\| Obtained\\s+\\| Expected   \n    foo   | [+-]?([0-9]*[.])?[0-9]+\\s* \\| [+-]?([0-9]*[.])?[0-9]+\\s* ± [+-]?([0-9]*[.])?[0-9]+\\s*\n  \n  \nassert 2 == 5\n +  where 2 = len(['  (pytest_assertion plugin: representation of details failed: /source/base/src/_pytest/python_api.py:274: ZeroDivisionError: float division by zero.', '   Probably an object has a faulty __repr__.)'])\n +  and   5 = len(['  comparison failed. Mismatched elements: 1 / 1:', '  Max absolute di"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

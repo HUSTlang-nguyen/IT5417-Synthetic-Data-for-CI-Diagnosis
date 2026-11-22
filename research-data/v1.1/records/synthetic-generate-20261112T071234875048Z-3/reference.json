@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T071234875048Z-3",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.canberra_distance"
+    }
+  ],
+  "explanation": "The zero-vector check reads p.is_one instead of p.is_zero. The saved Point2D call raises AttributeError because that property does not exist.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.canberra_distance"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.taxicab_distance"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.midpoint"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.project"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point2D.translate"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

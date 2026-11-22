@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-21313",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/handlers/functions.py",
+      "function": "_set_function"
+    }
+  ],
+  "explanation": "The integer-ImageSet canonical-shift path applies exact lattice transformations to Float coefficients/offsets. The saved0.433 offset is reduced to0.092 and required membership is lost. Avoiding this exact canonicalization when either matched coefficient contains Float preserves the inexact expression.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Complexes.sets"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Integers._boundary"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "ComplexRegion.sets"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Integers._inf"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Integers._sup"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

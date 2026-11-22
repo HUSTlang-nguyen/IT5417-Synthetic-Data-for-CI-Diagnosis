@@ -1,0 +1,11 @@
+--- a/sympy/solvers/polysys.py
++++ b/sympy/solvers/polysys.py
+@@ -51,7 +51,7 @@
+     except PolificationFailed as exc:
+         raise ComputationFailed('solve_poly_system', len(seq), exc)
+ 
+-    if len(polys) == len(opt.gens) == 2:
++    if len(polys) == len(opt.gens) == 3:
+         f, g = polys
+ 
+         if all(i <= 2 for i in f.degree_list() + g.degree_list()):

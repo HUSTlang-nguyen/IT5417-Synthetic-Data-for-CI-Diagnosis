@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T041845268618Z",
+  "reviewed_at": "2026-11-12T12:07:40+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a944c156530561e3c4f92d30e793217a4ff325e699bccb63660fc63744da4a28",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "17f7e9fcecbd842c226bce0701713b604a8536a154501220ec49f3f0a40dda05",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8661942778d636c2bfc6ba804a6238e6c771a926237f61691873ef2e3a362045",
+    "historical-fixed.stdout.txt": "6a880e9f2c64f7656eddca92787fe99a475ae31dfb9bb8d86e60de48ddc745eb",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7e83d8c922332f0ae8ed7beafc4c7ea43b45cb20ee5ec822c3d133eaa6bf306c"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer._eval_power"
+    }
+  ],
+  "mechanism": "Negative integer factorization mixes the sign into the perfect-root extraction and compares its positive residual with the signed original. The saved negative rational powers fail canonical simplification, and a substitution/evaluation comparison differs by about0.61. Factoring the absolute base and applying the sign power separately preserves the branch-sensitive result.",
+  "limitations": "Both representation and numeric discrepancy are observed. This does not assert a proof of every complex-power identity.",
+  "observed_junit": {
+    "base": {
+      "cases": 84,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 84,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_powers_Integer",
+      "message": "assert (-8 ** 2/5) == ((2 * (-1 ** 2/5)) * (2 ** 1/5))\n +  where 2/5 = Rational(2, 5)\n +  and   2/5 = Rational(2, 5)\n +  and   1/5 = Rational(1, 5)"
+    },
+    {
+      "test": "sympy.core.tests.test_numbers::test_issue_13890",
+      "message": "assert 0.613527496771587 < 1e-15\n +  where 0.613527496771587 = abs((-1.32255049319339 - -0.739051169462523 - 0.189590423018741*I))\n +    where -1.32255049319339 = <bound method EvalfMixin.evalf of -1 - 32*15**(1/5)*2**(2/5)/225>()\n +      where <bound method EvalfMixin.evalf of -1 - 32*15**(1/5)*2**(2/5)/225> = -1 - 32*15**(1/5)*2**(2/5)/225.evalf\n +        where -1 - 32*15**(1/5)*2**(2/5)/225 = <bound method Basic.subs of (-x/4 - 1/12)**x - 1>(x, 9/5)\n +          where <bound method Basic.subs of (-x/4 - 1/12)**x - 1> = (-x/4 - 1/12)**x - 1.subs\n +    and   -0.739051169462523 - 0.189590423018741*I = <bound method EvalfMixin.evalf of 12**(1/5)*(-24*648**(1/5) - 512*(-1)**(4/5)*5**(1/5)/25)/144>()\n +      where <bound method EvalfMixin.evalf of 12**(1/5)*(-24*648**(1/5) - 512*(-1)**(4/5)*5**(1/5)/25)/144> = 12**(1/5)*(-24*648**(1/5) - 512*(-1)**(4/5)*5**(1/5)/25)/144.evalf\n +        where"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

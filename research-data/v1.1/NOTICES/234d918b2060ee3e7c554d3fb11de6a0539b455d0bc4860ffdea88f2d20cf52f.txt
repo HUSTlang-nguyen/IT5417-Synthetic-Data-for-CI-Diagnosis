@@ -1,0 +1,100 @@
+# Copyright 2008-2018 pydicom authors. See LICENSE file for details.
+"""Define the Dataset and FileDataset classes.
+
+The Dataset class represents the DICOM Dataset while the FileDataset class
+adds extra functionality to Dataset when data is read from or written to file.
+
+Overview of DICOM object model
+------------------------------
+Dataset (dict subclass)
+  Contains DataElement instances, each of which has a tag, VR, VM and value.
+    The DataElement value can be:
+        * A single value, such as a number, string, etc. (i.e. VM = 1)
+        * A list of numbers, strings, etc. (i.e. VM > 1)
+        * A Sequence (list subclass), where each item is a Dataset which
+            contains its own DataElements, and so on in a recursive manner.
+"""
+
+import base64
+import inspect  # for __dir__
+import io
+import json
+import os
+import os.path
+from bisect import bisect_left
+from itertools import takewhile
+
+import pydicom  # for dcmwrite
+import pydicom.charset
+import pydicom.config
+from pydicom import compat, datadict
+from pydicom._version import __version_info__
+from pydicom.charset import default_encoding, convert_encodings
+from pydicom.config import logger
+from pydicom.datadict import dictionary_VR
+from pydicom.datadict import (tag_for_keyword, keyword_for_tag,
+                              repeater_has_keyword)
+from pydicom.dataelem import DataElement, DataElement_from_raw, RawDataElement
+from pydicom.multival import MultiValue
+from pydicom.pixel_data_handlers.util import (convert_color_space,
+                                              reshape_pixel_array)
+from pydicom.tag import Tag, BaseTag, tag_in_exception
+from pydicom.uid import (ExplicitVRLittleEndian, ImplicitVRLittleEndian,
+                         ExplicitVRBigEndian, PYDICOM_IMPLEMENTATION_UID)
+
+
+if compat.in_py2:
+    from pkgutil import find_loader as have_package
+    from pydicom.valuerep import PersonNameUnicode
+else:
+    from importlib.util import find_spec as have_package
+
+have_numpy = True
+try:
+    import numpy
+except ImportError:
+    have_numpy = False
+
+
+class PropertyError(Exception):
+    """For AttributeErrors caught in a property, so do not go to __getattr__"""
+    #  http://docs.python.org/release/3.1.3/tutorial/errors.html#tut-userexceptions
+    pass
+
+
+class PrivateBlock(object):
+    """Helper class for a private block in the dataset.
+    (See PS3.5, Section 7.8.1 - Private Data Element Tags)
+
+    Attributes
+    ----------
+    group : 32 bit int
+        The private group where the private block is located.
+    private_creator : str
+        The private creator string related to the block.
+    dataset : Dataset
+        The parent dataset.
+    block_start : 32 bit int
+        The start element of the private block.
+        Note that the 2 low order hex digits of the element are always 0.
+    """
+
+    def __init__(self, key, dataset, private_creator_element):
+        """Initializes an object corresponding to a private tag block.
+
+        Parameters
+        ----------
+        key : tuple (int, str)
+            The private group and private creator. The group must be an odd
+            number.
+        dataset : Dataset
+            The parent dataset.
+        private_creator_element : 32 bit int
+            The element of the private creator tag.
+        """
+        self.group = key[0]
+        self.private_creator = key[1]
+        self.dataset = dataset
+        self.block_start = private_creator_element << 8
+
+    def get_tag(self, element_offset):

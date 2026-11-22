@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T033858128018Z",
+  "reviewed_at": "2026-11-12T11:49:12+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "cfeb00c5b5ea7d8e129bc0b61b7c99c8990e5f8024a68fe62649645ffd12832e",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "8e0bf2ed27ad6828d5ca068ce438349f91801be9abda62b39f4c61c396cc827d",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f4dbb5bd9831f417f257bf07963090051db7cebaa81a65df241a8c82b910be64",
+    "historical-fixed.stdout.txt": "44ea8b5af21044ac499abf167148ff54343f4878f1dd3dd3d28d84b8511badb0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "bd79d2d50ce21308cca1bb3581fcc370c861a4530e6dd4ab66da4b35c3366ccb"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.atoms"
+    }
+  ],
+  "mechanism": "Default atom selection requires instances of the Atom subclass rather than objects with no expression arguments. Leaf Basic/String nodes are omitted, so both saved calls return empty sets instead of their expected leaves. Testing node.args when no explicit type is supplied restores the contract.",
+  "limitations": "Explicit type-filtered behavior is preserved separately in the repair; it is not evidence that every Atom subclass was misclassified.",
+  "observed_junit": {
+    "base": {
+      "cases": 30,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 30,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.codegen.tests.test_cnodes::test_sizeof",
+      "message": "AssertionError: assert set() == {String('unsi...ing('sizeof')}\n  Extra items in the right set:\n  String('unsigned int')\n  String('sizeof')\n  Full diff:\n  - {String('unsigned int'), String('sizeof')}\n  + set()"
+    },
+    {
+      "test": "sympy.core.tests.test_basic::test_atoms",
+      "message": "assert set() == {Basic()}\n  Extra items in the right set:\n  Basic()\n  Full diff:\n  - {Basic()}\n  + set()"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

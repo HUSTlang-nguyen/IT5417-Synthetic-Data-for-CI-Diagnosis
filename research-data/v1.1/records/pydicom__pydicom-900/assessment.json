@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035355432975Z",
+  "reviewed_at": "2026-11-12T11:53:57+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "1462951c5f136429dfd1019af99758453f69b5926ddf5ad1d1bec5d8596b76ef",
+    "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+    "historical-base.stdout.txt": "5869e795b52eef598d1c3ca6820fa231b44ec0586cd13b237d40662439291392",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8dfdc68cd7057cf667b553b432ec74375f7768a7db5dcbd93ae2d6992a32adc5",
+    "historical-fixed.stdout.txt": "2cd6b9e249ccb495724a9bd6357154eaf7b05552403c302a760232fb7052184a",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b90d2ff5789f617488458a1b6ac702d8dcbd87270e102e046b2ff76a49e8dafe"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.__init__"
+    }
+  ],
+  "mechanism": "Known tags marked with unknown VR retain their raw bytes rather than recovering the dictionary VR. The character-set consumer iterates those bytes as integers and passes73 to a regex, causing the saved TypeError during decode. Recovering the known short-value VR enables the expected conversion.",
+  "limitations": "The charset regex detects a value-representation error originating in element construction. Undefined/large/unknown-tag rules are preserved separately; one upstream skip remains.",
+  "observed_junit": {
+    "base": {
+      "cases": 38,
+      "failures_or_errors": 1,
+      "skipped": 1
+    },
+    "head": {
+      "cases": 38,
+      "failures_or_errors": 0,
+      "skipped": 1
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pydicom.tests.test_dataelem.TestDataElement::test_known_tags_with_UN_VR",
+      "message": "TypeError: expected string or bytes-like object"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

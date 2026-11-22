@@ -1,0 +1,100 @@
+"""Per-test stdout/stderr capturing mechanism."""
+import contextlib
+import functools
+import io
+import os
+import sys
+from io import UnsupportedOperation
+from tempfile import TemporaryFile
+from typing import Any
+from typing import AnyStr
+from typing import Generator
+from typing import Generic
+from typing import Iterator
+from typing import Optional
+from typing import TextIO
+from typing import Tuple
+from typing import Union
+
+import pytest
+from _pytest.compat import TYPE_CHECKING
+from _pytest.config import Config
+from _pytest.config.argparsing import Parser
+from _pytest.fixtures import SubRequest
+from _pytest.nodes import Collector
+from _pytest.nodes import Item
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
+
+    _CaptureMethod = Literal["fd", "sys", "no", "tee-sys"]
+
+
+def pytest_addoption(parser: Parser) -> None:
+    group = parser.getgroup("general")
+    group._addoption(
+        "--capture",
+        action="store",
+        default="fd",
+        metavar="method",
+        choices=["fd", "sys", "no", "tee-sys"],
+        help="per-test capturing method: one of fd|sys|no|tee-sys.",
+    )
+    group._addoption(
+        "-s",
+        action="store_const",
+        const="no",
+        dest="capture",
+        help="shortcut for --capture=no.",
+    )
+
+
+def _colorama_workaround() -> None:
+    """Ensure colorama is imported so that it attaches to the correct stdio
+    handles on Windows.
+
+    colorama uses the terminal on import time. So if something does the
+    first import of colorama while I/O capture is active, colorama will
+    fail in various ways.
+    """
+    if sys.platform.startswith("win32"):
+        try:
+            import colorama  # noqa: F401
+        except ImportError:
+            pass
+
+
+def _readline_workaround() -> None:
+    """Ensure readline is imported so that it attaches to the correct stdio
+    handles on Windows.
+
+    Pdb uses readline support where available--when not running from the Python
+    prompt, the readline module is not imported until running the pdb REPL.  If
+    running pytest with the --pdb option this means the readline module is not
+    imported until after I/O capture has been started.
+
+    This is a problem for pyreadline, which is often used to implement readline
+    support on Windows, as it does not attach to the correct handles for stdout
+    and/or stdin if they have been redirected by the FDCapture mechanism.  This
+    workaround ensures that readline is imported before I/O capture is setup so
+    that it can attach to the actual stdin/out for the console.
+
+    See https://github.com/pytest-dev/pytest/pull/1281.
+    """
+    if sys.platform.startswith("win32"):
+        try:
+            import readline  # noqa: F401
+        except ImportError:
+            pass
+
+
+def _py36_windowsconsoleio_workaround(stream: TextIO) -> None:
+    """Workaround for Windows Unicode console handling on Python>=3.6.
+
+    Python 3.6 implemented Unicode console handling for Windows. This works
+    by reading/writing to the raw console handle using
+    ``{Read,Write}ConsoleW``.
+
+    The problem is that we are going to ``dup2`` over the stdio file
+    descriptors when doing ``FDCapture`` and this will ``CloseHandle`` the
+    handles used by Python to write to the console. Though there is still some

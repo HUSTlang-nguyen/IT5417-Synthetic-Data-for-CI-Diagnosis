@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-22934",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/fields.py",
+      "function": "FracField._rebuild_expr._rebuild"
+    }
+  ],
+  "explanation": "The field-expression rebuild recognizes direct generator mappings and power relations but not a generator that is the reciprocal of the current expression. It falls through to domain conversion, making a valid rational expression appear outside QQ(1/x). Looking up 1/expr and inverting the mapped generator restores membership.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.__eq__"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.frac_field"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.old_poly_ring"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.old_frac_field"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.poly_ring"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T050236324756Z",
+  "reviewed_at": "2026-11-12T12:15:59+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2defc85870b47f505002bc2f221d5b8e9a2d7b485924eb046c6d4edb11814678",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "d53fb61256ec88ba04dca55a3e66f274a24b650d9946d441925e09d3bd650b4a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "97193e173f754b334aeffff7f62710cbba6b63fd848068f0dceb348075aff0a3",
+    "historical-fixed.stdout.txt": "74d0bca0d0a7ad128d9b5a769e41e2db8ebeee4abb0f7e14460926cfeb49fadc",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7b8aae0497174419da8c0e98a3295256c539bebc21859184949828124de6b083"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/miscellaneous.py",
+      "function": "Max._eval_rewrite_as_Piecewise"
+    }
+  ],
+  "mechanism": "Max has no Piecewise rewrite handler and the saved rewrite remains Max(a,b) instead of the requested two-branch expression. Adding the handler and shared relational helper supplies the expected conditional representation.",
+  "limitations": "Explicit missing method. The patch also supports Min, but the first saved assertion directly proves Max only; no numeric maximum calculation failed.",
+  "observed_junit": {
+    "base": {
+      "cases": 15,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 15,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_basic::test_rewrite",
+      "message": "assert Max(a, b) == Piecewise((a, a >= b), (b, True))\n +  where Max(a, b) = <bound method Basic.rewrite of Max(a, b)>(Piecewise)\n +    where <bound method Basic.rewrite of Max(a, b)> = Max(a, b).rewrite\n +      where Max(a, b) = Max(a, b)\n +  and   Piecewise((a, a >= b), (b, True)) = Piecewise((a, a >= b), (b, True))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/functions/elementary/miscellaneous.py",
+      "function": "Max._eval_rewrite_as_Piecewise"
+    }
+  ]
+}

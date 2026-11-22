@@ -1,0 +1,11 @@
+--- a/sympy/core/function.py
++++ b/sympy/core/function.py
+@@ -399,7 +399,7 @@
+         True
+ 
+         """
+-        return True
++        return False
+ 
+     @cacheit
+     def __new__(cls, *args, **options):

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T042557853515Z",
+  "reviewed_at": "2026-11-12T12:06:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "46e35bad9143b16e6666d5d423edc06da8dd6e3607110d1616be3c47fe9e0c95",
+    "license-evidence.json": "6f323a30a49d63671a95f5375666ce6eb4bc60156a8fcdd4067837fff279625b",
+    "historical-base.stdout.txt": "934c49088f4f28f7899f91e597d6ac855b9ffdc2efe4ef3eb1c7a400dcb35997",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "71a2be5cf18506ca69ce365e1f735ad371501a4494780e401a1b2bb45787cc2b",
+    "historical-fixed.stdout.txt": "a9cd54882c5970da24e68839347a96e6e992376fc888a6eb0979dd161f701055",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d16898383a2165c3233f9778e13fc4ecde044c6239e08b1393b355124b209f5f"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "astroid/nodes/scoped_nodes.py",
+      "function": "Module.__init__"
+    }
+  ],
+  "mechanism": "The module constructor initializes its own fields without calling the node superclass initializer. Parsed modules consequently lack col_offset and the saved location-metadata assertion raises AttributeError. Calling the superclass with module lineno0 and parent initializes the inherited fields.",
+  "limitations": "The patch also corrects annotations, but annotations do not instantiate the missing attribute. Two unrelated skipped tests remain skipped in both versions.",
+  "observed_junit": {
+    "base": {
+      "cases": 24,
+      "failures_or_errors": 1,
+      "skipped": 2
+    },
+    "head": {
+      "cases": 24,
+      "failures_or_errors": 0,
+      "skipped": 2
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.unittest_nodes_lineno.TestLinenoColOffset::test_end_lineno_module",
+      "message": "AttributeError: 'Module' object has no attribute 'col_offset'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

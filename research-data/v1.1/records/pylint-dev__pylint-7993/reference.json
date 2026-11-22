@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-7993",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "TextReporter.on_set_current_module"
+    }
+  ],
+  "explanation": "The message-template field regex accepts arbitrary characters between braces, so literal escaped JSON braces are consumed as an unsupported field. The subsequent cleanup deletes valid template text and leaves a malformed report. Restricting the captured field name to word characters keeps the literal header while substituting category.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "TextReporter.on_set_current_module"
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "ParseableTextReporter.__init__"
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "colorize_ansi"
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "register"
+    },
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "colorize_ansi"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

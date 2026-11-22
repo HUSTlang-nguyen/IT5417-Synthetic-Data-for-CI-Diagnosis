@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 37 items\n\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_21195 FAILED [  2%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrix_symbol_creation PASSED [  5%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_shape PASSED      [  8%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matexpr PASSED    [ 10%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_subs PASSED       [ 13%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_addition PASSED   [ 16%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_multiplication PASSED [ 18%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatPow PASSED     [ 21%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSymbol PASSED [ 24%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_dense_conversion PASSED [ 27%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_free_symbols PASSED [ 29%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_zero_matmul PASSED [ 32%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matadd_simplify PASSED [ 35%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matmul_simplify PASSED [ 37%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_invariants PASSED [ 40%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_indexing PASSED   [ 43%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_single_indexing PASSED [ 45%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_commutative PASSED [ 48%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSymbol_determinant PASSED [ 51%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_diff PASSED [ 54%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_doit PASSED [ 56%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_identity_powers PASSED [ 59%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_Zero_power PASSED [ 62%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrixelement_diff PASSED [ 64%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_with_values PASSED [ 67%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_inv PASSED        [ 70%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_2749 PASSED [ 72%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_2750 PASSED [ 75%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_7842 PASSED [ 78%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatMul_postprocessor PASSED [ 81%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatAdd_postprocessor PASSED [ 83%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_simplify_matrix_expressions PASSED [ 86%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_exp PASSED        [ 89%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_invalid_args PASSED [ 91%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrixsymbol_from_symbol PASSED [ 94%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_as_explicit PASSED [ 97%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSet PASSED  [100%]\n\n=================================== FAILURES ===================================\n_______________________________ test_issue_21195 _______________________________\n\n    def test_issue_21195():\n        t = symbols('t')\n        x = Function('x')(t)\n        dx = x.diff(t)\n        exp1 = cos(x) + cos(x)*dx\n        exp2 = sin(x) + tan(x)*(dx.diff(t))\n        exp3 = sin(x)*sin(t)*(dx.diff(t)).diff(t)\n        A = Matrix([[exp1], [exp2], [exp3]])\n        B = Matrix([[exp1.diff(x)], [exp2.diff(x)], [exp3.diff(x)]])\n>       assert A.diff(x) == B\nE       assert Matrix([\\n[-si...[         0]]) == Matrix([\\n[   ...t), (t, 3))]])\nE         Full diff:\nE           Matrix([\nE         - [             -sin(x(t))*Derivative(x(t), t) - sin(x(t))],\nE         - [(tan(x(t))**2 + 1)*Derivative(x(t), (t, 2)) + cos(x(t))],\nE         - [              sin(t)*cos(x(t))*Derivative(x(t), (t, 3))]],\nE         + [-sin(x(t))],\nE         + [ cos(x(t))],\nE         + [         0]],\nE           )\n\nsympy/matrices/expressions/tests/test_matexpr.py:353: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/matrices/expressions/tests/test_matexpr.py::test_issue_21195 - a...\n=================== 1 failed, 36 passed, 1 warning in 0.68s ====================\n",
+  "code": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_LeftRightArgs.__init__",
+      "start_line": 844,
+      "end_line": 852,
+      "score": 50.801784,
+      "text": "sympy/matrices/expressions/matexpr.py::_LeftRightArgs.__init__ lines 844-852\n    def __init__(self, lines, higher=S.One):\n        self._lines = [i for i in lines]\n        self._first_pointer_parent = self._lines\n        self._first_pointer_index = 0\n        self._first_line_index = 0\n        self._second_pointer_parent = self._lines\n        self._second_pointer_index = 1\n        self._second_line_index = 1\n        self.higher = higher",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__",
+      "start_line": 22,
+      "end_line": 23,
+      "score": 31.732051,
+      "text": "sympy/holonomic/holonomicerrors.py::NotHolonomicError.__init__ lines 22-23\n    def __init__(self, m):\n        self.m = m",
+      "truncated": false
+    }
+  ]
+}

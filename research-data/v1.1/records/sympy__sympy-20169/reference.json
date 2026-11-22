@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-20169",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/physics/optics/utils.py",
+      "function": "lens_makers_formula"
+    }
+  ],
+  "explanation": "The base lens formula has no thickness keyword d, so the saved thick-lens test raises unexpected-keyword TypeError. The repair extends that same function with the thickness term; all eleven selected tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/optics/utils.py",
+      "function": "lens_makers_formula"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

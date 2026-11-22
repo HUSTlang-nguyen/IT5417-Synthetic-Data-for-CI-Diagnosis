@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T060225527979Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._use_unicode"
+    }
+  ],
+  "explanation": "The flag property returns False even when use_unicode is explicitly enabled. Saved Unicode output uses EulerGamma instead of gamma and the wrong radical/bracket layout.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_SymmetricDifference"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter.doprint"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_BasisDependent"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "pretty"
+    },
+    {
+      "file": "sympy/printing/printer.py",
+      "function": "Printer._print"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

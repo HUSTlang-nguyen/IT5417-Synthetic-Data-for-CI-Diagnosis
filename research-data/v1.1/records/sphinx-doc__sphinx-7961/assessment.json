@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T235617592245Z",
+  "reviewed_at": "2026-11-12T07:40:02+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "af4b223b8696cc3e43fc9395ca1bb06361e468ee7443dd0ac2e582f8a3a4ee82",
+    "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+    "historical-base.stdout.txt": "468eed6b1f44f1bc28417443622c03ceefdbbdfa2a5f20cbf4bdbc5e15313c7b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "49d60d19bb8b2bced0dee2e8c96a9b9db703c0bb242eea80d9735f65a352fa30",
+    "historical-fixed.stdout.txt": "ede0d39607e3281cf51bafcabdc450689f33fc2332e821733620b1cd74fabd82",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e2b14fc4b11e2fa81380ef037036428af917b120f3e4c3e885eaa3c52473d4d8"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sphinx/ext/mathjax.py",
+      "function": "setup"
+    }
+  ],
+  "mechanism": "The registered MathJax default URL points to the old version-two script rather than the version-three URL required by the frozen output test. Generated HTML therefore references the old asset. Updating the default path corrects that observed configuration contract.",
+  "limitations": "The local evidence verifies the selected URL string only. It does not prove that the old CDN is currently unavailable or that a browser/network request failed.",
+  "observed_junit": {
+    "base": {
+      "cases": 13,
+      "failures_or_errors": 1,
+      "skipped": 2
+    },
+    "head": {
+      "cases": 13,
+      "failures_or_errors": 0,
+      "skipped": 2
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_ext_math::test_mathjax_options",
+      "message": "assert '<script async=\"async\" integrity=\"sha384-0123456789\" src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"></script>' in '\\n<!DOCTYPE html>\\n\\n<html>\\n  <head>\\n    <meta charset=\"utf-8\" />\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /><meta name=\"generator\" content=\"Docutils 0.17.1: http://docutils.sourceforge.net/\" />\\n\\n    <title>Test Math &#8212; Python  documentation</title>\\n    <link rel=\"stylesheet\" href=\"_static/alabaster.css\" type=\"text/css\" />\\n    <link rel=\"stylesheet\" href=\"_static/pygments.css\" type=\"text/css\" />\\n    <script id=\"documentation_options\" data-url_root=\"./\" src=\"_static/documentation_options.js\"></script>\\n    <script src=\"_static/jquery.js\"></script>\\n    <script src=\"_static/underscore.js\"></script>\\n    <script src=\"_static/doctools.js\"></script>\\n    <script src=\"_static/language_data.js\"></script>\\n    <"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

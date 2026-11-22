@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T075646073138Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixArithmetic.__truediv__"
+    }
+  ],
+  "explanation": "True division delegates to matrix multiplication rather than division. Saved symbolic entries become x*z and y*z instead of x/z and y/z.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixBase.QRdecomposition"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixBase.QRsolve"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-15232",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/exprtools.py",
+      "function": "_mask_nc"
+    }
+  ],
+  "explanation": "A noncommutative function with commutative free symbols is replaced by a commutative Dummy. Distinct ordered products consequently commute and the saved commutator collapses to zero. Retaining these objects in the noncommutative-object path preserves their ordering.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

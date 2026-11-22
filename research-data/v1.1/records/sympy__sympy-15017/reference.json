@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-15017",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "ImmutableDenseNDimArray._new"
+    }
+  ],
+  "explanation": "The empty shape of a scalar array is special-cased to loop size zero, so its reported length is zero. The product identity for an empty shape is one; reducing with initial value one gives the expected scalar length.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

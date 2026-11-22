@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040020477923Z",
+  "reviewed_at": "2026-11-12T11:58:00+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "90721e8c730d42c2c07d20530a00c49b0f8dff660c6d344b58b02376a3161158",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "a8a1fd5f92cddddbc2d6b705b21d2c56058d648275b0c0d42d5daa89287c3cc7",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "444160952734b726ac6f16c6d08e71fd4305db808727e1a6557ad451c097ac95",
+    "historical-fixed.stdout.txt": "266ad4ba1bb0c95c24f6316429a0819e54cde30881f61f97cc55c3902eb79f12",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "398b58d3e18ad8957a5efe248fea31392ce31f25e3db535f50e2a4f2bd70d28c"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    }
+  ],
+  "mechanism": "The function branch returns argument dimensions without normalizing system-equivalent dimensionless combinations to Dimension(1). An exp argument with time/(capacitance*impedance) consequently propagates that unsimplified dimension and the saved addition rejects it. Dimensionless normalization in the function branch supplies the correct representation.",
+  "limitations": "Related units24213 changes equivalence testing in the Add branch; this task changes normalization in the Function branch. They are related within train but are not the same edit or symptom path.",
+  "observed_junit": {
+    "base": {
+      "cases": 31,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 31,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.units.tests.test_quantities::test_issue_24062",
+      "message": "ValueError: Dimension of \"exp(T/(C*R))\" is Dimension(time/(capacitance*impedance)), but it should be Dimension(1)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

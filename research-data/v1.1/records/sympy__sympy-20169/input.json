@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 11 items\n\nsympy/physics/optics/tests/test_utils.py::test_lens_makers_formula FAILED [  9%]\nsympy/physics/optics/tests/test_utils.py::test_lens_makers_formula_thick_lens FAILED [ 18%]\nsympy/physics/optics/tests/test_utils.py::test_refraction_angle PASSED   [ 27%]\nsympy/physics/optics/tests/test_utils.py::test_fresnel_coefficients PASSED [ 36%]\nsympy/physics/optics/tests/test_utils.py::test_deviation PASSED          [ 45%]\nsympy/physics/optics/tests/test_utils.py::test_brewster_angle PASSED     [ 54%]\nsympy/physics/optics/tests/test_utils.py::test_critical_angle PASSED     [ 63%]\nsympy/physics/optics/tests/test_utils.py::test_mirror_formula PASSED     [ 72%]\nsympy/physics/optics/tests/test_utils.py::test_lens_formula PASSED       [ 81%]\nsympy/physics/optics/tests/test_utils.py::test_hyperfocal_distance PASSED [ 90%]\nsympy/physics/optics/tests/test_utils.py::test_transverse_magnification PASSED [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_lens_makers_formula ___________________________\n\n    def test_lens_makers_formula():\n        n1, n2 = symbols('n1, n2')\n        m1 = Medium('m1', permittivity=e0, n=1)\n        m2 = Medium('m2', permittivity=e0, n=1.33)\n>       assert lens_makers_formula(n1, n2, 10, -10) == 5.0*n2/(n1 - n2)\nE       assert 5*n2/(n1 - n2) == ((5.0 * n2) / (n1 - n2))\nE        +  where 5*n2/(n1 - n2) = lens_makers_formula(n1, n2, 10, -10)\n\nsympy/physics/optics/tests/test_utils.py:133: AssertionError\n_____________________ test_lens_makers_formula_thick_lens ______________________\n\n    def test_lens_makers_formula_thick_lens():\n        n1, n2 = symbols('n1, n2')\n        m1 = Medium('m1', permittivity=e0, n=1)\n        m2 = Medium('m2', permittivity=e0, n=1.33)\n>       assert ae(lens_makers_formula(m1, m2, 10, -10, d=1), -19.82, 2)\nE       TypeError: lens_makers_formula() got an unexpected keyword argument 'd'\n\nsympy/physics/optics/tests/test_utils.py:190: TypeError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/physics/optics/tests/test_utils.py::test_lens_makers_formula - a...\nFAILED sympy/physics/optics/tests/test_utils.py::test_lens_makers_formula_thick_lens\n==================== 2 failed, 9 passed, 1 warning in 0.95s ====================\n",
+  "code": [
+    {
+      "file": "sympy/physics/optics/utils.py",
+      "function": "lens_makers_formula",
+      "start_line": 447,
+      "end_line": 484,
+      "score": 50.973329,
+      "text": "sympy/physics/optics/utils.py::lens_makers_formula lines 447-484\ndef lens_makers_formula(n_lens, n_surr, r1, r2):\n    \"\"\"\n    This function calculates focal length of a thin lens.\n    It follows cartesian sign convention.\n\n    Parameters\n    ==========\n\n    n_lens : Medium or sympifiable\n        Index of refraction of lens.\n    n_surr : Medium or sympifiable\n        Index of reflection of surrounding.\n    r1 : sympifiable\n        Radius of curvature of first surface.\n    r2 : sympifiable\n        Radius of curvature of second surface.\n\n    Examples\n    ========\n\n    >>> from sympy.physics.optics import lens_makers_formula\n    >>> lens_makers_formula(1.33, 1, 10, -10)\n    15.1515151515151\n\n    \"\"\"\n    if isinstance(n_lens, Medium):\n        n_lens = n_lens.refractive_index\n    else:\n        n_lens = sympify(n_lens)\n    if isinstance(n_surr, Medium):\n        n_surr = n_surr.refractive_index\n    else:\n        n_surr = sympify(n_surr)\n\n    r1 = sympify(r1)\n    r2 = sympify(r2)\n\n    return 1/((n_lens - n_surr)/n_surr*(1/r1 - 1/r2))",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__",
+      "start_line": 22,
+      "end_line": 23,
+      "score": 31.732051,
+      "text": "sympy/holonomic/holonomicerrors.py::NotHolonomicError.__init__ lines 22-23\n    def __init__(self, m):\n        self.m = m",
+      "truncated": false
+    }
+  ]
+}

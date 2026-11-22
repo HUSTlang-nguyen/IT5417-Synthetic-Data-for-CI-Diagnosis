@@ -1,0 +1,100 @@
+"""
+**Contains**
+
+* refraction_angle
+* fresnel_coefficients
+* deviation
+* brewster_angle
+* critical_angle
+* lens_makers_formula
+* mirror_formula
+* lens_formula
+* hyperfocal_distance
+* transverse_magnification
+"""
+
+from __future__ import division
+
+__all__ = ['refraction_angle',
+           'deviation',
+           'fresnel_coefficients',
+           'brewster_angle',
+           'critical_angle',
+           'lens_makers_formula',
+           'mirror_formula',
+           'lens_formula',
+           'hyperfocal_distance',
+           'transverse_magnification'
+           ]
+
+from sympy import Symbol, sympify, sqrt, Matrix, acos, oo, Limit, atan2, asin,\
+cos, sin, tan, I, cancel, pi, Float
+from sympy.core.compatibility import is_sequence
+from sympy.geometry.line import Ray3D
+from sympy.geometry.util import intersection
+from sympy.geometry.plane import Plane
+from .medium import Medium
+
+
+def refractive_index_of_medium(medium):
+    """
+    Helper function that returns refractive index, given a medium
+    """
+    if isinstance(medium, Medium):
+        n = medium.refractive_index
+    else:
+        n = sympify(medium)
+    return n
+
+
+def refraction_angle(incident, medium1, medium2, normal=None, plane=None):
+    """
+    This function calculates transmitted vector after refraction at planar
+    surface. `medium1` and `medium2` can be `Medium` or any sympifiable object.
+    If `incident` is a number then treated as angle of incidence (in radians)
+    in which case refraction angle is returned.
+
+    If `incident` is an object of `Ray3D`, `normal` also has to be an instance
+    of `Ray3D` in order to get the output as a `Ray3D`. Please note that if
+    plane of separation is not provided and normal is an instance of `Ray3D`,
+    normal will be assumed to be intersecting incident ray at the plane of
+    separation. This will not be the case when `normal` is a `Matrix` or
+    any other sequence.
+    If `incident` is an instance of `Ray3D` and `plane` has not been provided
+    and `normal` is not `Ray3D`, output will be a `Matrix`.
+
+    Parameters
+    ==========
+
+    incident : Matrix, Ray3D, sequence or a number
+        Incident vector or angle of incidence
+    medium1 : sympy.physics.optics.medium.Medium or sympifiable
+        Medium 1 or its refractive index
+    medium2 : sympy.physics.optics.medium.Medium or sympifiable
+        Medium 2 or its refractive index
+    normal : Matrix, Ray3D, or sequence
+        Normal vector
+    plane : Plane
+        Plane of separation of the two media.
+
+    Returns an angle of refraction or a refracted ray depending on inputs.
+
+    Examples
+    ========
+
+    >>> from sympy.physics.optics import refraction_angle
+    >>> from sympy.geometry import Point3D, Ray3D, Plane
+    >>> from sympy.matrices import Matrix
+    >>> from sympy import symbols, pi
+    >>> n = Matrix([0, 0, 1])
+    >>> P = Plane(Point3D(0, 0, 0), normal_vector=[0, 0, 1])
+    >>> r1 = Ray3D(Point3D(-1, -1, 1), Point3D(0, 0, 0))
+    >>> refraction_angle(r1, 1, 1, n)
+    Matrix([
+    [ 1],
+    [ 1],
+    [-1]])
+    >>> refraction_angle(r1, 1, 1, plane=P)
+    Ray3D(Point3D(0, 0, 0), Point3D(1, 1, -1))
+
+    With different index of refraction of the two media

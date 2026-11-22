@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-3.5.0+, docutils-0.16\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 19 items\n\ntests/test_util_typing.py::test_restify FAILED                           [  5%]\ntests/test_util_typing.py::test_restify_type_hints_containers PASSED     [ 10%]\ntests/test_util_typing.py::test_restify_type_hints_Callable PASSED       [ 15%]\ntests/test_util_typing.py::test_restify_type_hints_Union PASSED          [ 21%]\ntests/test_util_typing.py::test_restify_type_hints_typevars PASSED       [ 26%]\ntests/test_util_typing.py::test_restify_type_hints_custom_class PASSED   [ 31%]\ntests/test_util_typing.py::test_restify_type_hints_alias PASSED          [ 36%]\ntests/test_util_typing.py::test_restify_type_ForwardRef PASSED           [ 42%]\ntests/test_util_typing.py::test_restify_broken_type_hints PASSED         [ 47%]\ntests/test_util_typing.py::test_stringify FAILED                         [ 52%]\ntests/test_util_typing.py::test_stringify_type_hints_containers PASSED   [ 57%]\ntests/test_util_typing.py::test_stringify_Annotated PASSED               [ 63%]\ntests/test_util_typing.py::test_stringify_type_hints_string PASSED       [ 68%]\ntests/test_util_typing.py::test_stringify_type_hints_Callable PASSED     [ 73%]\ntests/test_util_typing.py::test_stringify_type_hints_Union PASSED        [ 78%]\ntests/test_util_typing.py::test_stringify_type_hints_typevars PASSED     [ 84%]\ntests/test_util_typing.py::test_stringify_type_hints_custom_class PASSED [ 89%]\ntests/test_util_typing.py::test_stringify_type_hints_alias PASSED        [ 94%]\ntests/test_util_typing.py::test_stringify_broken_type_hints PASSED       [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_restify _________________________________\n\n    def test_restify():\n        assert restify(int) == \":class:`int`\"\n        assert restify(str) == \":class:`str`\"\n        assert restify(None) == \":obj:`None`\"\n        assert restify(Integral) == \":class:`numbers.Integral`\"\n>       assert restify(Struct) == \":class:`struct.Struct`\"\nE       AssertionError: assert ':class:`_struct.Struct`' == ':class:`struct.Struct`'\nE         - :class:`struct.Struct`\nE         + :class:`_struct.Struct`\nE         ?         +\n\ntests/test_util_typing.py:47: AssertionError\n________________________________ test_stringify ________________________________\n\n    def test_stringify():\n        assert stringify(int) == \"int\"\n        assert stringify(str) == \"str\"\n        assert stringify(None) == \"None\"\n        assert stringify(Integral) == \"numbers.Integral\"\n>       assert restify(Struct) == \":class:`struct.Struct`\"\nE       AssertionError: assert ':class:`_struct.Struct`' == ':class:`struct.Struct`'\nE         - :class:`struct.Struct`\nE         + :class:`_struct.Struct`\nE         ?         +\n\ntests/test_util_typing.py:129: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_util_typing.py::test_restify - AssertionError: assert ':cla...\nFAILED tests/test_util_typing.py::test_stringify - AssertionError: assert ':c...\n========================= 2 failed, 17 passed in 0.14s =========================\n",
+  "code": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify",
+      "start_line": 89,
+      "end_line": 105,
+      "score": 31.014185,
+      "text": "sphinx/util/typing.py::restify lines 89-105\ndef restify(cls: Optional[\"Type\"]) -> str:\n    \"\"\"Convert python class to a reST reference.\"\"\"\n    from sphinx.util import inspect  # lazy loading\n\n    if cls is None or cls is NoneType:\n        return ':obj:`None`'\n    elif cls is Ellipsis:\n        return '...'\n    elif inspect.isNewType(cls):\n        return ':class:`%s`' % cls.__name__\n    elif cls.__module__ in ('__builtin__', 'builtins'):\n        return ':class:`%s`' % cls.__name__\n    else:\n        if sys.version_info >= (3, 7):  # py37+\n            return _restify_py37(cls)\n        else:\n            return _restify_py36(cls)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "Struct.__init__",
+      "start_line": 96,
+      "end_line": 97,
+      "score": 30.707107,
+      "text": "sphinx/testing/util.py::Struct.__init__ lines 96-97\n    def __init__(self, **kwargs: Any) -> None:\n        self.__dict__.update(kwargs)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify",
+      "start_line": 284,
+      "end_line": 312,
+      "score": 30.560112,
+      "text": "sphinx/util/typing.py::stringify lines 284-312\ndef stringify(annotation: Any) -> str:\n    \"\"\"Stringify type annotation object.\"\"\"\n    from sphinx.util import inspect  # lazy loading\n\n    if isinstance(annotation, str):\n        if annotation.startswith(\"'\") and annotation.endswith(\"'\"):\n            # might be a double Forward-ref'ed type.  Go unquoting.\n            return annotation[1:-1]\n        else:\n            return annotation\n    elif isinstance(annotation, TypeVar):\n        return annotation.__name__\n    elif inspect.isNewType(annotation):\n        # Could not get the module where it defiend\n        return annotation.__name__\n    elif not annotation:\n        return repr(annotation)\n    elif annotation is NoneType:\n        return 'None'\n    elif (getattr(annotation, '__module__', None) == 'builtins' and\n          hasattr(annotation, '__qualname__')):\n        return annotation.__qualname__\n    elif annotation is Ellipsis:\n        return '...'\n\n    if sys.version_info >= (3, 7):  # py37+\n        return _stringify_py37(annotation)\n    else:\n        return _stringify_py36(annotation)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/doctest.py",
+      "function": "DocTestBuilder.finish.s",
+      "start_line": 339,
+      "end_line": 340,
+      "score": 1.341641,
+      "text": "sphinx/ext/doctest.py::DocTestBuilder.finish.s lines 339-340\n        def s(v: int) -> str:\n            return 's' if v != 1 else ''",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "rootdir",
+      "start_line": 40,
+      "end_line": 41,
+      "score": 1.341641,
+      "text": "sphinx/testing/fixtures.py::rootdir lines 40-41\ndef rootdir() -> str:\n    return None",
+      "truncated": false
+    }
+  ]
+}

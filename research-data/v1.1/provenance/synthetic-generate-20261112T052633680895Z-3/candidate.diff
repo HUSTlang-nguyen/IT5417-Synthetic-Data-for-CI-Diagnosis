@@ -1,0 +1,11 @@
+--- a/sympy/utilities/iterables.py
++++ b/sympy/utilities/iterables.py
+@@ -94,7 +94,7 @@
+     if levels is not None:
+         if not levels:
+             return iterable
+-        elif levels > 0:
++        elif levels < 0:
+             levels -= 1
+         else:
+             raise ValueError(

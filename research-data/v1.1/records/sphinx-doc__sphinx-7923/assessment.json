@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261111T233701580788Z",
+  "reviewed_at": "2026-11-12T07:32:09+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "81b27832bca1468e11f59bac625e394320a5f988dd7ad682c9ba23e55373050b",
+    "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+    "historical-base.stdout.txt": "dc5fc1a49fe1c46d4f5c536a0152c81849cbb8ce9f0b5b2077bed9a34a9d8b52",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "1393549fbaadf624623486309ddf4d8a6b9841b5da9830f37550441722774bfa",
+    "historical-fixed.stdout.txt": "c584a80969b80309d46b4716ef7765859afd12b88b92c4d213611bc4ba90b5ca",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c50cd28309de3f8eb98327e5ef6b0748c55e773eb6bd4d62132f2e4502e9f633"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/util/rst.py",
+      "function": "append_epilog"
+    }
+  ],
+  "mechanism": "The blank separator preceding an epilog is assigned generated source line zero instead of the preceding content source and next line number. That corrupts the StringList source map. Reusing the last content origin and advancing its line preserves the expected provenance entries.",
+  "limitations": "Both failing tests observe the same source-location metadata defect. Empty-content fallback is in the repair; no additional experiment was run.",
+  "observed_junit": {
+    "base": {
+      "cases": 8,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 8,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_parser::test_RSTParser_prolog_epilog",
+      "message": "AssertionError: assert [('dummy.rst'...d-bye reST!')] == [('dummy.rst'...d-bye reST!')]\n  At index 2 diff: ('<generated>', 0, '') != ('dummy.rst', 2, '')\n  Full diff:\n    [\n     ('dummy.rst', 0, 'hello Sphinx world'),\n     ('dummy.rst', 1, 'Sphinx is a document generator'),\n  -  ('dummy.rst', 2, ''),\n  +  ('<generated>', 0, ''),...\n  \n  ...Full output truncated (3 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "tests.test_util_rst::test_append_epilog",
+      "message": "AssertionError: assert [('dummy.rst'...d-bye reST!')] == [('dummy.rst'...d-bye reST!')]\n  At index 2 diff: ('<generated>', 0, '') != ('dummy.rst', 2, '')\n  Full diff:\n    [\n     ('dummy.rst', 0, 'hello Sphinx world'),\n     ('dummy.rst', 1, 'Sphinx is a document generator'),\n  -  ('dummy.rst', 2, ''),\n  +  ('<generated>', 0, ''),...\n  \n  ...Full output truncated (3 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

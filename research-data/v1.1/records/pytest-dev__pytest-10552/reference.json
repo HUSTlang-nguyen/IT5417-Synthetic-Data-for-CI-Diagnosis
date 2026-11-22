@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-10552",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/_pytest/python.py",
+      "function": "PyCollector.istestfunction"
+    }
+  ],
+  "explanation": "Test discovery unwraps staticmethod descriptors but not classmethod descriptors before checking callable. Classmethod tests are consequently omitted: the saved runs collect three instead of four functions and no classmethod item. Unwrapping both descriptor types restores discovery.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.getitem"
+    },
+    {
+      "file": "doc/en/example/pythoncollection.py",
+      "function": "TestClass.test_method"
+    },
+    {
+      "file": "src/_pytest/python.py",
+      "function": "Function._getobj"
+    },
+    {
+      "file": "src/_pytest/python.py",
+      "function": "PyobjMixin.cls"
+    },
+    {
+      "file": "src/_pytest/fixtures.py",
+      "function": "FixtureRequest.session"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

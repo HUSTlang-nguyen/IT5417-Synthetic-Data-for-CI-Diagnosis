@@ -1,0 +1,100 @@
+# Licensed under the LGPL: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+# For details: https://github.com/PyCQA/astroid/blob/main/LICENSE
+# Copyright (c) https://github.com/PyCQA/astroid/blob/main/CONTRIBUTORS.txt
+
+"""
+This module contains the classes for "scoped" node, i.e. which are opening a
+new local scope in the language definition : Module, ClassDef, FunctionDef (and
+Lambda, GeneratorExp, DictComp and SetComp to some extent).
+"""
+
+from __future__ import annotations
+
+import io
+import itertools
+import os
+import sys
+import warnings
+from collections.abc import Generator, Iterator
+from functools import lru_cache
+from typing import TYPE_CHECKING, ClassVar, NoReturn, TypeVar, overload
+
+from astroid import bases
+from astroid import decorators as decorators_mod
+from astroid import util
+from astroid.const import IS_PYPY, PY38, PY38_PLUS, PY39_PLUS, PYPY_7_3_11_PLUS
+from astroid.context import (
+    CallContext,
+    InferenceContext,
+    bind_context_to_node,
+    copy_context,
+)
+from astroid.exceptions import (
+    AstroidBuildingError,
+    AstroidTypeError,
+    AttributeInferenceError,
+    DuplicateBasesError,
+    InconsistentMroError,
+    InferenceError,
+    MroError,
+    StatementMissing,
+    TooManyLevelsError,
+)
+from astroid.interpreter.dunder_lookup import lookup
+from astroid.interpreter.objectmodel import ClassModel, FunctionModel, ModuleModel
+from astroid.manager import AstroidManager
+from astroid.nodes import Arguments, Const, NodeNG, _base_nodes, node_classes
+from astroid.nodes.scoped_nodes.mixin import ComprehensionScope, LocalsDictNodeNG
+from astroid.nodes.scoped_nodes.utils import builtin_lookup
+from astroid.nodes.utils import Position
+from astroid.typing import InferBinaryOp, InferenceResult, SuccessfulInferenceResult
+
+if sys.version_info >= (3, 8):
+    from functools import cached_property
+    from typing import Literal
+else:
+    from typing_extensions import Literal
+
+    from astroid.decorators import cachedproperty as cached_property
+
+if TYPE_CHECKING:
+    from astroid import nodes
+
+
+ITER_METHODS = ("__iter__", "__getitem__")
+EXCEPTION_BASE_CLASSES = frozenset({"Exception", "BaseException"})
+objects = util.lazy_import("objects")
+BUILTIN_DESCRIPTORS = frozenset(
+    {"classmethod", "staticmethod", "builtins.classmethod", "builtins.staticmethod"}
+)
+
+_T = TypeVar("_T")
+
+
+def _c3_merge(sequences, cls, context):
+    """Merges MROs in *sequences* to a single MRO using the C3 algorithm.
+
+    Adapted from http://www.python.org/download/releases/2.3/mro/.
+
+    """
+    result = []
+    while True:
+        sequences = [s for s in sequences if s]  # purge empty sequences
+        if not sequences:
+            return result
+        for s1 in sequences:  # find merge candidates among seq heads
+            candidate = s1[0]
+            for s2 in sequences:
+                if candidate in s2[1:]:
+                    candidate = None
+                    break  # reject the current head, it appears later
+            else:
+                break
+        if not candidate:
+            # Show all the remaining bases, which were considered as
+            # candidates for the next mro sequence.
+            raise InconsistentMroError(
+                message="Cannot create a consistent method resolution order "
+                "for MROs {mros} of class {cls!r}.",
+                mros=sequences,
+                cls=cls,

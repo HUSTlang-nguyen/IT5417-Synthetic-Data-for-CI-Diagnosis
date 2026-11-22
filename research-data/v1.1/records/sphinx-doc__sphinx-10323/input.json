@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-5.0.0+, docutils-0.17.1\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 41 items\n\ntests/test_directive_code.py::test_LiteralIncludeReader PASSED           [  2%]\ntests/test_directive_code.py::test_LiteralIncludeReader_lineno_start PASSED [  4%]\ntests/test_directive_code.py::test_LiteralIncludeReader_pyobject1 PASSED [  7%]\ntests/test_directive_code.py::test_LiteralIncludeReader_pyobject2 PASSED [  9%]\ntests/test_directive_code.py::test_LiteralIncludeReader_pyobject3 PASSED [ 12%]\ntests/test_directive_code.py::test_LiteralIncludeReader_pyobject_and_lines PASSED [ 14%]\ntests/test_directive_code.py::test_LiteralIncludeReader_lines1 PASSED    [ 17%]\ntests/test_directive_code.py::test_LiteralIncludeReader_lines2 PASSED    [ 19%]\ntests/test_directive_code.py::test_LiteralIncludeReader_lines_and_lineno_match1 PASSED [ 21%]\ntests/test_directive_code.py::test_LiteralIncludeReader_lines_and_lineno_match2 PASSED [ 24%]\ntests/test_directive_code.py::test_LiteralIncludeReader_lines_and_lineno_match3 PASSED [ 26%]\ntests/test_directive_code.py::test_LiteralIncludeReader_start_at PASSED  [ 29%]\ntests/test_directive_code.py::test_LiteralIncludeReader_start_after PASSED [ 31%]\ntests/test_directive_code.py::test_LiteralIncludeReader_start_after_and_lines PASSED [ 34%]\ntests/test_directive_code.py::test_LiteralIncludeReader_start_at_and_lines PASSED [ 36%]\ntests/test_directive_code.py::test_LiteralIncludeReader_missing_start_and_end PASSED [ 39%]\ntests/test_directive_code.py::test_LiteralIncludeReader_end_before PASSED [ 41%]\ntests/test_directive_code.py::test_LiteralIncludeReader_prepend PASSED   [ 43%]\ntests/test_directive_code.py::test_LiteralIncludeReader_dedent PASSED    [ 46%]\ntests/test_directive_code.py::test_LiteralIncludeReader_dedent_and_append_and_prepend FAILED [ 48%]\ntests/test_directive_code.py::test_LiteralIncludeReader_tabwidth PASSED  [ 51%]\ntests/test_directive_code.py::test_LiteralIncludeReader_tabwidth_dedent PASSED [ 53%]\ntests/test_directive_code.py::test_LiteralIncludeReader_diff PASSED      [ 56%]\ntests/test_directive_code.py::test_code_block PASSED                     [ 58%]\ntests/test_directive_code.py::test_force_option PASSED                   [ 60%]\ntests/test_directive_code.py::test_code_block_caption_html PASSED        [ 63%]\ntests/test_directive_code.py::test_code_block_caption_latex PASSED       [ 65%]\ntests/test_directive_code.py::test_code_block_namedlink_latex PASSED     [ 68%]\ntests/test_directive_code.py::test_code_block_emphasize_latex PASSED     [ 70%]\ntests/test_directive_code.py::test_literal_include PASSED                [ 73%]\ntests/test_directive_code.py::test_literal_include_block_start_with_comment_or_brank PASSED [ 75%]\ntests/test_directive_code.py::test_literal_include_linenos PASSED        [ 78%]\ntests/test_directive_code.py::test_literalinclude_file_whole_of_emptyline PASSED [ 80%]\ntests/test_directive_code.py::test_literalinclude_caption_html PASSED    [ 82%]\ntests/test_directive_code.py::test_literalinclude_caption_latex PASSED   [ 85%]\ntests/test_directive_code.py::test_literalinclude_namedlink_latex PASSED [ 87%]\ntests/test_directive_code.py::test_literalinclude_classes PASSED         [ 90%]\ntests/test_directive_code.py::test_literalinclude_pydecorators PASSED    [ 92%]\ntests/test_directive_code.py::test_code_block_highlighted PASSED         [ 95%]\ntests/test_directive_code.py::test_linenothreshold PASSED                [ 97%]\ntests/test_directive_code.py::test_code_block_dedent PASSED              [100%]\n\n=================================== FAILURES ===================================\n___________ test_LiteralIncludeReader_dedent_and_append_and_prepend ____________\n\nliteral_inc_path = path('/source/base/tests/roots/test-directive-code/literal.inc')\n\n    @pytest.mark.xfail(os.name != 'posix', reason=\"Not working on windows\")\n    def test_LiteralIncludeReader_dedent_and_append_and_prepend(literal_inc_path):\n        # dedent: 2\n        options = {'lines': '9-11', 'dedent': 2, 'prepend': 'class Foo:', 'append': '# comment'}\n        reader = LiteralIncludeReader(literal_inc_path, options, DUMMY_CONFIG)\n        content, lines = reader.read()\n>       assert content == (\"class Foo:\\n\"\n                           \"  def baz():\\n\"\n                           \"      pass\\n\"\n                           \"\\n\"\n                           \"# comment\\n\")\nE       AssertionError: assert 'ass Foo:\\n  ...\\n\\ncomment\\n' == 'class Foo:\\n...\\n# comment\\n'\nE         - class Foo:\nE         ? --\nE         + ass Foo:\nE             def baz():\nE                 pass\nE           \nE         - # comment\nE         ? --\nE         + comment\n\ntests/test_directive_code.py:260: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_directive_code.py::test_LiteralIncludeReader_dedent_and_append_and_prepend\n========================= 1 failed, 40 passed in 1.35s =========================\n",
+  "code": [
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.parent",
+      "start_line": 30,
+      "end_line": 34,
+      "score": 31.154701,
+      "text": "sphinx/testing/path.py::path.parent lines 30-34\n    def parent(self) -> \"path\":\n        \"\"\"\n        The name of the directory the file or directory is in.\n        \"\"\"\n        return self.__class__(os.path.dirname(self))",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/directives/code.py",
+      "function": "LiteralIncludeReader.append_filter",
+      "start_line": 350,
+      "end_line": 355,
+      "score": 31.069045,
+      "text": "sphinx/directives/code.py::LiteralIncludeReader.append_filter lines 350-355\n    def append_filter(self, lines: List[str], location: Tuple[str, int] = None) -> List[str]:\n        append = self.options.get('append')\n        if append:\n            lines.append(append + '\\n')\n\n        return lines",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "_All.append",
+      "start_line": 68,
+      "end_line": 69,
+      "score": 31.06066,
+      "text": "sphinx/ext/autodoc/__init__.py::_All.append lines 68-69\n    def append(self, item: Any) -> None:\n        pass  # nothing",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/directives/code.py",
+      "function": "LiteralIncludeReader.prepend_filter",
+      "start_line": 343,
+      "end_line": 348,
+      "score": 31.032796,
+      "text": "sphinx/directives/code.py::LiteralIncludeReader.prepend_filter lines 343-348\n    def prepend_filter(self, lines: List[str], location: Tuple[str, int] = None) -> List[str]:\n        prepend = self.options.get('prepend')\n        if prepend:\n            lines.insert(0, prepend + '\\n')\n\n        return lines",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/directives/code.py",
+      "function": "LiteralIncludeReader.dedent_filter",
+      "start_line": 357,
+      "end_line": 361,
+      "score": 31.0,
+      "text": "sphinx/directives/code.py::LiteralIncludeReader.dedent_filter lines 357-361\n    def dedent_filter(self, lines: List[str], location: Tuple[str, int] = None) -> List[str]:\n        if 'dedent' in self.options:\n            return dedent_lines(lines, self.options.get('dedent'), location=location)\n        else:\n            return lines",
+      "truncated": false
+    }
+  ]
+}

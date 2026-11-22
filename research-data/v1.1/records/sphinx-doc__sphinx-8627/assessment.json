@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T005022287557Z",
+  "reviewed_at": "2026-11-12T10:44:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2745da4f46f54e6d37bfd3a59e704a4bf9be409bf810993edfbcb6f17be6f27d",
+    "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+    "historical-base.stdout.txt": "3670a61a2980db5ad6b78fa6dcd8220cbd8faa95bd865a7fc93b25584d9c8363",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "489657f10d0506e4e5425c68a44230e3f0f98f60b0a272d4148ee0cf7e0375b8",
+    "historical-fixed.stdout.txt": "a2adfbcaa2e6c64ca1fa483d1208c12a6ceafbf33227cde6671052d515b0e7b4",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "06b0841ce87402c73bbbf59e8760dc55cb250f374f5ab254d4e253034b21336b"
+  },
+  "cause_type": "API/type",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify"
+    }
+  ],
+  "mechanism": "The class-to-reference conversion trusts Struct.__module__, exposing the private _struct.Struct path on the pinned runtime. The expected public API reference is struct.Struct. Explicitly mapping this known type corrects the observed reference strings.",
+  "limitations": "Both recorded failures shown in the saved JUnit call restify(Struct), even the test named test_stringify. The repair also updates stringify, but that additional branch is not independently proven by these two assertions. Coarse logic/value is an alternate label.",
+  "observed_junit": {
+    "base": {
+      "cases": 19,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 19,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_util_typing::test_restify",
+      "message": "AssertionError: assert ':class:`_struct.Struct`' == ':class:`struct.Struct`'\n  - :class:`struct.Struct`\n  + :class:`_struct.Struct`\n  ?         +"
+    },
+    {
+      "test": "tests.test_util_typing::test_stringify",
+      "message": "AssertionError: assert ':class:`_struct.Struct`' == ':class:`struct.Struct`'\n  - :class:`struct.Struct`\n  + :class:`_struct.Struct`\n  ?         +"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

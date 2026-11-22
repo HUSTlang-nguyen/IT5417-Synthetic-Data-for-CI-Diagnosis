@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-12183",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Intersection.__new__"
+    }
+  ],
+  "explanation": "The zero-operand branch returns EmptySet. The identity for an intersection with no restrictions is UniversalSet, so Intersection() has the wrong value. Returning UniversalSet corrects this boundary case.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

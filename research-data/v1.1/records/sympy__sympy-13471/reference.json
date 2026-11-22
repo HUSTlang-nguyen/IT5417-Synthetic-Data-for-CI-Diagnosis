@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-13471",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__new__"
+    }
+  ],
+  "explanation": "The serialized hexadecimal mantissa is passed directly to the Python3 integer parser even when it retains a Python2 long suffix L. The saved tuple input1L raises ValueError. Removing that known suffix before base16 parsing preserves serialization compatibility.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__new__"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

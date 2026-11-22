@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18744",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_MatMul"
+    }
+  ],
+  "explanation": "The matrix-product printer tests c<0 for any numeric coefficient, including the imaginary unit. Ordering a non-real I against zero raises the saved TypeError. Inspecting real/imaginary components before extracting a negative sign avoids that incompatible comparison.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_MatMul"
+    },
+    {
+      "file": "sympy/printing/str.py",
+      "function": "sstr"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr._cmp"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.__str__"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.__lt__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

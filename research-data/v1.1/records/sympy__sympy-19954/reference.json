@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-19954",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.minimal_blocks"
+    }
+  ],
+  "explanation": "The function deletes entries from parallel block lists while iterating indices from the unchanged representative list. Subsequent deletions address shifted/out-of-range positions and the saved Sylow-subgroup test raises IndexError. Marking removals and filtering all lists together preserves alignment.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.minimal_blocks"
+    },
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.sylow_subgroup"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

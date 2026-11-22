@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-16221",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_ImmutableDenseNDimArray"
+    }
+  ],
+  "explanation": "The base Mathematica printer lacks its dense N-dimensional-array dispatch. The saved array output falls back to Python square-bracket representation instead of Mathematica brace lists; the repair adds a dense-array method using tolist and normal printing, and twelve tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/plotting/plot.py",
+      "function": "LineOver1DRangeSeries.get_points"
+    },
+    {
+      "file": "sympy/plotting/plot.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

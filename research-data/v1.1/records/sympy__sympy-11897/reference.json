@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-11897",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._needs_mul_brackets"
+    }
+  ],
+  "explanation": "A Piecewise factor is bracketed only when it is not the last multiplication operand. A final Piecewise therefore loses required parentheses in the saved noncommutative product rendering. Recognizing Piecewise independently of last preserves the grouping.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/stats/rv.py",
+      "function": "given"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,100 @@
+# Copyright (c) 2006-2011, 2013-2014 LOGILAB S.A. (Paris, FRANCE) <contact@logilab.fr>
+# Copyright (c) 2013 Phil Schaf <flying-sheep@web.de>
+# Copyright (c) 2014-2020 Claudiu Popa <pcmanticore@gmail.com>
+# Copyright (c) 2014-2015 Google, Inc.
+# Copyright (c) 2014 Alexander Presnyakov <flagist0@gmail.com>
+# Copyright (c) 2015-2016 Ceridwen <ceridwenv@gmail.com>
+# Copyright (c) 2016 Derek Gustafson <degustaf@gmail.com>
+# Copyright (c) 2017 Łukasz Rogalski <rogalski.91@gmail.com>
+# Copyright (c) 2018 Anthony Sottile <asottile@umich.edu>
+# Copyright (c) 2020-2021 hippo91 <guillaume.peillex@gmail.com>
+# Copyright (c) 2021 Daniël van Noord <13665637+DanielNoord@users.noreply.github.com>
+# Copyright (c) 2021 Pierre Sassoulas <pierre.sassoulas@gmail.com>
+# Copyright (c) 2021 Marc Mueller <30130371+cdce8p@users.noreply.github.com>
+# Copyright (c) 2021 Andrew Haigh <hello@nelf.in>
+
+# Licensed under the LGPL: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+# For details: https://github.com/PyCQA/astroid/blob/main/LICENSE
+
+"""The AstroidBuilder makes astroid from living object and / or from _ast
+
+The builder is not thread safe and can't be used to parse different sources
+at the same time.
+"""
+import os
+import textwrap
+import types
+from tokenize import detect_encoding
+from typing import List, Union
+
+from astroid import bases, modutils, nodes, raw_building, rebuilder, util
+from astroid._ast import get_parser_module
+from astroid.exceptions import AstroidBuildingError, AstroidSyntaxError, InferenceError
+from astroid.manager import AstroidManager
+from astroid.nodes.node_classes import NodeNG
+
+objects = util.lazy_import("objects")
+
+# The name of the transient function that is used to
+# wrap expressions to be extracted when calling
+# extract_node.
+_TRANSIENT_FUNCTION = "__"
+
+# The comment used to select a statement to be extracted
+# when calling extract_node.
+_STATEMENT_SELECTOR = "#@"
+MISPLACED_TYPE_ANNOTATION_ERROR = "misplaced type annotation"
+
+
+def open_source_file(filename):
+    # pylint: disable=consider-using-with
+    with open(filename, "rb") as byte_stream:
+        encoding = detect_encoding(byte_stream.readline)[0]
+    stream = open(filename, newline=None, encoding=encoding)
+    data = stream.read()
+    return stream, encoding, data
+
+
+def _can_assign_attr(node, attrname):
+    try:
+        slots = node.slots()
+    except NotImplementedError:
+        pass
+    else:
+        if slots and attrname not in {slot.value for slot in slots}:
+            return False
+    return node.qname() != "builtins.object"
+
+
+class AstroidBuilder(raw_building.InspectBuilder):
+    """Class for building an astroid tree from source code or from a live module.
+
+    The param *manager* specifies the manager class which should be used.
+    If no manager is given, then the default one will be used. The
+    param *apply_transforms* determines if the transforms should be
+    applied after the tree was built from source or from a live object,
+    by default being True.
+    """
+
+    # pylint: disable=redefined-outer-name
+    def __init__(self, manager=None, apply_transforms=True):
+        super().__init__(manager)
+        self._apply_transforms = apply_transforms
+
+    def module_build(
+        self, module: types.ModuleType, modname: str = None
+    ) -> nodes.Module:
+        """Build an astroid from a living module instance."""
+        node = None
+        path = getattr(module, "__file__", None)
+        if path is not None:
+            path_, ext = os.path.splitext(modutils._path_from_filename(path))
+            if ext in {".py", ".pyc", ".pyo"} and os.path.exists(path_ + ".py"):
+                node = self.file_build(path_ + ".py", modname)
+        if node is None:
+            # this is a built-in module
+            # get a partial representation by introspection
+            node = self.inspect_build(module, modname=modname, path=path)
+            if self._apply_transforms:
+                # We have to handle transformation by ourselves since the
+                # rebuilder isn't called for builtin nodes

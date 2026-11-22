@@ -1,0 +1,31 @@
+{
+  "sample_id": "synthetic-generate-20261112T060145332874Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "DenseNDimArray.__getitem__"
+    }
+  ],
+  "explanation": "The symbolic-index sentinel guard is inverted. An ordinary concrete index has syindex=None and immediately returns None instead of accessing the array; the saved expected23/1 assertions fail.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/relational.py",
+      "function": "Relational.__nonzero__"
+    },
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "DenseNDimArray.__getitem__"
+    },
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray._parse_index"
+    },
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

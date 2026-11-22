@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000956887994Z",
+  "reviewed_at": "2026-11-12T08:33:35+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c9d3a408ab9e87a5f5435267682e1bd1ad856b7567d0fcc0004db8c0a75d5f54",
+    "license-evidence.json": "1b3ebb9908afadb5819a38e5e138ea2e332864ec7c0690ac4cc21564a72d2372",
+    "historical-base.stdout.txt": "8153187cd71cfb19fd6cd0299032b750bc59707567558d37220fe75b787c662a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "6e98471b1d02430fde06218fd9222d9552f781d1efd04f12ec3b69094e019714",
+    "historical-fixed.stdout.txt": "8c2459ea7763e28971af43622478cdd5b40280ef63910e2f2aca394c5fffdb66",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b93b3fbf73f5ddb44aaab6a44b1b1941487194a75a2b5ae4b06d9e9371d06fa4"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "src/flask/__init__.py",
+      "function": "<module>"
+    }
+  ],
+  "mechanism": "The public redirect name is imported directly from Werkzeug, bypassing the application redirect hook. In the saved app-context test a patched app.redirect should raise ValueError, but flask.redirect returns without calling it. The repair exports the application-aware helper, which delegates to that hook.",
+  "limitations": "The existing causal location is a module export, not the newly added helper. API/type is an alternate taxonomy interpretation; the observed defect is missing dispatch, not a TypeError.",
+  "observed_junit": {
+    "base": {
+      "cases": 32,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 32,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_helpers::test_redirect_with_app",
+      "message": "Failed: DID NOT RAISE <class 'ValueError'>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

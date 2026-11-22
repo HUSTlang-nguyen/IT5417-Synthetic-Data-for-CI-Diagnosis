@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001143606659Z",
+  "reviewed_at": "2026-11-12T08:01:17+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e4b6096c713a6c96ed71acce8e708decc33825f7cb899a0096b5eddb4f62fdf6",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "f2d1635b2f8646f25de5842d38896dcda15ac65439f1284b954723d85f621ab7",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "94871062db7d06c8dd0dc16f73263acb546b8c0c9e0720f41a819df534734f82",
+    "historical-fixed.stdout.txt": "b5e0950212bbde422f178a8b152e094d707186d1ab46105bc56a7272c30d5e8d",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "350dac4991374ad9eef93992beaea88949d38572462b7a9d816db3f8e4866295"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Function"
+    }
+  ],
+  "mechanism": "The inverse-trigonometric dispatch table omits acsc and asec, so these functions bypass inverse-trig style handling. With full style requested, acsc is printed instead of arccsc. Adding the missing function names reaches the existing style transformation.",
+  "limitations": "The first assertion directly proves the acsc path; the additional asec entry is in the repair but is not separately claimed proven by that first failure.",
+  "observed_junit": {
+    "base": {
+      "cases": 115,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 115,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_functions",
+      "message": "AssertionError: assert '\\\\operatorna...(x \\\\right )}' == '\\\\operatorna...(x \\\\right )}'\n  - \\operatorname{arccsc}{\\left (x \\right )}\n  ?                --\n  + \\operatorname{acsc}{\\left (x \\right )}"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-11438",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "classify_diop"
+    }
+  ],
+  "explanation": "The even-power-sum classifier checks that terms are powers but never checks that each exponent equals the total degree. Mixed-exponent equations are incorrectly classified as supported, so the expected NotImplementedError is not raised. Requiring matching exponents prevents that overbroad branch.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/simplify/radsimp.py",
+      "function": "radsimp"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

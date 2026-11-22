@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-8627",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify"
+    }
+  ],
+  "explanation": "The class-to-reference conversion trusts Struct.__module__, exposing the private _struct.Struct path on the pinned runtime. The expected public API reference is struct.Struct. Explicitly mapping this known type corrects the observed reference strings.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "Struct.__init__"
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify"
+    },
+    {
+      "file": "sphinx/ext/doctest.py",
+      "function": "DocTestBuilder.finish.s"
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "rootdir"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

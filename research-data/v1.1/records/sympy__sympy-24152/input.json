@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 7 items\n\nsympy/physics/quantum/tests/test_tensorproduct.py::test_tensor_product_expand FAILED [ 14%]\nsympy/physics/quantum/tests/test_tensorproduct.py::test_sparse_matrices PASSED [ 28%]\nsympy/physics/quantum/tests/test_tensorproduct.py::test_tensor_product_dagger PASSED [ 42%]\nsympy/physics/quantum/tests/test_tensorproduct.py::test_tensor_product_abstract PASSED [ 57%]\nsympy/physics/quantum/tests/test_tensorproduct.py::test_tensor_product_commutator PASSED [ 71%]\nsympy/physics/quantum/tests/test_tensorproduct.py::test_tensor_product_simp PASSED [ 85%]\nsympy/physics/quantum/tests/test_tensorproduct.py::test_issue_5923 PASSED [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_tensor_product_expand __________________________\n\n    def test_tensor_product_expand():\n        assert TP(A + B, B + C).expand(tensorproduct=True) == \\\n            TP(A, B) + TP(A, C) + TP(B, B) + TP(B, C)\n        #Tests for fix of issue #24142\n>       assert TP(A-B, B-A).expand(tensorproduct=True) == \\\n            TP(A, B) - TP(A, A) - TP(B, B) + TP(B, A)\nE       assert -AxA + AxB - Bx(-A + B) == (((AxB - AxA) - BxB) + BxA)\nE        +  where -AxA + AxB - Bx(-A + B) = <bound method Expr.expand of (A - B)x(-A + B)>(tensorproduct=True)\nE        +    where <bound method Expr.expand of (A - B)x(-A + B)> = (A - B)x(-A + B).expand\nE        +      where (A - B)x(-A + B) = TP((A - B), (B - A))\nE        +  and   AxB = TP(A, B)\nE        +  and   AxA = TP(A, A)\nE        +  and   BxB = TP(B, B)\nE        +  and   BxA = TP(B, A)\n\nsympy/physics/quantum/tests/test_tensorproduct.py:48: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/physics/quantum/tests/test_tensorproduct.py::test_tensor_product_expand\n========================= 1 failed, 6 passed in 0.35s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/stats/frv.py",
+      "function": "FinitePSpace.where",
+      "start_line": 258,
+      "end_line": 260,
+      "score": 31.1094,
+      "text": "sympy/stats/frv.py::FinitePSpace.where lines 258-260\n    def where(self, condition):\n        assert all(r.symbol in self.symbols for r in random_symbols(condition))\n        return ConditionalFiniteDomain(self.domain, condition)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr._expand_hint",
+      "start_line": 3591,
+      "end_line": 3618,
+      "score": 31.080123,
+      "text": "sympy/core/expr.py::Expr._expand_hint lines 3591-3618\n    def _expand_hint(expr, hint, deep=True, **hints):\n        \"\"\"\n        Helper for ``expand()``.  Recursively calls ``expr._eval_expand_hint()``.\n\n        Returns ``(expr, hit)``, where expr is the (possibly) expanded\n        ``expr`` and ``hit`` is ``True`` if ``expr`` was truly expanded and\n        ``False`` otherwise.\n        \"\"\"\n        hit = False\n        # XXX: Hack to support non-Basic args\n        #              |\n        #              V\n        if deep and getattr(expr, 'args', ()) and not expr.is_Atom:\n            sargs = []\n            for arg in expr.args:\n                arg, arghit = Expr._expand_hint(arg, hint, **hints)\n                hit |= arghit\n                sargs.append(arg)\n\n            if hit:\n                expr = expr.func(*sargs)\n\n        if hasattr(expr, hint):\n            newexpr = getattr(expr, hint)(**hints)\n            if newexpr != expr:\n                return (newexpr, True)\n\n        return (expr, hit)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.is_constant.check_denominator_zeros",
+      "start_line": 613,
+      "end_line": 625,
+      "score": 31.0,
+      "text": "sympy/core/expr.py::Expr.is_constant.check_denominator_zeros lines 613-625\n        def check_denominator_zeros(expression):\n            from sympy.solvers.solvers import denoms\n\n            retNone = False\n            for den in denoms(expression):\n                z = den.is_zero\n                if z is True:\n                    return True\n                if z is None:\n                    retNone = True\n            if retNone:\n                return None\n            return False",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/relational.py",
+      "function": "Relational.expand",
+      "start_line": 506,
+      "end_line": 508,
+      "score": 31.0,
+      "text": "sympy/core/relational.py::Relational.expand lines 506-508\n    def expand(self, **kwargs):\n        args = (arg.expand(**kwargs) for arg in self.args)\n        return self.func(*args)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/logic/boolalg.py",
+      "function": "BooleanAtom.expand",
+      "start_line": 212,
+      "end_line": 213,
+      "score": 31.0,
+      "text": "sympy/logic/boolalg.py::BooleanAtom.expand lines 212-213\n    def expand(self, *a, **kw):\n        return self",
+      "truncated": false
+    }
+  ]
+}

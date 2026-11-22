@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-15308",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Trace"
+    }
+  ],
+  "explanation": "The printer lacks a matrix Trace handler and falls back to plain Trace(A) rather than the required LaTeX tr notation. The dedicated handler renders its matrix argument in that notation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/vector/printing.py",
+      "function": "VectorLatexPrinter._print_Derivative"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "FreeModule.convert"
+    },
+    {
+      "file": "sympy/physics/vector/printing.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

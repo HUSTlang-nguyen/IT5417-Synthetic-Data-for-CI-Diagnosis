@@ -1,0 +1,100 @@
+from sympy.core.add import Add
+from sympy.core.assumptions import check_assumptions
+from sympy.core.containers import Tuple
+from sympy.core.exprtools import factor_terms
+from sympy.core.function import _mexpand
+from sympy.core.mul import Mul
+from sympy.core.numbers import Rational
+from sympy.core.numbers import igcdex, ilcm, igcd
+from sympy.core.power import integer_nthroot, isqrt
+from sympy.core.relational import Eq
+from sympy.core.singleton import S
+from sympy.core.sorting import default_sort_key, ordered
+from sympy.core.symbol import Symbol, symbols
+from sympy.core.sympify import _sympify
+from sympy.functions.elementary.complexes import sign
+from sympy.functions.elementary.integers import floor
+from sympy.functions.elementary.miscellaneous import sqrt
+from sympy.matrices.dense import MutableDenseMatrix as Matrix
+from sympy.ntheory.factor_ import (
+    divisors, factorint, multiplicity, perfect_power)
+from sympy.ntheory.generate import nextprime
+from sympy.ntheory.primetest import is_square, isprime
+from sympy.ntheory.residue_ntheory import sqrt_mod
+from sympy.polys.polyerrors import GeneratorsNeeded
+from sympy.polys.polytools import Poly, factor_list
+from sympy.simplify.simplify import signsimp
+from sympy.solvers.solveset import solveset_real
+from sympy.utilities import numbered_symbols
+from sympy.utilities.misc import as_int, filldedent
+from sympy.utilities.iterables import (is_sequence, subsets, permute_signs,
+                                       signed_permutations, ordered_partitions)
+
+
+# these are imported with 'from sympy.solvers.diophantine import *
+__all__ = ['diophantine', 'classify_diop']
+
+
+class DiophantineSolutionSet(set):
+    """
+    Container for a set of solutions to a particular diophantine equation.
+
+    The base representation is a set of tuples representing each of the solutions.
+
+    Parameters
+    ==========
+
+    symbols : list
+        List of free symbols in the original equation.
+    parameters: list
+        List of parameters to be used in the solution.
+
+    Examples
+    ========
+
+    Adding solutions:
+
+        >>> from sympy.solvers.diophantine.diophantine import DiophantineSolutionSet
+        >>> from sympy.abc import x, y, t, u
+        >>> s1 = DiophantineSolutionSet([x, y], [t, u])
+        >>> s1
+        set()
+        >>> s1.add((2, 3))
+        >>> s1.add((-1, u))
+        >>> s1
+        {(-1, u), (2, 3)}
+        >>> s2 = DiophantineSolutionSet([x, y], [t, u])
+        >>> s2.add((3, 4))
+        >>> s1.update(*s2)
+        >>> s1
+        {(-1, u), (2, 3), (3, 4)}
+
+    Conversion of solutions into dicts:
+
+        >>> list(s1.dict_iterator())
+        [{x: -1, y: u}, {x: 2, y: 3}, {x: 3, y: 4}]
+
+    Substituting values:
+
+        >>> s3 = DiophantineSolutionSet([x, y], [t, u])
+        >>> s3.add((t**2, t + u))
+        >>> s3
+        {(t**2, t + u)}
+        >>> s3.subs({t: 2, u: 3})
+        {(4, 5)}
+        >>> s3.subs(t, -1)
+        {(1, u - 1)}
+        >>> s3.subs(t, 3)
+        {(9, u + 3)}
+
+    Evaluation at specific values. Positional arguments are given in the same order as the parameters:
+
+        >>> s3(-2, 3)
+        {(4, 1)}
+        >>> s3(5)
+        {(25, u + 5)}
+        >>> s3(None, 2)
+        {(t**2, t + 2)}
+    """
+
+    def __init__(self, symbols_seq, parameters):

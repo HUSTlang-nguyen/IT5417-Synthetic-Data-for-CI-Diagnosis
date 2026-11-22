@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000003633736Z",
+  "reviewed_at": "2026-11-12T07:44:45+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "22f508b838c1821edf162155dc18766d19663fe0b2f4fe79654318c6b506f6da",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "0c4775abfd01593ff694fc0060b7d40e94d2dde31794893fbdef70419b6b4491",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0d732262a55432dabd2dc2a31bf1bcd047e99bb7fa2a3db94f3d78e80bf911ea",
+    "historical-fixed.stdout.txt": "99ecec8538a15e5c99414903b33fa91b5239517d0b1fbef2de584820cd9fec29",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "2a2939d78cb1de8284591b8c3a33bb706b3d909d89aeed628f88283b713e6323"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_SingularityFunction"
+    }
+  ],
+  "mechanism": "The printer emits a power without bracing the complete exponent. The saved output has a space after the caret and an ungrouped five instead of the required braced exponent. Bracing the printed power fixes the exact LaTeX representation.",
+  "limitations": "The comparison proves a formatting difference. No TeX compilation or claim of Python syntax failure is made.",
+  "observed_junit": {
+    "base": {
+      "cases": 95,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 95,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_SingularityFunction",
+      "message": "AssertionError: assert '{\\\\langle x - 4 \\\\rangle}^ 5' == '{\\\\langle x ...\\\\rangle}^{5}'\n  - {\\langle x - 4 \\rangle}^{5}\n  ?                         ^ -\n  + {\\langle x - 4 \\rangle}^ 5\n  ?                         ^"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

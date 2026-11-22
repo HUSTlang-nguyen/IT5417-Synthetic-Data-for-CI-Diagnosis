@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T090258463434Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/diagonal.py",
+      "function": "DiagonalMatrix._entry"
+    }
+  ],
+  "explanation": "The known off-diagonal branch returns the multiplicative identity1 rather than additive identity0. The saved D[1,2] assertion fails.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

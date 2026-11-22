@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T083521600522Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/ntheory/factor_.py",
+      "function": "multiplicity"
+    }
+  ],
+  "explanation": "Rational multiplicity combines same-side and cross-side valuations with addition instead of subtraction. The saved reciprocal2/7 versus7/2 result is positive1 instead of negative1.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

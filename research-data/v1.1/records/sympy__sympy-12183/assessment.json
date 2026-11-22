@@ -1,0 +1,42 @@
+{
+  "run_id": "reproduce-20261111T203113725023Z",
+  "reviewed_at": "2026-11-12T07:18:10+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "270d4a34fab5566c6b6d9ec1f65936296e3e1d18d06901b36175c29e57ae2c97",
+    "license-evidence.json": "8d31cbfbc94cc50ce7fa28101b90ed086c5838705e637c5731cf321d0328f1d3",
+    "historical-base.stdout.txt": "70578389619883c2a4851ff25651d30734ca0b4578bfa3fd2c284a00c1dc7a6d",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8cf3925948c6ca67a9a68a8dbbbdcb9af7eec04f8344658b9b8e64c7b3216077",
+    "historical-fixed.stdout.txt": "6f21bdcf0adb7c2f87668d36c730db34c01b93e361d251d8802af96d1af6691b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f6905afbd4393e57f07d9c4dc41078d2aa61764632d42bc6ff7c78406c1cc772"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Intersection.__new__"
+    }
+  ],
+  "mechanism": "The zero-operand branch returns EmptySet. The identity for an intersection with no restrictions is UniversalSet, so Intersection() has the wrong value. Returning UniversalSet corrects this boundary case.",
+  "limitations": "The observed assertion is a concrete wrong singleton value; no numerical intermediate or historical CI outcome is invented.",
+  "observed_junit": {
+    "base": {
+      "cases": 64,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 64,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: assert EmptySet() == UniversalSet()\n +  where EmptySet() = Intersection()\n +  and   UniversalSet() = S.UniversalSet"
+}

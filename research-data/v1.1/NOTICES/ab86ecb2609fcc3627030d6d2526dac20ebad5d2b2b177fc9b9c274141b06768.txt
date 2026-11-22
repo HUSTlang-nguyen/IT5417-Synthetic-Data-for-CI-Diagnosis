@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from sympy.core import sympify
+from sympy.core.add import Add
+from sympy.core.function import Lambda, Function, ArgumentIndexError
+from sympy.core.cache import cacheit
+from sympy.core.numbers import Integer
+from sympy.core.power import Pow
+from sympy.core.singleton import S
+from sympy.core.symbol import Wild, Dummy
+from sympy.core.mul import Mul
+from sympy.core.logic import fuzzy_not
+
+from sympy.functions.combinatorial.factorials import factorial
+from sympy.functions.elementary.miscellaneous import sqrt
+from sympy.ntheory import multiplicity, perfect_power
+from sympy.core.compatibility import range
+
+# NOTE IMPORTANT
+# The series expansion code in this file is an important part of the gruntz
+# algorithm for determining limits. _eval_nseries has to return a generalized
+# power series with coefficients in C(log(x), log).
+# In more detail, the result of _eval_nseries(self, x, n) must be
+#   c_0*x**e_0 + ... (finitely many terms)
+# where e_i are numbers (not necessarily integers) and c_i involve only
+# numbers, the function log, and log(x). [This also means it must not contain
+# log(x(1+p)), this *has* to be expanded to log(x)+log(1+p) if x.is_positive and
+# p.is_positive.]
+
+
+class ExpBase(Function):
+
+    unbranched = True
+
+    def inverse(self, argindex=1):
+        """
+        Returns the inverse function of ``exp(x)``.
+        """
+        return log
+
+    def as_numer_denom(self):
+        """
+        Returns this with a positive exponent as a 2-tuple (a fraction).
+
+        Examples
+        ========
+
+        >>> from sympy.functions import exp
+        >>> from sympy.abc import x
+        >>> exp(-x).as_numer_denom()
+        (1, exp(x))
+        >>> exp(x).as_numer_denom()
+        (exp(x), 1)
+        """
+        # this should be the same as Pow.as_numer_denom wrt
+        # exponent handling
+        exp = self.exp
+        neg_exp = exp.is_negative
+        if not neg_exp and not (-exp).is_negative:
+            neg_exp = _coeff_isneg(exp)
+        if neg_exp:
+            return S.One, self.func(-exp)
+        return self, S.One
+
+    @property
+    def exp(self):
+        """
+        Returns the exponent of the function.
+        """
+        return self.args[0]
+
+    def as_base_exp(self):
+        """
+        Returns the 2-tuple (base, exponent).
+        """
+        return self.func(1), Mul(*self.args)
+
+    def _eval_conjugate(self):
+        return self.func(self.args[0].conjugate())
+
+    def _eval_is_finite(self):
+        arg = self.args[0]
+        if arg.is_infinite:
+            if arg.is_negative:
+                return True
+            if arg.is_positive:
+                return False
+        if arg.is_finite:
+            return True
+
+    def _eval_is_rational(self):
+        s = self.func(*self.args)
+        if s.func == self.func:
+            if s.exp is S.Zero:
+                return True
+            elif s.exp.is_rational and fuzzy_not(s.exp.is_zero):
+                return False
+        else:
+            return s.is_rational
+

@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13551",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/concrete/products.py",
+      "function": "Product._eval_product"
+    }
+  ],
+  "explanation": "The additive-term fallback sums products of the additive pieces, applying an invalid distribution of finite product over addition. The saved finite substitution gives9/2 rather than15/2. Representing the joint product through an exponential of a sum of logs avoids that incorrect separation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

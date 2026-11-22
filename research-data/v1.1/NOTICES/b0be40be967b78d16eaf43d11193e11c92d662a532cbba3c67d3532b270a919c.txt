@@ -1,0 +1,100 @@
+"""
+The ``pvsystem`` module contains functions for modeling the output and
+performance of PV modules and inverters.
+"""
+
+from collections import OrderedDict
+import functools
+import io
+import itertools
+import os
+from urllib.request import urlopen
+import numpy as np
+from scipy import constants
+import pandas as pd
+from dataclasses import dataclass
+from abc import ABC, abstractmethod
+from typing import Optional
+
+from pvlib._deprecation import deprecated, warn_deprecated
+
+from pvlib import (atmosphere, iam, inverter, irradiance,
+                   singlediode as _singlediode, spectrum, temperature)
+from pvlib.tools import _build_kwargs, _build_args
+import pvlib.tools as tools
+
+
+# a dict of required parameter names for each DC power model
+_DC_MODEL_PARAMS = {
+    'sapm': {
+        'A0', 'A1', 'A2', 'A3', 'A4', 'B0', 'B1', 'B2', 'B3',
+        'B4', 'B5', 'C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6',
+        'C7', 'Isco', 'Impo', 'Voco', 'Vmpo', 'Aisc', 'Aimp', 'Bvoco',
+        'Mbvoc', 'Bvmpo', 'Mbvmp', 'N', 'Cells_in_Series',
+        'IXO', 'IXXO', 'FD'},
+    'desoto': {
+        'alpha_sc', 'a_ref', 'I_L_ref', 'I_o_ref',
+        'R_sh_ref', 'R_s'},
+    'cec': {
+        'alpha_sc', 'a_ref', 'I_L_ref', 'I_o_ref',
+        'R_sh_ref', 'R_s', 'Adjust'},
+    'pvsyst': {
+        'gamma_ref', 'mu_gamma', 'I_L_ref', 'I_o_ref',
+        'R_sh_ref', 'R_sh_0', 'R_s', 'alpha_sc', 'EgRef',
+        'cells_in_series'},
+    'singlediode': {
+        'alpha_sc', 'a_ref', 'I_L_ref', 'I_o_ref',
+        'R_sh_ref', 'R_s'},
+    'pvwatts': {'pdc0', 'gamma_pdc'}
+}
+
+
+def _unwrap_single_value(func):
+    """Decorator for functions that return iterables.
+
+    If the length of the iterable returned by `func` is 1, then
+    the single member of the iterable is returned. If the length is
+    greater than 1, then entire iterable is returned.
+
+    Adds 'unwrap' as a keyword argument that can be set to False
+    to force the return value to be a tuple, regardless of its length.
+    """
+    @functools.wraps(func)
+    def f(*args, **kwargs):
+        unwrap = kwargs.pop('unwrap', True)
+        x = func(*args, **kwargs)
+        if unwrap and len(x) == 1:
+            return x[0]
+        return x
+    return f
+
+
+# not sure if this belongs in the pvsystem module.
+# maybe something more like core.py? It may eventually grow to
+# import a lot more functionality from other modules.
+class PVSystem:
+    """
+    The PVSystem class defines a standard set of PV system attributes
+    and modeling functions. This class describes the collection and
+    interactions of PV system components rather than an installed system
+    on the ground. It is typically used in combination with
+    :py:class:`~pvlib.location.Location` and
+    :py:class:`~pvlib.modelchain.ModelChain`
+    objects.
+
+    The class supports basic system topologies consisting of:
+
+        * `N` total modules arranged in series
+          (`modules_per_string=N`, `strings_per_inverter=1`).
+        * `M` total modules arranged in parallel
+          (`modules_per_string=1`, `strings_per_inverter=M`).
+        * `NxM` total modules arranged in `M` strings of `N` modules each
+          (`modules_per_string=N`, `strings_per_inverter=M`).
+
+    The class is complementary to the module-level functions.
+
+    The attributes should generally be things that don't change about
+    the system, such the type of module and the inverter. The instance
+    methods accept arguments for things that do change, such as
+    irradiance and temperature.
+

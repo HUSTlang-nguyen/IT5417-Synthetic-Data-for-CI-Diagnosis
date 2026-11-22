@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040654399760Z",
+  "reviewed_at": "2026-11-12T12:00:20+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ed68cc432986abbb1d521b0dcbfcfbd7db48e19f02dcfe24355471f7abeacffb",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "ccef942c7fe51ed47470de513617d44ebc37d89f01c1f0d30a5ed9ea78f18c8b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c4c69a0bf4962069ddaa44bf2990eb5b701b924d8692826078bf4f861194cf4a",
+    "historical-fixed.stdout.txt": "b2290ec89a3e2d25f5c7a754e2700d0095ccd7cfd3062e933538d731219f1b7c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "fe561e559f9e52e5d3133a65a08111db38a94782443b3d95a9ca0525158c1d3e"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.is_cyclic"
+    }
+  ],
+  "mechanism": "The group test applies prime-power subgroup criteria without first enforcing that the group is abelian, and can mark SymmetricGroup(3) cyclic. The saved assertion shows that false positive. Rejecting nonabelian groups before the remaining criterion preserves this necessary condition.",
+  "limitations": "The patch also changes the abelian prime-power criterion. The saved first failure directly proves the missing nonabelian rejection, not a full group-theory proof of every remaining case.",
+  "observed_junit": {
+    "base": {
+      "cases": 58,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 58,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.combinatorics.tests.test_perm_groups::test_cyclic",
+      "message": "assert True is False\n +  where True = PermutationGroup([\\n    (0 1 2),\\n    (2)(0 1)]).is_cyclic"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

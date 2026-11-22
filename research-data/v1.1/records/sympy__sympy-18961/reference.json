@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18961",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/ntheory/digits.py",
+      "function": "digits"
+    }
+  ],
+  "explanation": "The base digits API accepts at most two positional arguments and has no requested-width parameter. The saved new three-argument call raises TypeError before computation; the repair adds the parameter and zero-padding/width validation, and the same two tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/ntheory/digits.py",
+      "function": "digits"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

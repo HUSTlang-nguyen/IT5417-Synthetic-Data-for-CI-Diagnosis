@@ -1,0 +1,11 @@
+--- a/sympy/functions/elementary/integers.py
++++ b/sympy/functions/elementary/integers.py
+@@ -25,7 +25,7 @@
+         if v is not None:
+             return v
+ 
+-        if arg.is_integer or arg.is_finite is False:
++        if arg.is_integer or arg.is_finite is True:
+             return arg
+         if arg.is_imaginary or (S.ImaginaryUnit*arg).is_real:
+             i = im(arg)

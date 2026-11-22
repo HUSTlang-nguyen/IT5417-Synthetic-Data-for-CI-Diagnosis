@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 12 items\n\ntests/test_func.py::test_functionality[func_w0401_package] PASSED        [  8%]\ntests/test_func.py::test_functionality[func_i0014.py] PASSED             [ 16%]\ntests/test_func.py::test_functionality[func_w0801.py] PASSED             [ 25%]\ntests/test_func.py::test_functionality[func_w0401.py] PASSED             [ 33%]\ntests/test_func.py::test_functionality[func_i0022.py] PASSED             [ 41%]\ntests/test_func.py::test_functionality[func_i0020.py] PASSED             [ 50%]\ntests/test_func.py::test_functionality[func_i0012.py] PASSED             [ 58%]\ntests/test_func.py::test_functionality[func_i0013.py] PASSED             [ 66%]\ntests/test_func.py::test_functionality[func_i0011.py] PASSED             [ 75%]\ntests/test_func.py::test_functionality[func_w0401_disabled.py] PASSED    [ 83%]\ntests/test_func.py::test_functionality[func_noerror_cycle] FAILED        [ 91%]\ntests/test_func.py::test_functionality[func_w0401_disabled_in_func.py] PASSED [100%]\n\n=================================== FAILURES ===================================\n____________________ test_functionality[func_noerror_cycle] ____________________\n\nmodule_file = 'func_noerror_cycle'\nmessages_file = '/source/base/tests/messages/func_noerror_cycle.txt'\ndependencies = [], recwarn = WarningsRecorder(record=True)\n\n    @pytest.mark.parametrize(\n        \"module_file,messages_file,dependencies\",\n        gen_tests(FILTER_RGX),\n        ids=[o[0] for o in gen_tests(FILTER_RGX)],\n    )\n    def test_functionality(module_file, messages_file, dependencies, recwarn):\n>       __test_functionality(module_file, messages_file, dependencies)\n\ntests/test_func.py:139: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ntests/test_func.py:159: in __test_functionality\n    lint_test._test_functionality()\ntests/test_func.py:60: in _test_functionality\n    self._test(tocheck)\ntests/test_func.py:84: in _test\n    self._check_result(self.linter.reporter.finalize())\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <test_func.LintTestUsingModule object at 0x76cef1e82fa0>\ngot = 'R:  1: Cyclic import (input.func_noerror_cycle.a -> input.func_noerror_cycle.b)\\n'\n\n    def _check_result(self, got):\n        error_msg = (\n            f\"Wrong output for '{self.output}':\\n\"\n            \"You can update the expected output automatically with: '\"\n            f\"python tests/test_func.py {UPDATE_OPTION}'\\n\\n\"\n        )\n>       assert self._get_expected() == got, error_msg\nE       AssertionError: Wrong output for '/source/base/tests/messages/func_noerror_cycle.txt':\nE         You can update the expected output automatically with: 'python tests/test_func.py --update-functional-output'\nE         \nE         \nE       assert '' == 'R:  1: Cycli...or_cycle.b)\\n'\nE         - R:  1: Cyclic import (input.func_noerror_cycle.a -> input.func_noerror_cycle.b)\n\ntests/test_func.py:68: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/astroid/interpreter/_import/util.py:6\n  /opt/venv/lib/python3.9/site-packages/astroid/interpreter/_import/util.py:6: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\n    import pkg_resources\n\n../../opt/venv/lib/python3.9/site-packages/astroid/node_classes.py:90\n  /opt/venv/lib/python3.9/site-packages/astroid/node_classes.py:90: DeprecationWarning: The 'astroid.node_classes' module is deprecated and will be replaced by 'astroid.nodes' in astroid 3.0.0\n    warnings.warn(\n\n../../opt/venv/lib/python3.9/site-packages/astroid/scoped_nodes.py:26\n  /opt/venv/lib/python3.9/site-packages/astroid/scoped_nodes.py:26: DeprecationWarning: The 'astroid.scoped_nodes' module is deprecated and will be replaced by 'astroid.nodes' in astroid 3.0.0\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_func.py::test_functionality[func_noerror_cycle] - Assertion...\n=================== 1 failed, 11 passed, 3 warnings in 0.39s ===================\n",
+  "code": [
+    {
+      "file": "pylint/testutils/functional_test_file.py",
+      "function": "FunctionalTestFile.source",
+      "start_line": 66,
+      "end_line": 67,
+      "score": 31.341641,
+      "text": "pylint/testutils/functional_test_file.py::FunctionalTestFile.source lines 66-67\n    def source(self):\n        return self._file_type(\".py\")",
+      "truncated": false
+    },
+    {
+      "file": "pylint/pyreverse/diagrams.py",
+      "function": "ClassDiagram.nodes",
+      "start_line": 136,
+      "end_line": 138,
+      "score": 31.333333,
+      "text": "pylint/pyreverse/diagrams.py::ClassDiagram.nodes lines 136-138\n    def nodes(self):\n        \"\"\"return the list of underlying nodes\"\"\"\n        return self._nodes.keys()",
+      "truncated": false
+    },
+    {
+      "file": "pylint/testutils/functional_test_file.py",
+      "function": "FunctionalTestFile.module",
+      "start_line": 57,
+      "end_line": 59,
+      "score": 31.333333,
+      "text": "pylint/testutils/functional_test_file.py::FunctionalTestFile.module lines 57-59\n    def module(self):\n        package = basename(self._directory)\n        return \".\".join([package, self.base])",
+      "truncated": false
+    },
+    {
+      "file": "pylint/reporters/multi_reporter.py",
+      "function": "MultiReporter.linter",
+      "start_line": 57,
+      "end_line": 60,
+      "score": 31.264911,
+      "text": "pylint/reporters/multi_reporter.py::MultiReporter.linter lines 57-60\n    def linter(self, value: PyLinter) -> None:\n        self._linter = value\n        for rep in self._sub_reporters:\n            rep.linter = value",
+      "truncated": false
+    },
+    {
+      "file": "pylint/checkers/base_checker.py",
+      "function": "BaseChecker.messages",
+      "start_line": 158,
+      "end_line": 162,
+      "score": 31.154701,
+      "text": "pylint/checkers/base_checker.py::BaseChecker.messages lines 158-162\n    def messages(self) -> list:\n        return [\n            self.create_message_definition_from_tuple(msgid, msg_tuple)\n            for msgid, msg_tuple in sorted(self.msgs.items())\n        ]",
+      "truncated": false
+    }
+  ]
+}

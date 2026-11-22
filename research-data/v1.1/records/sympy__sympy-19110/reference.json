@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19110",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "ZeroMatrix.__nonzero__"
+    }
+  ],
+  "explanation": "ZeroMatrix explicitly returns false from __nonzero__ and aliases __bool__ to it, conflating matrix zero entries with the truth value of a matrix object. The saved assert Z fails. Removing this override restores the expected matrix truth semantics.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol._eval_derivative"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.shape"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity.shape"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "ZeroMatrix.shape"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "OneMatrix.shape"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

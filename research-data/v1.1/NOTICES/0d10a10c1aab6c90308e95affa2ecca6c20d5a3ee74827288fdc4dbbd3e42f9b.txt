@@ -1,0 +1,100 @@
+"""Sphinx test fixtures for pytest"""
+
+import subprocess
+import sys
+from collections import namedtuple
+from io import StringIO
+from subprocess import PIPE
+from typing import Any, Callable, Dict, Generator, Tuple
+
+import pytest
+
+from sphinx.testing import util
+from sphinx.testing.util import SphinxTestApp, SphinxTestAppWrapperForSkipBuilding
+
+DEFAULT_ENABLED_MARKERS = [
+    (
+        'sphinx(builder, testroot=None, freshenv=False, confoverrides=None, tags=None,'
+        ' docutilsconf=None, parallel=0): arguments to initialize the sphinx test application.'
+    ),
+    'test_params(shared_result=...): test parameters.',
+]
+
+
+def pytest_configure(config):
+    """Register custom markers"""
+    for marker in DEFAULT_ENABLED_MARKERS:
+        config.addinivalue_line('markers', marker)
+
+
+@pytest.fixture(scope='session')
+def rootdir() -> str:
+    return None
+
+
+class SharedResult:
+    cache: Dict[str, Dict[str, str]] = {}
+
+    def store(self, key: str, app_: SphinxTestApp) -> Any:
+        if key in self.cache:
+            return
+        data = {
+            'status': app_._status.getvalue(),
+            'warning': app_._warning.getvalue(),
+        }
+        self.cache[key] = data
+
+    def restore(self, key: str) -> Dict[str, StringIO]:
+        if key not in self.cache:
+            return {}
+        data = self.cache[key]
+        return {
+            'status': StringIO(data['status']),
+            'warning': StringIO(data['warning']),
+        }
+
+
+@pytest.fixture
+def app_params(request: Any, test_params: Dict, shared_result: SharedResult,
+               sphinx_test_tempdir: str, rootdir: str) -> Tuple[Dict, Dict]:
+    """
+    Parameters that are specified by 'pytest.mark.sphinx' for
+    sphinx.application.Sphinx initialization
+    """
+
+    # ##### process pytest.mark.sphinx
+
+    if hasattr(request.node, 'iter_markers'):  # pytest-3.6.0 or newer
+        markers = request.node.iter_markers("sphinx")
+    else:
+        markers = request.node.get_marker("sphinx")
+    pargs = {}
+    kwargs: Dict[str, Any] = {}
+
+    if markers is not None:
+        # to avoid stacking positional args
+        for info in reversed(list(markers)):
+            for i, a in enumerate(info.args):
+                pargs[i] = a
+            kwargs.update(info.kwargs)
+
+    args = [pargs[i] for i in sorted(pargs.keys())]
+
+    # ##### process pytest.mark.test_params
+    if test_params['shared_result']:
+        if 'srcdir' in kwargs:
+            raise pytest.Exception('You can not specify shared_result and '
+                                   'srcdir in same time.')
+        kwargs['srcdir'] = test_params['shared_result']
+        restore = shared_result.restore(test_params['shared_result'])
+        kwargs.update(restore)
+
+    # ##### prepare Application params
+
+    testroot = kwargs.pop('testroot', 'root')
+    kwargs['srcdir'] = srcdir = sphinx_test_tempdir / kwargs.get('srcdir', testroot)
+
+    # special support for sphinx/tests
+    if rootdir and not srcdir.exists():
+        testroot_path = rootdir / ('test-' + testroot)
+        testroot_path.copytree(srcdir)

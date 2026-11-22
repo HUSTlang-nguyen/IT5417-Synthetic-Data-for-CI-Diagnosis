@@ -1,0 +1,100 @@
+# Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+# Copyright (c) https://github.com/PyCQA/pylint/blob/main/CONTRIBUTORS.txt
+
+"""Plain text reporters:.
+
+:text: the default one grouping messages by module
+:colorized: an ANSI colorized text reporter
+"""
+
+from __future__ import annotations
+
+import os
+import re
+import sys
+import warnings
+from dataclasses import asdict, fields
+from typing import TYPE_CHECKING, Dict, NamedTuple, Optional, TextIO, cast, overload
+
+from pylint.message import Message
+from pylint.reporters import BaseReporter
+from pylint.reporters.ureports.text_writer import TextWriter
+from pylint.utils import _splitstrip
+
+if TYPE_CHECKING:
+    from pylint.lint import PyLinter
+    from pylint.reporters.ureports.nodes import Section
+
+
+class MessageStyle(NamedTuple):
+    """Styling of a message."""
+
+    color: str | None
+    """The color name (see `ANSI_COLORS` for available values)
+    or the color number when 256 colors are available.
+    """
+    style: tuple[str, ...] = ()
+    """Tuple of style strings (see `ANSI_COLORS` for available values)."""
+
+
+ColorMappingDict = Dict[str, MessageStyle]
+
+TITLE_UNDERLINES = ["", "=", "-", "."]
+
+ANSI_PREFIX = "\033["
+ANSI_END = "m"
+ANSI_RESET = "\033[0m"
+ANSI_STYLES = {
+    "reset": "0",
+    "bold": "1",
+    "italic": "3",
+    "underline": "4",
+    "blink": "5",
+    "inverse": "7",
+    "strike": "9",
+}
+ANSI_COLORS = {
+    "reset": "0",
+    "black": "30",
+    "red": "31",
+    "green": "32",
+    "yellow": "33",
+    "blue": "34",
+    "magenta": "35",
+    "cyan": "36",
+    "white": "37",
+}
+
+MESSAGE_FIELDS = {i.name for i in fields(Message)}
+"""All fields of the Message class."""
+
+
+def _get_ansi_code(msg_style: MessageStyle) -> str:
+    """Return ANSI escape code corresponding to color and style.
+
+    :param msg_style: the message style
+
+    :raise KeyError: if a nonexistent color or style identifier is given
+
+    :return: the built escape code
+    """
+    ansi_code = [ANSI_STYLES[effect] for effect in msg_style.style]
+    if msg_style.color:
+        if msg_style.color.isdigit():
+            ansi_code.extend(["38", "5"])
+            ansi_code.append(msg_style.color)
+        else:
+            ansi_code.append(ANSI_COLORS[msg_style.color])
+    if ansi_code:
+        return ANSI_PREFIX + ";".join(ansi_code) + ANSI_END
+    return ""
+
+
+@overload
+def colorize_ansi(
+    msg: str,
+    msg_style: MessageStyle | None = ...,
+) -> str:
+    ...
+

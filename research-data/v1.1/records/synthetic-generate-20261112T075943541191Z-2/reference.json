@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T075943541191Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyRing.index"
+    }
+  ],
+  "explanation": "Generator-index validation admits i equal to the number of generators. The saved three-generator drop(3) no longer raises the required ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "ring"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.drop"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyRing.to_field"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyRing.add"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyRing.mul"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

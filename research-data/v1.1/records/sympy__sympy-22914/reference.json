@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-22914",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "<module>"
+    }
+  ],
+  "explanation": "The module-level known-function registry omits Min/Max. PythonCodePrinter therefore renders Min(x,y) as a conditional expression rather than the builtin min(x,y) form required by its output contract. Adding the two registry entries makes the unchanged tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_sign"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_frac"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_Pow"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_Not"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_Rational"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

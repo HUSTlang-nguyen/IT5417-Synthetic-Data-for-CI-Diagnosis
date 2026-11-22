@@ -1,0 +1,11 @@
+--- a/pydicom/valuerep.py
++++ b/pydicom/valuerep.py
+@@ -902,7 +902,7 @@
+         return super().__hash__()
+ 
+     def __ne__(self, other: Any) -> Any:
+-        return not self == other
++        return self == other
+ 
+     def __str__(self) -> str:
+         if hasattr(self, 'original_string') and not self.auto_format:

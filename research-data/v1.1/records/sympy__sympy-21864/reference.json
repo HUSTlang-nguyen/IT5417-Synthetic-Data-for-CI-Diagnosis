@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-21864",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "multiset_permutations"
+    }
+  ],
+  "explanation": "When the input multiset is empty and size is omitted, the outer empty-input branch is entered with size=None. The inner size<1 comparison then compares None with an integer and raises TypeError. An explicit None/zero guard returns the expected single empty permutation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "multiset_permutations"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "group"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "multiset"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "multiset_combinations"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "signed_permutations"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

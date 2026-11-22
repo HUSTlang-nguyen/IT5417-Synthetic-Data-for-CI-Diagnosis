@@ -1,0 +1,156 @@
+{
+  "run_id": "reproduce-20261112T045454708980Z",
+  "reviewed_at": "2026-11-12T12:15:38+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "991a60c3911fa7104f008cb8a5d3d91698fcf8d9a510867e60df6d53eee18126",
+    "license-evidence.json": "cea264c30f3deb571abd5d24ca6478c88c1aab4612e30607d00692701458a6b6",
+    "historical-base.stdout.txt": "38c875f14df2119effb542a6258033bb560ef65ee45c2b71c0c3b56731b6568a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "1dd1171aeeaf9f080c212c19595909f842ff9b3c9b09d9e6b88623ae09f39a5f",
+    "historical-fixed.stdout.txt": "d22a1180f38de6a5f31891fa9094fc192abedf61ae5dda8b87d6c04a0bc04b0f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "2b70c883d2fc1e04ad7647703c6a7346bcbbb754f75ae3e35aee1acaa88cbcd7"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Field.__init__"
+    }
+  ],
+  "mechanism": "The constructor captures metadata=... inside arbitrary keyword metadata, nesting that mapping under a metadata key rather than exposing its entries. Saved field.metadata assertions show the extra nesting across field subclasses. An explicit metadata parameter merged with remaining keyword metadata preserves the expected mapping interface.",
+  "limitations": "Twenty-eight failures share the base-constructor mechanism; they are one source situation, not28 samples. The patch additionally deprecates keyword metadata, which is not the first observed mismatch.",
+  "observed_junit": {
+    "base": {
+      "cases": 99,
+      "failures_or_errors": 28,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 99,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[String]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Integer]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Boolean]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Float]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Number]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[DateTime]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Time]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Date]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[TimeDelta]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Dict]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Url]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Email]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[UUID]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_extra_metadata_may_be_added_to_field[Decimal]",
+      "message": "AssertionError: assert {'metadata': {'description': 'foo', 'widget': 'select'}} == {'description': 'foo', 'widget': 'select'}\n  Left contains 1 more item:\n  {'metadata': {'description': 'foo', 'widget': 'select'}}\n  Right contains 2 more items:\n  {'description': 'foo', 'widget': 'select'}\n  Full diff:\n  - {'description': 'foo', 'widget': 'select'}\n  + {'metadata': {'description': 'foo', 'widget': 'select'}}\n  ? +++++++++++++                                          +"
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[String]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Integer]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Boolean]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Float]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Number]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[DateTime]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Time]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Date]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[TimeDelta]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Dict]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Url]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Email]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[UUID]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    },
+    {
+      "test": "tests.test_fields.TestMetadata::test_field_metadata_added_in_deprecated_style_warns[Decimal]",
+      "message": "Failed: DID NOT WARN. No warnings of type (<class 'DeprecationWarning'>,) were emitted.\nThe list of emitted warnings is: []."
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

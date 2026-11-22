@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001005274425Z",
+  "reviewed_at": "2026-11-12T08:00:56+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7351d9ef1b9b78fde3fb506462e7425ceb6fef5165c07e41a44fa83f70c880f7",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "15a9bf7c48cc95a6b7da4c4853d1ec1a6d8f1d3ee7bdaabd59065011f99e7c45",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9c89243def60538d4abf2bbd0580d058699dcde293784c978a142b57c574f90d",
+    "historical-fixed.stdout.txt": "f02b5643398987a2097b46d0074a4b3451971f3395a08f6d44aac9884fc606ba",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7e36e603b57b0201e4930dd58bafe1729622d443fcd409026565f8fb467e322e"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "RoundFunction.eval"
+    }
+  ],
+  "mechanism": "After separating an integer part, the remaining expression is wrapped in another rounding call even when it is already floor or ceiling. Nested rounding is not reduced as required, leaving floor(floor(x))+3. Reusing the already rounded symbolic part yields floor(x)+3.",
+  "limitations": "The saved assertion proves failed idempotent simplification. The reference is the shared evaluator rather than the test or the floor class declaration.",
+  "observed_junit": {
+    "base": {
+      "cases": 7,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 7,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.elementary.tests.test_integers::test_issue_18689",
+      "message": "assert floor(floor(x)) + 3 == (floor(x) + 3)\n +  where floor(floor(x)) + 3 = floor((floor(x) + 3))\n +    where floor(x) = floor(floor(x))\n +      where floor(x) = floor(x)\n +  and   floor(x) = floor(x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

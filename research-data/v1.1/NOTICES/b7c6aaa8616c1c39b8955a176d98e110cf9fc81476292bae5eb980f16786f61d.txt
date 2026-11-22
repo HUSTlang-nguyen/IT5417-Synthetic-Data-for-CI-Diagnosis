@@ -1,0 +1,100 @@
+from collections import defaultdict, OrderedDict
+from itertools import (
+    combinations, combinations_with_replacement, permutations,
+    product, product as cartes
+)
+import random
+from operator import gt
+
+from sympy.core import Basic
+
+# this is the logical location of these functions
+from sympy.core.compatibility import (as_int, is_sequence, iterable, ordered)
+from sympy.core.compatibility import default_sort_key  # noqa: F401
+
+import sympy
+
+from sympy.utilities.enumerative import (
+    multiset_partitions_taocp, list_visitor, MultisetPartitionTraverser)
+
+
+def is_palindromic(s, i=0, j=None):
+    """return True if the sequence is the same from left to right as it
+    is from right to left in the whole sequence (default) or in the
+    Python slice ``s[i: j]``; else False.
+
+    Examples
+    ========
+
+    >>> from sympy.utilities.iterables import is_palindromic
+    >>> is_palindromic([1, 0, 1])
+    True
+    >>> is_palindromic('abcbb')
+    False
+    >>> is_palindromic('abcbb', 1)
+    False
+
+    Normal Python slicing is performed in place so there is no need to
+    create a slice of the sequence for testing:
+
+    >>> is_palindromic('abcbb', 1, -1)
+    True
+    >>> is_palindromic('abcbb', -4, -1)
+    True
+
+    See Also
+    ========
+
+    sympy.ntheory.digits.is_palindromic: tests integers
+
+    """
+    i, j, _ = slice(i, j).indices(len(s))
+    m = (j - i)//2
+    # if length is odd, middle element will be ignored
+    return all(s[i + k] == s[j - 1 - k] for k in range(m))
+
+
+def flatten(iterable, levels=None, cls=None):
+    """
+    Recursively denest iterable containers.
+
+    >>> from sympy.utilities.iterables import flatten
+
+    >>> flatten([1, 2, 3])
+    [1, 2, 3]
+    >>> flatten([1, 2, [3]])
+    [1, 2, 3]
+    >>> flatten([1, [2, 3], [4, 5]])
+    [1, 2, 3, 4, 5]
+    >>> flatten([1.0, 2, (1, None)])
+    [1.0, 2, 1, None]
+
+    If you want to denest only a specified number of levels of
+    nested containers, then set ``levels`` flag to the desired
+    number of levels::
+
+    >>> ls = [[(-2, -1), (1, 2)], [(0, 0)]]
+
+    >>> flatten(ls, levels=1)
+    [(-2, -1), (1, 2), (0, 0)]
+
+    If cls argument is specified, it will only flatten instances of that
+    class, for example:
+
+    >>> from sympy.core import Basic
+    >>> class MyOp(Basic):
+    ...     pass
+    ...
+    >>> flatten([MyOp(1, MyOp(2, 3))], cls=MyOp)
+    [1, 2, 3]
+
+    adapted from https://kogs-www.informatik.uni-hamburg.de/~meine/python_tricks
+    """
+    from sympy.tensor.array import NDimArray
+    if levels is not None:
+        if not levels:
+            return iterable
+        elif levels > 0:
+            levels -= 1
+        else:
+            raise ValueError(

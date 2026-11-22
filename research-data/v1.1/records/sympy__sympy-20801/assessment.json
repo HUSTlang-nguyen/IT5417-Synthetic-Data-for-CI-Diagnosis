@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T034150663597Z",
+  "reviewed_at": "2026-11-12T11:49:46+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ac00574446c162b43403271ff070f6e4e11c5991afb45e3c101f73b8be60b8f6",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "abe026677eab74bcce466940b25cdbb59efeb1985c88429cec788ad6d9fe0d7e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8e7fc4a5a63beeafce8d6018ec2826ca7961410a3b09838dbe86e83c8da95c82",
+    "historical-fixed.stdout.txt": "ac13209e89a930aeb8627b20938ab03cc8a1228e3875f7c1c5786c1110821b39",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "153bf77f572e682233877dcbf0a864263ac5a935b4fbeeef9876b7e092cba35d"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__eq__"
+    }
+  ],
+  "mechanism": "The zero shortcut returns not other before rejecting Boolean objects. Floating zero consequently compares equal to symbolic False in the saved assertion. Moving that shortcut after Boolean and numeric type handling preserves the intended distinction.",
+  "limitations": "This concerns SymPy equality semantics, not Python built-in float/bool equality in general.",
+  "observed_junit": {
+    "base": {
+      "cases": 97,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 97,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_zero_not_false",
+      "message": "assert (0.0 == False) is False\n +  where 0.0 = S(0.0)\n +  and   False = S.false"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,68 @@
+{
+  "run_id": "reproduce-20261112T001525385741Z",
+  "reviewed_at": "2026-11-12T10:41:38+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b8e22f84f2327d60ce79c67815f4e80165f55403d199158b6bdf78e54ceb6f9c",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "8301f1d1a53df9673365ce438e8c14167ca4ea9cb7cdbc1c3e604a57fa168a4b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "43cdaefd3d72e8432acadc30252ae6b26c15edec44741d9c6770cf75e68d44b4",
+    "historical-fixed.stdout.txt": "15c7a38b8caa67637ffa0ef56ff40e669e689d06bdcaa85503a4c6887a80af94",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7d1d13614f384cb9b7d10408092b577dfdf89b7c8ada93eddae40d52ccde6be3"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.make_options"
+    }
+  ],
+  "mechanism": "The ignore-paths option stores its value under the custom destination ignore_list_paths_re, while get_global_option resolves the option name to ignore_paths. The saved six parameterized expansion tests raise AttributeError looking up that absent attribute. Removing the mismatched destination and using the common option retrieval aligns the configuration names.",
+  "limitations": "The patch also adds path-format normalization and validator support. The observed failures directly establish the configuration destination mismatch, not every Windows/Posix regex behavior in the larger repair.",
+  "observed_junit": {
+    "base": {
+      "cases": 13,
+      "failures_or_errors": 6,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 13,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.lint.unittest_expand_modules.TestExpandModules::test_expand_modules[files_or_modules0-expected0]",
+      "message": "AttributeError: 'Values' object has no attribute 'ignore_paths'"
+    },
+    {
+      "test": "tests.lint.unittest_expand_modules.TestExpandModules::test_expand_modules[files_or_modules1-expected1]",
+      "message": "AttributeError: 'Values' object has no attribute 'ignore_paths'"
+    },
+    {
+      "test": "tests.lint.unittest_expand_modules.TestExpandModules::test_expand_modules_with_ignore[files_or_modules0-expected0]",
+      "message": "AttributeError: 'Values' object has no attribute 'ignore_paths'"
+    },
+    {
+      "test": "tests.lint.unittest_expand_modules.TestExpandModules::test_expand_modules_with_ignore[files_or_modules1-expected1]",
+      "message": "AttributeError: 'Values' object has no attribute 'ignore_paths'"
+    },
+    {
+      "test": "tests.unittest_config.TestPyLinterOptionSetters::test_ignore_paths_with_value",
+      "message": "re.error: bad escape \\i at position 2"
+    },
+    {
+      "test": "tests.unittest_config.TestPyLinterOptionSetters::test_ignore_paths_with_no_value",
+      "message": "AttributeError: 'Values' object has no attribute 'ignore_paths'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

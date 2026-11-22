@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T07:29:06+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "pydicom__pydicom-1031",
+  "case_id": "pydicom__pydicom-1031-ds1-env2-r1",
+  "run_id": "reproduce-20261111T232932460044Z",
+  "role": "train",
+  "repo": "https://github.com/pydicom/pydicom",
+  "group_id": "https://github.com/pydicom/pydicom",
+  "source_commit": "64f5b8daaa798836579c56912244b7732ab073be",
+  "image_id": "sha256:c3bbff7f32bde980ed5102cdd37cbd4cf30672ac513fb4a362e5c20d38ccc7f1",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "eb75dcb8829389401eb48e7cd2cd92fc11f0b32b9b67df0ee0e07ef20a589475",
+  "input_content_sha256": "1a290a92e7a4b81212a21561d79b533db9e72fcaed24e6547f017377674949c8",
+  "reference_sha256": "78662c6a21226ad618952eea19269a2f83dc5e23026978de7799e8c0fe4b54f7",
+  "assessment_sha256": "77519d7957d55eb1841f7db930268d58880bc53ed26a1a8952d2f0ef475e9d43",
+  "evidence_hashes": {
+    "manifest.json": "de7c10a64e805a94199134e77637d0dfd4f9389f3df389ddab265c821b030d7a",
+    "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+    "historical-base.stdout.txt": "1940095f485f438aa383da8c4e95b25953d4aa15e8d8ce7c4aa2cde90e6d9236",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9932618d2db5fadb3e489bd4e1173ec0d287334be982d57f04dd5fcafaad5aa7",
+    "historical-fixed.stdout.txt": "fcce3caa33ff229cbc8c02b79d318fa5f7e05e83ae4911ee7d723092f5bf86cc",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b3a7c1536e3f43df90bf32a4ec8d153d6da2280d842739e2c8ffec602170b6fa"
+  },
+  "retrieval": {
+    "production_files_scanned": 78,
+    "ranked_function_count": 671,
+    "characters": 6000,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

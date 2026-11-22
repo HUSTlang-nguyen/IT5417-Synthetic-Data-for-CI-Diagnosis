@@ -1,0 +1,11 @@
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -668,7 +668,7 @@
+         >>> p.length
+         0
+         """
+-        return S.Zero
++        return S.One
+ 
+     def midpoint(self, p):
+         """The midpoint between self and point p.

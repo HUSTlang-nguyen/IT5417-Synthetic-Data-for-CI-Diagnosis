@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T042720932705Z",
+  "reviewed_at": "2026-11-12T12:08:02+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d038b68efd7ada94fe969833fd71c626dd021932a8829446da26cc0dfa7d009e",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "34158dd5b9ac2bafd46fecb32205c5183656d972d31d6b7fc0abda5dbb9ab9a1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "26e017412f78caa766bb13dd5d98de1bbac68c54e452879c3f2bd1e9baa6d2dc",
+    "historical-fixed.stdout.txt": "44ec4f4fb7d54d512d3bf33aa6573e66b98e9c32fa284dac36ecf5676cd21d0b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "778a1de32d9ea3259ffcf463aa02ac253815baab6ff1b313ce43a87a75102c45"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion._eval_evalf"
+    }
+  ],
+  "mechanism": "The quaternion class lacks componentwise numerical evaluation. Its saved evalf result retains sqrt(2) and sqrt(3) instead of approximate floating components. The added handler evaluates each component at the requested decimal precision.",
+  "limitations": "Explicit missing method. The saved default-precision assertion supports component evaluation; no independent precision-sweep accuracy study exists.",
+  "observed_junit": {
+    "base": {
+      "cases": 7,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 7,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.algebras.tests.test_quaternion::test_quaternion_evalf",
+      "message": "assert sqrt(2) + 0*i + 0*j + sqrt(3)*k == 1.4142135623731 + 0*i + 0*j + 1.73205080756888*k\n +  where sqrt(2) + 0*i + 0*j + sqrt(3)*k = <bound method EvalfMixin.evalf of sqrt(2) + 0*i + 0*j + sqrt(3)*k>()\n +    where <bound method EvalfMixin.evalf of sqrt(2) + 0*i + 0*j + sqrt(3)*k> = sqrt(2) + 0*i + 0*j + sqrt(3)*k.evalf\n +      where sqrt(2) + 0*i + 0*j + sqrt(3)*k = Quaternion(sqrt(2), 0, 0, sqrt(3))\n +        where sqrt(2) = sqrt(2)\n +        and   sqrt(3) = sqrt(3)\n +  and   1.4142135623731 + 0*i + 0*j + 1.73205080756888*k = Quaternion(1.41421356237310, 0, 0, 1.73205080756888)\n +    where 1.41421356237310 = <bound method EvalfMixin.evalf of sqrt(2)>()\n +      where <bound method EvalfMixin.evalf of sqrt(2)> = sqrt(2).evalf\n +        where sqrt(2) = sqrt(2)\n +    and   1.73205080756888 = <bound method EvalfMixin.evalf of sqrt(3)>()\n +      where <bound method EvalfMixin.evalf of sqrt("
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion._eval_evalf"
+    }
+  ]
+}

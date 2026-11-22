@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T044042628314Z",
+  "reviewed_at": "2026-11-12T12:11:41+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "12f47400e3296d6e76497f841cbefa6e004c6331af66ec411bc11c53a13ec23e",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "080b1470f8f92a25489582c766225b34ac05dbd7d74ad2d0db50de4f913cedff",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0f907c5345131a1615a590b65d7ab3443a0b9b086ee1012dd7ef53bdc6175296",
+    "historical-fixed.stdout.txt": "2f6936e2c366e19e0f476d2cc4c8c0d38ca87e178811d609135dc93486a66594",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "9859f14ea9a5b1f2266ae088c87c057e97290a2f4f309d0b2b1298c74b9aedd8"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "mod_inverse"
+    }
+  ],
+  "mechanism": "After reducing the inverse modulo m, the implementation subtracts m again when a is negative. Saved mod_inverse(-2,5) returns-3 rather than the required residue2. Retaining x%m gives the residue with the modulus sign.",
+  "limitations": "The residues are congruent; the violated contract is canonical sign/range. Negative-modulus support is also repaired but is not the first saved assertion.",
+  "observed_junit": {
+    "base": {
+      "cases": 86,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 86,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_mod_inverse",
+      "message": "assert -3 == 2\n +  where -3 = mod_inverse(-2, 5)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

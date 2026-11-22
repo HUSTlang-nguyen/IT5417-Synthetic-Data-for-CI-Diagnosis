@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 42 items\n\nsympy/polys/domains/tests/test_domains.py::test_issue_14433 FAILED       [  2%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_unify PASSED      [  4%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_unify_composite PASSED [  7%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_unify_algebraic PASSED [  9%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_unify_FiniteExtension PASSED [ 11%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_unify_with_symbols PASSED [ 14%]\nsympy/polys/domains/tests/test_domains.py::test_Domain__contains__ PASSED [ 16%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_get_ring PASSED   [ 19%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_get_field PASSED  [ 21%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_get_exact PASSED  [ 23%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_is_unit PASSED    [ 26%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_convert PASSED    [ 28%]\nsympy/polys/domains/tests/test_domains.py::test_GlobalPolynomialRing_convert PASSED [ 30%]\nsympy/polys/domains/tests/test_domains.py::test_PolynomialRing__init PASSED [ 33%]\nsympy/polys/domains/tests/test_domains.py::test_FractionField__init PASSED [ 35%]\nsympy/polys/domains/tests/test_domains.py::test_FractionField_convert PASSED [ 38%]\nsympy/polys/domains/tests/test_domains.py::test_inject PASSED            [ 40%]\nsympy/polys/domains/tests/test_domains.py::test_drop PASSED              [ 42%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_map PASSED        [ 45%]\nsympy/polys/domains/tests/test_domains.py::test_Domain___eq__ PASSED     [ 47%]\nsympy/polys/domains/tests/test_domains.py::test_Domain__algebraic_field PASSED [ 50%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_alg_field_from_poly PASSED [ 52%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_cyclotomic_field PASSED [ 54%]\nsympy/polys/domains/tests/test_domains.py::test_PolynomialRing_from_FractionField PASSED [ 57%]\nsympy/polys/domains/tests/test_domains.py::test_FractionField_from_PolynomialRing PASSED [ 59%]\nsympy/polys/domains/tests/test_domains.py::test_FF_of_type PASSED        [ 61%]\nsympy/polys/domains/tests/test_domains.py::test___eq__ PASSED            [ 64%]\nsympy/polys/domains/tests/test_domains.py::test_RealField_from_sympy PASSED [ 66%]\nsympy/polys/domains/tests/test_domains.py::test_not_in_any_domain PASSED [ 69%]\nsympy/polys/domains/tests/test_domains.py::test_ModularInteger PASSED    [ 71%]\nsympy/polys/domains/tests/test_domains.py::test_QQ_int PASSED            [ 73%]\nsympy/polys/domains/tests/test_domains.py::test_RR_double PASSED         [ 76%]\nsympy/polys/domains/tests/test_domains.py::test_RR_Float PASSED          [ 78%]\nsympy/polys/domains/tests/test_domains.py::test_CC_double PASSED         [ 80%]\nsympy/polys/domains/tests/test_domains.py::test_gaussian_domains PASSED  [ 83%]\nsympy/polys/domains/tests/test_domains.py::test_EX_EXRAW PASSED          [ 85%]\nsympy/polys/domains/tests/test_domains.py::test_canonical_unit PASSED    [ 88%]\nsympy/polys/domains/tests/test_domains.py::test_issue_18278 PASSED       [ 90%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_is_negative PASSED [ 92%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_is_positive PASSED [ 95%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_is_nonnegative PASSED [ 97%]\nsympy/polys/domains/tests/test_domains.py::test_Domain_is_nonpositive PASSED [100%]\n\n=================================== FAILURES ===================================\n_______________________________ test_issue_14433 _______________________________\n\n    def test_issue_14433():\n>       assert (Rational(2, 3)*x in QQ.frac_field(1/x)) is True\nE       assert ((2/3 * x) in QQ(1/x)) is True\nE        +  where 2/3 = Rational(2, 3)\nE        +  and   QQ(1/x) = <bound method Domain.frac_field of QQ>((1 / x))\nE        +    where <bound method Domain.frac_field of QQ> = QQ.frac_field\n\nsympy/polys/domains/tests/test_domains.py:493: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/polys/domains/tests/test_domains.py::test_issue_14433 - assert (...\n========================= 1 failed, 41 passed in 2.85s =========================\n",
+  "code": [
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.__eq__",
+      "start_line": 821,
+      "end_line": 823,
+      "score": 31.290994,
+      "text": "sympy/polys/domains/domain.py::Domain.__eq__ lines 821-823\n    def __eq__(self, other):\n        \"\"\"Returns ``True`` if two domains are equivalent. \"\"\"\n        return isinstance(other, Domain) and self.dtype == other.dtype",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.frac_field",
+      "start_line": 865,
+      "end_line": 868,
+      "score": 31.212678,
+      "text": "sympy/polys/domains/domain.py::Domain.frac_field lines 865-868\n    def frac_field(self, *symbols, order=lex):\n        \"\"\"Returns a fraction field, i.e. `K(X)`. \"\"\"\n        from sympy.polys.domains.fractionfield import FractionField\n        return FractionField(self, symbols, order)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.old_poly_ring",
+      "start_line": 870,
+      "end_line": 873,
+      "score": 31.0,
+      "text": "sympy/polys/domains/domain.py::Domain.old_poly_ring lines 870-873\n    def old_poly_ring(self, *symbols, **kwargs):\n        \"\"\"Returns a polynomial ring, i.e. `K[X]`. \"\"\"\n        from sympy.polys.domains.old_polynomialring import PolynomialRing\n        return PolynomialRing(self, *symbols, **kwargs)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.old_frac_field",
+      "start_line": 875,
+      "end_line": 878,
+      "score": 31.0,
+      "text": "sympy/polys/domains/domain.py::Domain.old_frac_field lines 875-878\n    def old_frac_field(self, *symbols, **kwargs):\n        \"\"\"Returns a fraction field, i.e. `K(X)`. \"\"\"\n        from sympy.polys.domains.old_fractionfield import FractionField\n        return FractionField(self, *symbols, **kwargs)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.poly_ring",
+      "start_line": 860,
+      "end_line": 863,
+      "score": 30.970143,
+      "text": "sympy/polys/domains/domain.py::Domain.poly_ring lines 860-863\n    def poly_ring(self, *symbols, order=lex):\n        \"\"\"Returns a polynomial ring, i.e. `K[X]`. \"\"\"\n        from sympy.polys.domains.polynomialring import PolynomialRing\n        return PolynomialRing(self, symbols, order)",
+      "truncated": false
+    }
+  ]
+}

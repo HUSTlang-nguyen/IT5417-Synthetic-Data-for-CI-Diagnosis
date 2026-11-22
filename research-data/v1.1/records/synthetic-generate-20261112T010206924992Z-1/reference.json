@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T010206924992Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/conventions.py",
+      "function": "split_super_sub"
+    }
+  ],
+  "explanation": "The empty-string guard is changed from length zero to length one. Empty input now skips both that return and the scanning loop, leaving name=None; the later regex match raises the saved TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/conventions.py",
+      "function": "split_super_sub"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter.doprint"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_Symbol"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "pretty"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

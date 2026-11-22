@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 3 items\n\nsympy/physics/hep/tests/test_gamma_matrices.py::test_kahane_simplify1 PASSED [ 33%]\nsympy/physics/hep/tests/test_gamma_matrices.py::test_kahane_algorithm FAILED [ 66%]\nsympy/physics/hep/tests/test_gamma_matrices.py::test_gamma_matrix_class FAILED [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_kahane_algorithm _____________________________\n\n    def test_kahane_algorithm():\n        # Wrap this function to convert to and from TIDS:\n    \n        def tfunc(e):\n            return _simplify_single_line(e)\n    \n>       execute_gamma_simplify_tests_for_function(tfunc, D=4)\n\nsympy/physics/hep/tests/test_gamma_matrices.py:192: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ntfunc = <function test_kahane_algorithm.<locals>.tfunc at 0x7714573af0d0>, D = 4\n\n    def execute_gamma_simplify_tests_for_function(tfunc, D):\n        \"\"\"\n        Perform tests to check if sfunc is able to simplify gamma matrix expressions.\n    \n        Parameters\n        ==========\n    \n        `sfunc`     a function to simplify a `TIDS`, shall return the simplified `TIDS`.\n        `D`         the number of dimension (in most cases `D=4`).\n    \n        \"\"\"\n    \n        mu, nu, rho, sigma = tensor_indices(\"mu, nu, rho, sigma\", LorentzIndex)\n        a1, a2, a3, a4, a5, a6 = tensor_indices(\"a1:7\", LorentzIndex)\n        mu11, mu12, mu21, mu31, mu32, mu41, mu51, mu52 = tensor_indices(\"mu11, mu12, mu21, mu31, mu32, mu41, mu51, mu52\", LorentzIndex)\n        mu61, mu71, mu72 = tensor_indices(\"mu61, mu71, mu72\", LorentzIndex)\n        m0, m1, m2, m3, m4, m5, m6 = tensor_indices(\"m0:7\", LorentzIndex)\n    \n        def g(xx, yy):\n            return (G(xx)*G(yy) + G(yy)*G(xx))/2\n    \n        # Some examples taken from Kahane's paper, 4 dim only:\n        if D == 4:\n            t = (G(a1)*G(mu11)*G(a2)*G(mu21)*G(-a1)*G(mu31)*G(-a2))\n>           assert _is_tensor_eq(tfunc(t), -4*G(mu11)*G(mu31)*G(mu21) - 4*G(mu31)*G(mu11)*G(mu21))\nE           assert False\nE            +  where False = _is_tensor_eq(-8*GammaMatrix(mu31)*GammaMatrix(mu21), ((((-4 * GammaMatrix(mu11)) * GammaMatrix(mu31)) * GammaMatrix(mu21)) - (((4 * GammaMatrix(mu31)) * GammaMatrix(mu11)) * GammaMatrix(mu21))))\nE            +    where -8*GammaMatrix(mu31)*GammaMatrix(mu21) = <function test_kahane_algorithm.<locals>.tfunc at 0x7714573af0d0>(GammaMatrix(L_0)*GammaMatrix(mu11)*GammaMatrix(L_1)*GammaMatrix(mu21)*GammaMatrix(-L_0)*GammaMatrix(mu31)*GammaMatrix(-L_1))\nE            +    and   GammaMatrix(mu11) = G(mu11)\nE            +    and   GammaMatrix(mu31) = G(mu31)\nE            +    and   GammaMatrix(mu21) = G(mu21)\nE            +    and   GammaMatrix(mu31) = G(mu31)\nE            +    and   GammaMatrix(mu11) = G(mu11)\nE            +    and   GammaMatrix(mu21) = G(mu21)\n\nsympy/physics/hep/tests/test_gamma_matrices.py:41: AssertionError\n___________________________ test_gamma_matrix_class ____________________________\n\n    def test_gamma_matrix_class():\n        i, j, k = tensor_indices('i,j,k', LorentzIndex)\n    \n        # define another type of TensorHead to see if exprs are correctly handled:\n        A = TensorHead('A', [LorentzIndex])\n    \n        t = A(k)*G(i)*G(-i)\n        ts = simplify_gamma_expression(t)\n        assert _is_tensor_eq(ts, Matrix([\n            [4, 0, 0, 0],\n            [0, 4, 0, 0],\n            [0, 0, 4, 0],\n            [0, 0, 0, 4]])*A(k))\n    \n        t = G(i)*A(k)*G(j)\n        ts = simplify_gamma_expression(t)\n        assert _is_tensor_eq(ts, A(k)*G(i)*G(j))\n    \n>       execute_gamma_simplify_tests_for_function(simplify_gamma_expression, D=4)\n\nsympy/physics/hep/tests/test_gamma_matrices.py:285: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ntfunc = <function simplify_gamma_expression at 0x771457446ca0>, D = 4\n\n    def execute_gamma_simplify_tests_for_function(tfunc, D):\n        \"\"\"\n        Perform tests to check if sfunc is able to simplify gamma matrix expressions.\n    \n        Parameters\n        ==========\n    \n        `sfunc`     a function to simplify a `TIDS`, shall return the simplified `TIDS`.\n        `D`         the number of dimension (in most cases `D=4`).\n    \n        \"\"\"\n    \n        mu, nu, rho, sigma = tensor_indices(\"mu, nu, rho, sigma\", LorentzIndex)\n        a1, a2, a3, a4, a5, a6 = tensor_indices(\"a1:7\", LorentzIndex)\n        mu11, mu12, mu21, mu31, mu32, mu41, mu51, mu52 = tensor_indices(\"mu11, mu12, mu21, mu31, mu32, mu41, mu51, mu52\", LorentzIndex)\n        mu61, mu71, mu72 = tensor_indices(\"mu61, mu71, mu72\", LorentzIndex)\n        m0, m1, m2, m3, m4, m5, m6 = tensor_indices(\"m0:7\", LorentzIndex)\n    \n        def g(xx, yy):\n            return (G(xx)*G(yy) + G(yy)*G(xx))/2\n    \n        # Some examples taken from Kahane's paper, 4 dim only:\n        if D == 4:\n            t = (G(a1)*G(mu11)*G(a2)*G(mu21)*G(-a1)*G(mu31)*G(-a2))\n>           assert _is_tensor_eq(tfunc(t), -4*G(mu11)*G(mu31)*G(mu21) - 4*G(mu31)*G(mu11)*G(mu21))\nE           assert False\nE            +  where False = _is_tensor_eq(-8*GammaMatrix(mu31)*GammaMatrix(mu21), ((((-4 * GammaMatrix(mu11)) * GammaMatrix(mu31)) * GammaMatrix(mu21)) - (((4 * GammaMatrix(mu31)) * GammaMatrix(mu11)) * GammaMatrix(mu21))))\nE            +    where -8*GammaMatrix(mu31)*GammaMatrix(mu21) = <function simplify_gamma_expression at 0x771457446ca0>(GammaMatrix(L_0)*GammaMatrix(mu11)*GammaMatrix(L_1)*GammaMatrix(mu21)*GammaMatrix(-L_0)*GammaMatrix(mu31)*GammaMatrix(-L_1))\nE            +    and   GammaMatrix(mu11) = G(mu11)\nE            +    and   GammaMatrix(mu31) = G(mu31)\nE            +    and   GammaMatrix(mu21) = G(mu21)\nE            +    and   GammaMatrix(mu31) = G(mu31)\nE            +    and   GammaMatrix(mu11) = G(mu11)\nE            +    and   GammaMatrix(mu21) = G(mu21)\n\nsympy/physics/hep/tests/test_gamma_matrices.py:41: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/physics/hep/tests/test_gamma_matrices.py::test_kahane_algorithm\nFAILED sympy/physics/hep/tests/test_gamma_matrices.py::test_gamma_matrix_class\n========================= 2 failed, 1 passed in 0.61s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "_simplify_single_line",
+      "start_line": 200,
+      "end_line": 220,
+      "score": 52.4,
+      "text": "sympy/physics/hep/gamma_matrices.py::_simplify_single_line lines 200-220\ndef _simplify_single_line(expression):\n    \"\"\"\n    Simplify single-line product of gamma matrices.\n\n    Examples\n    ========\n\n    >>> from sympy.physics.hep.gamma_matrices import GammaMatrix as G, \\\n        LorentzIndex, _simplify_single_line\n    >>> from sympy.tensor.tensor import tensor_indices, TensorHead\n    >>> p = TensorHead('p', [LorentzIndex])\n    >>> i0,i1 = tensor_indices('i0:2', LorentzIndex)\n    >>> _simplify_single_line(G(i0)*G(i1)*p(-i1)*G(-i0)) + 2*G(i0)*p(-i0)\n    0\n\n    \"\"\"\n    t1, t2 = extract_type_tens(expression, GammaMatrix)\n    if t1 != 1:\n        t1 = kahane_simplify(t1)\n    res = t1*t2\n    return res",
+      "truncated": false
+    },
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "simplify_gamma_expression",
+      "start_line": 75,
+      "end_line": 78,
+      "score": 51.581139,
+      "text": "sympy/physics/hep/gamma_matrices.py::simplify_gamma_expression lines 75-78\ndef simplify_gamma_expression(expression):\n    extracted_expr, residual_expr = extract_type_tens(expression, GammaMatrix)\n    res_expr = _simplify_single_line(extracted_expr)\n    return res_expr * residual_expr",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.simplify",
+      "start_line": 1764,
+      "end_line": 1767,
+      "score": 32.110579,
+      "text": "sympy/core/basic.py::Basic.simplify lines 1764-1767\n    def simplify(self, **kwargs):\n        \"\"\"See the simplify function in sympy.simplify\"\"\"\n        from sympy.simplify.simplify import simplify\n        return simplify(self, **kwargs)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/logic/boolalg.py",
+      "function": "BooleanFunction.simplify",
+      "start_line": 477,
+      "end_line": 479,
+      "score": 31.767767,
+      "text": "sympy/logic/boolalg.py::BooleanFunction.simplify lines 477-479\n    def simplify(self, **kwargs):\n        from sympy.simplify.simplify import simplify\n        return simplify(self, **kwargs)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixOperations.simplify",
+      "start_line": 2392,
+      "end_line": 2405,
+      "score": 31.745743,
+      "text": "sympy/matrices/common.py::MatrixOperations.simplify lines 2392-2405\n    def simplify(self, **kwargs):\n        \"\"\"Apply simplify to each element of the matrix.\n\n        Examples\n        ========\n\n        >>> from sympy.abc import x, y\n        >>> from sympy import SparseMatrix, sin, cos\n        >>> SparseMatrix(1, 1, [x*sin(y)**2 + x*cos(y)**2])\n        Matrix([[x*sin(y)**2 + x*cos(y)**2]])\n        >>> _.simplify()\n        Matrix([[x]])\n        \"\"\"\n        return self.applyfunc(lambda x: x.simplify(**kwargs))",
+      "truncated": false
+    }
+  ]
+}

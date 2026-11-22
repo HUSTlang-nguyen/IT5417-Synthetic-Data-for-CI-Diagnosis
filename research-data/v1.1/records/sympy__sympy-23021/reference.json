@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-23021",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/solvers/decompogen.py",
+      "function": "decompogen"
+    }
+  ],
+  "explanation": "Min/Max expressions lack a specialized decomposition branch. The polynomial fallback re-enters decomposition on the same generator, and the saved Max(3,x) call repeats line61 until RecursionError; the repair handles Min/Max arguments and both tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/decompogen.py",
+      "function": "decompogen"
+    },
+    {
+      "file": "sympy/solvers/decompogen.py",
+      "function": "compogen"
+    },
+    {
+      "file": "sympy/solvers/decompogen.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/functions/elementary/trigonometric.py",
+      "function": "cos._eval_rewrite_as_sqrt._cospi257.f1"
+    },
+    {
+      "file": "sympy/functions/elementary/trigonometric.py",
+      "function": "cos._eval_rewrite_as_sqrt._cospi257.f2"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

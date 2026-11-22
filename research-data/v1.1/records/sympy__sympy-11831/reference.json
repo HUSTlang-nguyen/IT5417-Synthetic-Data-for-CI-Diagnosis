@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-11831",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "ProductSet.__bool__"
+    }
+  ],
+  "explanation": "ProductSet lacks its own truthiness method. Python falls back to __len__, which calls len on each factor and fails for an infinite Naturals0 set. Defining __bool__ from the truthiness of the factors avoids requiring finite lengths for a valid boolean check.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "ProductSet.__len__"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

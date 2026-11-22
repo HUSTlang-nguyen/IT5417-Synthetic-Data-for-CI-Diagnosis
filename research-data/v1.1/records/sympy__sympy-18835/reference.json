@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-18835",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "uniq"
+    }
+  ],
+  "explanation": "The unique iterator never checks whether a sized input sequence changes during iteration. The saved caller removes items from its list and receives no required RuntimeError. Capturing the initial length and checking after yields enforces the mutation contract.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "capture"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "uniq"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "partitions"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

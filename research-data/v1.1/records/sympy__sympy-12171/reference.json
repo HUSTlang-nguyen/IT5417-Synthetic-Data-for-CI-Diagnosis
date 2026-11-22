@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-12171",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Derivative"
+    }
+  ],
+  "explanation": "The Mathematica printer has no Derivative handler, so its fallback emits a Python/SymPy-style Derivative(sin(x), x) expression. The missing handler serializes the existing expression as Hold[D[Sin[x], x]], matching the target-language contract.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

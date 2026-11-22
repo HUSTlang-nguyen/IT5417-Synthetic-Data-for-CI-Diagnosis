@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 5 items\n\nsympy/sets/tests/test_contains.py::test_as_set PASSED                    [ 20%]\nsympy/sets/tests/test_contains.py::test_contains_basic FAILED            [ 40%]\nsympy/sets/tests/test_contains.py::test_issue_6194 PASSED                [ 60%]\nsympy/sets/tests/test_contains.py::test_issue_10326 FAILED               [ 80%]\nsympy/sets/tests/test_contains.py::test_binary_symbols PASSED            [100%]\n\n=================================== FAILURES ===================================\n_____________________________ test_contains_basic ______________________________\n\n    def test_contains_basic():\n        raises(TypeError, lambda: Contains(S.Integers, 1))\n        assert Contains(2, S.Integers) is S.true\n>       assert Contains(-2, S.Naturals) is S.false\nE       assert True is False\nE        +  where True = Contains(-2, Naturals)\nE        +    where Naturals = S.Naturals\nE        +  and   False = S.false\n\nsympy/sets/tests/test_contains.py:13: AssertionError\n_______________________________ test_issue_10326 _______________________________\n\n    def test_issue_10326():\n>       assert Contains(oo, Interval(-oo, oo)) == False\nE       assert True == False\nE        +  where True = Contains(oo, Interval(-oo, oo))\nE        +    where Interval(-oo, oo) = Interval(-oo, oo)\n\nsympy/sets/tests/test_contains.py:29: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/sets/tests/test_contains.py::test_contains_basic - assert True i...\nFAILED sympy/sets/tests/test_contains.py::test_issue_10326 - assert True == F...\n========================= 2 failed, 3 passed in 0.13s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.eval",
+      "start_line": 30,
+      "end_line": 38,
+      "score": 51.455214,
+      "text": "sympy/sets/contains.py::Contains.eval lines 30-38\n    def eval(cls, x, s):\n\n        if not isinstance(s, Set):\n            raise TypeError('expecting Set, not %s' % func_name(s))\n\n        ret = s.contains(x)\n        if not isinstance(ret, Contains) and (\n                ret in (S.true, S.false) or isinstance(ret, Set)):\n            return S.true",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.as_set",
+      "start_line": 47,
+      "end_line": 48,
+      "score": 50.447214,
+      "text": "sympy/sets/contains.py::Contains.as_set lines 47-48\n    def as_set(self):\n        return self.args[1]",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.binary_symbols",
+      "start_line": 41,
+      "end_line": 45,
+      "score": 50.301511,
+      "text": "sympy/sets/contains.py::Contains.binary_symbols lines 41-45\n    def binary_symbols(self):\n        return set().union(*[i.binary_symbols\n            for i in self.args[1].args\n            if i.is_Boolean or i.is_Symbol or\n            isinstance(i, (Eq, Ne))])",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Interval.left_open",
+      "start_line": 1099,
+      "end_line": 1113,
+      "score": 31.290994,
+      "text": "sympy/sets/sets.py::Interval.left_open lines 1099-1113\n    def left_open(self):\n        \"\"\"\n        True if interval is left-open.\n\n        Examples\n        ========\n\n        >>> from sympy import Interval\n        >>> Interval(0, 1, left_open=True).left_open\n        True\n        >>> Interval(0, 1, left_open=False).left_open\n        False\n\n        \"\"\"\n        return self._args[2]",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Interval.right_open",
+      "start_line": 1116,
+      "end_line": 1130,
+      "score": 31.290994,
+      "text": "sympy/sets/sets.py::Interval.right_open lines 1116-1130\n    def right_open(self):\n        \"\"\"\n        True if interval is right-open.\n\n        Examples\n        ========\n\n        >>> from sympy import Interval\n        >>> Interval(0, 1, right_open=True).right_open\n        True\n        >>> Interval(0, 1, right_open=False).right_open\n        False\n\n        \"\"\"\n        return self._args[3]",
+      "truncated": false
+    }
+  ]
+}

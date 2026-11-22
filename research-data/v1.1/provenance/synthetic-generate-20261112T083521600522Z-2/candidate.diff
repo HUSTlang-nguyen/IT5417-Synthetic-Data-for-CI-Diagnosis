@@ -1,0 +1,11 @@
+--- a/sympy/ntheory/factor_.py
++++ b/sympy/ntheory/factor_.py
+@@ -349,7 +349,7 @@
+                 afactor = nextprime(afactor)
+ 
+         # Weed out downright impossible candidates
+-        if logn/e < 40:
++        if logn/e > 40:
+             b = 2.0**(logn/e)
+             if abs(int(b + 0.5) - b) > 0.01:
+                 continue

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T003552980325Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "_print_known_const"
+    }
+  ],
+  "explanation": "The constant printer appends call parentheses to an already formatted constant name. pi is therefore emitted as math.pi() instead of math.pi, with the same defect for other backend constants. The saved assertions compare those exact strings.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_frac"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Pow"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Integral"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_Pow"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Rational"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

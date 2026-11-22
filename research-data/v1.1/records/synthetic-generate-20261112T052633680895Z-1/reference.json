@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T052633680895Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "is_palindromic"
+    }
+  ],
+  "explanation": "The pair-count bound includes one extra comparison. Empty input now executes an index access rather than the empty all() identity and raises the saved string IndexError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "is_palindromic"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "prefixes"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "postfixes"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "common_prefix"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "common_suffix"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

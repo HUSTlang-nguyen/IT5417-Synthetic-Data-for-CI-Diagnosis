@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T042800196175Z",
+  "reviewed_at": "2026-11-12T12:08:24+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "40e3c634773d6a871c739c380902fe2b7ce662d635dc7d1522de6c4e594793fa",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "a31902634abc2dc0e8278ac4cb7e8d1f9490f460529d916061f335c609750889",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c87b73830acd758ebc9f55746d2eef8e19ade411c81343ab6bf84975969c5395",
+    "historical-fixed.stdout.txt": "15a2773e236637f7291b4962e4e8b63ac0484bd1a09fe61c89f82058795b7b75",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "362acd3df0c0dc4a6d9eec39553fd0bcb6bb4bb02dd0e2a118cc25f5248ce478"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/combinatorial/factorials.py",
+      "function": "binomial.eval"
+    }
+  ],
+  "mechanism": "The equal-arguments shortcut returns1 before checking a negative lower argument. Saved binomial(-1,-1) therefore gives1 instead of0. Applying lower-argument validity before that identity preserves the defined generalized binomial behavior.",
+  "limitations": "Related to later source14627 in the same function, but this fault is an overbroad shortcut for negative integer arguments;14627 restores valid noninteger identities.",
+  "observed_junit": {
+    "base": {
+      "cases": 11,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 11,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.combinatorial.tests.test_comb_factorials::test_binomial",
+      "message": "assert 1 == 0\n +  where 1 = binomial(-1, -1)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

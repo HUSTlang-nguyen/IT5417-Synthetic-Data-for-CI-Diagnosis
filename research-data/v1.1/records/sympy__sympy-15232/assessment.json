@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T003516293290Z",
+  "reviewed_at": "2026-11-12T10:42:20+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7f76eaf46376845663a9d21b57f589768619c03b59e1990519e183404eb0538c",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "3a91e9c9d4f6ad347b23e4b3811aff8949ac91d13582110ed7bba2205668ba2e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5e6e8cbe65c8d18bf5009c3eac73ad48851563ec6a9ae0ef5c515c416e4e2a17",
+    "historical-fixed.stdout.txt": "8c2e6c87aff94baefc82974c6b8dddd79e3285583c8ef064510189a829ae6876",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b579a95e96681454f68c36ae745cfdfe2a45cae9479c064c2a24f35108af7f69"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/exprtools.py",
+      "function": "_mask_nc"
+    }
+  ],
+  "mechanism": "A noncommutative function with commutative free symbols is replaced by a commutative Dummy. Distinct ordered products consequently commute and the saved commutator collapses to zero. Retaining these objects in the noncommutative-object path preserves their ordering.",
+  "limitations": "The assertion proves the incorrect zero result in masking; this is not evidence that every noncommutative factoring case is affected.",
+  "observed_junit": {
+    "base": {
+      "cases": 10,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 10,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_exprtools::test_issue_8263",
+      "message": "assert not True\n +  where True = 0.is_zero"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,11 @@
+--- a/sympy/sets/sets.py
++++ b/sympy/sets/sets.py
+@@ -87,7 +87,7 @@
+         [1, 2) U (2, 3]
+ 
+         """
+-        return Union(self, other)
++        return Intersection(self, other)
+ 
+     def intersect(self, other):
+         """

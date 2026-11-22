@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T195545887269Z",
+  "reviewed_at": "2026-11-12T03:14:44+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "5880e9e0be8d40a2592c96ce94d5121b40f25ffacf6605cdf7bf1997d0c400e4",
+    "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+    "historical-base.stdout.txt": "8985fa28fd72d02ecce0eeb48963cc1e240c4bd87536e1f6a749884eac2bd27a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f7a612331b494a0352656c4db050c879bcd42430ef5a9dd7da87f5b89f48a4c8",
+    "historical-fixed.stdout.txt": "0b31c66489b168c9211cb1b23546144b6322b6229cfd3dadf5995474c87c2cad",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4fa5ab914f3bf79d210c3a109beb334e5fd4c23c80456e832e27f9d9acc44eb5"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sphinx/builders/manpage.py",
+      "function": "setup"
+    }
+  ],
+  "mechanism": "setup registers man_make_section_directory with default False. ManualPageBuilder therefore chooses a flat manpage filename instead of the section subdirectory required by the default layout contract. Registering True selects the section directory branch.",
+  "evidence_reason": "Read setup at manpage.py:118-123 and output branch at lines 83-87. Base smartquotes test tries section 1/python.1 and gets FileNotFoundError while build reports a flat python.1; fixed has 14 passed and F2P/P2P resolved.",
+  "limitations": "Taxonomy boundary is debatable: this is a product configuration-default defect, overlapping logic/value. Medium confidence for class, high for setup/file mechanism; no claim that the isolated runtime lacks a dependency."
+}

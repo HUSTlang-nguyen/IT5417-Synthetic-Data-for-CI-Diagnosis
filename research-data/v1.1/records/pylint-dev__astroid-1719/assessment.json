@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T033846361018Z",
+  "reviewed_at": "2026-11-12T11:48:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "15a32737e677cba689577556264da6d18396abf465a7bfe23ef94edbe0567672",
+    "license-evidence.json": "6f323a30a49d63671a95f5375666ce6eb4bc60156a8fcdd4067837fff279625b",
+    "historical-base.stdout.txt": "91b13e824f80637667bb42581fcd65477936cfc1a3fba0a958614844fa13d51f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ff4b59aa6a1d3701eb240af24632d6d14662952768274c93412f94431f45cc8c",
+    "historical-fixed.stdout.txt": "e4147c0eab952aa3cc6b8a8301b10c648c3b167193064dc3756fbf8b6ca78f8c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "8444edba5632fb1822b285b253068de55a5347c1ce76e81ea235d96ac746347f"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.object_build"
+    }
+  ],
+  "mechanism": "Deep inspection sets all warnings to errors but catches only AttributeError and DeprecationWarning. A simulated module attribute emits FutureWarning, which escapes and aborts building in the saved stack. Ignoring warnings during attribute inspection permits the expected build.",
+  "limitations": "The module deliberately simulates pandas behavior; no real pandas service/import failure is claimed. The coarse configuration-policy label is an alternate interpretation; the retained class reflects incorrect warning control flow.",
+  "observed_junit": {
+    "base": {
+      "cases": 11,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 11,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.unittest_raw_building.RawBuildingTC::test_build_function_deepinspect_deprecation",
+      "message": "FutureWarning: This is what pandas would do"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

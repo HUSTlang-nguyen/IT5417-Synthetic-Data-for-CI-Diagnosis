@@ -1,0 +1,42 @@
+{
+  "run_id": "reproduce-20261111T203345386343Z",
+  "reviewed_at": "2026-11-12T07:18:27+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d5f4cd00b125f48bd17e65afe0d7e3793748a82bd1dff1714b3d3cd204818809",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "1aaadbf0d0718067dbd6c68f3bedc560f11017f74837612138fdf19d5e0c7316",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "293bc974f60535ed0b862366d0991fffcd83a05388bcdf00a11b72bf43b4808b",
+    "historical-fixed.stdout.txt": "2a8f3969734ecf008302e0eb28e0f08f4e1e263baf48f782249cfb638659357e",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "1dc6379a9e566cc5536bd13cbd1bc4380a22674e85faa5c246f19112f50ddaed"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "get_integer_part.calc_part"
+    }
+  ],
+  "mechanism": "The integer-part helper reports finite accuracy fastlog(nint)+10 for an exact integer result. That accuracy metadata limits subsequent numerical evaluation and leads to the observed imprecise floor-plus-fraction value. Reporting infinite accuracy preserves the exact integer contribution.",
+  "limitations": "Accuracy propagation is inferred from source data flow and the precision-metadata repair; no intermediate precision values were separately instrumented. The log directly proves the erroneous final float.",
+  "observed_junit": {
+    "base": {
+      "cases": 45,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 45,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: assert 1.111328125 == (1 + (1 / 9))\n +  where 1.111328125 = float(1.1)\n +    where 1.1 = <bound method EvalfMixin.evalf of 0.111111111111111 + floor(1.5)>()\n +      where <bound method EvalfMixin.evalf of 0.111111111111111 + floor(1.5)> = (floor(1.5) + (1 / 9)).evalf\n +        where floor(1.5) = floor(1.5, evaluate=False)"
+}

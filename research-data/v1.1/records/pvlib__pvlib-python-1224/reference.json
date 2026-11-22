@@ -1,0 +1,31 @@
+{
+  "sample_id": "pvlib__pvlib-python-1224",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.__init__"
+    }
+  ],
+  "explanation": "Construction accepts arrays=[] and creates an empty system although the API requires at least one Array. The saved test does not raise ValueError. A distinct empty-collection guard rejects this input while preserving arrays=None as the one-array default.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.dc_ohms_from_percent"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.get_ac"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "Array.dc_ohms_from_percent"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.pvwatts_dc"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261111T234047992663Z",
+  "reviewed_at": "2026-11-12T07:34:27+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "9ba100f805dbfda39b3dee8902bbcd433e6c75a0cb4152f1ad8bb5527cf9cd0f",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "26f8a4dfadbaeedeead5455575a2a18c2fd770bcdfc6daa62d290a9e01a89626",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4bf4a4fa0ce68129d98c4d5da889092401ba21736b86d16ab00cce39ea41c496",
+    "historical-fixed.stdout.txt": "46e8f3847628ef72c3d75d2b3244c181509ae8757881fe02ddf2a7f43ca9f0e1",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "17a032a6015fa8045e30c6dc8bc17cbfb7dd37a27bc39e4ef7c1179517ea54f2"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.is_finite_set"
+    }
+  ],
+  "mechanism": "Range lacks a property that derives finiteness from its integer endpoints or size. The finite Range(-100,100) therefore inherits an unknown is_finite_set value instead of True. The added property resolves that missing semantic result.",
+  "limitations": "Explicitly reviewed missing definition, present in head. The observed assertion concerns finite integer bounds; not every symbolic range case is independently proven.",
+  "observed_junit": {
+    "base": {
+      "cases": 47,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 47,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.sets.tests.test_fancysets::test_range_is_finite_set",
+      "message": "assert None is True\n +  where None = Range(-100, 100, 1).is_finite_set\n +    where Range(-100, 100, 1) = Range(-100, 100)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.is_finite_set"
+    }
+  ]
+}

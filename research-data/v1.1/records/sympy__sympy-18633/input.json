@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 13 items\n\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_full_linearity FAILED [  7%]\nsympy/tensor/tests/test_tensor_operators.py::test_invalid_partial_derivative_valence PASSED [ 15%]\nsympy/tensor/tests/test_tensor_operators.py::test_tensor_partial_deriv PASSED [ 23%]\nsympy/tensor/tests/test_tensor_operators.py::test_replace_arrays_partial_derivative PASSED [ 30%]\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_sum_rule PASSED [ 38%]\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_constant_factor_rule PASSED [ 46%]\nsympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_product_rule PASSED [ 53%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_expr_by_symbol PASSED [ 61%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_single_tensors_by_scalar PASSED [ 69%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_single_1st_rank_tensors_by_tensor PASSED [ 76%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_single_2nd_rank_tensors_by_tensor PASSED [ 84%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_divergence_type PASSED [ 92%]\nsympy/tensor/tests/test_tensor_operators.py::test_eval_partial_derivative_expr1 PASSED [100%]\n\n=================================== FAILURES ===================================\n________________ test_expand_partial_derivative_full_linearity _________________\n\n    def test_expand_partial_derivative_full_linearity():\n        nneg = randint(0, 1000)\n        pos = randint(1, 1000)\n        neg = -randint(1, 1000)\n    \n        c1 = Rational(nneg, pos)\n        c2 = Rational(neg, pos)\n        c3 = Rational(nneg, neg)\n    \n        # check full linearity\n        p = PartialDerivative(42, D(j))\n>       assert p and not p._expand_partial_derivative()\nE       assert (PartialDerivative(42, D(j)) and not PartialDerivative(42, D(j)))\nE        +  where PartialDerivative(42, D(j)) = <bound method PartialDerivative._expand_partial_derivative of PartialDerivative(42, D(j))>()\nE        +    where <bound method PartialDerivative._expand_partial_derivative of PartialDerivative(42, D(j))> = PartialDerivative(42, D(j))._expand_partial_derivative\n\nsympy/tensor/tests/test_tensor_operators.py:233: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/tensor/tests/test_tensor_operators.py::test_expand_partial_derivative_full_linearity\n=================== 1 failed, 12 passed, 1 warning in 0.51s ====================\n",
+  "code": [
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__",
+      "start_line": 24,
+      "end_line": 25,
+      "score": 31.732051,
+      "text": "sympy/holonomic/holonomicerrors.py::NotHolonomicError.__init__ lines 24-25\n    def __init__(self, m):\n        self.m = m",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/orderings.py",
+      "function": "InverseOrder.__init__",
+      "start_line": 158,
+      "end_line": 159,
+      "score": 31.732051,
+      "text": "sympy/polys/orderings.py::InverseOrder.__init__ lines 158-159\n    def __init__(self, O):\n        self.O = O",
+      "truncated": false
+    }
+  ]
+}

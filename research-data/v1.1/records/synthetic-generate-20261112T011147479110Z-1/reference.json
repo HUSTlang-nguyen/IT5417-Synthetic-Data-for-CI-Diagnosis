@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T011147479110Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__init__"
+    }
+  ],
+  "explanation": "The zero-vector special case recognizes1 instead of0. Constructing Vector(0) now reaches the iterable-input branch and attempts to iterate integer0, raising the saved TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__init__"
+    },
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__eq__"
+    },
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__add__"
+    },
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__ne__"
+    },
+    {
+      "file": "sympy/physics/vector/frame.py",
+      "function": "ReferenceFrame.orient"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

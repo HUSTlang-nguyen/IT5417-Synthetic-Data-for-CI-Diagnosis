@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-13971",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_SeqFormula"
+    }
+  ],
+  "explanation": "Sequence formatting escapes square brackets after LaTeX left/right commands. The emitted string includes an extra backslash before each delimiter instead of the required left[ ... right] structure. Removing those two escapes produces the expected sequence representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "FreeModule.convert"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/plotting/plot.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T010533449247Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.union"
+    }
+  ],
+  "explanation": "The union method calls Intersection instead of Union. The saved interval example returns the singleton2 rather than interval[1,3], and consumers inherit that wrong set operation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.sup"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set._sup"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

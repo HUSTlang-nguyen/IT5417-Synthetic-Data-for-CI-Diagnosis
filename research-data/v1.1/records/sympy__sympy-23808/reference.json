@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-23808",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/solvers/diophantine/diophantine.py",
+      "function": "pow_rep_recursive"
+    }
+  ],
+  "explanation": "The search recurses once for every decrement of the candidate upper bound before considering terms. The saved million-as-squares query exhausts Python recursion depth on that decrement path. Iterating candidate terms with feasibility bounds and a one-term base case prevents the linear-depth recursion.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine/diophantine.py",
+      "function": "pow_rep_recursive"
+    },
+    {
+      "file": "sympy/solvers/diophantine/diophantine.py",
+      "function": "diop_solve"
+    },
+    {
+      "file": "sympy/solvers/diophantine/diophantine.py",
+      "function": "diop_general_sum_of_squares"
+    },
+    {
+      "file": "sympy/solvers/diophantine/diophantine.py",
+      "function": "GeneralSumOfSquares.solve"
+    },
+    {
+      "file": "sympy/solvers/diophantine/diophantine.py",
+      "function": "power_representation"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

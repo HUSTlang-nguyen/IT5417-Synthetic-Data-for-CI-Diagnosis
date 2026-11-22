@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 37 items\n\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_21195 PASSED [  2%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrix_symbol_creation PASSED [  5%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_shape PASSED      [  8%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matexpr PASSED    [ 10%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_subs PASSED       [ 13%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_addition PASSED   [ 16%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_multiplication PASSED [ 18%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatPow FAILED     [ 21%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSymbol PASSED [ 24%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_dense_conversion PASSED [ 27%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_free_symbols PASSED [ 29%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_zero_matmul PASSED [ 32%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matadd_simplify PASSED [ 35%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matmul_simplify PASSED [ 37%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_invariants PASSED [ 40%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_indexing PASSED   [ 43%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_single_indexing PASSED [ 45%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_commutative PASSED [ 48%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSymbol_determinant PASSED [ 51%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_diff PASSED [ 54%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_doit PASSED [ 56%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_identity_powers PASSED [ 59%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_Zero_power PASSED [ 62%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrixelement_diff PASSED [ 64%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixElement_with_values PASSED [ 67%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_inv PASSED        [ 70%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_2749 PASSED [ 72%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_2750 PASSED [ 75%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_issue_7842 PASSED [ 78%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatMul_postprocessor PASSED [ 81%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatAdd_postprocessor PASSED [ 83%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_simplify_matrix_expressions PASSED [ 86%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_exp PASSED        [ 89%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_invalid_args PASSED [ 91%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_matrixsymbol_from_symbol PASSED [ 94%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_as_explicit PASSED [ 97%]\nsympy/matrices/expressions/tests/test_matexpr.py::test_MatrixSet PASSED  [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_MatPow __________________________________\n\n    def test_MatPow():\n        A = MatrixSymbol('A', n, n)\n    \n        AA = MatPow(A, 2)\n        assert AA.exp == 2\n        assert AA.base == A\n        assert (A**n).exp == n\n    \n        assert A**0 == Identity(n)\n        assert A**1 == A\n        assert A**2 == AA\n        assert A**-1 == Inverse(A)\n        assert (A**-1)**-1 == A\n        assert (A**2)**3 == A**6\n        assert A**S.Half == sqrt(A)\n        assert A**Rational(1, 3) == cbrt(A)\n>       raises(NonSquareMatrixError, lambda: MatrixSymbol('B', 3, 2)**2)\n\nsympy/matrices/expressions/tests/test_matexpr.py:135: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \nsympy/matrices/expressions/tests/test_matexpr.py:135: in <lambda>\n    raises(NonSquareMatrixError, lambda: MatrixSymbol('B', 3, 2)**2)\nsympy/matrices/expressions/matexpr.py:29: in __sympifyit_wrapper\n    return func(a, b)\nsympy/core/decorators.py:136: in binary_op_wrapper\n    return func(self, other)\nsympy/matrices/expressions/matexpr.py:148: in __pow__\n    return MatPow(self, other).doit()\nsympy/matrices/expressions/matpow.py:16: in __new__\n    raise NonSquareMatrixError(\"Power of non-square matrix %s\" % base)\nsympy/core/_print_helpers.py:29: in __str__\n    return sstr(self, order=None)\nsympy/printing/printer.py:373: in __call__\n    return self.__wrapped__(*args, **kwargs)\nsympy/printing/str.py:916: in sstr\n    s = p.doprint(expr)\nsympy/printing/printer.py:291: in doprint\n    return self._str(self._print(expr))\nsympy/printing/printer.py:329: in _print\n    return getattr(self, printmethod)(expr, **kwargs)\nsympy/printing/str.py:762: in _print_Symbol\n    return expr.name\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <[AttributeError(\"'Integer' object has no attribute 'name'\") raised in repr()] MatrixSymbol object at 0x7f69d59bc4a0>\n\n    @property\n    def name(self):\n>       return self.args[1].name\nE       AttributeError: 'Integer' object has no attribute 'name'\n\nsympy/matrices/expressions/matexpr.py:795: AttributeError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/matrices/expressions/tests/test_matexpr.py::test_MatPow - Attrib...\n=================== 1 failed, 36 passed, 1 warning in 1.18s ====================\n",
+  "code": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixExpr.__pow__",
+      "start_line": 147,
+      "end_line": 148,
+      "score": 1152.645751,
+      "text": "sympy/matrices/expressions/matexpr.py::MatrixExpr.__pow__ lines 147-148\n    def __pow__(self, other):\n        return MatPow(self, other).doit()",
+      "truncated": false
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.name",
+      "start_line": 794,
+      "end_line": 795,
+      "score": 1152.236068,
+      "text": "sympy/matrices/expressions/matexpr.py::MatrixSymbol.name lines 794-795\n    def name(self):\n        return self.args[1].name",
+      "truncated": false
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_sympifyit.deco.__sympifyit_wrapper",
+      "start_line": 26,
+      "end_line": 31,
+      "score": 1151.333333,
+      "text": "sympy/matrices/expressions/matexpr.py::_sympifyit.deco.__sympifyit_wrapper lines 26-31\n        def __sympifyit_wrapper(a, b):\n            try:\n                b = _sympify(b)\n                return func(a, b)\n            except SympifyError:\n                return retval",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/_print_helpers.py",
+      "function": "Printable.__str__",
+      "start_line": 27,
+      "end_line": 29,
+      "score": 1132.886751,
+      "text": "sympy/core/_print_helpers.py::Printable.__str__ lines 27-29\n    def __str__(self):\n        from sympy.printing.str import sstr\n        return sstr(self, order=None)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/printer.py",
+      "function": "_PrintFunction.__call__",
+      "start_line": 372,
+      "end_line": 373,
+      "score": 1132.645751,
+      "text": "sympy/printing/printer.py::_PrintFunction.__call__ lines 372-373\n    def __call__(self, *args, **kwargs):\n        return self.__wrapped__(*args, **kwargs)",
+      "truncated": false
+    }
+  ]
+}

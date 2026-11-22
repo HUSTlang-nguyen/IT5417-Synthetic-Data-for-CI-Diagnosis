@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T012429852145Z",
+  "reviewed_at": "2026-11-12T11:38:29+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d9e6fdc070c56ea47aeb24273704146edf51d1baa16149682ef928cc16a53114",
+    "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+    "historical-base.stdout.txt": "e5f6fac8a6cac479dbb11fda71afe532d91413d91bd169ba475498e2995541cc",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b130740429470befb186e6d1244ccc73d2548bf633f66cda18d25cc9ef90506b",
+    "historical-fixed.stdout.txt": "1ca71301f44be53db4b15a5ce0b23dcabc5ba42ed776f92323df9014fcba89a3",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "53569f1c49c13ac7b47c4b7036b05bf473016d41ca56da3e69e8bd8b44eb1a2d"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/python.py",
+      "function": "PyCollector.istestfunction"
+    }
+  ],
+  "mechanism": "Test discovery unwraps staticmethod descriptors but not classmethod descriptors before checking callable. Classmethod tests are consequently omitted: the saved runs collect three instead of four functions and no classmethod item. Unwrapping both descriptor types restores discovery.",
+  "limitations": "The application under diagnosis is pytest itself; immutable upstream tests are its harness. This does not confuse repairing source collection logic with altering the frozen harness.",
+  "observed_junit": {
+    "base": {
+      "cases": 105,
+      "failures_or_errors": 2,
+      "skipped": 2
+    },
+    "head": {
+      "cases": 105,
+      "failures_or_errors": 0,
+      "skipped": 2
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.python.integration::test_function_instance",
+      "message": "assert 3 == 4\n +  where 3 = len([<Function test_func>, <Function test_method>, <Function test_static>])"
+    },
+    {
+      "test": "testing.test_collection.Test_genitems::test_classmethod_is_discovered",
+      "message": "AssertionError: assert [] == ['TestCase.test_classmethod']\n  Right contains one more item: 'TestCase.test_classmethod'\n  Full diff:\n  - ['TestCase.test_classmethod']\n  + []"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T035109166753Z",
+  "reviewed_at": "2026-11-12T11:52:33+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ff1e0239096764326980c6d13b5a18a104a9fc8c613e78e846a15ced8093d1f3",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "45d03ba6665e355b2985b30d9b08b56f6f820de7db2f0dee5a6e8ee016d736ca",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "12e42922a988d143147579e7f743100ccdf60b13f49af085a8a8c4833b3b68b3",
+    "historical-fixed.stdout.txt": "eaffbdbbd99815f31a5a3cda1bb1f7257b1b5b9581f0350051a3e1b8855d9e0d",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "38995c676c12556d1252646d652829ab79e83901bda381c1308e872d0f4c354a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/fcode.py",
+      "function": "FCodePrinter._print_sign"
+    }
+  ],
+  "mechanism": "The Fortran printer lacks a sign-specific handler and emits the generic sign(x) call. The saved contract requires a typed, zero-aware merge/dsign expression. The added handler supplies integer/complex/real backend forms.",
+  "limitations": "Explicit missing-definition reference. The first saved assertion proves the real-expression output; additional typed branches are repair evidence, not independently executed Fortran.",
+  "observed_junit": {
+    "base": {
+      "cases": 29,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 29,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_fcode::test_fcode_sign",
+      "message": "AssertionError: assert 'sign(x)' == 'merge(0d0, d...x), x == 0d0)'\n  - merge(0d0, dsign(1d0, x), x == 0d0)\n  + sign(x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/fcode.py",
+      "function": "FCodePrinter._print_sign"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T081209377240Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/tensor/toperators.py",
+      "function": "PartialDerivative._extract_data"
+    }
+  ],
+  "explanation": "The contraction check tests varindex rather than its opposite-variance index. The saved contracted derivative remains a2Didentity array instead of scalar2.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/tensor/tensor.py",
+      "function": "TensorElement.get_indices"
+    },
+    {
+      "file": "sympy/utilities/codegen.py",
+      "function": "ResultBase.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

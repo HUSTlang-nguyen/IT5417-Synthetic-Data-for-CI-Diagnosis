@@ -1,0 +1,31 @@
+{
+  "sample_id": "pylint-dev__astroid-1719",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.object_build"
+    }
+  ],
+  "explanation": "Deep inspection sets all warnings to errors but catches only AttributeError and DeprecationWarning. A simulated module attribute emits FutureWarning, which escapes and aborts building in the saved stack. Ignoring warnings during attribute inspection permits the expected build.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.inspect_build"
+    },
+    {
+      "file": "astroid/builder.py",
+      "function": "AstroidBuilder.module_build"
+    },
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.object_build"
+    },
+    {
+      "file": "astroid/raw_building.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

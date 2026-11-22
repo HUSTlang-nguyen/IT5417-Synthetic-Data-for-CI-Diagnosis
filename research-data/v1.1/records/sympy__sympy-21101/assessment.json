@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T034639733420Z",
+  "reviewed_at": "2026-11-12T11:53:01+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "23b6388e71e0ba1364baaa19b792053de9b02fe42df8a129b08d3e9858804321",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "08fcf60308d297ad32b7e0836e5bf3db491a6e9cd3a587f717f12c3102b92ebb",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ed3abf2f5b660b38fac7ffb3660ebad78874fb7a3f364e69c758a68c21f520e1",
+    "historical-fixed.stdout.txt": "30d902eb6df3c224226dad210de7684d41aa92a6d50f3bf7945d88993c2b2d51",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "1bcc303edf1d44df4663ae534a22ce0530ecb78f051bd8da6c1a3fa5e3a13e7a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Mul.convert_args"
+    }
+  ],
+  "mechanism": "The numeric-separator decision matches the already formatted LaTeX fragment. A fraction begins with a LaTeX command and is not recognized as a numeric factor, so an unevaluated1 times one-half loses the multiplication dot. Checking the original term string with the revised numeric-start rule restores that separator.",
+  "limitations": "The patch also changes the module regex. The saved assertion directly supports the existing inner decision function plus that pattern; it does not establish every sign/braces formatting case.",
+  "observed_junit": {
+    "base": {
+      "cases": 153,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 153,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_basic",
+      "message": "AssertionError: assert '1 \\\\frac{1}{2}' == '1 \\\\cdot \\\\frac{1}{2}'\n  - 1 \\cdot \\frac{1}{2}\n  ?  ------\n  + 1 \\frac{1}{2}"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,11 @@
+--- a/pydicom/dataelem.py
++++ b/pydicom/dataelem.py
+@@ -509,7 +509,7 @@
+             name = dictionary_description(self.tag)
+ 
+         # implied Group Length dicom versions < 3
+-        elif self.tag.element == 0:
++        elif self.tag.element == 1:
+             name = "Group Length"
+         else:
+             name = ""

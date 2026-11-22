@@ -1,0 +1,11 @@
+--- a/sympy/tensor/toperators.py
++++ b/sympy/tensor/toperators.py
+@@ -176,7 +176,7 @@
+         indices, array = self.expr._extract_data(replacement_dict)
+         for variable in self.variables:
+             var_indices, var_array = variable._extract_data(replacement_dict)
+-            var_indices = [-i for i in var_indices]
++            var_indices = [i for i in var_indices]
+             coeff_array, var_array = zip(*[i.as_coeff_Mul() for i in var_array])
+             array = derive_by_array(array, var_array)
+             array = array.as_mutable()  # type: MutableDenseNDimArray

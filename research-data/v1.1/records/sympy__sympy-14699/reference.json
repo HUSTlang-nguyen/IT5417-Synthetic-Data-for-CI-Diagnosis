@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-14699",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/physics/vector/frame.py",
+      "function": "ReferenceFrame.orientnew"
+    }
+  ],
+  "explanation": "orientnew passes variables, indices and latexs positionally to the frame constructor in an order that does not match those parameters. User-supplied custom settings are therefore lost or misassigned. Passing them by keyword preserves the intended indices, LaTeX names and variables.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/vector/printing.py",
+      "function": "VectorLatexPrinter._print_Derivative"
+    },
+    {
+      "file": "sympy/physics/vector/printing.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

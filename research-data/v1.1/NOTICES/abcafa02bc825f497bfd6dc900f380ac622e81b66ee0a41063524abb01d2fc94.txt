@@ -1,0 +1,100 @@
+"""Hypergeometric and Meijer G-functions"""
+
+from __future__ import print_function, division
+
+from sympy.core import S, I, pi, oo, zoo, ilcm, Mod
+from sympy.core.function import Function, Derivative, ArgumentIndexError
+from sympy.core.compatibility import reduce
+from sympy.core.containers import Tuple
+from sympy.core.mul import Mul
+from sympy.core.symbol import Dummy
+
+from sympy.functions import (sqrt, exp, log, sin, cos, asin, atan,
+        sinh, cosh, asinh, acosh, atanh, acoth, Abs)
+from sympy.utilities.iterables import default_sort_key
+
+class TupleArg(Tuple):
+    def limit(self, x, xlim, dir='+'):
+        """ Compute limit x->xlim.
+        """
+        from sympy.series.limits import limit
+        return TupleArg(*[limit(f, x, xlim, dir) for f in self.args])
+
+
+# TODO should __new__ accept **options?
+# TODO should constructors should check if parameters are sensible?
+
+
+def _prep_tuple(v):
+    """
+    Turn an iterable argument *v* into a tuple and unpolarify, since both
+    hypergeometric and meijer g-functions are unbranched in their parameters.
+
+    Examples
+    ========
+
+    >>> from sympy.functions.special.hyper import _prep_tuple
+    >>> _prep_tuple([1, 2, 3])
+    (1, 2, 3)
+    >>> _prep_tuple((4, 5))
+    (4, 5)
+    >>> _prep_tuple((7, 8, 9))
+    (7, 8, 9)
+
+    """
+    from sympy import unpolarify
+    return TupleArg(*[unpolarify(x) for x in v])
+
+
+class TupleParametersBase(Function):
+    """ Base class that takes care of differentiation, when some of
+        the arguments are actually tuples. """
+    # This is not deduced automatically since there are Tuples as arguments.
+    is_commutative = True
+
+    def _eval_derivative(self, s):
+        try:
+            res = 0
+            if self.args[0].has(s) or self.args[1].has(s):
+                for i, p in enumerate(self._diffargs):
+                    m = self._diffargs[i].diff(s)
+                    if m != 0:
+                        res += self.fdiff((1, i))*m
+            return res + self.fdiff(3)*self.args[2].diff(s)
+        except (ArgumentIndexError, NotImplementedError):
+            return Derivative(self, s)
+
+
+class hyper(TupleParametersBase):
+    r"""
+    The generalized hypergeometric function is defined by a series where
+    the ratios of successive terms are a rational function of the summation
+    index. When convergent, it is continued analytically to the largest
+    possible domain.
+
+    Explanation
+    ===========
+
+    The hypergeometric function depends on two vectors of parameters, called
+    the numerator parameters $a_p$, and the denominator parameters
+    $b_q$. It also has an argument $z$. The series definition is
+
+    .. math ::
+        {}_pF_q\left(\begin{matrix} a_1, \cdots, a_p \\ b_1, \cdots, b_q \end{matrix}
+                     \middle| z \right)
+        = \sum_{n=0}^\infty \frac{(a_1)_n \cdots (a_p)_n}{(b_1)_n \cdots (b_q)_n}
+                            \frac{z^n}{n!},
+
+    where $(a)_n = (a)(a+1)\cdots(a+n-1)$ denotes the rising factorial.
+
+    If one of the $b_q$ is a non-positive integer then the series is
+    undefined unless one of the $a_p$ is a larger (i.e., smaller in
+    magnitude) non-positive integer. If none of the $b_q$ is a
+    non-positive integer and one of the $a_p$ is a non-positive
+    integer, then the series reduces to a polynomial. To simplify the
+    following discussion, we assume that none of the $a_p$ or
+    $b_q$ is a non-positive integer. For more details, see the
+    references.
+
+    The series converges for all $z$ if $p \le q$, and thus
+    defines an entire single-valued function in this case. If $p =

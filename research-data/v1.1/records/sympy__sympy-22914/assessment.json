@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T194452801202Z",
+  "reviewed_at": "2026-11-12T02:53:16+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "508bb26a9ceec970399cd7532cac03c2f1594b04454ca6c319eaccdc087270b6",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "19976fca4f30ce9213659cb5c53621e7824cf7ea9c4d6011db6491e884ced99a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "6a1038258cb089ee3d172edd39478a3a1c380d15eddeadaf0e4143b8aabadd09",
+    "historical-fixed.stdout.txt": "8351007e63b4bfe91b044ba7b468fbcdcd43482cc88a5fe9f04169a60a56baad",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "a07c2448c5e7fd7aa9a52233cb3323aed9351d4b7732a63a4a02f1ecbb7d19bd"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "<module>"
+    }
+  ],
+  "mechanism": "The module-level known-function registry omits Min/Max. PythonCodePrinter therefore renders Min(x,y) as a conditional expression rather than the builtin min(x,y) form required by its output contract. Adding the two registry entries makes the unchanged tests pass.",
+  "evidence_reason": "Base: test_PythonCodePrinter fails at test_pycode.py:61, actual ((x) if (x <= y) else (y)) versus min(x, y); 17 other tests pass. Fixed: all 18 pass. The two-entry repair and registry/AbstractPythonCodePrinter initialization were read; frozen F2P/P2P IDs resolve.",
+  "limitations": "The observed defect is generated-code representation, not a proved numerical Min error. Max is repaired too but execution stops at the first Min assertion. Causal site is a module registry, so <module> is reported explicitly instead of inventing a function."
+}

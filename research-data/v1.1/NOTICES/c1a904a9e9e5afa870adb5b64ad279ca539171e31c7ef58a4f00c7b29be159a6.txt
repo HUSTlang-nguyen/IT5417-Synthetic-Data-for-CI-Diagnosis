@@ -1,0 +1,100 @@
+from typing import Tuple as tTuple
+
+from sympy.core.logic import FuzzyBool
+
+from functools import wraps, reduce
+import collections
+
+from sympy.core import S, Symbol, Integer, Basic, Expr, Mul, Add
+from sympy.core.decorators import call_highest_priority
+from sympy.core.compatibility import SYMPY_INTS, default_sort_key
+from sympy.core.symbol import Str
+from sympy.core.sympify import SympifyError, _sympify
+from sympy.functions import conjugate, adjoint
+from sympy.functions.special.tensor_functions import KroneckerDelta
+from sympy.matrices.common import NonSquareMatrixError
+from sympy.simplify import simplify
+from sympy.matrices.matrices import MatrixKind
+from sympy.utilities.misc import filldedent
+from sympy.multipledispatch import dispatch
+
+
+def _sympifyit(arg, retval=None):
+    # This version of _sympifyit sympifies MutableMatrix objects
+    def deco(func):
+        @wraps(func)
+        def __sympifyit_wrapper(a, b):
+            try:
+                b = _sympify(b)
+                return func(a, b)
+            except SympifyError:
+                return retval
+
+        return __sympifyit_wrapper
+
+    return deco
+
+
+class MatrixExpr(Expr):
+    """Superclass for Matrix Expressions
+
+    MatrixExprs represent abstract matrices, linear transformations represented
+    within a particular basis.
+
+    Examples
+    ========
+
+    >>> from sympy import MatrixSymbol
+    >>> A = MatrixSymbol('A', 3, 3)
+    >>> y = MatrixSymbol('y', 3, 1)
+    >>> x = (A.T*A).I * A * y
+
+    See Also
+    ========
+
+    MatrixSymbol, MatAdd, MatMul, Transpose, Inverse
+    """
+
+    # Should not be considered iterable by the
+    # sympy.core.compatibility.iterable function. Subclass that actually are
+    # iterable (i.e., explicit matrices) should set this to True.
+    _iterable = False
+
+    _op_priority = 11.0
+
+    is_Matrix = True  # type: bool
+    is_MatrixExpr = True  # type: bool
+    is_Identity = None  # type: FuzzyBool
+    is_Inverse = False
+    is_Transpose = False
+    is_ZeroMatrix = False
+    is_MatAdd = False
+    is_MatMul = False
+
+    is_commutative = False
+    is_number = False
+    is_symbol = False
+    is_scalar = False
+
+    kind = MatrixKind()
+
+    def __new__(cls, *args, **kwargs):
+        args = map(_sympify, args)
+        return Basic.__new__(cls, *args, **kwargs)
+
+    # The following is adapted from the core Expr object
+
+    @property
+    def shape(self) -> tTuple[Expr, Expr]:
+        raise NotImplementedError
+
+    @property
+    def _add_handler(self):
+        return MatAdd
+
+    @property
+    def _mul_handler(self):
+        return MatMul
+
+    def __neg__(self):
+        return MatMul(S.NegativeOne, self).doit()

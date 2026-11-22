@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 1 item\n\nsympy/physics/units/tests/test_unit_system_cgs_gauss.py::test_conversion_to_from_si FAILED [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_conversion_to_from_si __________________________\n\n    def test_conversion_to_from_si():\n>       assert convert_to(statcoulomb, coulomb, cgs_gauss) == coulomb/2997924580\nE       assert 5*coulomb/149896229 == (coulomb / 2997924580)\nE        +  where 5*coulomb/149896229 = convert_to(statcoulomb, coulomb, <UnitSystem: (centimeter, gram, second)>)\n\nsympy/physics/units/tests/test_unit_system_cgs_gauss.py:13: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/physics/units/tests/test_unit_system_cgs_gauss.py::test_conversion_to_from_si\n============================== 1 failed in 1.32s ===============================\n",
+  "code": [
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.convert_to",
+      "start_line": 220,
+      "end_line": 238,
+      "score": 31.251086,
+      "text": "sympy/physics/units/quantities.py::Quantity.convert_to lines 220-238\n    def convert_to(self, other, unit_system=\"SI\"):\n        \"\"\"\n        Convert the quantity to another quantity of same dimensions.\n\n        Examples\n        ========\n\n        >>> from sympy.physics.units import speed_of_light, meter, second\n        >>> speed_of_light\n        speed_of_light\n        >>> speed_of_light.convert_to(meter/second)\n        299792458*meter/second\n\n        >>> from sympy.physics.units import liter\n        >>> liter.convert_to(meter**3)\n        meter**3/1000\n        \"\"\"\n        from .util import convert_to\n        return convert_to(self, other, unit_system)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/physics/units/util.py",
+      "function": "convert_to",
+      "start_line": 51,
+      "end_line": 129,
+      "score": 31.03923,
+      "text": "sympy/physics/units/util.py::convert_to lines 51-129\ndef convert_to(expr, target_units, unit_system=\"SI\"):\n    \"\"\"\n    Convert ``expr`` to the same expression with all of its units and quantities\n    represented as factors of ``target_units``, whenever the dimension is compatible.\n\n    ``target_units`` may be a single unit/quantity, or a collection of\n    units/quantities.\n\n    Examples\n    ========\n\n    >>> from sympy.physics.units import speed_of_light, meter, gram, second, day\n    >>> from sympy.physics.units import mile, newton, kilogram, atomic_mass_constant\n    >>> from sympy.physics.units import kilometer, centimeter\n    >>> from sympy.physics.units import gravitational_constant, hbar\n    >>> from sympy.physics.units import convert_to\n    >>> convert_to(mile, kilometer)\n    25146*kilometer/15625\n    >>> convert_to(mile, kilometer).n()\n    1.609344*kilometer\n    >>> convert_to(speed_of_light, meter/second)\n    299792458*meter/second\n    >>> convert_to(day, second)\n    86400*second\n    >>> 3*newton\n    3*newton\n    >>> convert_to(3*newton, kilogram*meter/second**2)\n    3*kilogram*meter/second**2\n    >>> convert_to(atomic_mass_constant, gram)\n    1.660539060e-24*gram\n\n    Conversion to multiple units:\n\n    >>> convert_to(speed_of_light, [meter, second])\n    299792458*meter/second\n    >>> convert_to(3*newton, [centimeter, gram, second])\n    300000*centimeter*gram/second**2\n\n    Conversion to Planck units:\n\n    >>> convert_to(atomic_mass_constant, [gravitational_constant, speed_of_light, hbar]).n()\n    7.62963087839509e-20*hbar**0.5*speed_of_light**0.5/gravitational_constant**0.5\n\n    \"\"\"\n    from sympy.physics.units import UnitSystem\n    unit_system = UnitSystem.get_unit_system(unit_system)\n\n    if not isinstance(target_units, (Iterable, Tuple)):\n        target_units = [target_units]\n\n    if isinstance(expr, Add):\n        return Add.fromiter(convert_to(i, target_units, unit_system)\n            for i in expr.args)\n\n    expr = sympify(expr)\n    target_units = sympify(target_units)\n\n    if not isinstance(expr, Quantity) and expr.has(Quantity):\n        expr = expr.replace(lambda x: isinstance(x, Quantity),\n            lambda x: x.convert_to(target_units, unit_system))\n\n    def get_total_scale_factor(expr):\n        if isinstance(expr, Mul):\n            return reduce(lambda x, y: x * y,\n                [get_total_scale_factor(i) for i in expr.args])\n        elif isinstance(expr, Pow):\n            return get_total_scale_factor(expr.base) ** expr.exp\n        elif isinstance(expr, Quantity):\n            return unit_system.get_quantity_scale_factor(expr)\n        return expr\n\n    depmat = _get_conversion_matrix_for_expr(expr, target_units, unit_system)\n    if depmat is None:\n        return expr\n\n    expr_scale_factor = get_total_scale_factor(expr)\n    return expr_scale_factor * Mul.fromiter(\n        (1/get_total_scale_factor(u)*u)**p for u, p in\n        zip(target_units, depmat))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_default_unit_system",
+      "start_line": 106,
+      "end_line": 107,
+      "score": 30.894427,
+      "text": "sympy/physics/units/unitsystem.py::UnitSystem.get_default_unit_system lines 106-107\n    def get_default_unit_system():\n        return UnitSystem._unit_systems[\"SI\"]",
+      "truncated": false
+    },
+    {
+      "file": "sympy/stats/frv.py",
+      "function": "FinitePSpace.where",
+      "start_line": 258,
+      "end_line": 260,
+      "score": 30.83205,
+      "text": "sympy/stats/frv.py::FinitePSpace.where lines 258-260\n    def where(self, condition):\n        assert all(r.symbol in self.symbols for r in random_symbols(condition))\n        return ConditionalFiniteDomain(self.domain, condition)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/parsing/autolev/_antlr/autolevparser.py",
+      "function": "AutolevParser.UnitsContext.UnitSystem",
+      "start_line": 1838,
+      "end_line": 1839,
+      "score": 30.816497,
+      "text": "sympy/parsing/autolev/_antlr/autolevparser.py::AutolevParser.UnitsContext.UnitSystem lines 1838-1839\n        def UnitSystem(self):\n            return self.getToken(AutolevParser.UnitSystem, 0)",
+      "truncated": false
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-5.0.0b1, docutils-0.17.1\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 8 items\n\ntests/test_build_gettext.py::test_Catalog_duplicated_message FAILED      [ 12%]\ntests/test_build_gettext.py::test_build_gettext PASSED                   [ 25%]\ntests/test_build_gettext.py::test_msgfmt SKIPPED                         [ 37%]\ntests/test_build_gettext.py::test_gettext_index_entries PASSED           [ 50%]\ntests/test_build_gettext.py::test_gettext_disable_index_entries PASSED   [ 62%]\ntests/test_build_gettext.py::test_gettext_template PASSED                [ 75%]\ntests/test_build_gettext.py::test_gettext_template_msgid_order_in_sphinxpot PASSED [ 87%]\ntests/test_build_gettext.py::test_build_single_pot PASSED                [100%]\n\n=================================== FAILURES ===================================\n_______________________ test_Catalog_duplicated_message ________________________\n\n    def test_Catalog_duplicated_message():\n        catalog = Catalog()\n        catalog.add('hello', MsgOrigin('/path/to/filename', 1))\n        catalog.add('hello', MsgOrigin('/path/to/filename', 1))\n        catalog.add('hello', MsgOrigin('/path/to/filename', 2))\n        catalog.add('hello', MsgOrigin('/path/to/yetanother', 1))\n        catalog.add('world', MsgOrigin('/path/to/filename', 1))\n    \n        assert len(list(catalog)) == 2\n    \n        msg1, msg2 = list(catalog)\n        assert msg1.text == 'hello'\n>       assert msg1.locations == [('/path/to/filename', 1),\n                                  ('/path/to/filename', 2),\n                                  ('/path/to/yetanother', 1)]\nE       AssertionError: assert [('/path/to/f...tanother', 1)] == [('/path/to/f...tanother', 1)]\nE         At index 1 diff: ('/path/to/filename', 1) != ('/path/to/filename', 2)\nE         Left contains one more item: ('/path/to/yetanother', 1)\nE         Full diff:\nE           [\nE         +  ('/path/to/filename',\nE         +   1),\nE            ('/path/to/filename',...\nE         \nE         ...Full output truncated (6 lines hidden), use '-vv' to show\n\ntests/test_build_gettext.py:27: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_build_gettext.py::test_Catalog_duplicated_message - Asserti...\n==================== 1 failed, 6 passed, 1 skipped in 1.70s ====================\n",
+  "code": [
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.isfile",
+      "start_line": 54,
+      "end_line": 58,
+      "score": 30.948683,
+      "text": "sphinx/testing/path.py::path.isfile lines 54-58\n    def isfile(self) -> bool:\n        \"\"\"\n        Returns ``True`` if the path is a file.\n        \"\"\"\n        return os.path.isfile(self)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.parent",
+      "start_line": 27,
+      "end_line": 31,
+      "score": 30.866025,
+      "text": "sphinx/testing/path.py::path.parent lines 27-31\n    def parent(self) -> \"path\":\n        \"\"\"\n        The name of the directory the file or directory is in.\n        \"\"\"\n        return self.__class__(os.path.dirname(self))",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/comparer.py",
+      "function": "PathComparer.diff",
+      "start_line": 42,
+      "end_line": 59,
+      "score": 30.816497,
+      "text": "sphinx/testing/comparer.py::PathComparer.diff lines 42-59\n    def diff(self, other: Union[str, pathlib.Path]) -> List[str]:\n        \"\"\"compare self and other.\n\n        When different is not exist, return empty list.\n\n        >>> PathComparer('/to/index').diff('C:\\\\to\\\\index')\n        []\n\n        When different is exist, return unified diff style list as:\n\n        >>> PathComparer('/to/index').diff('C:\\\\to\\\\index2')\n        [\n           '- C:/to/index'\n           '+ C:/to/index2'\n           '?            +'\n        ]\n        \"\"\"\n        return self.ldiff(other)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.basename",
+      "start_line": 33,
+      "end_line": 34,
+      "score": 30.816497,
+      "text": "sphinx/testing/path.py::path.basename lines 33-34\n    def basename(self) -> str:\n        return os.path.basename(self)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.unlink",
+      "start_line": 124,
+      "end_line": 128,
+      "score": 30.816497,
+      "text": "sphinx/testing/path.py::path.unlink lines 124-128\n    def unlink(self) -> None:\n        \"\"\"\n        Removes a file.\n        \"\"\"\n        os.unlink(self)",
+      "truncated": false
+    }
+  ]
+}

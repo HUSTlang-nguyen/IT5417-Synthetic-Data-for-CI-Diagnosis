@@ -1,0 +1,23 @@
+{
+  "sample_id": "sphinx-doc__sphinx-7454",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "_parse_annotation.make_xref"
+    }
+  ],
+  "explanation": "The nested annotation-reference builder assigns class role to every target, including None. The saved node assertion requires object role for None, a singleton object rather than a class. Selecting obj for None and class otherwise fixes the reference metadata.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

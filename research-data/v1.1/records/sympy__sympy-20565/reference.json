@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-20565",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals._contains"
+    }
+  ],
+  "explanation": "For Number instances membership uses is_Rational, a structural class flag, rather than the mathematical is_rational assumption. Float 0.5 is therefore rejected as false instead of retaining an unevaluated membership when rationality is unknown. Removing the special Number branch preserves the assumption-based semantics.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Complexes.sets"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals.__iter__"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals._boundary"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals._contains"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals0._contains"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

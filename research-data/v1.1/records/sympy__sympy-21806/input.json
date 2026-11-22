@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 7 items\n\nsympy/algebras/tests/test_quaternion.py::test_quaternion_evalf FAILED    [ 14%]\nsympy/algebras/tests/test_quaternion.py::test_quaternion_construction PASSED [ 28%]\nsympy/algebras/tests/test_quaternion.py::test_quaternion_complex_real_addition PASSED [ 42%]\nsympy/algebras/tests/test_quaternion.py::test_quaternion_functions PASSED [ 57%]\nsympy/algebras/tests/test_quaternion.py::test_quaternion_conversions PASSED [ 71%]\nsympy/algebras/tests/test_quaternion.py::test_quaternion_rotation_iss1593 PASSED [ 85%]\nsympy/algebras/tests/test_quaternion.py::test_quaternion_multiplication PASSED [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_quaternion_evalf _____________________________\n\n    def test_quaternion_evalf():\n>       assert Quaternion(sqrt(2), 0, 0, sqrt(3)).evalf() == Quaternion(sqrt(2).evalf(), 0, 0, sqrt(3).evalf())\nE       assert sqrt(2) + 0*i + 0*j + sqrt(3)*k == 1.4142135623731 + 0*i + 0*j + 1.73205080756888*k\nE        +  where sqrt(2) + 0*i + 0*j + sqrt(3)*k = <bound method EvalfMixin.evalf of sqrt(2) + 0*i + 0*j + sqrt(3)*k>()\nE        +    where <bound method EvalfMixin.evalf of sqrt(2) + 0*i + 0*j + sqrt(3)*k> = sqrt(2) + 0*i + 0*j + sqrt(3)*k.evalf\nE        +      where sqrt(2) + 0*i + 0*j + sqrt(3)*k = Quaternion(sqrt(2), 0, 0, sqrt(3))\nE        +        where sqrt(2) = sqrt(2)\nE        +        and   sqrt(3) = sqrt(3)\nE        +  and   1.4142135623731 + 0*i + 0*j + 1.73205080756888*k = Quaternion(1.41421356237310, 0, 0, 1.73205080756888)\nE        +    where 1.41421356237310 = <bound method EvalfMixin.evalf of sqrt(2)>()\nE        +      where <bound method EvalfMixin.evalf of sqrt(2)> = sqrt(2).evalf\nE        +        where sqrt(2) = sqrt(2)\nE        +    and   1.73205080756888 = <bound method EvalfMixin.evalf of sqrt(3)>()\nE        +      where <bound method EvalfMixin.evalf of sqrt(3)> = sqrt(3).evalf\nE        +        where sqrt(3) = sqrt(3)\n\nsympy/algebras/tests/test_quaternion.py:61: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/algebras/tests/test_quaternion.py::test_quaternion_evalf - asser...\n========================= 1 failed, 6 passed in 0.61s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.exp",
+      "start_line": 436,
+      "end_line": 465,
+      "score": 51.147079,
+      "text": "sympy/algebras/quaternion.py::Quaternion.exp lines 436-465\n    def exp(self):\n        \"\"\"Returns the exponential of q (e^q).\n\n        Returns\n        =======\n\n        Quaternion\n            Exponential of q (e^q).\n\n        Examples\n        ========\n\n        >>> from sympy.algebras.quaternion import Quaternion\n        >>> q = Quaternion(1, 2, 3, 4)\n        >>> q.exp()\n        E*cos(sqrt(29))\n        + 2*sqrt(29)*E*sin(sqrt(29))/29*i\n        + 3*sqrt(29)*E*sin(sqrt(29))/29*j\n        + 4*sqrt(29)*E*sin(sqrt(29))/29*k\n\n        \"\"\"\n        # exp(q) = e^a(cos||v|| + v/||v||*sin||v||)\n        q = self\n        vector_norm = sqrt(q.b**2 + q.c**2 + q.d**2)\n        a = exp(q.a) * cos(vector_norm)\n        b = exp(q.a) * sin(vector_norm) * q.b / vector_norm\n        c = exp(q.a) * sin(vector_norm) * q.c / vector_norm\n        d = exp(q.a) * sin(vector_norm) * q.d / vector_norm\n\n        return Quaternion(a, b, c, d)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.to_axis_angle",
+      "start_line": 606,
+      "end_line": 644,
+      "score": 51.133893,
+      "text": "sympy/algebras/quaternion.py::Quaternion.to_axis_angle lines 606-644\n    def to_axis_angle(self):\n        \"\"\"Returns the axis and angle of rotation of a quaternion\n\n        Returns\n        =======\n\n        tuple\n            Tuple of (axis, angle)\n\n        Examples\n        ========\n\n        >>> from sympy.algebras.quaternion import Quaternion\n        >>> q = Quaternion(1, 1, 1, 1)\n        >>> (axis, angle) = q.to_axis_angle()\n        >>> axis\n        (sqrt(3)/3, sqrt(3)/3, sqrt(3)/3)\n        >>> angle\n        2*pi/3\n\n        \"\"\"\n        q = self\n        if q.a.is_negative:\n            q = q * -1\n\n        q = q.normalize()\n        angle = trigsimp(2 * acos(q.a))\n\n        # Since quaternion is normalised, q.a is less than 1.\n        s = sqrt(1 - q.a*q.a)\n\n        x = trigsimp(q.b / s)\n        y = trigsimp(q.c / s)\n        z = trigsimp(q.d / s)\n\n        v = (x, y, z)\n        t = (v, angle)\n\n        return t",
+      "truncated": false
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion._ln",
+      "start_line": 467,
+      "end_line": 491,
+      "score": 51.066004,
+      "text": "sympy/algebras/quaternion.py::Quaternion._ln lines 467-491\n    def _ln(self):\n        \"\"\"Returns the natural logarithm of the quaternion (_ln(q)).\n\n        Examples\n        ========\n\n        >>> from sympy.algebras.quaternion import Quaternion\n        >>> q = Quaternion(1, 2, 3, 4)\n        >>> q._ln()\n        log(sqrt(30))\n        + 2*sqrt(29)*acos(sqrt(30)/30)/29*i\n        + 3*sqrt(29)*acos(sqrt(30)/30)/29*j\n        + 4*sqrt(29)*acos(sqrt(30)/30)/29*k\n\n        \"\"\"\n        # _ln(q) = _ln||q|| + v/||v||*arccos(a/||q||)\n        q = self\n        vector_norm = sqrt(q.b**2 + q.c**2 + q.d**2)\n        q_norm = q.norm()\n        a = ln(q_norm)\n        b = q.b * acos(q.a / q_norm) / vector_norm\n        c = q.c * acos(q.a / q_norm) / vector_norm\n        d = q.d * acos(q.a / q_norm) / vector_norm\n\n        return Quaternion(a, b, c, d)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.from_axis_angle",
+      "start_line": 82,
+      "end_line": 118,
+      "score": 50.986394,
+      "text": "sympy/algebras/quaternion.py::Quaternion.from_axis_angle lines 82-118\n    def from_axis_angle(cls, vector, angle):\n        \"\"\"Returns a rotation quaternion given the axis and the angle of rotation.\n\n        Parameters\n        ==========\n\n        vector : tuple of three numbers\n            The vector representation of the given axis.\n        angle : number\n            The angle by which axis is rotated (in radians).\n\n        Returns\n        =======\n\n        Quaternion\n            The normalized rotation quaternion calculated from the given axis and the angle of rotation.\n\n        Examples\n        ========\n\n        >>> from sympy.algebras.quaternion import Quaternion\n        >>> from sympy import pi, sqrt\n        >>> q = Quaternion.from_axis_angle((sqrt(3)/3, sqrt(3)/3, sqrt(3)/3), 2*pi/3)\n        >>> q\n        1/2 + 1/2*i + 1/2*j + 1/2*k\n\n        \"\"\"\n        (x, y, z) = vector\n        norm = sqrt(x**2 + y**2 + z**2)\n        (x, y, z) = (x / norm, y / norm, z / norm)\n        s = sin(angle * S.Half)\n        a = cos(angle * S.Half)\n        b = x * s\n        c = y * s\n        d = z * s\n\n        return cls(a, b, c, d).normalize()",
+      "truncated": false
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.from_rotation_matrix",
+      "start_line": 121,
+      "end_line": 162,
+      "score": 50.973329,
+      "text": "sympy/algebras/quaternion.py::Quaternion.from_rotation_matrix lines 121-162\n    def from_rotation_matrix(cls, M):\n        \"\"\"Returns the equivalent quaternion of a matrix. The quaternion will be normalized\n        only if the matrix is special orthogonal (orthogonal and det(M) = 1).\n\n        Parameters\n        ==========\n\n        M : Matrix\n            Input matrix to be converted to equivalent quaternion. M must be special\n            orthogonal (orthogonal and det(M) = 1) for the quaternion to be normalized.\n\n        Returns\n        =======\n\n        Quaternion\n            The quaternion equivalent to given matrix.\n\n        Examples\n        ========\n\n        >>> from sympy.algebras.quaternion import Quaternion\n        >>> from sympy import Matrix, symbols, cos, sin, trigsimp\n        >>> x = symbols('x')\n        >>> M = Matrix([[cos(x), -sin(x), 0], [sin(x), cos(x), 0], [0, 0, 1]])\n        >>> q = trigsimp(Quaternion.from_rotation_matrix(M))\n        >>> q\n        sqrt(2)*sqrt(cos(x) + 1)/2 + 0*i + 0*j + sqrt(2 - 2*cos(x))*sign(sin(x))/2*k\n\n        \"\"\"\n\n        absQ = M.det()**Rational(1, 3)\n\n        a = sqrt(absQ + M[0, 0] + M[1, 1] + M[2, 2]) / 2\n        b = sqrt(absQ + M[0, 0] - M[1, 1] - M[2, 2]) / 2\n        c = sqrt(absQ - M[0, 0] + M[1, 1] - M[2, 2]) / 2\n        d = sqrt(absQ - M[0, 0] - M[1, 1] + M[2, 2]) / 2\n\n        b = b * sign(M[2, 1] - M[1, 2])\n        c = c * sign(M[0, 2] - M[2, 0])\n        d = d * sign(M[1, 0] - M[0, 1])\n\n        return Quaternion(a, b, c, d)",
+      "truncated": false
+    }
+  ]
+}

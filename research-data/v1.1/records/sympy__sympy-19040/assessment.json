@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T201922130327Z",
+  "reviewed_at": "2026-11-12T06:51:10+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "67a332cdd189dc486add677e00ea7363158efc27655bb705244226f7f32bd642",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "3b371ea4e42d350ebdbe447a7f8f09c1236a72430020700ae4e2fe5ca2bb7f28",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e4dd612a2910b84b1f1537695a69306be8a51ced3388d32901bed04ef7cde166",
+    "historical-fixed.stdout.txt": "34014da19b211ef1e0ce4c84cc7a21b3685c492d7ae6b246dd374ef2b4b65aab",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "685e00421e1b136a253c3805b9b663951a2db82fc07ca935664bae06bc540292"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dmp_ext_factor"
+    }
+  ],
+  "mechanism": "The factorization routine saves the original normalized polynomial in F and overwrites f with its square-free part, then takes the norm of that transformed f. On the observed complex-extension example this loses a factor. Taking the norm of preserved F instead restores factorization whose expansion matches the original polynomial.",
+  "evidence_reason": "Read dmp_ext_factor at factortools.py:1138-1165, preserved F versus transformed f and the one-line norm-input repair. Base test_polytools.py:3253 returns x-I*y instead of the expanded product (x-I*y)*(z-I*t); fixed has 149 passed and frozen source F2P/P2P resolve.",
+  "limitations": "The wrong-intermediate-polynomial mechanism is inferred from source data flow and matched repair/execution. Intermediate algebraic values were not separately instrumented, and no new experiment was run to claim that stronger proof."
+}

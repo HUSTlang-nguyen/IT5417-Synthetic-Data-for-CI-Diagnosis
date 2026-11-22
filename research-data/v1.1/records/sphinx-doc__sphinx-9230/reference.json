@@ -1,0 +1,23 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9230",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/util/docfields.py",
+      "function": "DocFieldTransformer.transform"
+    }
+  ],
+  "explanation": "A typed parameter declaration is split at the first whitespace, so a multiword type such as Dict[str, str] is cut inside its type expression and the parameter name is misparsed. Splitting from the right preserves the complete type and takes the final token as the name.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

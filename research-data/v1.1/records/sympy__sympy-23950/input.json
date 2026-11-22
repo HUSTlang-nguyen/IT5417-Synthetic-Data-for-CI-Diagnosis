@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 5 items\n\nsympy/sets/tests/test_contains.py::test_as_set FAILED                    [ 20%]\nsympy/sets/tests/test_contains.py::test_contains_basic PASSED            [ 40%]\nsympy/sets/tests/test_contains.py::test_issue_6194 PASSED                [ 60%]\nsympy/sets/tests/test_contains.py::test_issue_10326 PASSED               [ 80%]\nsympy/sets/tests/test_contains.py::test_binary_symbols PASSED            [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_as_set __________________________________\n\n    def test_as_set():\n        x = Symbol('x')\n        y = Symbol('y')\n>       assert Contains(x, FiniteSet(y)).as_set() == FiniteSet(y)\n\nsympy/sets/tests/test_contains.py:44: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = Contains(x, {y})\n\n    def as_set(self):\n>       raise NotImplementedError()\nE       NotImplementedError\n\nsympy/sets/contains.py:48: NotImplementedError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/sets/tests/test_contains.py::test_as_set - NotImplementedError\n========================= 1 failed, 4 passed in 0.17s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.as_set",
+      "start_line": 47,
+      "end_line": 48,
+      "score": 1152.236068,
+      "text": "sympy/sets/contains.py::Contains.as_set lines 47-48\n    def as_set(self):\n        raise NotImplementedError()",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.eval",
+      "start_line": 30,
+      "end_line": 38,
+      "score": 150.970143,
+      "text": "sympy/sets/contains.py::Contains.eval lines 30-38\n    def eval(cls, x, s):\n\n        if not isinstance(s, Set):\n            raise TypeError('expecting Set, not %s' % func_name(s))\n\n        ret = s.contains(x)\n        if not isinstance(ret, Contains) and (\n                ret in (S.true, S.false) or isinstance(ret, Set)):\n            return ret",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.binary_symbols",
+      "start_line": 41,
+      "end_line": 45,
+      "score": 150.603023,
+      "text": "sympy/sets/contains.py::Contains.binary_symbols lines 41-45\n    def binary_symbols(self):\n        return set().union(*[i.binary_symbols\n            for i in self.args[1].args\n            if i.is_Boolean or i.is_Symbol or\n            isinstance(i, (Eq, Ne))])",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "<module>",
+      "start_line": 1,
+      "end_line": 5,
+      "score": 120.5547,
+      "text": "sympy/sets/contains.py::<module> lines 1-5\nfrom sympy.core import S\nfrom sympy.core.relational import Eq, Ne\nfrom sympy.logic.boolalg import BooleanFunction\nfrom sympy.utilities.misc import func_name\nfrom .sets import Set",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol.as_set",
+      "start_line": 384,
+      "end_line": 385,
+      "score": 31.341641,
+      "text": "sympy/core/symbol.py::Symbol.as_set lines 384-385\n    def as_set(self):\n        return S.UniversalSet",
+      "truncated": false
+    }
+  ]
+}

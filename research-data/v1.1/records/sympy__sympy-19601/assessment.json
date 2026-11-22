@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000655458379Z",
+  "reviewed_at": "2026-11-12T07:59:40+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "56370038c87324223c9fdd66771283ad3890c92e3b1782c6a8dc97c702e7718b",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "5dddf54c305aea7e6e01e745bbca9cadff9863e4ca6acfbd0140927fd3952714",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b34002790ad230d3cf7c6dd5312fed9e2ead0f41ef57087d567a3d358622a3c8",
+    "historical-fixed.stdout.txt": "53c1719b8d0213b65240ceca7d83e074c519cbf0f31e6f89fd7b29e1c892dc77",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c8a1cd80f4e6168b651f82f52ca8857395d5d61e257fe0ff678a25b060d1ecab"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/simplify/radsimp.py",
+      "function": "collect"
+    }
+  ],
+  "mechanism": "The recursive nonsymbol collection branch replaces expressions with temporary Dummy symbols, then restores those symbols only in dictionary keys. Coefficient values retain a Dummy instead of a**2. Applying xreplace to each value restores the expected coefficient a**2+1.",
+  "limitations": "The saved result exposes the temporary symbol explicitly. The dictionary comprehension is within collect; no separate synthetic example is counted.",
+  "observed_junit": {
+    "base": {
+      "cases": 23,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 23,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.simplify.tests.test_radsimp::test_collect_pr19431",
+      "message": "assert _Dummy_19 + 1 == ((a ** 2) + 1)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

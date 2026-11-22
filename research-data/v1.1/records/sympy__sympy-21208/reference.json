@@ -1,0 +1,39 @@
+{
+  "sample_id": "sympy__sympy-21208",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_matrix_derivative"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_LeftRightArgs.build"
+    }
+  ],
+  "explanation": "Matrix differentiation calls doit on intermediate derivative expressions before the intended matrix differentiation is complete. This prematurely changes dependence and the saved vector loses derivative terms. Leaving the intermediate objects unevaluated through both builder stages preserves the expected derivatives.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_LeftRightArgs.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,100 @@
+"""Helpers for inspecting Python modules."""
+
+import builtins
+import contextlib
+import enum
+import inspect
+import re
+import sys
+import types
+import typing
+from functools import partial, partialmethod
+from importlib import import_module
+from inspect import Parameter, isclass, ismethod, ismethoddescriptor, ismodule  # NOQA
+from io import StringIO
+from types import MethodType, ModuleType
+from typing import Any, Callable, Dict, Mapping, Optional, Sequence, Tuple, Type, cast
+
+from sphinx.pycode.ast import ast  # for py36-37
+from sphinx.pycode.ast import unparse as ast_unparse
+from sphinx.util import logging
+from sphinx.util.typing import ForwardRef
+from sphinx.util.typing import stringify as stringify_annotation
+
+if sys.version_info > (3, 7):
+    from types import ClassMethodDescriptorType, MethodDescriptorType, WrapperDescriptorType
+else:
+    ClassMethodDescriptorType = type(object.__init__)
+    MethodDescriptorType = type(str.join)
+    WrapperDescriptorType = type(dict.__dict__['fromkeys'])
+
+if False:
+    # For type annotation
+    from typing import Type  # NOQA
+
+logger = logging.getLogger(__name__)
+
+memory_address_re = re.compile(r' at 0x[0-9a-f]{8,16}(?=>)', re.IGNORECASE)
+
+
+def unwrap(obj: Any) -> Any:
+    """Get an original object from wrapped object (wrapped functions)."""
+    try:
+        if hasattr(obj, '__sphinx_mock__'):
+            # Skip unwrapping mock object to avoid RecursionError
+            return obj
+        else:
+            return inspect.unwrap(obj)
+    except ValueError:
+        # might be a mock object
+        return obj
+
+
+def unwrap_all(obj: Any, *, stop: Callable = None) -> Any:
+    """
+    Get an original object from wrapped object (unwrapping partials, wrapped
+    functions, and other decorators).
+    """
+    while True:
+        if stop and stop(obj):
+            return obj
+        elif ispartial(obj):
+            obj = obj.func
+        elif inspect.isroutine(obj) and hasattr(obj, '__wrapped__'):
+            obj = obj.__wrapped__  # type: ignore
+        elif isclassmethod(obj):
+            obj = obj.__func__
+        elif isstaticmethod(obj):
+            obj = obj.__func__
+        else:
+            return obj
+
+
+def getall(obj: Any) -> Optional[Sequence[str]]:
+    """Get __all__ attribute of the module as dict.
+
+    Return None if given *obj* does not have __all__.
+    Raises ValueError if given *obj* have invalid __all__.
+    """
+    __all__ = safe_getattr(obj, '__all__', None)
+    if __all__ is None:
+        return None
+    else:
+        if (isinstance(__all__, (list, tuple)) and all(isinstance(e, str) for e in __all__)):
+            return __all__
+        else:
+            raise ValueError(__all__)
+
+
+def getannotations(obj: Any) -> Mapping[str, Any]:
+    """Get __annotations__ from given *obj* safely."""
+    __annotations__ = safe_getattr(obj, '__annotations__', None)
+    if isinstance(__annotations__, Mapping):
+        return __annotations__
+    else:
+        return {}
+
+
+def getglobals(obj: Any) -> Mapping[str, Any]:
+    """Get __globals__ from given *obj* safely."""
+    __globals__ = safe_getattr(obj, '__globals__', None)

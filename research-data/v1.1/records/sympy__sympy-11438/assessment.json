@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000530663640Z",
+  "reviewed_at": "2026-11-12T07:46:16+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2fdcf86d421bab785e91aa0ed0f26136399c3a1a6f812e40e85d3006ff69f698",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "4199a0ebd1632c18914b41d4ba75f4403cdaaf855c5a28bf04b7f34a886ff7fc",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "7ba4435ed69603a72272cf2b58f8fef398f052676542a325b2508f534dae0060",
+    "historical-fixed.stdout.txt": "7e2f2e811be662e755c19ca9b508f9c97e568960444ef01afb3e1ccc3f78b05b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "0cfa9642eb810fd99c8a5ecb3aff366790c63e7f95ab932e48894064cf5fc506"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "classify_diop"
+    }
+  ],
+  "mechanism": "The even-power-sum classifier checks that terms are powers but never checks that each exponent equals the total degree. Mixed-exponent equations are incorrectly classified as supported, so the expected NotImplementedError is not raised. Requiring matching exponents prevents that overbroad branch.",
+  "limitations": "DID NOT RAISE is the test detector. The cause is an overly permissive mathematical classification predicate, not a problem in the raises helper.",
+  "observed_junit": {
+    "base": {
+      "cases": 24,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 24,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.solvers.tests.test_diophantine::test_classify_diop",
+      "message": "AssertionError: DID NOT RAISE"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

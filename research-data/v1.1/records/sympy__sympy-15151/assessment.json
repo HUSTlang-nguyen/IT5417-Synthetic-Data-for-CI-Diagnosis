@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233625859368Z",
+  "reviewed_at": "2026-11-12T07:31:55+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "16784d73d592ed5f45002750414695aaa7e5410b549c83a6dcdd54069b111d4a",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "da5f41b96afddfa5bd076f891b0ec69aeaf09feffd15da4b388f9e5ca2c4c7f8",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e9e340135a011a1c61ac8720a4ca94fdee3f90c7ff7c2278e7474f940a4a291c",
+    "historical-fixed.stdout.txt": "8d4e9b9b2680e58e05d17c00ab301980b50a100192f5063539c9d81367e92761",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d7fc637f97c4c2c97b44ae5866242db5498ec877a3aca5944326aa48b09e49b6"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Indexed"
+    }
+  ],
+  "mechanism": "Indexed LaTeX output appends a subscript directly to an ungrouped printed base. This loses the required base grouping under surrounding formatting such as conjugation. Wrapping the printed base in braces yields the exact expected indexed expression.",
+  "limitations": "The saved string comparison proves the missing braces. No visual TeX rendering was performed during review.",
+  "observed_junit": {
+    "base": {
+      "cases": 118,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 118,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_indexed",
+      "message": "AssertionError: assert '\\\\overline{\\...0}} \\\\Psi_{0}' == '\\\\overline{{...} {\\\\Psi}_{0}'\n  - \\overline{{\\Psi}_{0}} {\\Psi}_{0}\n  ?           -    -      -    -\n  + \\overline{\\Psi_{0}} \\Psi_{0}"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

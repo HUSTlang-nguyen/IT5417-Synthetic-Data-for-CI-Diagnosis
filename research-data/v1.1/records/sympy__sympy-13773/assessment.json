@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035950244488Z",
+  "reviewed_at": "2026-11-12T11:57:32+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a8d5abd2a76eb752c2fdff7582ea4d34d6381aeb24543992fae38eee7b4e92eb",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "9e2ee6adc50f4c3fd507056ee7fbf93f1114d9cd6be85eb9f5b4fdb2f9abe1f0",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "45ea5de734b6a6bcf049868ba0b7b09fe927593cfe09d249b620019a0939842b",
+    "historical-fixed.stdout.txt": "eca4db4e85f7e01a1fb2e4a103085495d0ca1c35f58944a78380b746baeb3b12",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "964249cff6b857f67c03cb5790eced3b7a91141d2ff38c9bd8e542743c5626bd"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixArithmetic.__matmul__"
+    }
+  ],
+  "mechanism": "The matrix-multiplication operator delegates directly to general multiplication and accepts scalar2, returning a scaled matrix. The saved direct __matmul__ call requires NotImplemented for a nonmatrix operand. Matrixifying and checking the supported operand interface prevents that API-contract violation.",
+  "limitations": "The repair also applies the guard to __rmatmul__. The first saved failure directly proves the forward operator; scalar multiplication through ordinary * remains supported.",
+  "observed_junit": {
+    "base": {
+      "cases": 70,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 70,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.tests.test_commonmatrix::test_matmul",
+      "message": "assert Matrix([\\n[2, 4],\\n[6, 8]]) == NotImplemented\n +  where Matrix([\\n[2, 4],\\n[6, 8]]) = <bound method MatrixArithmetic.__matmul__ of Matrix([\\n[1, 2],\\n[3, 4]])>(2)\n +    where <bound method MatrixArithmetic.__matmul__ of Matrix([\\n[1, 2],\\n[3, 4]])> = Matrix([\\n[1, 2],\\n[3, 4]]).__matmul__"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

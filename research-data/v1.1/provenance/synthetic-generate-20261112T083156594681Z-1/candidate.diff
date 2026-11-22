@@ -1,0 +1,11 @@
+--- a/sympy/simplify/cse_main.py
++++ b/sympy/simplify/cse_main.py
+@@ -136,7 +136,7 @@
+         The transformed expression.
+     """
+     for pre, post in reversed(optimizations):
+-        if post is not None:
++        if post is None:
+             expr = post(expr)
+     return expr
+ 

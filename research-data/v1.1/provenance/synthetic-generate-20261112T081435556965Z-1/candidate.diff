@@ -1,0 +1,11 @@
+--- a/sympy/printing/mathematica.py
++++ b/sympy/printing/mathematica.py
+@@ -84,7 +84,7 @@
+         return 'Pi'
+ 
+     def _print_Infinity(self, expr):
+-        return 'Infinity'
++        return 'Inf'
+ 
+     def _print_NegativeInfinity(self, expr):
+         return '-Infinity'

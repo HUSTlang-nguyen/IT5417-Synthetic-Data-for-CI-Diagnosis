@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T043431835514Z",
+  "reviewed_at": "2026-11-12T12:11:13+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "81d1e9ebfe47e00f86047a23a929eeb4d13d1266990b99d823dced214e9d8861",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "2b370752509c6d15848eaf03f533a5554f0cbbaad79f36a2b1f1605b23c04f48",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "815bf9d30add1ee9be3851dc6d45e8a5aed67e830504ce8e549be1a1ed9b8f05",
+    "historical-fixed.stdout.txt": "7d1e1ba1510d3c8e79b907028380c7e25e4e86a7376b03fb17238413009ae2d0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4be2dd6abd7187f53d220dc1a6b349e8aabaeb6969eca54d43fb60d9433453e9"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/polys/fields.py",
+      "function": "FracField.field_new"
+    }
+  ],
+  "mechanism": "Conversion accepts a fraction only when its field equals the outer field, overlooking values belonging to that field underlying coefficient domain. Saved F2(a+b) reaches NotImplementedError even though a+b belongs to the valid nested ground field. Ground-element conversion handles the nested representation.",
+  "limitations": "The patch also handles nested polynomial coefficients. The first saved exception directly proves the fraction-field conversion path.",
+  "observed_junit": {
+    "base": {
+      "cases": 19,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 19,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_fields::test_FracField_nested",
+      "message": "NotImplementedError: conversion"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

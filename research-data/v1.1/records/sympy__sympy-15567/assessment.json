@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T205500769662Z",
+  "reviewed_at": "2026-11-12T07:27:07+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "9bd4a73f4f527ef76a51da13cd3e9040faa6d05b93782e8d658ddb0ddb518ef3",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "58200fe9ec0d979645a69493044d808e63301a738a346e36ea066ed0410a7f0b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0c7d9d6317af2be58474abf637909b5dadcdb42017f84cf5aa72760cd7ce4161",
+    "historical-fixed.stdout.txt": "dcd0069a7eb9caba8394bbf46a670bfee9c0e2e7b4abf25733e56e8d224adc6c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "1ed9d34e44f2cc69b5ccd96715509cc11c2092b765a1c0deaba5b48d745b1de8"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Number.__divmod__"
+    }
+  ],
+  "mechanism": "The quotient uses sign(rat)*int(abs(rat)), truncating toward zero. Divmod requires floor division, so a negative non-integer quotient produces -1 and a positive remainder instead of the expected -2 and negative remainder. The negative-quotient adjustment corrects the tested boundary.",
+  "limitations": "The saved case directly proves the negative non-integer error. The historical repair is not assumed correct for every exact negative-integer ratio; no additional test was run during review.",
+  "observed_junit": {
+    "base": {
+      "cases": 88,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 88,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_divmod",
+      "message": "assert (-1, 0.9) == (-2, -2.2)\n  Full diff:\n  - (-2, -2.2)\n  + (-1, 0.9)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

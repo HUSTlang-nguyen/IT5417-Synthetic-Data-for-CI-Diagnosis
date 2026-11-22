@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233725087564Z",
+  "reviewed_at": "2026-11-12T07:33:20+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "611db48b5615a4b136a186d42561419dcb759aff7298dbd4917a2f80074ad51b",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "f6e097d868f9bd45738a3702eb5de5fd3e6b86beb88f32ace0678977fbc9b96c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "34fc417993f4c55fa6f3f765d571cef60b75631a4b1bc3b09967c7ccc2068aa9",
+    "historical-fixed.stdout.txt": "920131b6d02377d5f77280ac27011d3a93d130c16faad014a0db2e12cd621803",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "586cd93293dd855ec9c4781d60b28061273256c32494db1d9913c77a74a6787d"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer.__floordiv__"
+    }
+  ],
+  "mechanism": "The non-Integer divisor branch wraps the already computed divmod quotient in Integer. A symbolic quotient such as floor(1024/x) cannot be converted to a concrete numeric Integer, causing the saved TypeError. Returning the symbolic quotient unchanged preserves the supported floor-division result.",
+  "limitations": "Integer.__new__ detects the incompatible conversion; the unnecessary coercion in __floordiv__ is causal. This differs from the older negative-rounding divmod case.",
+  "observed_junit": {
+    "base": {
+      "cases": 105,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 105,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_divmod",
+      "message": "TypeError: Argument of Integer should be of numeric type, got floor(1024/x)."
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

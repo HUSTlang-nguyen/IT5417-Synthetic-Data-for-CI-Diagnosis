@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-12307",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/fcode.py",
+      "function": "FCodePrinter._print_sign"
+    }
+  ],
+  "explanation": "The Fortran printer lacks a sign-specific handler and emits the generic sign(x) call. The saved contract requires a typed, zero-aware merge/dsign expression. The added handler supplies integer/complex/real backend forms.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

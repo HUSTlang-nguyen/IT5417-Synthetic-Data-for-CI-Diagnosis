@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040910681112Z",
+  "reviewed_at": "2026-11-12T12:01:17+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7d4f002c5c79a558dee67184c5587aec81d4f80e2a13e650e56ced359cf7a945",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "3560967bc84e15c55c08b554d33b012883f0fba484f5aaaf3ca062b1e816f832",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "73846b5c33d4635301557c64a463c0e08d1ba8e37c6b37873393ba00b7522249",
+    "historical-fixed.stdout.txt": "eba8d89ea3a5938428c74186d79a3ec377cb79b84f79834328e005477605ce9f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "bf29b96d653e3760ee0ff3481423807bd20ceef23361c03cb540141da6e7bf32"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/simplify/simplify.py",
+      "function": "logcombine.f"
+    }
+  ],
+  "mechanism": "The combiner constructs combined logarithms with normal evaluation enabled. That evaluation expands the newly formed rational logarithm back into the separate terms, undoing the requested combination. The saved result remains log(3)-log(2) instead of unevaluated log(3/2). Disabling evaluation for those constructed logs preserves the combined form.",
+  "limitations": "The expressions can be mathematically equivalent; the regression is transformation/representation behavior, not a proven wrong numeric value.",
+  "observed_junit": {
+    "base": {
+      "cases": 34,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 34,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.simplify.tests.test_simplify::test_issue_5950",
+      "message": "assert -log(2) + log(3) == log(3/2)\n +  where -log(2) + log(3) = logcombine((log(3) - log(2)))\n +    where log(3) = log(3)\n +    and   log(2) = log(2)\n +  and   log(3/2) = log(3/2, evaluate=False)\n +    where 3/2 = Rational(3, 2)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

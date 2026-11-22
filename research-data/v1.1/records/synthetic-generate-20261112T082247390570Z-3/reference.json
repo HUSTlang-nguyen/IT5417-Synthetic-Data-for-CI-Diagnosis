@@ -1,0 +1,19 @@
+{
+  "sample_id": "synthetic-generate-20261112T082247390570Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "latex"
+    }
+  ],
+  "explanation": "The None-default guard is inverted, leaving absent symbol_names as None and replacing a supplied mapping. Saved symbol printing raises None-membership TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "latex"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

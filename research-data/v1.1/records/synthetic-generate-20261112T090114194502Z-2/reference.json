@@ -1,0 +1,19 @@
+{
+  "sample_id": "synthetic-generate-20261112T090114194502Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/function.py",
+      "function": "Function._diff_wrt"
+    }
+  ],
+  "explanation": "The function-expression differentiability flag returns False rather than True. The saved derivative with respect to f(t) is rejected with ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/function.py",
+      "function": "Derivative.__new__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

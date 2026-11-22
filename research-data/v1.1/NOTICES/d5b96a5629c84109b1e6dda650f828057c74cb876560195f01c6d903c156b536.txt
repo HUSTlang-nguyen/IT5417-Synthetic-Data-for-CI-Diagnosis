@@ -1,0 +1,100 @@
+"""Field classes for various types of data."""
+
+import collections
+import copy
+import datetime as dt
+import numbers
+import uuid
+import ipaddress
+import decimal
+import math
+import typing
+import warnings
+from collections.abc import Mapping as _Mapping
+
+from marshmallow import validate, utils, class_registry, types
+from marshmallow.base import FieldABC, SchemaABC
+from marshmallow.utils import (
+    is_collection,
+    missing as missing_,
+    resolve_field_instance,
+    is_aware,
+)
+from marshmallow.exceptions import (
+    ValidationError,
+    StringNotCollectionError,
+    FieldInstanceResolutionError,
+)
+from marshmallow.validate import Validator, Length
+from marshmallow.warnings import RemovedInMarshmallow4Warning
+
+__all__ = [
+    "Field",
+    "Raw",
+    "Nested",
+    "Mapping",
+    "Dict",
+    "List",
+    "Tuple",
+    "String",
+    "UUID",
+    "Number",
+    "Integer",
+    "Decimal",
+    "Boolean",
+    "Float",
+    "DateTime",
+    "NaiveDateTime",
+    "AwareDateTime",
+    "Time",
+    "Date",
+    "TimeDelta",
+    "Url",
+    "URL",
+    "Email",
+    "IP",
+    "IPv4",
+    "IPv6",
+    "Method",
+    "Function",
+    "Str",
+    "Bool",
+    "Int",
+    "Constant",
+    "Pluck",
+]
+
+_T = typing.TypeVar("_T")
+
+
+class Field(FieldABC):
+    """Basic field from which other fields should extend. It applies no
+    formatting by default, and should only be used in cases where
+    data does not need to be formatted before being serialized or deserialized.
+    On error, the name of the field will be returned.
+
+    :param default: If set, this value will be used during serialization if the input value
+        is missing. If not set, the field will be excluded from the serialized output if the
+        input value is missing. May be a value or a callable.
+    :param missing: Default deserialization value for the field if the field is not
+        found in the input data. May be a value or a callable.
+    :param data_key: The name of the dict key in the external representation, i.e.
+        the input of `load` and the output of `dump`.
+        If `None`, the key will match the name of the field.
+    :param attribute: The name of the attribute to get the value from when serializing.
+        If `None`, assumes the attribute has the same name as the field.
+        Note: This should only be used for very specific use cases such as
+        outputting multiple fields for a single attribute. In most cases,
+        you should use ``data_key`` instead.
+    :param validate: Validator or collection of validators that are called
+        during deserialization. Validator takes a field's input value as
+        its only parameter and returns a boolean.
+        If it returns `False`, an :exc:`ValidationError` is raised.
+    :param required: Raise a :exc:`ValidationError` if the field value
+        is not supplied during deserialization.
+    :param allow_none: Set this to `True` if `None` should be considered a valid value during
+        validation/deserialization. If ``missing=None`` and ``allow_none`` is unset,
+        will default to ``True``. Otherwise, the default is ``False``.
+    :param load_only: If `True` skip this field during serialization, otherwise
+        its value will be present in the serialized data.
+    :param dump_only: If `True` skip this field during deserialization, otherwise

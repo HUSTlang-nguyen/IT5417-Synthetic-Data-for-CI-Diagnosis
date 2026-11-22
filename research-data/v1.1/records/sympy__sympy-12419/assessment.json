@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T043159209826Z",
+  "reviewed_at": "2026-11-12T12:09:54+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "fe529415dd76490fea2ae7a1cbe719c7853c51652a623ffd41e378b26e5c2317",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "a4aba002ddbd9c1286f6a090e34903df892763c467fce84d09332d319d62b449",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e2d002ec31dc4f103dc8c7662027514f12ff11da590005441071a23022e547a7",
+    "historical-fixed.stdout.txt": "14a6d143e1eea40bd5b027adb69067ddf00179611f0f59ea78150a9d0119e206",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4ed300b40d1b65ddcb8fff4e9a912f063c506b9e2b584a4a5a5669d705814b2f"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity._entry"
+    }
+  ],
+  "mechanism": "The identity-matrix entry function treats structurally unequal symbolic indices as definitely different and returns0. The saved In[i,j] assertion exposes that premature decision. Three-valued symbolic equality and KroneckerDelta retain an unknown diagonal relation.",
+  "limitations": "The scalar indices can later become equal. This is symbolic uncertainty handling, not an actual out-of-bounds access.",
+  "observed_junit": {
+    "base": {
+      "cases": 26,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 26,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.expressions.tests.test_matexpr::test_Identity",
+      "message": "assert 0 != 0"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

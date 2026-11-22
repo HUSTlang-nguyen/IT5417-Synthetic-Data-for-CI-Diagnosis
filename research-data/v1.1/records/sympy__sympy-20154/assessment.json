@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T044633714722Z",
+  "reviewed_at": "2026-11-12T12:13:17+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "4dff29639b31bcb4793261a54a2c6f45424f4b398ecce36438d2ca8145b0d08b",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "8d11d09c9959bd17f7ba2f7c05c1f03834febc3bb3347181693f5cb2558e8adc",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "07875415a5133d0326fabc99234078c8cb8d6113a95288f7b1b09a51d4035f9a",
+    "historical-fixed.stdout.txt": "84049901cbfcf36ed2e23f5dab92e54ecb9d7f05750c9cebbeeda32a99603c2c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "bed04217de0311c973af4f91672922761eafdff95b60151fe04798eb6b126240"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "partitions"
+    }
+  ],
+  "mechanism": "Every yield returns the same mutable partition dictionary, which is modified on subsequent iteration. The saved list therefore contains repeated final {1:6} values, and uniq loses earlier partitions. Yielding copies preserves each emitted partition snapshot.",
+  "limitations": "The old docstring documented object reuse; this source task changes the required caller-visible contract. The saved failures support that contract change, not an inferred historical CI run.",
+  "observed_junit": {
+    "base": {
+      "cases": 42,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 42,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.utilities.tests.test_iterables::test_partitions",
+      "message": "assert [{1: 6}, {1: ...1: 6}, {1: 6}] == [{2: 3}, {1: ...2: 1}, {1: 6}]\n  At index 0 diff: {1: 6} != {2: 3}\n  Full diff:\n  - [{2: 3}, {1: 2, 2: 2}, {1: 4, 2: 1}, {1: 6}]\n  + [{1: 6}, {1: 6}, {1: 6}, {1: 6}]"
+    },
+    {
+      "test": "sympy.utilities.tests.test_iterables::test_uniq",
+      "message": "assert [{1: 4}] == [{4: 1}, {1: ...2: 1}, {1: 4}]\n  At index 0 diff: {1: 4} != {4: 1}\n  Right contains 4 more items, first extra item: {1: 1, 3: 1}\n  Full diff:\n  - [{4: 1}, {1: 1, 3: 1}, {2: 2}, {1: 2, 2: 1}, {1: 4}]\n  + [{1: 4}]"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

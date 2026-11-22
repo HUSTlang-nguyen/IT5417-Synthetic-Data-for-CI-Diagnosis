@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 30 items\n\nsympy/codegen/tests/test_cnodes.py::test_sizeof FAILED                   [  3%]\nsympy/core/tests/test_basic.py::test_atoms FAILED                        [  6%]\nsympy/codegen/tests/test_cnodes.py::test_alignof PASSED                  [ 10%]\nsympy/codegen/tests/test_cnodes.py::test_CommaOperator PASSED            [ 13%]\nsympy/codegen/tests/test_cnodes.py::test_goto_Label PASSED               [ 16%]\nsympy/codegen/tests/test_cnodes.py::test_PreDecrement PASSED             [ 20%]\nsympy/codegen/tests/test_cnodes.py::test_PostDecrement PASSED            [ 23%]\nsympy/codegen/tests/test_cnodes.py::test_PreIncrement PASSED             [ 26%]\nsympy/codegen/tests/test_cnodes.py::test_PostIncrement PASSED            [ 30%]\nsympy/codegen/tests/test_cnodes.py::test_struct PASSED                   [ 33%]\nsympy/core/tests/test_basic.py::test__aresame PASSED                     [ 36%]\nsympy/core/tests/test_basic.py::test_structure PASSED                    [ 40%]\nsympy/core/tests/test_basic.py::test_equality PASSED                     [ 43%]\nsympy/core/tests/test_basic.py::test_matches_basic PASSED                [ 46%]\nsympy/core/tests/test_basic.py::test_has PASSED                          [ 50%]\nsympy/core/tests/test_basic.py::test_subs PASSED                         [ 53%]\nsympy/core/tests/test_basic.py::test_subs_with_unicode_symbols PASSED    [ 56%]\nsympy/core/tests/test_basic.py::test_free_symbols_empty PASSED           [ 60%]\nsympy/core/tests/test_basic.py::test_doit PASSED                         [ 63%]\nsympy/core/tests/test_basic.py::test_S PASSED                            [ 66%]\nsympy/core/tests/test_basic.py::test_xreplace PASSED                     [ 70%]\nsympy/core/tests/test_basic.py::test_preorder_traversal PASSED           [ 73%]\nsympy/core/tests/test_basic.py::test_sorted_args PASSED                  [ 76%]\nsympy/core/tests/test_basic.py::test_call PASSED                         [ 80%]\nsympy/core/tests/test_basic.py::test_rewrite PASSED                      [ 83%]\nsympy/core/tests/test_basic.py::test_literal_evalf_is_number_is_zero_is_comparable PASSED [ 86%]\nsympy/core/tests/test_basic.py::test_as_Basic PASSED                     [ 90%]\nsympy/core/tests/test_basic.py::test_atomic PASSED                       [ 93%]\nsympy/core/tests/test_basic.py::test_as_dummy PASSED                     [ 96%]\nsympy/core/tests/test_basic.py::test_canonical_variables PASSED          [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_sizeof __________________________________\n\n    def test_sizeof():\n        typename = 'unsigned int'\n        sz = sizeof(typename)\n        assert ccode(sz) == 'sizeof(%s)' % typename\n        assert sz.func(*sz.args) == sz\n        assert not sz.is_Atom\n>       assert sz.atoms() == {String('unsigned int'), String('sizeof')}\nE       AssertionError: assert set() == {String('unsi...ing('sizeof')}\nE         Extra items in the right set:\nE         String('unsigned int')\nE         String('sizeof')\nE         Full diff:\nE         - {String('unsigned int'), String('sizeof')}\nE         + set()\n\nsympy/codegen/tests/test_cnodes.py:69: AssertionError\n__________________________________ test_atoms __________________________________\n\n    def test_atoms():\n>       assert b21.atoms() == set([Basic()])\nE       assert set() == {Basic()}\nE         Extra items in the right set:\nE         Basic()\nE         Full diff:\nE         - {Basic()}\nE         + set()\n\nsympy/core/tests/test_basic.py:140: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/codegen/tests/test_cnodes.py::test_sizeof - AssertionError: asse...\nFAILED sympy/core/tests/test_basic.py::test_atoms - assert set() == {Basic()}\n=================== 2 failed, 28 passed, 1 warning in 0.25s ====================\n",
+  "code": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.copy",
+      "start_line": 103,
+      "end_line": 104,
+      "score": 51.632993,
+      "text": "sympy/core/basic.py::Basic.copy lines 103-104\n    def copy(self):\n        return self.func(*self.args)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic._eval_rewrite",
+      "start_line": 1671,
+      "end_line": 1690,
+      "score": 51.459601,
+      "text": "sympy/core/basic.py::Basic._eval_rewrite lines 1671-1690\n    def _eval_rewrite(self, pattern, rule, **hints):\n        if self.is_Atom:\n            if hasattr(self, rule):\n                return getattr(self, rule)()\n            return self\n\n        if hints.get('deep', True):\n            args = [a._eval_rewrite(pattern, rule, **hints)\n                        if isinstance(a, Basic) else a\n                        for a in self.args]\n        else:\n            args = self.args\n\n        if pattern is None or isinstance(self, pattern):\n            if hasattr(self, rule):\n                rewritten = getattr(self, rule)(*args, **hints)\n                if rewritten is not None:\n                    return rewritten\n\n        return self.func(*args) if hints.get('evaluate', True) else self",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.__getnewargs__",
+      "start_line": 110,
+      "end_line": 111,
+      "score": 51.341641,
+      "text": "sympy/core/basic.py::Basic.__getnewargs__ lines 110-111\n    def __getnewargs__(self):\n        return self.args",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.expr_free_symbols",
+      "start_line": 530,
+      "end_line": 531,
+      "score": 51.341641,
+      "text": "sympy/core/basic.py::Basic.expr_free_symbols lines 530-531\n    def expr_free_symbols(self):\n        return set([])",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic._has",
+      "start_line": 1236,
+      "end_line": 1253,
+      "score": 51.299867,
+      "text": "sympy/core/basic.py::Basic._has lines 1236-1253\n    def _has(self, pattern):\n        \"\"\"Helper for .has()\"\"\"\n        from sympy.core.function import UndefinedFunction, Function\n        if isinstance(pattern, UndefinedFunction):\n            return any(f.func == pattern or f == pattern\n            for f in self.atoms(Function, UndefinedFunction))\n\n        pattern = sympify(pattern)\n        if isinstance(pattern, BasicMeta):\n            return any(isinstance(arg, pattern)\n            for arg in preorder_traversal(self))\n\n        _has_matcher = getattr(pattern, '_has_matcher', None)\n        if _has_matcher is not None:\n            match = _has_matcher()\n            return any(match(arg) for arg in preorder_traversal(self))\n        else:\n            return any(arg == pattern for arg in preorder_traversal(self))",
+      "truncated": false
+    }
+  ]
+}

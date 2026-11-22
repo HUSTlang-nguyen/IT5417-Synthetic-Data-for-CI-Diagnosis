@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-9359",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "get_statement_startend2"
+    }
+  ],
+  "explanation": "The AST statement-boundary collector omits decorator lines. On newer Python ASTs the function lineno points at def, so querying the decorator line selects the wrong statement and the saved result contains pass instead of @foo. Including decorator_list line numbers restores the boundary.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.indent"
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.deindent"
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.__init__"
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.strip"
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.__eq__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,11 @@
+--- a/sympy/utilities/iterables.py
++++ b/sympy/utilities/iterables.py
+@@ -2252,7 +2252,7 @@
+     sympy.functions.combinatorial.factorials.subfactorial
+     """
+     for p in multiset_permutations(perm):
+-        if not any(i == j for i, j in zip(perm, p)):
++        if any(i == j for i, j in zip(perm, p)):
+             yield p
+ 
+ 

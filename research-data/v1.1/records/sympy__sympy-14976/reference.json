@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-14976",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Rational"
+    }
+  ],
+  "explanation": "The mpmath printer has no rational-specific handler, so a rational is emitted using the generic 1/2 string instead of mpmath.mpf(1)/mpmath.mpf(2). The missing override formats both operands with the backend numeric type.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T11:39:28+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "pytest-dev__pytest-10624",
+  "case_id": "pytest-dev__pytest-10624-ds1-eval-scm1",
+  "run_id": "reproduce-20261112T012843354590Z",
+  "role": "test",
+  "repo": "https://github.com/pytest-dev/pytest",
+  "group_id": "https://github.com/pytest-dev/pytest",
+  "source_commit": "7421f3bb94df80ff2d131e932223b190f9b6d7b6",
+  "image_id": "sha256:78edc0e0c3b9f531870ca01f66c1039f42920a663066b7c06271e4e81dbd0a9d",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "96f8dff97d3d628119c6b6a3bb952fa51b9311c1da8b6280bc0cfe5ae778ddcb",
+  "input_content_sha256": "d821270d9b958766d2ab726e5cbb5c1745ca682fe718ec3a8131ecf233f54027",
+  "reference_sha256": "3cd00c5eab4f065ac4a38c6f71f252ee7866784a69391f0cb992a83532b8845a",
+  "assessment_sha256": "f3ea2abe84cd9cae10322d3e9f527b9ce4ed88d27585a65a004adb7453fda7b7",
+  "evidence_hashes": {
+    "manifest.json": "b4e19ee4764cb47fd8cb34cccf078505d2646b5974fc2d5b0dfeb1327c1945f9",
+    "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+    "historical-base.stdout.txt": "7753a4dccf402fc862213b212e146e254c53c43a8e88f0f03500b21e48c92ab3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b046c77bdadb2df22d7c1a7a56f93829cbc115af735e836a425e98f2ab805810",
+    "historical-fixed.stdout.txt": "1de1dfdc7d8138e3a3d3d5bfdad3ca99cca01d2e644e20bd5841a5f9a934b3a1",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e738b9b636122a50e7d8af807a5a49d33c3a46b30606c2ba126737e3002369ac"
+  },
+  "retrieval": {
+    "production_files_scanned": 93,
+    "ranked_function_count": 1943,
+    "characters": 6000,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

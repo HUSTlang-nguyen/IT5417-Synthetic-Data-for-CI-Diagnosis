@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T010809498391Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "astroid/builder.py",
+      "function": "_can_assign_attr"
+    }
+  ],
+  "explanation": "The branch for an attribute absent from declared slots returns True instead of False. The builder then records the forbidden other attribute, exactly matching the unexpected-membership assertion.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/interpreter/_import/util.py",
+      "function": "<module>"
+    },
+    {
+      "file": "astroid/interpreter/_import/util.py",
+      "function": "is_namespace"
+    },
+    {
+      "file": "astroid/bases.py",
+      "function": "Instance.display_type"
+    },
+    {
+      "file": "astroid/bases.py",
+      "function": "Instance.__str__"
+    },
+    {
+      "file": "astroid/bases.py",
+      "function": "Instance.__repr__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T013244099127Z",
+  "reviewed_at": "2026-11-12T11:46:34+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "aeeb4af049c313879e7f3d41f93185c74f9b6bf555b10f9204d33bd80bade9c5",
+    "license-evidence.json": "aac7b99507ae298906567fb4b7f7aa581da63245e01a9d3fe141942a452e6fd9",
+    "historical-base.stdout.txt": "fcb665097b2b7f636fc5130d4d665fadda4fb6e9ed918a5d1f7d6c1ce198ac5b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "6d5ab34a24007caa0702b8d5acbcc1eb03bc9d4a37c5105e168d4e6eb8efea3e",
+    "historical-fixed.stdout.txt": "5c6b2d98054ebc6aaec442dd678b4db552cd7ce2f41c8a363e7ae61dddaee55c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "913c7c32bb3d5a5835f3580f5c5e8e640f55005291721ef05a77280a2df47684"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "from_iso"
+    }
+  ],
+  "mechanism": "The fallback datetime parser truncates a fractional-seconds string at26 characters regardless of actual fraction length. A short fraction leaves part of the timezone suffix in the strptime input, which raises the saved unconverted-data ValueError. Isolating the fractional digits removes that suffix before parsing.",
+  "limitations": "The failing path explicitly disables optional dateutil; this is supported product fallback behavior, not a dependency-installation error. No claim of preserving timezone awareness in this fallback is made.",
+  "observed_junit": {
+    "base": {
+      "cases": 38,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 38,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_utils::test_from_iso_datetime[timezone1-False]",
+      "message": "ValueError: unconverted data remains: -06"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

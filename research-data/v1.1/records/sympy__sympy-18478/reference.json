@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18478",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/add.py",
+      "function": "Add.flatten"
+    }
+  ],
+  "explanation": "After an AccumBounds operand has become the accumulated coefficient, the numeric-operand branch updates it only if coeff.is_Number. AccumBounds is excluded and the later infinity contribution is dropped, leaving AccumBounds(-1,1) rather than infinity. Including AccumBounds in the update preserves the numeric contribution.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/orderings.py",
+      "function": "ProductOrder.__init__"
+    },
+    {
+      "file": "sympy/unify/core.py",
+      "function": "Compound.__init__"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.__ne__"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.sort_key"
+    },
+    {
+      "file": "sympy/assumptions/cnf.py",
+      "function": "OR.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

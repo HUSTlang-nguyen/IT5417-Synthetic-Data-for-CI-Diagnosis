@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T002507360147Z",
+  "reviewed_at": "2026-11-12T10:39:38+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2c7f8702407509b7266ec8a43336ef702d5e77b80e366d9d0702cd4a9835abbd",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "c46a46c891e528328b65f5be3848b08a773a54ea5d6254915df1eff43c4115d1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "60b12c754f6f623abd1edebff1fcaf202201a8cb5fffef4cbacc0e0fbeb14c04",
+    "historical-fixed.stdout.txt": "dc1547f33393f10d67cc6653cc58d136ff17c9f845118ff61c4df0d1e14eb2b9",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "baacc10e214b25c0279a18533495e26fc6b26cbddd3bf9c42ea83470d04df475"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Rational"
+    }
+  ],
+  "mechanism": "The mpmath printer has no rational-specific handler, so a rational is emitted using the generic 1/2 string instead of mpmath.mpf(1)/mpmath.mpf(2). The missing override formats both operands with the backend numeric type.",
+  "limitations": "Explicit missing definition. The saved assertion compares emitted strings; it does not execute those strings or measure downstream precision.",
+  "observed_junit": {
+    "base": {
+      "cases": 14,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 14,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_pycode::test_MpmathPrinter",
+      "message": "AssertionError: assert '1/2' == 'mpmath.mpf(1)/mpmath.mpf(2)'\n  - mpmath.mpf(1)/mpmath.mpf(2)\n  + 1/2"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Rational"
+    }
+  ]
+}

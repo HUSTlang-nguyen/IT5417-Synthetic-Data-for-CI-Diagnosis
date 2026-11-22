@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T234230260182Z",
+  "reviewed_at": "2026-11-12T07:35:00+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ceacd8d55e3227aa3884cf26684930154527d3e4b809b3803d4c14795af43565",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "b37ad663ff010cf134fb91e4a5d17f41160df307333a2879fb2f67d1fa93c448",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "d19d9310ff3dbc762f3ef1b6457af192b9df8186b3631d196ba68fa503a626a8",
+    "historical-fixed.stdout.txt": "d08aa108c962f44c15487c2a23b7ea94f68752c1b16d6b6132263bec37d6a0c8",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "cad4025c47bff412a2d864ea9d6d27bcab576b503eba2210ad95080dd11e055c"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/polys/fields.py",
+      "function": "FracField._rebuild_expr._rebuild"
+    }
+  ],
+  "mechanism": "The field-expression rebuild recognizes direct generator mappings and power relations but not a generator that is the reciprocal of the current expression. It falls through to domain conversion, making a valid rational expression appear outside QQ(1/x). Looking up 1/expr and inverting the mapped generator restores membership.",
+  "limitations": "The membership assertion and source conversion path support the missing reciprocal mapping. No separate trace of the swallowed coercion or full field-theory proof was run.",
+  "observed_junit": {
+    "base": {
+      "cases": 42,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 42,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.domains.tests.test_domains::test_issue_14433",
+      "message": "assert ((2/3 * x) in QQ(1/x)) is True\n +  where 2/3 = Rational(2, 3)\n +  and   QQ(1/x) = <bound method Domain.frac_field of QQ>((1 / x))\n +    where <bound method Domain.frac_field of QQ> = QQ.frac_field"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

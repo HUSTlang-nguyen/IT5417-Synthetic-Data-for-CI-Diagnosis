@@ -1,0 +1,39 @@
+{
+  "sample_id": "sympy__sympy-20639",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_Pow"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_nth_root"
+    }
+  ],
+  "explanation": "The power printer admits reciprocal non-rational atomic exponents to nth-root notation, whose helper then extracts a denominator-like component rather than representing the full exponent. Saved reciprocal-pi and reciprocal-exp examples render misleading root indices. The repair restricts dispatch and passes/prints the actual root, with141tests passing.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter.__init__"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "pretty"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

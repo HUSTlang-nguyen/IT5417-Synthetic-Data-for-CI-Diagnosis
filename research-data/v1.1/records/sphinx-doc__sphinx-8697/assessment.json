@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000244715876Z",
+  "reviewed_at": "2026-11-12T07:45:38+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "178f7ee7d1246de3dc83482370adca308adc38e02438ab17bd154fc6639a1b94",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "5e3c3eb5e28c95cdc15c60eaca8dc05eb281b269d3dc28efb6b7312ac656936c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0bfcee9ea3f2ae6bdf9da9a66ea98a5c02eea9a9cbb40c8a56542d7ba998ccbe",
+    "historical-fixed.stdout.txt": "bb8488fcb50df37f576c9fb8a6d562fddf42e3ceb45868863761a639c73bbe11",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "10459138e6781a553fdc6695ee62009c1bbc23fd7f69725d61a9ae23d2b8fb8c"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/environment/__init__.py",
+      "function": "BuildEnvironment.relfn2path"
+    }
+  ],
+  "mechanism": "Only the absolute result is normalized; the relative result retains redundant path segments such as subdir/../logo.jpg. Returning that unnormalized relative path violates the method contract even though the absolute path is correct. Normalizing the relative POSIX path yields logo.jpg.",
+  "limitations": "The saved assertion is a path-string mismatch, not a missing file or Docker permission failure.",
+  "observed_junit": {
+    "base": {
+      "cases": 4,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 4,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_environment::test_env_relfn2path",
+      "message": "AssertionError: assert 'subdir/../logo.jpg' == 'logo.jpg'\n  - logo.jpg\n  + subdir/../logo.jpg"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

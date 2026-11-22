@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T063746713219Z",
+  "reviewed_at": "2026-11-12T18:29:58+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "614b669959b27d156da33413231139291c874699060055f2f9f6f9abe70f0ac1",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "e9b9023441bec3ea29bfc5c2693c7d1b3c57ed0cf1785a243834c273ffb9b5f1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8460ff71765f118417cca9052106a716122d5b1d8cfc9132dc2eeffa132dd0e0",
+    "historical-fixed.stdout.txt": "ac78647c26479357f4a8d599172ef986ee094afd1273a97dad8eb3347cb69bb6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "6fb03237076ec1bb86dcf092a7febf7bd452a90dc58fa58c15b5ebd8207b4736"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "_check_homomorphism"
+    },
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "_check_homomorphism._image"
+    }
+  ],
+  "mechanism": "The relator checker mixes presentation free-generator symbols with domain generators while accumulating mapped words. A saved homomorphism construction is rejected as invalid; the repair maps each presentation symbol explicitly to its domain generator and then accumulates image powers, with both selected tests passing.",
+  "limitations": "The rejection is observed at homomorphism, but the proposed causal mapping lies in its checker and nested relator-image helper. The full algebraic validity is supported by the supplied repair and passing tests rather than an independent group-theoretic proof.",
+  "observed_junit": {
+    "base": {
+      "cases": 2,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 2,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.combinatorics.tests.test_homomorphisms::test_homomorphism",
+      "message": "ValueError: The given images do not define a homomorphism"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-10343",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/warning_types.py",
+      "function": "warn_explicit_for"
+    }
+  ],
+  "explanation": "When warnings are treated as errors, warnings.warn_explicit raises a Warning whose message lacks the supplied source location. The saved assertion sees only test instead of test plus filename/line. Re-raising that warning with explicit location text restores the required diagnostic.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/warning_types.py",
+      "function": "warn_explicit_for"
+    },
+    {
+      "file": "src/_pytest/warning_types.py",
+      "function": "<module>"
+    },
+    {
+      "file": "src/_pytest/warning_types.py",
+      "function": "UnformattedWarning.format"
+    },
+    {
+      "file": "src/_pytest/warning_types.py",
+      "function": "PytestExperimentalApiWarning.simple"
+    },
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "ExceptionInfo.match"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,39 @@
+{
+  "sample_id": "sympy__sympy-12454",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixProperties.is_upper"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixProperties._eval_is_upper_hessenberg"
+    }
+  ],
+  "explanation": "The triangular and Hessenberg scans derive column bounds from row index alone, assuming a sufficiently wide matrix. Tall zero matrices reach column2 when only two columns exist, causing both saved IndexErrors. Bounding each inner range by self.cols preserves valid rectangular traversal.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "a2idx"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixShaping.extract"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixProperties.is_upper"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixProperties.is_upper_hessenberg"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixProperties._eval_is_upper_hessenberg"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

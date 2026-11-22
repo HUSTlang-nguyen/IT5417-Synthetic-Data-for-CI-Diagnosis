@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T005735830902Z",
+  "reviewed_at": "2026-11-12T11:37:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f6fab34a08a677d7c75034c1694067cc1dc008db2bd9d6bc35ba872e5623a8ab",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "354772aef5b6846713ceb0c3f8f3d10ba6885266fe3c968ec47368b50d944edf",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a2be79d19c1b2d8374dc1aca7bacf3e63633160ee45172163d9b2e91917d9b19",
+    "historical-fixed.stdout.txt": "85679ff8a00d8f0188b1191c1b48065fa77f9c9066d227bca6b40be67f8ff323",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "a9b1a9c22aecf30a5fea8575ddb83ec1ce4999dbc18cb9a60d4c034a299abc76"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "kahane_simplify"
+    }
+  ],
+  "mechanism": "Free indices preceding the first contraction are inserted repeatedly at position zero in ascending order. That reverses their order, producing GammaMatrix(sigma)*GammaMatrix(rho) instead of rho then sigma in the saved assertion. Prepending the prefix as a list preserves order.",
+  "limitations": "These matrices do not generally commute. The observed failure concerns preserved index order, not a numerical matrix evaluation or an independently reproduced physics result.",
+  "observed_junit": {
+    "base": {
+      "cases": 3,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 3,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.hep.tests.test_gamma_matrices::test_kahane_simplify1",
+      "message": "assert False\n +  where False = <bound method TensMul.equals of 4*GammaMatrix(sigma)*GammaMatrix(rho)>(((4 * GammaMatrix(rho)) * GammaMatrix(sigma)))\n +    where <bound method TensMul.equals of 4*GammaMatrix(sigma)*GammaMatrix(rho)> = 4*GammaMatrix(sigma)*GammaMatrix(rho).equals\n +    and   GammaMatrix(rho) = G(rho)\n +    and   GammaMatrix(sigma) = G(sigma)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

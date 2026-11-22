@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T205254459675Z",
+  "reviewed_at": "2026-11-12T07:26:44+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "3f7fc4fd9539a519e56950b2ce86803ea01f9e1ac58e973977e9851857e2fb02",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "cd921acbc4e26f85efd6dfe845484bb4c2b179acdd02922b56677c0ef31ebc7f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4aca14a84aa7e1f21993c89c246b601379a6befd8723308bb3e86ba9823fc824",
+    "historical-fixed.stdout.txt": "428eb4a6f6537fd6d80437e924efa03f3413451a04fcbd4ef66409e16488744b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "2db1291d2871aedececb82bef78a1ef8068c63b3fe352dbe0ab07a2f654418bc"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/sympify.py",
+      "function": "kernS"
+    }
+  ],
+  "mechanism": "kern is assigned only in the space-containing branch, but hit = kern in s executes outside that branch. A parenthesized expression without a generated separator therefore reads an unbound local. Keeping the read inside its assignment branch and setting hit false otherwise prevents that invalid control flow.",
+  "limitations": "The traceback proves the local-variable use before assignment. This is a control-flow initialization defect rather than invalid source syntax; exception name alone is not used as the label.",
+  "observed_junit": {
+    "base": {
+      "cases": 41,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 41,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_sympify::test_kernS",
+      "message": "UnboundLocalError: local variable 'kern' referenced before assignment"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

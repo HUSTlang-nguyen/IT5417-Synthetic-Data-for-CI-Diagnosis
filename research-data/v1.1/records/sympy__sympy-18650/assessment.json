@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T005209961758Z",
+  "reviewed_at": "2026-11-12T11:35:46+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d597aff50dbe0df28809f27e4f25badb6fa2d643f6b294f4bf0a5abd0cab93d7",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "2090eac34972f64eca86486db4a16802d5a4e1d96769eb825686ee645ccd429b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "02ad7680093fd5e2fe15618d68746e48cbef93a52c6819d0fe5cab4cc094f326",
+    "historical-fixed.stdout.txt": "354b3646990a7bee2213fa916c818f42005a194299666381c4233d65bbc2ac37",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e43027428f0bc966645e13eadbbb43eb15baaaa041e15803c90374afa123c436"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_expand_power_base"
+    }
+  ],
+  "mechanism": "Expansion of a rational power distributes across numeric power factors with evaluation disabled throughout. Nested numeric powers are left unsimplified, so sqrt(8)**(2/3) does not reach the expected2. Separating and evaluating the numeric rational-power factors permits that simplification.",
+  "limitations": "The assertion proves failed symbolic simplification, not an independently measured floating-point error. Exact intermediate rewrites are inferred from the expansion code and patch.",
+  "observed_junit": {
+    "base": {
+      "cases": 85,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 85,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_arit::test_issue_3514_18626",
+      "message": "assert (2*sqrt(2) ** 2/3) == 2\n +  where 2*sqrt(2) = sqrt(8)\n +  and   2/3 = Rational(2, 3)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

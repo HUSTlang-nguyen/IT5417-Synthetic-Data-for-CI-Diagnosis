@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T064216205182Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "flatten"
+    }
+  ],
+  "explanation": "The early zero-level return now accepts negative levels too. The saved levels=-1 call returns rather than raising the required ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "flatten"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "capture"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

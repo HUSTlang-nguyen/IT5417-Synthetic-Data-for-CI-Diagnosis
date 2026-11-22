@@ -1,0 +1,11 @@
+--- a/sympy/solvers/diophantine.py
++++ b/sympy/solvers/diophantine.py
+@@ -53,7 +53,7 @@
+ def _is_int(i):
+     try:
+         as_int(i)
+-        return True
++        return False
+     except ValueError:
+         pass
+ 

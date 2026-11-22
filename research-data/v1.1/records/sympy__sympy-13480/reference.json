@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-13480",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "coth.eval"
+    }
+  ],
+  "explanation": "The additive periodicity branch computes cothm but tests the unbound name cotm. Reaching that branch raises the saved NameError before it can select coth(x) or tanh(x). Testing the variable actually assigned removes the runtime name error.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "coth.eval"
+    },
+    {
+      "file": "sympy/core/function.py",
+      "function": "Application.__new__"
+    },
+    {
+      "file": "sympy/core/function.py",
+      "function": "Function.__new__"
+    },
+    {
+      "file": "sympy/core/cache.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

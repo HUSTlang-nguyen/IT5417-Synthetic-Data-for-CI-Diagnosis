@@ -1,0 +1,11 @@
+--- a/astroid/raw_building.py
++++ b/astroid/raw_building.py
+@@ -354,7 +354,7 @@
+         because it's a built-in module or because the .py is not available)
+         """
+         self._module = module
+-        if modname is None:
++        if modname is not None:
+             modname = module.__name__
+         try:
+             node = build_module(modname, module.__doc__)

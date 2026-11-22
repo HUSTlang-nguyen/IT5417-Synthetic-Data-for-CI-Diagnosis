@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-15567",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Number.__divmod__"
+    }
+  ],
+  "explanation": "The quotient uses sign(rat)*int(abs(rat)), truncating toward zero. Divmod requires floor division, so a negative non-integer quotient produces -1 and a positive remainder instead of the expected -2 and negative remainder. The negative-quotient adjustment corrects the tested boundary.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

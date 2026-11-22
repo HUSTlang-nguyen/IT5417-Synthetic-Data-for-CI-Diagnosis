@@ -1,0 +1,100 @@
+from typing import Any, Callable, Optional
+from functools import reduce
+from collections import defaultdict
+import inspect
+
+from sympy.core.kind import Kind, UndefinedKind, NumberKind
+from sympy.core.basic import Basic
+from sympy.core.containers import Tuple, TupleKind
+from sympy.core.decorators import sympify_method_args, sympify_return
+from sympy.core.evalf import EvalfMixin
+from sympy.core.expr import Expr
+from sympy.core.function import Lambda
+from sympy.core.logic import (FuzzyBool, fuzzy_bool, fuzzy_or, fuzzy_and,
+    fuzzy_not)
+from sympy.core.numbers import Float, Integer
+from sympy.core.operations import LatticeOp
+from sympy.core.parameters import global_parameters
+from sympy.core.relational import Eq, Ne, is_lt
+from sympy.core.singleton import Singleton, S
+from sympy.core.sorting import ordered
+from sympy.core.symbol import symbols, Symbol, Dummy, uniquely_named_symbol
+from sympy.core.sympify import _sympify, sympify, _sympy_converter
+from sympy.functions.elementary.exponential import exp, log
+from sympy.functions.elementary.miscellaneous import Max, Min
+from sympy.logic.boolalg import And, Or, Not, Xor, true, false
+from sympy.utilities.decorator import deprecated
+from sympy.utilities.exceptions import sympy_deprecation_warning
+from sympy.utilities.iterables import (iproduct, sift, roundrobin, iterable,
+                                       subsets)
+from sympy.utilities.misc import func_name, filldedent
+
+from mpmath import mpi, mpf
+
+from mpmath.libmp.libmpf import prec_to_dps
+
+
+tfn = defaultdict(lambda: None, {
+    True: S.true,
+    S.true: S.true,
+    False: S.false,
+    S.false: S.false})
+
+
+@sympify_method_args
+class Set(Basic, EvalfMixin):
+    """
+    The base class for any kind of set.
+
+    Explanation
+    ===========
+
+    This is not meant to be used directly as a container of items. It does not
+    behave like the builtin ``set``; see :class:`FiniteSet` for that.
+
+    Real intervals are represented by the :class:`Interval` class and unions of
+    sets by the :class:`Union` class. The empty set is represented by the
+    :class:`EmptySet` class and available as a singleton as ``S.EmptySet``.
+    """
+
+    __slots__ = ()
+
+    is_number = False
+    is_iterable = False
+    is_interval = False
+
+    is_FiniteSet = False
+    is_Interval = False
+    is_ProductSet = False
+    is_Union = False
+    is_Intersection = None  # type: Optional[bool]
+    is_UniversalSet = None  # type: Optional[bool]
+    is_Complement = None  # type: Optional[bool]
+    is_ComplexRegion = False
+
+    is_empty = None  # type: FuzzyBool
+    is_finite_set = None  # type: FuzzyBool
+
+    @property  # type: ignore
+    @deprecated(
+        """
+        The is_EmptySet attribute of Set objects is deprecated.
+        Use 's is S.EmptySet" or 's.is_empty' instead.
+        """,
+        deprecated_since_version="1.5",
+        active_deprecations_target="deprecated-is-emptyset",
+    )
+    def is_EmptySet(self):
+        return None
+
+    @staticmethod
+    def _infimum_key(expr):
+        """
+        Return infimum (if possible) else S.Infinity.
+        """
+        try:
+            infimum = expr.inf
+            assert infimum.is_comparable
+            infimum = infimum.evalf()  # issue #18505
+        except (NotImplementedError,
+                AttributeError, AssertionError, ValueError):

@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T11:37:39+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "sympy__sympy-13369",
+  "case_id": "sympy__sympy-13369-ds1",
+  "run_id": "reproduce-20261112T005909130697Z",
+  "role": "train",
+  "repo": "https://github.com/sympy/sympy",
+  "group_id": "https://github.com/sympy/sympy",
+  "source_commit": "61eaf5c15ba9248881de0a22afbe12bf10e3f342",
+  "image_id": "sha256:0d9f470ed76d045d2dd42a1f9d2be937d8f65b72604d48da406b85d2cea5e8db",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "c0a102aae11c3afe1e09a43793ea809b2ca027d5fb60ac68695c9f3cfb34d008",
+  "input_content_sha256": "acd3b439449c2b1569a673ad6b6e72ac867600f39b85f034829d7cea4bb3f665",
+  "reference_sha256": "911e69a274b00ef3da1fbefbef435cbb6bc65ef8a9f952a3b64cc0682e1b0cb7",
+  "assessment_sha256": "ae768adf8bb7667e1e25eaa8ef69986beb38e172b4af8a0a07489f464f9f02a2",
+  "evidence_hashes": {
+    "manifest.json": "1810b12fcbb37b2f133227299678872828bbffda9ce84a6e9dffd8a2e0424810",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "28ecbcda280ff0eba74222c77ff656c0f39e1891185d79876b1fe2296c9530bb",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5463f2dbcc809f1390bfef11ae25c34167271ed2055936e3a4d89368844bde71",
+    "historical-fixed.stdout.txt": "278352fcb232ebeb6ef89496700b30324691e2cc8d6ca31f692ced653317e987",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "cb49e7a77aa1846b4510264cf16eace1b661637cbf9c01d1ad53dbbbe8bb6808"
+  },
+  "retrieval": {
+    "production_files_scanned": 660,
+    "ranked_function_count": 14716,
+    "characters": 6000,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

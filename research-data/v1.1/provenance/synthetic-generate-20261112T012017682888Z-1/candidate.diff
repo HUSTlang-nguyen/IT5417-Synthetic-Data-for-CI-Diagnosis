@@ -1,0 +1,11 @@
+--- a/sympy/algebras/quaternion.py
++++ b/sympy/algebras/quaternion.py
+@@ -52,7 +52,7 @@
+         c = sympify(c)
+         d = sympify(d)
+ 
+-        if any(i.is_commutative is False for i in [a, b, c, d]):
++        if any(i.is_commutative is True for i in [a, b, c, d]):
+             raise ValueError("arguments have to be commutative")
+         else:
+             obj = Expr.__new__(cls, a, b, c, d)

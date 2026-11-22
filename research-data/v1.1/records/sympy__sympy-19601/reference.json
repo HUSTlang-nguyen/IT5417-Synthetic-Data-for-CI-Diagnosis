@@ -1,0 +1,19 @@
+{
+  "sample_id": "sympy__sympy-19601",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/radsimp.py",
+      "function": "collect"
+    }
+  ],
+  "explanation": "The recursive nonsymbol collection branch replaces expressions with temporary Dummy symbols, then restores those symbols only in dictionary keys. Coefficient values retain a Dummy instead of a**2. Applying xreplace to each value restores the expected coefficient a**2+1.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/simplify/radsimp.py",
+      "function": "collect"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

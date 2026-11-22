@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-12481",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/permutations.py",
+      "function": "Permutation.__new__"
+    }
+  ],
+  "explanation": "Repeated elements are rejected even in cycle notation, where overlapping cycles legitimately share elements and are composed. The saved (0,1)(0,2) input raises ValueError before that composition. Restricting duplicate rejection to array notation allows the intended cycle path.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/combinatorics/permutations.py",
+      "function": "Permutation.__new__"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

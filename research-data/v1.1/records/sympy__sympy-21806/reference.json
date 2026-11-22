@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-21806",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion._eval_evalf"
+    }
+  ],
+  "explanation": "The quaternion class lacks componentwise numerical evaluation. Its saved evalf result retains sqrt(2) and sqrt(3) instead of approximate floating components. The added handler evaluates each component at the requested decimal precision.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.exp"
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.to_axis_angle"
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion._ln"
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.from_axis_angle"
+    },
+    {
+      "file": "sympy/algebras/quaternion.py",
+      "function": "Quaternion.from_rotation_matrix"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

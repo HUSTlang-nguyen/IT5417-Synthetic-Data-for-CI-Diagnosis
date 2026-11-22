@@ -1,0 +1,100 @@
+# Licensed under the LGPL: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+# For details: https://github.com/PyCQA/astroid/blob/main/LICENSE
+# Copyright (c) https://github.com/PyCQA/astroid/blob/main/CONTRIBUTORS.txt
+
+"""astroid manager: avoid multiple astroid build of a same module when
+possible by providing a class responsible to get astroid representation
+from various source and using a cache of built modules)
+"""
+
+from __future__ import annotations
+
+import collections
+import os
+import types
+import zipimport
+from importlib.util import find_spec, module_from_spec
+from typing import TYPE_CHECKING, ClassVar
+
+from astroid.const import BRAIN_MODULES_DIRECTORY
+from astroid.exceptions import AstroidBuildingError, AstroidImportError
+from astroid.interpreter._import import spec, util
+from astroid.modutils import (
+    NoSourceFile,
+    _cache_normalize_path_,
+    file_info_from_modpath,
+    get_source_file,
+    is_module_name_part_of_extension_package_whitelist,
+    is_python_source,
+    is_standard_module,
+    load_module_from_name,
+    modpath_from_file,
+)
+from astroid.transforms import TransformVisitor
+from astroid.typing import AstroidManagerBrain
+
+if TYPE_CHECKING:
+    from astroid import nodes
+
+ZIP_IMPORT_EXTS = (".zip", ".egg", ".whl", ".pyz", ".pyzw")
+
+
+def safe_repr(obj):
+    try:
+        return repr(obj)
+    except Exception:  # pylint: disable=broad-except
+        return "???"
+
+
+class AstroidManager:
+    """Responsible to build astroid from files or modules.
+
+    Use the Borg (singleton) pattern.
+    """
+
+    name = "astroid loader"
+    brain: AstroidManagerBrain = {
+        "astroid_cache": {},
+        "_mod_file_cache": {},
+        "_failed_import_hooks": [],
+        "always_load_extensions": False,
+        "optimize_ast": False,
+        "extension_package_whitelist": set(),
+        "_transform": TransformVisitor(),
+    }
+    max_inferable_values: ClassVar[int] = 100
+
+    def __init__(self) -> None:
+        # NOTE: cache entries are added by the [re]builder
+        self.astroid_cache = AstroidManager.brain["astroid_cache"]
+        self._mod_file_cache = AstroidManager.brain["_mod_file_cache"]
+        self._failed_import_hooks = AstroidManager.brain["_failed_import_hooks"]
+        self.always_load_extensions = AstroidManager.brain["always_load_extensions"]
+        self.optimize_ast = AstroidManager.brain["optimize_ast"]
+        self.extension_package_whitelist = AstroidManager.brain[
+            "extension_package_whitelist"
+        ]
+        self._transform = AstroidManager.brain["_transform"]
+
+    @property
+    def register_transform(self):
+        # This and unregister_transform below are exported for convenience
+        return self._transform.register_transform
+
+    @property
+    def unregister_transform(self):
+        return self._transform.unregister_transform
+
+    @property
+    def builtins_module(self) -> nodes.Module:
+        return self.astroid_cache["builtins"]
+
+    def visit_transforms(self, node):
+        """Visit the transforms and apply them to the given *node*."""
+        return self._transform.visit(node)
+
+    def ast_from_file(self, filepath, modname=None, fallback=True, source=False):
+        """given a module name, return the astroid object"""
+        try:
+            filepath = get_source_file(filepath, include_no_ext=True)
+            source = True

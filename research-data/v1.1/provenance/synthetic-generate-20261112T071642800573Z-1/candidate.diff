@@ -1,0 +1,11 @@
+--- a/sympy/simplify/fu.py
++++ b/sympy/simplify/fu.py
+@@ -450,7 +450,7 @@
+                 args[None].append(a)
+         c = args[cos]
+         s = args[sin]
+-        if not (c and s or len(c) > 1 or len(s) > 1):
++        if not (c and s or len(c) > 1 or len(s) < 1):
+             return rv
+ 
+         args = args[None]

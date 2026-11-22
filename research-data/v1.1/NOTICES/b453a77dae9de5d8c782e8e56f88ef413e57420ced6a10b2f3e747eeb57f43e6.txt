@@ -1,0 +1,100 @@
+"""sympify -- convert objects SymPy internal format"""
+
+from typing import Dict, Type, Callable, Any
+
+from inspect import getmro
+
+from .compatibility import iterable
+from .parameters import global_parameters
+
+
+class SympifyError(ValueError):
+    def __init__(self, expr, base_exc=None):
+        self.expr = expr
+        self.base_exc = base_exc
+
+    def __str__(self):
+        if self.base_exc is None:
+            return "SympifyError: %r" % (self.expr,)
+
+        return ("Sympify of expression '%s' failed, because of exception being "
+            "raised:\n%s: %s" % (self.expr, self.base_exc.__class__.__name__,
+            str(self.base_exc)))
+
+
+# See sympify docstring.
+converter = {}  # type: Dict[Type[Any], Callable[[Any], Basic]]
+
+
+class CantSympify:
+    """
+    Mix in this trait to a class to disallow sympification of its instances.
+
+    Examples
+    ========
+
+    >>> from sympy.core.sympify import sympify, CantSympify
+
+    >>> class Something(dict):
+    ...     pass
+    ...
+    >>> sympify(Something())
+    {}
+
+    >>> class Something(dict, CantSympify):
+    ...     pass
+    ...
+    >>> sympify(Something())
+    Traceback (most recent call last):
+    ...
+    SympifyError: SympifyError: {}
+
+    """
+    pass
+
+
+def _is_numpy_instance(a):
+    """
+    Checks if an object is an instance of a type from the numpy module.
+    """
+    # This check avoids unnecessarily importing NumPy.  We check the whole
+    # __mro__ in case any base type is a numpy type.
+    return any(type_.__module__ == 'numpy'
+               for type_ in type(a).__mro__)
+
+
+def _convert_numpy_types(a, **sympify_args):
+    """
+    Converts a numpy datatype input to an appropriate SymPy type.
+    """
+    import numpy as np
+    if not isinstance(a, np.floating):
+        if np.iscomplex(a):
+            return converter[complex](a.item())
+        else:
+            return sympify(a.item(), **sympify_args)
+    else:
+        try:
+            from sympy.core.numbers import Float
+            prec = np.finfo(a).nmant + 1
+            # E.g. double precision means prec=53 but nmant=52
+            # Leading bit of mantissa is always 1, so is not stored
+            a = str(list(np.reshape(np.asarray(a),
+                                    (1, np.size(a)))[0]))[1:-1]
+            return Float(a, precision=prec)
+        except NotImplementedError:
+            raise SympifyError('Translation for numpy float : %s '
+                               'is not implemented' % a)
+
+
+def sympify(a, locals=None, convert_xor=True, strict=False, rational=False,
+        evaluate=None):
+    """Converts an arbitrary expression to a type that can be used inside SymPy.
+
+    For example, it will convert Python ints into instances of sympy.Integer,
+    floats into instances of sympy.Float, etc. It is also able to coerce symbolic
+    expressions which inherit from Basic. This can be useful in cooperation
+    with SAGE.
+
+    It currently accepts as arguments:
+       - any object defined in SymPy

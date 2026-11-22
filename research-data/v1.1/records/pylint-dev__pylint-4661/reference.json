@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-4661",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "pylint/config/__init__.py",
+      "function": "<module>"
+    }
+  ],
+  "explanation": "Default PYLINT_HOME is built as the legacy ~/.pylint.d instead of the platform cache directory returned by appdirs. The saved test observes /tmp/.pylint.d rather than /tmp/.cache/pylint. The default configuration expression changes to user_cache_dir.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/epylint.py",
+      "function": "lint"
+    },
+    {
+      "file": "pylint/pyreverse/diagrams.py",
+      "function": "ClassDiagram.nodes"
+    },
+    {
+      "file": "pylint/testutils/functional_test_file.py",
+      "function": "FunctionalTestFile.module"
+    },
+    {
+      "file": "pylint/pyreverse/diagrams.py",
+      "function": "PackageDiagram.module"
+    },
+    {
+      "file": "pylint/config/option_parser.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

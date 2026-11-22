@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13647",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping._eval_col_insert.entry"
+    }
+  ],
+  "explanation": "For original columns after an insertion, the nested entry function subtracts both the insertion position and inserted width. The position is already represented by the destination index, so that extra subtraction selects the wrong original columns. Subtracting only other.cols preserves the trailing identity-matrix entries.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

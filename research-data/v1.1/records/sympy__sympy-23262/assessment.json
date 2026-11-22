@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T013112477823Z",
+  "reviewed_at": "2026-11-12T11:40:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b8743963700a339a72ffe81f4d8a1ab7e35b7ba34359ce45893051663d4f719f",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "dc7cfd3f3c1e05c649b68cc110740a2d69fba515cee89287e8476fea5ff4def9",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ea63a9e832e5682982f58a267bf163533d63d44470f231caa461555520683000",
+    "historical-fixed.stdout.txt": "700dcd1deb2ce28d6e8b3b32f3b1a079a7bdb472a005eec833c8edb5165ddd86",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "99fa03d119ebb79dad18fcd796d3ee77249db630cd301be80698620a21ad4f66"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/utilities/lambdify.py",
+      "function": "_recursive_to_string"
+    }
+  ],
+  "mechanism": "Tuple serialization encloses elements in parentheses without a trailing comma. A singleton tuple is emitted as (1), so the compiled lambda returns scalar1 instead of (1,). Adding the tuple comma preserves the container type.",
+  "limitations": "The candidate application string is valid Python; the fault is tuple/scalar representation, not syntax. The review reads the saved execution and does not compile generated code on the host.",
+  "observed_junit": {
+    "base": {
+      "cases": 62,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 62,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.utilities.tests.test_lambdify::test_issue_14941",
+      "message": "assert 1 == (1,)\n +  where 1 = <function _lambdifygenerated at 0x7f0e72b800d0>()"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.0.0.dev332+ge2ee3144e, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base, configfile: pyproject.toml\ncollecting ... collected 55 items\n\ntesting/code/test_source.py::test_source_str_function PASSED             [  1%]\ntesting/code/test_source.py::test_source_from_function PASSED            [  3%]\ntesting/code/test_source.py::test_source_from_method PASSED              [  5%]\ntesting/code/test_source.py::test_source_from_lines PASSED               [  7%]\ntesting/code/test_source.py::test_source_from_inner_function PASSED      [  9%]\ntesting/code/test_source.py::test_source_strips PASSED                   [ 10%]\ntesting/code/test_source.py::test_source_strip_multiline PASSED          [ 12%]\ntesting/code/test_source.py::TestAccesses::test_getrange PASSED          [ 14%]\ntesting/code/test_source.py::TestAccesses::test_getrange_step_not_supported PASSED [ 16%]\ntesting/code/test_source.py::TestAccesses::test_getline PASSED           [ 18%]\ntesting/code/test_source.py::TestAccesses::test_len PASSED               [ 20%]\ntesting/code/test_source.py::TestAccesses::test_iter PASSED              [ 21%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatement PASSED [ 23%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatementrange_triple_quoted PASSED [ 25%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatementrange_within_constructs PASSED [ 27%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatementrange_bug PASSED [ 29%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatementrange_bug2 PASSED [ 30%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatementrange_ast_issue58 PASSED [ 32%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatementrange_out_of_bounds_py3 PASSED [ 34%]\ntesting/code/test_source.py::TestSourceParsing::test_getstatementrange_with_syntaxerror_issue7 PASSED [ 36%]\ntesting/code/test_source.py::test_getstartingblock_singleline PASSED     [ 38%]\ntesting/code/test_source.py::test_getline_finally PASSED                 [ 40%]\ntesting/code/test_source.py::test_getfuncsource_dynamic PASSED           [ 41%]\ntesting/code/test_source.py::test_getfuncsource_with_multine_string PASSED [ 43%]\ntesting/code/test_source.py::test_deindent PASSED                        [ 45%]\ntesting/code/test_source.py::test_source_of_class_at_eof_without_newline PASSED [ 47%]\ntesting/code/test_source.py::test_source_fallback PASSED                 [ 49%]\ntesting/code/test_source.py::test_findsource_fallback PASSED             [ 50%]\ntesting/code/test_source.py::test_findsource PASSED                      [ 52%]\ntesting/code/test_source.py::test_getfslineno PASSED                     [ 54%]\ntesting/code/test_source.py::test_code_of_object_instance_with_call PASSED [ 56%]\ntesting/code/test_source.py::test_oneline PASSED                         [ 58%]\ntesting/code/test_source.py::test_comment_and_no_newline_at_end PASSED   [ 60%]\ntesting/code/test_source.py::test_oneline_and_comment PASSED             [ 61%]\ntesting/code/test_source.py::test_comments PASSED                        [ 63%]\ntesting/code/test_source.py::test_comment_in_statement PASSED            [ 65%]\ntesting/code/test_source.py::test_source_with_decorator PASSED           [ 67%]\ntesting/code/test_source.py::test_single_line_else PASSED                [ 69%]\ntesting/code/test_source.py::test_single_line_finally PASSED             [ 70%]\ntesting/code/test_source.py::test_issue55 PASSED                         [ 72%]\ntesting/code/test_source.py::test_multiline PASSED                       [ 74%]\ntesting/code/test_source.py::TestTry::test_body PASSED                   [ 76%]\ntesting/code/test_source.py::TestTry::test_except_line PASSED            [ 78%]\ntesting/code/test_source.py::TestTry::test_except_body PASSED            [ 80%]\ntesting/code/test_source.py::TestTry::test_else PASSED                   [ 81%]\ntesting/code/test_source.py::TestTryFinally::test_body PASSED            [ 83%]\ntesting/code/test_source.py::TestTryFinally::test_finally PASSED         [ 85%]\ntesting/code/test_source.py::TestIf::test_body PASSED                    [ 87%]\ntesting/code/test_source.py::TestIf::test_elif_clause PASSED             [ 89%]\ntesting/code/test_source.py::TestIf::test_elif PASSED                    [ 90%]\ntesting/code/test_source.py::TestIf::test_else PASSED                    [ 92%]\ntesting/code/test_source.py::test_semicolon PASSED                       [ 94%]\ntesting/code/test_source.py::test_def_online PASSED                      [ 96%]\ntesting/code/test_source.py::test_decorator FAILED                       [ 98%]\ntesting/code/test_source.py::test_getstartingblock_multiline PASSED      [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_decorator ________________________________\n\n    def test_decorator() -> None:\n        s = \"\"\"\\\n    def foo(f):\n        pass\n    \n    @foo\n    def bar():\n        pass\n        \"\"\"\n        source = getstatement(3, s)\n>       assert \"@foo\" in str(source)\nE       AssertionError: assert '@foo' in '    pass'\nE        +  where '    pass' = str(<_pytest._code.source.Source object at 0x7d1e9e1007c0>)\n\ntesting/code/test_source.py:631: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED testing/code/test_source.py::test_decorator - AssertionError: assert '...\n========================= 1 failed, 54 passed in 0.16s =========================\n",
+  "code": [
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.indent",
+      "start_line": 83,
+      "end_line": 88,
+      "score": 51.118034,
+      "text": "src/_pytest/_code/source.py::Source.indent lines 83-88\n    def indent(self, indent: str = \" \" * 4) -> \"Source\":\n        \"\"\"Return a copy of the source object with all lines indented by the\n        given indent-string.\"\"\"\n        newsource = Source()\n        newsource.lines = [(indent + line) for line in self.lines]\n        return newsource",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.deindent",
+      "start_line": 104,
+      "end_line": 108,
+      "score": 50.904534,
+      "text": "src/_pytest/_code/source.py::Source.deindent lines 104-108\n    def deindent(self) -> \"Source\":\n        \"\"\"Return a new Source object deindented.\"\"\"\n        newsource = Source()\n        newsource.lines[:] = deindent(self.lines)\n        return newsource",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.__init__",
+      "start_line": 23,
+      "end_line": 38,
+      "score": 50.898027,
+      "text": "src/_pytest/_code/source.py::Source.__init__ lines 23-38\n    def __init__(self, obj: object = None) -> None:\n        if not obj:\n            self.lines: List[str] = []\n        elif isinstance(obj, Source):\n            self.lines = obj.lines\n        elif isinstance(obj, (tuple, list)):\n            self.lines = deindent(x.rstrip(\"\\n\") for x in obj)\n        elif isinstance(obj, str):\n            self.lines = deindent(obj.split(\"\\n\"))\n        else:\n            try:\n                rawcode = getrawcode(obj)\n                src = inspect.getsource(rawcode)\n            except TypeError:\n                src = inspect.getsource(obj)  # type: ignore[arg-type]\n            self.lines = deindent(src.split(\"\\n\"))",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.strip",
+      "start_line": 72,
+      "end_line": 81,
+      "score": 50.872872,
+      "text": "src/_pytest/_code/source.py::Source.strip lines 72-81\n    def strip(self) -> \"Source\":\n        \"\"\"Return new Source object with trailing and leading blank lines removed.\"\"\"\n        start, end = 0, len(self)\n        while start < end and not self.lines[start].strip():\n            start += 1\n        while end > start and not self.lines[end - 1].strip():\n            end -= 1\n        source = Source()\n        source.lines[:] = self.lines[start:end]\n        return source",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "Source.__eq__",
+      "start_line": 40,
+      "end_line": 43,
+      "score": 50.866025,
+      "text": "src/_pytest/_code/source.py::Source.__eq__ lines 40-43\n    def __eq__(self, other: object) -> bool:\n        if not isinstance(other, Source):\n            return NotImplemented\n        return self.lines == other.lines",
+      "truncated": false
+    }
+  ]
+}

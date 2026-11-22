@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-6358",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "Similar.__init__"
+    }
+  ],
+  "explanation": "The similarity engine copies option values into independent attributes at construction rather than sharing the linters current configuration. Later --ignore-imports=y therefore leaves its private ignore_imports false, and it reports duplicate imports with exit status eight. Linking the engines namespace to linter.config keeps the option observed by append_stream and matching routines current.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "check_messages"
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "only_required_for_messages"
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "only_required_for_messages.store_messages"
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "is_inside_lambda"
+    },
+    {
+      "file": "pylint/checkers/utils.py",
+      "function": "safe_infer"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

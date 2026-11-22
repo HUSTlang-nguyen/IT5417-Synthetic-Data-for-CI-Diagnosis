@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T060856154884Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "re.eval"
+    }
+  ],
+  "explanation": "The NaN sentinel branch returns positive infinity instead of NaN. The saved re(nan) is nan identity assertion fails with oo is nan.",
+  "retrieved_locations": [
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    },
+    {
+      "file": "sympy/polys/orderings.py",
+      "function": "InverseOrder.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

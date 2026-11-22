@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T201140089462Z",
+  "reviewed_at": "2026-11-12T06:49:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e8e09d886546ff49f4a52d1ec46ce4aba3a2daf5be61c9639469e3dafaf36273",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "9cc39074fa43c6f4a189374f9b061957be9094dc84846b3595510909df50af4c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "477961652e0a126d598a672b42295386bf0db28bb13870ad2d22de6e201cb1fd",
+    "historical-fixed.stdout.txt": "f438e5bbb4fb4745352d4f9673232b7a46b7a76b3ff79e62e1b4d2495f4a4502",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e04b0af66501b24cdb1a13c0bc36a5ca551ee6c9d93cbe09ed75af7bd7483e11"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "PyProperty.handle_signature"
+    }
+  ],
+  "mechanism": "PyProperty.handle_signature appends the type option as one plain annotation text node. It does not parse the annotation into semantic nodes, so the property signature lacks the expected type cross-reference structure. The repair invokes _parse_annotation and builds a separate colon text plus parsed annotation children.",
+  "evidence_reason": "Read handle_signature at python.py:859-866, its node construction, the two-line repair and saved JUnit. Base assertion reports one child instead of two in the type annotation; fixed has 45 passed and frozen F2P/P2P resolve.",
+  "limitations": "The testing util assertion reports malformed node structure; it is not the causal production function. The review confirms the tested property type shape, not every possible annotation syntax."
+}

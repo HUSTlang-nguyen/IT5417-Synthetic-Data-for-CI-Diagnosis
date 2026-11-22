@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035913286227Z",
+  "reviewed_at": "2026-11-12T11:57:11+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "2d4c0f24621c1aa5ca381b56b1fc8c7ec267460423939701d7397f61dc558b0c",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "1c9ff3e3243e90c755a94b3d931b065b80f39a7ca0647156c722e7dff96bb438",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "3d421b479d4d9afca3ac05339b7083e254a5d35d103db7c42969a887beba66e0",
+    "historical-fixed.stdout.txt": "d15edd37dfbe5003c8d09e990feb5ff240505c6ef53b23c87764dcfdaa6eb62f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "dbd2921f9b937e34fa26a0601ce7d3eedf358db2693bd72a5e468d7fa914bce7"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set._complement"
+    }
+  ],
+  "mechanism": "Finite-set subtraction keeps every element whose containment is not exactly True, treating unknown membership as definite nonmembership. The saved symbolic complement collapses to {x,y} and loses its interval exclusion. Separating true/false/unknown membership preserves an unevaluated complement for uncertain elements.",
+  "limitations": "The observed distinction is three-valued set reasoning, not a parser or runtime type failure.",
+  "observed_junit": {
+    "base": {
+      "cases": 71,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 71,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.sets.tests.test_sets::test_Complement",
+      "message": "assert {x, y} == {x, y} \\ Interval(-10, 10)\n +  where {x, y} = Complement({2, x, y}, Interval(-10, 10))\n +    where {2, x, y} = FiniteSet(x, y, 2)\n +    and   Interval(-10, 10) = Interval(-10, 10)\n +  and   {x, y} \\ Interval(-10, 10) = Complement({x, y}, Interval(-10, 10))\n +    where {x, y} = FiniteSet(x, y)\n +    and   Interval(-10, 10) = Interval(-10, 10)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

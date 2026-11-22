@@ -1,0 +1,35 @@
+{
+  "sample_id": "pydicom__pydicom-938",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__str__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__repr__"
+    }
+  ],
+  "explanation": "The float subclass string fallback enters repr while its custom repr calls str again. The saved DSfloat str/repr tests alternate between those two methods until RecursionError. Calling the underlying numeric repr and deriving the quoted/plain forms breaks that cycle.",
+  "retrieved_locations": [
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__repr__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__str__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "IS.__repr__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

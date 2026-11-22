@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T042102740077Z",
+  "reviewed_at": "2026-11-12T12:08:22+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e45a0c42ef3f91e91a488a991524ed46969c9c2b862859b92a77ea2ce7d6ae7e",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "c27d3b653ba74fc5eb083a744838f23bf11f53251360ab5c7dbc09c375c51116",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2034d7dc7e69f03542bf09a41e0cc1b2779ea48878e51d4cf7973949b4107631",
+    "historical-fixed.stdout.txt": "f3626fb30414eaf1938a0caa2394220edd80b49145ca3af85e40ac5dd63a20ed",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f119888e63cdde381315eb44a8e10b8b6d850574dc5d9d9d499e761ec7e53a66"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/integrals/intpoly.py",
+      "function": "decompose"
+    }
+  ],
+  "mechanism": "Separate decomposition returns a list even though the saved contract expects an unordered set of monomials. The saved decompose(x,True) yields [x] instead of {x}. Returning a set supplies the required container interface and uniqueness semantics.",
+  "limitations": "The numerical monomial is unchanged; this is a result-container contract, with a narrow single-symbol failing assertion.",
+  "observed_junit": {
+    "base": {
+      "cases": 2,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 2,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.integrals.tests.test_intpoly::test_decompose",
+      "message": "assert [x] == {x}\n  Full diff:\n  - {x}\n  + [x]"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

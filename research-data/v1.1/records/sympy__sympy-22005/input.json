@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 3 items\n\nsympy/solvers/tests/test_polysys.py::test_solve_poly_system FAILED       [ 33%]\nsympy/solvers/tests/test_polysys.py::test_solve_biquadratic PASSED       [ 66%]\nsympy/solvers/tests/test_polysys.py::test_solve_triangulated PASSED      [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_solve_poly_system ____________________________\n\n    def test_solve_poly_system():\n        assert solve_poly_system([x - 1], x) == [(S.One,)]\n    \n        assert solve_poly_system([y - x, y - x - 1], x, y) is None\n    \n        assert solve_poly_system([y - x**2, y + x**2], x, y) == [(S.Zero, S.Zero)]\n    \n        assert solve_poly_system([2*x - 3, y*Rational(3, 2) - 2*x, z - 5*y], x, y, z) == \\\n            [(Rational(3, 2), Integer(2), Integer(10))]\n    \n        assert solve_poly_system([x*y - 2*y, 2*y**2 - x**2], x, y) == \\\n            [(0, 0), (2, -sqrt(2)), (2, sqrt(2))]\n    \n        assert solve_poly_system([y - x**2, y + x**2 + 1], x, y) == \\\n            [(-I*sqrt(S.Half), Rational(-1, 2)), (I*sqrt(S.Half), Rational(-1, 2))]\n    \n        f_1 = x**2 + y + z - 1\n        f_2 = x + y**2 + z - 1\n        f_3 = x + y + z**2 - 1\n    \n        a, b = sqrt(2) - 1, -sqrt(2) - 1\n    \n        assert solve_poly_system([f_1, f_2, f_3], x, y, z) == \\\n            [(0, 0, 1), (0, 1, 0), (1, 0, 0), (a, a, a), (b, b, b)]\n    \n        solution = [(1, -1), (1, 1)]\n    \n        assert solve_poly_system([Poly(x**2 - y**2), Poly(x - 1)]) == solution\n        assert solve_poly_system([x**2 - y**2, x - 1], x, y) == solution\n        assert solve_poly_system([x**2 - y**2, x - 1]) == solution\n    \n        assert solve_poly_system(\n            [x + x*y - 3, y + x*y - 4], x, y) == [(-3, -2), (1, 2)]\n    \n        raises(NotImplementedError, lambda: solve_poly_system([x**3 - y**3], x, y))\n        raises(NotImplementedError, lambda: solve_poly_system(\n            [z, -2*x*y**2 + x + y**2*z, y**2*(-z - 4) + 2]))\n        raises(PolynomialError, lambda: solve_poly_system([1/x], x))\n    \n        raises(NotImplementedError, lambda: solve_poly_system(\n              [x-1,], (x, y)))\n>       raises(NotImplementedError, lambda: solve_poly_system(\n              [y-1,], (x, y)))\nE       Failed: DID NOT RAISE <class 'NotImplementedError'>\n\nsympy/solvers/tests/test_polysys.py:54: Failed\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/solvers/tests/test_polysys.py::test_solve_poly_system - Failed: ...\n========================= 1 failed, 2 passed in 1.05s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_poly_system",
+      "start_line": 17,
+      "end_line": 63,
+      "score": 50.516398,
+      "text": "sympy/solvers/polysys.py::solve_poly_system lines 17-63\ndef solve_poly_system(seq, *gens, **args):\n    \"\"\"\n    Solve a system of polynomial equations.\n\n    Parameters\n    ==========\n\n    seq: a list/tuple/set\n        Listing all the equations that are needed to be solved\n    gens: generators\n        generators of the equations in seq for which we want the\n        solutions\n    args: Keyword arguments\n        Special options for solving the equations\n\n    Returns\n    =======\n\n    List[Tuple]\n        A List of tuples. Solutions for symbols that satisfy the\n        equations listed in seq\n\n    Examples\n    ========\n\n    >>> from sympy import solve_poly_system\n    >>> from sympy.abc import x, y\n\n    >>> solve_poly_system([x*y - 2*y, 2*y**2 - x**2], x, y)\n    [(0, 0), (2, -sqrt(2)), (2, sqrt(2))]\n\n    \"\"\"\n    try:\n        polys, opt = parallel_poly_from_expr(seq, *gens, **args)\n    except PolificationFailed as exc:\n        raise ComputationFailed('solve_poly_system', len(seq), exc)\n\n    if len(polys) == len(opt.gens) == 2:\n        f, g = polys\n\n        if all(i <= 2 for i in f.degree_list() + g.degree_list()):\n            try:\n                return solve_biquadratic(f, g, opt)\n            except SolveFailed:\n                pass\n\n    return solve_generic(polys, opt)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Rational.gcd",
+      "start_line": 2009,
+      "end_line": 2016,
+      "score": 31.154701,
+      "text": "sympy/core/numbers.py::Rational.gcd lines 2009-2016\n    def gcd(self, other):\n        if isinstance(other, Rational):\n            if other == S.Zero:\n                return other\n            return Rational(\n                Integer(igcd(self.p, other.p)),\n                Integer(ilcm(self.q, other.q)))\n        return Number.gcd(self, other)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.sqrt",
+      "start_line": 1199,
+      "end_line": 1201,
+      "score": 31.06066,
+      "text": "sympy/polys/domains/domain.py::Domain.sqrt lines 1199-1201\n    def sqrt(self, a):\n        \"\"\"Returns square root of ``a``. \"\"\"\n        raise NotImplementedError",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Zero.__abs__",
+      "start_line": 2704,
+      "end_line": 2705,
+      "score": 31.0,
+      "text": "sympy/core/numbers.py::Zero.__abs__ lines 2704-2705\n    def __abs__():\n        return S.Zero",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Zero.__neg__",
+      "start_line": 2708,
+      "end_line": 2709,
+      "score": 31.0,
+      "text": "sympy/core/numbers.py::Zero.__neg__ lines 2708-2709\n    def __neg__():\n        return S.Zero",
+      "truncated": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-23T02:29:25+07:00",
+  "result": {
+    "records": 351,
+    "counts": {
+      "train/real_local_reconstruction": 175,
+      "test/real_local_reconstruction": 38,
+      "validation/real_local_reconstruction": 37,
+      "train/controlled_synthetic": 101
+    },
+    "source_lock_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
+    "publication": "attribution_and_privacy_checked_source_licenses_retained"
+  },
+  "records_compared": 351,
+  "input_reference_assessment_files_byte_equal": 1053,
+  "relocated_without_raw_models_docker": true,
+  "bytes": 15226034,
+  "notice_attachment_count": 672,
+  "source_lock_unchanged": true
+}

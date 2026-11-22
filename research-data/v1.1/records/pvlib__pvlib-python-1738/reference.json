@@ -1,0 +1,23 @@
+{
+  "sample_id": "pvlib__pvlib-python-1738",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "pvlib/soiling.py",
+      "function": "hsu"
+    }
+  ],
+  "explanation": "The public HSU function names its angle argument tilt, while the saved callers use surface_tilt. Four tests raise unexpected-keyword TypeError before the physical calculation. Renaming that parameter and its internal use aligns the public API.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/soiling.py",
+      "function": "hsu"
+    },
+    {
+      "file": "pvlib/_deprecation.py",
+      "function": "deprecated"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

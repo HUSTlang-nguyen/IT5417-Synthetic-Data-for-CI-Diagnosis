@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T053058764952Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/octave.py",
+      "function": "OctaveCodePrinter._get_statement"
+    }
+  ],
+  "explanation": "Statement rendering appends comma instead of the required semicolon. Saved assignment and Piecewise code strings fail on that terminator.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

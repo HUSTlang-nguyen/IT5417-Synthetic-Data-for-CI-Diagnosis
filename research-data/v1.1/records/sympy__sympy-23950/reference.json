@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-23950",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.as_set"
+    }
+  ],
+  "explanation": "Contains.as_set is an unimplemented stub that always raises NotImplementedError for a valid membership expression. Returning the second argument supplies the membership set required by the API behavior.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.as_set"
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.eval"
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.binary_symbols"
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol.as_set"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

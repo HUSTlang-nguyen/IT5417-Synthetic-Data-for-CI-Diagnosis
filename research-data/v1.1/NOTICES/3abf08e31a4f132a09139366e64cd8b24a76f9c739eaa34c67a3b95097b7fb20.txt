@@ -1,0 +1,100 @@
+# Copyright 2008-2018 pydicom authors. See LICENSE file for details.
+"""Functions for handling DICOM unique identifiers (UIDs)"""
+
+import os
+import uuid
+import random
+import hashlib
+import re
+
+from pydicom._uid_dict import UID_dictionary
+from pydicom import compat
+
+# Many thanks to the Medical Connections for offering free
+# valid UIDs (http://www.medicalconnections.co.uk/FreeUID.html)
+# Their service was used to obtain the following root UID for pydicom:
+PYDICOM_ROOT_UID = '1.2.826.0.1.3680043.8.498.'
+PYDICOM_IMPLEMENTATION_UID = PYDICOM_ROOT_UID + '1'
+
+# Regexes for valid UIDs and valid UID prefixes
+RE_VALID_UID = r'^(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*$'
+RE_VALID_UID_PREFIX = r'^(0|[1-9][0-9]*)(\.(0|[1-9][0-9]*))*\.$'
+
+
+class UID(str):
+    """Subclass python string so have human-friendly UIDs.
+
+    Example
+    -------
+    >>> from pydicom.uid import UID
+    >>> uid = UID('1.2.840.10008.1.2.4.50')
+    >>> uid
+    '1.2.840.10008.1.2.4.50'
+    >>> uid.is_implicit_VR
+    False
+    >>> uid.is_little_endian
+    True
+    >>> uid.is_transfer_syntax
+    True
+    >>> uid.name
+    'JPEG Baseline (Process 1)'
+    """
+    def __new__(cls, val):
+        """Setup new instance of the class.
+
+        Parameters
+        ----------
+        val : str or pydicom.uid.UID
+            The UID string to use to create the UID object.
+
+        Returns
+        -------
+        pydicom.uid.UID
+            The UID object.
+        """
+        # Don't repeat if already a UID class then may get the name that
+        #   str(uid) gives rather than the dotted number
+        if isinstance(val, UID):
+            return val
+
+        if isinstance(val, compat.string_types):
+            return super(UID, cls).__new__(cls, val.strip())
+
+        raise TypeError("UID must be a string")
+
+    @property
+    def is_implicit_VR(self):
+        """Return True if an implicit VR transfer syntax UID."""
+        if self.is_transfer_syntax:
+            # Implicit VR Little Endian
+            if self == '1.2.840.10008.1.2':
+                return True
+
+            # Explicit VR Little Endian
+            # Explicit VR Big Endian
+            # Deflated Explicit VR Little Endian
+            # All encapsulated transfer syntaxes
+            return False
+
+        raise ValueError('UID is not a transfer syntax.')
+
+    @property
+    def is_little_endian(self):
+        """Return True if a little endian transfer syntax UID."""
+        if self.is_transfer_syntax:
+            # Explicit VR Big Endian
+            if self == '1.2.840.10008.1.2.2':
+                return False
+
+            # Explicit VR Little Endian
+            # Implicit VR Little Endian
+            # Deflated Explicit VR Little Endian
+            # All encapsulated transfer syntaxes
+            return True
+
+        raise ValueError('UID is not a transfer syntax.')
+
+    @property
+    def is_transfer_syntax(self):
+        """Return True if a transfer syntax UID."""
+        if not self.is_private:

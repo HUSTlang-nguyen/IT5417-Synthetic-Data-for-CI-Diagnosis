@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18810",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "generate_derangements"
+    }
+  ],
+  "explanation": "The generator compares candidates with the first sorted multiset permutation instead of the actual input order, and skips that first candidate. For input ba it emits ba instead of the true derangement ab. Comparing each candidate with the original perm fixes both assumptions.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "generate_derangements"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "capture"
+    },
+    {
+      "file": "sympy/plotting/pygletplot/color_scheme.py",
+      "function": "ColorGradient.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

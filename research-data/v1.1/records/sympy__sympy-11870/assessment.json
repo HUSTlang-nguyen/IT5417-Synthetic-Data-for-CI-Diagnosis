@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T042856971766Z",
+  "reviewed_at": "2026-11-12T12:08:50+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "13a8db40ac2f85c59d369fb4328cef27990ed835d85c977f093e627061e0b4df",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "9458fd294e091a168a7fa4567c4eb8065cd6307fd5ca4f1b151db5ff56560e82",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "698af99e62c93d10f1f1e136853e681f2c446fe7ce77d1656767883e451a6933",
+    "historical-fixed.stdout.txt": "0174e79645bf4c53ffadc4deae8c9d8e8feec1cf26e43a068d63831cdab28ebd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "0e544f414e2166a6e182c31919f3fccb62acb5c93b19d9390ec99a28edd1a20b"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/trigonometric.py",
+      "function": "sinc._eval_rewrite_as_sin"
+    }
+  ],
+  "mechanism": "Rewriting sinc returns sin(arg)/arg without its removable-singularity value at zero. The saved symbolic rewrite expects a Piecewise with value1 for zero, but receives the unconditional quotient. Including the nonzero condition preserves that domain behavior.",
+  "limitations": "The patch also adds sin-to-sinc rewriting. The saved first failure directly proves the existing sinc-to-sin method only.",
+  "observed_junit": {
+    "base": {
+      "cases": 59,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 59,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.elementary.tests.test_trigonometric::test_sinc",
+      "message": "assert sin(x)/x == Piecewise((sin(x)/x, Ne(x, 0)), (1, True))\n +  where sin(x)/x = <bound method Basic.rewrite of sinc(x)>(sin)\n +    where <bound method Basic.rewrite of sinc(x)> = sinc(x).rewrite\n +      where sinc(x) = sinc(x)\n +  and   Piecewise((sin(x)/x, Ne(x, 0)), (1, True)) = Piecewise((sin(x)/x, Ne(x, 0)), (1, True))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

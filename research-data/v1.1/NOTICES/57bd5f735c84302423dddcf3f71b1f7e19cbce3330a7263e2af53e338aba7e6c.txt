@@ -1,0 +1,100 @@
+import ast
+import inspect
+import os
+import re
+import sys
+import traceback
+from inspect import CO_VARARGS
+from inspect import CO_VARKEYWORDS
+from io import StringIO
+from pathlib import Path
+from traceback import format_exception_only
+from types import CodeType
+from types import FrameType
+from types import TracebackType
+from typing import Any
+from typing import Callable
+from typing import ClassVar
+from typing import Dict
+from typing import Generic
+from typing import Iterable
+from typing import List
+from typing import Mapping
+from typing import Optional
+from typing import overload
+from typing import Pattern
+from typing import Sequence
+from typing import Set
+from typing import Tuple
+from typing import Type
+from typing import TYPE_CHECKING
+from typing import TypeVar
+from typing import Union
+from weakref import ref
+
+import attr
+import pluggy
+
+import _pytest
+from _pytest._code.source import findsource
+from _pytest._code.source import getrawcode
+from _pytest._code.source import getstatementrange_ast
+from _pytest._code.source import Source
+from _pytest._io import TerminalWriter
+from _pytest._io.saferepr import safeformat
+from _pytest._io.saferepr import saferepr
+from _pytest.compat import final
+from _pytest.compat import get_real_func
+from _pytest.deprecated import check_ispytest
+from _pytest.pathlib import absolutepath
+from _pytest.pathlib import bestrelpath
+
+if TYPE_CHECKING:
+    from typing_extensions import Literal
+    from typing_extensions import SupportsIndex
+    from weakref import ReferenceType
+
+    _TracebackStyle = Literal["long", "short", "line", "no", "native", "value", "auto"]
+
+if sys.version_info[:2] < (3, 11):
+    from exceptiongroup import BaseExceptionGroup
+
+
+class Code:
+    """Wrapper around Python code objects."""
+
+    __slots__ = ("raw",)
+
+    def __init__(self, obj: CodeType) -> None:
+        self.raw = obj
+
+    @classmethod
+    def from_function(cls, obj: object) -> "Code":
+        return cls(getrawcode(obj))
+
+    def __eq__(self, other):
+        return self.raw == other.raw
+
+    # Ignore type because of https://github.com/python/mypy/issues/4266.
+    __hash__ = None  # type: ignore
+
+    @property
+    def firstlineno(self) -> int:
+        return self.raw.co_firstlineno - 1
+
+    @property
+    def name(self) -> str:
+        return self.raw.co_name
+
+    @property
+    def path(self) -> Union[Path, str]:
+        """Return a path object pointing to source code, or an ``str`` in
+        case of ``OSError`` / non-existing file."""
+        if not self.raw.co_filename:
+            return ""
+        try:
+            p = absolutepath(self.raw.co_filename)
+            # maybe don't try this checking
+            if not p.exists():
+                raise OSError("path check failed.")
+            return p

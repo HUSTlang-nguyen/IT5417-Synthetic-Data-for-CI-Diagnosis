@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-8202",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "Documenter.process_doc"
+    }
+  ],
+  "explanation": "The docstring processing event may replace lines with content lacking a final blank line. process_doc yields those lines immediately, so generated directive content misses its required trailing separator. Adding the blank after event processing restores the expected output.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "BuiltinTemplateLoader.init"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "warning"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "accesskey"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "BuiltinTemplateLoader.render_string"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "idgen.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-21627",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "Abs.eval"
+    }
+  ],
+  "explanation": "An extended-real argument of unknown sign reaches the conjugate/square-root expansion, whose power simplification calls Abs again on the same expression. The saved repeated stack ends in RecursionError. Returning unevaluated for extended-real arguments after the sign checks breaks that cycle.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "Abs.eval"
+    },
+    {
+      "file": "sympy/functions/elementary/miscellaneous.py",
+      "function": "sqrt"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,100 @@
+"""Utility functions for geometrical entities.
+
+Contains
+========
+intersection
+convex_hull
+closest_points
+farthest_points
+are_coplanar
+are_similar
+
+"""
+
+from collections import deque
+from math import sqrt as _sqrt
+
+
+from .entity import GeometryEntity
+from .exceptions import GeometryError
+from .point import Point, Point2D, Point3D
+from sympy.core.containers import OrderedSet
+from sympy.core.function import Function
+from sympy.core.sorting import ordered
+from sympy.core.symbol import Symbol
+from sympy.functions.elementary.miscellaneous import sqrt
+from sympy.solvers.solvers import solve
+from sympy.utilities.iterables import is_sequence
+
+
+def find(x, equation):
+    """
+    Checks whether a Symbol matching ``x`` is present in ``equation``
+    or not. If present, the matching symbol is returned, else a
+    ValueError is raised. If ``x`` is a string the matching symbol
+    will have the same name; if ``x`` is a Symbol then it will be
+    returned if found.
+
+    Examples
+    ========
+
+    >>> from sympy.geometry.util import find
+    >>> from sympy import Dummy
+    >>> from sympy.abc import x
+    >>> find('x', x)
+    x
+    >>> find('x', Dummy('x'))
+    _x
+
+    The dummy symbol is returned since it has a matching name:
+
+    >>> _.name == 'x'
+    True
+    >>> find(x, Dummy('x'))
+    Traceback (most recent call last):
+    ...
+    ValueError: could not find x
+    """
+
+    free = equation.free_symbols
+    xs = [i for i in free if (i.name if isinstance(x, str) else i) == x]
+    if not xs:
+        raise ValueError('could not find %s' % x)
+    if len(xs) != 1:
+        raise ValueError('ambiguous %s' % x)
+    return xs[0]
+
+
+def _ordered_points(p):
+    """Return the tuple of points sorted numerically according to args"""
+    return tuple(sorted(p, key=lambda x: x.args))
+
+
+def are_coplanar(*e):
+    """ Returns True if the given entities are coplanar otherwise False
+
+    Parameters
+    ==========
+
+    e: entities to be checked for being coplanar
+
+    Returns
+    =======
+
+    Boolean
+
+    Examples
+    ========
+
+    >>> from sympy import Point3D, Line3D
+    >>> from sympy.geometry.util import are_coplanar
+    >>> a = Line3D(Point3D(5, 0, 0), Point3D(1, -1, 1))
+    >>> b = Line3D(Point3D(0, -2, 0), Point3D(3, 1, 1))
+    >>> c = Line3D(Point3D(0, -1, 0), Point3D(5, -1, 9))
+    >>> are_coplanar(a, b, c)
+    False
+
+    """
+    from .line import LinearEntity3D
+    from .plane import Plane
+    # XXX update tests for coverage

@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-20476",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie.f"
+    }
+  ],
+  "explanation": "Residual cosine factors not consumed by a doubling chain are reconstructed without their remaining exponent. The saved cos(x)**3 example loses one cosine power. Reattaching each residual as b**coss[b] preserves multiplicity.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie"
+    },
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TR8"
+    },
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie.f"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

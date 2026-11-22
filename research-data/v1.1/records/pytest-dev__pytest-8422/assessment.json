@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T012306727341Z",
+  "reviewed_at": "2026-11-12T11:38:10+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ad4a99ce09b9af4c2d2de9804474a49a75a4838b4a47928df133fcaab93a872e",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "4b82bcaf07c23ecbf9b88ca478d1ee9b727b86dd38b94fca5b8a306a66388ade",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b47a610367883ba8867ab29618194b4c818bc0c86b299020f46ad40d021866a9",
+    "historical-fixed.stdout.txt": "be041410a74d59b7022d5e16be9fdd605b3c03d72abdb7ddbd76f606f7e8fac6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "cff2b518a08e6df47d37bc7a0d3b3bc37a20b17a4ec56e271134f58a903dd8d7"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxBase._approx_scalar"
+    }
+  ],
+  "mechanism": "Decimal members of a list/dict are wrapped in the generic ApproxScalar. Its floating relative tolerance is multiplied by decimal.Decimal and raises the saved TypeError. Choosing ApproxDecimal for these members preserves compatible tolerance types.",
+  "limitations": "The downstream tolerance multiplication detects the error; the wrong wrapper factory is the causal reference. List and dict failures share this same missing dispatch.",
+  "observed_junit": {
+    "base": {
+      "cases": 68,
+      "failures_or_errors": 2,
+      "skipped": 13
+    },
+    "head": {
+      "cases": 68,
+      "failures_or_errors": 0,
+      "skipped": 13
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.python.approx.TestApprox::test_list_decimal",
+      "message": "TypeError: unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+    },
+    {
+      "test": "testing.python.approx.TestApprox::test_dict_decimal",
+      "message": "TypeError: unsupported operand type(s) for *: 'float' and 'decimal.Decimal'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

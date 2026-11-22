@@ -1,0 +1,11 @@
+--- a/astroid/inference.py
++++ b/astroid/inference.py
+@@ -191,7 +191,7 @@
+         if parent_function:
+             _, stmts = parent_function.lookup(self.name)
+ 
+-        if not stmts:
++        if stmts:
+             raise exceptions.NameInferenceError(
+                 name=self.name, scope=self.scope(), context=context
+             )

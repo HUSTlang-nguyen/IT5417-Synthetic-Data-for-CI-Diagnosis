@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-3.1.0+, docutils-0.16\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 31 items\n\ntests/test_ext_napoleon_docstring.py::NamedtupleSubclassTest::test_attributes_docstring PASSED [  3%]\ntests/test_ext_napoleon_docstring.py::InlineAttributeTest::test_class_data_member PASSED [  6%]\ntests/test_ext_napoleon_docstring.py::InlineAttributeTest::test_class_data_member_inline PASSED [  9%]\ntests/test_ext_napoleon_docstring.py::InlineAttributeTest::test_class_data_member_inline_no_type PASSED [ 12%]\ntests/test_ext_napoleon_docstring.py::InlineAttributeTest::test_class_data_member_inline_ref_in_type PASSED [ 16%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_attributes_with_class_reference PASSED [ 19%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_code_block_in_returns_section PASSED [ 22%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_colon_in_return_type PASSED [ 25%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_custom_generic_sections PASSED [ 29%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_docstrings PASSED [ 32%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_kwargs_in_arguments PASSED [ 35%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_list_in_parameter_description PASSED [ 38%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_noindex PASSED [ 41%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_parameters_with_class_reference PASSED [ 45%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_raises_types PASSED [ 48%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_section_header_formatting PASSED [ 51%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_sphinx_admonitions PASSED [ 54%]\ntests/test_ext_napoleon_docstring.py::GoogleDocstringTest::test_xrefs_in_return_type PASSED [ 58%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_colon_in_return_type PASSED [ 61%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_docstrings PASSED [ 64%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_keywords_with_types PASSED [ 67%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_list_in_parameter_description PASSED [ 70%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_parameters_with_class_reference PASSED [ 74%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_parameters_without_class_reference PASSED [ 77%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_raises_types PASSED [ 80%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_section_header_underline_length PASSED [ 83%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_see_also_refs PASSED [ 87%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_sphinx_admonitions PASSED [ 90%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_underscore_in_attribute FAILED [ 93%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_underscore_in_attribute_strip_signature_backslash PASSED [ 96%]\ntests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_xrefs_in_return_type PASSED [100%]\n\n=================================== FAILURES ===================================\n_______________ NumpyDocstringTest.test_underscore_in_attribute ________________\n\nself = <test_ext_napoleon_docstring.NumpyDocstringTest testMethod=test_underscore_in_attribute>\n\n        def test_underscore_in_attribute(self):\n            docstring = \"\"\"\n    Attributes\n    ----------\n    \n    arg_ : type\n        some description\n    \"\"\"\n    \n            expected = \"\"\"\n    :ivar arg_: some description\n    :vartype arg_: type\n    \"\"\"\n    \n            config = Config(napoleon_use_ivar=True)\n            app = mock.Mock()\n            actual = str(NumpyDocstring(docstring, config, app, \"class\"))\n    \n>           self.assertEqual(expected, actual)\nE           AssertionError: '\\n:ivar arg_: some description\\n:vartype arg_: type\\n' != '\\n:ivar arg\\\\_: some description\\n:vartype arg\\\\_: type\\n'\nE             \nE           - :ivar arg_: some description\nE           + :ivar arg\\_: some description\nE           ?          +\nE           - :vartype arg_: type\nE           + :vartype arg\\_: type\nE           ?             +\n\ntests/test_ext_napoleon_docstring.py:1410: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_ext_napoleon_docstring.py::NumpyDocstringTest::test_underscore_in_attribute\n========================= 1 failed, 30 passed in 0.18s =========================\n",
+  "code": [
+    {
+      "file": "sphinx/transforms/__init__.py",
+      "function": "SphinxTransform.config",
+      "start_line": 66,
+      "end_line": 68,
+      "score": 31.581139,
+      "text": "sphinx/transforms/__init__.py::SphinxTransform.config lines 66-68\n    def config(self) -> Config:\n        \"\"\"Reference to the :class:`.Config` object.\"\"\"\n        return self.env.config",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/util/docutils.py",
+      "function": "SphinxDirective.config",
+      "start_line": 329,
+      "end_line": 331,
+      "score": 31.581139,
+      "text": "sphinx/util/docutils.py::SphinxDirective.config lines 329-331\n    def config(self) -> \"Config\":\n        \"\"\"Reference to the :class:`.Config` object.\"\"\"\n        return self.env.config",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/util/docutils.py",
+      "function": "SphinxRole.config",
+      "start_line": 391,
+      "end_line": 393,
+      "score": 31.581139,
+      "text": "sphinx/util/docutils.py::SphinxRole.config lines 391-393\n    def config(self) -> \"Config\":\n        \"\"\"Reference to the :class:`.Config` object.\"\"\"\n        return self.env.config",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/napoleon/docstring.py",
+      "function": "NumpyDocstring.__init__",
+      "start_line": 873,
+      "end_line": 877,
+      "score": 31.341641,
+      "text": "sphinx/ext/napoleon/docstring.py::NumpyDocstring.__init__ lines 873-877\n    def __init__(self, docstring: Union[str, List[str]], config: SphinxConfig = None,\n                 app: Sphinx = None, what: str = '', name: str = '',\n                 obj: Any = None, options: Any = None) -> None:\n        self._directive_sections = ['.. index::']\n        super().__init__(docstring, config, app, what, name, obj, options)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/ext/napoleon/docstring.py",
+      "function": "NumpyDocstring._consume_returns_section",
+      "start_line": 896,
+      "end_line": 897,
+      "score": 31.264911,
+      "text": "sphinx/ext/napoleon/docstring.py::NumpyDocstring._consume_returns_section lines 896-897\n    def _consume_returns_section(self) -> List[Tuple[str, str, List[str]]]:\n        return self._consume_fields(prefer_type=True)",
+      "truncated": false
+    }
+  ]
+}

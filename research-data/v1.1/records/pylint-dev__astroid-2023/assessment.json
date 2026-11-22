@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T042833267942Z",
+  "reviewed_at": "2026-11-12T12:08:32+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "905afdaf9bc902b4fec90c0f0edd9618b56a0287ddaf3452b5082197223736e5",
+    "license-evidence.json": "6f323a30a49d63671a95f5375666ce6eb4bc60156a8fcdd4067837fff279625b",
+    "historical-base.stdout.txt": "a4cd2ed62e32fc1c51ce49a1467b9954984ebdb76988c09682c5f137729d149b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ff991a65d3d3f19ee99366d0a3c126938cf5f684ec6d9e33cacdde7b3db61e29",
+    "historical-fixed.stdout.txt": "4b2cbdd644ba542797c5ceb637abe073b0498b3026f4b3ecb2ceadc88499a155",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "9d5b4645928985b0dbadf7b4c72801c0d6d413383efd20547b8d39c40ff81df5"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "astroid/nodes/node_classes.py",
+      "function": "are_exclusive"
+    }
+  ],
+  "mechanism": "The exclusivity check treats any different child containers of an If as mutually exclusive branches. A walrus assignment in If.test can execute with either body, yet saved tests report it exclusive with body calls. Checking child attributes and exempting the test expression preserves control-flow coexistence.",
+  "limitations": "Three saved failures concern the same branch-membership mechanism; assignment-expression syntax itself parses successfully.",
+  "observed_junit": {
+    "base": {
+      "cases": 8,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 8,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_utils.InferenceUtil::test_not_exclusive_walrus_multiple",
+      "message": "assert True is False\n +  where True = <function are_exclusive at 0x789123ee13a0>(<NamedExpr l.2 at 0x789123395640>, <Call l.3 at 0x789123395280>)\n +    where <function are_exclusive at 0x789123ee13a0> = nodes.are_exclusive"
+    },
+    {
+      "test": "tests.test_utils.InferenceUtil::test_not_exclusive_walrus_operator",
+      "message": "assert True is False\n +  where True = <function are_exclusive at 0x789123ee13a0>(<NamedExpr l.2 at 0x789123399ca0>, <Call l.3 at 0x789123399910>)\n +    where <function are_exclusive at 0x789123ee13a0> = nodes.are_exclusive"
+    },
+    {
+      "test": "tests.test_utils.InferenceUtil::test_not_exclusive_walrus_operator_nested",
+      "message": "assert True is False\n +  where True = <function are_exclusive at 0x789123ee13a0>(<NamedExpr l.2 at 0x789123453670>, <Call l.3 at 0x789123435e80>)\n +    where <function are_exclusive at 0x789123ee13a0> = nodes.are_exclusive"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

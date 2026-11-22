@@ -1,0 +1,100 @@
+# Copyright 2008-2018 pydicom authors. See LICENSE file for details.
+"""Define the DataElement class.
+
+A DataElement has a tag,
+              a value representation (VR),
+              a value multiplicity (VM)
+              and a value.
+"""
+
+from __future__ import absolute_import
+
+import base64
+import warnings
+from collections import namedtuple
+
+from pydicom import config  # don't import datetime_conversion directly
+from pydicom import compat
+from pydicom.charset import default_encoding
+from pydicom.compat import in_py2
+from pydicom.config import logger
+from pydicom.datadict import (dictionary_has_tag, dictionary_description,
+                              dictionary_keyword, dictionary_is_retired,
+                              private_dictionary_description, dictionary_VR,
+                              dictionary_VM, repeater_has_tag)
+from pydicom.multival import MultiValue
+from pydicom.tag import Tag, BaseTag
+from pydicom.uid import UID
+from pydicom import jsonrep
+import pydicom.valuerep  # don't import DS directly as can be changed by config
+
+from pydicom.valuerep import PersonNameUnicode
+if not in_py2:
+    from pydicom.valuerep import PersonName3 as PersonNameUnicode
+    PersonName = PersonNameUnicode
+
+
+def isMultiValue(value):
+    """Return True if `value` is list-like (iterable),
+       False otherwise."""
+    msg = 'isMultiValue is deprecated.  Use DataElement.VM instead'
+    warnings.warn(msg, DeprecationWarning)
+    if isinstance(value, compat.char_types):
+        return False
+    try:
+        iter(value)
+    except TypeError:
+        return False
+    return True
+
+
+def _is_bytes(val):
+    """Return True only in Python 3 if `val` is of type `bytes`."""
+    return False if in_py2 else isinstance(val, bytes)
+
+
+# double '\' because it is used as escape chr in Python
+_backslash_str = "\\"
+_backslash_byte = b"\\"
+
+
+class DataElement(object):
+    """Contain and manipulate a DICOM Element.
+
+    While its possible to create a new DataElement
+    directly and add it to a Dataset:
+
+    >>> elem = DataElement(0x00100010, 'PN', 'CITIZEN^Joan')
+    >>> ds = Dataset()
+    >>> ds.add(elem)
+
+    Its far more convenient to use a Dataset to add a new
+    DataElement, as the VR and tag are determined
+    automatically from the DICOM dictionary:
+
+    >>> ds = Dataset()
+    >>> ds.PatientName = 'CITIZEN^Joan'
+
+    Attributes
+    ----------
+    descripWidth : int
+        For string display, this is the maximum width of
+        the description field (default 35 characters).
+    file_tell : int or None
+    is_retired : bool
+        For officially registered DICOM Data Elements this
+        will be True if the retired status as given in PS3.6
+        Table 6-1 is 'RET'. For private or unknown Elements
+        this will always be False
+    is_undefined_length : bool
+        Indicates whether the length field for the element
+        was 0xFFFFFFFFL (ie undefined).
+    keyword : str
+        For officially registered DICOM Data Elements this
+        will be the Keyword as given in PS3.6 Table 6-1.
+        For private or unknown Elements this will return
+        an empty string.
+    maxBytesToDisplay : int
+        For string display, elements with values containing
+        data which is longer than this value will display
+        "array of # bytes" (default 16 bytes).

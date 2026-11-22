@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-22714",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__new__"
+    }
+  ],
+  "explanation": "With evaluation disabled, the imaginary-part expression for an ordinary real coordinate may stay unevaluated. Testing that symbolic expression by truthiness incorrectly rejects Point(1,2) as imaginary. Checking whether its zero predicate is explicitly False avoids that unsupported rejection.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__new__"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point2D.__new__"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point3D.__new__"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.equals"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__neg__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

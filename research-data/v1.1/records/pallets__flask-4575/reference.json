@@ -1,0 +1,35 @@
+{
+  "sample_id": "pallets__flask-4575",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/flask/__init__.py",
+      "function": "<module>"
+    }
+  ],
+  "explanation": "The public redirect name is imported directly from Werkzeug, bypassing the application redirect hook. In the saved app-context test a patched app.redirect should raise ValueError, but flask.redirect returns without calling it. The repair exports the application-aware helper, which delegates to that hook.",
+  "retrieved_locations": [
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.app_context"
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.async_to_sync"
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.test_cli_runner"
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask.request_context"
+    },
+    {
+      "file": "src/flask/app.py",
+      "function": "Flask._find_error_handler"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

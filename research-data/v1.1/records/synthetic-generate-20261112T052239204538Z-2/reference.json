@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T052239204538Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals._contains"
+    }
+  ],
+  "explanation": "The rejection guard checks is_positive is True instead of False. A negative integer now reaches the end with implicit None, so the saved -5 membership check raises did-not-evaluate-to-bool TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.__contains__"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

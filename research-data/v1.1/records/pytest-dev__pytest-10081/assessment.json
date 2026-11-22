@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012724615509Z",
+  "reviewed_at": "2026-11-12T11:39:18+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "17ded2aa4165eced1d7b293805e83355532655004403d17609af6039454c4549",
+    "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+    "historical-base.stdout.txt": "a06f79656dedf908d8b1b3c7f74e0ea0a38205d281ac2309b5c4c24d04cab84a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "41bfd2bfd9cc96ed4d06a0cc3d311e5cc40417fb6e5425131d5f939ba191e34a",
+    "historical-fixed.stdout.txt": "0a22b1922c59d5341a3b382e27ccaca45caa9021baf5a94a255bb4622373a8ba",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "3a1485378518188cd12118b05bd7e8a409db0875e30b1128c99d37a9c139e0d7"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/unittest.py",
+      "function": "TestCaseFunction.runtest"
+    }
+  ],
+  "mechanism": "The debug teardown postponement checks only whether the test method is skipped, not its unittest class. Class-skipped tests therefore acquire explicit teardown work and the saved tracking list records tearDown despite the skip. Considering the parent class skip prevents that lifecycle error.",
+  "limitations": "The local nested run uses --pdb but is evidence of teardown behavior, not an interactive debugger evaluation. Nine separate upstream skips remain in the denominator.",
+  "observed_junit": {
+    "base": {
+      "cases": 73,
+      "failures_or_errors": 1,
+      "skipped": 9
+    },
+    "head": {
+      "cases": 73,
+      "failures_or_errors": 0,
+      "skipped": 9
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_unittest::test_pdb_teardown_skipped_for_classes[@unittest.skip]",
+      "message": "AssertionError: assert ['tearDown:te...tCase.test_1'] == []\n  Left contains one more item: 'tearDown:test_pdb_teardown_skipped_for_classes.MyTestCase.test_1'\n  Full diff:\n  - []\n  + ['tearDown:test_pdb_teardown_skipped_for_classes.MyTestCase.test_1']"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

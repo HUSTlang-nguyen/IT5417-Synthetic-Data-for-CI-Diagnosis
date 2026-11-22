@@ -1,0 +1,157 @@
+{
+  "created_at": "2026-11-12T18:32:29+07:00",
+  "origin": "controlled_synthetic",
+  "sample_id": "synthetic-generate-20261112T071234875048Z-1",
+  "case_id": "sympy__sympy-22714-ds1",
+  "source_case_id": "sympy__sympy-22714",
+  "role": "train",
+  "repo": "https://github.com/sympy/sympy",
+  "group_id": "https://github.com/sympy/sympy",
+  "source_commit": "base+repair:1e50cdf5a6d2ede21b40239ee2b9cc117f7356b9dbd979cc3236c1a0e789d289",
+  "image_id": "sha256:7ebcd51f0ac9be41682ebf2334b8560970599a9fd059982b03974f393fab84a6",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "generation_run": "generate-20261112T071234875048Z",
+  "verification_run": "verify-20261112T071411639150Z",
+  "attempt_index": 1,
+  "candidate_sha256": "f671be45b94e4745f5c0ec9105416b4a56ee30d4e68c8594537aedb1f70c55d1",
+  "injected_by": {
+    "model": "qwen2.5-coder:7b-instruct",
+    "model_info": {
+      "tag": {
+        "name": "qwen2.5-coder:7b-instruct",
+        "model": "qwen2.5-coder:7b-instruct",
+        "modified_at": "2026-10-29T12:47:37.4984796+07:00",
+        "size": 4683087561,
+        "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 3584,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "insert"
+        ]
+      },
+      "details": {
+        "license": "\n                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   APPENDIX: How to apply the Apache License to your work.\n\n      To apply the Apache License to your work, attach the following\n      boilerplate notice, with the fields enclosed by brackets \"[]\"\n      replaced with your own identifying information. (Don't include\n      the brackets!)  The text should be enclosed in the appropriate\n      comment syntax for the file format. We also recommend that a\n      file or class name and description of purpose be included on the\n      same \"printed page\" as the copyright notice for easier\n      identification within third-party archives.\n\n   Copyright 2024 Alibaba Cloud\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.",
+        "template": "{{- if .Suffix }}<|fim_prefix|>{{ .Prompt }}<|fim_suffix|>{{ .Suffix }}<|fim_middle|>\n{{- else if .Messages }}\n{{- if or .System .Tools }}<|im_start|>system\n{{- if .System }}\n{{ .System }}\n{{- end }}\n{{- if .Tools }}\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools>:\n<tools>\n{{- range .Tools }}\n{\"type\": \"function\", \"function\": {{ .Function }}}\n{{- end }}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> with NO other text. Do not include any backticks or ```json.\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n{{- end }}<|im_end|>\n{{ end }}\n{{- range $i, $_ := .Messages }}\n{{- $last := eq (len (slice $.Messages $i)) 1 -}}\n{{- if eq .Role \"user\" }}<|im_start|>user\n{{ .Content }}<|im_end|>\n{{ else if eq .Role \"assistant\" }}<|im_start|>assistant\n{{ if .Content }}{{ .Content }}\n{{- else if .ToolCalls }}<tool_call>\n{{ range .ToolCalls }}{\"name\": \"{{ .Function.Name }}\", \"arguments\": {{ .Function.Arguments }}}\n{{ end }}</tool_call>\n{{- end }}{{ if not $last }}<|im_end|>\n{{ end }}\n{{- else if eq .Role \"tool\" }}<|im_start|>user\n<tool_response>\n{{ .Content }}\n</tool_response><|im_end|>\n{{ end }}\n{{- if and (ne .Role \"assistant\") $last }}<|im_start|>assistant\n{{ end }}\n{{- end }}\n{{- else }}\n{{- if .System }}<|im_start|>system\n{{ .System }}<|im_end|>\n{{ end }}{{ if .Prompt }}<|im_start|>user\n{{ .Prompt }}<|im_end|>\n{{ end }}<|im_start|>assistant\n{{ end }}{{ .Response }}{{ if .Response }}<|im_end|>{{ end }}",
+        "system": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+        "template_source": "go_template",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "7.6B",
+          "quantization_level": "Q4_K_M"
+        },
+        "model_info": {
+          "general.architecture": "qwen2",
+          "general.base_model.0.name": "Qwen2.5 Coder 7B",
+          "general.base_model.0.organization": "Qwen",
+          "general.base_model.0.repo_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B",
+          "general.base_model.count": 1,
+          "general.basename": "Qwen2.5-Coder",
+          "general.file_type": 15,
+          "general.finetune": "Instruct",
+          "general.languages": [
+            "en"
+          ],
+          "general.license": "apache-2.0",
+          "general.license.link": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct/blob/main/LICENSE",
+          "general.parameter_count": 7615616512,
+          "general.quantization_version": 2,
+          "general.size_label": "7B",
+          "general.tags": [
+            "code",
+            "codeqwen",
+            "chat",
+            "qwen",
+            "qwen-coder",
+            "text-generation"
+          ],
+          "general.type": "model",
+          "qwen2.attention.head_count": 28,
+          "qwen2.attention.head_count_kv": 4,
+          "qwen2.attention.layer_norm_rms_epsilon": 1e-06,
+          "qwen2.block_count": 28,
+          "qwen2.context_length": 32768,
+          "qwen2.embedding_length": 3584,
+          "qwen2.feed_forward_length": 18944,
+          "qwen2.rope.freq_base": 1000000,
+          "tokenizer.ggml.add_bos_token": false,
+          "tokenizer.ggml.bos_token_id": 151643,
+          "tokenizer.ggml.eos_token_id": 151645,
+          "tokenizer.ggml.merges": [],
+          "tokenizer.ggml.model": "gpt2",
+          "tokenizer.ggml.padding_token_id": 151643,
+          "tokenizer.ggml.pre": "qwen2",
+          "tokenizer.ggml.token_type": [],
+          "tokenizer.ggml.tokens": []
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "insert"
+        ],
+        "modified_at": "2026-10-29T12:47:37.4984796+07:00"
+      }
+    }
+  },
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "evidence_hashes": {
+    "runs/verify-20261112T071411639150Z/manifest.json": "e9aa5c7199596ad31636a4316571aea3eec7fd905c3e525409296971fe65894e",
+    "runs/generate-20261112T071234875048Z/manifest.json": "b8324bc0839a839e6da459d3872f655ac7d52bb619f7ca49397051ffb73d3ba7",
+    "runs/generate-20261112T071234875048Z/original.py": "4b668b063fb13240365269e6fa5de4d656fb9066884932f5e34bca15910715a5",
+    "runs/reproduce-20261112T033612185310Z/manifest.json": "4595e1b909118c80144ecab9d167f6f65a81e6d60dbd0f05d38e5798efcc2f4b",
+    "runs/reproduce-20261112T033612185310Z/historical-fixed.stdout.txt": "87b5ec44765e223022d1c50714541954e2098d6f0d937e18d7640ec5afbc7641",
+    "runs/reproduce-20261112T033612185310Z/historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/reproduce-20261112T033612185310Z/historical-fixed.junit.xml": "731671528ef69ffd59597713a78cd4419868cff8e810f69a8f9ffd5b8c2058c7",
+    "runs/generate-20261112T071234875048Z/attempt-01/candidate.py": "f671be45b94e4745f5c0ec9105416b4a56ee30d4e68c8594537aedb1f70c55d1",
+    "runs/generate-20261112T071234875048Z/attempt-01/proposal.json": "08c78e0c14be2cb71f63f46d97f7c53ec21df23455cc60d468961f74feb8e098",
+    "runs/generate-20261112T071234875048Z/attempt-01/allowed-sites.json": "078c5286f062fce666c026e15a21f0562eddd60bd81cd9f2e0566cbd471a3e80",
+    "runs/generate-20261112T071234875048Z/attempt-01/change.diff": "7af662bcb9d03c626854902b0dc30932a381460d7f8200117fc22d5a01b6e7e7",
+    "runs/generate-20261112T071234875048Z/attempt-01/prompt.txt": "0e13d932356fd820058f43a3701a0905dc6a64c1916b5cc5c3b782aef2fa88a9",
+    "runs/generate-20261112T071234875048Z/attempt-01/request.json": "ceb41a9bdb42c0a6a7b18ec794bf80b96dde967031b628acd887b092d5055d1a",
+    "runs/generate-20261112T071234875048Z/attempt-01/response.raw.json": "f0a025adee343d971c32a07717fe87537cd93ba3630c45047190180269a8e99b",
+    "runs/verify-20261112T071411639150Z/attempt-01/baseline.stdout.txt": "38a6862eb3bc007ec009aa53854a1fdca9ea59c8b50d0937563c6b6e39a2cebf",
+    "runs/verify-20261112T071411639150Z/attempt-01/baseline.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/verify-20261112T071411639150Z/attempt-01/baseline.junit.xml": "08bd942be8fb6c430f242dd958a633e41732a6543410a79e2de93a00314ace38",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-1.stdout.txt": "b49da731b401d27b57f9ca850c5a773f5a59dd2c5c9e26fd45e697d39bd62957",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-1.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-1.junit.xml": "21ba38a1d982ea2d674ba84b6d8ed518394375dea56305bc4d33764cb32aa050",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-2.stdout.txt": "9c3c1783fac4fdbd263f493c49f9e9505be5e502cd7c6b128b72c69bd9ccd4ad",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-2.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-2.junit.xml": "fa7db74a51fe46308eaf06dafdd765eba147299d9ccee4c6238fc627bcf36223",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-3.stdout.txt": "64ed52bdcc20e34448ae17b5705b9dbe944f4e87d1025e21281ed8054d8a1f3b",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-3.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/verify-20261112T071411639150Z/attempt-01/candidate-3.junit.xml": "d86c4418ed41b310b331d3ea3b7a2dcceaa6b0a53b04cd684ecdefda2fead5a9",
+    "runs/verify-20261112T071411639150Z/attempt-01/restored.stdout.txt": "39cc044ff2f9d0337ba30774e440f349e111019795874df6b8af21476c12a492",
+    "runs/verify-20261112T071411639150Z/attempt-01/restored.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/verify-20261112T071411639150Z/attempt-01/restored.junit.xml": "ca2555e9666431bf36cebe9a570e6bcf226eb811eebc079e804204352a1cdff6"
+  },
+  "input_sha256": "951ca539ddc267d092a9961f52832227769fe5b2ec289f5b3748d747a37fde69",
+  "reference_sha256": "1f90da1c59d926f7c972e52cf3b018a989e8a1b07b5b84a8808d6e7cfd602b5a",
+  "assessment_sha256": "c871e17363a229d9632ef9eb0011e48ca8266beb5705d4b273ad734625487d6e",
+  "retrieval": {
+    "production_files_scanned": 883,
+    "ranked_function_count": 23468,
+    "characters": 5583,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

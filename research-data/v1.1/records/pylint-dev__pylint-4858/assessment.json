@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T205219658892Z",
+  "reviewed_at": "2026-11-12T07:26:22+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "686b1872e407a7fa5b1c3f3c3867e3fd93b444e2504d2e708ddab10e99d77167",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "60fa9bfd8823283e828370282695c40a0ccd84ccb5053d78246e3831f9807d76",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "35c8f33590710f4481c0ca885da44cb83cabf8bc7d39352f30bea06d5f482688",
+    "historical-fixed.stdout.txt": "3beb59b93b12170c8f5dc2e22d96f7e0a3143d93baeace0ddc0dd047df91aef2",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f0bfb5d5b9940de634eb6f131c332454891de56bdadd6f7ade839a8b8d31a22e"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "stripped_lines"
+    }
+  ],
+  "mechanism": "With ignore_signatures enabled, only top-level function nodes are collected. Class methods and nested functions retain their signature lines and are incorrectly counted as duplicate code. Recursively gathering function nodes removes those signatures as requested.",
+  "limitations": "Base reports fifteen similar lines despite the zero-duplicate contract. This differs from the earlier empty-body signature-range defect, though both share a detector and require near-duplicate grouping review.",
+  "observed_junit": {
+    "base": {
+      "cases": 17,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 17,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.checkers.unittest_similar::test_ignore_signatures_class_methods_pass",
+      "message": "assert '15 similar l...percent=40.74' == 'TOTAL lines=... percent=0.00'\n  + 15 similar lines in 2 files\n  + ==/source/base/tests/checkers/../input/similar_cls_a.py:[1:18]\n  + ==/source/base/tests/checkers/../input/similar_cls_b.py:[1:18]\n  +        def parent_method(\n  +            self,\n  +            *,\n  +            a=\"\",...\n  \n  ...Full output truncated (28 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

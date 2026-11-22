@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-7749",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/assertion/rewrite.py",
+      "function": "AssertionRewriter.run"
+    }
+  ],
+  "explanation": "Injected assertion-rewriter imports inherit the function-def line instead of the first decorator line. Error reporting around the decorated function then uses inconsistent statement/source positions; the saved inner traceback ends in an IndexError and exits INTERNAL_ERROR instead of the intended interruption. Assigning the decorator line preserves source mapping.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/runner.py",
+      "function": "pytest_make_collect_report"
+    },
+    {
+      "file": "src/_pytest/main.py",
+      "function": "Session.perform_collect"
+    },
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "FormattedExcinfo.repr_traceback"
+    },
+    {
+      "file": "src/_pytest/capture.py",
+      "function": "CaptureManager.pytest_make_collect_report"
+    },
+    {
+      "file": "src/_pytest/runner.py",
+      "function": "collect_one_node"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

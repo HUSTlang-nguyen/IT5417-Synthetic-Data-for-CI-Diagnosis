@@ -1,0 +1,100 @@
+"""
+    sphinx.cmd.quickstart
+    ~~~~~~~~~~~~~~~~~~~~~
+
+    Quickly setup documentation source to work with Sphinx.
+
+    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
+
+import argparse
+import locale
+import os
+import sys
+import time
+from collections import OrderedDict
+from os import path
+from typing import Any, Callable, Dict, List, Union
+
+# try to import readline, unix specific enhancement
+try:
+    import readline
+    if readline.__doc__ and 'libedit' in readline.__doc__:
+        readline.parse_and_bind("bind ^I rl_complete")
+        USE_LIBEDIT = True
+    else:
+        readline.parse_and_bind("tab: complete")
+        USE_LIBEDIT = False
+except ImportError:
+    readline = None
+    USE_LIBEDIT = False
+
+from docutils.utils import column_width
+
+import sphinx.locale
+from sphinx import __display_version__, package_dir
+from sphinx.locale import __
+from sphinx.util.console import bold, color_terminal, colorize, nocolor, red  # type: ignore
+from sphinx.util.osutil import ensuredir
+from sphinx.util.template import SphinxRenderer
+
+EXTENSIONS = OrderedDict([
+    ('autodoc', __('automatically insert docstrings from modules')),
+    ('doctest', __('automatically test code snippets in doctest blocks')),
+    ('intersphinx', __('link between Sphinx documentation of different projects')),
+    ('todo', __('write "todo" entries that can be shown or hidden on build')),
+    ('coverage', __('checks for documentation coverage')),
+    ('imgmath', __('include math, rendered as PNG or SVG images')),
+    ('mathjax', __('include math, rendered in the browser by MathJax')),
+    ('ifconfig', __('conditional inclusion of content based on config values')),
+    ('viewcode', __('include links to the source code of documented Python objects')),
+    ('githubpages', __('create .nojekyll file to publish the document on GitHub pages')),
+])
+
+DEFAULTS = {
+    'path': '.',
+    'sep': False,
+    'dot': '_',
+    'language': None,
+    'suffix': '.rst',
+    'master': 'index',
+    'makefile': True,
+    'batchfile': True,
+}
+
+PROMPT_PREFIX = '> '
+
+if sys.platform == 'win32':
+    # On Windows, show questions as bold because of color scheme of PowerShell (refs: #5294).
+    COLOR_QUESTION = 'bold'
+else:
+    COLOR_QUESTION = 'purple'
+
+
+# function to get input from terminal -- overridden by the test suite
+def term_input(prompt: str) -> str:
+    if sys.platform == 'win32':
+        # Important: On windows, readline is not enabled by default.  In these
+        #            environment, escape sequences have been broken.  To avoid the
+        #            problem, quickstart uses ``print()`` to show prompt.
+        print(prompt, end='')
+        return input('')
+    else:
+        return input(prompt)
+
+
+class ValidationError(Exception):
+    """Raised for validation errors."""
+
+
+def is_path(x: str) -> str:
+    x = path.expanduser(x)
+    if not path.isdir(x):
+        raise ValidationError(__("Please enter a valid path name."))
+    return x
+
+
+def allow_empty(x: str) -> str:
+    return x
+

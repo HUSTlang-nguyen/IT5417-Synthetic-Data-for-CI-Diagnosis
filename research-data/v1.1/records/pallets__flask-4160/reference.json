@@ -1,0 +1,35 @@
+{
+  "sample_id": "pallets__flask-4160",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/flask/json/__init__.py",
+      "function": "JSONEncoder.default"
+    }
+  ],
+  "explanation": "The Flask JSON encoder handles UUID values as strings but has no Decimal branch. Decimal therefore reaches the standard encoder fallback and raises TypeError instead of being serialized as a decimal string. Extending the supported-type branch supplies that conversion.",
+  "retrieved_locations": [
+    {
+      "file": "src/flask/json/__init__.py",
+      "function": "JSONEncoder.default"
+    },
+    {
+      "file": "src/flask/json/__init__.py",
+      "function": "dumps"
+    },
+    {
+      "file": "src/flask/json/__init__.py",
+      "function": "dump"
+    },
+    {
+      "file": "src/flask/json/__init__.py",
+      "function": "jsonify"
+    },
+    {
+      "file": "src/flask/json/__init__.py",
+      "function": "_dump_arg_defaults"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-7535",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "TracebackEntry.__str__"
+    }
+  ],
+  "explanation": "The traceback formatter applies repr directly to a path wrapper, producing File local(...), while its existing textual contract requires the quoted path string. Converting the path to str before the repr-format placeholder removes the wrapper notation.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "pytest_configure"
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "_NodeReporter.add_attribute"
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "_NodeReporter.add_property"
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "record_xml_attribute.add_attr_noop"
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "LogXML.pytest_terminal_summary"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

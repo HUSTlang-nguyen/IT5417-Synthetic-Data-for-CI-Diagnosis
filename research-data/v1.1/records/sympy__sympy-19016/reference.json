@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19016",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.is_finite_set"
+    }
+  ],
+  "explanation": "Range lacks a property that derives finiteness from its integer endpoints or size. The finite Range(-100,100) therefore inherits an unknown is_finite_set value instead of True. The added property resolves that missing semantic result.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range._boundary"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "ComplexRegion.sets"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.reversed"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.as_relational"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.__nonzero__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

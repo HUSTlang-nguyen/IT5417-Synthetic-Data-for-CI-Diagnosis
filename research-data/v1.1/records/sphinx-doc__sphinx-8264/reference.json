@@ -1,0 +1,31 @@
+{
+  "sample_id": "sphinx-doc__sphinx-8264",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "_stringify_py37"
+    }
+  ],
+  "explanation": "The annotation formatter assumes any truthy __args__ is a list or tuple and iterates it. The tested BrokenType has a type object in that field, so iteration raises TypeError. Checking the supported container types before processing arguments permits the safe fallback.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "_stringify_py37"
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify"
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "is_system_TypeVar"
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "_stringify_py36"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

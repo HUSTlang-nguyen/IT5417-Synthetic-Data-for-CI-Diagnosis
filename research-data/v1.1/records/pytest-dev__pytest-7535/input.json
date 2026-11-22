@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-6.0.0rc2.dev63+g7ec6401ff, py-1.11.0, pluggy-1.0.0 -- /opt/venv/bin/python\nrootdir: /source/base, configfile: pyproject.toml\ncollecting ... collected 17 items\n\ntesting/code/test_code.py::test_ne PASSED                                [  5%]\ntesting/code/test_code.py::test_code_gives_back_name_for_not_existing_file PASSED [ 11%]\ntesting/code/test_code.py::test_code_with_class PASSED                   [ 17%]\ntesting/code/test_code.py::test_code_fullsource PASSED                   [ 23%]\ntesting/code/test_code.py::test_code_source PASSED                       [ 29%]\ntesting/code/test_code.py::test_frame_getsourcelineno_myself PASSED      [ 35%]\ntesting/code/test_code.py::test_getstatement_empty_fullsource PASSED     [ 41%]\ntesting/code/test_code.py::test_code_from_func PASSED                    [ 47%]\ntesting/code/test_code.py::test_unicode_handling PASSED                  [ 52%]\ntesting/code/test_code.py::test_code_getargs PASSED                      [ 58%]\ntesting/code/test_code.py::test_frame_getargs PASSED                     [ 64%]\ntesting/code/test_code.py::TestExceptionInfo::test_bad_getsource PASSED  [ 70%]\ntesting/code/test_code.py::TestExceptionInfo::test_from_current_with_missing PASSED [ 76%]\ntesting/code/test_code.py::TestTracebackEntry::test_getsource PASSED     [ 82%]\ntesting/code/test_code.py::TestTracebackEntry::test_tb_entry_str FAILED  [ 88%]\ntesting/code/test_code.py::TestReprFuncArgs::test_not_raise_exception_with_mixed_encoding PASSED [ 94%]\ntesting/code/test_code.py::test_ExceptionChainRepr PASSED                [100%]\n\n=================================== FAILURES ===================================\n_____________________ TestTracebackEntry.test_tb_entry_str _____________________\n\nself = <test_code.TestTracebackEntry object at 0x74f6a8210eb0>\n\n    def test_tb_entry_str(self):\n        try:\n            assert False\n        except AssertionError:\n            exci = ExceptionInfo.from_current()\n        pattern = r\"  File '.*test_code.py':\\d+ in test_tb_entry_str\\n  assert False\"\n        entry = str(exci.traceback[0])\n>       assert re.match(pattern, entry)\nE       assert None\nE        +  where None = <function match at 0x74f6a8bd9b80>(\"  File '.*test_code.py':\\\\d+ in test_tb_entry_str\\\\n  assert False\", \"  File local('/source/base/testing/code/test_code.py'):176 in test_tb_entry_str\\n  assert False\\n\")\nE        +    where <function match at 0x74f6a8bd9b80> = re.match\n\ntesting/code/test_code.py:181: AssertionError\n=============================== warnings summary ===============================\nsrc/_pytest/junitxml.py:446\n  /source/base/src/_pytest/junitxml.py:446: PytestDeprecationWarning: The 'junit_family' default value will change to 'xunit2' in pytest 6.0. See:\n    https://docs.pytest.org/en/stable/deprecations.html#junit-family-default-value-change-to-xunit2\n  for more information.\n    _issue_warning_captured(deprecated.JUNIT_XML_DEFAULT_FAMILY, config.hook, 2)\n\n-- Docs: https://docs.pytest.org/en/stable/warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED testing/code/test_code.py::TestTracebackEntry::test_tb_entry_str - ass...\n=================== 1 failed, 16 passed, 1 warning in 0.10s ====================\n",
+  "code": [
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "pytest_configure",
+      "start_line": 440,
+      "end_line": 457,
+      "score": 1101.371989,
+      "text": "src/_pytest/junitxml.py::pytest_configure lines 440-457\ndef pytest_configure(config: Config) -> None:\n    xmlpath = config.option.xmlpath\n    # prevent opening xmllog on worker nodes (xdist)\n    if xmlpath and not hasattr(config, \"workerinput\"):\n        junit_family = config.getini(\"junit_family\")\n        if not junit_family:\n            _issue_warning_captured(deprecated.JUNIT_XML_DEFAULT_FAMILY, config.hook, 2)\n            junit_family = \"xunit1\"\n        config._store[xml_key] = LogXML(\n            xmlpath,\n            config.option.junitprefix,\n            config.getini(\"junit_suite_name\"),\n            config.getini(\"junit_logging\"),\n            config.getini(\"junit_duration_report\"),\n            junit_family,\n            config.getini(\"junit_log_passing_tests\"),\n        )\n        config.pluginmanager.register(config._store[xml_key])",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "_NodeReporter.add_attribute",
+      "start_line": 125,
+      "end_line": 126,
+      "score": 101.897367,
+      "text": "src/_pytest/junitxml.py::_NodeReporter.add_attribute lines 125-126\n    def add_attribute(self, name: str, value: object) -> None:\n        self.attrs[str(name)] = bin_xml_escape(value)",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "_NodeReporter.add_property",
+      "start_line": 122,
+      "end_line": 123,
+      "score": 101.809068,
+      "text": "src/_pytest/junitxml.py::_NodeReporter.add_property lines 122-123\n    def add_property(self, name: str, value: object) -> None:\n        self.properties.append((str(name), bin_xml_escape(value)))",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "record_xml_attribute.add_attr_noop",
+      "start_line": 343,
+      "end_line": 344,
+      "score": 101.767767,
+      "text": "src/_pytest/junitxml.py::record_xml_attribute.add_attr_noop lines 343-344\n    def add_attr_noop(name: str, value: object) -> None:\n        pass",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/junitxml.py",
+      "function": "LogXML.pytest_terminal_summary",
+      "start_line": 697,
+      "end_line": 698,
+      "score": 101.732051,
+      "text": "src/_pytest/junitxml.py::LogXML.pytest_terminal_summary lines 697-698\n    def pytest_terminal_summary(self, terminalreporter: TerminalReporter) -> None:\n        terminalreporter.write_sep(\"-\", \"generated xml file: {}\".format(self.logfile))",
+      "truncated": false
+    }
+  ]
+}

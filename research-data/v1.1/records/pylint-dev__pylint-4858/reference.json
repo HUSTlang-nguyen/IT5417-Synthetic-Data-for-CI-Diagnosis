@@ -1,0 +1,27 @@
+{
+  "sample_id": "pylint-dev__pylint-4858",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "stripped_lines"
+    }
+  ],
+  "explanation": "With ignore_signatures enabled, only top-level function nodes are collected. Class methods and nested functions retain their signature lines and are incorrectly counted as duplicate code. Recursively gathering function nodes removes those signatures as requested.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/testutils/functional_test_file.py",
+      "function": "FunctionalTestFile.source"
+    },
+    {
+      "file": "pylint/testutils/functional_test_file.py",
+      "function": "FunctionalTestFile.module"
+    },
+    {
+      "file": "pylint/lint/run.py",
+      "function": "Run.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

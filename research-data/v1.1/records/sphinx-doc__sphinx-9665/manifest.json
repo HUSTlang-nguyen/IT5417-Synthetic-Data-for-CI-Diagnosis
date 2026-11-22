@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T03:15:38+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "sphinx-doc__sphinx-9665",
+  "case_id": "sphinx-doc__sphinx-9665-ds1",
+  "run_id": "reproduce-20261111T195022573390Z",
+  "role": "validation",
+  "repo": "https://github.com/sphinx-doc/sphinx",
+  "group_id": "https://github.com/sphinx-doc/sphinx",
+  "source_commit": "274ee481acb3394b8cb62e06d7978e297dd657f1",
+  "image_id": "sha256:f2512602b83470b64ddafaf61cbcbe68aaa9dffeffda33a85576019acb8e1209",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "a99a0f042e8b6574118b179d62ac18f47b914176dc9bcd0d5e08d4bf6e964e4d",
+  "input_content_sha256": "aa688172f404123c4444920d7f5530bd0fdd8efb51022928b54dcc44eeb056bd",
+  "reference_sha256": "cb4eafe4453b36241bd810153120bed0c61eee0203076aa96b3eef092fe5a7a5",
+  "assessment_sha256": "87886601429396ca26f9b7a863da54d820749c47a55914729787cad281b37355",
+  "evidence_hashes": {
+    "manifest.json": "1fe1af2547ce1a4e4481458edbfba87e18dfbb3019963cb2f829f1f8333a392f",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "4d77a2f0c69941ea443d9002b9fcce191c4adaad58efeda7409276715f9aa95f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e67cd43233adf639e16c415827640efd3abf5588e118d66ac71f83737de996ba",
+    "historical-fixed.stdout.txt": "717efd1e60589c728596d82cf0415aa488a68500463991099a9653cefaf63fdd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ee39c5a61f8dfb10e49cebccba4d4f8bbc9e00fe8c811f6a9c7ebfc38e3b328a"
+  },
+  "retrieval": {
+    "production_files_scanned": 189,
+    "ranked_function_count": 3923,
+    "characters": 2290,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

@@ -1,0 +1,11 @@
+--- a/sympy/sets/fancysets.py
++++ b/sympy/sets/fancysets.py
+@@ -108,7 +108,7 @@
+             return False
+         elif other.is_positive and other.is_integer:
+             return True
+-        elif other.is_integer is False or other.is_positive is False:
++        elif other.is_integer is False or other.is_positive is True:
+             return False
+ 
+     def _eval_is_subset(self, other):

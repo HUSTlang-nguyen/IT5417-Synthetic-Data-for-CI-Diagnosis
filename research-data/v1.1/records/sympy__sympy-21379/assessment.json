@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041042442707Z",
+  "reviewed_at": "2026-11-12T12:02:09+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6250bb25d54cbd076cef5c10d868a0f0be0fdc44f177a0a6f5afe174dfb362d7",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "45284b4393b4091bd2a56283f2982e3f8efdfa47a5a786ac1cb7c04d1d8041e0",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4516fd83d3171c4152116b78f5f35bb54e4f32c4097534e3d60da8aa27d5ad73",
+    "historical-fixed.stdout.txt": "5a3fdd495730da14cb7a1faa2301e00eb4ece6997b2cd3dd139e767c3212dd6e",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "9d04cbc88fe6c8b34394c991ce4af681b34097d7f8b6525d04ce06d0e1e9bfa2"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/mod.py",
+      "function": "Mod.eval"
+    }
+  ],
+  "mechanism": "Modulo simplification unconditionally invokes polynomial gcd on operands that can contain Piecewise. That optional optimization rejects such generators and leaks the saved PolynomialError. Catching that unsupported polynomial path and retaining neutral gcd1 allows the general symbolic modulo operation to continue.",
+  "limitations": "The gcd implementation reports its own domain limitation correctly; the caller lacks fallback handling. No missing external algebra library is inferred.",
+  "observed_junit": {
+    "base": {
+      "cases": 92,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 92,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_arit::test_Mod",
+      "message": "sympy.polys.polyerrors.PolynomialError: Piecewise generators do not make sense"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

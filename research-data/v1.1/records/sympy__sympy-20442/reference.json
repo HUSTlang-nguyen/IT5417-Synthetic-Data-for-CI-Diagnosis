@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-20442",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/units/util.py",
+      "function": "_get_conversion_matrix_for_expr"
+    }
+  ],
+  "explanation": "The conversion helper solves incompatible unit dimensions by least squares and treats the approximate solution as an exact conversion. The saved joule*second to joule conversion returns an invalid fractional-power expression instead of retaining the original expression. Exact solving and its noninvertibility fallback reject that unsupported conversion.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.convert_to"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.dimension"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_dimension"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_scale_factor"
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_global_dimension"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-11919",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_gamma"
+    }
+  ],
+  "explanation": "Dispatch by the name gamma sends both the built-in gamma function and a user-defined function with that name to a handler that always emits uppercase Gamma. The saved user-defined case requires lowercase gamma. Checking the actual function identity distinguishes them.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/stats/rv.py",
+      "function": "given"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

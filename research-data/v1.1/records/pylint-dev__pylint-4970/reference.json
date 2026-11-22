@@ -1,0 +1,19 @@
+{
+  "sample_id": "pylint-dev__pylint-4970",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "Similar.run"
+    }
+  ],
+  "explanation": "Similar.run computes and prints its summary even when min_lines is zero, although duplicates=0 is intended to disable duplicate checking. An early return for that disabled state suppresses the unwanted summary.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/lint/run.py",
+      "function": "Run.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012406242509Z",
+  "reviewed_at": "2026-11-12T11:38:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "063192d38a0f6049bab236f92483d9adf62b479b06f405d6417cc58ac11865f3",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "3b0998243ab5921ffa5313e2e78d380334924a222c6cec5a517fe6a296d22254",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2b2c0bf4edfe75a325034ec14b8720579a7cd661b0e93815925b5b6e895b47ce",
+    "historical-fixed.stdout.txt": "7c4e8cee561a9ae11b361c5e92f12fb1f68a9810b72dafc42be353ce717a0661",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "6db0b05160efdfa95dab19f2a72c4d62ae2c81e7764e6edd5d54b5b9b0564d15"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/logging.py",
+      "function": "LogCaptureFixture.set_level"
+    }
+  ],
+  "mechanism": "Each set_level call overwrites the saved original handler level. Two calls in one test preserve the first requested level as the restoration value, so subsequent tests start with the wrong level. Saving the initial handler level only once permits teardown to restore zero.",
+  "limitations": "The nested run shows one pass/two failures before and all three pass after. The outer JUnit case is one real fault situation, not three samples.",
+  "observed_junit": {
+    "base": {
+      "cases": 15,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 15,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.logging.test_fixture::test_change_level_undos_handler_level",
+      "message": "AssertionError: assert {'errors': 0,...pped': 0, ...} == {'errors': 0,...pped': 0, ...}\n  Omitting 4 identical items, use -vv to show\n  Differing items:\n  {'failed': 2} != {'failed': 0}\n  {'passed': 1} != {'passed': 3}\n  Full diff:\n    {\n     'errors': 0,...\n  \n  ...Full output truncated (13 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

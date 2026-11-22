@@ -1,0 +1,19 @@
+{
+  "sample_id": "sympy__sympy-23262",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/utilities/lambdify.py",
+      "function": "_recursive_to_string"
+    }
+  ],
+  "explanation": "Tuple serialization encloses elements in parentheses without a trailing comma. A singleton tuple is emitted as (1), so the compiled lambda returns scalar1 instead of (1,). Adding the tuple comma preserves the container type.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/lambdify.py",
+      "function": "lambdify"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

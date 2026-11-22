@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T073936830577Z-1",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__neg__"
+    }
+  ],
+  "explanation": "Negating a zero Float returns None instead of the same numeric object. The saved negated-zero equality with0 fails.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Zero.__abs__"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Zero.__neg__"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__neg__"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__ne__"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float._new"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

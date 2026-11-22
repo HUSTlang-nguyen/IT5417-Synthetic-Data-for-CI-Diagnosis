@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-4492",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._load_reporter"
+    }
+  ],
+  "explanation": "The reporter loader treats a comma-separated multi-format setting with an output path as one reporter identifier. It then tries to resolve that entire value and raises InvalidReporterError. Parsing the individual reporter specifications and composing reporters allows the saved multi-format test to pass.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._load_reporter"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._load_reporter_class"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.load_default_plugins"
+    },
+    {
+      "file": "pylint/__pkginfo__.py",
+      "function": "<module>"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._get_file_descr_from_stdin"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

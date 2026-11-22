@@ -1,0 +1,11 @@
+--- a/sympy/utilities/iterables.py
++++ b/sympy/utilities/iterables.py
+@@ -49,7 +49,7 @@
+ 
+     """
+     i, j, _ = slice(i, j).indices(len(s))
+-    m = (j - i)//2
++    m = (j - i)//2 + 1
+     # if length is odd, middle element will be ignored
+     return all(s[i + k] == s[j - 1 - k] for k in range(m))
+ 

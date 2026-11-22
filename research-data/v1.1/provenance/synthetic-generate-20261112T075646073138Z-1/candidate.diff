@@ -1,0 +1,11 @@
+--- a/sympy/matrices/matrices.py
++++ b/sympy/matrices/matrices.py
+@@ -1647,7 +1647,7 @@
+ 
+     @call_highest_priority('__rtruediv__')
+     def __truediv__(self, other):
+-        return self.__div__(other)
++        return self.__mul__(other)
+ 
+     def multiply_elementwise(self, other):
+         """Return the Hadamard product (elementwise product) of A and B

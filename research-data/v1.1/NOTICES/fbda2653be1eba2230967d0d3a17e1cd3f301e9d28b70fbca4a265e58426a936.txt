@@ -1,0 +1,100 @@
+# Licensed under the LGPL: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+# For details: https://github.com/PyCQA/astroid/blob/main/LICENSE
+# Copyright (c) https://github.com/PyCQA/astroid/blob/main/CONTRIBUTORS.txt
+
+"""Astroid hooks for various builtins."""
+
+from __future__ import annotations
+
+import itertools
+from collections.abc import Iterator
+from functools import partial
+
+from astroid import arguments, helpers, inference_tip, nodes, objects, util
+from astroid.builder import AstroidBuilder
+from astroid.context import InferenceContext
+from astroid.exceptions import (
+    AstroidTypeError,
+    AttributeInferenceError,
+    InferenceError,
+    MroError,
+    UseInferenceDefault,
+)
+from astroid.manager import AstroidManager
+from astroid.nodes import scoped_nodes
+
+OBJECT_DUNDER_NEW = "object.__new__"
+
+STR_CLASS = """
+class whatever(object):
+    def join(self, iterable):
+        return {rvalue}
+    def replace(self, old, new, count=None):
+        return {rvalue}
+    def format(self, *args, **kwargs):
+        return {rvalue}
+    def encode(self, encoding='ascii', errors=None):
+        return b''
+    def decode(self, encoding='ascii', errors=None):
+        return u''
+    def capitalize(self):
+        return {rvalue}
+    def title(self):
+        return {rvalue}
+    def lower(self):
+        return {rvalue}
+    def upper(self):
+        return {rvalue}
+    def swapcase(self):
+        return {rvalue}
+    def index(self, sub, start=None, end=None):
+        return 0
+    def find(self, sub, start=None, end=None):
+        return 0
+    def count(self, sub, start=None, end=None):
+        return 0
+    def strip(self, chars=None):
+        return {rvalue}
+    def lstrip(self, chars=None):
+        return {rvalue}
+    def rstrip(self, chars=None):
+        return {rvalue}
+    def rjust(self, width, fillchar=None):
+        return {rvalue}
+    def center(self, width, fillchar=None):
+        return {rvalue}
+    def ljust(self, width, fillchar=None):
+        return {rvalue}
+"""
+
+
+BYTES_CLASS = """
+class whatever(object):
+    def join(self, iterable):
+        return {rvalue}
+    def replace(self, old, new, count=None):
+        return {rvalue}
+    def decode(self, encoding='ascii', errors=None):
+        return u''
+    def capitalize(self):
+        return {rvalue}
+    def title(self):
+        return {rvalue}
+    def lower(self):
+        return {rvalue}
+    def upper(self):
+        return {rvalue}
+    def swapcase(self):
+        return {rvalue}
+    def index(self, sub, start=None, end=None):
+        return 0
+    def find(self, sub, start=None, end=None):
+        return 0
+    def count(self, sub, start=None, end=None):
+        return 0
+    def strip(self, chars=None):
+        return {rvalue}
+    def lstrip(self, chars=None):
+        return {rvalue}
+    def rstrip(self, chars=None):
+        return {rvalue}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T013256866309Z",
+  "reviewed_at": "2026-11-12T11:46:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "693f9587858b49c24e79630137a8e1e4fe64ea8f47d0938c611bdb31e409cbcc",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "28b0cdc5f908e8ba8b820f8351df1d88e0c5a41587bd968fa04c484fbff436be",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4f9fec8c7a1166a955a3a9b32a06fc87a0460ffd011808159f712973e2b8e4ea",
+    "historical-fixed.stdout.txt": "2523f0b6ca2e39ae58383289f72cb369b5a02d9ce118cd5566079f50c9e7f963",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "37e66cfab9fdcf85da76de031039cd8bc67b591ef65e0ac22a8de9923eda9809"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._needs_mul_brackets"
+    }
+  ],
+  "mechanism": "A Piecewise factor is bracketed only when it is not the last multiplication operand. A final Piecewise therefore loses required parentheses in the saved noncommutative product rendering. Recognizing Piecewise independently of last preserves the grouping.",
+  "limitations": "The evidence concerns LaTeX representation and operator grouping, not an independently measured symbolic multiplication error.",
+  "observed_junit": {
+    "base": {
+      "cases": 96,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 96,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_Piecewise",
+      "message": "AssertionError: assert 'A \\\\begin{ca... \\\\end{cases}' == 'A \\\\left(\\\\b...ases}\\\\right)'\n  - A \\left(\\begin{cases} A^{2} & \\text{for}\\: A = B \\\\A B & \\text{otherwise} \\end{cases}\\right)\n  ?   ------                                                                             -------\n  + A \\begin{cases} A^{2} & \\text{for}\\: A = B \\\\A B & \\text{otherwise} \\end{cases}"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

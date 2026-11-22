@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-11400",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/ccode.py",
+      "function": "CCodePrinter._print_Relational"
+    },
+    {
+      "file": "sympy/printing/ccode.py",
+      "function": "CCodePrinter._print_sinc"
+    }
+  ],
+  "explanation": "The C printer lacks relational and sinc handlers. Saved output contains Eq(x,y) instead of x==y and a generic unsupported sinc(x) instead of the zero-aware sine quotient. The dedicated handlers provide those target-language forms.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,11 @@
+--- a/sympy/sets/fancysets.py
++++ b/sympy/sets/fancysets.py
+@@ -40,7 +40,7 @@
+     is_finite_set = False
+ 
+     def _contains(self, other):
+-        if not isinstance(other, Expr):
++        if isinstance(other, Expr):
+             return False
+         return other.is_rational
+ 

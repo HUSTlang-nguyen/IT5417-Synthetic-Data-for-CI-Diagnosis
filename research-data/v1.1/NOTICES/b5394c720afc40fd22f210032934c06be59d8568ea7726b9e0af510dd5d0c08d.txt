@@ -1,0 +1,100 @@
+from collections import defaultdict
+
+from sympy.core.add import Add
+from sympy.core.basic import S
+from sympy.core.compatibility import ordered
+from sympy.core.expr import Expr
+from sympy.core.exprtools import Factors, gcd_terms, factor_terms
+from sympy.core.function import expand_mul
+from sympy.core.mul import Mul
+from sympy.core.numbers import pi, I
+from sympy.core.power import Pow
+from sympy.core.symbol import Dummy
+from sympy.core.sympify import sympify
+from sympy.functions.combinatorial.factorials import binomial
+from sympy.functions.elementary.hyperbolic import (
+    cosh, sinh, tanh, coth, sech, csch, HyperbolicFunction)
+from sympy.functions.elementary.trigonometric import (
+    cos, sin, tan, cot, sec, csc, sqrt, TrigonometricFunction)
+from sympy.ntheory.factor_ import perfect_power
+from sympy.polys.polytools import factor
+from sympy.simplify.simplify import bottom_up
+from sympy.strategies.tree import greedy
+from sympy.strategies.core import identity, debug
+
+from sympy import SYMPY_DEBUG
+
+
+# ================== Fu-like tools ===========================
+
+
+def TR0(rv):
+    """Simplification of rational polynomials, trying to simplify
+    the expression, e.g. combine things like 3*x + 2*x, etc....
+    """
+    # although it would be nice to use cancel, it doesn't work
+    # with noncommutatives
+    return rv.normal().factor().expand()
+
+
+def TR1(rv):
+    """Replace sec, csc with 1/cos, 1/sin
+
+    Examples
+    ========
+
+    >>> from sympy.simplify.fu import TR1, sec, csc
+    >>> from sympy.abc import x
+    >>> TR1(2*csc(x) + sec(x))
+    1/cos(x) + 2/sin(x)
+    """
+
+    def f(rv):
+        if isinstance(rv, sec):
+            a = rv.args[0]
+            return S.One/cos(a)
+        elif isinstance(rv, csc):
+            a = rv.args[0]
+            return S.One/sin(a)
+        return rv
+
+    return bottom_up(rv, f)
+
+
+def TR2(rv):
+    """Replace tan and cot with sin/cos and cos/sin
+
+    Examples
+    ========
+
+    >>> from sympy.simplify.fu import TR2
+    >>> from sympy.abc import x
+    >>> from sympy import tan, cot, sin, cos
+    >>> TR2(tan(x))
+    sin(x)/cos(x)
+    >>> TR2(cot(x))
+    cos(x)/sin(x)
+    >>> TR2(tan(tan(x) - sin(x)/cos(x)))
+    0
+
+    """
+
+    def f(rv):
+        if isinstance(rv, tan):
+            a = rv.args[0]
+            return sin(a)/cos(a)
+        elif isinstance(rv, cot):
+            a = rv.args[0]
+            return cos(a)/sin(a)
+        return rv
+
+    return bottom_up(rv, f)
+
+
+def TR2i(rv, half=False):
+    """Converts ratios involving sin and cos as follows::
+        sin(x)/cos(x) -> tan(x)
+        sin(x)/(cos(x) + 1) -> tan(x/2) if half=True
+
+    Examples
+    ========

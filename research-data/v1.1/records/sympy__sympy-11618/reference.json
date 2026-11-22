@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-11618",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.distance"
+    }
+  ],
+  "explanation": "Distance zips coordinate lists and silently stops at the shorter point. Between Point3D(1,0,2) and Point2D(2,0), the third-coordinate contribution is discarded, yielding1 instead of sqrt(5). Padding the shorter point with zero preserves the embedding distance.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-17067",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie.f"
+    }
+  ],
+  "explanation": "The nested cosine-product transformation matches a rational expression as a single product instead of separating numerator and denominator. Reciprocal factors enter the product identity incorrectly, changing the tested cosine ratio. Splitting once into f(numerator)/f(denominator) prevents that cross-part rewrite.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie"
+    },
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TR8"
+    },
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie.f"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

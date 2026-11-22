@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012907376461Z",
+  "reviewed_at": "2026-11-12T11:39:35+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6a0f766c35a9ce3cc82cf6df35946fb16cea0d1b9b82346bfe99d1ae370375d8",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "9397c98bcb74dc02147eb11b303d567d382d46d8fad2dedae7a51e313d341697",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "306b6c34991d80beb18df2546cf1f95733241500f2e1ebe3c168ad7e7c053b33",
+    "historical-fixed.stdout.txt": "052c038118a1c1e4a70c876405aba14a5431f4b9582787481616fd238898c00d",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "136ae0c31f23f41d31a761394a87581927ffb58f9261703d88271986356143e1"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/assertion/rewrite.py",
+      "function": "AssertionRewriter.run"
+    }
+  ],
+  "mechanism": "Injected assertion-rewriter imports inherit the function-def line instead of the first decorator line. Error reporting around the decorated function then uses inconsistent statement/source positions; the saved inner traceback ends in an IndexError and exits INTERNAL_ERROR instead of the intended interruption. Assigning the decorator line preserves source mapping.",
+  "limitations": "The saved IndexError is downstream evidence; AST line assignment and the one repair support the causal mapping explanation. This is not invalid Python syntax in the input file.",
+  "observed_junit": {
+    "base": {
+      "cases": 79,
+      "failures_or_errors": 1,
+      "skipped": 1
+    },
+    "head": {
+      "cases": 79,
+      "failures_or_errors": 0,
+      "skipped": 1
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_collection::test_does_not_crash_on_error_from_decorated_function",
+      "message": "assert <ExitCode.INTERNAL_ERROR: 3> == <ExitCode.INTERRUPTED: 2>\n  +<ExitCode.INTERNAL_ERROR: 3>\n  -<ExitCode.INTERRUPTED: 2>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

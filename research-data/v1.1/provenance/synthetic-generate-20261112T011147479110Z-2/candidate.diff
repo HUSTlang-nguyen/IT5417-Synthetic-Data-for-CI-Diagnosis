@@ -1,0 +1,11 @@
+--- a/sympy/physics/vector/vector.py
++++ b/sympy/physics/vector/vector.py
+@@ -57,7 +57,7 @@
+ 
+     def __add__(self, other):
+         """The add operator for Vector. """
+-        if other == 0:
++        if other == 1:
+             return self
+         other = _check_vector(other)
+         return Vector(self.args + other.args)

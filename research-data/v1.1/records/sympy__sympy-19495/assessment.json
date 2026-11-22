@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T061843169433Z",
+  "reviewed_at": "2026-11-12T18:28:15+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "14cc1c57028eddb93d9087bc1768d78b888cd79c23f036947f0ad46da836822e",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "0815fd303d3be446f3237bd0a73fc21488705582aa721fb4f74758feed29357f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b77e2f5facc5677af6831c98be6e13e5dddcf0440e4bc4cb38b62c0739be2dd3",
+    "historical-fixed.stdout.txt": "cdc1934290cdbb7171fe20ffff93ba9094190ec6953b5dac60d90ee2dad7194a",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5fd06b4f6ed2947e3077bf77eb7813b6e09cd288ab14bb939b8a449e6c8a5c23"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/sets/conditionset.py",
+      "function": "ConditionSet._eval_subs"
+    }
+  ],
+  "mechanism": "When substitution makes the condition true, the base rebuilds using the replacement value as a bound symbol and filters it through Contains. The saved negative-interval example incorrectly becomes EmptySet instead of the interval. The repair preserves the original bound symbol and normal constructor behavior; all nine tests pass.",
+  "limitations": "Assumptions on the bound variable and replacement value must be distinguished. This is substitution/reconstruction logic, not proof that the displayed test assertion line causes the fault.",
+  "observed_junit": {
+    "base": {
+      "cases": 9,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 9,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.sets.tests.test_conditionset::test_subs_CondSet",
+      "message": "assert EmptySet == Interval(-oo, 0)\n +  where EmptySet = <bound method Basic.subs of ConditionSet(n, n < x, Interval(-oo, 0))>(x, p)\n +    where <bound method Basic.subs of ConditionSet(n, n < x, Interval(-oo, 0))> = ConditionSet(n, n < x, Interval(-oo, 0)).subs\n +      where ConditionSet(n, n < x, Interval(-oo, 0)) = ConditionSet(n, n < x, Interval(-oo, 0))\n +        where Interval(-oo, 0) = Interval(-oo, 0)\n +  and   Interval(-oo, 0) = Interval(-oo, 0)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001643776366Z",
+  "reviewed_at": "2026-11-12T10:36:29+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "40eac365a2f1a0428b90a1d367f376f699c292444ac7adb273b281a2851cfe9f",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "2838943e314601d25cf65923e7aee83be23eb5d5d1912c8e62762873a1a47913",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5f509c7bce04fe4af92e7664713baf9a9b2f6c712c02bf3c1f08f7092b643b7b",
+    "historical-fixed.stdout.txt": "441a31048a791d8c359ff67fa34088584f6d74843650c21bfa99dcb8d2a6ccc3",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c9a7231b5670a36588606a096892d5969a0f01a8a540f0234ba255023cd19f52"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_generic._solve_reduced_system"
+    }
+  ],
+  "mechanism": "The reduced-system solver accepts a single univariate basis even when another requested generator remains unconstrained. It returns instead of rejecting the non-zero-dimensional system. Checking basis length against generator count prevents this unsupported finite-solution path.",
+  "limitations": "The saved test proves the missing NotImplementedError for [y-1] with generators (x,y); it does not establish a general dimension algorithm for all systems.",
+  "observed_junit": {
+    "base": {
+      "cases": 3,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 3,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.solvers.tests.test_polysys::test_solve_poly_system",
+      "message": "Failed: DID NOT RAISE <class 'NotImplementedError'>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

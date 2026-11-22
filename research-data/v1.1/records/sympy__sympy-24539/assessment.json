@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T034852349603Z",
+  "reviewed_at": "2026-11-12T11:50:55+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "8032ecd6c0013d74422e4ab61e42bdd4ba7dcbc8ecb67565cafe137912272ce4",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "5e2d06bb38667bd0dbb1735c72afc25810a7c5fe14a11b8e73bc97073ff9b1a7",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2b0052cf4253be5c011a8fd2ed4eb6039fd616f71f18fa350398c8233c1bae7c",
+    "historical-fixed.stdout.txt": "c0796007878f5f5280cfddd7d74dfba4a254e435c1f95cab132ba3f5ac6741e6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "694dad7c539cc23d97568b7cff15551e6ad4e630bc733c2b35b66ad0dde07acd"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.as_expr"
+    }
+  ],
+  "mechanism": "The else branch overwrites supplied symbols with ring defaults whenever their count is valid. The saved conversion requested u,v,w but returns x,y,z. Falling back only when no symbols are supplied preserves the caller mapping.",
+  "limitations": "The wrong-count error-message adjustment is ancillary; the saved failure proves valid arguments were discarded.",
+  "observed_junit": {
+    "base": {
+      "cases": 63,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 63,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_rings::test_PolyElement_as_expr",
+      "message": "assert 3*x**2*y - x*y*z + 7*z**3 + 1 == 3*u**2*v - u*v*w + 7*w**3 + 1\n +  where 3*x**2*y - x*y*z + 7*z**3 + 1 = <bound method PolyElement.as_expr of 3*x**2*y - x*y*z + 7*z**3 + 1>(u, v, w)\n +    where <bound method PolyElement.as_expr of 3*x**2*y - x*y*z + 7*z**3 + 1> = 3*x**2*y - x*y*z + 7*z**3 + 1.as_expr"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,1801 @@
+{
+  "reviewed_at": "2026-11-23T02:19:22+07:00",
+  "counts": {
+    "real": 50,
+    "synthetic": 30
+  },
+  "recommendations": {
+    "retain_candidate_subject_to_v2_quota_group_audit": 77,
+    "quarantine_v2_taxonomy": 1,
+    "quarantine_v2_location": 1,
+    "quarantine_v2_plausibility": 1
+  },
+  "artifact_hashes_checked": 1270,
+  "quality": "silver",
+  "human_confirmation": "pending",
+  "raw_unchanged": true,
+  "scope": "Selected production-file hashes, repair/candidate diffs and saved JUnit causality. F2P/P2P and synthetic execution chains parsed read-only. Not a new full source-tree inventory or expert gold review.",
+  "records": [
+    {
+      "sample_id": "marshmallow-code__marshmallow-1252",
+      "kind": "real",
+      "repo": "https://github.com/marshmallow-code/marshmallow",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "src/marshmallow/utils.py",
+          "function": "from_iso"
+        }
+      ],
+      "mechanism": "The fallback datetime parser truncates a fractional-seconds string at26 characters regardless of actual fraction length. A short fraction leaves part of the timezone suffix in the strptime input, which raises the saved unconverted-data ValueError. Isolating the fractional digits removes that suffix before parsing.",
+      "limitations": "The failing path explicitly disables optional dateutil; this is supported product fallback behavior, not a dependency-installation error. No claim of preserving timezone awareness in this fallback is made.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\marshmallow-code__marshmallow-1252-ds1\\repair.patch",
+      "patch_sha256": "d892dc9d1ba24049de6b3a4f6bde599c0fab3535f87812d15c48d7cba53b3580",
+      "junit_path": "runs\\reproduce-20261112T013244099127Z\\historical-base.junit.xml",
+      "junit_sha256": "6d5ab34a24007caa0702b8d5acbcc1eb03bc9d4a37c5105e168d4e6eb8efea3e",
+      "source_meta_sha256": "fe3c9c71ab470015eac6d7cb3d14947a8b32959db4531922096f55c473f165d6"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1216",
+      "kind": "real",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/pvsystem.py",
+          "function": "calcparams_cec"
+        }
+      ],
+      "mechanism": "The CEC wrapper accepts extra physical-model parameters but forwards hard-coded defaults to calcparams_desoto. The saved spy sees default EgRef/dEgdT/irradiance/temperature values rather than the four supplied values. Forwarding the actual arguments restores the wrapper contract.",
+      "limitations": "The spy assertion directly proves argument values were discarded. It does not measure the size of a downstream physical prediction error; the label describes wrong data flow rather than a missing dependency.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pvlib__pvlib-python-1216-ds1\\repair.patch",
+      "patch_sha256": "5aa9fadc2876b8d114efb04e2340492a7d358389627faf88bdc7d388b86b4cde",
+      "junit_path": "runs\\reproduce-20261112T005842042128Z\\historical-base.junit.xml",
+      "junit_sha256": "7ca1f8de9610264c7f18c8f1ba4708e3fa344c8ee237a48f8195573d805c79ee",
+      "source_meta_sha256": "fced5a288515cd5a846610a67e5b1fdfc97c58d80be2462a81288c42818a9000"
+    },
+    {
+      "sample_id": "pydicom__pydicom-1031",
+      "kind": "real",
+      "repo": "https://github.com/pydicom/pydicom",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "pydicom/dataelem.py",
+          "function": "empty_value_for_VR"
+        }
+      ],
+      "mechanism": "For sequence VR, the helper always returns a list even for a raw data element. That list flows into buffer.write, which requires bytes and raises TypeError. Returning empty bytes for raw sequences and a list for decoded sequences restores the representation contract.",
+      "limitations": "The final tag_in_exception frame only rethrows the failure. The causal type selection is in empty_value_for_VR; both failing test classes exercise the same fault and count as one source situation.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pydicom__pydicom-1031-ds1\\repair.patch",
+      "patch_sha256": "23e9ac61984669014d63f6d1ce4a7bc330dc50163cec7fbf88e4da155da62727",
+      "junit_path": "runs\\reproduce-20261111T232932460044Z\\historical-base.junit.xml",
+      "junit_sha256": "9932618d2db5fadb3e489bd4e1173ec0d287334be982d57f04dd5fcafaad5aa7",
+      "source_meta_sha256": "fadc34de838bb05ed10f128a7882651b6dc2d37c6fd69d3f9272c9cd7eaacbb0"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1262",
+      "kind": "real",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "astroid/nodes/scoped_nodes.py",
+          "function": "Module.__init__"
+        }
+      ],
+      "mechanism": "The module constructor initializes its own fields without calling the node superclass initializer. Parsed modules consequently lack col_offset and the saved location-metadata assertion raises AttributeError. Calling the superclass with module lineno0 and parent initializes the inherited fields.",
+      "limitations": "The patch also corrects annotations, but annotations do not instantiate the missing attribute. Two unrelated skipped tests remain skipped in both versions.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pylint-dev__astroid-1262-ds1\\repair.patch",
+      "patch_sha256": "7fc790219557f418723e3b9af083432ee4d15b3d19fbbc329312ea389e6d7772",
+      "junit_path": "runs\\reproduce-20261112T042557853515Z\\historical-base.junit.xml",
+      "junit_sha256": "71a2be5cf18506ca69ce365e1f735ad371501a4494780e401a1b2bb45787cc2b",
+      "source_meta_sha256": "38b0847f500bc8557204c54a98585a2ac1c8fce2f79b874df2cff999d1951a26"
+    },
+    {
+      "sample_id": "sympy__sympy-11400",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/ccode.py",
+          "function": "CCodePrinter._print_Relational"
+        },
+        {
+          "file": "sympy/printing/ccode.py",
+          "function": "CCodePrinter._print_sinc"
+        }
+      ],
+      "mechanism": "The C printer lacks relational and sinc handlers. Saved output contains Eq(x,y) instead of x==y and a generic unsupported sinc(x) instead of the zero-aware sine quotient. The dedicated handlers provide those target-language forms.",
+      "limitations": "One source task adds two related code-generation handlers, both observed in failing assertions. Explicit missing definitions; output strings were not compiled as C during review.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11400-ds1\\repair.patch",
+      "patch_sha256": "7f79e0c6e6909a311c54215f3e858f057db77bb11248853e84095261195d6c1b",
+      "junit_path": "runs\\reproduce-20261112T040100739551Z\\historical-base.junit.xml",
+      "junit_sha256": "e7669f70f0dcb01793e82dd4dd2d16cddf4d9c82e6f08ad9aeba4ca175ac045b",
+      "source_meta_sha256": "00ec144547c318d44e2e4359ca0f2b13ee9b366aa1a5c164a47a23044cfca7dc"
+    },
+    {
+      "sample_id": "marshmallow-code__marshmallow-1702",
+      "kind": "real",
+      "repo": "https://github.com/marshmallow-code/marshmallow",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "src/marshmallow/fields.py",
+          "function": "Field.__init__"
+        }
+      ],
+      "mechanism": "The constructor captures metadata=... inside arbitrary keyword metadata, nesting that mapping under a metadata key rather than exposing its entries. Saved field.metadata assertions show the extra nesting across field subclasses. An explicit metadata parameter merged with remaining keyword metadata preserves the expected mapping interface.",
+      "limitations": "Twenty-eight failures share the base-constructor mechanism; they are one source situation, not28 samples. The patch additionally deprecates keyword metadata, which is not the first observed mismatch.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\marshmallow-code__marshmallow-1702-ds1\\repair.patch",
+      "patch_sha256": "39aa2f6bbdf3de2753a19c54168f3294cc30b7d6a501b9e05a9548dd39838841",
+      "junit_path": "runs\\reproduce-20261112T045454708980Z\\historical-base.junit.xml",
+      "junit_sha256": "1dd1171aeeaf9f080c212c19595909f842ff9b3c9b09d9e6b88623ae09f39a5f",
+      "source_meta_sha256": "00c130b618dace4b4f9e2a7b8df89ee2853ad0ef191712bf02e84438f998256f"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1224",
+      "kind": "real",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "pvlib/pvsystem.py",
+          "function": "PVSystem.__init__"
+        }
+      ],
+      "mechanism": "Construction accepts arrays=[] and creates an empty system although the API requires at least one Array. The saved test does not raise ValueError. A distinct empty-collection guard rejects this input while preserving arrays=None as the one-array default.",
+      "limitations": "This is missing argument validation, not evidence that default construction or the environment failed.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pvlib__pvlib-python-1224-ds1\\repair.patch",
+      "patch_sha256": "21c3057b8e34632bac4a0d1767824b639fa3e784ca4bc7fcc5b8a578ef2734f4",
+      "junit_path": "runs\\reproduce-20261112T044556287228Z\\historical-base.junit.xml",
+      "junit_sha256": "f3c67c93460f1463b2f6c9544d0f3f44156887c779ab98f17a71e2880e57abf5",
+      "source_meta_sha256": "6056c2bce0a606620cf76a777231c2b8d566f29f6f4995b5576f1e73be367b11"
+    },
+    {
+      "sample_id": "pydicom__pydicom-800",
+      "kind": "real",
+      "repo": "https://github.com/pydicom/pydicom",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pydicom/uid.py",
+          "function": "generate_uid"
+        }
+      ],
+      "mechanism": "For prefix=None the base substitutes2.25 then follows general hashed UID generation, allowing a suffix larger than128bits. The saved UUID reconstruction rejects the integer as out of range. The repair returns the integer form of uuid4 directly for that branch; forty selected tests pass.",
+      "limitations": "The error is detected in the standard-library UUID constructor, but the causal producer is generate_uid. No claim is made about actual UID collisions or clinical outcomes; this is the saved format/range contract.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pydicom__pydicom-800-ds1\\repair.patch",
+      "patch_sha256": "c0665fd8f127e25f134364e0139714923f706fcab4b43250517591044aa564d2",
+      "junit_path": "runs\\reproduce-20261112T063450248639Z\\historical-base.junit.xml",
+      "junit_sha256": "7bc1659a2dc83fad66fb10517129ac7efe387cfbe6a8b0416ffa23195eb8e13a",
+      "source_meta_sha256": "463a9a411c726381976555b7cb374a1f2ce7bb87694e0392dbe5f30bea8c2f31"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1719",
+      "kind": "real",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "astroid/raw_building.py",
+          "function": "InspectBuilder.object_build"
+        }
+      ],
+      "mechanism": "Deep inspection sets all warnings to errors but catches only AttributeError and DeprecationWarning. A simulated module attribute emits FutureWarning, which escapes and aborts building in the saved stack. Ignoring warnings during attribute inspection permits the expected build.",
+      "limitations": "The module deliberately simulates pandas behavior; no real pandas service/import failure is claimed. The coarse configuration-policy label is an alternate interpretation; the retained class reflects incorrect warning control flow.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pylint-dev__astroid-1719-ds1\\repair.patch",
+      "patch_sha256": "2e990d3d5133e38fec30dce048f106f1beffcd0a259bb4a749194ba098cb3c3a",
+      "junit_path": "runs\\reproduce-20261112T033846361018Z\\historical-base.junit.xml",
+      "junit_sha256": "ff4b59aa6a1d3701eb240af24632d6d14662952768274c93412f94431f45cc8c",
+      "source_meta_sha256": "183c16c5b8e3e675a5eca387defc0be3a215715c5eca559d8ddb9a484bb857c6"
+    },
+    {
+      "sample_id": "sympy__sympy-11438",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/solvers/diophantine.py",
+          "function": "classify_diop"
+        }
+      ],
+      "mechanism": "The even-power-sum classifier checks that terms are powers but never checks that each exponent equals the total degree. Mixed-exponent equations are incorrectly classified as supported, so the expected NotImplementedError is not raised. Requiring matching exponents prevents that overbroad branch.",
+      "limitations": "DID NOT RAISE is the test detector. The cause is an overly permissive mathematical classification predicate, not a problem in the raises helper.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11438-ds1\\repair.patch",
+      "patch_sha256": "7943ea071f069f532faf82a13870702eca486a5011c04e9c30b939a23106adc1",
+      "junit_path": "runs\\reproduce-20261112T000530663640Z\\historical-base.junit.xml",
+      "junit_sha256": "7ba4435ed69603a72272cf2b58f8fef398f052676542a325b2508f534dae0060",
+      "source_meta_sha256": "c59a9ff53405efbc3cc539f55e4b324df79117d95a1369786c101c85a8ddcd77"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1349",
+      "kind": "real",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/spectrum/spectrl2.py",
+          "function": "spectrl2"
+        }
+      ],
+      "mechanism": "The direct irradiance calculation multiplies by a negative cosine when incidence exceeds90degrees. The saved test reports negative poa_direct values with the sun behind the panel. Clipping the incidence projection to zero prevents this invalid irradiance.",
+      "limitations": "The patch also bounds the zenith denominator in the diffuse projection. The saved first assertion directly proves the negative direct-beam path, not the entire spectral model.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pvlib__pvlib-python-1349-ds1\\repair.patch",
+      "patch_sha256": "5325fb81cbd7d7409f8e6f5e0100e6e3171c942e06d293e2c5d9ac92e971f35a",
+      "junit_path": "runs\\reproduce-20261112T050025876510Z\\historical-base.junit.xml",
+      "junit_sha256": "aa369d4559e4a7db873848bffc226056fac9804ce5e2e360c4e650e2867bfa94",
+      "source_meta_sha256": "08a2d62d2e3b079e173a6977c9b308e88165510ff0d5f4e084499cf2aa77b48c"
+    },
+    {
+      "sample_id": "pydicom__pydicom-900",
+      "kind": "real",
+      "repo": "https://github.com/pydicom/pydicom",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "pydicom/dataelem.py",
+          "function": "DataElement.__init__"
+        }
+      ],
+      "mechanism": "Known tags marked with unknown VR retain their raw bytes rather than recovering the dictionary VR. The character-set consumer iterates those bytes as integers and passes73 to a regex, causing the saved TypeError during decode. Recovering the known short-value VR enables the expected conversion.",
+      "limitations": "The charset regex detects a value-representation error originating in element construction. Undefined/large/unknown-tag rules are preserved separately; one upstream skip remains.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pydicom__pydicom-900-ds1\\repair.patch",
+      "patch_sha256": "7151267ea22ff65f0520e1ca3c055af7b5a309091b4a34994c558f652c816319",
+      "junit_path": "runs\\reproduce-20261112T035355432975Z\\historical-base.junit.xml",
+      "junit_sha256": "8dfdc68cd7057cf667b553b432ec74375f7768a7db5dcbd93ae2d6992a32adc5",
+      "source_meta_sha256": "5cdd803d883fd1d1cb839fa714bb809785f9af5c1cf4101264ab422704500d35"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1959",
+      "kind": "real",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "astroid/raw_building.py",
+          "function": "InspectBuilder.object_build"
+        }
+      ],
+      "mechanism": "Module inspection calls hasattr on a foreign object whose __getattr__ raises an ordinary Exception. That exception escapes and aborts the saved inspect_build test. Guarding the attribute probe treats this unsupported introspection as absent instead of crashing.",
+      "limitations": "The log directly identifies object_build and the foreign __getattr__; the added safe helper supplies error handling. Source1962 repeats the same mechanism and oracle.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pylint-dev__astroid-1959-ds1\\repair.patch",
+      "patch_sha256": "790f493e5a04e88feacc740058df07c6f2a95769e70b58979cc6091f86f0aee7",
+      "junit_path": "runs\\reproduce-20261112T041823491142Z\\historical-base.junit.xml",
+      "junit_sha256": "58e55f10cf2f884b06f232a6c7355a947f92b4299e4f487cc132d1cd7c7f5d5d",
+      "source_meta_sha256": "f7500c5aac352afdee137afed95c353320d8c55feab896e0ffcab786496f94a4"
+    },
+    {
+      "sample_id": "sympy__sympy-11618",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/geometry/point.py",
+          "function": "Point.distance"
+        }
+      ],
+      "mechanism": "Distance zips coordinate lists and silently stops at the shorter point. Between Point3D(1,0,2) and Point2D(2,0), the third-coordinate contribution is discarded, yielding1 instead of sqrt(5). Padding the shorter point with zero preserves the embedding distance.",
+      "limitations": "The saved example proves mixed-dimension truncation. It is not an out-of-range exception or a claim that dimensionality must always match.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11618-ds1\\repair.patch",
+      "patch_sha256": "2dcab4569a942fedbfd80ffa3d8b0a97f03a7b806d35698824dc38e767ebec84",
+      "junit_path": "runs\\reproduce-20261112T040233772595Z\\historical-base.junit.xml",
+      "junit_sha256": "0aa8e6cbd8ad25947218014a1f4e2464ae5eca7fa0fa030fd877dae2cf7bcd65",
+      "source_meta_sha256": "7b57d30298487bb331303631dd0956b60e36886a3b2d3f6b8273ee7f5180d02e"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1738",
+      "kind": "real",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "pvlib/soiling.py",
+          "function": "hsu"
+        }
+      ],
+      "mechanism": "The public HSU function names its angle argument tilt, while the saved callers use surface_tilt. Four tests raise unexpected-keyword TypeError before the physical calculation. Renaming that parameter and its internal use aligns the public API.",
+      "limitations": "The observed failures establish the keyword mismatch. They do not show a physical-model error; positional calls need not exhibit this failure.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pvlib__pvlib-python-1738-ds1\\repair.patch",
+      "patch_sha256": "473d5db34621550ddb6312306dd10614c554d3ca598dc39023f63016d12b782e",
+      "junit_path": "runs\\reproduce-20261112T042530881414Z\\historical-base.junit.xml",
+      "junit_sha256": "962e075aedb31baf6877f80e888a65dbe78c583c53499982d9a82d1167a8be86",
+      "source_meta_sha256": "e3e9a1c13d6ae6f45a1f336fafb686e602bbbaf5ec955b10d567fbe3ab6ff6bd"
+    },
+    {
+      "sample_id": "pydicom__pydicom-938",
+      "kind": "real",
+      "repo": "https://github.com/pydicom/pydicom",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "pydicom/valuerep.py",
+          "function": "DSfloat.__str__"
+        },
+        {
+          "file": "pydicom/valuerep.py",
+          "function": "DSfloat.__repr__"
+        }
+      ],
+      "mechanism": "The float subclass string fallback enters repr while its custom repr calls str again. The saved DSfloat str/repr tests alternate between those two methods until RecursionError. Calling the underlying numeric repr and deriving the quoted/plain forms breaks that cycle.",
+      "limitations": "The repair also changes IS formatting and four tests fail overall. These locations describe the two directly inspected DSfloat recursion traces; no independent fault count is assigned to the extra assertions.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pydicom__pydicom-938-ds1\\repair.patch",
+      "patch_sha256": "08c9a4604edf11c70ae6582e005fec2eb628e5475ef3ec27fa314377a24b16db",
+      "junit_path": "runs\\reproduce-20261112T042843765450Z\\historical-base.junit.xml",
+      "junit_sha256": "8071ec44fe24245139619424120ac9c9a0c482d72a7e1e86b2e488953daa7e8c",
+      "source_meta_sha256": "b25cd445467f19b80a410e3cae56e3ac3f34bc9cf50e5e628357f404fb428ff4"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-2023",
+      "kind": "real",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "astroid/nodes/node_classes.py",
+          "function": "are_exclusive"
+        }
+      ],
+      "mechanism": "The exclusivity check treats any different child containers of an If as mutually exclusive branches. A walrus assignment in If.test can execute with either body, yet saved tests report it exclusive with body calls. Checking child attributes and exempting the test expression preserves control-flow coexistence.",
+      "limitations": "Three saved failures concern the same branch-membership mechanism; assignment-expression syntax itself parses successfully.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pylint-dev__astroid-2023-ds1\\repair.patch",
+      "patch_sha256": "d3b8a9281c7b19030b2b6d0d0824a093d2257c339dce6617211ad54a01927539",
+      "junit_path": "runs\\reproduce-20261112T042833267942Z\\historical-base.junit.xml",
+      "junit_sha256": "ff991a65d3d3f19ee99366d0a3c126938cf5f684ec6d9e33cacdde7b3db61e29",
+      "source_meta_sha256": "ec44bf4e47a26c10cc75077ef1f113b78584b477715ad058dd37752264a2ca52"
+    },
+    {
+      "sample_id": "sympy__sympy-11788",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/latex.py",
+          "function": "LatexPrinter._print_SingularityFunction"
+        }
+      ],
+      "mechanism": "The printer emits a power without bracing the complete exponent. The saved output has a space after the caret and an ungrouped five instead of the required braced exponent. Bracing the printed power fixes the exact LaTeX representation.",
+      "limitations": "The comparison proves a formatting difference. No TeX compilation or claim of Python syntax failure is made.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11788-ds1\\repair.patch",
+      "patch_sha256": "f5f952fac23586a5b2957f791cb20022b7307746d2c8396908206641494bdeb3",
+      "junit_path": "runs\\reproduce-20261112T000003633736Z\\historical-base.junit.xml",
+      "junit_sha256": "0d732262a55432dabd2dc2a31bf1bcd047e99bb7fa2a3db94f3d78e80bf911ea",
+      "source_meta_sha256": "e45a92830e7ca0d4e5ff5cef45a146bbe4ab72f7fe95a572fe7c44d4cf284b6c"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1782",
+      "kind": "real",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/singlediode.py",
+          "function": "_lambertw"
+        }
+      ],
+      "mechanism": "A tiny negative open-circuit voltage from floating-point computation is used directly as the upper bound of a search starting at zero. The saved search rejects upper<lower. Clipping only the small negative roundoff range to zero keeps the search bounds valid.",
+      "limitations": "The guard handles a narrow tolerance range, not all negative physical voltages. No claim of new physical measurements or independent numerical benchmarking is made.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pvlib__pvlib-python-1782-ds1\\repair.patch",
+      "patch_sha256": "9d21c8c4ba47bd132a9a84961166aeee414d7a242749bc18c46e2120c3804940",
+      "junit_path": "runs\\reproduce-20261112T033945971600Z\\historical-base.junit.xml",
+      "junit_sha256": "d08100d89945a4d561ba1c61bf595d325d7ef2c2b35bb3e2cf77b2915d50cfb2",
+      "source_meta_sha256": "ffd13d872a9e57bf3d9772df07d5e5fbc9adc05382b03085abe56ba2803a9af2"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-2309",
+      "kind": "real",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "astroid/brain/brain_typing.py",
+          "function": "infer_typing_typevar_or_newtype"
+        }
+      ],
+      "mechanism": "Typing inference directly constructs a ClassDef with the supplied TypeVar name, bypassing syntax validation of that generated class representation. The dotted name My.Type is accepted instead of yielding the saved expected InferenceError. Building through the class template/parser and converting AstroidSyntaxError rejects that unsupported representation.",
+      "limitations": "The original TypeVar call is valid Python source; this is validation of an inferred class representation, not a source syntax label. One saved test is narrow evidence. Source2307 has the same repair/test mechanism and is a duplicate.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pylint-dev__astroid-2309-ds1\\repair.patch",
+      "patch_sha256": "de038037cc5407eb1da092c6c365f5deb612012f8be6d3e023e0da4acabc9e1a",
+      "junit_path": "runs\\reproduce-20261112T040858009664Z\\historical-base.junit.xml",
+      "junit_sha256": "96932f3e2c7d3ff6ef46e22aa5f98c57e1e0d06da71432ff4961832aafb5077f",
+      "source_meta_sha256": "d48187f05eb0e05eadfabb2a70b0d6f9b084bab20f2a965efbf4e57b86e8759f"
+    },
+    {
+      "sample_id": "sympy__sympy-11794",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/pretty/pretty.py",
+          "function": "PrettyPrinter._print_SingularityFunction"
+        }
+      ],
+      "mechanism": "The ASCII branch falls back to generic function notation, printing SingularityFunction(x, 0, n), while its contract requires the bracket notation with exponent already supported by the Unicode branch. Building the bracketed shift and exponent in the ASCII branch produces the expected form.",
+      "limitations": "This is output-format behavior, not a fault in symbolic evaluation of the singularity function.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11794-ds1\\repair.patch",
+      "patch_sha256": "29d5c2cc8fa42b6d8f1abd6341f9ad413c14486dcb3c9fc6d6863b90a2939ca7",
+      "junit_path": "runs\\reproduce-20261112T002244353579Z\\historical-base.junit.xml",
+      "junit_sha256": "61b70f5dfa952de6098883647ea0807c50399bebf0ea43a23dec788aae8a2c7f",
+      "source_meta_sha256": "5d9325f3c78ba96d6a79d1c784f87c566a28443c56eadd07cd33f5e592d2eee2"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-980",
+      "kind": "real",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/soiling.py",
+          "function": "hsu"
+        }
+      ],
+      "mechanism": "Deposition combines a fine-particle contribution without elapsed-time scaling and a coarse-particle contribution with fixed3600 scaling. Saved hourly soiling series differ from expected values, and the patch scales their sum using timestamp intervals. Applying actual elapsed seconds to both rates restores accumulation units.",
+      "limitations": "Related1738 changes the same public function keyword only; this earlier source changes the physical accumulation formula. The saved series establishes numeric discrepancies, not a new field validation of the physical model.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\pvlib__pvlib-python-980-ds1\\repair.patch",
+      "patch_sha256": "7144106f210f61cd87aef3a8c6451d0e7b0a7606fb8219abbffed0e25662c0c4",
+      "junit_path": "runs\\reproduce-20261112T045022556707Z\\historical-base.junit.xml",
+      "junit_sha256": "dd07df2d481659e1d1e54e0608b59285ce95915125636f1504d0e988834cb4ed",
+      "source_meta_sha256": "85359807b001b66f7a117e14bf6728a80ba356739ce0259a21d70d50568e29c9"
+    },
+    {
+      "sample_id": "sympy__sympy-11796",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/sets/sets.py",
+          "function": "Interval.__new__"
+        }
+      ],
+      "mechanism": "The equal-closed-endpoints shortcut returns a singleton before excluding infinite endpoints. Interval(oo,oo) consequently becomes {oo}, though infinity is not an included real point and this interval must be empty. An explicit infinity check before the singleton return fixes the boundary case.",
+      "limitations": "The observed wrong singleton and branch order directly support the location; no unrelated interval algorithms are labeled.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11796-ds1\\repair.patch",
+      "patch_sha256": "882d52d92242821d60b739639783c4a55925dba27d6dc48e2431390b67c4d03e",
+      "junit_path": "runs\\reproduce-20261112T000217380512Z\\historical-base.junit.xml",
+      "junit_sha256": "d82edea250094feba49af88da93948a0d986f0c5c003b0c8c7f540fbc1256498",
+      "source_meta_sha256": "2f5d16447c4e5b6a8d997c55a05b85de7c3c2ea5940b8ea1d0783b5f6a07c05a"
+    },
+    {
+      "sample_id": "sympy__sympy-11822",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/printing/conventions.py",
+          "function": "split_super_sub"
+        }
+      ],
+      "mechanism": "For an empty string, the parsing loop does not run and name remains None. The function passes that None to the compiled name-with-digits regular expression, whose input must be a string/bytes, producing TypeError. The repair handles empty text before that invalid typed call.",
+      "limitations": "Class is grounded in the None-to-regex data flow, not assigned merely because the exception says TypeError. The missing empty-input boundary could also be described as a logic defect at a different taxonomy granularity.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11822-ds1\\repair.patch",
+      "patch_sha256": "eca2f62aa08f840d6662dad3b4fa6c6d78be15b907ba921fcf73826b2e6394aa",
+      "junit_path": "runs\\reproduce-20261111T195704567492Z\\historical-base.junit.xml",
+      "junit_sha256": "abd63505eb8ae9a737b11df8bbd753fa4f23b423d54ccbd1fa2f4015af57d4f7",
+      "source_meta_sha256": "e848f8ffe31d485b0da23e0c27416f1e13c06f9b0581a6809e72d52608fe693e"
+    },
+    {
+      "sample_id": "sympy__sympy-11831",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/sets/sets.py",
+          "function": "ProductSet.__bool__"
+        }
+      ],
+      "mechanism": "ProductSet lacks its own truthiness method. Python falls back to __len__, which calls len on each factor and fails for an infinite Naturals0 set. Defining __bool__ from the truthiness of the factors avoids requiring finite lengths for a valid boolean check.",
+      "limitations": "The reference names a causal missing special method, not an existing failing-source line. Class granularity could also be called a truthiness logic defect; medium class confidence. Input/retrieval eligibility for absent methods must be finalized before the comparison dataset locks.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11831-ds1\\repair.patch",
+      "patch_sha256": "13bb288c6a07be07c8a1246e25ff35fe8b7d1845d97d77d4f88c577ac35f8b63",
+      "junit_path": "runs\\reproduce-20261111T201314446388Z\\historical-base.junit.xml",
+      "junit_sha256": "f4c7117971f41867f1d41b44be17aa22018aa841d93f84a2ec7f71eaf3c96898",
+      "source_meta_sha256": "851d6b1379d63065f7d6240396f01b1be5ba03a1e2b6d49c86f5c4b57d911be7"
+    },
+    {
+      "sample_id": "sympy__sympy-11870",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/functions/elementary/trigonometric.py",
+          "function": "sinc._eval_rewrite_as_sin"
+        }
+      ],
+      "mechanism": "Rewriting sinc returns sin(arg)/arg without its removable-singularity value at zero. The saved symbolic rewrite expects a Piecewise with value1 for zero, but receives the unconditional quotient. Including the nonzero condition preserves that domain behavior.",
+      "limitations": "The patch also adds sin-to-sinc rewriting. The saved first failure directly proves the existing sinc-to-sin method only.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11870-ds1\\repair.patch",
+      "patch_sha256": "051c56fee9628243fb9c8fdcaae677f7cd82afcf8574e373b87dda95b11b57df",
+      "junit_path": "runs\\reproduce-20261112T042856971766Z\\historical-base.junit.xml",
+      "junit_sha256": "698af99e62c93d10f1f1e136853e681f2c446fe7ce77d1656767883e451a6933",
+      "source_meta_sha256": "a974107a97b2db43422b3db6d6c0b4c613ccc4820e82972b3a09988455a860f6"
+    },
+    {
+      "sample_id": "sympy__sympy-11897",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/latex.py",
+          "function": "LatexPrinter._needs_mul_brackets"
+        }
+      ],
+      "mechanism": "A Piecewise factor is bracketed only when it is not the last multiplication operand. A final Piecewise therefore loses required parentheses in the saved noncommutative product rendering. Recognizing Piecewise independently of last preserves the grouping.",
+      "limitations": "The evidence concerns LaTeX representation and operator grouping, not an independently measured symbolic multiplication error.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11897-ds1\\repair.patch",
+      "patch_sha256": "ca9f60e84abffb8c7331c7c914c6678d2c58c27a8c05ffbfae59e898e96d41d4",
+      "junit_path": "runs\\reproduce-20261112T013256866309Z\\historical-base.junit.xml",
+      "junit_sha256": "4f9fec8c7a1166a955a3a9b32a06fc87a0460ffd011808159f712973e2b8e4ea",
+      "source_meta_sha256": "2eb562c52539037948e0bbf0b7703ee17f8965ba6f1543d1f38ec2c83b5c3f86"
+    },
+    {
+      "sample_id": "sympy__sympy-11919",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/pretty/pretty.py",
+          "function": "PrettyPrinter._print_gamma"
+        }
+      ],
+      "mechanism": "Dispatch by the name gamma sends both the built-in gamma function and a user-defined function with that name to a handler that always emits uppercase Gamma. The saved user-defined case requires lowercase gamma. Checking the actual function identity distinguishes them.",
+      "limitations": "This is symbol rendering, not a numerical gamma calculation. Built-in and user-defined functions sharing a name are different objects.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-11919-ds1\\repair.patch",
+      "patch_sha256": "f61439e52e9d2d2a58ccd8d37b1946cacd24a0916facff1ae840810223684d60",
+      "junit_path": "runs\\reproduce-20261112T035039157426Z\\historical-base.junit.xml",
+      "junit_sha256": "e6f1064fc99b6547b05cf1b95dca89fcf9f811c4f6dc12038956f9913289d236",
+      "source_meta_sha256": "97331f16fbf12aa8d07b8af4a96308bc57e5e009f9d0c56365301b3929499c7f"
+    },
+    {
+      "sample_id": "sympy__sympy-12096",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/core/function.py",
+          "function": "Function._eval_evalf"
+        }
+      ],
+      "mechanism": "The implemented-function fallback invokes a numeric implementation with unevaluated symbolic arguments. For nested f(f(2)), the result cannot be converted to Float and the caught error leaves the expression unevaluated. Evaluating each argument before calling _imp_ permits the expected numeric 16.",
+      "limitations": "The log proves the final unevaluated result; the conversion failure is inferred from the guarded source path rather than separately instrumented. Logic/value is an alternate coarse interpretation.",
+      "recommendation": "quarantine_v2_taxonomy",
+      "v2_note": "Repair pre-evaluates callback arguments and fixes observed unevaluated numeric output. API/type is plausible for callback argument conversion, but logic/value is also defensible; resolve taxonomy before including v2, preserve v1 label.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12096-ds1\\repair.patch",
+      "patch_sha256": "b5eaffb5e3953d415a156911f68c9c74d4e91f8e5931036f8e2cd06e0088a8f6",
+      "junit_path": "runs\\reproduce-20261111T235232355760Z\\historical-base.junit.xml",
+      "junit_sha256": "a4e6c14bcf6eb5dcfd26cf1463908fe1a8c59c84952cf537a18aa59a704bd5cd",
+      "source_meta_sha256": "f41a2fdac0b3b4698c8b798dfa9e3a6e06c99825627ee3a699e47dda242fc0f6"
+    },
+    {
+      "sample_id": "sympy__sympy-12171",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/mathematica.py",
+          "function": "MCodePrinter._print_Derivative"
+        }
+      ],
+      "mechanism": "The Mathematica printer has no Derivative handler, so its fallback emits a Python/SymPy-style Derivative(sin(x), x) expression. The missing handler serializes the existing expression as Hold[D[Sin[x], x]], matching the target-language contract.",
+      "limitations": "Explicit missing-definition location. The local test compares code strings and does not execute Mathematica or prove the derivative computation independently.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12171-ds1\\repair.patch",
+      "patch_sha256": "44ff6d656d8ce81cf1010326235df148a0146a8e736aad4186d597e272f66243",
+      "junit_path": "runs\\reproduce-20261112T001234362734Z\\historical-base.junit.xml",
+      "junit_sha256": "9f3d44309ed009da0534cae01894ffdb6c7362abe8cc612ba355c603a9fc0467",
+      "source_meta_sha256": "b96a1919eda974e8b27e640bbc93526d171751a2ee6a2e10045f339a79ee74c1"
+    },
+    {
+      "sample_id": "sympy__sympy-12183",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/sets/sets.py",
+          "function": "Intersection.__new__"
+        }
+      ],
+      "mechanism": "The zero-operand branch returns EmptySet. The identity for an intersection with no restrictions is UniversalSet, so Intersection() has the wrong value. Returning UniversalSet corrects this boundary case.",
+      "limitations": "The observed assertion is a concrete wrong singleton value; no numerical intermediate or historical CI outcome is invented.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12183-ds1\\repair.patch",
+      "patch_sha256": "7984f919172d52d5865257b2be1a053b2b688e0afe25e93c8cd6bcb8ebaf752d",
+      "junit_path": "runs\\reproduce-20261111T203113725023Z\\historical-base.junit.xml",
+      "junit_sha256": "8cf3925948c6ca67a9a68a8dbbbdcb9af7eec04f8344658b9b8e64c7b3216077",
+      "source_meta_sha256": "a24b81598f3c6ac70c0ee1ca83bf33aa9f53995cd384f7859e54ff3bdedfa82d"
+    },
+    {
+      "sample_id": "sympy__sympy-12301",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/simplify/cse_main.py",
+          "function": "opt_cse._match_common_args.update"
+        },
+        {
+          "file": "sympy/simplify/cse_main.py",
+          "function": "tree_cse"
+        }
+      ],
+      "mechanism": "Common-argument extraction builds unevaluated unit-power/product wrappers even when take equals1, and the final reduced-expression rebuilding leaves hollow nested products. The saved issue11230 result contains a nested Mul where the contract forbids it; the repair changes both extraction and rebuilding, and thirty selected tests pass.",
+      "limitations": "Two related internal functions are proposed for one normalization fault. The saved single failing assertion does not isolate which changed block alone is sufficient; no ablation or new execution was performed.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12301-ds1\\repair.patch",
+      "patch_sha256": "edfdfa34e271142c8f9805c95d55117469794034eace6b4a120501de923baa3e",
+      "junit_path": "runs\\reproduce-20261112T061918476285Z\\historical-base.junit.xml",
+      "junit_sha256": "4b472151702e28fe204f47f369d04bc06f73b7995b2b8b0d46e7f789c4dc5d81",
+      "source_meta_sha256": "eb1fb40236637a499474f0be613d56e2446c2dfbb3663cf4926868b3b2de5666"
+    },
+    {
+      "sample_id": "sympy__sympy-12307",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/fcode.py",
+          "function": "FCodePrinter._print_sign"
+        }
+      ],
+      "mechanism": "The Fortran printer lacks a sign-specific handler and emits the generic sign(x) call. The saved contract requires a typed, zero-aware merge/dsign expression. The added handler supplies integer/complex/real backend forms.",
+      "limitations": "Explicit missing-definition reference. The first saved assertion proves the real-expression output; additional typed branches are repair evidence, not independently executed Fortran.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12307-ds1\\repair.patch",
+      "patch_sha256": "07625545b7f3d740cd6dac6be29e23c36176846b9c79b89acf4804205048ca81",
+      "junit_path": "runs\\reproduce-20261112T035109166753Z\\historical-base.junit.xml",
+      "junit_sha256": "12e42922a988d143147579e7f743100ccdf60b13f49af085a8a8c4833b3b68b3",
+      "source_meta_sha256": "2f64f01b251ec3164eae4db45be7357ea4e7546819f7c989522223054b9cdc86"
+    },
+    {
+      "sample_id": "sympy__sympy-12419",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/matrices/expressions/matexpr.py",
+          "function": "Identity._entry"
+        }
+      ],
+      "mechanism": "The identity-matrix entry function treats structurally unequal symbolic indices as definitely different and returns0. The saved In[i,j] assertion exposes that premature decision. Three-valued symbolic equality and KroneckerDelta retain an unknown diagonal relation.",
+      "limitations": "The scalar indices can later become equal. This is symbolic uncertainty handling, not an actual out-of-bounds access.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12419-ds1\\repair.patch",
+      "patch_sha256": "18794d75ba41397df2db6f4bad1c870a0d15be216987b0f594d5fdf11ded7f99",
+      "junit_path": "runs\\reproduce-20261112T043159209826Z\\historical-base.junit.xml",
+      "junit_sha256": "e2d002ec31dc4f103dc8c7662027514f12ff11da590005441071a23022e547a7",
+      "source_meta_sha256": "7b0a1bfe9c1388ef1a4d33bcc0d06eb757272bb001aab1a135f34beae38fd03c"
+    },
+    {
+      "sample_id": "sympy__sympy-12428",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/matrices/expressions/diagonal.py",
+          "function": "DiagonalMatrix._entry"
+        }
+      ],
+      "mechanism": "A diagonal entry reads column0 of the source rather than its same row/column diagonal element. The saved D[1,1] result is X[1,0] instead of X[1,1]. Correct indexing and symbolic-equality handling preserve the intended diagonal matrix.",
+      "limitations": "The first concrete-index assertion proves wrong-column selection; the KroneckerDelta symbolic branch is additional repair evidence, not a separate observed failure.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12428-ds1\\repair.patch",
+      "patch_sha256": "771ef4f1998bbb117f2ec3a7dd1677ff5b95ad08daceb37a7ce112f8cde1836b",
+      "junit_path": "runs\\reproduce-20261112T040512585186Z\\historical-base.junit.xml",
+      "junit_sha256": "0e76bd6bff5425a2d138c1161a889b2bde9ce93ae5a404803ab92e02ae27c45c",
+      "source_meta_sha256": "bb30fcd7e42958e27113fe20d6ee9149884ddb6c4792965f1601460af8d1647f"
+    },
+    {
+      "sample_id": "sympy__sympy-12454",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/matrices/matrices.py",
+          "function": "MatrixProperties.is_upper"
+        },
+        {
+          "file": "sympy/matrices/matrices.py",
+          "function": "MatrixProperties._eval_is_upper_hessenberg"
+        }
+      ],
+      "mechanism": "The triangular and Hessenberg scans derive column bounds from row index alone, assuming a sufficiently wide matrix. Tall zero matrices reach column2 when only two columns exist, causing both saved IndexErrors. Bounding each inner range by self.cols preserves valid rectangular traversal.",
+      "limitations": "Two existing property functions share the same rectangular-bound assumption in one source task. The indexing helper is the downstream detector, not either causal loop.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12454-ds1\\repair.patch",
+      "patch_sha256": "49c926cd1a824b3a0916146935dfc212db6243d1355af21796bc1f588eb0743a",
+      "junit_path": "runs\\reproduce-20261112T034817709187Z\\historical-base.junit.xml",
+      "junit_sha256": "efed2c561df7b4740e058bac0a2d9f1b649bcad5f35843fbef2397c7a8200250",
+      "source_meta_sha256": "9e9cafaffae821964aedba997d4e4f932f72c2d84e2f7a81733632917ae60963"
+    },
+    {
+      "sample_id": "sympy__sympy-12481",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/combinatorics/permutations.py",
+          "function": "Permutation.__new__"
+        }
+      ],
+      "mechanism": "Repeated elements are rejected even in cycle notation, where overlapping cycles legitimately share elements and are composed. The saved (0,1)(0,2) input raises ValueError before that composition. Restricting duplicate rejection to array notation allows the intended cycle path.",
+      "limitations": "Duplicate elements remain invalid in ordinary array-form permutations; the fix does not generally accept arbitrary repeated entries.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12481-ds1\\repair.patch",
+      "patch_sha256": "cf4d267adb348d9e32db710c5ea9b2f3975c4372e8055ad5a1e6f5392d822a17",
+      "junit_path": "runs\\reproduce-20261112T034720881210Z\\historical-base.junit.xml",
+      "junit_sha256": "28576b84480d982dfba14b9a4db863ab0ef5e39ca0739ff6e5debf5482503e48",
+      "source_meta_sha256": "5af1a87a88473228fae121505fdd4bdfe6da8c3d9c96ae545157d15b1623ad6e"
+    },
+    {
+      "sample_id": "sympy__sympy-12529",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/ntheory/factor_.py",
+          "function": "totient.eval"
+        }
+      ],
+      "mechanism": "The evaluator validates positive integers only after n.is_Integer succeeds. Unsupported noninteger/non-expression inputs fall through unevaluated instead of raising the required ValueError in the saved test. The additional guard enforces the API domain for those other inputs.",
+      "limitations": "The saved DID NOT RAISE establishes missing validation; it is not a syntax or dependency error. Unknown symbolic inputs are distinguished by explicit is_integer/is_positive False checks.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-12529-ds1\\repair.patch",
+      "patch_sha256": "0b805d04381ca9c27c9c7824a23f68e2a2072f025f600417bd81c7f4be78e9c3",
+      "junit_path": "runs\\reproduce-20261112T035718843367Z\\historical-base.junit.xml",
+      "junit_sha256": "53b48935b956b74200c2dab1b160a6d427da77ad5b10ad273caed03611677d25",
+      "source_meta_sha256": "296ca643e702c1e71f3a990716388204f86b391211b425f686a8fd8ac714ae19"
+    },
+    {
+      "sample_id": "sympy__sympy-13031",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/matrices/sparse.py",
+          "function": "MutableSparseMatrix.row_join"
+        }
+      ],
+      "mechanism": "The early empty-matrix shortcut returns only the other operand and discards existing zero-row column dimensions. The saved hstack of widths0,1,2,3 yields width3 instead of6. Keeping the appropriate empty shape through normal row joining preserves the total width.",
+      "limitations": "The patch also corrects column joining. The first saved failure directly proves the horizontal/row_join path.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13031-ds1\\repair.patch",
+      "patch_sha256": "a3b080cca8903951b4fdaa9df27df3f50269b170f4f4b726733c6a3d782efc9d",
+      "junit_path": "runs\\reproduce-20261112T041530921579Z\\historical-base.junit.xml",
+      "junit_sha256": "986e980294327b6e9dcf9f6823ab4d2c270d6a8af0c67bc6f0bf68cfa32d9e77",
+      "source_meta_sha256": "ad91aaaf107561a1a6a3961177b1a4aa4ee045cf80891708dc65433c662433dd"
+    },
+    {
+      "sample_id": "sympy__sympy-13043",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/integrals/intpoly.py",
+          "function": "decompose"
+        }
+      ],
+      "mechanism": "Separate decomposition returns a list even though the saved contract expects an unordered set of monomials. The saved decompose(x,True) yields [x] instead of {x}. Returning a set supplies the required container interface and uniqueness semantics.",
+      "limitations": "The numerical monomial is unchanged; this is a result-container contract, with a narrow single-symbol failing assertion.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13043-ds1\\repair.patch",
+      "patch_sha256": "fa205dd94783dc44a97d47e2f1a46a6efa57a235adb166367b34610d934f9c44",
+      "junit_path": "runs\\reproduce-20261112T042102740077Z\\historical-base.junit.xml",
+      "junit_sha256": "2034d7dc7e69f03542bf09a41e0cc1b2779ea48878e51d4cf7973949b4107631",
+      "source_meta_sha256": "29f8c2c5b389cffd792366e3947f34d9feda58bf493fc2f8d2cf9e48ef84d8d1"
+    },
+    {
+      "sample_id": "sympy__sympy-13146",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/core/operations.py",
+          "function": "AssocOp._eval_evalf"
+        }
+      ],
+      "mechanism": "The evaluator can preserve the old associative tail when structural sameness checks do not reflect the requested changed precision. The saved five-digit evaluation retains a fifteen-digit exponent representation. Reconstructing the operation from evaluated arguments preserves that requested precision in the result.",
+      "limitations": "The saved assertion directly establishes output precision formatting. The role of _aresame and nested reconstruction is inferred from the two changed branches; no independent numeric-accuracy trace was saved.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13146-ds1\\repair.patch",
+      "patch_sha256": "a1bec791584848a49b550faee3912152756191bba3c8f9f71de8e065f63ae40a",
+      "junit_path": "runs\\reproduce-20261112T040127966221Z\\historical-base.junit.xml",
+      "junit_sha256": "e7825e654448b600129365bed7f3d9e317f0a26039d74bc6e1dc1a3b5b116844",
+      "source_meta_sha256": "af46bb2227d433c64f038ba1cb1a054b78f6c0f91229165504993b0f5b545492"
+    },
+    {
+      "sample_id": "sympy__sympy-13173",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/polys/polytools.py",
+          "function": "degree"
+        }
+      ],
+      "mechanism": "The public degree helper silently chooses a generator when given a multivariate expression without an explicit symbol. The saved degree(y**2+x**3) does not raise its required TypeError. Checking multiple free symbols before choosing a default enforces the unambiguous-argument contract.",
+      "limitations": "The full saved test body identifies the failing lambda; the assertion helper is the reporting location, not the causal function. Existing Poly.degree behavior is separate.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13173-ds1\\repair.patch",
+      "patch_sha256": "226b45813ea12b1000a39507f101af527ebc72cd690cf39769bda9a4c9c8d82d",
+      "junit_path": "runs\\reproduce-20261112T041633699930Z\\historical-base.junit.xml",
+      "junit_sha256": "450df660b1e965c05a023a292bb3af37da48bf199b9bad83ecafa10f2e36f498",
+      "source_meta_sha256": "453de7bb40cf21462d837b61971d76e52783a4730bf553fe0982c9620e004c6e"
+    },
+    {
+      "sample_id": "sympy__sympy-13185",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/simplify/cse_main.py",
+          "function": "tree_cse._find_repeated"
+        }
+      ],
+      "mechanism": "CSE treats matrix symbols/elements as traversable repeatable composite objects and extracts the matrix A itself as a temporary. The saved replacement list contains x0=A instead of only the repeated scalar element product. Treating those matrix primitives as opaque prevents the unwanted extraction.",
+      "limitations": "Related to the RootOf opacity family, but the matrix primitive and expected scalar CSE contract are distinct. The later source22840 repeats this same matrix defect and must not add an independent sample.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13185-ds1\\repair.patch",
+      "patch_sha256": "d18dda6b833c88bb7ab0175b7c3969d3f3e368010765870cb6814bc4b21a435f",
+      "junit_path": "runs\\reproduce-20261112T040622771840Z\\historical-base.junit.xml",
+      "junit_sha256": "a2316579289f57d348046c61f352b22e17764e3a2ce14a90972ce5fc57dafd20",
+      "source_meta_sha256": "d9e25713085d4e5229797f1ba721404be679b03a77d8f0d474661c50d88b0f41"
+    },
+    {
+      "sample_id": "sympy__sympy-13198",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/polys/factortools.py",
+          "function": "dup_factor_list"
+        },
+        {
+          "file": "sympy/polys/factortools.py",
+          "function": "dmp_factor_list"
+        }
+      ],
+      "mechanism": "When converting exact factors back to an inexact domain, normalization divides each factor by the cleared denominator and omits the corresponding coefficient adjustment. Saved univariate/multivariate factor-list assertions report wrong normalized leading coefficients/factors. Normalizing by each factor maximum norm and accumulating its multiplicity in the coefficient preserves the required factorization representation.",
+      "limitations": "Both changed functions have saved failing tests. The assertions establish normalized-output differences; the review does not claim that every old product reconstruction was numerically unequal.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13198-ds1\\repair.patch",
+      "patch_sha256": "ea8ba377a6bf3ae348a4f391e8d0c5460b42fd3f254b8a4d5c0081828f1ce28e",
+      "junit_path": "runs\\reproduce-20261112T045544386997Z\\historical-base.junit.xml",
+      "junit_sha256": "650a81fff935ce1e220f32915bbfcd86a0792d2dae4caafd2f408985c6c3f358",
+      "source_meta_sha256": "58d2571c597e0f2c3de14713a6d9543aa97f7de75e0792932646d4ea0cd4b28d"
+    },
+    {
+      "sample_id": "sympy__sympy-13309",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/functions/elementary/miscellaneous.py",
+          "function": "Max._eval_rewrite_as_Piecewise"
+        }
+      ],
+      "mechanism": "Max has no Piecewise rewrite handler and the saved rewrite remains Max(a,b) instead of the requested two-branch expression. Adding the handler and shared relational helper supplies the expected conditional representation.",
+      "limitations": "Explicit missing method. The patch also supports Min, but the first saved assertion directly proves Max only; no numeric maximum calculation failed.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13309-ds1\\repair.patch",
+      "patch_sha256": "babc8a0dccd34a8c890b8f4bbbed64457643fdcdef5ed739930deb053f4ca08d",
+      "junit_path": "runs\\reproduce-20261112T050236324756Z\\historical-base.junit.xml",
+      "junit_sha256": "97193e173f754b334aeffff7f62710cbba6b63fd848068f0dceb348075aff0a3",
+      "source_meta_sha256": "f2f6037c76fc91f93058ca105275c0f6e55b838f27032823aa539fe8ae5e2328"
+    },
+    {
+      "sample_id": "sympy__sympy-13346",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/printing/pycode.py",
+          "function": "MpmathPrinter._print_Integer"
+        }
+      ],
+      "mechanism": "The integer printer wraps integer literals in mpmath.mpf. The default lambdified sin(x)**2 expression therefore computes an mpf result where the test requires a native float. Removing this override lets the inherited integer representation avoid that promotion.",
+      "limitations": "The failure is an actual result-type assertion, not a numerical accuracy assertion. This is related to printer/lambdify families and must retain its repository/commit group during dedup review.",
+      "recommendation": "quarantine_v2_location",
+      "v2_note": "Repair removes MpmathPrinter._print_Integer; reference names a removed override present on failing base. This is causal removal, not missing definition. Record convention explicitly before use under v2.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13346-ds1\\repair.patch",
+      "patch_sha256": "9670aef8490a172652d7e92bbecac159994244eeb74ed67073ec1e4f247aa9d1",
+      "junit_path": "runs\\reproduce-20261112T001546070216Z\\historical-base.junit.xml",
+      "junit_sha256": "49e4b7a598334c4fc6ce026ded0bc15453971e82b50f041fc8745766d022dfc3",
+      "source_meta_sha256": "45c471b79e313d7d1ab106612580ec86c193780573966080a580dc1a2a1b5cd7"
+    },
+    {
+      "sample_id": "sympy__sympy-13361",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/core/evalf.py",
+          "function": "get_integer_part.calc_part"
+        }
+      ],
+      "mechanism": "The integer-part helper reports finite accuracy fastlog(nint)+10 for an exact integer result. That accuracy metadata limits subsequent numerical evaluation and leads to the observed imprecise floor-plus-fraction value. Reporting infinite accuracy preserves the exact integer contribution.",
+      "limitations": "Accuracy propagation is inferred from source data flow and the precision-metadata repair; no intermediate precision values were separately instrumented. The log directly proves the erroneous final float.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13361-ds1\\repair.patch",
+      "patch_sha256": "549a1e484def70257b9f1e29ad5df7fac5535db0d697cb5510eafd4878068457",
+      "junit_path": "runs\\reproduce-20261111T203345386343Z\\historical-base.junit.xml",
+      "junit_sha256": "293bc974f60535ed0b862366d0991fffcd83a05388bcdf00a11b72bf43b4808b",
+      "source_meta_sha256": "1937116c99ba28fc2d42dba64564bd5a1517fc8595cca831ba7dd9f3151b7f21"
+    },
+    {
+      "sample_id": "sympy__sympy-13364",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "API/type",
+      "locations": [
+        {
+          "file": "sympy/core/expr.py",
+          "function": "Expr.__pow__"
+        }
+      ],
+      "mechanism": "The power method and its binary sympification wrapper accept only the exponent. Three-argument pow passes an additional modulus and raises the saved takes2-not3 TypeError before modular exponentiation. Accepting the optional modulus and handling it separately restores that operator interface.",
+      "limitations": "The observed example is modular power of symbolic integers; the saved log does not exhaust all negative/modular exponent cases.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13364-ds1\\repair.patch",
+      "patch_sha256": "d4474273d0695b5f88c0b581ef28da346b99e88528224a4339aa6205971a9761",
+      "junit_path": "runs\\reproduce-20261112T041456024564Z\\historical-base.junit.xml",
+      "junit_sha256": "181b296ae2e8a9356869a160a641ea60df3d471d90fe8304c78c672d7a50c687",
+      "source_meta_sha256": "64eb9f76db7686f018bb8de057b6126b7192d10686b19556788f48c46b1431ff"
+    },
+    {
+      "sample_id": "sympy__sympy-13369",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/polys/polyroots.py",
+          "function": "roots"
+        }
+      ],
+      "mechanism": "For an expression-domain polynomial, to_rational_coeffs can return no conversion. That branch then has no fallback and leaves result empty. Invoking the existing heuristic solver when conversion is unavailable finds the expected three roots.",
+      "limitations": "The saved test proves zero versus three returned roots for the symbolic cubic. It does not establish completeness of the heuristic solver for all expression-domain polynomials.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13369-ds1\\repair.patch",
+      "patch_sha256": "00ebe7c049ebe2935bbea0e641e64e242808a57e7eb1f4a04436058582840cc9",
+      "junit_path": "runs\\reproduce-20261112T005909130697Z\\historical-base.junit.xml",
+      "junit_sha256": "5463f2dbcc809f1390bfef11ae25c34167271ed2055936e3a4d89368844bde71",
+      "source_meta_sha256": "d914dfb8b73b1b880ccf305f472803c58cf3e7ad2eecf0bdb1d57bed03a6dbd4"
+    },
+    {
+      "sample_id": "sympy__sympy-13372",
+      "kind": "real",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/core/evalf.py",
+          "function": "evalf"
+        }
+      ],
+      "mechanism": "The fallback initializes reprec/imprec only for zero or numeric real/imaginary parts, then constructs the result tuple even when a part remains symbolic. Max(0,y) reaches an uninitialized reprec and raises the saved UnboundLocalError. Rejecting the unsupported symbolic branch avoids that invalid result path.",
+      "limitations": "This is missing branch handling in valid Python, not a syntax error. Both newly added guards are supported by code symmetry; the saved failure specifically proves the real-part reprec path.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": ".cache\\dataset-v1-source\\cases\\sympy__sympy-13372-ds1\\repair.patch",
+      "patch_sha256": "bdf98c99ee7104a0c32dee4be320f5bf2b043efd7877febed4ae5b6ee6650101",
+      "junit_path": "runs\\reproduce-20261112T034248372726Z\\historical-base.junit.xml",
+      "junit_sha256": "546f13e04a290f3e6a729a6816d05a63ed2202363b2528829a940a29d6c78fb6",
+      "source_meta_sha256": "47024dd09b6d7b403800201c671bfccc4aa4435648c8f6f0d3c7799e9d9d8409"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T070104961179Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/marshmallow-code/marshmallow",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "src/marshmallow/utils.py",
+          "function": "from_iso"
+        }
+      ],
+      "mechanism": "Fractional-second detection checks comma while the parser still splits on a dot. Normal dotted ISO datetimes skip their microsecond branch, and saved microsecond equality assertions fail.",
+      "limitations": "A separator/branch mismatch rather than an arbitrary string marker. The dateutil-disabled parameterization is part of the observed execution path, not a missing-package failure.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T070104961179Z\\attempt-01\\change.diff",
+      "patch_sha256": "9b7ec102e67707fcf1ec4b4581078e6dc04f8029328d82142b14a8c8fba4980d",
+      "junit_path": "runs\\verify-20261112T070242666003Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "b9fa42a80693c66e842c3ff03b7324eab81848690a2112cdffd467629ddb49e8",
+      "source_meta_sha256": "913039976c812adf30076f9f89b22287751ab1de0684ea8c9f36a04ac4d773a1"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064546343496Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/pvsystem.py",
+          "function": "PVSystem._validate_per_array"
+        }
+      ],
+      "mechanism": "The scalar-broadcast predicate now selects tuples instead of non-tuples. A system-wide scalar reaches length validation as a one-element tuple for multiple arrays, raising the saved length-mismatch ValueError.",
+      "limitations": "The exception is a consequence of dispatch/broadcast logic, not invalid user argument types under the original system-wide contract.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T064546343496Z\\attempt-01\\change.diff",
+      "patch_sha256": "41767ff13000fe07092966fc3ebd16b425e9cb20edc7f0f72dfc74a4d4d29e9a",
+      "junit_path": "runs\\verify-20261112T064639827687Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "725c941d4c2a9c08779e9ee187bb1b9a7b837355021ba70b2eb60e3699b9f1c4",
+      "source_meta_sha256": "f0f201f438a02fb66150bd474dc01c1501c7b45b3dbc9044656da7fdb7f2e885"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T081815994876Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/pydicom/pydicom",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pydicom/dataelem.py",
+          "function": "DataElement.description"
+        }
+      ],
+      "mechanism": "The implicit group-length tag is recognized with element1 instead of0. The saved element00100000 receives an empty description rather than Group Length.",
+      "limitations": "A tag discriminator mismatch in the existing fallback, not a claim about current clinical standards or all DICOM metadata.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T081815994876Z\\attempt-01\\change.diff",
+      "patch_sha256": "fb0b6a727b0f2c6c368fa6be50b03da7bed39d7620e33febfbe367a8643d2f5b",
+      "junit_path": "runs\\verify-20261112T081835849485Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "4cabe0f73925a5863133c990c22b5d302a9c0da148dceac6aa95f573c13cdb18",
+      "source_meta_sha256": "afaa213c2dd910dfa1647014b0db3a233e39d9c066b542e21b692d06aecd463b"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010809498391Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "astroid/builder.py",
+          "function": "_can_assign_attr"
+        }
+      ],
+      "mechanism": "The branch for an attribute absent from declared slots returns True instead of False. The builder then records the forbidden other attribute, exactly matching the unexpected-membership assertion.",
+      "limitations": "The generator incorrectly says the entire function always returns True; only the guarded return changed. A plausible inverted decision with no marker.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T010809498391Z\\attempt-03\\change.diff",
+      "patch_sha256": "c7936278727684f7494886e40f1c30464e0627b9ef475dfc3921fd0e806e8a7c",
+      "junit_path": "runs\\verify-20261112T010822851789Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "870c80a79a6e4e73e3dd6364c0312758350eab6019d88b75976a1dd35cd5b249",
+      "source_meta_sha256": "a7fc08c4347c048c31ca7b1c0f8fc1d859614590700f4d1b81af38a0d7f40c62"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003552980325Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/pycode.py",
+          "function": "_print_known_const"
+        }
+      ],
+      "mechanism": "The constant printer appends call parentheses to an already formatted constant name. pi is therefore emitted as math.pi() instead of math.pi, with the same defect for other backend constants. The saved assertions compare those exact strings.",
+      "limitations": "The generator explanation calls this invalid Python syntax, but math.pi() is syntactically valid. No downstream execution of that generated string was performed, so only wrong code-string formatting is proven. Constant/function confusion is a plausible bounded synthetic error.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T003552980325Z\\attempt-01\\change.diff",
+      "patch_sha256": "de42dfd0ff1a2abb053c3c6a4ef3f36e2c13a1264249e8b8ee0e3d99803d5145",
+      "junit_path": "runs\\verify-20261112T003618561847Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "6462b2d2f0b42578ac638ad4bd7aab8fc2b0ceccf3242db1c872a35389be270c",
+      "source_meta_sha256": "8d0eef0dd94ce2276d31a96db2fa7c0e389e04aa8fd0d1116b8e8419a07cc1ff"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T070104961179Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/marshmallow-code/marshmallow",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "src/marshmallow/utils.py",
+          "function": "isoformat"
+        }
+      ],
+      "mechanism": "The timezone-null guard is inverted, so an aware datetime is passed to UTC.localize rather than astimezone. The saved aware-date call raises Not naive datetime ValueError.",
+      "limitations": "The helper receiving the bad call raises the exception; the causal naive-versus-aware dispatch is in isoformat.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T070104961179Z\\attempt-02\\change.diff",
+      "patch_sha256": "6cc0ab414c395ba62b9b1c669961656fb1d92a772d3b7bb5aee2fe0dc3910c3c",
+      "junit_path": "runs\\verify-20261112T070242666003Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "6a87b5fc525caa20c288ab92778211b4c48d8847fc8fcbb9beb7937e5b7c409d",
+      "source_meta_sha256": "e836432306651dccc3f1c07cb84d3be4a90336944fa610b2f29154534507b329"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064546343496Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/pvsystem.py",
+          "function": "_unwrap_single_value.f"
+        }
+      ],
+      "mechanism": "The wrapper unwraps length2 instead of length1. A single-array result stays a tuple and the saved caller comparing it with a float raises TypeError.",
+      "limitations": "The wrong cardinality guard also risks discarding a second array, but only the saved single-array tuple comparison is directly demonstrated.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T064546343496Z\\attempt-02\\change.diff",
+      "patch_sha256": "c0125d3e24bce54b782e3dd8de9025d07f1d7dfcea94c264f4a24506166fd4e3",
+      "junit_path": "runs\\verify-20261112T064639827687Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "bd7e172bbebba2c33d2b0615c5697030664c9ca8c5bcdc2f7152442629202680",
+      "source_meta_sha256": "90f760492291c9a2e7edfb08f9057f9f3468af02db8f8b1d9e8ed5c6379266cc"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T085933079841Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/pydicom/pydicom",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pydicom/valuerep.py",
+          "function": "DSfloat.__ne__"
+        }
+      ],
+      "mechanism": "The inequality method returns equality directly instead of negating it. Saved DSfloat/string inequality assertions invert their expected Boolean result.",
+      "limitations": "The proposal claims original tests would pass, contradicted by three saved failures. This is a comparison-contract regression in one method.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T085933079841Z\\attempt-01\\change.diff",
+      "patch_sha256": "b5a8173474ffedbafcb983d6ec88497d47c85aa9fe4791ad99ebf512da872821",
+      "junit_path": "runs\\verify-20261112T090032194142Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "9c029912bde90b0a2aaf074cb3f35b22b3eb72d13a6180612ead88fc1b0dd8eb",
+      "source_meta_sha256": "e7c0d63eeaa2400402e34a31116b92109a3d517ff125bd0fb489daaecd491510"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T065745468866Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "astroid/inference.py",
+          "function": "infer_name"
+        }
+      ],
+      "mechanism": "The missing-statements guard is inverted. In the saved deleted-name path an empty lookup no longer raises the expected InferenceError, and the assertion fails.",
+      "limitations": "The proposal repeats an inconsistent description of the original guard. Reference follows the actual removed negation and saved missing-error assertion; it does not claim a parser syntax failure.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T065745468866Z\\attempt-01\\change.diff",
+      "patch_sha256": "7fb26d2a2a8d246352ad2527053705cb0303ad9bdd36a717ba19b8d7a81c8f56",
+      "junit_path": "runs\\verify-20261112T065940971347Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "3d663f215f732b6e4c4a0fc233e1bbe6bcd88fb509799707759a3351ce8c8591",
+      "source_meta_sha256": "c3e4511e3a281841591b19779a870e61cf20d9e42161d4cd61644d8de4e4e8a1"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T003813437020Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/sets/contains.py",
+          "function": "Contains.eval"
+        }
+      ],
+      "mechanism": "The membership evaluator replaces its evaluated result with unconditional S.true. Concrete false memberships, such as -2 in Naturals and infinity in an open infinite interval, therefore return True. Both saved assertion failures match that changed return value.",
+      "limitations": "The predicate still evaluates membership, but its result is discarded. This is a wrong-value branch mutation with no new marker or explanatory comment; the test observations do not establish frequency in real development.",
+      "recommendation": "quarantine_v2_plausibility",
+      "v2_note": "Unconditional S.true replaces the computed membership result for every path; execution proves a fault but this bypasses the operation rather than modeling a scoped realistic boundary mistake. Preserve v1; exclude from curated v2 pending realism review.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T003813437020Z\\attempt-03\\change.diff",
+      "patch_sha256": "73324385ace17b0713cd5e67178834ccb573d20f27ef29657574605b1bd525e1",
+      "junit_path": "runs\\verify-20261112T003832240066Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "0ba3a343a65a1e7d41dce79e17a27107294412fe3098b391696abae575c7748a",
+      "source_meta_sha256": "853e37e433609eaa0224747c53bd6dc08b7947251204d900f7967bddff209e51"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T070104961179Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/marshmallow-code/marshmallow",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "src/marshmallow/utils.py",
+          "function": "isoformat"
+        }
+      ],
+      "mechanism": "The preserve-localtime branch now requires absent timezone information. A supplied aware datetime with localtime=True is instead converted to UTC, and the saved local offset/time assertion fails.",
+      "limitations": "Different option branch from attempt2; the represented instant may be equal while the explicitly requested local representation is wrong. Both remain one related datetime-formatting family.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T070104961179Z\\attempt-03\\change.diff",
+      "patch_sha256": "7af3905886250649c259f659dac08e98dcb4e65b19f804076325dcfe57f41652",
+      "junit_path": "runs\\verify-20261112T070242666003Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "a430e4e8158282ebdc48c5b876c9fcd7b5639c13b6ed5d5cf137d7a111094643",
+      "source_meta_sha256": "47463f90d54e046f3ced01bb335af21d1e50efe39bd41cd0c407319a65882801"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T064546343496Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/pvsystem.py",
+          "function": "_unwrap_single_value.f"
+        }
+      ],
+      "mechanism": "Inside the length1 guard, the wrapper returns index1 instead of0. The saved singleton tuple cannot supply that index and raises IndexError.",
+      "limitations": "A direct indexing defect distinct from attempt2 guard selection, in the same wrapper family; related examples do not establish independent repository coverage.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T064546343496Z\\attempt-03\\change.diff",
+      "patch_sha256": "220123a17e67e3ad96e2e96511057883ae8a2f62da07a347b21de6f99fe6bc3e",
+      "junit_path": "runs\\verify-20261112T064639827687Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "e9029feb443d9f419f0c958adf2d23e1d2c6b1dc6bfddb4d5dbb3871e3e4f758",
+      "source_meta_sha256": "4604056d9d998e2e6880b66c2493305100b367510c1583c7465e06ae80097123"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T085933079841Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/pydicom/pydicom",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pydicom/valuerep.py",
+          "function": "DSfloat.__repr__"
+        }
+      ],
+      "mechanism": "The numeric repr loses its surrounding quote pair. The existing str path strips the first/last repr characters and therefore turns1.2 into a dot, causing the saved DS reconstruction/pickling ValueError.",
+      "limitations": "This is a serialization/representation-delimiter error, not a non-string return as the proposal claims: both branches still return strings. The runtime error is detected in value validation after reconstruction.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T085933079841Z\\attempt-03\\change.diff",
+      "patch_sha256": "004adaeebde41d69e2e71542e9c0670b18b894d277ad53a3a71b60ac7a0548ac",
+      "junit_path": "runs\\verify-20261112T090032194142Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "4f3bc28dc412027105ea18f9ef96503f53fe0dd74757800fd2e957ad5e881606",
+      "source_meta_sha256": "cb95f35a1e4369c8351fdef20ab9a9fdf224b3ceceb36f3f45661139c36af16d"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T071958343819Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/pylint-dev/astroid",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "astroid/raw_building.py",
+          "function": "InspectBuilder.inspect_build"
+        }
+      ],
+      "mechanism": "The default module-name guard is inverted. A missing name is no longer replaced by module.__name__, disrupting builtins-module construction; the saved import-time test collection raises KeyError for the builtins cache entry.",
+      "limitations": "Code-to-cache consequence is an inference supported by the saved collection trace and single edited guard; no independent cache-state probe was run. This is not a missing external package.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Failure is import/collection-time KeyError caused by inverted module-name defaulting, not absent dependency. Keep logic/value; report collection signature separately from test-function assertion.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T071958343819Z\\attempt-02\\change.diff",
+      "patch_sha256": "f6d313abbb2585f6167080a573c79156160647d72b158234cc805f34de43a3d6",
+      "junit_path": "runs\\verify-20261112T072107725625Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "4647829df2f30d5dda545b25c41e535448d6edf3705378ed4919b83d8a0344ab",
+      "source_meta_sha256": "81061ca5d750ac863277aa2f54d02a922ebbe870cd5d97a98e6ec14fbc50250b"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010206924992Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/conventions.py",
+          "function": "split_super_sub"
+        }
+      ],
+      "mechanism": "The empty-string guard is changed from length zero to length one. Empty input now skips both that return and the scanning loop, leaving name=None; the later regex match raises the saved TypeError.",
+      "limitations": "The generator describes single-character strings, but the saved regression is the unhandled empty input. Label follows the wrong boundary guard, not the downstream exception.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T010206924992Z\\attempt-01\\change.diff",
+      "patch_sha256": "df35ca57b08096966b8e4230e9320d723fb9a085a110f6daa2cb37f3fbf15818",
+      "junit_path": "runs\\verify-20261112T010226505577Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "edeee8bb1ff24db57155f79d69789c1681457eac58bbfaa3dcc8c0301ba70b6b",
+      "source_meta_sha256": "76736311ae1ec461969cac45eee5d45a60ded7e36fe2d6e940879fd5c8f7a14e"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T072406672192Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/pvlib/pvlib-python",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "pvlib/singlediode.py",
+          "function": "_lambertw"
+        }
+      ],
+      "mechanism": "The tiny-negative open-circuit-voltage clamp compares v_oc with positive1e-12 while also requiring v_oc<0, making the scalar clamp unreachable. Saved near-zero negative voltage reaches golden-section bounds and raises upper>=lower ValueError.",
+      "limitations": "A sign error in an existing tolerance interval. The proposal incorrectly claims positive voltages are clamped; the conjunction actually cannot be true.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T072406672192Z\\attempt-02\\change.diff",
+      "patch_sha256": "9e969db0e0d25c5c98ad9d47dfc9bd04e25d3c12776745276825aa338ba8e797",
+      "junit_path": "runs\\verify-20261112T072439483990Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "7907938843699f9184db012507e02de056db30a30965bb25759d115a12090963",
+      "source_meta_sha256": "07bbe60fe1b4a1621485a4a5d6b5b7d71436c2875cd1028bfcefd13f87f1bc0a"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010206924992Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/printing/conventions.py",
+          "function": "split_super_sub"
+        }
+      ],
+      "mechanism": "The scanning loop includes pos==len(text). After the last valid segment this processes an empty trailing fragment; it matches none of the permitted suffix prefixes and raises the saved RuntimeError.",
+      "limitations": "A standard loop-boundary mutation. The63 failing tests share this one cause and are not63 synthetic samples.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T010206924992Z\\attempt-03\\change.diff",
+      "patch_sha256": "d0815711a4455164b7031a181191fbdf3d5cc0c8feb1a3eba1b7214a684ce746",
+      "junit_path": "runs\\verify-20261112T010226505577Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "74cbf1f03ed34edcd121c660ba4a3ad5b186189cf6b3d371ba727c1d25986a03",
+      "source_meta_sha256": "a53296167e33e26306ddf59d75b7729b7cd566afa4b3940990d32da47253a316"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010533449247Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/sets/sets.py",
+          "function": "Set.union"
+        }
+      ],
+      "mechanism": "The union method calls Intersection instead of Union. The saved interval example returns the singleton2 rather than interval[1,3], and consumers inherit that wrong set operation.",
+      "limitations": "A plausible operation-selection error. Eighteen failing tests are manifestations of the same edit, not independent samples.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T010533449247Z\\attempt-02\\change.diff",
+      "patch_sha256": "99d01e6637bde3cbf729d461ed41b0a589a50f3fc23673372ef12a19685c4eaa",
+      "junit_path": "runs\\verify-20261112T010550279603Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "436619da5c81fd3a0bab3447da62256617ae00d49c519b09350d8ef12611dd3d",
+      "source_meta_sha256": "46792dd5eb493c449e56b0c017c0cb32eb8ea2524263f9baaa911f7cf4eb03fe"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010624991086Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/polys/factortools.py",
+          "function": "dup_trial_division"
+        }
+      ],
+      "mechanism": "The remainder-zero test not r is replaced with r==1. The polynomial remainder representation no longer enters the exact-division branch, leaving multiplicities zero and producing the observed wrong factorization-dependent predicates.",
+      "limitations": "The generator explanation confuses remainder with number of factors. The saved assertions and source data flow support an incorrect zero-remainder predicate, not that explanation.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T010624991086Z\\attempt-01\\change.diff",
+      "patch_sha256": "ffd7ce2de4ea8d609479fb2ffbe71a92c3aacb12d81f362ba588961970f48717",
+      "junit_path": "runs\\verify-20261112T010647183778Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "588ed696b478a895aaa1ac3cbeeeb68128785cd2ff710d84e81d2955d1888669",
+      "source_meta_sha256": "8aa1a900d7131b11a845b0a67178e469be04c32097803ad1fba42a4772b57fab"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T010624991086Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/polys/factortools.py",
+          "function": "dup_trial_division"
+        }
+      ],
+      "mechanism": "Each successful division removes one factor from f but increments multiplicity k by two. The accumulated exponent therefore disagrees with the number of divisions, corrupting downstream factorization predicates shown in the saved failures.",
+      "limitations": "This is a counter-step defect with a domain-defined correct increment, unlike an arbitrary final-result offset. No new test or execution was used for review.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T010624991086Z\\attempt-02\\change.diff",
+      "patch_sha256": "16aa8439377053a58b326cb6bb33e4cb84f80d43779c7b29a92efa30c8bea7cc",
+      "junit_path": "runs\\verify-20261112T010647183778Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "d75370ec92c90022d25cfa35f88b7e360b825c10b984cd53c59f928aa9c981aa",
+      "source_meta_sha256": "5f860c213e9bdfb8bbeca66f1481657886e2fb0b3b77ffd323309772b30bcd19"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011028947416Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/core/evalf.py",
+          "function": "bitcount"
+        }
+      ],
+      "mechanism": "The helper counts bits for n+1 instead of n, violating its stated magnitude contract. That changes precision/exponent bookkeeping; the saved numerical evaluations show last-digit rounding and result-representation regressions.",
+      "limitations": "A bounded off-by-one input mutation in a bit-width helper. The precise intermediate precision schedule was not logged, so that downstream link is an evidence-supported inference, not a measured numeric trace.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011028947416Z\\attempt-01\\change.diff",
+      "patch_sha256": "5580f38c58ecc240a4d53733587b6d8a35daed51119248cf85c4eaca56aac2c2",
+      "junit_path": "runs\\verify-20261112T011048595956Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "a702f129b3df8e29c578966b251874ae226aa02f0618ef52faa48601fa5d2eed",
+      "source_meta_sha256": "796f6ad9066d3052caef28fe25dd53acc92b3f5f241bca05c01503269aa7b2f5"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011028947416Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/core/evalf.py",
+          "function": "fastlog"
+        }
+      ],
+      "mechanism": "The exceptional zero test is replaced by a comparison with the floating representation of one. One is treated as negative-infinite magnitude, while zero no longer uses that special branch, corrupting magnitude estimates. Saved complex-power and summation values are incorrect.",
+      "limitations": "Wrong floating sentinel selection, not missing mpmath installation. The saved outputs demonstrate numerical corruption without measuring every intermediate magnitude estimate.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011028947416Z\\attempt-03\\change.diff",
+      "patch_sha256": "ade1abf1241b81b1d68c2e45a9924c53381916a25738cece1858e0f30ce417b7",
+      "junit_path": "runs\\verify-20261112T011048595956Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "210dc9649dc32feb943eff42f3f1b9038f2afc6246e6239e63fa32c487f083d3",
+      "source_meta_sha256": "b5e0bad11bb0ef535b484521dd1770337c4ddbdea9fb6b671543ee9138cc50b0"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011147479110Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/physics/vector/vector.py",
+          "function": "Vector.__init__"
+        }
+      ],
+      "mechanism": "The zero-vector special case recognizes1 instead of0. Constructing Vector(0) now reaches the iterable-input branch and attempts to iterate integer0, raising the saved TypeError.",
+      "limitations": "The cause is the wrong identity sentinel, not the downstream loop itself. Related zero-sentinel mutations in other vector methods remain a family for final curation.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011147479110Z\\attempt-01\\change.diff",
+      "patch_sha256": "db66de42f030c85bbca56896b01f384df563c9a96e62f536a96e2eefe2248242",
+      "junit_path": "runs\\verify-20261112T011205389606Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "31248bc6d016b4490796ec16499108e31e6e23be9b4477c3297312e44095e666",
+      "source_meta_sha256": "9e583dd8003a36b81fd3a38c77c500eab0ecf11f63dbae35d68bffd293fc4a71"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011147479110Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/physics/vector/vector.py",
+          "function": "Vector.__add__"
+        }
+      ],
+      "mechanism": "Addition recognizes scalar1 instead of the additive identity0. A.x+0 no longer returns the vector and instead sends0 to _check_vector, which raises the saved TypeError.",
+      "limitations": "The generator explanation is malformed; the code and saved call establish the missing zero special case. This related Vector sentinel family must not be presented as independent natural-fault frequency.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011147479110Z\\attempt-02\\change.diff",
+      "patch_sha256": "ca78f7adc939620e0f19c45bc8c91f2714620765edc6575e351879c5eacc49ec",
+      "junit_path": "runs\\verify-20261112T011205389606Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "6ed6f05be53ec3235a04ac8c730d95e5b0622bb03e9d422763cdf634b6773f6d",
+      "source_meta_sha256": "cd93381f8dc3829e60ef9fdc45557b1c283a6ed4a3276e2bfefd666aa7941c5e"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011147479110Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/physics/vector/vector.py",
+          "function": "Vector.__eq__"
+        }
+      ],
+      "mechanism": "Equality normalizes scalar1 into Vector(0), while comparison with scalar0 now falls through type validation and returns False. The downstream stationary-axis check axis.dt(parent)==0 therefore rejects a zero derivative and raises the observed time-varying-axis ValueError.",
+      "limitations": "The generator mentions __add__ but the changed function is __eq__, verified statically. The frame check is a detection site; no actual time variation of the axis is inferred.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011147479110Z\\attempt-03\\change.diff",
+      "patch_sha256": "834c1217e3fa57ae34855231b4ae5a8f757767b1cc90d857dcc62545b614e633",
+      "junit_path": "runs\\verify-20261112T011205389606Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "83ce25b7dd78125c1b0b1e4df6a00004ccb70e8195f7877f89fbe990c90b74af",
+      "source_meta_sha256": "2be28eb3d6e54a1e4cea0170f9592da873d8da9165d85f17647281e129896345"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011430979067Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/sets/fancysets.py",
+          "function": "Rationals._contains"
+        }
+      ],
+      "mechanism": "The Expr type guard is inverted. Basic() no longer returns False and instead yields its unknown is_rational value None, which the membership operator cannot convert to a Boolean. The saved TypeError matches that path.",
+      "limitations": "The generator incorrectly describes an always-True condition; actual behavior depends on type and can return None. The cause reference is the inverted guard, not Set.__contains__ where the symptom is raised.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011430979067Z\\attempt-01\\change.diff",
+      "patch_sha256": "4a031b3ce89276d0b86b72e6c78d8a44ede7f19b3f0b26d262febbf693500371",
+      "junit_path": "runs\\verify-20261112T011450700578Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "836b3f0a31dc170bc5874608ef3adc0d79e5d3820cd9fa2cc1fc155c4e3a3757",
+      "source_meta_sha256": "57e6b4eef58e1d4ca7f1fc8b4512adaa629edb38ec1d34d9d1b24c02c7dbb4bc"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011430979067Z-2",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/sets/fancysets.py",
+          "function": "Naturals._contains"
+        }
+      ],
+      "mechanism": "The explicit noninteger/nonpositive rejection branch returns True instead of False. Negative5 is accepted into Naturals, and ImageSet consumers inherit incorrect membership decisions.",
+      "limitations": "The generator misidentifies this as Rationals. Static function scope and saved negative-integer assertion support Naturals._contains. Related set-membership mutations remain grouped for curation.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011430979067Z\\attempt-02\\change.diff",
+      "patch_sha256": "90e531d47aecf53fb8b7acc34a76389fbb93bf206839bc214d2bc5e7ad087ead",
+      "junit_path": "runs\\verify-20261112T011450700578Z\\attempt-02\\candidate-1.junit.xml",
+      "junit_sha256": "1f577785f2e2a202821846d5ada099fbde6258a63487af3d6b1aad113cb311aa",
+      "source_meta_sha256": "b9f0f234e123197204b010afcdf09b5b534540217a6ded17fc1ee8cd4f67464e"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011430979067Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/sets/fancysets.py",
+          "function": "Rationals._contains"
+        }
+      ],
+      "mechanism": "Membership tests is_integer instead of is_rational. Noninteger rationals such as one-half are consequently rejected, exactly as the saved assertion shows.",
+      "limitations": "Integers are already rational; the generator explanation that including integers is incorrect is false. The defect is narrowing membership to integers.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011430979067Z\\attempt-03\\change.diff",
+      "patch_sha256": "7cb69cb723478a7ab3f7eb0021331a10d9ff543e011a54807128cd80bd81b152",
+      "junit_path": "runs\\verify-20261112T011450700578Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "a05fd6ae2d39fd0eb6c293c499b8304d825e09b09c42b6d8dfbc554799cf53b5",
+      "source_meta_sha256": "eb199782c5b79704d509b8e26b71f1595392c9e092a470b0fdfaed85c2821736"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T011847377871Z-3",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/core/numbers.py",
+          "function": "comp"
+        }
+      ],
+      "mechanism": "The string-number comparison returns inequality rather than equality. Numeric1.4 compared with string1.4 therefore returns False in the saved test.",
+      "limitations": "A standard comparison inversion in an existing guarded branch. The test helper is the application code being diagnosed, not a modified frozen test.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T011847377871Z\\attempt-03\\change.diff",
+      "patch_sha256": "93a5d29365a58481828703675a801bd3e67fa3685dfa54a2387acf50afacfb8c",
+      "junit_path": "runs\\verify-20261112T011906763360Z\\attempt-03\\candidate-1.junit.xml",
+      "junit_sha256": "ba9f81fca90819df2925870b04ee01d496229c90c20730be324febb500b36095",
+      "source_meta_sha256": "31381f33a3390fa8d8569250487123618a31330604e4b1ea3825c9b752d204ee"
+    },
+    {
+      "sample_id": "synthetic-generate-20261112T012017682888Z-1",
+      "kind": "synthetic",
+      "repo": "https://github.com/sympy/sympy",
+      "cause": "logic/value",
+      "locations": [
+        {
+          "file": "sympy/algebras/quaternion.py",
+          "function": "Quaternion.__new__"
+        }
+      ],
+      "mechanism": "The constructor rejects any commutative component instead of any noncommutative component. Ordinary numeric and commutative-symbol quaternions now raise ValueError at that guard, as the saved failures show.",
+      "limitations": "The failure is a wrong validation predicate, not evidence that the supplied components actually violate the intended contract.",
+      "recommendation": "retain_candidate_subject_to_v2_quota_group_audit",
+      "v2_note": "Changed expression/branch in cited production location agrees with saved failure and inherited mechanism. Detection frame/exception does not independently determine taxonomy; inherited limitations remain applicable. No claim that this checks all behavior or provides expert gold.",
+      "human_confirmation": "pending",
+      "patch_path": "runs\\generate-20261112T012017682888Z\\attempt-01\\change.diff",
+      "patch_sha256": "1e104dec2250095e1f752be8d6ebc50a91180dc838737629c7deeb032ef7de96",
+      "junit_path": "runs\\verify-20261112T012034709754Z\\attempt-01\\candidate-1.junit.xml",
+      "junit_sha256": "6037db7f2e6fc239bed8e648813798b32ede4145aec3c12c3a905bc82dea69b5",
+      "source_meta_sha256": "7c92f34ef5ed5145b3ad6522b0695baf19124bcdab4637f9749611ec9c4f4c13"
+    }
+  ],
+  "qualification": "Technical review recommendations only; no gold or human label confirmation. Raw evidence remains local/archive. Does not approve final v2 selection."
+}

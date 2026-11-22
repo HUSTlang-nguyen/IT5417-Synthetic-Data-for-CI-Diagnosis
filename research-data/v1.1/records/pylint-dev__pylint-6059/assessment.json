@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T203516841649Z",
+  "reviewed_at": "2026-11-12T07:19:01+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "932f9e1e8380f33096186465fd761a97cc0cf65dbecd3abb020c52d88ab0c77f",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "8ca7ee098b6b8ed569b4bc58e717e9c8d874d4ca25fc88295ee05a0c3590d8c1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2f84565a686f8c5fe2b2ff12731a1a07cdcb8df0b217f2fb8b77361664f5bbb2",
+    "historical-fixed.stdout.txt": "7b624db49b219f47adb7e751dc1c9d92440b66f1e93ff9b2cdd0309a661521c8",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f095b98e039b12d62ca045bed74e057fd58c97b401411f5e8ad4a8b9c14e5854"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/checkers/base_checker.py",
+      "function": "BaseChecker.__eq__"
+    }
+  ],
+  "mechanism": "BaseChecker does not define value-based equality for checker name/message definitions, so two semantically matching checker instances compare unequal. The new __eq__ compares those fields.",
+  "limitations": "This is a causal missing method, not an existing failing-source line. The patch also adds __hash__ and removes redundant parentheses in __gt__; the first equality assertion does not establish those as causes.",
+  "observed_junit": {
+    "base": {
+      "cases": 2,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 2,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "evidence_reason": "Read repair, inspected source around changed lines and saved JUnit failure. Source F2P/P2P resolve; first failure: AssertionError: assert Checker 'basic' (responsible for 'W0001') == Checker 'basic' (responsible for 'W0001')",
+  "missing_definitions": [
+    {
+      "file": "pylint/checkers/base_checker.py",
+      "function": "BaseChecker.__eq__"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T052633680895Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "flatten"
+    }
+  ],
+  "explanation": "The depth validation/decrement branch accepts levels<0 instead of levels>0. A valid levels1 request falls into the rejection branch and raises the saved non-negative-levels ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "flatten"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "common_prefix"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "common_suffix"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "rotate_left"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "rotate_right"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

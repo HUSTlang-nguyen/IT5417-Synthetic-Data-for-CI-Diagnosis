@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T050355529447Z",
+  "reviewed_at": "2026-11-12T12:16:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "27b47778bcc7674d057e2eb859ecefb96297ab6f500b01a6008702bb4ce934a1",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "9b0415ef70e67bb980ac84de1013ff4d88b74f1c9d238345716348ae529276fd",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8b48c1dbfa3fda03579b163f8f30380adfcccea6d016ada6805380db3aad472f",
+    "historical-fixed.stdout.txt": "954bdc3f1d94889a694cbd765640eb82f2889d4ae52c25126b18926b2863266c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ae9ac0f3510269036105dc818278a0513106bf03be36083a4272d139e0330cd0"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/dense.py",
+      "function": "randMatrix"
+    }
+  ],
+  "mechanism": "The symmetric constructor initially mirrors entries, then sparsifies and shuffles the entire flat storage independently. Saved sparse symmetric requests no longer equal their transpose. Sampling upper-triangle positions and mirroring each selected value preserves symmetry.",
+  "limitations": "The patch also corrects the ordinary sparsity percentage calculation. The saved first failure directly proves the lost symmetry; deterministic seed checks earlier in the same test pass.",
+  "observed_junit": {
+    "base": {
+      "cases": 148,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 148,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.tests.test_matrices::test_random",
+      "message": "AssertionError: assert Matrix([\\n[ 0,...  0,  3,  0]]) == Matrix([\\n[ 0,... 22, 43,  0]])\n  Full diff:\n    Matrix([\n  + [ 0, 78,  0, 97,  0,  5,  0,  5,  3,  0],\n  - [ 0, 89,  0, 0,  0,  0,  0,  0,  0, 15],\n  - [78,  0,  0, 0,  0,  0,  0,  0,  0, 75],\n  - [ 0,  0,  0, 0, 29, 37,  0,  0, 35,  0],\n  - [97,  0,  0, 0,  0,  0, 10, 55,  0,  0],...\n  \n  ...Full output truncated (24 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

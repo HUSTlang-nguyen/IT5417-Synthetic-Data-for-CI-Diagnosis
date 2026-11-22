@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040858009664Z",
+  "reviewed_at": "2026-11-12T12:01:01+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "bf43032d4646b2bb13ba36fbf77ebf6ae57857b0b0f3a59430215bcf972eb93d",
+    "license-evidence.json": "6f323a30a49d63671a95f5375666ce6eb4bc60156a8fcdd4067837fff279625b",
+    "historical-base.stdout.txt": "0bab4b45f0a53ef23f5ad92799cb29a2505f42c3e80efd43900a40e81279adc9",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "96932f3e2c7d3ff6ef46e22aa5f98c57e1e0d06da71432ff4961832aafb5077f",
+    "historical-fixed.stdout.txt": "bf762e7f1a3101ed96d55b8933eb0c9d317f825299fd2a683ebc9c83b694e9fd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4255bf4da00d543c668112eb7e060f2d5e16e5e03598573e6f8de6925a1531ad"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "astroid/brain/brain_typing.py",
+      "function": "infer_typing_typevar_or_newtype"
+    }
+  ],
+  "mechanism": "Typing inference directly constructs a ClassDef with the supplied TypeVar name, bypassing syntax validation of that generated class representation. The dotted name My.Type is accepted instead of yielding the saved expected InferenceError. Building through the class template/parser and converting AstroidSyntaxError rejects that unsupported representation.",
+  "limitations": "The original TypeVar call is valid Python source; this is validation of an inferred class representation, not a source syntax label. One saved test is narrow evidence. Source2307 has the same repair/test mechanism and is a duplicate.",
+  "observed_junit": {
+    "base": {
+      "cases": 1,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 1,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.brain.test_typing::test_infer_typevar",
+      "message": "Failed: DID NOT RAISE <class 'astroid.exceptions.InferenceError'>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

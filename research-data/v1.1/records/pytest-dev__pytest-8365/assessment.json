@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012609540984Z",
+  "reviewed_at": "2026-11-12T11:38:49+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "1d087796ac3889143fe54b2e8850d98da170181e472108adf4886e124d21e11c",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "94f903c545c7af35692d6034c23c7f243898ece1c87433f3955c026bc95ba3e4",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "119cf1b8cf316d464159865782d609c0d3d1acc9231f694064efde12ddc18325",
+    "historical-fixed.stdout.txt": "594b57450d90bf99921437081e70eaa7dd58638c723775fb6b7a33c84cb9cfb6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "2acf55d126ac206fe76536654cc6d928f8c2427129b771e5156415875ae0b0aa"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/tmpdir.py",
+      "function": "TempPathFactory.getbasetemp"
+    }
+  ],
+  "mechanism": "The temporary-directory name embeds the reported user name without handling an invalid path component. A mocked name containing a slash produces a nonexistent nested parent and the saved mkdir call raises FileNotFoundError. Falling back to pytest-of-unknown handles that configuration-derived path failure.",
+  "limitations": "This is a product fallback defect observed in Linux local reconstruction, not a host setup failure or proof of every Windows invalid-character rule.",
+  "observed_junit": {
+    "base": {
+      "cases": 34,
+      "failures_or_errors": 1,
+      "skipped": 1
+    },
+    "head": {
+      "cases": 34,
+      "failures_or_errors": 0,
+      "skipped": 1
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_tmpdir::test_tmp_path_factory_handles_invalid_dir_characters",
+      "message": "FileNotFoundError: [Errno 2] No such file or directory: '/tmp/pytest-of-os/<:*?;>agnostic'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

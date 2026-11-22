@@ -1,0 +1,100 @@
+""" Generic Unification algorithm for expression trees with lists of children
+
+This implementation is a direct translation of
+
+Artificial Intelligence: A Modern Approach by Stuart Russel and Peter Norvig
+Second edition, section 9.2, page 276
+
+It is modified in the following ways:
+
+1.  We allow associative and commutative Compound expressions. This results in
+    combinatorial blowup.
+2.  We explore the tree lazily.
+3.  We provide generic interfaces to symbolic algebra libraries in Python.
+
+A more traditional version can be found here
+http://aima.cs.berkeley.edu/python/logic.html
+"""
+
+from __future__ import print_function, division
+
+from sympy.utilities.iterables import kbins
+
+class Compound(object):
+    """ A little class to represent an interior node in the tree
+
+    This is analogous to SymPy.Basic for non-Atoms
+    """
+    def __init__(self, op, args):
+        self.op = op
+        self.args = args
+
+    def __eq__(self, other):
+        return (type(self) == type(other) and self.op == other.op and
+                self.args == other.args)
+
+    def __hash__(self):
+        return hash((type(self), self.op, self.args))
+
+    def __str__(self):
+        return "%s[%s]" % (str(self.op), ', '.join(map(str, self.args)))
+
+class Variable(object):
+    """ A Wild token """
+    def __init__(self, arg):
+        self.arg = arg
+
+    def __eq__(self, other):
+        return type(self) == type(other) and self.arg == other.arg
+
+    def __hash__(self):
+        return hash((type(self), self.arg))
+
+    def __str__(self):
+        return "Variable(%s)" % str(self.arg)
+
+class CondVariable(object):
+    """ A wild token that matches conditionally
+
+    arg   - a wild token
+    valid - an additional constraining function on a match
+    """
+    def __init__(self, arg, valid):
+        self.arg = arg
+        self.valid = valid
+
+    def __eq__(self, other):
+        return (type(self) == type(other) and
+                self.arg == other.arg and
+                self.valid == other.valid)
+
+    def __hash__(self):
+        return hash((type(self), self.arg, self.valid))
+
+    def __str__(self):
+        return "CondVariable(%s)" % str(self.arg)
+
+def unify(x, y, s=None, **fns):
+    """ Unify two expressions
+
+    Parameters
+    ==========
+
+        x, y - expression trees containing leaves, Compounds and Variables
+        s    - a mapping of variables to subtrees
+
+    Returns
+    =======
+
+        lazy sequence of mappings {Variable: subtree}
+
+    Examples
+    ========
+
+    >>> from sympy.unify.core import unify, Compound, Variable
+    >>> expr    = Compound("Add", ("x", "y"))
+    >>> pattern = Compound("Add", ("x", Variable("a")))
+    >>> next(unify(expr, pattern, {}))
+    {Variable(a): 'y'}
+    """
+    s = s or {}

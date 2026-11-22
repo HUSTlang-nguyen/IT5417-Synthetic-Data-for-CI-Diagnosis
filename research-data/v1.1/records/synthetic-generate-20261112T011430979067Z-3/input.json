@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 47 items\n\nsympy/sets/tests/test_fancysets.py::test_Rationals FAILED                [  2%]\nsympy/sets/tests/test_fancysets.py::test_naturals PASSED                 [  4%]\nsympy/sets/tests/test_fancysets.py::test_naturals0 PASSED                [  6%]\nsympy/sets/tests/test_fancysets.py::test_integers PASSED                 [  8%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet PASSED                 [ 10%]\nsympy/sets/tests/test_fancysets.py::test_image_is_ImageSet PASSED        [ 12%]\nsympy/sets/tests/test_fancysets.py::test_halfcircle PASSED               [ 14%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_iterator_not_injective PASSED [ 17%]\nsympy/sets/tests/test_fancysets.py::test_inf_Range_len PASSED            [ 19%]\nsympy/sets/tests/test_fancysets.py::test_Range_set PASSED                [ 21%]\nsympy/sets/tests/test_fancysets.py::test_Range_symbolic PASSED           [ 23%]\nsympy/sets/tests/test_fancysets.py::test_range_range_intersection PASSED [ 25%]\nsympy/sets/tests/test_fancysets.py::test_range_interval_intersection PASSED [ 27%]\nsympy/sets/tests/test_fancysets.py::test_range_is_finite_set PASSED      [ 29%]\nsympy/sets/tests/test_fancysets.py::test_Integers_eval_imageset PASSED   [ 31%]\nsympy/sets/tests/test_fancysets.py::test_Range_eval_imageset PASSED      [ 34%]\nsympy/sets/tests/test_fancysets.py::test_fun PASSED                      [ 36%]\nsympy/sets/tests/test_fancysets.py::test_Reals PASSED                    [ 38%]\nsympy/sets/tests/test_fancysets.py::test_Complex PASSED                  [ 40%]\nsympy/sets/tests/test_fancysets.py::test_intersections PASSED            [ 42%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_1 PASSED [ 44%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_2 PASSED [ 46%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_real PASSED  [ 48%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_interval PASSED [ 51%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_diophantine PASSED [ 53%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_3 PASSED [ 55%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_simplification PASSED  [ 57%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_contains PASSED        [ 59%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_contains PASSED   [ 61%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_intersect PASSED  [ 63%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_union PASSED      [ 65%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_from_real PASSED  [ 68%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_measure PASSED    [ 70%]\nsympy/sets/tests/test_fancysets.py::test_normalize_theta_set PASSED      [ 72%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_FiniteSet PASSED  [ 74%]\nsympy/sets/tests/test_fancysets.py::test_union_RealSubSet PASSED         [ 76%]\nsympy/sets/tests/test_fancysets.py::test_issue_9980 PASSED               [ 78%]\nsympy/sets/tests/test_fancysets.py::test_issue_11732 PASSED              [ 80%]\nsympy/sets/tests/test_fancysets.py::test_issue_11730 PASSED              [ 82%]\nsympy/sets/tests/test_fancysets.py::test_issue_11938 PASSED              [ 85%]\nsympy/sets/tests/test_fancysets.py::test_issue_11914 PASSED              [ 87%]\nsympy/sets/tests/test_fancysets.py::test_issue_9543 PASSED               [ 89%]\nsympy/sets/tests/test_fancysets.py::test_issue_16871 PASSED              [ 91%]\nsympy/sets/tests/test_fancysets.py::test_issue_18050 PASSED              [ 93%]\nsympy/sets/tests/test_fancysets.py::test_NZQRC_unions PASSED             [ 95%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersection PASSED    [ 97%]\nsympy/sets/tests/test_fancysets.py::test_issue_17858 PASSED              [100%]\n\n=================================== FAILURES ===================================\n________________________________ test_Rationals ________________________________\n\n    def test_Rationals():\n        assert S.Integers.is_subset(S.Rationals)\n        assert S.Naturals.is_subset(S.Rationals)\n        assert S.Naturals0.is_subset(S.Rationals)\n        assert S.Rationals.is_subset(S.Reals)\n        assert S.Rationals.inf is -oo\n        assert S.Rationals.sup is oo\n        it = iter(S.Rationals)\n        assert [next(it) for i in range(12)] == [\n            0, 1, -1, S.Half, 2, Rational(-1, 2), -2,\n            Rational(1, 3), 3, Rational(-1, 3), -3, Rational(2, 3)]\n        assert Basic() not in S.Rationals\n>       assert S.Half in S.Rationals\nE       assert 1/2 in Rationals\nE        +  where 1/2 = S.Half\nE        +  and   Rationals = S.Rationals\n\nsympy/sets/tests/test_fancysets.py:1048: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/sets/tests/test_fancysets.py::test_Rationals - assert 1/2 in Rat...\n=================== 1 failed, 46 passed, 1 warning in 2.35s ====================\n",
+  "code": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Complexes.sets",
+      "start_line": 1421,
+      "end_line": 1422,
+      "score": 51.632993,
+      "text": "sympy/sets/fancysets.py::Complexes.sets lines 1421-1422\n    def sets(self):\n        return ProductSet(S.Reals, S.Reals)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals.__iter__",
+      "start_line": 47,
+      "end_line": 60,
+      "score": 51.414214,
+      "text": "sympy/sets/fancysets.py::Rationals.__iter__ lines 47-60\n    def __iter__(self):\n        from sympy.core.numbers import igcd, Rational\n        yield S.Zero\n        yield S.One\n        yield S.NegativeOne\n        d = 2\n        while True:\n            for n in range(d):\n                if igcd(n, d) == 1:\n                    yield Rational(n, d)\n                    yield Rational(d, n)\n                    yield Rational(-n, d)\n                    yield Rational(-d, n)\n            d += 1",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals._boundary",
+      "start_line": 63,
+      "end_line": 64,
+      "score": 51.341641,
+      "text": "sympy/sets/fancysets.py::Rationals._boundary lines 63-64\n    def _boundary(self):\n        return S.Reals",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals._eval_is_subset",
+      "start_line": 110,
+      "end_line": 111,
+      "score": 51.133893,
+      "text": "sympy/sets/fancysets.py::Naturals._eval_is_subset lines 110-111\n    def _eval_is_subset(self, other):\n        return Range(1, oo).is_subset(other)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals0._eval_is_subset",
+      "start_line": 151,
+      "end_line": 152,
+      "score": 51.133893,
+      "text": "sympy/sets/fancysets.py::Naturals0._eval_is_subset lines 151-152\n    def _eval_is_subset(self, other):\n        return Range(oo).is_subset(other)",
+      "truncated": false
+    }
+  ]
+}

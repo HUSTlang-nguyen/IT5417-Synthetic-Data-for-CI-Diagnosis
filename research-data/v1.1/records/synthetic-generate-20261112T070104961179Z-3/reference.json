@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T070104961179Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "isoformat"
+    }
+  ],
+  "explanation": "The preserve-localtime branch now requires absent timezone information. A supplied aware datetime with localtime=True is instead converted to UTC, and the saved local offset/time assertion fails.",
+  "retrieved_locations": [
+    {
+      "file": "src/marshmallow/__init__.py",
+      "function": "<module>"
+    },
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "isoformat"
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "FormattedString.__init__"
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Function.__init__"
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Method.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

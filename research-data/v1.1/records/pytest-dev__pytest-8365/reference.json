@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-8365",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "src/_pytest/tmpdir.py",
+      "function": "TempPathFactory.getbasetemp"
+    }
+  ],
+  "explanation": "The temporary-directory name embeds the reported user name without handling an invalid path component. A mocked name containing a slash produces a nonexistent nested parent and the saved mkdir call raises FileNotFoundError. Falling back to pytest-of-unknown handles that configuration-derived path failure.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/tmpdir.py",
+      "function": "TempPathFactory.getbasetemp"
+    },
+    {
+      "file": "src/_pytest/tmpdir.py",
+      "function": "TempPathFactory.mktemp"
+    },
+    {
+      "file": "src/_pytest/tmpdir.py",
+      "function": "TempdirFactory.getbasetemp"
+    },
+    {
+      "file": "src/_pytest/tmpdir.py",
+      "function": "TempPathFactory.from_config"
+    },
+    {
+      "file": "src/_pytest/tmpdir.py",
+      "function": "TempPathFactory.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

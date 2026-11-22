@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035243189646Z",
+  "reviewed_at": "2026-11-12T11:53:45+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ef3c6b573766ea9329a1cb82d8ef697484dfaaa0034d4d6c655662c71059f1a1",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "0939cac4179e0a1f8836860f5f59d11812fd62a7c4810403fb96488809ae9e6d",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "267e3fc4352ef335eb1d629e0a3c835a15a02ca798fe88dfba6e14adda12be35",
+    "historical-fixed.stdout.txt": "590c3e69210f57c0da703379472259fa4009f0a8aa5b1bf95b4bab7ef654ccfb",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5f6edd4741c522c8965817e352f13124556f94bb9cae4e1535243b1c0e329cdf"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_MatMul"
+    }
+  ],
+  "mechanism": "The matrix-product printer tests c<0 for any numeric coefficient, including the imaginary unit. Ordering a non-real I against zero raises the saved TypeError. Inspecting real/imaginary components before extracting a negative sign avoids that incompatible comparison.",
+  "limitations": "The coefficient is a valid complex number; the caller did not supply an invalid matrix. This is different from parsing a matrix name as a scalar in the related pretty-printer case.",
+  "observed_junit": {
+    "base": {
+      "cases": 84,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 84,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_str::test_MatMul_MatAdd",
+      "message": "TypeError: Invalid comparison of non-real I"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

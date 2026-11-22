@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__astroid-2309",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "astroid/brain/brain_typing.py",
+      "function": "infer_typing_typevar_or_newtype"
+    }
+  ],
+  "explanation": "Typing inference directly constructs a ClassDef with the supplied TypeVar name, bypassing syntax validation of that generated class representation. The dotted name My.Type is accepted instead of yielding the saved expected InferenceError. Building through the class template/parser and converting AstroidSyntaxError rejects that unsupported representation.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/builder.py",
+      "function": "extract_node._extract"
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef._infer_type_call"
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef.fromlineno"
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef._inferred_bases"
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes/scoped_nodes.py",
+      "function": "ClassDef.callable"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

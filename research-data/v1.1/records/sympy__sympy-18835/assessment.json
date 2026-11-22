@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T045327612380Z",
+  "reviewed_at": "2026-11-12T12:15:07+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7a4f7c7b1a36e78fcb9ca63643442e6a4467a3d8f385ba0f29624991f0229f24",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "1d520d611a015539be59c79f737ccdd6e0f6c01783f98c985d71cbac5d2133e3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "09674704aea2a793215d7d5edc5ff1869cab04ea9dd6fd98fef1707fdd0d3cd3",
+    "historical-fixed.stdout.txt": "ad71c5cf86388bea126f6a6212764ab81d13c7e12c5d5e153ac7b5725f595914",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "214b4462e999f7b1a0d446f2411204981640a3467c4710c24795a5a3d17448dc"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "uniq"
+    }
+  ],
+  "mechanism": "The unique iterator never checks whether a sized input sequence changes during iteration. The saved caller removes items from its list and receives no required RuntimeError. Capturing the initial length and checking after yields enforces the mutation contract.",
+  "limitations": "The guarantee is conditional on a known input size; iterator inputs without length remain explicitly outside that check.",
+  "observed_junit": {
+    "base": {
+      "cases": 42,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 42,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.utilities.tests.test_iterables::test_uniq",
+      "message": "Failed: DID NOT RAISE <class 'RuntimeError'>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

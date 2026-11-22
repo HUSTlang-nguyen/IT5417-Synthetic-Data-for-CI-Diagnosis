@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001215506951Z",
+  "reviewed_at": "2026-11-12T08:33:47+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d91d0e151f6e813a99565b3e4c1ef1ed748580c74d25374e39905a8d0bed146e",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "1b84f148e3e97f0546fb260426589fc9c623a3814c79aea10cf8d64756d166c3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e37ed7b1f58f6bba163b02b7157c228a6ad93157ec3c9b5e54fc692168b9d02a",
+    "historical-fixed.stdout.txt": "e097e2b07fe95d084bf236fa77b67de29858cdd2cb56d22fe2ba7e977d609f7c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5ed5a246cee208833652eb0e227208686b8d9437600fd70db11adc4435fa4cab"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._load_reporter"
+    }
+  ],
+  "mechanism": "The reporter loader treats a comma-separated multi-format setting with an output path as one reporter identifier. It then tries to resolve that entire value and raises InvalidReporterError. Parsing the individual reporter specifications and composing reporters allows the saved multi-format test to pass.",
+  "limitations": "This is configuration parsing in product code, not a missing installed dependency. The repair also adds a MultiReporter class; the existing loader is the causal reference. The task extends supported behavior and realism should be described accordingly.",
+  "observed_junit": {
+    "base": {
+      "cases": 5,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 5,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.unittest_reporting::test_multi_format_output",
+      "message": "pylint.exceptions.InvalidReporterError: json:/tmp/pytest-of-nobody/pytest-0/test_multi_format_output0/somefile.json,text,unittest_reporting.nopreporter"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

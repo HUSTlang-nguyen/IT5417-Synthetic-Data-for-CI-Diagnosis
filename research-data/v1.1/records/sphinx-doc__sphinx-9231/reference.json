@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9231",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/builders/manpage.py",
+      "function": "ManualPageBuilder.write"
+    }
+  ],
+  "explanation": "Section-directory construction uses the bare section number, producing 1/python.1 instead of the expected conventional man1/python.1. Adding the man prefix consistently to the created directory and target path fixes the missing expected output.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "app"
+    },
+    {
+      "file": "sphinx/builders/__init__.py",
+      "function": "Builder.build"
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "status"
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "warning"
+    },
+    {
+      "file": "sphinx/application.py",
+      "function": "Sphinx.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

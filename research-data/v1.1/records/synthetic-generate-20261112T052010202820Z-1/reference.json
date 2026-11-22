@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T052010202820Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "comp"
+    }
+  ],
+  "explanation": "The string-number guard asks pure_complex to exclude real numbers. Valid real Float input1.4 is therefore rejected with ValueError before its string comparison.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "comp"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

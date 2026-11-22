@@ -1,0 +1,35 @@
+{
+  "sample_id": "pydicom__pydicom-800",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pydicom/uid.py",
+      "function": "generate_uid"
+    }
+  ],
+  "explanation": "For prefix=None the base substitutes2.25 then follows general hashed UID generation, allowing a suffix larger than128bits. The saved UUID reconstruction rejects the integer as out of range. The repair returns the integer form of uuid4 directly for that branch; forty selected tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "pydicom/uid.py",
+      "function": "generate_uid"
+    },
+    {
+      "file": "pydicom/sequence.py",
+      "function": "Sequence.__init__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__init__"
+    },
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.__init__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSdecimal.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

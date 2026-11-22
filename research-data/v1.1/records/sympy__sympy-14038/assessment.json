@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T043259273792Z",
+  "reviewed_at": "2026-11-12T12:10:34+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "fb01fd8329e7be68355edfe81f0371f28be2f6062e2a8e0ee817a37d41d4d1c1",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "a535ca2d118979c08b527709d7c59f85cfefa9a0bdd152b306e50ba5b3e1d5e1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "3e7669c165413700fbbc74d1ee27ff90463f4ebb6636609755b42af4b07e051d",
+    "historical-fixed.stdout.txt": "74bbd90037aba62e073398546917b449c4a669bca82142f195528d09180c9da3",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "01d4764aa29ea196791df845e523b4472204d072f6f98ea5aecd7a863023c519"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/concrete/products.py",
+      "function": "Product._eval_product"
+    }
+  ],
+  "mechanism": "The Add branch transforms an unsupported product into an exponential sum of logarithms, and the saved infinite symbolic product collapses to0. Factoring first and declining unsupported reduction preserves an unevaluated valid expression instead of that false zero.",
+  "limitations": "The saved oracle only requires a nonzero symbolic result. No closed-form value or universal logarithm-product identity is asserted.",
+  "observed_junit": {
+    "base": {
+      "cases": 19,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 19,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.concrete.tests.test_products::test_issue_14036",
+      "message": "assert 0 != 0\n +  where 0 = product((1 - ((a ** 2) / ((n * pi) ** 2))), [n, 1, oo])"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

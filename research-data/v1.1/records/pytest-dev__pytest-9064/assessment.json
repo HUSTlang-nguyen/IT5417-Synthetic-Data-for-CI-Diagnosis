@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T012633764425Z",
+  "reviewed_at": "2026-11-12T11:38:58+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "cc419b8ceae7a3223a1e394b0f20554830bc6f993ba2eefa0e48506e8be5c474",
+    "license-evidence.json": "3fc23e773ef56917e0967c5ad8387acf28ca79a5da5e45ceddf76eb2f22a812a",
+    "historical-base.stdout.txt": "4b82f1cd1f8cb2df43599993c3caf756e8526625c531182284d10bc4151f5958",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "13b8f0a1eabb17120a5afb2994fe13be735f72c63cdd6387ecb38e1617fcb4b4",
+    "historical-fixed.stdout.txt": "f01ed1629e75e0177d12dba1d6f4c70fdc53b0c2b12c20976f4be438a2ae6308",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "8fb19a811be425b7327ced72ee26b10e36f8e47d099d1b3414b39db7d62a1793"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/stepwise.py",
+      "function": "pytest_configure"
+    },
+    {
+      "file": "src/_pytest/stepwise.py",
+      "function": "pytest_addoption"
+    }
+  ],
+  "mechanism": "The stepwise-skip flag does not enable stepwise plugin registration by itself, so all three failing nested tests run instead of stopping at the second. The option help also omits that implication. Enabling stepwise during configuration and describing the implication satisfy the two saved checks.",
+  "limitations": "Two related existing functions cover one option-semantics contract. The behavioral and help failures are not counted as separate real situations.",
+  "observed_junit": {
+    "base": {
+      "cases": 12,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 12,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_stepwise::test_stepwise_skip_is_independent",
+      "message": "AssertionError: assert {'errors': 0,...pped': 0, ...} == {'errors': 0,...pped': 0, ...}\n  Omitting 6 identical items, use -vv to show\n  Differing items:\n  {'failed': 3} != {'failed': 2}\n  Full diff:\n    {\n     'errors': 0,\n  -  'failed': 2,...\n  \n  ...Full output truncated (10 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "testing.test_stepwise::test_sw_skip_help",
+      "message": "Failed: nomatch: '*implicitly enables --stepwise.'\n    and: 'usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]'\n    and: ''\n    and: 'positional arguments:'\n    and: '  file_or_dir'\n    and: ''\n    and: 'general:'\n    and: '  -k EXPRESSION         only run tests which match the given substring'\n    and: '                        expression. An expression is a python evaluatable'\n    and: '                        expression where all names are substring-matched against'\n    and: '                        test names and their parent classes. Example: -k'\n    and: \"                        'test_method or test_other' matches all test functions\"\n    and: \"                        and classes whose name contains 'test_method' or\"\n    and: \"                        'test_other', while -k 'not test_method' matches those\"\n    and: \"                        that don't contain 'test_method'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

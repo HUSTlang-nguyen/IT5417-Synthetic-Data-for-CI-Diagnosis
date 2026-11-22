@@ -1,0 +1,11 @@
+--- a/sympy/physics/hep/gamma_matrices.py
++++ b/sympy/physics/hep/gamma_matrices.py
+@@ -595,7 +595,7 @@
+             linkpos2 = -1-linkpos2
+ 
+         # move only if not next to free index:
+-        if linkpos1 >= 0 and not index_is_free[linkpos1]:
++        if linkpos1 >= 0 and index_is_free[linkpos1]:
+             linkpos1 = pos1
+ 
+         if linkpos2 >=0 and not index_is_free[linkpos2]:

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-18273",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "tree_cse._find_repeated"
+    }
+  ],
+  "explanation": "Common-subexpression discovery descends into RootOf internals and replaces its defining polynomial with a temporary symbol. Rebuilding then changes polynomial degree and the saved root index becomes invalid. Treating RootOf as opaque prevents that invalid extraction.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/rootoftools.py",
+      "function": "ComplexRootOf.__new__"
+    },
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "tree_cse"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-21614",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/function.py",
+      "function": "Derivative.kind"
+    }
+  ],
+  "explanation": "Derivative lacks a kind property that propagates its differentiated expressions kind. It consequently exposes UndefinedKind instead of NumberKind for a numeric symbolic expression. The new property delegates to self.args[0].kind.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/kind.py",
+      "function": "KindDispatcher.__init__"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol.kind"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

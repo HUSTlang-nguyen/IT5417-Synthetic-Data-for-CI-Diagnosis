@@ -1,0 +1,11 @@
+--- a/sympy/core/evalf.py
++++ b/sympy/core/evalf.py
+@@ -34,7 +34,7 @@
+ def bitcount(n):
+     """Return smallest integer, b, such that |n|/2**b < 1.
+     """
+-    return mpmath_bitcount(abs(int(n)))
++    return mpmath_bitcount(abs(int(n) + 1))
+ 
+ # Used in a few places as placeholder values to denote exponents and
+ # precision levels, e.g. of exact numbers. Must be careful to avoid

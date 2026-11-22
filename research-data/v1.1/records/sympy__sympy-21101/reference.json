@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-21101",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Mul.convert_args"
+    }
+  ],
+  "explanation": "The numeric-separator decision matches the already formatted LaTeX fragment. A fraction begins with a LaTeX command and is not recognized as a numeric factor, so an unevaluated1 times one-half loses the multiplication dot. Checking the original term string with the revised numeric-start rule restores that separator.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter.__init__"
+    },
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "latex"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

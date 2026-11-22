@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-24152",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/quantum/tensorproduct.py",
+      "function": "TensorProduct._eval_expand_tensorproduct"
+    }
+  ],
+  "explanation": "Expansion recurses only when an intermediate is directly a TensorProduct. A negative scalar wraps that tensor product in Mul, so the remaining sum stays undistributed. The saved (A-B)x(B-A) output retains -Bx(-A+B) instead of all four terms. Separating commutative scalar and tensor factors allows recursive distribution.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/stats/frv.py",
+      "function": "FinitePSpace.where"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr._expand_hint"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.is_constant.check_denominator_zeros"
+    },
+    {
+      "file": "sympy/core/relational.py",
+      "function": "Relational.expand"
+    },
+    {
+      "file": "sympy/logic/boolalg.py",
+      "function": "BooleanAtom.expand"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

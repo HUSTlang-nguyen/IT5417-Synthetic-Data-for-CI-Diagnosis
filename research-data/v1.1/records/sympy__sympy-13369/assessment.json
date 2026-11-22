@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T005909130697Z",
+  "reviewed_at": "2026-11-12T11:37:34+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "1810b12fcbb37b2f133227299678872828bbffda9ce84a6e9dffd8a2e0424810",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "28ecbcda280ff0eba74222c77ff656c0f39e1891185d79876b1fe2296c9530bb",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5463f2dbcc809f1390bfef11ae25c34167271ed2055936e3a4d89368844bde71",
+    "historical-fixed.stdout.txt": "278352fcb232ebeb6ef89496700b30324691e2cc8d6ca31f692ced653317e987",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "cb49e7a77aa1846b4510264cf16eace1b661637cbf9c01d1ad53dbbbe8bb6808"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/polys/polyroots.py",
+      "function": "roots"
+    }
+  ],
+  "mechanism": "For an expression-domain polynomial, to_rational_coeffs can return no conversion. That branch then has no fallback and leaves result empty. Invoking the existing heuristic solver when conversion is unavailable finds the expected three roots.",
+  "limitations": "The saved test proves zero versus three returned roots for the symbolic cubic. It does not establish completeness of the heuristic solver for all expression-domain polynomials.",
+  "observed_junit": {
+    "base": {
+      "cases": 11,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 11,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_polyroots::test_issue_13340",
+      "message": "assert 0 == 3\n +  where 0 = len({})"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

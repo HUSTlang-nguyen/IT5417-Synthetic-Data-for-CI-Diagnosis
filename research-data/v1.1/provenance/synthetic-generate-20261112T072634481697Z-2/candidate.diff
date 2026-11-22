@@ -1,0 +1,11 @@
+--- a/sympy/core/numbers.py
++++ b/sympy/core/numbers.py
+@@ -1306,7 +1306,7 @@
+     def __mul__(self, other):
+         if isinstance(other, Number) and global_parameters.evaluate:
+             rhs, prec = other._as_mpf_op(self._prec)
+-            return Float._new(mlib.mpf_mul(self._mpf_, rhs, prec, rnd), prec)
++            return Float._new(mlib.mpf_mul(self._mpf_, rhs, prec, rnd), prec + 1)
+         return Number.__mul__(self, other)
+ 
+     @_sympifyit('other', NotImplemented)

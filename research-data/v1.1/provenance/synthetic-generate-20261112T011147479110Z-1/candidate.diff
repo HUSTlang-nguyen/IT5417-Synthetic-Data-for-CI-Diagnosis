@@ -1,0 +1,11 @@
+--- a/sympy/physics/vector/vector.py
++++ b/sympy/physics/vector/vector.py
+@@ -36,7 +36,7 @@
+         """
+ 
+         self.args = []
+-        if inlist == 0:
++        if inlist == 1:
+             inlist = []
+         if isinstance(inlist, dict):
+             d = inlist

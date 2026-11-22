@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T060145332874Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "DenseNDimArray.__getitem__"
+    }
+  ],
+  "explanation": "The scalar-index path reads flattened index+1 after normal index conversion. The saved one-element array access and final-element conversion run beyond storage and raise IndexError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "DenseNDimArray.__getitem__"
+    },
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray.tolist"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic._subs.fallback"
+    },
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray.tolist.f"
+    },
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "Indexed.__new__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

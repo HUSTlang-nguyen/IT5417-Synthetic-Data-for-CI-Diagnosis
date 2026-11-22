@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T072946060850Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "as_mpmath"
+    }
+  ],
+  "explanation": "The zero branch returns mpf(1) instead of mpf(0). The saved floating-zero conversion explicitly returns1.0 and fails equality with0.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

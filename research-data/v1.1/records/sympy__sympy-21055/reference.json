@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-21055",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/assumptions/refine.py",
+      "function": "refine_arg"
+    }
+  ],
+  "explanation": "The refinement dispatcher has no argument-angle handler, so refine(arg(x),Q.positive(x)) remains arg(x) instead of0. Adding the sign-aware arg handler and its registry entry supplies the expected refinement.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/assumptions/refine.py",
+      "function": "refine"
+    },
+    {
+      "file": "sympy/unify/core.py",
+      "function": "Variable.__init__"
+    },
+    {
+      "file": "sympy/unify/core.py",
+      "function": "CondVariable.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from sympy.core.assumptions import StdFactKB
+from sympy.core.compatibility import string_types, range
+from .basic import Basic
+from .sympify import sympify
+from .singleton import S
+from .expr import Expr, AtomicExpr
+from .cache import cacheit
+from .function import FunctionClass
+from sympy.core.logic import fuzzy_bool
+from sympy.logic.boolalg import Boolean
+from sympy.utilities.iterables import cartes
+
+import string
+import re as _re
+
+
+class Symbol(AtomicExpr, Boolean):
+    """
+    Assumptions:
+       commutative = True
+
+    You can override the default assumptions in the constructor:
+
+    >>> from sympy import symbols
+    >>> A,B = symbols('A,B', commutative = False)
+    >>> bool(A*B != B*A)
+    True
+    >>> bool(A*B*2 == 2*A*B) == True # multiplication by scalars is commutative
+    True
+
+    """
+
+    is_comparable = False
+
+    __slots__ = ['name']
+
+    is_Symbol = True
+    is_symbol = True
+
+    @property
+    def _diff_wrt(self):
+        """Allow derivatives wrt Symbols.
+
+        Examples
+        ========
+
+            >>> from sympy import Symbol
+            >>> x = Symbol('x')
+            >>> x._diff_wrt
+            True
+        """
+        return True
+
+    @staticmethod
+    def _sanitize(assumptions, obj=None):
+        """Remove None, covert values to bool, check commutativity *in place*.
+        """
+
+        # be strict about commutativity: cannot be None
+        is_commutative = fuzzy_bool(assumptions.get('commutative', True))
+        if is_commutative is None:
+            whose = '%s ' % obj.__name__ if obj else ''
+            raise ValueError(
+                '%scommutativity must be True or False.' % whose)
+
+        # sanitize other assumptions so 1 -> True and 0 -> False
+        for key in list(assumptions.keys()):
+            from collections import defaultdict
+            from sympy.utilities.exceptions import SymPyDeprecationWarning
+            keymap = defaultdict(lambda: None)
+            keymap.update({'bounded': 'finite', 'unbounded': 'infinite', 'infinitesimal': 'zero'})
+            if keymap[key]:
+                SymPyDeprecationWarning(
+                    feature="%s assumption" % key,
+                    useinstead="%s" % keymap[key],
+                    issue=8071,
+                    deprecated_since_version="0.7.6").warn()
+                assumptions[keymap[key]] = assumptions[key]
+                assumptions.pop(key)
+                key = keymap[key]
+
+            v = assumptions[key]
+            if v is None:
+                assumptions.pop(key)
+                continue
+            assumptions[key] = bool(v)
+
+    def __new__(cls, name, **assumptions):
+        """Symbols are identified by name and assumptions::
+
+        >>> from sympy import Symbol
+        >>> Symbol("x") == Symbol("x")
+        True
+        >>> Symbol("x", real=True) == Symbol("x", real=False)
+        False
+
+        """
+        cls._sanitize(assumptions, cls)

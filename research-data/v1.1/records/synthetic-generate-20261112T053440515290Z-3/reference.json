@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T053440515290Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/vector/frame.py",
+      "function": "ReferenceFrame.__init__"
+    }
+  ],
+  "explanation": "The custom-index arity guard requires four entries while the frame API and subsequent x/y/z access use three. A saved valid three-index frame request now raises Supply3indices ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/vector/frame.py",
+      "function": "ReferenceFrame.__init__"
+    },
+    {
+      "file": "sympy/physics/vector/frame.py",
+      "function": "ReferenceFrame.orientnew"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

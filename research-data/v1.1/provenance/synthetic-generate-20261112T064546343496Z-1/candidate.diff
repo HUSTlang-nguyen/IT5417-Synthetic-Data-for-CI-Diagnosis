@@ -1,0 +1,11 @@
+--- a/pvlib/pvsystem.py
++++ b/pvlib/pvsystem.py
+@@ -289,7 +289,7 @@
+         is replicated to a tuple of the same length as `self.arrays` and that
+         tuple is returned.
+         """
+-        if system_wide and not isinstance(values, tuple):
++        if system_wide and isinstance(values, tuple):
+             return (values,) * self.num_arrays
+         if not isinstance(values, tuple):
+             values = (values,)

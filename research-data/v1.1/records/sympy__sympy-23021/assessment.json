@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T061718641422Z",
+  "reviewed_at": "2026-11-12T18:27:39+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f303de7fb0eeb7353f40c31fb217ad40b0307f37e416267f35d4a16c689995bb",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "1da0b7694ad50edce2104e2b6788d0bbbc22050e5c267495a579204a718065ad",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "839d5590937d72474980d55a610f44fb9083445fe834b7816996726b0ad86c92",
+    "historical-fixed.stdout.txt": "1116427bbb538ca2b6e9e379a8ae452bf6eadf4f4903b308e78b7ce3296d790c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f3bdc2d3d8bbb2a4746d0fba2932f7930419c354934608ea90f07fc632717bdb"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/solvers/decompogen.py",
+      "function": "decompogen"
+    }
+  ],
+  "mechanism": "Min/Max expressions lack a specialized decomposition branch. The polynomial fallback re-enters decomposition on the same generator, and the saved Max(3,x) call repeats line61 until RecursionError; the repair handles Min/Max arguments and both tests pass.",
+  "limitations": "The saved trace directly supports non-progressing recursion for Max. The added Min branch is related reference coverage, not a separate counted situation or observed failing Min test.",
+  "observed_junit": {
+    "base": {
+      "cases": 2,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 2,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.solvers.tests.test_decompogen::test_decompogen",
+      "message": "RecursionError: maximum recursion depth exceeded while calling a Python object"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

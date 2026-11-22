@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T052750252431Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping._eval_col_insert.entry"
+    }
+  ],
+  "explanation": "The insertion callback uses j+pos instead of j-pos to map the destination column into the inserted matrix. At nonzero insertion positions it reads past the inserted matrix and the saved test raises Index out of range a[2].",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/dense.py",
+      "function": "DenseMatrix.__getitem__"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "a2idx"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "a2idx"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "_MinimalMatrix.__init__"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping.extract"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

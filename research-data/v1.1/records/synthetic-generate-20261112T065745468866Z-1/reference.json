@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T065745468866Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "astroid/inference.py",
+      "function": "infer_name"
+    }
+  ],
+  "explanation": "The missing-statements guard is inverted. In the saved deleted-name path an empty lookup no longer raises the expected InferenceError, and the assertion fails.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/inference.py",
+      "function": "infer_name"
+    },
+    {
+      "file": "astroid/decorators.py",
+      "function": "raise_if_nothing_inferred"
+    },
+    {
+      "file": "astroid/decorators.py",
+      "function": "path_wrapper.wrapped"
+    },
+    {
+      "file": "astroid/inference.py",
+      "function": "infer_attribute"
+    },
+    {
+      "file": "astroid/node_classes.py",
+      "function": "NodeNG.infer"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

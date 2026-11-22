@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nlibraries: Sphinx-4.3.0+, docutils-0.17.1\nbase tempdir: /tmp/pytest-of-nobody/pytest-0\nrootdir: /source/base\nconfigfile: setup.cfg\ncollecting ... collected 27 items\n\ntests/test_util_typing.py::test_restify PASSED                           [  3%]\ntests/test_util_typing.py::test_restify_type_hints_containers PASSED     [  7%]\ntests/test_util_typing.py::test_restify_type_hints_Callable PASSED       [ 11%]\ntests/test_util_typing.py::test_restify_type_hints_Union PASSED          [ 14%]\ntests/test_util_typing.py::test_restify_type_hints_typevars PASSED       [ 18%]\ntests/test_util_typing.py::test_restify_type_hints_custom_class PASSED   [ 22%]\ntests/test_util_typing.py::test_restify_type_hints_alias PASSED          [ 25%]\ntests/test_util_typing.py::test_restify_type_ForwardRef PASSED           [ 29%]\ntests/test_util_typing.py::test_restify_type_Literal PASSED              [ 33%]\ntests/test_util_typing.py::test_restify_pep_585 PASSED                   [ 37%]\ntests/test_util_typing.py::test_restify_type_union_operator SKIPPED      [ 40%]\ntests/test_util_typing.py::test_restify_broken_type_hints PASSED         [ 44%]\ntests/test_util_typing.py::test_restify_mock FAILED                      [ 48%]\ntests/test_util_typing.py::test_stringify PASSED                         [ 51%]\ntests/test_util_typing.py::test_stringify_type_hints_containers PASSED   [ 55%]\ntests/test_util_typing.py::test_stringify_type_hints_pep_585 PASSED      [ 59%]\ntests/test_util_typing.py::test_stringify_Annotated PASSED               [ 62%]\ntests/test_util_typing.py::test_stringify_type_hints_string PASSED       [ 66%]\ntests/test_util_typing.py::test_stringify_type_hints_Callable PASSED     [ 70%]\ntests/test_util_typing.py::test_stringify_type_hints_Union PASSED        [ 74%]\ntests/test_util_typing.py::test_stringify_type_hints_typevars PASSED     [ 77%]\ntests/test_util_typing.py::test_stringify_type_hints_custom_class PASSED [ 81%]\ntests/test_util_typing.py::test_stringify_type_hints_alias PASSED        [ 85%]\ntests/test_util_typing.py::test_stringify_type_Literal PASSED            [ 88%]\ntests/test_util_typing.py::test_stringify_type_union_operator SKIPPED    [ 92%]\ntests/test_util_typing.py::test_stringify_broken_type_hints PASSED       [ 96%]\ntests/test_util_typing.py::test_stringify_mock PASSED                    [100%]\n\n=================================== FAILURES ===================================\n______________________________ test_restify_mock _______________________________\n\n    def test_restify_mock():\n        with mock(['unknown']):\n            import unknown\n>           assert restify(unknown.secret.Class) == ':py:class:`unknown.secret.Class`'\nE           AssertionError: assert ':py:class:`unknown.secret.`' == ':py:class:`u...secret.Class`'\nE             - :py:class:`unknown.secret.Class`\nE             ?                           -----\nE             + :py:class:`unknown.secret.`\n\ntests/test_util_typing.py:177: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_util_typing.py::test_restify_mock - AssertionError: assert ...\n=================== 1 failed, 24 passed, 2 skipped in 0.20s ====================\n",
+  "code": [
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "mock",
+      "start_line": 139,
+      "end_line": 152,
+      "score": 30.566947,
+      "text": "sphinx/ext/autodoc/mock.py::mock lines 139-152\ndef mock(modnames: List[str]) -> Generator[None, None, None]:\n    \"\"\"Insert mock modules during context::\n\n        with mock(['target.module.name']):\n            # mock modules are enabled here\n            ...\n    \"\"\"\n    try:\n        finder = MockFinder(modnames)\n        sys.meta_path.insert(0, finder)\n        yield\n    finally:\n        sys.meta_path.remove(finder)\n        finder.invalidate_caches()",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify",
+      "start_line": 107,
+      "end_line": 147,
+      "score": 30.512148,
+      "text": "sphinx/util/typing.py::restify lines 107-147\ndef restify(cls: Optional[Type]) -> str:\n    \"\"\"Convert python class to a reST reference.\"\"\"\n    from sphinx.util import inspect  # lazy loading\n\n    try:\n        if cls is None or cls is NoneType:\n            return ':py:obj:`None`'\n        elif cls is Ellipsis:\n            return '...'\n        elif isinstance(cls, str):\n            return cls\n        elif cls in INVALID_BUILTIN_CLASSES:\n            return ':py:class:`%s`' % INVALID_BUILTIN_CLASSES[cls]\n        elif inspect.isNewType(cls):\n            if sys.version_info > (3, 10):\n                # newtypes have correct module info since Python 3.10+\n                print(cls, type(cls), dir(cls))\n                return ':py:class:`%s.%s`' % (cls.__module__, cls.__name__)\n            else:\n                return ':py:class:`%s`' % cls.__name__\n        elif UnionType and isinstance(cls, UnionType):\n            if len(cls.__args__) > 1 and None in cls.__args__:\n                args = ' | '.join(restify(a) for a in cls.__args__ if a)\n                return 'Optional[%s]' % args\n            else:\n                return ' | '.join(restify(a) for a in cls.__args__)\n        elif cls.__module__ in ('__builtin__', 'builtins'):\n            if hasattr(cls, '__args__'):\n                return ':py:class:`%s`\\\\ [%s]' % (\n                    cls.__name__,\n                    ', '.join(restify(arg) for arg in cls.__args__),\n                )\n            else:\n                return ':py:class:`%s`' % cls.__name__\n        else:\n            if sys.version_info >= (3, 7):  # py37+\n                return _restify_py37(cls)\n            else:\n                return _restify_py36(cls)\n    except (AttributeError, TypeError):\n        return repr(cls)",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/search/__init__.py",
+      "function": "SearchLanguage.init",
+      "start_line": 78,
+      "end_line": 81,
+      "score": 0.83205,
+      "text": "sphinx/search/__init__.py::SearchLanguage.init lines 78-81\n    def init(self, options: Dict) -> None:\n        \"\"\"\n        Initialize the class with the options the user has given.\n        \"\"\"",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/path.py",
+      "function": "path.read_bytes",
+      "start_line": 183,
+      "end_line": 188,
+      "score": 0.83205,
+      "text": "sphinx/testing/path.py::path.read_bytes lines 183-188\n    def read_bytes(self) -> builtins.bytes:\n        \"\"\"\n        Returns the bytes in the file.\n        \"\"\"\n        with open(self, mode='rb') as f:\n            return f.read()",
+      "truncated": false
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_startswith",
+      "start_line": 43,
+      "end_line": 45,
+      "score": 0.83205,
+      "text": "sphinx/testing/util.py::assert_startswith lines 43-45\ndef assert_startswith(thing: str, prefix: str) -> None:\n    if not thing.startswith(prefix):\n        assert False, '%r does not start with %r' % (thing, prefix)",
+      "truncated": false
+    }
+  ]
+}

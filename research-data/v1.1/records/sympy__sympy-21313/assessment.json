@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035559315568Z",
+  "reviewed_at": "2026-11-12T11:55:21+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b21b3d1e9197f9366e9f70ff923632360e3335ddfcff5d637b121a8a0e1bc747",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "7853f87d7c656026c8da83e941b69e4b71ec43c8e7d57ae3d129e2b1412d8a68",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "434e4e91c9d880790d7227a7b95494c3df09bd9a4895ef7974d3a5f1cbc0098f",
+    "historical-fixed.stdout.txt": "c242ad78cf7af15ebce24093101c0416723203251e7604cee9d43e8b58af99d0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5be2f6112a60f0e719803b55b522b798d0c2120a21014c6b6c9c37936a46c9bd"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/sets/handlers/functions.py",
+      "function": "_set_function"
+    }
+  ],
+  "mechanism": "The integer-ImageSet canonical-shift path applies exact lattice transformations to Float coefficients/offsets. The saved0.433 offset is reduced to0.092 and required membership is lost. Avoiding this exact canonicalization when either matched coefficient contains Float preserves the inexact expression.",
+  "limitations": "This file has several multipledispatch definitions named _set_function. The reference uses that declared function name and file; evidence identifies the Integers overload near base line174, which file/function metrics alone cannot distinguish from its overloads.",
+  "observed_junit": {
+    "base": {
+      "cases": 47,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 47,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.sets.tests.test_fancysets::test_Integers_eval_imageset",
+      "message": "assert 0.433 in ImageSet(Lambda(x, 0.341*x + 0.092), Integers)\n +  where ImageSet(Lambda(x, 0.341*x + 0.092), Integers) = imageset(x, (0.433 + (0.341 * x)), Integers)\n +    where Integers = S.Integers"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

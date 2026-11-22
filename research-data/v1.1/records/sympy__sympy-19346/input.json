@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 41 items\n\nsympy/printing/tests/test_repr.py::test_dict FAILED                      [  2%]\nsympy/printing/tests/test_repr.py::test_printmethod PASSED               [  4%]\nsympy/printing/tests/test_repr.py::test_more_than_255_args_issue_10259 PASSED [  7%]\nsympy/printing/tests/test_repr.py::test_Function PASSED                  [  9%]\nsympy/printing/tests/test_repr.py::test_Geometry PASSED                  [ 12%]\nsympy/printing/tests/test_repr.py::test_Singletons PASSED                [ 14%]\nsympy/printing/tests/test_repr.py::test_Integer PASSED                   [ 17%]\nsympy/printing/tests/test_repr.py::test_list PASSED                      [ 19%]\nsympy/printing/tests/test_repr.py::test_Matrix PASSED                    [ 21%]\nsympy/printing/tests/test_repr.py::test_empty_Matrix PASSED              [ 24%]\nsympy/printing/tests/test_repr.py::test_Rational PASSED                  [ 26%]\nsympy/printing/tests/test_repr.py::test_Float PASSED                     [ 29%]\nsympy/printing/tests/test_repr.py::test_Symbol PASSED                    [ 31%]\nsympy/printing/tests/test_repr.py::test_Symbol_two_assumptions PASSED    [ 34%]\nsympy/printing/tests/test_repr.py::test_Symbol_no_special_commutative_treatment PASSED [ 36%]\nsympy/printing/tests/test_repr.py::test_Wild PASSED                      [ 39%]\nsympy/printing/tests/test_repr.py::test_Dummy PASSED                     [ 41%]\nsympy/printing/tests/test_repr.py::test_Dummy_assumption PASSED          [ 43%]\nsympy/printing/tests/test_repr.py::test_Dummy_from_Symbol PASSED         [ 46%]\nsympy/printing/tests/test_repr.py::test_tuple PASSED                     [ 48%]\nsympy/printing/tests/test_repr.py::test_WildFunction PASSED              [ 51%]\nsympy/printing/tests/test_repr.py::test_settins PASSED                   [ 53%]\nsympy/printing/tests/test_repr.py::test_AlgebraicNumber PASSED           [ 56%]\nsympy/printing/tests/test_repr.py::test_PolyRing PASSED                  [ 58%]\nsympy/printing/tests/test_repr.py::test_FracField PASSED                 [ 60%]\nsympy/printing/tests/test_repr.py::test_PolyElement PASSED               [ 63%]\nsympy/printing/tests/test_repr.py::test_FracElement PASSED               [ 65%]\nsympy/printing/tests/test_repr.py::test_FractionField PASSED             [ 68%]\nsympy/printing/tests/test_repr.py::test_PolynomialRingBase PASSED        [ 70%]\nsympy/printing/tests/test_repr.py::test_DMP PASSED                       [ 73%]\nsympy/printing/tests/test_repr.py::test_FiniteExtension PASSED           [ 75%]\nsympy/printing/tests/test_repr.py::test_ExtensionElement PASSED          [ 78%]\nsympy/printing/tests/test_repr.py::test_BooleanAtom PASSED               [ 80%]\nsympy/printing/tests/test_repr.py::test_Integers PASSED                  [ 82%]\nsympy/printing/tests/test_repr.py::test_Naturals PASSED                  [ 85%]\nsympy/printing/tests/test_repr.py::test_Naturals0 PASSED                 [ 87%]\nsympy/printing/tests/test_repr.py::test_Reals PASSED                     [ 90%]\nsympy/printing/tests/test_repr.py::test_matrix_expressions PASSED        [ 92%]\nsympy/printing/tests/test_repr.py::test_Cycle PASSED                     [ 95%]\nsympy/printing/tests/test_repr.py::test_Permutation PASSED               [ 97%]\nsympy/printing/tests/test_repr.py::test_diffgeom PASSED                  [100%]\n\n=================================== FAILURES ===================================\n__________________________________ test_dict ___________________________________\n\n    def test_dict():\n        from sympy import srepr\n        from sympy.abc import x, y, z\n        d = {}\n        assert srepr(d) == \"{}\"\n        d = {x: y}\n>       assert srepr(d) == \"{Symbol('x'): Symbol('y')}\"\nE       assert '{x: y}' == \"{Symbol('x'): Symbol('y')}\"\nE         - {Symbol('x'): Symbol('y')}\nE         + {x: y}\n\nsympy/printing/tests/test_repr.py:328: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/printing/tests/test_repr.py::test_dict - assert '{x: y}' == \"{Sy...\n=================== 1 failed, 40 passed, 1 warning in 0.26s ====================\n",
+  "code": [
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "srepr",
+      "start_line": 343,
+      "end_line": 345,
+      "score": 50.666667,
+      "text": "sympy/printing/repr.py::srepr lines 343-345\ndef srepr(expr, **settings):\n    \"\"\"return expr in repr form\"\"\"\n    return ReprPrinter(settings).doprint(expr)",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__",
+      "start_line": 22,
+      "end_line": 23,
+      "score": 31.732051,
+      "text": "sympy/holonomic/holonomicerrors.py::NotHolonomicError.__init__ lines 22-23\n    def __init__(self, m):\n        self.m = m",
+      "truncated": false
+    }
+  ]
+}

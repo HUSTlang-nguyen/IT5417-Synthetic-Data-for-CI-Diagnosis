@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040622771840Z",
+  "reviewed_at": "2026-11-12T11:59:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "78ce9f040bcb8ad48d34146142840935f59b6dd8e18b5f143f88826b0590bea8",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "148d5e4fe3d74f8db3da789f7f610618ebc32ffba7971d7423ba3e56c42354ec",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a2316579289f57d348046c61f352b22e17764e3a2ce14a90972ce5fc57dafd20",
+    "historical-fixed.stdout.txt": "9d4422c9b2f12b6b324170a33b12b3d1bc80b95eff498d6e87b576c7b98a022d",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d0d1c3ef2e1a99feab956b9a263283a97ce8688134a8908dd33835f3d6c34b4d"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "tree_cse._find_repeated"
+    }
+  ],
+  "mechanism": "CSE treats matrix symbols/elements as traversable repeatable composite objects and extracts the matrix A itself as a temporary. The saved replacement list contains x0=A instead of only the repeated scalar element product. Treating those matrix primitives as opaque prevents the unwanted extraction.",
+  "limitations": "Related to the RootOf opacity family, but the matrix primitive and expected scalar CSE contract are distinct. The later source22840 repeats this same matrix defect and must not add an independent sample.",
+  "observed_junit": {
+    "base": {
+      "cases": 34,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 34,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.simplify.tests.test_cse::test_cse_MatrixSymbol",
+      "message": "assert ([(x0, A), (x...0[0, 2] + x1]) == ([(x0, A[0, 0...A[0, 2] + x0])\n  At index 0 diff: [(x0, A), (x1, x0[0, 0]*x0[0, 1])] != [(x0, A[0, 0]*A[0, 1])]\n  Full diff:\n  - ([(x0, A[0, 0]*A[0, 1])], [x0*A[0, 2] + x0])\n  ?                ^             --          ^\n  + ([(x0, A), (x1, x0[0, 0]*x0[0, 1])], [x1*x0[0, 2] + x1])\n  ?         ++++++++++       ^^            +++           ^"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

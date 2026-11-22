@@ -1,0 +1,100 @@
+from __future__ import division, print_function
+
+from typing import Any
+
+from sympy.core.add import Add
+from sympy.core.basic import Basic
+from sympy.core.compatibility import (
+    Callable, NotIterable, as_int, is_sequence)
+from sympy.core.decorators import deprecated
+from sympy.core.expr import Expr
+from sympy.core.power import Pow
+from sympy.core.singleton import S
+from sympy.core.symbol import Dummy, Symbol, _uniquely_named_symbol
+from sympy.core.sympify import sympify
+from sympy.functions import exp, factorial, log
+from sympy.functions.elementary.miscellaneous import Max, Min, sqrt
+from sympy.functions.special.tensor_functions import KroneckerDelta
+from sympy.polys import cancel
+from sympy.printing import sstr
+from sympy.simplify import simplify as _simplify
+from sympy.utilities.exceptions import SymPyDeprecationWarning
+from sympy.utilities.iterables import flatten
+from sympy.utilities.misc import filldedent
+
+from .common import (
+    MatrixCommon, MatrixError, NonSquareMatrixError, NonInvertibleMatrixError,
+    ShapeError)
+
+from .utilities import _iszero, _is_zero_after_expand_mul
+
+from .determinant import (
+    _find_reasonable_pivot, _find_reasonable_pivot_naive,
+    _adjugate, _charpoly, _cofactor, _cofactor_matrix,
+    _det, _det_bareiss, _det_berkowitz, _det_LU, _minor, _minor_submatrix)
+
+from .reductions import _is_echelon, _echelon_form, _rank, _rref
+from .subspaces import _columnspace, _nullspace, _rowspace, _orthogonalize
+
+from .eigen import (
+    _eigenvals, _eigenvects, _is_diagonalizable, _diagonalize,
+    _eval_is_positive_definite,
+    _is_positive_definite, _is_positive_semidefinite,
+    _is_negative_definite, _is_negative_semidefinite, _is_indefinite,
+    _jordan_form, _left_eigenvects, _singular_values)
+
+from .decompositions import (
+    _rank_decomposition, _cholesky, _LDLdecomposition,
+    _LUdecomposition, _LUdecomposition_Simple, _LUdecompositionFF,
+    _QRdecomposition)
+
+from .solvers import (
+    _diagonal_solve, _lower_triangular_solve, _upper_triangular_solve,
+    _cholesky_solve, _LDLsolve, _LUsolve, _QRsolve, _gauss_jordan_solve,
+    _pinv_solve, _solve, _solve_least_squares)
+
+from .inverse import (
+    _pinv, _inv_mod, _inv_ADJ, _inv_GE, _inv_LU, _inv_CH, _inv_LDL, _inv_QR,
+    _inv)
+
+
+class DeferredVector(Symbol, NotIterable):
+    """A vector whose components are deferred (e.g. for use with lambdify)
+
+    Examples
+    ========
+
+    >>> from sympy import DeferredVector, lambdify
+    >>> X = DeferredVector( 'X' )
+    >>> X
+    X
+    >>> expr = (X[0] + 2, X[2] + 3)
+    >>> func = lambdify( X, expr)
+    >>> func( [1, 2, 3] )
+    (3, 6)
+    """
+
+    def __getitem__(self, i):
+        if i == -0:
+            i = 0
+        if i < 0:
+            raise IndexError('DeferredVector index out of range')
+        component_name = '%s[%d]' % (self.name, i)
+        return Symbol(component_name)
+
+    def __str__(self):
+        return sstr(self)
+
+    def __repr__(self):
+        return "DeferredVector('%s')" % self.name
+
+
+class MatrixDeterminant(MatrixCommon):
+    """Provides basic matrix determinant operations. Should not be instantiated
+    directly. See ``determinant.py`` for their implementations."""
+
+    def _eval_det_bareiss(self, iszerofunc=_is_zero_after_expand_mul):
+        return _det_bareiss(self, iszerofunc=iszerofunc)
+
+    def _eval_det_berkowitz(self):
+        return _det_berkowitz(self)

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T034401878207Z",
+  "reviewed_at": "2026-11-12T11:51:14+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "5a1de85007a5c17510d9ddf41c0db2342d99c29fb79ab7b469f580429fb91bed",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "99311d2bec67d8c112e7b9f8f3c0b1a56ec58fca33e48b2847244e97b126bf31",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "3ee1790a6279777d932fdc9fae51bd46f0b1380af2f57209cdb10126f55060d0",
+    "historical-fixed.stdout.txt": "a8ed17e32674fb42dbcbed63ee57dd4d189d95284c4d2f96eaf5b8aa756dfcae",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "13341bdacf10eb446ebed86c609e81cb1188478f344e27602b470697ddf5b7ce"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_SingularityFunction"
+    }
+  ],
+  "mechanism": "The printer dispatch supplies an exp keyword for powered expressions, but this handler accepts only expr. The saved powered SingularityFunction raises unexpected-keyword TypeError. Accepting exp and formatting the outer exponent restores the printer interface.",
+  "limitations": "The generic dispatcher is where the incompatible call is detected; the narrow handler signature is the causal reference.",
+  "observed_junit": {
+    "base": {
+      "cases": 153,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 153,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_SingularityFunction",
+      "message": "TypeError: _print_SingularityFunction() got an unexpected keyword argument 'exp'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

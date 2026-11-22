@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T013010471351Z",
+  "reviewed_at": "2026-11-12T11:39:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "5b569f5408b2a81aaa689c82ca76fbcb47cf526ffadf7f1401a5adcf80cad953",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "e2b6c6e4e24abd7c04db20f302a0587021b3a14ce659ac920d7798ff3ca42c75",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "1ad8371f21f711bcf1c9b6f7d12bc6ed45b2d03580276bf377a12e1e8206797c",
+    "historical-fixed.stdout.txt": "17384e03efec60deb79ed668288a4bcb640819d8098f2c56a35c74c31686ca59",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b1bd5c2c9080d6433cbebfc1d1617c019f8eb2f9021be2a0d37ae7afbdcbc523"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/mul.py",
+      "function": "Mul.flatten"
+    }
+  ],
+  "mechanism": "The zero-exponent branch drops factors even when their compound base contains infinity, losing the indeterminate nature of cancellation. The saved infinity-ratio assertion does not yield the required NaN. Recognizing those infinite compound bases before dropping them preserves NaN.",
+  "limitations": "Do not infer a specific numeric1 result from the displayed unevaluated ratio; the directly proven mismatch is failure to produce the NaN singleton.",
+  "observed_junit": {
+    "base": {
+      "cases": 63,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 63,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_arit::test_Mul_does_not_cancel_infinities",
+      "message": "assert ((zoo + (3 * a)) / ((3 * a) + zoo)) is nan"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

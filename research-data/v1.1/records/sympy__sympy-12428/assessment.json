@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040512585186Z",
+  "reviewed_at": "2026-11-12T11:59:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "08be0f4970dde9fa7f258e13a326f6c8cb7cba754c2cfa537989a709fd36c3cc",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "70279e5d68982ac6581693c8dba2d950d215ae8920114fa03ec748942b1b70ab",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0e76bd6bff5425a2d138c1161a889b2bde9ce93ae5a404803ab92e02ae27c45c",
+    "historical-fixed.stdout.txt": "190c496761040862bd112a988cb04d7b5572dae1a6faaf96d647fc41e6734d0e",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "58763a7818cb00e040ed1a382ba6b9db1ceea0b03740d3c97b6c43974ae7992a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/diagonal.py",
+      "function": "DiagonalMatrix._entry"
+    }
+  ],
+  "mechanism": "A diagonal entry reads column0 of the source rather than its same row/column diagonal element. The saved D[1,1] result is X[1,0] instead of X[1,1]. Correct indexing and symbolic-equality handling preserve the intended diagonal matrix.",
+  "limitations": "The first concrete-index assertion proves wrong-column selection; the KroneckerDelta symbolic branch is additional repair evidence, not a separate observed failure.",
+  "observed_junit": {
+    "base": {
+      "cases": 1,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 1,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.expressions.tests.test_diagonal::test_DiagonalMatrix",
+      "message": "assert X[1, 0] == X[1, 1]"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

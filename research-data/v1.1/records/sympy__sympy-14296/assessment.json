@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261111T233132012550Z",
+  "reviewed_at": "2026-11-12T07:29:50+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a7d05dc7108c5b7b75ab41ff06a7fdbb7a68d0708757961e554b9e5bae401f95",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "e8e8c672df93433fed42ab9644016dc348d932407c542c245371e09b2112d845",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "aff1c5b60e0664e1802e82eaa591e0e585a43a842e33e0b5b20ddb9fec6f67c9",
+    "historical-fixed.stdout.txt": "6f67e7ffe20373142cc312b389a7060b696cddda178808b19eb7a773d3aff8da",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ad2f0ea786af7503a165ccb62f70c5fed789cc697ee5a4ed93ec65043f19c705"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "AlgebraicNumber.__new__"
+    }
+  ],
+  "mechanism": "When the chosen algebraic root is negative, the constructor negates an otherwise unit coefficient representation. Since the root itself already contains the sign, this reverses the represented value again. The saved round trip of 1-sqrt(2) becomes -1+sqrt(2); removing the extra sign flip preserves the original expression.",
+  "limitations": "Two failing assertions concern the same representation/sign mechanism, not two independent real situations.",
+  "observed_junit": {
+    "base": {
+      "cases": 100,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 100,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_issue_14289",
+      "message": "assert -1 + sqrt(2) == -sqrt(2) + 1\n +  where -1 + sqrt(2) = <bound method AlgebraicNumber.as_expr of -1 + sqrt(2)>()\n +    where <bound method AlgebraicNumber.as_expr of -1 + sqrt(2)> = -1 + sqrt(2).as_expr"
+    },
+    {
+      "test": "sympy.polys.tests.test_numberfields::test_AlgebraicNumber",
+      "message": "assert DMP([-1, 0], QQ, None) == DMP([1, 0], QQ, None)\n +  where DMP([-1, 0], QQ, None) = sqrt(3).rep\n +    where sqrt(3) = AlgebraicNumber(-sqrt(3))\n +      where sqrt(3) = sqrt(3)\n +  and   DMP([1, 0], QQ, None) = DMP([1, 0], QQ)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,100 @@
+import inspect
+import warnings
+from types import FunctionType
+from typing import Any
+from typing import Generic
+from typing import Type
+from typing import TypeVar
+
+import attr
+
+from _pytest.compat import final
+
+
+class PytestWarning(UserWarning):
+    """Base class for all warnings emitted by pytest."""
+
+    __module__ = "pytest"
+
+
+@final
+class PytestAssertRewriteWarning(PytestWarning):
+    """Warning emitted by the pytest assert rewrite module."""
+
+    __module__ = "pytest"
+
+
+@final
+class PytestCacheWarning(PytestWarning):
+    """Warning emitted by the cache plugin in various situations."""
+
+    __module__ = "pytest"
+
+
+@final
+class PytestConfigWarning(PytestWarning):
+    """Warning emitted for configuration issues."""
+
+    __module__ = "pytest"
+
+
+@final
+class PytestCollectionWarning(PytestWarning):
+    """Warning emitted when pytest is not able to collect a file or symbol in a module."""
+
+    __module__ = "pytest"
+
+
+class PytestDeprecationWarning(PytestWarning, DeprecationWarning):
+    """Warning class for features that will be removed in a future version."""
+
+    __module__ = "pytest"
+
+
+@final
+class PytestRemovedIn8Warning(PytestDeprecationWarning):
+    """Warning class for features that will be removed in pytest 8."""
+
+    __module__ = "pytest"
+
+
+class PytestReturnNotNoneWarning(PytestDeprecationWarning):
+    """Warning emitted when a test function is returning value other than None."""
+
+    __module__ = "pytest"
+
+
+@final
+class PytestExperimentalApiWarning(PytestWarning, FutureWarning):
+    """Warning category used to denote experiments in pytest.
+
+    Use sparingly as the API might change or even be removed completely in a
+    future version.
+    """
+
+    __module__ = "pytest"
+
+    @classmethod
+    def simple(cls, apiname: str) -> "PytestExperimentalApiWarning":
+        return cls(
+            "{apiname} is an experimental api that may change over time".format(
+                apiname=apiname
+            )
+        )
+
+
+@final
+class PytestUnhandledCoroutineWarning(PytestReturnNotNoneWarning):
+    """Warning emitted for an unhandled coroutine.
+
+    A coroutine was encountered when collecting test functions, but was not
+    handled by any async-aware plugin.
+    Coroutine test functions are not natively supported.
+    """
+
+    __module__ = "pytest"
+
+
+@final
+class PytestUnknownMarkWarning(PytestWarning):
+    """Warning emitted on use of unknown markers.

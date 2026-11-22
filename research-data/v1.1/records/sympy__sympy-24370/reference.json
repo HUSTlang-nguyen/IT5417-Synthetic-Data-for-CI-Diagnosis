@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-24370",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer.__floordiv__"
+    }
+  ],
+  "explanation": "The non-Integer divisor branch wraps the already computed divmod quotient in Integer. A symbolic quotient such as floor(1024/x) cannot be converted to a concrete numeric Integer, causing the saved TypeError. Returning the symbolic quotient unchanged preserves the supported floor-division result.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer.__new__"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer.__floordiv__"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.__int__"
+    },
+    {
+      "file": "sympy/core/cache.py",
+      "function": "__cacheit.func_wrapper.wrapper"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

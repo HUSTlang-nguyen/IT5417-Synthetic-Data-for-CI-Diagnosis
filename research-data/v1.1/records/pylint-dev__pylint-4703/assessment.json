@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T205904315602Z",
+  "reviewed_at": "2026-11-12T07:27:22+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "66da2455271968b951374b13200cfce575e48e0943b57806caec8dc87726aa67",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "1da220118a97987908adfaf5761c8a282acab54ff552a413612b5829efd7f825",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8f645b7926936b54159849a99ba7fd5d2fd74c3990a57ec90883d4febc136d1a",
+    "historical-fixed.stdout.txt": "27d5dce047f1532917c31d6a7377d41ca92fcd54ec6301c53081c958a138d71a",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "82973363ad3aa49160111dd5389b77db3d4a5b41e507fdbf084e9d984d586b74"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/checkers/imports.py",
+      "function": "ImportsChecker._add_imported_module"
+    }
+  ],
+  "mechanism": "Imports under a TYPE_CHECKING guard enter the cycle-detection graph as runtime dependencies. Because their edges are not excluded, the linter reports a cyclic import for a typing-only relationship. Recognizing the typing guard and excluding its edge removes the false diagnostic.",
+  "limitations": "A cyclic-import diagnostic here is the product output under test, not proof of a missing Docker dependency. Type annotations added to the helper are not asserted to cause the correction.",
+  "observed_junit": {
+    "base": {
+      "cases": 12,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 12,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_func::test_functionality[func_noerror_cycle]",
+      "message": "AssertionError: Wrong output for '/source/base/tests/messages/func_noerror_cycle.txt':\n  You can update the expected output automatically with: 'python tests/test_func.py --update-functional-output'\n  \n  \nassert '' == 'R:  1: Cycli...or_cycle.b)\\n'\n  - R:  1: Cyclic import (input.func_noerror_cycle.a -> input.func_noerror_cycle.b)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

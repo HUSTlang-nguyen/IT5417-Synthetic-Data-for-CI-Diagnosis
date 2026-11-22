@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T075943541191Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyRing.monomial_basis"
+    }
+  ],
+  "explanation": "A monomial basis exponent vector starts with ones rather than zeros. Setting its selected component to1 leaves all variables active, and saved polynomial reconstruction produces incorrect mixed monomials.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.drop"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.evaluate"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.__call__"
+    },
+    {
+      "file": "sympy/polys/rings.py",
+      "function": "PolyElement.pdiv"
+    },
+    {
+      "file": "sympy/polys/densearith.py",
+      "function": "dmp_pdiv"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

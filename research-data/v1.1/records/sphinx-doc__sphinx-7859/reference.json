@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-7859",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/typehints.py",
+      "function": "merge_typehints"
+    }
+  ],
+  "explanation": "The event handler assumes every signature node has module/fullname context keys and subscripts them without a guard. An invalid-context node causes a KeyError wrapped by the event dispatcher as ExtensionError. Returning when those keys are absent allows the saved documentation build to complete.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/events.py",
+      "function": "EventManager.emit"
+    },
+    {
+      "file": "sphinx/application.py",
+      "function": "Sphinx.emit"
+    },
+    {
+      "file": "sphinx/testing/restructuredtext.py",
+      "function": "parse"
+    },
+    {
+      "file": "sphinx/ext/autodoc/typehints.py",
+      "function": "merge_typehints"
+    },
+    {
+      "file": "sphinx/io.py",
+      "function": "SphinxStandaloneReader.read"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

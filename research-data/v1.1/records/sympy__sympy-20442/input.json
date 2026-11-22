@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 25 items\n\nsympy/physics/units/tests/test_quantities.py::test_convert_to FAILED     [  4%]\nsympy/physics/units/tests/test_quantities.py::test_str_repr PASSED       [  8%]\nsympy/physics/units/tests/test_quantities.py::test_eq PASSED             [ 12%]\nsympy/physics/units/tests/test_quantities.py::test_Quantity_definition PASSED [ 16%]\nsympy/physics/units/tests/test_quantities.py::test_abbrev PASSED         [ 20%]\nsympy/physics/units/tests/test_quantities.py::test_print PASSED          [ 24%]\nsympy/physics/units/tests/test_quantities.py::test_Quantity_eq PASSED    [ 28%]\nsympy/physics/units/tests/test_quantities.py::test_add_sub PASSED        [ 32%]\nsympy/physics/units/tests/test_quantities.py::test_quantity_abs PASSED   [ 36%]\nsympy/physics/units/tests/test_quantities.py::test_check_unit_consistency PASSED [ 40%]\nsympy/physics/units/tests/test_quantities.py::test_mul_div PASSED        [ 44%]\nsympy/physics/units/tests/test_quantities.py::test_units PASSED          [ 48%]\nsympy/physics/units/tests/test_quantities.py::test_issue_quart PASSED    [ 52%]\nsympy/physics/units/tests/test_quantities.py::test_issue_5565 PASSED     [ 56%]\nsympy/physics/units/tests/test_quantities.py::test_find_unit PASSED      [ 60%]\nsympy/physics/units/tests/test_quantities.py::test_Quantity_derivative PASSED [ 64%]\nsympy/physics/units/tests/test_quantities.py::test_quantity_postprocessing PASSED [ 68%]\nsympy/physics/units/tests/test_quantities.py::test_factor_and_dimension PASSED [ 72%]\nsympy/physics/units/tests/test_quantities.py::test_dimensional_expr_of_derivative PASSED [ 76%]\nsympy/physics/units/tests/test_quantities.py::test_get_dimensional_expr_with_function PASSED [ 80%]\nsympy/physics/units/tests/test_quantities.py::test_binary_information PASSED [ 84%]\nsympy/physics/units/tests/test_quantities.py::test_conversion_with_2_nonstandard_dimensions PASSED [ 88%]\nsympy/physics/units/tests/test_quantities.py::test_eval_subs PASSED      [ 92%]\nsympy/physics/units/tests/test_quantities.py::test_issue_14932 PASSED    [ 96%]\nsympy/physics/units/tests/test_quantities.py::test_issue_14547 PASSED    [100%]\n\n=================================== FAILURES ===================================\n_______________________________ test_convert_to ________________________________\n\n    def test_convert_to():\n        q = Quantity(\"q1\")\n        q.set_global_relative_scale_factor(S(5000), meter)\n    \n        assert q.convert_to(m) == 5000*m\n    \n        assert speed_of_light.convert_to(m / s) == 299792458 * m / s\n        # TODO: eventually support this kind of conversion:\n        # assert (2*speed_of_light).convert_to(m / s) == 2 * 299792458 * m / s\n        assert day.convert_to(s) == 86400*s\n    \n        # Wrong dimension to convert:\n        assert q.convert_to(s) == q\n        assert speed_of_light.convert_to(m) == speed_of_light\n    \n        expr = joule*second\n        conv = convert_to(expr, joule)\n>       assert conv == joule*second\nE       assert 10**(2/3)*joule**(7/9) == (joule * second)\n\nsympy/physics/units/tests/test_quantities.py:50: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/physics/units/tests/test_quantities.py::test_convert_to - assert...\n=================== 1 failed, 24 passed, 1 warning in 0.43s ====================\n",
+  "code": [
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.convert_to",
+      "start_line": 188,
+      "end_line": 206,
+      "score": 51.87663,
+      "text": "sympy/physics/units/quantities.py::Quantity.convert_to lines 188-206\n    def convert_to(self, other, unit_system=\"SI\"):\n        \"\"\"\n        Convert the quantity to another quantity of same dimensions.\n\n        Examples\n        ========\n\n        >>> from sympy.physics.units import speed_of_light, meter, second\n        >>> speed_of_light\n        speed_of_light\n        >>> speed_of_light.convert_to(meter/second)\n        299792458*meter/second\n\n        >>> from sympy.physics.units import liter\n        >>> liter.convert_to(meter**3)\n        meter**3/1000\n        \"\"\"\n        from .util import convert_to\n        return convert_to(self, other, unit_system)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.dimension",
+      "start_line": 119,
+      "end_line": 122,
+      "score": 51.664101,
+      "text": "sympy/physics/units/quantities.py::Quantity.dimension lines 119-122\n    def dimension(self):\n        from sympy.physics.units import UnitSystem\n        unit_system = UnitSystem.get_default_unit_system()\n        return unit_system.get_quantity_dimension(self)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_dimension",
+      "start_line": 74,
+      "end_line": 83,
+      "score": 51.428869,
+      "text": "sympy/physics/units/quantities.py::Quantity.set_dimension lines 74-83\n    def set_dimension(self, dimension, unit_system=\"SI\"):\n        SymPyDeprecationWarning(\n            deprecated_since_version=\"1.5\",\n            issue=17765,\n            feature=\"Moving method to UnitSystem class\",\n            useinstead=\"unit_system.set_quantity_dimension or {}.set_global_relative_scale_factor\".format(self),\n        ).warn()\n        from sympy.physics.units import UnitSystem\n        unit_system = UnitSystem.get_unit_system(unit_system)\n        unit_system.set_quantity_dimension(self, dimension)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_scale_factor",
+      "start_line": 85,
+      "end_line": 94,
+      "score": 51.224745,
+      "text": "sympy/physics/units/quantities.py::Quantity.set_scale_factor lines 85-94\n    def set_scale_factor(self, scale_factor, unit_system=\"SI\"):\n        SymPyDeprecationWarning(\n            deprecated_since_version=\"1.5\",\n            issue=17765,\n            feature=\"Moving method to UnitSystem class\",\n            useinstead=\"unit_system.set_quantity_scale_factor or {}.set_global_relative_scale_factor\".format(self),\n        ).warn()\n        from sympy.physics.units import UnitSystem\n        unit_system = UnitSystem.get_unit_system(unit_system)\n        unit_system.set_quantity_scale_factor(self, scale_factor)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/physics/units/quantities.py",
+      "function": "Quantity.set_global_dimension",
+      "start_line": 96,
+      "end_line": 97,
+      "score": 51.224745,
+      "text": "sympy/physics/units/quantities.py::Quantity.set_global_dimension lines 96-97\n    def set_global_dimension(self, dimension):\n        _QuantityMapper._quantity_dimension_global[self] = dimension",
+      "truncated": false
+    }
+  ]
+}

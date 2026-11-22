@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035718843367Z",
+  "reviewed_at": "2026-11-12T11:56:16+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "03c5d9008175c11f95c5f256817b50be198bd7071648c76c95052e3bbd07e25f",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "2898b3b9cb0231ad24bdda0e875b57e2cb6f291afc9cdea3e5cbff5ad9309aa0",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "53b48935b956b74200c2dab1b160a6d427da77ad5b10ad273caed03611677d25",
+    "historical-fixed.stdout.txt": "9e2d056b08a19d74086647733a465e1b21d94d0271c52873dfda96f251baf30f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ea1cace4646b463389a421bd77e3e41c56ee46c243231c293daea22ee45c5959"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/ntheory/factor_.py",
+      "function": "totient.eval"
+    }
+  ],
+  "mechanism": "The evaluator validates positive integers only after n.is_Integer succeeds. Unsupported noninteger/non-expression inputs fall through unevaluated instead of raising the required ValueError in the saved test. The additional guard enforces the API domain for those other inputs.",
+  "limitations": "The saved DID NOT RAISE establishes missing validation; it is not a syntax or dependency error. Unknown symbolic inputs are distinguished by explicit is_integer/is_positive False checks.",
+  "observed_junit": {
+    "base": {
+      "cases": 23,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 23,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.ntheory.tests.test_factor_::test_totient",
+      "message": "AssertionError: DID NOT RAISE"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

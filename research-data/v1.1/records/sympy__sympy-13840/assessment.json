@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T005941903533Z",
+  "reviewed_at": "2026-11-12T11:37:56+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "bb00efa3fece92682929a8bf6103d2e9925ab572d4b75eca8c5f5c6f146e93fe",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "2311bedc4ed977c7c5a05558e9347eab5df3ed84c7b99ff58fbbe4eb6dbe5034",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c6a4b2247c6e11b0d7c3cc2e4c0340d3c0a35ea78b6df33e14ef28e0310a0245",
+    "historical-fixed.stdout.txt": "2ed645ceed311d6f91d7a4fdd60e4c787e2d5aab8566e526af268d5efb8ce3fb",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "53cb4b1b617b9fb679c4c4779cc0cdf7bb99c610a4a23643c10225731bbea7f6"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/rcode.py",
+      "function": "<module>"
+    }
+  ],
+  "mechanism": "The R known-function registry omits factorial, so otherwise valid output is prefixed with a Not supported in R diagnostic. Adding its mapping allows the saved factorial-plus-gamma string to match the contract.",
+  "limitations": "The causal reference is a module registry, not a nearby arbitrary function. Other mappings added by the patch are not separately proven by the first saved failure.",
+  "observed_junit": {
+    "base": {
+      "cases": 23,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 23,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_rcode::test_rcode_functions",
+      "message": "AssertionError: assert '// Not suppo...x) + gamma(y)' == 'factorial(x) + gamma(y)'\n  + // Not supported in R:\n  + // factorial\n    factorial(x) + gamma(y)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

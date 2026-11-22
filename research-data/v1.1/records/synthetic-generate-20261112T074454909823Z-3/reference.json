@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T074454909823Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/combinatorial/numbers.py",
+      "function": "bernoulli.eval"
+    }
+  ],
+  "explanation": "The number-versus-polynomial branch now requires even n although its first case handles odd n. Odd scalar calls fall into the polynomial path with sym=None and saved execution raises None-to-integer-power TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/combinatorial/numbers.py",
+      "function": "bernoulli.eval"
+    },
+    {
+      "file": "sympy/functions/combinatorial/numbers.py",
+      "function": "genocchi.eval"
+    },
+    {
+      "file": "sympy/core/function.py",
+      "function": "Application.__new__"
+    },
+    {
+      "file": "sympy/core/function.py",
+      "function": "Function.__new__"
+    },
+    {
+      "file": "sympy/functions/combinatorial/numbers.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

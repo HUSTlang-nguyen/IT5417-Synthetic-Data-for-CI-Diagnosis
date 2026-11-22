@@ -1,0 +1,100 @@
+"""
+The classes used here are for the internal use of assumptions system
+only and should not be used anywhere else as these don't possess the
+signatures common to SymPy objects. For general use of logic constructs
+please refer to sympy.logic classes And, Or, Not, etc.
+"""
+from itertools import combinations, product
+from sympy import S, Nor, Nand, Xor, Implies, Equivalent, ITE
+from sympy.core.relational import Eq, Ne, Gt, Lt, Ge, Le
+from sympy.logic.boolalg import Or, And, Not, Xnor
+from itertools import zip_longest
+
+
+class Literal:
+    """
+    The smallest element of a CNF object.
+
+    Parameters
+    ==========
+
+    lit : Boolean expression
+
+    is_Not : bool
+
+    Examples
+    ========
+
+    >>> from sympy import Q
+    >>> from sympy.assumptions.cnf import Literal
+    >>> from sympy.abc import x
+    >>> Literal(Q.even(x))
+    Literal(Q.even(x), False)
+    >>> Literal(~Q.even(x))
+    Literal(Q.even(x), True)
+    """
+
+    def __new__(cls, lit, is_Not=False):
+        if isinstance(lit, Not):
+            lit = lit.args[0]
+            is_Not = True
+        elif isinstance(lit, (AND, OR, Literal)):
+            return ~lit if is_Not else lit
+        obj = super().__new__(cls)
+        obj.lit = lit
+        obj.is_Not = is_Not
+        return obj
+
+    @property
+    def arg(self):
+        return self.lit
+
+    def rcall(self, expr):
+        if callable(self.lit):
+            lit = self.lit(expr)
+        else:
+            try:
+                lit = self.lit.apply(expr)
+            except AttributeError:
+                lit = self.lit.rcall(expr)
+        return type(self)(lit, self.is_Not)
+
+    def __invert__(self):
+        is_Not = not self.is_Not
+        return Literal(self.lit, is_Not)
+
+    def __str__(self):
+        return '{}({}, {})'.format(type(self).__name__, self.lit, self.is_Not)
+
+    __repr__ = __str__
+
+    def __eq__(self, other):
+        return self.arg == other.arg and self.is_Not == other.is_Not
+
+    def __hash__(self):
+        h = hash((type(self).__name__, self.arg, self.is_Not))
+        return h
+
+
+class OR:
+    """
+    A low-level implementation for Or
+    """
+    def __init__(self, *args):
+        self._args = args
+
+    @property
+    def args(self):
+        return sorted(self._args, key=str)
+
+    def rcall(self, expr):
+        return type(self)(*[arg.rcall(expr)
+                            for arg in self._args
+                            ])
+
+    def __invert__(self):
+        return AND(*[~arg for arg in self._args])
+
+    def __hash__(self):
+        return hash((type(self).__name__,) + tuple(self.args))
+

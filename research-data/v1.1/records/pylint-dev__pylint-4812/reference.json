@@ -1,0 +1,31 @@
+{
+  "sample_id": "pylint-dev__pylint-4812",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "pylint/config/option_manager_mixin.py",
+      "function": "OptionsManagerMixIn.read_config_file"
+    }
+  ],
+  "explanation": "The configuration loader expands a home-directory marker but not environment variables in the supplied path. It checks the literal ${tmp_path_env} as a filename and raises does-not-exist even though variable expansion points to the fixture configuration. Applying expandvars after expanduser resolves the intended path.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/config/option_manager_mixin.py",
+      "function": "OptionsManagerMixIn.read_config_file"
+    },
+    {
+      "file": "pylint/config/option_manager_mixin.py",
+      "function": "OptionsManagerMixIn.add_option_group"
+    },
+    {
+      "file": "pylint/config/option_manager_mixin.py",
+      "function": "OptionsManagerMixIn.add_optik_option"
+    },
+    {
+      "file": "pylint/config/option_manager_mixin.py",
+      "function": "OptionsManagerMixIn.register_options_provider"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

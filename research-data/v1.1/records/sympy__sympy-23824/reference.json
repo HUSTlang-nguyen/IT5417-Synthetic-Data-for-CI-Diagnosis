@@ -1,0 +1,19 @@
+{
+  "sample_id": "sympy__sympy-23824",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "kahane_simplify"
+    }
+  ],
+  "explanation": "Free indices preceding the first contraction are inserted repeatedly at position zero in ascending order. That reverses their order, producing GammaMatrix(sigma)*GammaMatrix(rho) instead of rho then sigma in the saved assertion. Prepending the prefix as a list preserves order.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "kahane_simplify"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

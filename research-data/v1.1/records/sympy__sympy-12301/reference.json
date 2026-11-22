@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-12301",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "opt_cse._match_common_args.update"
+    },
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "tree_cse"
+    }
+  ],
+  "explanation": "Common-argument extraction builds unevaluated unit-power/product wrappers even when take equals1, and the final reduced-expression rebuilding leaves hollow nested products. The saved issue11230 result contains a nested Mul where the contract forbids it; the repair changes both extraction and rebuilding, and thirty selected tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

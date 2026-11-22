@@ -1,0 +1,19 @@
+{
+  "sample_id": "synthetic-generate-20261112T065150968266Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/mul.py",
+      "function": "Mul.flatten"
+    }
+  ],
+  "explanation": "The two-factor simplification path is gated on length3. Ordinary pairs bypass simplification, and three-factor paths can enter a two-value unpack. The saved exponential identity remains unsimplified and fails equality.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/mul.py",
+      "function": "Mul.flatten"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

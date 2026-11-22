@@ -1,0 +1,31 @@
+{
+  "sample_id": "synthetic-generate-20261112T060053656030Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_poly_system"
+    }
+  ],
+  "explanation": "The two-polynomial/two-generator special branch instead accepts three of each, then unpacks those three polynomials into f,g. The saved valid three-variable linear system raises too-many-values-to-unpack ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_poly_system"
+    },
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_biquadratic"
+    },
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_triangulated"
+    },
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_generic"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

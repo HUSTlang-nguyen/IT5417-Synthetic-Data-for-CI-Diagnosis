@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041633699930Z",
+  "reviewed_at": "2026-11-12T12:06:42+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6f43731485f266366ff3368c21e39b2cef8d24d59e437fbc16114f66ea7d5528",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "c38fef269a8040434082186dc22c2698f501c8e4d0ecb2a5451c01a24492fe03",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "450df660b1e965c05a023a292bb3af37da48bf199b9bad83ecafa10f2e36f498",
+    "historical-fixed.stdout.txt": "5ee70f43364d418e90030bd8678e8aa90e18d515b622fdcc7421eccf1869e897",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "74854a064e66db26a220b3f256217d0897da0c28390f52bfb330a4b3aeb9c1ec"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "degree"
+    }
+  ],
+  "mechanism": "The public degree helper silently chooses a generator when given a multivariate expression without an explicit symbol. The saved degree(y**2+x**3) does not raise its required TypeError. Checking multiple free symbols before choosing a default enforces the unambiguous-argument contract.",
+  "limitations": "The full saved test body identifies the failing lambda; the assertion helper is the reporting location, not the causal function. Existing Poly.degree behavior is separate.",
+  "observed_junit": {
+    "base": {
+      "cases": 132,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 132,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_polytools::test_Poly_degree",
+      "message": "AssertionError: DID NOT RAISE"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

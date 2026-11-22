@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T200914299471Z",
+  "reviewed_at": "2026-11-12T03:45:09+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "e1b72f47e03981c65aec0db65f247499304932987d4ee81ec44e1c7aac664067",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "e1e6952d1c7962994965fa833e2bc78f9ddc49bfb648e6fcdc604226ab01f1d8",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2d0d012e256a5571aa532dd4987d46b6e64f06b41788f7c427b05dd7d9d94f63",
+    "historical-fixed.stdout.txt": "b0efa8b90f4432810f63092bb22f290fab076a26621fc4b36f82f92d97efa327",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d53188809fcc15e0c71ee7fa5bf7d10a3be2cc6e28dd8d03055d772094cf2a57"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/util/docfields.py",
+      "function": "DocFieldTransformer.transform"
+    }
+  ],
+  "mechanism": "A typed parameter declaration is split at the first whitespace, so a multiword type such as Dict[str, str] is cut inside its type expression and the parameter name is misparsed. Splitting from the right preserves the complete type and takes the final token as the name.",
+  "evidence_reason": "Read DocFieldTransformer.transform at docfields.py:299-305 and split-to-rsplit repair. Base test_info_field_list expects parameter name params but the constructed node contains str; fixed: 45 passed and source F2P/P2P resolve.",
+  "limitations": "The assertion is raised in sphinx/testing/util.py:70, which is the detection helper, not the causal parser location. No claim of invalid Python syntax."
+}

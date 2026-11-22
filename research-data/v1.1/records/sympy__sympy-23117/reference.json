@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-23117",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray._scan_iterable_shape.f"
+    }
+  ],
+  "explanation": "Recursive shape scanning unpacks zip of an empty comprehension as two values. Saved array_type([]) raises expected2-got0 ValueError. Returning empty flattened contents and shape(0,) before unpacking supports the empty-array input.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray._scan_iterable_shape"
+    },
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray._scan_iterable_shape.f"
+    },
+    {
+      "file": "sympy/tensor/array/ndim_array.py",
+      "function": "NDimArray._handle_ndarray_creation_inputs"
+    },
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "ImmutableDenseNDimArray.__new__"
+    },
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "ImmutableDenseNDimArray._new"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

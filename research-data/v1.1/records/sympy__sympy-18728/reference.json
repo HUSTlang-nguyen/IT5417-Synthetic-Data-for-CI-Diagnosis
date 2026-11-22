@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18728",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_is_zero"
+    }
+  ],
+  "explanation": "The zero predicate applies real positive/negative infinity reasoning to complex infinity. Saved Pow(1/2,zoo,evaluate=False).is_zero returns False where the oracle requires unknown None. Requiring extended-real infinity preserves uncertainty for that indeterminate exponent.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_is_finite"
+    },
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_is_zero"
+    },
+    {
+      "file": "examples/advanced/fem.py",
+      "function": "ReferenceSimplex.__init__"
+    },
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_is_imaginary"
+    },
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_is_composite"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

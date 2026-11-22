@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T034720881210Z",
+  "reviewed_at": "2026-11-12T11:50:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "02cd7272b59be816526e768c697de5ae6868105c0c02f5a0d7906a8530debc9f",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "8456cca698d8258a103027acbc91fdd4ac999920922852b44f14ef23f646f9b4",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "28576b84480d982dfba14b9a4db863ab0ef5e39ca0739ff6e5debf5482503e48",
+    "historical-fixed.stdout.txt": "1f72e3d540d49207d908e728e85e083d5bf65498867de2674daa02f00cd80fb5",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "75346f031ae73cbed5da8f1014648e925014f2d93e689caac78b92aa60927a0a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/permutations.py",
+      "function": "Permutation.__new__"
+    }
+  ],
+  "mechanism": "Repeated elements are rejected even in cycle notation, where overlapping cycles legitimately share elements and are composed. The saved (0,1)(0,2) input raises ValueError before that composition. Restricting duplicate rejection to array notation allows the intended cycle path.",
+  "limitations": "Duplicate elements remain invalid in ordinary array-form permutations; the fix does not generally accept arbitrary repeated entries.",
+  "observed_junit": {
+    "base": {
+      "cases": 8,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 8,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.combinatorics.tests.test_permutations::test_args",
+      "message": "ValueError: there were repeated elements; to resolve cycles use Cycle(0, 1)(0, 2)."
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

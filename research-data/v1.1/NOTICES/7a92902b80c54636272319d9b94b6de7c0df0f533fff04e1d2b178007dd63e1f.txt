@@ -1,0 +1,100 @@
+import inspect
+import re
+import sys
+import traceback
+from inspect import CO_VARARGS
+from inspect import CO_VARKEYWORDS
+from io import StringIO
+from traceback import format_exception_only
+from types import CodeType
+from types import FrameType
+from types import TracebackType
+from typing import Any
+from typing import Callable
+from typing import Dict
+from typing import Generic
+from typing import Iterable
+from typing import List
+from typing import Mapping
+from typing import Optional
+from typing import Pattern
+from typing import Sequence
+from typing import Set
+from typing import Tuple
+from typing import TypeVar
+from typing import Union
+from weakref import ref
+
+import attr
+import pluggy
+import py
+
+import _pytest
+from _pytest._code.source import findsource
+from _pytest._code.source import getrawcode
+from _pytest._code.source import getstatementrange_ast
+from _pytest._code.source import Source
+from _pytest._io import TerminalWriter
+from _pytest._io.saferepr import safeformat
+from _pytest._io.saferepr import saferepr
+from _pytest.compat import ATTRS_EQ_FIELD
+from _pytest.compat import get_real_func
+from _pytest.compat import overload
+from _pytest.compat import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Type
+    from typing_extensions import Literal
+    from weakref import ReferenceType
+
+    _TracebackStyle = Literal["long", "short", "line", "no", "native", "value", "auto"]
+
+
+class Code:
+    """Wrapper around Python code objects."""
+
+    def __init__(self, rawcode) -> None:
+        if not hasattr(rawcode, "co_filename"):
+            rawcode = getrawcode(rawcode)
+        if not isinstance(rawcode, CodeType):
+            raise TypeError("not a code object: {!r}".format(rawcode))
+        self.filename = rawcode.co_filename
+        self.firstlineno = rawcode.co_firstlineno - 1
+        self.name = rawcode.co_name
+        self.raw = rawcode
+
+    def __eq__(self, other):
+        return self.raw == other.raw
+
+    # Ignore type because of https://github.com/python/mypy/issues/4266.
+    __hash__ = None  # type: ignore
+
+    @property
+    def path(self) -> Union[py.path.local, str]:
+        """Return a path object pointing to source code (or a str in case
+        of OSError / non-existing file).
+        """
+        if not self.raw.co_filename:
+            return ""
+        try:
+            p = py.path.local(self.raw.co_filename)
+            # maybe don't try this checking
+            if not p.check():
+                raise OSError("py.path check failed.")
+            return p
+        except OSError:
+            # XXX maybe try harder like the weird logic
+            # in the standard lib [linecache.updatecache] does?
+            return self.raw.co_filename
+
+    @property
+    def fullsource(self) -> Optional["Source"]:
+        """Return a _pytest._code.Source object for the full source file of the code."""
+        full, _ = findsource(self.raw)
+        return full
+
+    def source(self) -> "Source":
+        """Return a _pytest._code.Source object for the code object's source only."""
+        # return source only for that part of code
+        return Source(self.raw)
+

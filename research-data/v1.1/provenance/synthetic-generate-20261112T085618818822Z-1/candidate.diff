@@ -1,0 +1,11 @@
+--- a/sympy/core/operations.py
++++ b/sympy/core/operations.py
+@@ -339,7 +339,7 @@
+         args = []
+         for a in self.args:
+             newa = a._eval_evalf(prec)
+-            if newa is None:
++            if newa is not None:
+                 args.append(a)
+             else:
+                 args.append(newa)

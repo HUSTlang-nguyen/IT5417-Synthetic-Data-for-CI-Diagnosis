@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T013151888811Z",
+  "reviewed_at": "2026-11-12T11:46:23+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "da826fd195ff15b73d94213ab8f9b2cbe94f3ac34c02c23fd62956bb9d836e61",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "eba7da700cab22f210471574adbc31264fd00a69d80b9c1805d193097ea12f1f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "102948fc5bd6ccd6a804656e8bb97bb5ebcd6e27c0d5ab2b5f768999f633944d",
+    "historical-fixed.stdout.txt": "826d826df6c000183d9023c24df6d6b34254e4172dfc47820c2fe9166abbb244",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "74c710c3fcde1e2bb65d3f57a558079c895d7af8a34968d35e20b30dabfcd7a7"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    }
+  ],
+  "mechanism": "Addition compares dimension expressions structurally instead of using dimension-system equivalence. Velocity and acceleration*time are rejected as different although equivalent in the system, producing the saved ValueError. equivalent_dims performs the required comparison.",
+  "limitations": "The saved example establishes this equivalence failure; it does not prove arbitrary dimension expressions equivalent.",
+  "observed_junit": {
+    "base": {
+      "cases": 32,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 32,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.units.tests.test_quantities::test_issue_24211",
+      "message": "ValueError: Dimension of \"V1\" is Dimension(velocity), but it should be Dimension(acceleration*time)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

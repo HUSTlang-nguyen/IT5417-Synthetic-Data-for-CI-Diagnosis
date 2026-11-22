@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041220099726Z",
+  "reviewed_at": "2026-11-12T12:03:11+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "87fbbd823afdb2aa3df27a4ba352be9c139515ef133f89ffcbf73d78a580c3ea",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "fd45acb6e95c83beefc246629976782883e7e2976af909b0d1c976933700c81e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f8245c578ee24ccfe9668574d9e9161afe894b83e902e2ed39cfd9183536254c",
+    "historical-fixed.stdout.txt": "62e13c18f9764900c5d587bd86348709162dc2cd36ddc84abaa6c5d7ccdd6f04",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "9c047ad02501820e32300690fab3ae9a8f7684b37518e2ce21bdc6fde993bdd9"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/polys/monomials.py",
+      "function": "itermonomials"
+    }
+  ],
+  "mechanism": "Minimum total degree is checked with the maximum individual exponent instead of the sum. Mixed monomials x**2*y and x*y**2 are incorrectly omitted from the saved total-degree3 set. Summing exponents implements the total-degree bound.",
+  "limitations": "The patch fixes both commutative and noncommutative branches. The saved first failure specifically shows the commutative mixed terms, not a separate independent noncommutative observation.",
+  "observed_junit": {
+    "base": {
+      "cases": 10,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 10,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_monomials::test_monomials",
+      "message": "assert {x**3, y**3} == {x**3, x**2*y, x*y**2, y**3}\n  Extra items in the right set:\n  x**2*y\n  x*y**2\n  Full diff:\n  - {x**3, x**2*y, x*y**2, y**3}\n  + {x**3, y**3}"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

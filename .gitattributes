@@ -12,3 +12,7 @@ data-manifests/training-v1.1.json -text whitespace=cr-at-eol
 data-manifests/training-v1.2.json -text whitespace=cr-at-eol
 data-manifests/evaluation-v*.json -text whitespace=cr-at-eol
 cases/*/case.json -text whitespace=cr-at-eol
+research-data/** -text
+data-manifests/dataset-v2*.json -text whitespace=cr-at-eol
+docs/evidence/dataset-v2*.json -text whitespace=cr-at-eol
+docs/evidence/dataset-v1-portable*.json -text whitespace=cr-at-eol

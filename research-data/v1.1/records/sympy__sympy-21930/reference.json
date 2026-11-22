@@ -1,0 +1,43 @@
+{
+  "sample_id": "sympy__sympy-21930",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "AntiSymmetricTensor._latex"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "CreateBoson._latex"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "CreateFermion._latex"
+    }
+  ],
+  "explanation": "The custom LaTeX methods emit superscript/subscript-bearing objects without wrapping the whole object in braces. Saved boson, fermion, tensor and compound-expression strings lack the required grouping. Bracing each custom object preserves that atomic rendering in surrounding notation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "AntiSymmetricTensor.doit"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "AntiSymmetricTensor.symbol"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "NO.doit"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "Commutator.doit"
+    },
+    {
+      "file": "sympy/physics/secondquant.py",
+      "function": "AntiSymmetricTensor.upper"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

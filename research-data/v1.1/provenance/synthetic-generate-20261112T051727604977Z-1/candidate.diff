@@ -1,0 +1,11 @@
+--- a/sympy/matrices/expressions/matexpr.py
++++ b/sympy/matrices/expressions/matexpr.py
+@@ -24,7 +24,7 @@
+         def __sympifyit_wrapper(a, b):
+             try:
+                 b = _sympify(b)
+-                return func(a, b)
++                return func(b, a)
+             except SympifyError:
+                 return retval
+ 

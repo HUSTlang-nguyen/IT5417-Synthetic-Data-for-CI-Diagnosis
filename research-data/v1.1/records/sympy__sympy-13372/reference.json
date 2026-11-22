@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13372",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "evalf"
+    }
+  ],
+  "explanation": "The fallback initializes reprec/imprec only for zero or numeric real/imaginary parts, then constructs the result tuple even when a part remains symbolic. Max(0,y) reaches an uninitialized reprec and raises the saved UnboundLocalError. Rejecting the unsupported symbolic branch avoids that invalid result path.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "evalf"
+    },
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "EvalfMixin.evalf"
+    },
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "evalf_mul"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

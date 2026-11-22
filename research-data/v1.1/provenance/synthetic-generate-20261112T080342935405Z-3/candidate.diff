@@ -1,0 +1,11 @@
+--- a/sympy/geometry/util.py
++++ b/sympy/geometry/util.py
+@@ -398,7 +398,7 @@
+                 'Convex hull for %s not implemented.' % type(e))
+ 
+     # make sure all our points are of the same dimension
+-    if any(len(x) != 2 for x in p):
++    if any(len(x) != 3 for x in p):
+         raise ValueError('Can only compute the convex hull in two dimensions')
+ 
+     p = list(p)

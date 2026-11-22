@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040813942230Z",
+  "reviewed_at": "2026-11-12T12:00:49+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7fd77b31c4504a8cbbf59f497dfc3afa6cc9304d50de97f6b3f00ae7d02686b0",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "61b7fbfcbe08fa545600436aea2e5096eafb88f339752cdaf47934eb4c6886c7",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "3a04fef06f3cbce06354bdf9315f2f876d63dfcc350f81379472d0b0dbe0b8e0",
+    "historical-fixed.stdout.txt": "5dab63ac377f52c32e552ef9c818cd903bdf622b4a173e9287c04bf0901fc564",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "6cd0f856f12409c3e4ba2a71b7daa3880fd2bf07dab2c1d7df1eb8b7ce802b4f"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_LambertW"
+    }
+  ],
+  "mechanism": "Power-printing dispatch passes exp to the LambertW handler, whose signature omits it. The saved call raises unexpected-keyword TypeError. Accepting exp and rendering that superscript makes the handler conform to the printer interface.",
+  "limitations": "This shares an interface-omission pattern with other special-function handlers, but affects a different named function. Preserve that related-family qualification rather than claiming statistically independent examples.",
+  "observed_junit": {
+    "base": {
+      "cases": 154,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 154,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_functions",
+      "message": "TypeError: _print_LambertW() got an unexpected keyword argument 'exp'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

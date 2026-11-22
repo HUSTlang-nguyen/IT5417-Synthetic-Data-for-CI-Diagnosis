@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from typing import Tuple as tTuple
+
+from .sympify import sympify, _sympify, SympifyError
+from .basic import Basic, Atom
+from .singleton import S
+from .evalf import EvalfMixin, pure_complex
+from .decorators import call_highest_priority, sympify_method_args, sympify_return
+from .cache import cacheit
+from .compatibility import reduce, as_int, default_sort_key, Iterable
+from sympy.utilities.misc import func_name
+from mpmath.libmp import mpf_log, prec_to_dps
+
+from collections import defaultdict
+
+
+@sympify_method_args
+class Expr(Basic, EvalfMixin):
+    """
+    Base class for algebraic expressions.
+
+    Everything that requires arithmetic operations to be defined
+    should subclass this class, instead of Basic (which should be
+    used only for argument storage and expression manipulation, i.e.
+    pattern matching, substitutions, etc).
+
+    See Also
+    ========
+
+    sympy.core.basic.Basic
+    """
+
+    __slots__ = ()  # type: tTuple[str, ...]
+
+    is_scalar = True  # self derivative is 1
+
+    @property
+    def _diff_wrt(self):
+        """Return True if one can differentiate with respect to this
+        object, else False.
+
+        Subclasses such as Symbol, Function and Derivative return True
+        to enable derivatives wrt them. The implementation in Derivative
+        separates the Symbol and non-Symbol (_diff_wrt=True) variables and
+        temporarily converts the non-Symbols into Symbols when performing
+        the differentiation. By default, any object deriving from Expr
+        will behave like a scalar with self.diff(self) == 1. If this is
+        not desired then the object must also set `is_scalar = False` or
+        else define an _eval_derivative routine.
+
+        Note, see the docstring of Derivative for how this should work
+        mathematically. In particular, note that expr.subs(yourclass, Symbol)
+        should be well-defined on a structural level, or this will lead to
+        inconsistent results.
+
+        Examples
+        ========
+
+        >>> from sympy import Expr
+        >>> e = Expr()
+        >>> e._diff_wrt
+        False
+        >>> class MyScalar(Expr):
+        ...     _diff_wrt = True
+        ...
+        >>> MyScalar().diff(MyScalar())
+        1
+        >>> class MySymbol(Expr):
+        ...     _diff_wrt = True
+        ...     is_scalar = False
+        ...
+        >>> MySymbol().diff(MySymbol())
+        Derivative(MySymbol(), MySymbol())
+        """
+        return False
+
+    @cacheit
+    def sort_key(self, order=None):
+
+        coeff, expr = self.as_coeff_Mul()
+
+        if expr.is_Pow:
+            expr, exp = expr.args
+        else:
+            expr, exp = expr, S.One
+
+        if expr.is_Dummy:
+            args = (expr.sort_key(),)
+        elif expr.is_Atom:
+            args = (str(expr),)
+        else:
+            if expr.is_Add:
+                args = expr.as_ordered_terms(order=order)
+            elif expr.is_Mul:
+                args = expr.as_ordered_factors(order=order)
+            else:
+                args = expr.args
+
+            args = tuple(

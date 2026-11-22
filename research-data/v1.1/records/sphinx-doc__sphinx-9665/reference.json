@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9665",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify"
+    }
+  ],
+  "explanation": "restify receives a string forward annotation but lacks a string identity branch. It reaches the repr fallback, which adds quote characters; the expected reStructuredText representation preserves the original string. The repair returns string annotations unchanged.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "Struct.__init__"
+    },
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify"
+    },
+    {
+      "file": "sphinx/util/jsdump.py",
+      "function": "dump"
+    },
+    {
+      "file": "sphinx/errors.py",
+      "function": "SphinxParallelError.__init__"
+    },
+    {
+      "file": "sphinx/ext/autosummary/generate.py",
+      "function": "ModuleScanner.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "pydicom__pydicom-900",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.__init__"
+    }
+  ],
+  "explanation": "Known tags marked with unknown VR retain their raw bytes rather than recovering the dictionary VR. The character-set consumer iterates those bytes as integers and passes73 to a regex, causing the saved TypeError during decode. Recovering the known short-value VR enables the expected conversion.",
+  "retrieved_locations": [
+    {
+      "file": "pydicom/charset.py",
+      "function": "convert_encodings"
+    },
+    {
+      "file": "pydicom/charset.py",
+      "function": "_python_encoding_for_corrected_encoding"
+    },
+    {
+      "file": "pydicom/dataset.py",
+      "function": "Dataset._character_set"
+    },
+    {
+      "file": "pydicom/dataset.py",
+      "function": "Dataset.decode"
+    },
+    {
+      "file": "pydicom/dataset.py",
+      "function": "Dataset.get"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

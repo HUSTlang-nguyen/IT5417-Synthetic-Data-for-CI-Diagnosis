@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-24455",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.is_cyclic"
+    }
+  ],
+  "explanation": "The group test applies prime-power subgroup criteria without first enforcing that the group is abelian, and can mark SymmetricGroup(3) cyclic. The saved assertion shows that false positive. Rejecting nonabelian groups before the remaining criterion preserves this necessary condition.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.is_abelian"
+    },
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.is_elementary"
+    },
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.is_cyclic"
+    },
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.is_subgroup"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

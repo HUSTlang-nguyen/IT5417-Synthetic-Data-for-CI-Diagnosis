@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T210006541676Z",
+  "reviewed_at": "2026-11-12T07:28:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "342254b3cdc395b7a8c4badb9418ee0dad81233d9a50786dc1f222837e7ba332",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "cc6b469ba6f45bda936239a6e07d818798270833c04a0714a974f77159974057",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "6a62a74b071560e8df6ebfc387f7a2d8ad4ae467cb236bc289dfe691a90ff148",
+    "historical-fixed.stdout.txt": "3d9dbac0eaac89eebb085e59e7facfa221fc369e7ee2ba5f87c43a6c32430cd3",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "73a51d6a97b4b1d37316e473914a06cd932e7501989edf7713d4226366ff9655"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "PyXrefMixin.make_xrefs"
+    }
+  ],
+  "mechanism": "The type-reference delimiter regex omits ellipsis. A Tuple-style ... token is sent to make_xref as a type name instead of being emitted as punctuation, producing a pending_xref where a literal node is expected. Adding ellipsis to the delimiter alternatives preserves the intended document tree.",
+  "limitations": "This is a node-construction logic fault; the regular expression compiles and Python syntax is valid.",
+  "observed_junit": {
+    "base": {
+      "cases": 41,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 41,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_py::test_info_field_list",
+      "message": "AssertionError: The node[6] is not subclass of <class 'sphinx.addnodes.literal_emphasis'>: <pending_xref: <literal_emphasis...>>"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

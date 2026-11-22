@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-13146",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/operations.py",
+      "function": "AssocOp._eval_evalf"
+    }
+  ],
+  "explanation": "The evaluator can preserve the old associative tail when structural sameness checks do not reflect the requested changed precision. The saved five-digit evaluation retains a fifteen-digit exponent representation. Reconstructing the operation from evaluated arguments preserves that requested precision in the result.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

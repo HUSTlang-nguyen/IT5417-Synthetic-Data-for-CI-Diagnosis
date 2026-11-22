@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 12 items\n\nsympy/functions/special/tests/test_hyper.py::test_limits FAILED          [  8%]\nsympy/functions/special/tests/test_hyper.py::test_TupleParametersBase PASSED [ 16%]\nsympy/functions/special/tests/test_hyper.py::test_hyper PASSED           [ 25%]\nsympy/functions/special/tests/test_hyper.py::test_expand_func PASSED     [ 33%]\nsympy/functions/special/tests/test_hyper.py::test_hyper_rewrite_sum PASSED [ 41%]\nsympy/functions/special/tests/test_hyper.py::test_radius_of_convergence PASSED [ 50%]\nsympy/functions/special/tests/test_hyper.py::test_meijer PASSED          [ 58%]\nsympy/functions/special/tests/test_hyper.py::test_meijerg_derivative PASSED [ 66%]\nsympy/functions/special/tests/test_hyper.py::test_meijerg_period PASSED  [ 75%]\nsympy/functions/special/tests/test_hyper.py::test_hyper_unpolarify PASSED [ 83%]\nsympy/functions/special/tests/test_hyper.py::test_appellf1 PASSED        [ 91%]\nsympy/functions/special/tests/test_hyper.py::test_derivative_appellf1 PASSED [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_limits __________________________________\n\n    def test_limits():\n        k, x = symbols('k, x')\n>       assert hyper((1,), (Rational(4, 3), Rational(5, 3)), k**2).series(k) == \\\n               1 + 9*k**2/20 + 81*k**4/1120 + O(k**6) # issue 6350\nE       assert hyper((1,), (4/3, 5/3), 0) + 9*k**2*hyper((2,), (7/3, 8/3), 0)/20 + 81*k**4*hyper((3,), (10/3, 11/3), 0)/1120 + O(k**6) == (((1 + ((9 * (k ** 2)) / 20)) + ((81 * (k ** 4)) / 1120)) + O(k**6))\nE        +  where hyper((1,), (4/3, 5/3), 0) + 9*k**2*hyper((2,), (7/3, 8/3), 0)/20 + 81*k**4*hyper((3,), (10/3, 11/3), 0)/1120 + O(k**6) = <bound method Expr.series of hyper((1,), (4/3, 5/3), k**2)>(k)\nE        +    where <bound method Expr.series of hyper((1,), (4/3, 5/3), k**2)> = hyper((1,), (4/3, 5/3), k**2).series\nE        +      where hyper((1,), (4/3, 5/3), k**2) = hyper((1,), (4/3, 5/3), (k ** 2))\nE        +  and   O(k**6) = O((k ** 6))\n\nsympy/functions/special/tests/test_hyper.py:343: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/functions/special/tests/test_hyper.py::test_limits - assert hype...\n=================== 1 failed, 11 passed, 1 warning in 1.18s ====================\n",
+  "code": [
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper.convergence_statement",
+      "start_line": 301,
+      "end_line": 315,
+      "score": 51.322876,
+      "text": "sympy/functions/special/hyper.py::hyper.convergence_statement lines 301-315\n    def convergence_statement(self):\n        \"\"\" Return a condition on z under which the series converges. \"\"\"\n        from sympy import And, Or, re, Ne, oo\n        R = self.radius_of_convergence\n        if R == 0:\n            return False\n        if R == oo:\n            return True\n        # The special functions and their approximations, page 44\n        e = self.eta\n        z = self.argument\n        c1 = And(re(e) < 0, abs(z) <= 1)\n        c2 = And(0 <= re(e), re(e) < 1, abs(z) <= 1, Ne(z, 1))\n        c3 = And(re(e) >= 1, abs(z) < 1)\n        return Or(c1, c2, c3)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper.eval",
+      "start_line": 190,
+      "end_line": 195,
+      "score": 51.1094,
+      "text": "sympy/functions/special/hyper.py::hyper.eval lines 190-195\n    def eval(cls, ap, bq, z):\n        from sympy import unpolarify\n        if len(ap) <= len(bq) or (len(ap) == len(bq) + 1 and (Abs(z) <= 1) == True):\n            nz = unpolarify(z)\n            if z != nz:\n                return hyper(ap, bq, nz)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper._eval_expand_func",
+      "start_line": 205,
+      "end_line": 211,
+      "score": 51.1094,
+      "text": "sympy/functions/special/hyper.py::hyper._eval_expand_func lines 205-211\n    def _eval_expand_func(self, **hints):\n        from sympy import gamma, hyperexpand\n        if len(self.ap) == 2 and len(self.bq) == 1 and self.argument == 1:\n            a, b = self.ap\n            c = self.bq[0]\n            return gamma(c)*gamma(c - a - b)/gamma(c - a)/gamma(c - b)\n        return hyperexpand(self)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper._diffargs",
+      "start_line": 239,
+      "end_line": 240,
+      "score": 51.0,
+      "text": "sympy/functions/special/hyper.py::hyper._diffargs lines 239-240\n    def _diffargs(self):\n        return self.ap + self.bq",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/special/hyper.py",
+      "function": "hyper.eta",
+      "start_line": 243,
+      "end_line": 245,
+      "score": 50.948683,
+      "text": "sympy/functions/special/hyper.py::hyper.eta lines 243-245\n    def eta(self):\n        \"\"\" A quantity related to the convergence of the series. \"\"\"\n        return sum(self.ap) - sum(self.bq)",
+      "truncated": false
+    }
+  ]
+}

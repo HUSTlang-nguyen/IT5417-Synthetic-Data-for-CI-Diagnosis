@@ -1,0 +1,11 @@
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -846,7 +846,7 @@
+         """
+ 
+         s, p = Point._normalize_dimension(self, Point(p))
+-        if self.is_zero and p.is_zero:
++        if self.is_zero and p.is_one:
+             raise ValueError("Cannot project to the zero vector.")
+         return Add(*((abs(a - b)/(abs(a) + abs(b))) for a, b in zip(s, p)))
+ 

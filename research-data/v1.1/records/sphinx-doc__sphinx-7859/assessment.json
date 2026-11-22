@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T005110612589Z",
+  "reviewed_at": "2026-11-12T10:44:17+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "44acb3a759a4f370d2b9f0156bd0b56fa7c1cdd0ec051a1761de653ed99ab669",
+    "license-evidence.json": "8dd0765a115cdb8942009d9cd8c4d4f8a9c2d128e5a114cbd873c13cb176f354",
+    "historical-base.stdout.txt": "e349816a0ebf73e959cc19e542c12c90cf8c16cb9cd49e69e0304fcc89367f22",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "068b2b492611878572b04ceb13ab3b80f79feb10dcf00e774e336b01c5c3607d",
+    "historical-fixed.stdout.txt": "f36de7f276c9eba3db4cf7142d7dbc8485af52eece1b4c01d6f496539e3bbe53",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "84997eb4459ea1ef96e0f804785f1c0f1cf135bca91b58395af3b4d0df6413fc"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/typehints.py",
+      "function": "merge_typehints"
+    }
+  ],
+  "mechanism": "The event handler assumes every signature node has module/fullname context keys and subscripts them without a guard. An invalid-context node causes a KeyError wrapped by the event dispatcher as ExtensionError. Returning when those keys are absent allows the saved documentation build to complete.",
+  "limitations": "The event wrapper is the detection site, not the causal function. This is a node-metadata contract assumption in the extension, not proof of a missing external dependency.",
+  "observed_junit": {
+    "base": {
+      "cases": 15,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 15,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_ext_autodoc_configs::test_autodoc_typehints_description_for_invalid_node",
+      "message": "sphinx.errors.ExtensionError: Handler <function merge_typehints at 0x793530fb49d0> for event 'object-description-transform' threw an exception"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from sympy.concrete.expr_with_limits import AddWithLimits
+from sympy.core.add import Add
+from sympy.core.basic import Basic
+from sympy.core.compatibility import is_sequence, range
+from sympy.core.containers import Tuple
+from sympy.core.expr import Expr
+from sympy.core.function import diff
+from sympy.core.mul import Mul
+from sympy.core.numbers import oo
+from sympy.core.relational import Eq, Ne
+from sympy.core.singleton import S
+from sympy.core.symbol import (Dummy, Symbol, Wild)
+from sympy.core.sympify import sympify
+from sympy.integrals.manualintegrate import manualintegrate
+from sympy.integrals.trigonometry import trigintegrate
+from sympy.integrals.meijerint import meijerint_definite, meijerint_indefinite
+from sympy.matrices import MatrixBase
+from sympy.utilities.misc import filldedent
+from sympy.polys import Poly, PolynomialError
+from sympy.functions import Piecewise, sqrt, sign, piecewise_fold
+from sympy.functions.elementary.complexes import Abs, sign
+from sympy.functions.elementary.exponential import log
+from sympy.functions.elementary.miscellaneous import Min, Max
+from sympy.series import limit
+from sympy.series.order import Order
+from sympy.series.formal import FormalPowerSeries
+
+
+class Integral(AddWithLimits):
+    """Represents unevaluated integral."""
+
+    __slots__ = ['is_commutative']
+
+    def __new__(cls, function, *symbols, **assumptions):
+        """Create an unevaluated integral.
+
+        Arguments are an integrand followed by one or more limits.
+
+        If no limits are given and there is only one free symbol in the
+        expression, that symbol will be used, otherwise an error will be
+        raised.
+
+        >>> from sympy import Integral
+        >>> from sympy.abc import x, y
+        >>> Integral(x)
+        Integral(x, x)
+        >>> Integral(y)
+        Integral(y, y)
+
+        When limits are provided, they are interpreted as follows (using
+        ``x`` as though it were the variable of integration):
+
+            (x,) or x - indefinite integral
+            (x, a) - "evaluate at" integral is an abstract antiderivative
+            (x, a, b) - definite integral
+
+        The ``as_dummy`` method can be used to see which symbols cannot be
+        targeted by subs: those with a preppended underscore cannot be
+        changed with ``subs``. (Also, the integration variables themselves --
+        the first element of a limit -- can never be changed by subs.)
+
+        >>> i = Integral(x, x)
+        >>> at = Integral(x, (x, x))
+        >>> i.as_dummy()
+        Integral(x, x)
+        >>> at.as_dummy()
+        Integral(_x, (_x, x))
+
+        """
+
+        #This will help other classes define their own definitions
+        #of behaviour with Integral.
+        if hasattr(function, '_eval_Integral'):
+            return function._eval_Integral(*symbols, **assumptions)
+
+        obj = AddWithLimits.__new__(cls, function, *symbols, **assumptions)
+        return obj
+
+    def __getnewargs__(self):
+        return (self.function,) + tuple([tuple(xab) for xab in self.limits])
+
+    @property
+    def free_symbols(self):
+        """
+        This method returns the symbols that will exist when the
+        integral is evaluated. This is useful if one is trying to
+        determine whether an integral depends on a certain
+        symbol or not.
+
+        Examples
+        ========
+
+        >>> from sympy import Integral
+        >>> from sympy.abc import x, y
+        >>> Integral(x, (x, y, 1)).free_symbols
+        {y}
+
+        See Also

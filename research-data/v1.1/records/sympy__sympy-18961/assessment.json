@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T061636413519Z",
+  "reviewed_at": "2026-11-12T18:27:13+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "4eb80803c3efe02599853ad60fb70dd90320daed17565324a43368e344dbbf65",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "b01e47e72eb48431924f08628cee9dfd0bf67af83c9a1fdaf125db33802bb9d9",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f2a6e66cd20ca7074ec28fdfd8b0647698421df14bc5f41b6741bb23116c2204",
+    "historical-fixed.stdout.txt": "4662bbcdc73d6f238c95b056e9cfe9b913658d049c089e97e386c3ffd9c92ea5",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b56d24430f0ff2960c2c534c0873045ed7ea8eca51f3e808c55f6c5ceb1a3e26"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/ntheory/digits.py",
+      "function": "digits"
+    }
+  ],
+  "mechanism": "The base digits API accepts at most two positional arguments and has no requested-width parameter. The saved new three-argument call raises TypeError before computation; the repair adds the parameter and zero-padding/width validation, and the same two tests pass.",
+  "limitations": "This is an API extension relative to the supplied test contract, not proof that older documented two-argument calls were wrong. The repair patch stays reference-only, and the TypeError test line is the observation, not the causal definition.",
+  "observed_junit": {
+    "base": {
+      "cases": 2,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 2,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.ntheory.tests.test_digits::test_digits",
+      "message": "TypeError: digits() takes from 1 to 2 positional arguments but 3 were given"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

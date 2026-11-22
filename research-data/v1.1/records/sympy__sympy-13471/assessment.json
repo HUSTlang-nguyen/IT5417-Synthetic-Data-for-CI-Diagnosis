@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T034530203896Z",
+  "reviewed_at": "2026-11-12T11:52:13+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "4e752eb8129a68ff011a5e385a1a2e3d831e6f1288d0906f634dda924693b833",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "639234d9d6862362e9cbb90900b950157a7e4722107b594664f0adbad153817c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f48e8cd0a2454fd949dd5f188cb8f786c54bc1e13a8acbe87dbf7fbd6c182277",
+    "historical-fixed.stdout.txt": "bc17ccb8c3376f8715ace5bb8bb46b4bf3c1d43e863c43ea7d1e2e7c0ca43a88",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ccdaa88a71c536351a857d27d6c50c44e58b554288ff639e42d509101d3dd3ed"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__new__"
+    }
+  ],
+  "mechanism": "The serialized hexadecimal mantissa is passed directly to the Python3 integer parser even when it retains a Python2 long suffix L. The saved tuple input1L raises ValueError. Removing that known suffix before base16 parsing preserves serialization compatibility.",
+  "limitations": "The test provides a controlled legacy-format tuple; no untrusted pickle was loaded or executed on the host.",
+  "observed_junit": {
+    "base": {
+      "cases": 83,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 83,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_numbers::test_Float_from_tuple",
+      "message": "ValueError: invalid literal for int() with base 16: '1L'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

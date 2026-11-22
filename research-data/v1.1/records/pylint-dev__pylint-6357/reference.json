@@ -1,0 +1,31 @@
+{
+  "sample_id": "pylint-dev__pylint-6357",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "Similar.append_stream"
+    }
+  ],
+  "explanation": "Disabled duplicate-code lines are removed before the source is parsed for import/signature filtering. Removing an entire function body leaves a def with no suite, so the checker reparses its own mutilated intermediate source and crashes with AstroidSyntaxError. Retaining the original source for parsing and applying enabled-line filtering afterward avoids that structural corruption.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "SimilarChecker.process_module"
+    },
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "stripped_lines"
+    },
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "Similar.append_stream"
+    },
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "LineSet.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

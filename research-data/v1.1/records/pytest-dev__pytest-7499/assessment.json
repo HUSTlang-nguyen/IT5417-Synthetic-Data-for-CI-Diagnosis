@@ -1,0 +1,60 @@
+{
+  "run_id": "reproduce-20261112T012540779445Z",
+  "reviewed_at": "2026-11-12T11:38:44+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "9482f3c3b5356269f7cf7ec8681dceee3fc4f9c437a57795245971d1f4acd94d",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "80f4157fc929addea477e26e7787c359928051de0373120a2890d5a341402c7e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4fb22750d17a459a7fc94107216b99018381e4358c41ead6a2972c65382e80ae",
+    "historical-fixed.stdout.txt": "3db665d9bf9b54de5b9780bca9c753b4056dd47d685a69f53b977ca5191e2a7c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "fd11523e7477896127f72f4ed14a8be8d781ff6a255aaa8d3e8fa85d47565d9f"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/_code/code.py",
+      "function": "ExceptionInfo.match"
+    }
+  ],
+  "mechanism": "The mismatch diagnostic still uses the old Pattern ... does not match text and lacks the revised punctuation/escaping hint. Saved assertions require the Regex pattern ... message and fail on the difference. Building the required diagnostic in this method restores the contract.",
+  "limitations": "This is error-message behavior rather than a changed regex match result. Related message-only cases remain marked as such for dataset limitations.",
+  "observed_junit": {
+    "base": {
+      "cases": 119,
+      "failures_or_errors": 4,
+      "skipped": 2
+    },
+    "head": {
+      "cases": 119,
+      "failures_or_errors": 0,
+      "skipped": 2
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.python.raises.TestRaises::test_raises_match",
+      "message": "AssertionError: Pattern 'Regex\\\\ pattern\\\\ \\'with\\\\ base\\\\ 16\\'\\\\ does\\\\ not\\\\ match\\\\ \"invalid\\\\ literal\\\\ for\\\\ int\\\\(\\\\)\\\\ with\\\\ base\\\\ 10:\\\\ \\'asdf\\'\"\\\\.' does not match 'Pattern \\'with base 16\\' does not match \"invalid literal for int() with base 10: \\'asdf\\'\"'"
+    },
+    {
+      "test": "testing.python.raises.TestRaises::test_match_failure_string_quoting",
+      "message": "assert 'Pattern \"\\'f...match \"\\'bar\"' == 'Regex patter...atch \"\\'bar\".'   - Regex pattern \"'foo\" does not match \"'bar\".   ? ^^^^^^^                                   -   + Pattern \"'foo\" does not match \"'bar\"   ? ^"
+    },
+    {
+      "test": "testing.python.raises.TestRaises::test_match_failure_exact_string_message",
+      "message": "assert \"Pattern 'Oh ...n parameters'\" == 'Regex patter...)` the regex?'   - Regex pattern 'Oh here is a message with (42) numbers in parameters' does not match 'Oh here is a message with (42) numbers in parameters'. Did you mean to `re.escape()` the regex?   ? ^^^^^^^                                                                                                                                   ------------------------------------------   + Pattern 'Oh here is a message with (42) numbers in parameters' does not match 'Oh here is a message with (42) numbers in parameters'   ? ^"
+    },
+    {
+      "test": "testing.code.test_excinfo::test_match_raises_error",
+      "message": "Failed: nomatch: \"E * AssertionError: Regex pattern '[[]123[]]+' does not match 'division by zero'.\"     and: '============================= test session starts =============================='     and: 'platform linux -- Python 3.9.25, pytest-6.0.0rc2.dev35+g358150c30, py-1.11.0, pluggy-1.0.0'     and: 'rootdir: /tmp/pytest-of-nobody/pytest-0/test_match_raises_error0'     and: 'collected 1 item'     and: ''     and: 'test_match_raises_error.py F                                             [100%]'     and: ''     and: '=================================== FAILURES ==================================='     and: '______________________________ test_division_zero ______________________________'     and: ''     and: '    def test_division_zero():'     and: '        with pytest.raises(ZeroDivisionError) as excinfo:'     and: '            0 / 0'     and: \">       excinfo.match(r'[123]+')\"     and"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

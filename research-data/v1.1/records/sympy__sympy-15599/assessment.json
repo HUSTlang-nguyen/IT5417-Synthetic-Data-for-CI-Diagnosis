@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T044144554507Z",
+  "reviewed_at": "2026-11-12T12:12:03+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f3a087e007a7bc0d748243d4c7f6652e8816bfbbf4e413cddbb2711bedccd8da",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "c4cac1a6f7e6bc77aeb709dc93fd4dd02224ad6af69f678717c9eccb1b330ce9",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c8ca5b33985944ab8afd87a72656473a6f90746ddca170b6991a109bc7c22c86",
+    "historical-fixed.stdout.txt": "5918b79b08d3ebe924aa9a123c282148e8689eb8fe6455f1dd3b271cae069b7a",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "6de88c0879b2173587fd6d79075778910f0bde6462c43b2e087e8cf9d35c8149"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/mod.py",
+      "function": "Mod.eval"
+    }
+  ],
+  "mechanism": "Modulo simplification does not reduce integer factors of an integer-valued product by the integer modulus. Saved Mod(3*i,2) remains unreduced instead of Mod(i,2). Reducing those coefficient factors and rebuilding the dividend supplies the expected symbolic normal form.",
+  "limitations": "The source also broadens a native-integer check. The saved first failure directly supports coefficient simplification, not a Python2 platform claim.",
+  "observed_junit": {
+    "base": {
+      "cases": 81,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 81,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_arit::test_Mod",
+      "message": "assert Mod(3*i, 2) == Mod(i, 2)\n +  where Mod(3*i, 2) = Mod((3 * i), 2)\n +  and   Mod(i, 2) = Mod(i, 2)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

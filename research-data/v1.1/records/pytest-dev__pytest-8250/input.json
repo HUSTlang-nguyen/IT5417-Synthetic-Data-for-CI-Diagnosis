@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-6.3.0.dev100+g7f782c72b, py-1.11.0, pluggy-1.0.0 -- /opt/venv/bin/python\nrootdir: /source/base, configfile: pyproject.toml\ncollecting ... collected 10 items\n\ntesting/test_faulthandler.py::test_cancel_timeout_on_hook[pytest_enter_pdb] PASSED [ 10%]\ntesting/test_faulthandler.py::test_cancel_timeout_on_hook[pytest_exception_interact] PASSED [ 20%]\ntesting/test_faulthandler.py::test_get_stderr_fileno_invalid_fd FAILED   [ 30%]\ntesting/test_faulthandler.py::test_already_initialized[0] PASSED         [ 40%]\ntesting/test_faulthandler.py::test_already_initialized[2] PASSED         [ 50%]\ntesting/test_faulthandler.py::test_enabled PASSED                        [ 60%]\ntesting/test_faulthandler.py::test_crash_near_exit PASSED                [ 70%]\ntesting/test_faulthandler.py::test_disabled PASSED                       [ 80%]\ntesting/test_faulthandler.py::test_timeout[True] SKIPPED (sometimes ...) [ 90%]\ntesting/test_faulthandler.py::test_timeout[False] PASSED                 [100%]\n\n=================================== FAILURES ===================================\n______________________ test_get_stderr_fileno_invalid_fd _______________________\n\n    def test_get_stderr_fileno_invalid_fd() -> None:\n        \"\"\"Test for faulthandler being able to handle invalid file descriptors for stderr (#8249).\"\"\"\n        from _pytest.faulthandler import FaultHandlerHooks\n    \n        class StdErrWrapper(io.StringIO):\n            \"\"\"\n            Mimic ``twisted.logger.LoggingFile`` to simulate returning an invalid file descriptor.\n    \n            https://github.com/twisted/twisted/blob/twisted-20.3.0/src/twisted/logger/_io.py#L132-L139\n            \"\"\"\n    \n            def fileno(self):\n                return -1\n    \n        wrapper = StdErrWrapper()\n    \n        with pytest.MonkeyPatch.context() as mp:\n            mp.setattr(\"sys.stderr\", wrapper)\n    \n            # Even when the stderr wrapper signals an invalid file descriptor,\n            # ``_get_stderr_fileno()`` should return the real one.\n>           assert FaultHandlerHooks._get_stderr_fileno() == 2\nE           assert -1 == 2\nE             +-1\nE             -2\n\ntesting/test_faulthandler.py:162: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED testing/test_faulthandler.py::test_get_stderr_fileno_invalid_fd - asse...\n==================== 1 failed, 8 passed, 1 skipped in 1.80s ====================\n",
+  "code": [
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks._get_stderr_fileno",
+      "start_line": 70,
+      "end_line": 77,
+      "score": 52.166667,
+      "text": "src/_pytest/faulthandler.py::FaultHandlerHooks._get_stderr_fileno lines 70-77\n    def _get_stderr_fileno():\n        try:\n            return sys.stderr.fileno()\n        except (AttributeError, io.UnsupportedOperation):\n            # pytest-xdist monkeypatches sys.stderr with an object that is not an actual file.\n            # https://docs.python.org/3/library/faulthandler.html#issue-with-file-descriptors\n            # This is potentially dangerous, but the best we can do.\n            return sys.__stderr__.fileno()",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_unconfigure",
+      "start_line": 57,
+      "end_line": 67,
+      "score": 51.784436,
+      "text": "src/_pytest/faulthandler.py::FaultHandlerHooks.pytest_unconfigure lines 57-67\n    def pytest_unconfigure(self, config: Config) -> None:\n        import faulthandler\n\n        faulthandler.disable()\n        # close our dup file installed during pytest_configure\n        # re-enable the faulthandler, attaching it to the default sys.stderr\n        # so we can see crashes after pytest has finished, usually during\n        # garbage collection during interpreter shutdown\n        config._store[fault_handler_stderr_key].close()\n        del config._store[fault_handler_stderr_key]\n        faulthandler.enable(file=self._get_stderr_fileno())",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_configure",
+      "start_line": 50,
+      "end_line": 55,
+      "score": 51.75,
+      "text": "src/_pytest/faulthandler.py::FaultHandlerHooks.pytest_configure lines 50-55\n    def pytest_configure(self, config: Config) -> None:\n        import faulthandler\n\n        stderr_fd_copy = os.dup(self._get_stderr_fileno())\n        config._store[fault_handler_stderr_key] = open(stderr_fd_copy, \"w\")\n        faulthandler.enable(file=config._store[fault_handler_stderr_key])",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_exception_interact",
+      "start_line": 106,
+      "end_line": 111,
+      "score": 51.5,
+      "text": "src/_pytest/faulthandler.py::FaultHandlerHooks.pytest_exception_interact lines 106-111\n    def pytest_exception_interact(self) -> None:\n        \"\"\"Cancel any traceback dumping due to an interactive exception being\n        raised.\"\"\"\n        import faulthandler\n\n        faulthandler.cancel_dump_traceback_later()",
+      "truncated": false
+    },
+    {
+      "file": "src/_pytest/faulthandler.py",
+      "function": "FaultHandlerHooks.pytest_runtest_protocol",
+      "start_line": 84,
+      "end_line": 96,
+      "score": 51.428869,
+      "text": "src/_pytest/faulthandler.py::FaultHandlerHooks.pytest_runtest_protocol lines 84-96\n    def pytest_runtest_protocol(self, item: Item) -> Generator[None, None, None]:\n        timeout = self.get_timeout_config_value(item.config)\n        stderr = item.config._store[fault_handler_stderr_key]\n        if timeout > 0 and stderr is not None:\n            import faulthandler\n\n            faulthandler.dump_traceback_later(timeout, file=stderr)\n            try:\n                yield\n            finally:\n                faulthandler.cancel_dump_traceback_later()\n        else:\n            yield",
+      "truncated": false
+    }
+  ]
+}

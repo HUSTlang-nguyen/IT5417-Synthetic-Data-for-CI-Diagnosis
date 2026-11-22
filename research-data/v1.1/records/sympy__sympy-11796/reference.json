@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-11796",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Interval.__new__"
+    }
+  ],
+  "explanation": "The equal-closed-endpoints shortcut returns a singleton before excluding infinite endpoints. Interval(oo,oo) consequently becomes {oo}, though infinity is not an included real point and this interval must be empty. An explicit infinity check before the singleton return fixes the boundary case.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

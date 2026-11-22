@@ -1,0 +1,11 @@
+--- a/sympy/tensor/array/dense_ndim_array.py
++++ b/sympy/tensor/array/dense_ndim_array.py
+@@ -44,7 +44,7 @@
+ 
+         """
+         syindex = self._check_symbolic_index(index)
+-        if syindex is not None:
++        if syindex is None:
+             return syindex
+ 
+         if isinstance(index, tuple) and any([isinstance(i, slice) for i in index]):

@@ -1,0 +1,100 @@
+from __future__ import annotations
+
+import numbers
+import decimal
+import fractions
+import math
+import re as regex
+import sys
+from functools import lru_cache
+
+from .containers import Tuple
+from .sympify import (SympifyError, _sympy_converter, sympify, _convert_numpy_types,
+              _sympify, _is_numpy_instance)
+from .singleton import S, Singleton
+from .basic import Basic
+from .expr import Expr, AtomicExpr
+from .evalf import pure_complex
+from .cache import cacheit, clear_cache
+from .decorators import _sympifyit
+from .logic import fuzzy_not
+from .kind import NumberKind
+from sympy.external.gmpy import SYMPY_INTS, HAS_GMPY, gmpy
+from sympy.multipledispatch import dispatch
+import mpmath
+import mpmath.libmp as mlib
+from mpmath.libmp import bitcount, round_nearest as rnd
+from mpmath.libmp.backend import MPZ
+from mpmath.libmp import mpf_pow, mpf_pi, mpf_e, phi_fixed
+from mpmath.ctx_mp import mpnumeric
+from mpmath.libmp.libmpf import (
+    finf as _mpf_inf, fninf as _mpf_ninf,
+    fnan as _mpf_nan, fzero, _normalize as mpf_normalize,
+    prec_to_dps, dps_to_prec)
+from sympy.utilities.misc import as_int, debug, filldedent
+from .parameters import global_parameters
+
+_LOG2 = math.log(2)
+
+
+def comp(z1, z2, tol=None):
+    r"""Return a bool indicating whether the error between z1 and z2
+    is $\le$ ``tol``.
+
+    Examples
+    ========
+
+    If ``tol`` is ``None`` then ``True`` will be returned if
+    :math:`|z1 - z2|\times 10^p \le 5` where $p$ is minimum value of the
+    decimal precision of each value.
+
+    >>> from sympy import comp, pi
+    >>> pi4 = pi.n(4); pi4
+    3.142
+    >>> comp(_, 3.142)
+    True
+    >>> comp(pi4, 3.141)
+    False
+    >>> comp(pi4, 3.143)
+    False
+
+    A comparison of strings will be made
+    if ``z1`` is a Number and ``z2`` is a string or ``tol`` is ''.
+
+    >>> comp(pi4, 3.1415)
+    True
+    >>> comp(pi4, 3.1415, '')
+    False
+
+    When ``tol`` is provided and $z2$ is non-zero and
+    :math:`|z1| > 1` the error is normalized by :math:`|z1|`:
+
+    >>> abs(pi4 - 3.14)/pi4
+    0.000509791731426756
+    >>> comp(pi4, 3.14, .001)  # difference less than 0.1%
+    True
+    >>> comp(pi4, 3.14, .0005)  # difference less than 0.1%
+    False
+
+    When :math:`|z1| \le 1` the absolute error is used:
+
+    >>> 1/pi4
+    0.3183
+    >>> abs(1/pi4 - 0.3183)/(1/pi4)
+    3.07371499106316e-5
+    >>> abs(1/pi4 - 0.3183)
+    9.78393554684764e-6
+    >>> comp(1/pi4, 0.3183, 1e-5)
+    True
+
+    To see if the absolute error between ``z1`` and ``z2`` is less
+    than or equal to ``tol``, call this as ``comp(z1 - z2, 0, tol)``
+    or ``comp(z1 - z2, tol=tol)``:
+
+    >>> abs(pi4 - 3.14)
+    0.00160156249999988
+    >>> comp(pi4 - 3.14, 0, .002)
+    True
+    >>> comp(pi4 - 3.14, 0, .001)
+    False
+    """

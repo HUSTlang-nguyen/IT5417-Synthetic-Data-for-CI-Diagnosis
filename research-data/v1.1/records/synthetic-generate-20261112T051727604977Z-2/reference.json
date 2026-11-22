@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T051727604977Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixExpr.__pow__"
+    }
+  ],
+  "explanation": "The exponent-zero identity branch tests exponent1 instead. Raising a general square matrix A to1 now returns Identity rather than A, exactly as the saved assertion shows.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity._eval_transpose"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity._eval_inverse"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity.conjugate"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.shape"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.name"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,78 @@
+{
+  "run_id": "reproduce-20261112T005137140986Z",
+  "reviewed_at": "2026-11-12T11:35:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "982188188496d84f70b8bf40a3cbe7962b8ab892a44020025d3c9cd4a16f1bc9",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "ac1daa2e7157d29139759402e9078dfb49d3682b307a99587e326d76ab00537f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f49742a8351a37463d9be3be245ab081ba5ecc25c8802cbf219b07ba64379bfa",
+    "historical-fixed.stdout.txt": "06b6a2273a333efbb15520b620fb074b5664fb8a3baaffd6275332b862b35cb4",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7888c61525ec8ae3ce3d96d08e8f9eb2660c10a7db89d394493060cc3f09904b"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_Integers"
+    },
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_Naturals"
+    },
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_Naturals0"
+    }
+  ],
+  "mechanism": "The representation printer lacks handlers for singleton number sets and falls back to constructor-style Integers(), Naturals() and Naturals0(). The saved three assertions require their singleton names without parentheses. Dedicated handlers emit those names.",
+  "limitations": "One source situation with three observed related missing handlers, not three independent samples. Missing-definition references are explicit. The additional Reals handler in the repair is not included in the causal reference because no saved failing Reals assertion was shown.",
+  "observed_junit": {
+    "base": {
+      "cases": 37,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 37,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_repr::test_Integers",
+      "message": "AssertionError: assert 'Integers()' == 'Integers'\n  - Integers\n  + Integers()\n  ?         ++"
+    },
+    {
+      "test": "sympy.printing.tests.test_repr::test_Naturals",
+      "message": "AssertionError: assert 'Naturals()' == 'Naturals'\n  - Naturals\n  + Naturals()\n  ?         ++"
+    },
+    {
+      "test": "sympy.printing.tests.test_repr::test_Naturals0",
+      "message": "AssertionError: assert 'Naturals0()' == 'Naturals0'\n  - Naturals0\n  + Naturals0()\n  ?          ++"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_Integers"
+    },
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_Naturals"
+    },
+    {
+      "file": "sympy/printing/repr.py",
+      "function": "ReprPrinter._print_Naturals0"
+    }
+  ]
+}

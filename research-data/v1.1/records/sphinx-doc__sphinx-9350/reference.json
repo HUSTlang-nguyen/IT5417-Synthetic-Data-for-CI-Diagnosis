@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9350",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/writers/manpage.py",
+      "function": "NestedInlineTransform.apply"
+    }
+  ],
+  "explanation": "The nested-inline transform moves only children after the first. A first-child emphasis node remains inside the outer strong node, producing nested strong/emphasis font escapes where only emphasis is expected. Processing all children and removing an emptied wrapper normalizes that structure.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/application.py",
+      "function": "Sphinx.add_object_type"
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "app"
+    },
+    {
+      "file": "sphinx/transforms/__init__.py",
+      "function": "SphinxTransform.app"
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "status"
+    },
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "warning"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

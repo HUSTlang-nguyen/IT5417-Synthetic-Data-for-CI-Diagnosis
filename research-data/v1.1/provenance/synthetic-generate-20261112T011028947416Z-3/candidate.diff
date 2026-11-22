@@ -1,0 +1,11 @@
+--- a/sympy/core/evalf.py
++++ b/sympy/core/evalf.py
+@@ -106,7 +106,7 @@
+     (10, 3.3, 4)
+     """
+ 
+-    if not x or x == fzero:
++    if not x or x == fone:
+         return MINUS_INF
+     return x[2] + x[3]
+ 

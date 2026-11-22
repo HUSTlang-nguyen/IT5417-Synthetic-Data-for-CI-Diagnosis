@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012447797294Z",
+  "reviewed_at": "2026-11-12T11:38:36+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "1c6f815a049e4b2758a28212c98a22c02c6500775724fef940a23a3f54e5ebd1",
+    "license-evidence.json": "3fc23e773ef56917e0967c5ad8387acf28ca79a5da5e45ceddf76eb2f22a812a",
+    "historical-base.stdout.txt": "524d0ee209dc3d02e4b0cd344338012eb75fb8011b8f02eb6c87f75da8c9e212",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "55d062a7d3c5f5fb110f382c6febb6677bb0b4cb77dd589951e5930b73779577",
+    "historical-fixed.stdout.txt": "3e110dd0b43e80517f8917cbcf251a674ce720b2fb37b60e36c7f2fba63cd06c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c26358f94020b2f5739f7eadde16f276ccff1fd656ed211bff0dfea79e9e5be0"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/nodes.py",
+      "function": "Item.__init__"
+    }
+  ],
+  "mechanism": "The cooperative constructor forwards name and parent as keywords to an Item/File multiple-inheritance chain whose legacy file constructor expects the first value positionally. Path propagation is lost and the saved stack reaches _imply_path with both path and fspath None. Positional forwarding preserves that compatibility contract.",
+  "limitations": "The downstream assertion detects missing path state; it is not evidence that an actual source file was absent. The repair preserves this explicitly deprecated inheritance pattern.",
+  "observed_junit": {
+    "base": {
+      "cases": 18,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 18,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_nodes::test_subclassing_both_item_and_collector_deprecated",
+      "message": "AssertionError"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

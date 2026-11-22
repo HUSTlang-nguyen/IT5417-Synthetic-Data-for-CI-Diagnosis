@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T055347815039Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter.parenthesize"
+    }
+  ],
+  "explanation": "The first precedence test becomes inclusive, so equality with the context level adds parentheses even when strict=True should require strictly lower precedence. Saved polynomial/fraction strings contain (x)-1 instead of x-1.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "sstr"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.frac_field"
+    },
+    {
+      "file": "sympy/polys/domains/finitefield.py",
+      "function": "FiniteField.__init__"
+    },
+    {
+      "file": "sympy/polys/agca/ideals.py",
+      "function": "Ideal.__init__"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "Module.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

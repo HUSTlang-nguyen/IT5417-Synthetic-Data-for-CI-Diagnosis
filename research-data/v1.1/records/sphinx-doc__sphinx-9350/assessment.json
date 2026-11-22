@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T004819636256Z",
+  "reviewed_at": "2026-11-12T10:42:54+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "875f95c498bc39a6e50f7c3eb953ad7a347a3fd1e07de4fc0ecf61384f775584",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "d93b7b1896e9f248a005c1888d351d5b99e6dca95bb7dce51430eb86daca8e8c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "30652360ab6770372b8653eeb1e39eceeae39be6a0458fe327ba3b564c347fbb",
+    "historical-fixed.stdout.txt": "31dd65cb44186b782ccc2716f61692beabd1701e1b255e60cb7c1f92c04755ac",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b2242bb5ea402549673bb48d3fad53388d3f0602c4f8030364226b850d3c827a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/writers/manpage.py",
+      "function": "NestedInlineTransform.apply"
+    }
+  ],
+  "mechanism": "The nested-inline transform moves only children after the first. A first-child emphasis node remains inside the outer strong node, producing nested strong/emphasis font escapes where only emphasis is expected. Processing all children and removing an emptied wrapper normalizes that structure.",
+  "limitations": "The saved manpage assertion demonstrates the font-escape mismatch. No external man renderer was run in this review.",
+  "observed_junit": {
+    "base": {
+      "cases": 5,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 5,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_build_manpage::test_all",
+      "message": "assert '\\n\\\\fIvariable_only\\\\fP\\n' in '.\\\\\" Man page generated from reStructuredText.\\n.\\n.\\n.nr rst2man-indent-level 0\\n.\\n.de1 rstReportMargin\\n\\\\\\\\$1 \\\\\\\\n[an-margin]\\nlevel \\\\\\\\n[rst2man-indent-level]\\nlevel margin: \\\\\\\\n[rst2man-indent\\\\\\\\n[rst2man-indent-level]]\\n-\\n\\\\\\\\n[rst2man-indent0]\\n\\\\\\\\n[rst2man-indent1]\\n\\\\\\\\n[rst2man-indent2]\\n..\\n.de1 INDENT\\n.\\\\\" .rstReportMargin pre:\\n. RS \\\\\\\\$1\\n. nr rst2man-indent\\\\\\\\n[rst2man-indent-level] \\\\\\\\n[an-margin]\\n. nr rst2man-indent-level +1\\n.\\\\\" .rstReportMargin post:\\n..\\n.de UNINDENT\\n. RE\\n.\\\\\" indent \\\\\\\\n[an-margin]\\n.\\\\\" old: \\\\\\\\n[rst2man-indent\\\\\\\\n[rst2man-indent-level]]\\n.nr rst2man-indent-level -1\\n.\\\\\" new: \\\\\\\\n[rst2man-indent\\\\\\\\n[rst2man-indent-level]]\\n.in \\\\\\\\n[rst2man-indent\\\\\\\\n[rst2man-indent-level]]u\\n..\\n.TH \"SPHINXTESTS\" \"1\" \"November 12, 2026\" \"0.6\" \"Sphinx <Tests>\"\\n.SH NAME\\nsphinxtests \\\\- Sphinx <Tests> 0.6a"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

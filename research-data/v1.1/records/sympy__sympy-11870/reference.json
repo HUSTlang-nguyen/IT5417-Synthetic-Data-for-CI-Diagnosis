@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-11870",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/trigonometric.py",
+      "function": "sinc._eval_rewrite_as_sin"
+    }
+  ],
+  "explanation": "Rewriting sinc returns sin(arg)/arg without its removable-singularity value at zero. The saved symbolic rewrite expects a Piecewise with value1 for zero, but receives the unconditional quotient. Including the nonzero condition preserves that domain behavior.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

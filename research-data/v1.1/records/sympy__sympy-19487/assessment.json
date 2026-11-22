@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T002428213996Z",
+  "reviewed_at": "2026-11-12T10:39:15+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e70a0e8c5b98d05b92a939bb5383dd160bb71840c4a076b59c825d72a4fd9f8e",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "023c8091ce3484a3c1e51f4e9159fa9e178690e29fb23a85d26e0c31752c1cb6",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8d5a2b42406d2ffd168aba36e8a6bdcb02f84dc7a8ac83886848916c727f2b29",
+    "historical-fixed.stdout.txt": "13974b9b2156550b72257c4a5861bc170a9682561606ae54eb939fc4fed2ebe6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "3f371209fd3fdb9bda5dfd3d307893bbdd5b4671793e875d477f41f99dd77d7f"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "sign._eval_rewrite_as_Abs"
+    }
+  ],
+  "mechanism": "The sign class lacks an Abs rewrite handler. Calling rewrite(Abs) therefore leaves sign(y) unchanged instead of yielding the zero-aware Piecewise expression with y/Abs(y). The new handler implements that missing rewrite.",
+  "limitations": "Explicit causal absence: the named method is present only in the fixed revision. The expected Piecewise includes a zero branch, so a bare y/Abs(y) reference would be incomplete.",
+  "observed_junit": {
+    "base": {
+      "cases": 91,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 91,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.elementary.tests.test_complexes::test_sign",
+      "message": "assert sign(y) == Piecewise((0, Eq(y, 0)), (y/Abs(y), True))\n +  where sign(y) = <bound method Basic.rewrite of sign(y)>(Abs)\n +    where <bound method Basic.rewrite of sign(y)> = sign(y).rewrite\n +      where sign(y) = sign(y)\n +  and   Piecewise((0, Eq(y, 0)), (y/Abs(y), True)) = Piecewise((0, Eq(y, 0)), (y/Abs(y), True))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "sign._eval_rewrite_as_Abs"
+    }
+  ]
+}

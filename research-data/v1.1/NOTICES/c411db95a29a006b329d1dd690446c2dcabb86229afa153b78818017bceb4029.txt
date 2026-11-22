@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+"""The :class:`Schema` class, including its metaclass and options (class Meta)."""
+from __future__ import absolute_import, unicode_literals
+
+from collections import defaultdict, namedtuple
+import copy
+import datetime as dt
+import decimal
+import inspect
+import json
+import uuid
+import warnings
+import functools
+
+from marshmallow import base, fields, utils, class_registry, marshalling
+from marshmallow.compat import (with_metaclass, iteritems, text_type,
+                                binary_type, Mapping, OrderedDict)
+from marshmallow.exceptions import ValidationError
+from marshmallow.orderedset import OrderedSet
+from marshmallow.decorators import (PRE_DUMP, POST_DUMP, PRE_LOAD, POST_LOAD,
+                                    VALIDATES, VALIDATES_SCHEMA)
+from marshmallow.utils import missing
+from marshmallow.warnings import RemovedInMarshmallow3Warning, ChangedInMarshmallow3Warning
+
+
+#: Return type of :meth:`Schema.dump` including serialized data and errors
+MarshalResult = namedtuple('MarshalResult', ['data', 'errors'])
+#: Return type of :meth:`Schema.load`, including deserialized data and errors
+UnmarshalResult = namedtuple('UnmarshalResult', ['data', 'errors'])
+
+def _get_fields(attrs, field_class, pop=False, ordered=False):
+    """Get fields from a class. If ordered=True, fields will sorted by creation index.
+
+    :param attrs: Mapping of class attributes
+    :param type field_class: Base field class
+    :param bool pop: Remove matching fields
+    """
+    getter = getattr(attrs, 'pop' if pop else 'get')
+    fields = [
+        (field_name, getter(field_name))
+        for field_name, field_value in list(iteritems(attrs))
+        if utils.is_instance_or_subclass(field_value, field_class)
+    ]
+    if ordered:
+        return sorted(
+            fields,
+            key=lambda pair: pair[1]._creation_index,
+        )
+    else:
+        return fields
+
+# This function allows Schemas to inherit from non-Schema classes and ensures
+#   inheritance according to the MRO
+def _get_fields_by_mro(klass, field_class, ordered=False):
+    """Collect fields from a class, following its method resolution order. The
+    class itself is excluded from the search; only its parents are checked. Get
+    fields from ``_declared_fields`` if available, else use ``__dict__``.
+
+    :param type klass: Class whose fields to retrieve
+    :param type field_class: Base field class
+    """
+    mro = inspect.getmro(klass)
+    # Loop over mro in reverse to maintain correct order of fields
+    return sum(
+        (
+            _get_fields(
+                getattr(base, '_declared_fields', base.__dict__),
+                field_class,
+                ordered=ordered
+            )
+            for base in mro[:0:-1]
+        ),
+        [],
+    )
+
+
+class SchemaMeta(type):
+    """Metaclass for the Schema class. Binds the declared fields to
+    a ``_declared_fields`` attribute, which is a dictionary mapping attribute
+    names to field objects. Also sets the ``opts`` class attribute, which is
+    the Schema class's ``class Meta`` options.
+    """
+
+    def __new__(mcs, name, bases, attrs):
+        meta = attrs.get('Meta')
+        ordered = getattr(meta, 'ordered', False)
+        if not ordered:
+            # Inherit 'ordered' option
+            # Warning: We loop through bases instead of MRO because we don't
+            # yet have access to the class object
+            # (i.e. can't call super before we have fields)
+            for base_ in bases:
+                if hasattr(base_, 'Meta') and hasattr(base_.Meta, 'ordered'):
+                    ordered = base_.Meta.ordered
+                    break
+            else:
+                ordered = False
+        cls_fields = _get_fields(attrs, base.FieldABC, pop=True, ordered=ordered)
+        klass = super(SchemaMeta, mcs).__new__(mcs, name, bases, attrs)
+        inherited_fields = _get_fields_by_mro(klass, base.FieldABC, ordered=ordered)

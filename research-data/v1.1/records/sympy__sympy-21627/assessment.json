@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T002314309258Z",
+  "reviewed_at": "2026-11-12T10:38:48+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d161cf9f43d6bbd1ab7022b8a0718d8c19e1444a16f3b6b2ceef09a5a8727145",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "fcfdd581722c7806e15b2e5f2cd04e55c4473993084ff12f1b5535cd8a54ac71",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8362e4538bee13d9d4d434e0282b066d4a598cc4785af8542cc1729b340587e1",
+    "historical-fixed.stdout.txt": "fabe04b879725138ff12d8f50d8c7c77c7c276ea7578dd3ea5604e05760689f5",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "02f28db0330933c0d03b3c186bd312a3275daa4f4597af95718810d37e5ca233"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "Abs.eval"
+    }
+  ],
+  "mechanism": "An extended-real argument of unknown sign reaches the conjugate/square-root expansion, whose power simplification calls Abs again on the same expression. The saved repeated stack ends in RecursionError. Returning unevaluated for extended-real arguments after the sign checks breaks that cycle.",
+  "limitations": "The recursion cycle is in the saved stack; the guard applies after known positive/negative cases, so it does not indiscriminately disable all absolute-value simplification.",
+  "observed_junit": {
+    "base": {
+      "cases": 27,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 27,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.functions.elementary.tests.test_complexes::test_Abs",
+      "message": "RecursionError: maximum recursion depth exceeded while calling a Python object"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

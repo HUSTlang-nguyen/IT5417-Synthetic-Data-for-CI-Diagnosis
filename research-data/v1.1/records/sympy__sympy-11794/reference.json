@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-11794",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_SingularityFunction"
+    }
+  ],
+  "explanation": "The ASCII branch falls back to generic function notation, printing SingularityFunction(x, 0, n), while its contract requires the bracket notation with exponent already supported by the Unicode branch. Building the bracketed shift and exponent in the ASCII branch produces the expected form.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/stats/rv.py",
+      "function": "given"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

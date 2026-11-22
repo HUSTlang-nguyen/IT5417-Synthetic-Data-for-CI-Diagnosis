@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T063450248639Z",
+  "reviewed_at": "2026-11-12T18:29:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e4f7863ec09438c9ee3fe781270f0df66e1f8f96b96cf16d3dac550a7146f62b",
+    "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+    "historical-base.stdout.txt": "43732a536cfafc42403daa49444d44706eb0c97ca6f92f7c64230dc5ceb24557",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "7bc1659a2dc83fad66fb10517129ac7efe387cfbe6a8b0416ffa23195eb8e13a",
+    "historical-fixed.stdout.txt": "eacb0bf7263932d709d3691078ffa7bb7c8cfb6baf58c398f9ebc4db2a43edfb",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "cb5a27c5228bb5766ff7117576487452f2e3f0fa8b73d42dd0c16b5ac4c0b5f5"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pydicom/uid.py",
+      "function": "generate_uid"
+    }
+  ],
+  "mechanism": "For prefix=None the base substitutes2.25 then follows general hashed UID generation, allowing a suffix larger than128bits. The saved UUID reconstruction rejects the integer as out of range. The repair returns the integer form of uuid4 directly for that branch; forty selected tests pass.",
+  "limitations": "The error is detected in the standard-library UUID constructor, but the causal producer is generate_uid. No claim is made about actual UID collisions or clinical outcomes; this is the saved format/range contract.",
+  "observed_junit": {
+    "base": {
+      "cases": 40,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 40,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pydicom.tests.test_uid.TestGenerateUID::test_none",
+      "message": "ValueError: int is out of range (need a 128-bit value)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,11 @@
+--- a/sympy/polys/factortools.py
++++ b/sympy/polys/factortools.py
+@@ -90,7 +90,7 @@
+         while True:
+             q, r = dup_div(f, factor, K)
+ 
+-            if not r:
++            if r == 1:
+                 f, k = q, k + 1
+             else:
+                 break

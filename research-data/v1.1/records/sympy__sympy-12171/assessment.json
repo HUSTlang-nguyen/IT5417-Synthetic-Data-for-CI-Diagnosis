@@ -1,0 +1,54 @@
+{
+  "run_id": "reproduce-20261112T001234362734Z",
+  "reviewed_at": "2026-11-12T08:01:33+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a3b5bf1638c418b076491dd1310137e22a8ead1f969b6f801693a2eb6914c68b",
+    "license-evidence.json": "8d31cbfbc94cc50ce7fa28101b90ed086c5838705e637c5731cf321d0328f1d3",
+    "historical-base.stdout.txt": "ff7654b38d501635a86d6e37e6a612f03c09f5a45a13baba67613fe3b721620e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9f3d44309ed009da0534cae01894ffdb6c7362abe8cc612ba355c603a9fc0467",
+    "historical-fixed.stdout.txt": "b53e83316144b1da0d62d32162b9f25c8cc86dc702d8603fe467bdb2dff6ecab",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "54bad3210514568874176abfdad91a03ec0b50e2f94f14e38d4c77284546dcbf"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Derivative"
+    }
+  ],
+  "mechanism": "The Mathematica printer has no Derivative handler, so its fallback emits a Python/SymPy-style Derivative(sin(x), x) expression. The missing handler serializes the existing expression as Hold[D[Sin[x], x]], matching the target-language contract.",
+  "limitations": "Explicit missing-definition location. The local test compares code strings and does not execute Mathematica or prove the derivative computation independently.",
+  "observed_junit": {
+    "base": {
+      "cases": 9,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 9,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_mathematica::test_Derivative",
+      "message": "AssertionError: assert 'Derivative(sin(x), x)' == 'Hold[D[Sin[x], x]]'\n  - Hold[D[Sin[x], x]]\n  + Derivative(sin(x), x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Derivative"
+    }
+  ]
+}

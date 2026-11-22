@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T000340023984Z",
+  "reviewed_at": "2026-11-12T07:45:51+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "4ae9922a3d6805be02c9795e4471d47010d4b901287cab8da364646c2ca070a7",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "8a416f305d6ed313281d2a814c8445c5c28590607ea9147125bdf51e9fc32be1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4aa991d72491c3b09ec5069036bd9c6f65b465cfcc06e6e766a56020a872fe27",
+    "historical-fixed.stdout.txt": "204fd25ff7bee26b147223f0d5b5dd0b611d81e3dae9c3e588a8d7554bd446a0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "cdb7538ab523eeb9c7bd26c804ab3d8876f57979f625c2015d4d2845cd3e6d6f"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/vector/frame.py",
+      "function": "ReferenceFrame.orientnew"
+    }
+  ],
+  "mechanism": "orientnew passes variables, indices and latexs positionally to the frame constructor in an order that does not match those parameters. User-supplied custom settings are therefore lost or misassigned. Passing them by keyword preserves the intended indices, LaTeX names and variables.",
+  "limitations": "The saved failures directly compare custom output with defaults; this is argument binding at an API boundary even without a TypeError. The three checks cover one forwarding defect.",
+  "observed_junit": {
+    "base": {
+      "cases": 10,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 10,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.vector.tests.test_frame::test_orientnew_respects_input_indices",
+      "message": "AssertionError: assert ['x', 'y', 'z'] == ['x1', 'y1', 'z1']\n  At index 0 diff: 'x' != 'x1'\n  Full diff:\n  - ['x1', 'y1', 'z1']\n  ?    -     -     -\n  + ['x', 'y', 'z']"
+    },
+    {
+      "test": "sympy.physics.vector.tests.test_frame::test_orientnew_respects_input_latexs",
+      "message": "AssertionError: assert ['\\\\mathbf{\\\\...{\\\\hat{b}_z}'] == ['\\\\mathbf{\\\\...hat{b}_{z1}}']\n  At index 0 diff: '\\\\mathbf{\\\\hat{b}_x}' != '\\\\mathbf{\\\\hat{b}_{x1}}'\n  Full diff:\n    [\n  -  '\\\\mathbf{\\\\hat{b}_{x1}}',\n  ?                     - --\n  +  '\\\\mathbf{\\\\hat{b}_x}',\n  -  '\\\\mathbf{\\\\hat{b}_{y1}}',...\n  \n  ...Full output truncated (6 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "sympy.physics.vector.tests.test_frame::test_orientnew_respects_input_variables",
+      "message": "AssertionError: assert 'b_x' == 'notb_x1'\n  - notb_x1\n  + b_x"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

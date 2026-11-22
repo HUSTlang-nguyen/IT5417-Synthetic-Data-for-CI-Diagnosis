@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-10353",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/util/inspect.py",
+      "function": "TypeAliasForwardRef.__repr__"
+    }
+  ],
+  "explanation": "TypeAliasForwardRef stores its alias name but has no __repr__. stringify reaches repr(annotation), producing the default object representation instead of example. The reference repair supplies __repr__ returning self.name, after which the frozen test passes.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "stringify"
+    },
+    {
+      "file": "sphinx/util/inspect.py",
+      "function": "TypeAliasForwardRef.__init__"
+    },
+    {
+      "file": "sphinx/util/inspect.py",
+      "function": "TypeAliasForwardRef.__eq__"
+    },
+    {
+      "file": "sphinx/util/inspect.py",
+      "function": "TypeAliasForwardRef.__call__"
+    },
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "GenericAliasMixin.should_suppress_directive_header"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

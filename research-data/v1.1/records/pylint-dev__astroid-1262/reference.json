@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__astroid-1262",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "astroid/nodes/scoped_nodes.py",
+      "function": "Module.__init__"
+    }
+  ],
+  "explanation": "The module constructor initializes its own fields without calling the node superclass initializer. Parsed modules consequently lack col_offset and the saved location-metadata assertion raises AttributeError. Calling the superclass with module lineno0 and parent initializes the inherited fields.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/interpreter/_import/util.py",
+      "function": "<module>"
+    },
+    {
+      "file": "astroid/interpreter/_import/util.py",
+      "function": "is_namespace"
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes.py",
+      "function": "Module.statement"
+    },
+    {
+      "file": "astroid/builder.py",
+      "function": "parse"
+    },
+    {
+      "file": "astroid/nodes/scoped_nodes.py",
+      "function": "Module.fully_defined"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

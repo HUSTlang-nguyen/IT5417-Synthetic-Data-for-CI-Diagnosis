@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-13361",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "get_integer_part.calc_part"
+    }
+  ],
+  "explanation": "The integer-part helper reports finite accuracy fastlog(nint)+10 for an exact integer result. That accuracy metadata limits subsequent numerical evaluation and leads to the observed imprecise floor-plus-fraction value. Reporting infinite accuracy preserves the exact integer contribution.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

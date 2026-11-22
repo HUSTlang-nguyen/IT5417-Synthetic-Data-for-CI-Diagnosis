@@ -1,0 +1,11 @@
+--- a/sympy/core/numbers.py
++++ b/sympy/core/numbers.py
+@@ -1274,7 +1274,7 @@
+ 
+     def __neg__(self):
+         if not self:
+-            return self
++            return None
+         return Float._new(mlib.mpf_neg(self._mpf_), self._prec)
+ 
+     @_sympifyit('other', NotImplemented)

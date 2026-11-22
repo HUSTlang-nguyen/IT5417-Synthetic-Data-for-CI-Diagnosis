@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T11:39:04+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "pytest-dev__pytest-8250",
+  "case_id": "pytest-dev__pytest-8250-ds1-eval-scm1",
+  "run_id": "reproduce-20261112T012646787229Z",
+  "role": "test",
+  "repo": "https://github.com/pytest-dev/pytest",
+  "group_id": "https://github.com/pytest-dev/pytest",
+  "source_commit": "7f782c72ba157aaa26f74553ab328c898dab949c",
+  "image_id": "sha256:85bda92a1248760a00cda2d9631aa8c55919a398452527ad5efea0cc95e37a8f",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "c37d9c5f5dee1eb1f12f439601498f0ec206ba817f7869c4c26da14b3850c6f2",
+  "input_content_sha256": "2252c3d8d93de8a3b0ff77e0397ff057eb8f633f3fd35bb4bc268f1b82847c92",
+  "reference_sha256": "4a932e3ece6a273841cbddd87b814a5853beb6d8e54b78cebad842c689bc298c",
+  "assessment_sha256": "dbf1abcf59745154ef24aaaad42503e771da7d3f980608202e91f366ef42ca77",
+  "evidence_hashes": {
+    "manifest.json": "8fdc59ec8468e96f552713bb2c186c9ab4f0b9baa44b622245141df9187f0d2d",
+    "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+    "historical-base.stdout.txt": "cc1c8ad6fe0f549ef52a7e1c324c7186a372462ded68c43df6fb2e61bc2c650a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "84ad174eadcdc00b8391bcbc7319af1cf5edea34330918eaa5874a139b2c67c3",
+    "historical-fixed.stdout.txt": "51dc6d0c9bb85b8bfa4601c082d95c54ed20885d82b5d3122f5eefb9df6ba436",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "8bd82c54524b6b392582c67fe35a3175e7e8b4367cd68fac728eaac71dd0b518"
+  },
+  "retrieval": {
+    "production_files_scanned": 87,
+    "ranked_function_count": 1771,
+    "characters": 2419,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

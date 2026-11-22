@@ -1,0 +1,31 @@
+{
+  "sample_id": "sympy__sympy-12419",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "Identity._entry"
+    }
+  ],
+  "explanation": "The identity-matrix entry function treats structurally unequal symbolic indices as definitely different and returns0. The saved In[i,j] assertion exposes that premature decision. Three-valued symbolic equality and KroneckerDelta retain an unknown diagonal relation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/functions/elementary/exponential.py",
+      "function": "log.inverse"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

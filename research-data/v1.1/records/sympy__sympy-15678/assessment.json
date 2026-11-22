@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035004052925Z",
+  "reviewed_at": "2026-11-12T11:51:48+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "782f331783de539918283d4c44b1bde603b239c1632cd544898af879527eee9f",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "4560e1e00293b8b7b60fd038c31f0f8476b5bea622318d042a21a28817ba6d6c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "90ecd75761dd7e23184909f598f9857283872d8b8b19a2274b55e123c60de1ab",
+    "historical-fixed.stdout.txt": "c159f559baa29e56fe7e234f1b1cd4cd0606af58aa078471b0167aa8cfa68b15",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5487b800615b22a18ec4ee1b6a1aba5f4d6020502af68da9c8e5fd2500e3728a"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/geometry/util.py",
+      "function": "idiff"
+    }
+  ],
+  "mechanism": "The dependent-variable dispatch accepts symbols/sequences but rejects an applied function f(x). The saved implicit-differentiation call raises ValueError before differentiating. A function branch and function-specific derivative target support that valid API form.",
+  "limitations": "This extends the documented representation of a dependent variable; only the saved function case is validated, not all mixtures of extra dependent symbols.",
+  "observed_junit": {
+    "base": {
+      "cases": 4,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 4,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.geometry.tests.test_util::test_idiff",
+      "message": "ValueError: expecting x-dependent symbol(s) but got: f(x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

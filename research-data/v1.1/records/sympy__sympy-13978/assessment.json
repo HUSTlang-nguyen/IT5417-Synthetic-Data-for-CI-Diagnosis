@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T235832633635Z",
+  "reviewed_at": "2026-11-12T07:40:15+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e2e5ad396bbe332cb45e594316c34bedaff2486edd6f481775bc777fcfb65f52",
+    "license-evidence.json": "ab5714e671584efbd35df377d960fa895975542a0c2f1a07beb96d36a7e601c6",
+    "historical-base.stdout.txt": "5a4d39fe592cd0fff4fcc091392bf1735adf2d8702169356de00ac2e87dff016",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9a8b2be935f2932bd10d562faaddef437aa9ed70b8c0e8ebbec61a480d7fc2ea",
+    "historical-fixed.stdout.txt": "dd8e22ac6b66de4fad445057b1fae9dc3fcfd09ab92dedc31644b7115994af2a",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "572f93a23568b2748738bd69a2a026a27419784315f35e148d4e1f6dd8947649"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/octave.py",
+      "function": "OctaveCodePrinter._print_Mul"
+    }
+  ],
+  "mechanism": "The compact imaginary-literal branch checks only the rational coefficient, which is integer one for sqrt(3)*I. It consequently emits sqrt(3)i instead of the multiplication form sqrt(3)*1i. Requiring the whole imaginary multiplier to be an Integer confines that compact syntax to valid literal coefficients.",
+  "limitations": "The saved test is a source-string oracle, not an Octave execution. The wrong guard and exact extra/missing multiplication token are directly supported.",
+  "observed_junit": {
+    "base": {
+      "cases": 30,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 30,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_octave::test_imag",
+      "message": "AssertionError: assert 'sqrt(3)i' == 'sqrt(3)*1i'\n  - sqrt(3)*1i\n  ?        --\n  + sqrt(3)i"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

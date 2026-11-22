@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233208693282Z",
+  "reviewed_at": "2026-11-12T07:30:04+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "fe6a1e0a088dedb2c5160f82e21659b7bf28504d7a5c5ec13d253ac53e858eb2",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "9ab163f6006e395f5924a307547eed94d324b09bf4306070f915600314d30291",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ca0b19a72bd5ed95ac212bf5dd1e53ce562fdaaad59d956589db983e17e5a914",
+    "historical-fixed.stdout.txt": "d42f97779acccc4a7d4ce399792fdaa08854c4d5ac556f9c93aa195afd775401",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d25e68ac9cba8f3e6b04e073780de50df7bcb3a3abdfc5b52a15d42677405d43"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "PyXrefMixin.make_xrefs"
+    }
+  ],
+  "mechanism": "The type-reference delimiter pattern does not recognize a pipe separator. int | str is treated as a single reference target rather than two references around a literal pipe, yielding six child nodes instead of eight. Adding the pipe alternative restores the intended type-expression structure.",
+  "limitations": "Related to the ellipsis-delimiter case in the same validation repository; retain as a duplicate-family review candidate and do not count independence before grouping.",
+  "observed_junit": {
+    "base": {
+      "cases": 46,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 46,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_py::test_info_field_list_piped_type",
+      "message": "AssertionError: The node[0] has 6 child nodes, not 8"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

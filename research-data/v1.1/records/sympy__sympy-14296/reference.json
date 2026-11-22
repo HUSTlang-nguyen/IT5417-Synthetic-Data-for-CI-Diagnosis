@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-14296",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "AlgebraicNumber.__new__"
+    }
+  ],
+  "explanation": "When the chosen algebraic root is negative, the constructor negates an otherwise unit coefficient representation. Since the root itself already contains the sign, this reverses the represented value again. The saved round trip of 1-sqrt(2) becomes -1+sqrt(2); removing the extra sign flip preserves the original expression.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "FreeModule.convert"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

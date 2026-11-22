@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000849578986Z",
+  "reviewed_at": "2026-11-12T08:00:20+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "d2661852652b6b848c43fd19251bdb22924a300e93c5f7dc486f550c87d8ee0c",
+    "license-evidence.json": "9846cac8e5841f1480385153e8d7afaef48834c967c43c94b057d11f0c1176f4",
+    "historical-base.stdout.txt": "3693f059d629d9c3a8cce38216c44950164d21452e164ace170f84043642b57b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "30255332c979f5e9fa8db332620442b089be8bd18d59b550eed909b0a34ae270",
+    "historical-fixed.stdout.txt": "dd194289599f219efb6196ed4bfa3a091540e45372c7a84c1241cd1f71152f1d",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d264d2b634dfedf94cd9dd99c7eb29ad56cc6b287d23b43bb6060b13a3ffbb1d"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_Mul"
+    }
+  ],
+  "mechanism": "The denominator-parenthesization guard handles a Mul base but omits a Pow base. A nested reciprocal is consequently printed as x/1/y instead of x/(1/y), changing the grouping visible in the expression. Including Pow in that guard retains the required parentheses.",
+  "limitations": "This concerns serialization/grouping; no claim that internal symbolic multiplication itself returned a wrong numeric value is made.",
+  "observed_junit": {
+    "base": {
+      "cases": 99,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 99,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_str::test_Mul",
+      "message": "AssertionError: assert 'x/1/y' == 'x/(1/y)'\n  - x/(1/y)\n  ?   -   -\n  + x/1/y"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T043921842589Z",
+  "reviewed_at": "2026-11-12T12:11:20+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "f2f17a935ca9a130ebc7bbd34140657bfd44aaf111486b7b2fe48cef3464f336",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "3b213a04e9b0a8c0fe115f41ae4751c469960eb717d4a11d2a217b876c29a5e9",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "73fadb1a4a90e91432fda5fa28a6d7c62f833c64283447d98f05784e5f317837",
+    "historical-fixed.stdout.txt": "340dbe07484feba1aedd977e3d14f1e8d5bdd6aa3bd0b47926109a098bd3472f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5d6bc71d8424f9ce455277ad1bad02a06505a8446f414d3ff609baf1340e1846"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/solvers.py",
+      "function": "_gauss_jordan_solve"
+    }
+  ],
+  "mechanism": "Repeated column swaps construct a free-variable permutation inconsistent with the ordered nonpivot columns used to build the parametric solution. Saved solver assertions place tau parameters in different rows. Building pivots plus ordered nonpivots and using that same list for coefficients preserves alignment.",
+  "limitations": "The saved tests prove a parameter/row mapping mismatch. Not every differing symbolic parameterization is numerically incorrect; no independent residual computation was run during review.",
+  "observed_junit": {
+    "base": {
+      "cases": 15,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 15,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.tests.test_solvers::test_gauss_jordan_solve",
+      "message": "AssertionError: assert Matrix([\\n[_ta...u1],\\n[_tau2]]) == Matrix([\\n[_ta...u1],\\n[_tau2]])\n  Full diff:\n    Matrix([\n  + [_tau1],\n  + [    0],\n    [_tau0],\n  - [    0],\n  - [_tau1],...\n  \n  ...Full output truncated (3 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "sympy.matrices.tests.test_solvers::test_issue_19815",
+      "message": "AssertionError: assert Matrix([\\n[   ...          1]]) == Matrix([\\n[   ...          1]])\n  Full diff:\n    Matrix([\n    [           1 - tau2],\n    [               tau2],\n    [   -tau0 + tau1 + 1],\n  - [               tau0],\n  ?                    ^...\n  \n  ...Full output truncated (18 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

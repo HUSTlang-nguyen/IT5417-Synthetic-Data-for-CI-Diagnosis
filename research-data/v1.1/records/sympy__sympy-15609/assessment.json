@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000101665936Z",
+  "reviewed_at": "2026-11-12T07:45:01+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "dd7015865d33d2d992c076afc72e7ac9e811d37bcb6e78cc69517daa9bc246aa",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "1471b273cc7f233fd35a0248767d1baaa9c8e808fd7b9f568b1b361da2efd40a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f091abf7ed651533ecf805b1638a0d3e2e55b77f88f6f911aded30acd88c0f95",
+    "historical-fixed.stdout.txt": "5bb46859425654158ab6585588351e8cb59d32560c3fd9d0b505c08971aad907",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5c9e55920d656895ad1e3c836db8b9879c146756275bb433e50a59b4021e7d79"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_MatrixElement"
+    }
+  ],
+  "mechanism": "Matrix indices are interpolated through ordinary string conversion rather than the LaTeX printer. A generated dummy index therefore appears as _i_1 instead of the formatted i_{1}. Printing both indices through self._print produces the expected matrix-product summation.",
+  "limitations": "The internal dummy name is observed in the output; the cause is formatter selection, not the summation algorithm or numeric multiplication.",
+  "observed_junit": {
+    "base": {
+      "cases": 122,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 122,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_MatrixElement_printing",
+      "message": "AssertionError: assert '\\\\sum_{i_{1}...} N_{_i_1, j}' == '\\\\sum_{i_{1}... N_{i_{1}, j}'\n  - \\sum_{i_{1}=0}^{k - 1} M_{i, i_{1}} N_{i_{1}, j}\n  ?                                -  -      - -\n  + \\sum_{i_{1}=0}^{k - 1} M_{i, _i_1} N_{_i_1, j}\n  ?                              +        +"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

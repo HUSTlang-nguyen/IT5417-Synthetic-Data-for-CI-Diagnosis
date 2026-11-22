@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-5743",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.get_ast"
+    }
+  ],
+  "explanation": "Unexpected AST-building exceptions are caught and converted directly to an astroid-error message inside get_ast. That consumes the exception before the caller can generate its fatal-error issue template. Reraising a chained AstroidBuildingError routes it through the callers intended error protocol.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.get_ast"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.check_single_file"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.set_current_module"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._check_file"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._check_files"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

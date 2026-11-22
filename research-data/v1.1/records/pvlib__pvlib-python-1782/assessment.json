@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T033945971600Z",
+  "reviewed_at": "2026-11-12T11:49:25+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ba92f0f8b36db9aa6170b7a453393d7d9126f64060bed06ab32ca9e9e838f88c",
+    "license-evidence.json": "0ee51d42931dbc7a38ee94a188f2f18e50d1102cf301030d20ad4bf393973cbe",
+    "historical-base.stdout.txt": "cd68a7eaf6da8d3c7e6d63fbd21119edff49e24a8f68080d009166d50d139e55",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "d08100d89945a4d561ba1c61bf595d325d7ef2c2b35bb3e2cf77b2915d50cfb2",
+    "historical-fixed.stdout.txt": "917f4128addab4372b4379c7b35c557cff3ed150162f219a83e2b1560d932fa0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "1110f10aec66918f0edf6f2b76f80ae37f3870f1f477393b7559a563f04cb983"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pvlib/singlediode.py",
+      "function": "_lambertw"
+    }
+  ],
+  "mechanism": "A tiny negative open-circuit voltage from floating-point computation is used directly as the upper bound of a search starting at zero. The saved search rejects upper<lower. Clipping only the small negative roundoff range to zero keeps the search bounds valid.",
+  "limitations": "The guard handles a narrow tolerance range, not all negative physical voltages. No claim of new physical measurements or independent numerical benchmarking is made.",
+  "observed_junit": {
+    "base": {
+      "cases": 33,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 33,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pvlib.tests.test_singlediode::test_singlediode_lambert_negative_voc",
+      "message": "ValueError: upper >= lower is required"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

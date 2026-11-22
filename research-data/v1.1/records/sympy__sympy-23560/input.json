@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 5 items\n\nsympy/geometry/tests/test_util.py::test_idiff FAILED                     [ 20%]\nsympy/geometry/tests/test_util.py::test_intersection PASSED              [ 40%]\nsympy/geometry/tests/test_util.py::test_convex_hull PASSED               [ 60%]\nsympy/geometry/tests/test_util.py::test_centroid PASSED                  [ 80%]\nsympy/geometry/tests/test_util.py::test_farthest_points_closest_points PASSED [100%]\n\n=================================== FAILURES ===================================\n__________________________________ test_idiff __________________________________\n\n    def test_idiff():\n        x = Symbol('x', real=True)\n        y = Symbol('y', real=True)\n        t = Symbol('t', real=True)\n        f = Function('f')\n        g = Function('g')\n        # the use of idiff in ellipse also provides coverage\n        circ = x**2 + y**2 - 4\n        ans = -3*x*(x**2/y**2 + 1)/y**3\n>       assert ans == idiff(circ, y, x, 3), idiff(circ, y, x, 3)\nE       AssertionError: (-3*x**3/y - 3*x*y)/y**4\nE       assert -3*x*(x**2/y**2 + 1)/y**3 == (-3*x**3/y - 3*x*y)/y**4\nE        +  where (-3*x**3/y - 3*x*y)/y**4 = idiff(x**2 + y**2 - 4, y, x, 3)\n\nsympy/geometry/tests/test_util.py:22: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/geometry/tests/test_util.py::test_idiff - AssertionError: (-3*x*...\n========================= 1 failed, 4 passed in 0.78s ==========================\n",
+  "code": [
+    {
+      "file": "sympy/geometry/util.py",
+      "function": "idiff",
+      "start_line": 557,
+      "end_line": 623,
+      "score": 50.917663,
+      "text": "sympy/geometry/util.py::idiff lines 557-623\ndef idiff(eq, y, x, n=1):\n    \"\"\"Return ``dy/dx`` assuming that ``eq == 0``.\n\n    Parameters\n    ==========\n\n    y : the dependent variable or a list of dependent variables (with y first)\n    x : the variable that the derivative is being taken with respect to\n    n : the order of the derivative (default is 1)\n\n    Examples\n    ========\n\n    >>> from sympy.abc import x, y, a\n    >>> from sympy.geometry.util import idiff\n\n    >>> circ = x**2 + y**2 - 4\n    >>> idiff(circ, y, x)\n    -x/y\n    >>> idiff(circ, y, x, 2).simplify()\n    (-x**2 - y**2)/y**3\n\n    Here, ``a`` is assumed to be independent of ``x``:\n\n    >>> idiff(x + a + y, y, x)\n    -1\n\n    Now the x-dependence of ``a`` is made explicit by listing ``a`` after\n    ``y`` in a list.\n\n    >>> idiff(x + a + y, [y, a], x)\n    -Derivative(a, x) - 1\n\n    See Also\n    ========\n\n    sympy.core.function.Derivative: represents unevaluated derivatives\n    sympy.core.function.diff: explicitly differentiates wrt symbols\n\n    \"\"\"\n    if is_sequence(y):\n        dep = set(y)\n        y = y[0]\n    elif isinstance(y, Symbol):\n        dep = {y}\n    elif isinstance(y, Function):\n        pass\n    else:\n        raise ValueError(\"expecting x-dependent symbol(s) or function(s) but got: %s\" % y)\n\n    f = {s: Function(s.name)(x) for s in eq.free_symbols\n        if s != x and s in dep}\n\n    if isinstance(y, Symbol):\n        dydx = Function(y.name)(x).diff(x)\n    else:\n        dydx = y.diff(x)\n\n    eq = eq.subs(f)\n    derivs = {}\n    for i in range(n):\n        yp = solve(eq.diff(x), dydx)[0].subs(derivs)\n        if i == n - 1:\n            return yp.subs([(v, k) for k, v in f.items()])\n        derivs[dydx] = yp\n        eq = dydx - yp\n        dydx = dydx.diff(x)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol.__new__",
+      "start_line": 285,
+      "end_line": 296,
+      "score": 31.147079,
+      "text": "sympy/core/symbol.py::Symbol.__new__ lines 285-296\n    def __new__(cls, name, **assumptions):\n        \"\"\"Symbols are identified by name and assumptions::\n\n        >>> from sympy import Symbol\n        >>> Symbol(\"x\") == Symbol(\"x\")\n        True\n        >>> Symbol(\"x\", real=True) == Symbol(\"x\", real=False)\n        False\n\n        \"\"\"\n        cls._sanitize(assumptions, cls)\n        return Symbol.__xnew_cached_(cls, name, **assumptions)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol._diff_wrt",
+      "start_line": 241,
+      "end_line": 252,
+      "score": 31.069045,
+      "text": "sympy/core/symbol.py::Symbol._diff_wrt lines 241-252\n    def _diff_wrt(self):\n        \"\"\"Allow derivatives wrt Symbols.\n\n        Examples\n        ========\n\n            >>> from sympy import Symbol\n            >>> x = Symbol('x')\n            >>> x._diff_wrt\n            True\n        \"\"\"\n        return True",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.real",
+      "start_line": 1289,
+      "end_line": 1290,
+      "score": 31.0,
+      "text": "sympy/polys/domains/domain.py::Domain.real lines 1289-1290\n    def real(self, a):\n        return a",
+      "truncated": false
+    },
+    {
+      "file": "sympy/stats/frv.py",
+      "function": "FinitePSpace.where",
+      "start_line": 258,
+      "end_line": 260,
+      "score": 30.83205,
+      "text": "sympy/stats/frv.py::FinitePSpace.where lines 258-260\n    def where(self, condition):\n        assert all(r.symbol in self.symbols for r in random_symbols(condition))\n        return ConditionalFiniteDomain(self.domain, condition)",
+      "truncated": false
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T043714180575Z",
+  "reviewed_at": "2026-11-12T12:12:23+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7d381cc981fab40b8b5e597a00d1f9471625538a691d7eeea6a19cd1578358c5",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "f41192736af5f3a3ed28abc4de906754686cf57e610bf5eaed0bdf73505d5d07",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "db1819ceef9c2f65c76cd142f231a79646de74d5d89ac89ebfb390c2f691a82d",
+    "historical-fixed.stdout.txt": "38ae40d18ce7b211b051ea5aca49d11a16b833b70f6d0a6e891791f767cbbba6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f603052eebe4d510a03b110d3f2c57596b072e02e84bdbaba70530baf40e9029"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/solvers/diophantine/diophantine.py",
+      "function": "pow_rep_recursive"
+    }
+  ],
+  "mechanism": "The search recurses once for every decrement of the candidate upper bound before considering terms. The saved million-as-squares query exhausts Python recursion depth on that decrement path. Iterating candidate terms with feasibility bounds and a one-term base case prevents the linear-depth recursion.",
+  "limitations": "A concrete RecursionError is observed, not merely a slow benchmark or a claim that every Diophantine search now scales well.",
+  "observed_junit": {
+    "base": {
+      "cases": 46,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 46,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.solvers.diophantine.tests.test_diophantine::test_issue_23807",
+      "message": "RecursionError: maximum recursion depth exceeded in comparison"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

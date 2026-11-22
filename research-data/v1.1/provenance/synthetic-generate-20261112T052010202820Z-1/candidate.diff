@@ -1,0 +1,11 @@
+--- a/sympy/core/numbers.py
++++ b/sympy/core/numbers.py
+@@ -99,7 +99,7 @@
+     False
+     """
+     if isinstance(z2, str):
+-        if not pure_complex(z1, or_real=True):
++        if not pure_complex(z1, or_real=False):
+             raise ValueError('when z2 is a str z1 must be a Number')
+         return str(z1) == z2
+     if not z1:

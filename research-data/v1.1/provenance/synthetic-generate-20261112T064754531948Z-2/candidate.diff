@@ -1,0 +1,11 @@
+--- a/sympy/polys/polyroots.py
++++ b/sympy/polys/polyroots.py
+@@ -990,7 +990,7 @@
+                 _update_dict(result, r, 1)
+         elif f.degree() == 1:
+             result[roots_linear(f)[0]] = 1
+-        elif f.length() == 2:
++        elif f.length() == 3:
+             roots_fun = roots_quadratic if f.degree() == 2 else roots_binomial
+             for r in roots_fun(f):
+                 _update_dict(result, r, 1)

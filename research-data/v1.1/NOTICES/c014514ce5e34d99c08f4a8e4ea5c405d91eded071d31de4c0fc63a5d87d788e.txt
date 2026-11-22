@@ -1,0 +1,100 @@
+"""
+Main Random Variables Module
+
+Defines abstract random variable type.
+Contains interfaces for probability space object (PSpace) as well as standard
+operators, P, E, sample, density, where
+
+See Also
+========
+sympy.stats.crv
+sympy.stats.frv
+sympy.stats.rv_interface
+"""
+
+from __future__ import print_function, division
+
+from sympy import (Basic, S, Expr, Symbol, Tuple, And, Add, Eq, lambdify,
+        Equality, Lambda, DiracDelta, sympify)
+from sympy.core.relational import Relational
+from sympy.logic.boolalg import Boolean
+from sympy.solvers.solveset import solveset
+from sympy.sets.sets import FiniteSet, ProductSet, Intersection
+from sympy.abc import x
+
+
+class RandomDomain(Basic):
+    """
+    Represents a set of variables and the values which they can take
+
+    See Also
+    ========
+    sympy.stats.crv.ContinuousDomain
+    sympy.stats.frv.FiniteDomain
+    """
+
+    is_ProductDomain = False
+    is_Finite = False
+    is_Continuous = False
+
+    def __new__(cls, symbols, *args):
+        symbols = FiniteSet(*symbols)
+        return Basic.__new__(cls, symbols, *args)
+
+    @property
+    def symbols(self):
+        return self.args[0]
+
+    @property
+    def set(self):
+        return self.args[1]
+
+    def __contains__(self, other):
+        raise NotImplementedError()
+
+    def integrate(self, expr):
+        raise NotImplementedError()
+
+
+class SingleDomain(RandomDomain):
+    """
+    A single variable and its domain
+
+    See Also
+    ========
+    sympy.stats.crv.SingleContinuousDomain
+    sympy.stats.frv.SingleFiniteDomain
+    """
+    def __new__(cls, symbol, set):
+        assert symbol.is_Symbol
+        return Basic.__new__(cls, symbol, set)
+
+    @property
+    def symbol(self):
+        return self.args[0]
+
+    @property
+    def symbols(self):
+        return FiniteSet(self.symbol)
+
+    def __contains__(self, other):
+        if len(other) != 1:
+            return False
+        sym, val = tuple(other)[0]
+        return self.symbol == sym and val in self.set
+
+
+class ConditionalDomain(RandomDomain):
+    """
+    A RandomDomain with an attached condition
+
+    See Also
+    ========
+    sympy.stats.crv.ConditionalContinuousDomain
+    sympy.stats.frv.ConditionalFiniteDomain
+    """
+    def __new__(cls, fulldomain, condition):
+        condition = condition.xreplace(dict((rs, rs.symbol)
+            for rs in random_symbols(condition)))
+        return Basic.__new__(cls, fulldomain, condition)
+

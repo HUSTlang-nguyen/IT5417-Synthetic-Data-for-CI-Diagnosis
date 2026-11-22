@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 47 items\n\nsympy/sets/tests/test_fancysets.py::test_Integers_eval_imageset FAILED   [  2%]\nsympy/sets/tests/test_fancysets.py::test_naturals PASSED                 [  4%]\nsympy/sets/tests/test_fancysets.py::test_naturals0 PASSED                [  6%]\nsympy/sets/tests/test_fancysets.py::test_integers PASSED                 [  8%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet PASSED                 [ 10%]\nsympy/sets/tests/test_fancysets.py::test_image_is_ImageSet PASSED        [ 12%]\nsympy/sets/tests/test_fancysets.py::test_halfcircle PASSED               [ 14%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_iterator_not_injective PASSED [ 17%]\nsympy/sets/tests/test_fancysets.py::test_inf_Range_len PASSED            [ 19%]\nsympy/sets/tests/test_fancysets.py::test_Range_set PASSED                [ 21%]\nsympy/sets/tests/test_fancysets.py::test_Range_symbolic PASSED           [ 23%]\nsympy/sets/tests/test_fancysets.py::test_range_range_intersection PASSED [ 25%]\nsympy/sets/tests/test_fancysets.py::test_range_interval_intersection PASSED [ 27%]\nsympy/sets/tests/test_fancysets.py::test_range_is_finite_set PASSED      [ 29%]\nsympy/sets/tests/test_fancysets.py::test_Range_eval_imageset PASSED      [ 31%]\nsympy/sets/tests/test_fancysets.py::test_fun PASSED                      [ 34%]\nsympy/sets/tests/test_fancysets.py::test_Reals PASSED                    [ 36%]\nsympy/sets/tests/test_fancysets.py::test_Complex PASSED                  [ 38%]\nsympy/sets/tests/test_fancysets.py::test_intersections PASSED            [ 40%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_1 PASSED [ 42%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_2 PASSED [ 44%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_real PASSED  [ 46%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_interval PASSED [ 48%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_diophantine PASSED [ 51%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_3 PASSED [ 53%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_simplification PASSED  [ 55%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_contains PASSED        [ 57%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_contains PASSED   [ 59%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_intersect PASSED  [ 61%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_union PASSED      [ 63%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_from_real PASSED  [ 65%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_measure PASSED    [ 68%]\nsympy/sets/tests/test_fancysets.py::test_normalize_theta_set PASSED      [ 70%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_FiniteSet PASSED  [ 72%]\nsympy/sets/tests/test_fancysets.py::test_union_RealSubSet PASSED         [ 74%]\nsympy/sets/tests/test_fancysets.py::test_issue_9980 PASSED               [ 76%]\nsympy/sets/tests/test_fancysets.py::test_issue_11732 PASSED              [ 78%]\nsympy/sets/tests/test_fancysets.py::test_issue_11730 PASSED              [ 80%]\nsympy/sets/tests/test_fancysets.py::test_issue_11938 PASSED              [ 82%]\nsympy/sets/tests/test_fancysets.py::test_issue_11914 PASSED              [ 85%]\nsympy/sets/tests/test_fancysets.py::test_issue_9543 PASSED               [ 87%]\nsympy/sets/tests/test_fancysets.py::test_issue_16871 PASSED              [ 89%]\nsympy/sets/tests/test_fancysets.py::test_issue_18050 PASSED              [ 91%]\nsympy/sets/tests/test_fancysets.py::test_Rationals PASSED                [ 93%]\nsympy/sets/tests/test_fancysets.py::test_NZQRC_unions PASSED             [ 95%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersection PASSED    [ 97%]\nsympy/sets/tests/test_fancysets.py::test_issue_17858 PASSED              [100%]\n\n=================================== FAILURES ===================================\n_________________________ test_Integers_eval_imageset __________________________\n\n    def test_Integers_eval_imageset():\n        ans = ImageSet(Lambda(x, 2*x + Rational(3, 7)), S.Integers)\n        im = imageset(Lambda(x, -2*x + Rational(3, 7)), S.Integers)\n        assert im == ans\n        im = imageset(Lambda(x, -2*x - Rational(11, 7)), S.Integers)\n        assert im == ans\n        y = Symbol('y')\n        L = imageset(x, 2*x + y, S.Integers)\n        assert y + 4 in L\n        a, b, c = 0.092, 0.433, 0.341\n        assert a in imageset(x, a + c*x, S.Integers)\n>       assert b in imageset(x, b + c*x, S.Integers)\nE       assert 0.433 in ImageSet(Lambda(x, 0.341*x + 0.092), Integers)\nE        +  where ImageSet(Lambda(x, 0.341*x + 0.092), Integers) = imageset(x, (0.433 + (0.341 * x)), Integers)\nE        +    where Integers = S.Integers\n\nsympy/sets/tests/test_fancysets.py:485: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/sets/tests/test_fancysets.py::test_Integers_eval_imageset - asse...\n=================== 1 failed, 46 passed, 1 warning in 2.50s ====================\n",
+  "code": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Complexes.sets",
+      "start_line": 1433,
+      "end_line": 1434,
+      "score": 51.224745,
+      "text": "sympy/sets/fancysets.py::Complexes.sets lines 1433-1434\n    def sets(self):\n        return ProductSet(S.Reals, S.Reals)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Integers._boundary",
+      "start_line": 215,
+      "end_line": 216,
+      "score": 51.0,
+      "text": "sympy/sets/fancysets.py::Integers._boundary lines 215-216\n    def _boundary(self):\n        return self",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "ComplexRegion.sets",
+      "start_line": 1112,
+      "end_line": 1131,
+      "score": 50.970143,
+      "text": "sympy/sets/fancysets.py::ComplexRegion.sets lines 1112-1131\n    def sets(self):\n        \"\"\"\n        Return raw input sets to the self.\n\n        Examples\n        ========\n\n        >>> from sympy import Interval, ComplexRegion, Union\n        >>> a = Interval(2, 3)\n        >>> b = Interval(4, 5)\n        >>> c = Interval(1, 7)\n        >>> C1 = ComplexRegion(a*b)\n        >>> C1.sets\n        ProductSet(Interval(2, 3), Interval(4, 5))\n        >>> C2 = ComplexRegion(Union(a*b, b*c))\n        >>> C2.sets\n        Union(ProductSet(Interval(2, 3), Interval(4, 5)), ProductSet(Interval(4, 5), Interval(1, 7)))\n\n        \"\"\"\n        return self.args[0]",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Integers._inf",
+      "start_line": 207,
+      "end_line": 208,
+      "score": 50.894427,
+      "text": "sympy/sets/fancysets.py::Integers._inf lines 207-208\n    def _inf(self):\n        return S.NegativeInfinity",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Integers._sup",
+      "start_line": 211,
+      "end_line": 212,
+      "score": 50.894427,
+      "text": "sympy/sets/fancysets.py::Integers._sup lines 211-212\n    def _sup(self):\n        return S.Infinity",
+      "truncated": false
+    }
+  ]
+}

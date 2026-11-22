@@ -1,0 +1,27 @@
+{
+  "sample_id": "pvlib__pvlib-python-1216",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "calcparams_cec"
+    }
+  ],
+  "explanation": "The CEC wrapper accepts extra physical-model parameters but forwards hard-coded defaults to calcparams_desoto. The saved spy sees default EgRef/dEgdT/irradiance/temperature values rather than the four supplied values. Forwarding the actual arguments restores the wrapper contract.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.calcparams_cec"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.calcparams_desoto"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "calcparams_cec"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

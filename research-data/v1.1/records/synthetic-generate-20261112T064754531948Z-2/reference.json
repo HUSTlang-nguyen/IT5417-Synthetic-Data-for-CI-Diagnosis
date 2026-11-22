@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T064754531948Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/polyroots.py",
+      "function": "roots"
+    }
+  ],
+  "explanation": "The binomial fast-path gate accepts three nonzero terms instead of two. The saved three-term cubic is handled by an unsuitable binomial formula and its returned roots fail direct residual checks.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/assumptions/sathandlers.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

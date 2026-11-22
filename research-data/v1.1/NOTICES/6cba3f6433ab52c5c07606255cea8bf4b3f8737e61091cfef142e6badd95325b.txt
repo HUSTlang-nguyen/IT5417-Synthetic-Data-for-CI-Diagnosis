@@ -1,0 +1,100 @@
+import numbers
+import decimal
+import fractions
+import math
+import re as regex
+import sys
+
+from .containers import Tuple
+from .sympify import (SympifyError, converter, sympify, _convert_numpy_types, _sympify,
+                      _is_numpy_instance)
+from .singleton import S, Singleton
+from .expr import Expr, AtomicExpr
+from .evalf import pure_complex
+from .decorators import _sympifyit
+from .cache import cacheit, clear_cache
+from .logic import fuzzy_not
+from sympy.core.compatibility import (as_int, HAS_GMPY, SYMPY_INTS,
+    gmpy)
+from sympy.core.cache import lru_cache
+from .kind import NumberKind
+from sympy.multipledispatch import dispatch
+import mpmath
+import mpmath.libmp as mlib
+from mpmath.libmp import bitcount
+from mpmath.libmp.backend import MPZ
+from mpmath.libmp import mpf_pow, mpf_pi, mpf_e, phi_fixed
+from mpmath.ctx_mp import mpnumeric
+from mpmath.libmp.libmpf import (
+    finf as _mpf_inf, fninf as _mpf_ninf,
+    fnan as _mpf_nan, fzero, _normalize as mpf_normalize,
+    prec_to_dps)
+from sympy.utilities.misc import debug, filldedent
+from .parameters import global_parameters
+
+from sympy.utilities.exceptions import SymPyDeprecationWarning
+
+rnd = mlib.round_nearest
+
+_LOG2 = math.log(2)
+
+
+def comp(z1, z2, tol=None):
+    """Return a bool indicating whether the error between z1 and z2
+    is <= tol.
+
+    Examples
+    ========
+
+    If ``tol`` is None then True will be returned if
+    ``abs(z1 - z2)*10**p <= 5`` where ``p`` is minimum value of the
+    decimal precision of each value.
+
+    >>> from sympy.core.numbers import comp, pi
+    >>> pi4 = pi.n(4); pi4
+    3.142
+    >>> comp(_, 3.142)
+    True
+    >>> comp(pi4, 3.141)
+    False
+    >>> comp(pi4, 3.143)
+    False
+
+    A comparison of strings will be made
+    if ``z1`` is a Number and ``z2`` is a string or ``tol`` is ''.
+
+    >>> comp(pi4, 3.1415)
+    True
+    >>> comp(pi4, 3.1415, '')
+    False
+
+    When ``tol`` is provided and ``z2`` is non-zero and
+    ``|z1| > 1`` the error is normalized by ``|z1|``:
+
+    >>> abs(pi4 - 3.14)/pi4
+    0.000509791731426756
+    >>> comp(pi4, 3.14, .001)  # difference less than 0.1%
+    True
+    >>> comp(pi4, 3.14, .0005)  # difference less than 0.1%
+    False
+
+    When ``|z1| <= 1`` the absolute error is used:
+
+    >>> 1/pi4
+    0.3183
+    >>> abs(1/pi4 - 0.3183)/(1/pi4)
+    3.07371499106316e-5
+    >>> abs(1/pi4 - 0.3183)
+    9.78393554684764e-6
+    >>> comp(1/pi4, 0.3183, 1e-5)
+    True
+
+    To see if the absolute error between ``z1`` and ``z2`` is less
+    than or equal to ``tol``, call this as ``comp(z1 - z2, 0, tol)``
+    or ``comp(z1 - z2, tol=tol)``:
+
+    >>> abs(pi4 - 3.14)
+    0.00160156249999988
+    >>> comp(pi4 - 3.14, 0, .002)
+    True
+    >>> comp(pi4 - 3.14, 0, .001)

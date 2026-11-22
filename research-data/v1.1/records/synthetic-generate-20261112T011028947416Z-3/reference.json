@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T011028947416Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "fastlog"
+    }
+  ],
+  "explanation": "The exceptional zero test is replaced by a comparison with the floating representation of one. One is treated as negative-infinite magnitude, while zero no longer uses that special branch, corrupting magnitude estimates. Saved complex-power and summation values are incorrect.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

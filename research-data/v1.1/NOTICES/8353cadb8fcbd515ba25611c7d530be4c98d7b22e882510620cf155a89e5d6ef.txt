@@ -1,0 +1,100 @@
+# Copyright 2008-2018 pydicom authors. See LICENSE file for details.
+"""Special classes for DICOM value representations (VR)"""
+from copy import deepcopy
+from decimal import Decimal
+import re
+
+from datetime import (date, datetime, time, timedelta)
+
+# don't import datetime_conversion directly
+from pydicom import config
+from pydicom import compat
+from pydicom.multival import MultiValue
+from pydicom.util.fixes import timezone
+
+# can't import from charset or get circular import
+default_encoding = "iso8859"
+
+# For reading/writing data elements,
+# these ones have longer explicit VR format
+# Taken from PS3.5 Section 7.1.2
+extra_length_VRs = ('OB', 'OD', 'OF', 'OL', 'OW', 'SQ', 'UC', 'UN', 'UR', 'UT')
+
+# VRs that can be affected by character repertoire
+# in (0008,0005) Specific Character Set
+# See PS-3.5 (2011), section 6.1.2 Graphic Characters
+# and PN, but it is handled separately.
+text_VRs = ('SH', 'LO', 'ST', 'LT', 'UC', 'UT')
+
+# Delimiters for text strings and person name that reset the encoding.
+# See PS3.5, Section 6.1.2.5.3
+# Note: We use characters for Python 2 and character codes for Python 3
+# because these are the types yielded if iterating over a byte string.
+
+# Characters/Character codes for text VR delimiters: LF, CR, TAB, FF
+TEXT_VR_DELIMS = ({'\n', '\r', '\t', '\f'} if compat.in_py2
+                  else {0x0d, 0x0a, 0x09, 0x0c})
+
+# Character/Character code for PN delimiter: name part separator '^'
+# (the component separator '=' is handled separately)
+PN_DELIMS = {'^'} if compat.in_py2 else {0xe5}
+
+
+class DA(date):
+    """Store value for an element with VR 'DA' as :class:`datetime.date`.
+
+    Note that the :class:`datetime.date` base class is immutable.
+    """
+    __slots__ = ['original_string']
+
+    def __getstate__(self):
+        return dict((slot, getattr(self, slot)) for slot in self.__slots__
+                    if hasattr(self, slot))
+
+    def __setstate__(self, state):
+        for slot, value in state.items():
+            setattr(self, slot, value)
+
+    def __reduce__(self):
+        return super(DA, self).__reduce__() + (self.__getstate__(),)
+
+    def __reduce_ex__(self, protocol):
+        return super(DA, self).__reduce__() + (self.__getstate__(),)
+
+    def __new__(cls, val):
+        """Create an instance of DA object.
+
+        Raise an exception if the string cannot be parsed or the argument
+        is otherwise incompatible.
+
+        Parameters
+        ----------
+        val : str
+            A string conformant to the DA definition in the DICOM Standard,
+            Part 5, :dcm:`Table 6.2-1<part05/sect_6.2.html#table_6.2-1>`.
+        """
+        if isinstance(val, (str, compat.string_types)):
+            if len(val) == 8:
+                year = int(val[0:4])
+                month = int(val[4:6])
+                day = int(val[6:8])
+                val = super(DA, cls).__new__(cls, year, month, day)
+            elif len(val) == 10 and val[4] == '.' and val[7] == '.':
+                # ACR-NEMA Standard 300, predecessor to DICOM
+                # for compatibility with a few old pydicom example files
+                year = int(val[0:4])
+                month = int(val[5:7])
+                day = int(val[8:10])
+                val = super(DA, cls).__new__(cls, year, month, day)
+            elif val == '':
+                val = None  # empty date
+            else:
+                try:
+                    val = super(DA, cls).__new__(cls, val)
+                except TypeError:
+                    raise ValueError("Cannot convert to datetime: '%s'" %
+                                     (val))
+        elif isinstance(val, date):
+            val = super(DA, cls).__new__(cls, val.year, val.month, val.day)
+        else:
+            val = super(DA, cls).__new__(cls, val)

@@ -1,0 +1,100 @@
+"""
+This module implements some special functions that commonly appear in
+combinatorial contexts (e.g. in power series); in particular,
+sequences of rational numbers such as Bernoulli and Fibonacci numbers.
+
+Factorials, binomial coefficients and related functions are located in
+the separate 'factorials' module.
+"""
+
+from __future__ import print_function, division
+
+from sympy.core import S, Symbol, Rational, Integer, Add, Dummy
+from sympy.core.compatibility import as_int, SYMPY_INTS, range
+from sympy.core.cache import cacheit
+from sympy.core.function import Function, expand_mul
+from sympy.core.numbers import E, pi
+from sympy.core.relational import LessThan, StrictGreaterThan
+from sympy.functions.combinatorial.factorials import binomial, factorial
+from sympy.functions.elementary.exponential import log
+from sympy.functions.elementary.integers import floor
+from sympy.functions.elementary.trigonometric import sin, cos, cot
+from sympy.functions.elementary.miscellaneous import sqrt
+from sympy.utilities.memoization import recurrence_memo
+
+from mpmath import bernfrac, workprec
+from mpmath.libmp import ifib as _ifib
+
+
+def _product(a, b):
+    p = 1
+    for k in range(a, b + 1):
+        p *= k
+    return p
+
+
+
+# Dummy symbol used for computing polynomial sequences
+_sym = Symbol('x')
+_symbols = Function('x')
+
+
+#----------------------------------------------------------------------------#
+#                                                                            #
+#                           Fibonacci numbers                                #
+#                                                                            #
+#----------------------------------------------------------------------------#
+
+class fibonacci(Function):
+    r"""
+    Fibonacci numbers / Fibonacci polynomials
+
+    The Fibonacci numbers are the integer sequence defined by the
+    initial terms F_0 = 0, F_1 = 1 and the two-term recurrence
+    relation F_n = F_{n-1} + F_{n-2}.  This definition
+    extended to arbitrary real and complex arguments using
+    the formula
+
+    .. math :: F_z = \frac{\phi^z - \cos(\pi z) \phi^{-z}}{\sqrt 5}
+
+    The Fibonacci polynomials are defined by F_1(x) = 1,
+    F_2(x) = x, and F_n(x) = x*F_{n-1}(x) + F_{n-2}(x) for n > 2.
+    For all positive integers n, F_n(1) = F_n.
+
+    * fibonacci(n) gives the nth Fibonacci number, F_n
+    * fibonacci(n, x) gives the nth Fibonacci polynomial in x, F_n(x)
+
+    Examples
+    ========
+
+    >>> from sympy import fibonacci, Symbol
+
+    >>> [fibonacci(x) for x in range(11)]
+    [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+    >>> fibonacci(5, Symbol('t'))
+    t**4 + 3*t**2 + 1
+
+    References
+    ==========
+
+    .. [1] http://en.wikipedia.org/wiki/Fibonacci_number
+    .. [2] http://mathworld.wolfram.com/FibonacciNumber.html
+
+    See Also
+    ========
+
+    bell, bernoulli, catalan, euler, harmonic, lucas
+    """
+
+    @staticmethod
+    def _fib(n):
+        return _ifib(n)
+
+    @staticmethod
+    @recurrence_memo([None, S.One, _sym])
+    def _fibpoly(n, prev):
+        return (prev[-2] + _sym*prev[-1]).expand()
+
+    @classmethod
+    def eval(cls, n, sym=None):
+        if n is S.Infinity:

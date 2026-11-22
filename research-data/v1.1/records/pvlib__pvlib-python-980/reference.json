@@ -1,0 +1,23 @@
+{
+  "sample_id": "pvlib__pvlib-python-980",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/soiling.py",
+      "function": "hsu"
+    }
+  ],
+  "explanation": "Deposition combines a fine-particle contribution without elapsed-time scaling and a coarse-particle contribution with fixed3600 scaling. Saved hourly soiling series differ from expected values, and the patch scales their sum using timestamp intervals. Applying actual elapsed seconds to both rates restores accumulation units.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/soiling.py",
+      "function": "hsu"
+    },
+    {
+      "file": "pvlib/_deprecation.py",
+      "function": "deprecated"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

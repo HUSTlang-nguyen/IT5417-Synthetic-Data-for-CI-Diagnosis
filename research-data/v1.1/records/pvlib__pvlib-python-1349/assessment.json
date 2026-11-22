@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T050025876510Z",
+  "reviewed_at": "2026-11-12T12:15:15+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "bc6a50bf7c4cf4af4484933d4945849fb767cbb471e363b83a716369c10bdcdf",
+    "license-evidence.json": "1fd90d3e1719cdf1291ae0330bb742b84ffebfa08abdd285e58bc07e3ea4f46c",
+    "historical-base.stdout.txt": "e2ee374e338cacad096c9676c0abd850de2467495dbdce5ed79c095c010dccd6",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "aa369d4559e4a7db873848bffc226056fac9804ce5e2e360c4e650e2867bfa94",
+    "historical-fixed.stdout.txt": "5b8d3bfc0e4042d0f852aa696cda717624d72dd364d5dfda295b10eda23c45fc",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ef11bd309e3e2b5f7affc83cdd5c184c878f8214e55bea7a69857bd6e0b1983d"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pvlib/spectrum/spectrl2.py",
+      "function": "spectrl2"
+    }
+  ],
+  "mechanism": "The direct irradiance calculation multiplies by a negative cosine when incidence exceeds90degrees. The saved test reports negative poa_direct values with the sun behind the panel. Clipping the incidence projection to zero prevents this invalid irradiance.",
+  "limitations": "The patch also bounds the zenith denominator in the diffuse projection. The saved first assertion directly proves the negative direct-beam path, not the entire spectral model.",
+  "observed_junit": {
+    "base": {
+      "cases": 5,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 5,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pvlib.tests.test_spectrum::test_aoi_gt_90",
+      "message": "AssertionError: poa_direct contains negative values for aoi>90\nassert False\n +  where False = <function all at 0x7712f4c76ee0>(array([[-2.36670280e-06],\\n       [-4.60398722e-04],\\n       [-4.53110574e-03],\\n       [-2.11563114e-02],\\n       [-4.14189536e-02],\\n       [-7.99020627e-02],\\n       [-1.24720234e-01],\\n       [-1.42135958e-01],\\n       [-1.52947790e-01],\\n       [-1.69068680e-01],\\n       [-1.95016027e-01],\\n       [-2.19920408e-01],\\n       [-2.78358218e-01],\\n       [-2.98839612e-01],\\n       [-3.01652017e-01],\\n       [-4.60976497e-01],\\n       [-5.61997160e-01],\\n       [-6.05353580e-01],\\n       [-5.78002513e-01],\\n       [-6.96962257e-01],\\n       [-7.86834637e-01],\\n       [-8.26207301e-01],\\n       [-8.25382131e-01],\\n       [-8.60703342e-01],\\n       [-8.19284793e-01],\\n       [-8.35951707e-01],\\n       [-8.52616404e-01],\\n       [-8.18744312e-01],\\n       [-8.473843"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

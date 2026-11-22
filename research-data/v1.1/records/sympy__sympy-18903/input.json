@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 7 items\n\nsympy/functions/elementary/tests/test_integers.py::test_issue_18689 FAILED [ 14%]\nsympy/functions/elementary/tests/test_integers.py::test_floor PASSED     [ 28%]\nsympy/functions/elementary/tests/test_integers.py::test_ceiling PASSED   [ 42%]\nsympy/functions/elementary/tests/test_integers.py::test_frac PASSED      [ 57%]\nsympy/functions/elementary/tests/test_integers.py::test_series PASSED    [ 71%]\nsympy/functions/elementary/tests/test_integers.py::test_issue_11207 PASSED [ 85%]\nsympy/functions/elementary/tests/test_integers.py::test_nested_floor_ceiling PASSED [100%]\n\n=================================== FAILURES ===================================\n_______________________________ test_issue_18689 _______________________________\n\n    def test_issue_18689():\n>       assert floor(floor(floor(x)) + 3) == floor(x) + 3\nE       assert floor(floor(x)) + 3 == (floor(x) + 3)\nE        +  where floor(floor(x)) + 3 = floor((floor(x) + 3))\nE        +    where floor(x) = floor(floor(x))\nE        +      where floor(x) = floor(x)\nE        +  and   floor(x) = floor(x)\n\nsympy/functions/elementary/tests/test_integers.py:565: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/functions/elementary/tests/test_integers.py::test_issue_18689 - ...\n==================== 1 failed, 6 passed, 1 warning in 0.58s ====================\n",
+  "code": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_Eq",
+      "start_line": 157,
+      "end_line": 161,
+      "score": 50.904534,
+      "text": "sympy/functions/elementary/integers.py::floor._eval_Eq lines 157-161\n    def _eval_Eq(self, other):\n        if isinstance(self, floor):\n            if (self.rewrite(ceiling) == other) or \\\n                    (self.rewrite(frac) == other):\n                return S.true",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_is_negative",
+      "start_line": 145,
+      "end_line": 146,
+      "score": 50.816497,
+      "text": "sympy/functions/elementary/integers.py::floor._eval_is_negative lines 145-146\n    def _eval_is_negative(self):\n        return self.args[0].is_negative",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_is_nonnegative",
+      "start_line": 148,
+      "end_line": 149,
+      "score": 50.816497,
+      "text": "sympy/functions/elementary/integers.py::floor._eval_is_nonnegative lines 148-149\n    def _eval_is_nonnegative(self):\n        return self.args[0].is_nonnegative",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_rewrite_as_ceiling",
+      "start_line": 151,
+      "end_line": 152,
+      "score": 50.755929,
+      "text": "sympy/functions/elementary/integers.py::floor._eval_rewrite_as_ceiling lines 151-152\n    def _eval_rewrite_as_ceiling(self, arg, **kwargs):\n        return -ceiling(-arg)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_rewrite_as_frac",
+      "start_line": 154,
+      "end_line": 155,
+      "score": 50.755929,
+      "text": "sympy/functions/elementary/integers.py::floor._eval_rewrite_as_frac lines 154-155\n    def _eval_rewrite_as_frac(self, arg, **kwargs):\n        return arg - frac(arg)",
+      "truncated": false
+    }
+  ]
+}

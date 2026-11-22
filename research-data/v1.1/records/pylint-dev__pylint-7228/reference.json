@@ -1,0 +1,23 @@
+{
+  "sample_id": "pylint-dev__pylint-7228",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "pylint/config/argument.py",
+      "function": "_regexp_csv_transfomer"
+    }
+  ],
+  "explanation": "The comma-separated regex transformer calls re.compile directly without translating re.error into argparse.ArgumentTypeError. An invalid pattern therefore escapes as a regex exception rather than the CLI input-error protocol. The new wrapper performs that translation; the plain-regexp registry is also routed through it.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/lint/run.py",
+      "function": "Run.__init__"
+    },
+    {
+      "file": "pylint/config/config_initialization.py",
+      "function": "_config_initialization"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19254",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_zz_mignotte_bound"
+    }
+  ],
+  "explanation": "The base coefficient-bound calculation uses the older norm/degree formula, yielding32 where the saved Knuth-Cohen variant contract expects6. The repair replaces the formula with the documented variant and rounding; nineteen tests pass.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_zz_mignotte_bound"
+    },
+    {
+      "file": "sympy/polys/agca/ideals.py",
+      "function": "Ideal.__init__"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "Module.__init__"
+    },
+    {
+      "file": "sympy/polys/domains/polynomialring.py",
+      "function": "PolynomialRing.order"
+    },
+    {
+      "file": "sympy/polys/domains/quotientring.py",
+      "function": "QuotientRingElement.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

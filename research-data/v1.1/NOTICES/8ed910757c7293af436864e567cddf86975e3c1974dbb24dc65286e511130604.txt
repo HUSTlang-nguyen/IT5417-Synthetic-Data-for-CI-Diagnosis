@@ -1,0 +1,100 @@
+"""Implementation of :class:`Domain` class. """
+
+from __future__ import print_function, division
+
+from sympy.polys.domains.domainelement import DomainElement
+
+from sympy.core import Basic, sympify
+from sympy.core.compatibility import HAS_GMPY, integer_types, is_sequence
+
+from sympy.polys.polyerrors import UnificationFailed, CoercionFailed, DomainError
+from sympy.polys.orderings import lex
+from sympy.polys.polyutils import _unify_gens
+
+from sympy.utilities import default_sort_key, public
+from sympy.core.decorators import deprecated
+
+@public
+class Domain(object):
+    """Represents an abstract domain. """
+
+    dtype = None
+    zero = None
+    one = None
+
+    is_Ring = False
+    is_Field = False
+
+    has_assoc_Ring = False
+    has_assoc_Field = False
+
+    is_FiniteField = is_FF = False
+    is_IntegerRing = is_ZZ = False
+    is_RationalField = is_QQ = False
+    is_RealField = is_RR = False
+    is_ComplexField = is_CC = False
+    is_AlgebraicField = is_Algebraic = False
+    is_PolynomialRing = is_Poly = False
+    is_FractionField = is_Frac = False
+    is_SymbolicDomain = is_EX = False
+
+    is_Exact = True
+    is_Numerical = False
+
+    is_Simple = False
+    is_Composite = False
+    is_PID = False
+
+    has_CharacteristicZero = False
+
+    rep = None
+    alias = None
+
+    @property
+    @deprecated(useinstead="is_Field", issue=12723, deprecated_since_version="1.1")
+    def has_Field(self):
+        return self.is_Field
+
+    @property
+    @deprecated(useinstead="is_Ring", issue=12723, deprecated_since_version="1.1")
+    def has_Ring(self):
+        return self.is_Ring
+
+    def __init__(self):
+        raise NotImplementedError
+
+    def __str__(self):
+        return self.rep
+
+    def __repr__(self):
+        return str(self)
+
+    def __hash__(self):
+        return hash((self.__class__.__name__, self.dtype))
+
+    def new(self, *args):
+        return self.dtype(*args)
+
+    @property
+    def tp(self):
+        return self.dtype
+
+    def __call__(self, *args):
+        """Construct an element of ``self`` domain from ``args``. """
+        return self.new(*args)
+
+    def normal(self, *args):
+        return self.dtype(*args)
+
+    def convert_from(self, element, base):
+        """Convert ``element`` to ``self.dtype`` given the base domain. """
+        if base.alias is not None:
+            method = "from_" + base.alias
+        else:
+            method = "from_" + base.__class__.__name__
+
+        _convert = getattr(self, method)
+
+        if _convert is not None:
+            result = _convert(element, base)
+

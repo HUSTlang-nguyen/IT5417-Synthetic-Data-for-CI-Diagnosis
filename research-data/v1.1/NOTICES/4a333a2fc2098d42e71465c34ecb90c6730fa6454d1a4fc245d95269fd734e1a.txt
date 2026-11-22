@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from sympy.core import Add, S
+from sympy.core.evalf import get_integer_part, PrecisionExhausted
+from sympy.core.function import Function
+from sympy.core.logic import fuzzy_or
+from sympy.core.numbers import Integer
+from sympy.core.relational import Gt, Lt, Ge, Le, Relational
+from sympy.core.symbol import Symbol
+from sympy.core.sympify import _sympify
+
+
+###############################################################################
+######################### FLOOR and CEILING FUNCTIONS #########################
+###############################################################################
+
+
+class RoundFunction(Function):
+    """The base class for rounding functions."""
+
+    @classmethod
+    def eval(cls, arg):
+        from sympy import im
+        v = cls._eval_number(arg)
+        if v is not None:
+            return v
+
+        if arg.is_integer or arg.is_finite is False:
+            return arg
+        if arg.is_imaginary or (S.ImaginaryUnit*arg).is_real:
+            i = im(arg)
+            if not i.has(S.ImaginaryUnit):
+                return cls(i)*S.ImaginaryUnit
+            return cls(arg, evaluate=False)
+
+        # Integral, numerical, symbolic part
+        ipart = npart = spart = S.Zero
+
+        # Extract integral (or complex integral) terms
+        terms = Add.make_args(arg)
+
+        for t in terms:
+            if t.is_integer or (t.is_imaginary and im(t).is_integer):
+                ipart += t
+            elif t.has(Symbol):
+                spart += t
+            else:
+                npart += t
+
+        if not (npart or spart):
+            return ipart
+
+        # Evaluate npart numerically if independent of spart
+        if npart and (
+            not spart or
+            npart.is_real and (spart.is_imaginary or (S.ImaginaryUnit*spart).is_real) or
+                npart.is_imaginary and spart.is_real):
+            try:
+                r, i = get_integer_part(
+                    npart, cls._dir, {}, return_ints=True)
+                ipart += Integer(r) + Integer(i)*S.ImaginaryUnit
+                npart = S.Zero
+            except (PrecisionExhausted, NotImplementedError):
+                pass
+
+        spart += npart
+        if not spart:
+            return ipart
+        elif spart.is_imaginary or (S.ImaginaryUnit*spart).is_real:
+            return ipart + cls(im(spart), evaluate=False)*S.ImaginaryUnit
+        else:
+            return ipart + cls(spart, evaluate=False)
+
+    def _eval_is_finite(self):
+        return self.args[0].is_finite
+
+    def _eval_is_real(self):
+        return self.args[0].is_real
+
+    def _eval_is_integer(self):
+        return self.args[0].is_real
+
+
+class floor(RoundFunction):
+    """
+    Floor is a univariate function which returns the largest integer
+    value not greater than its argument. This implementation
+    generalizes floor to complex numbers by taking the floor of the
+    real and imaginary parts separately.
+
+    Examples
+    ========
+
+    >>> from sympy import floor, E, I, S, Float, Rational
+    >>> floor(17)
+    17
+    >>> floor(Rational(23, 10))
+    2
+    >>> floor(2*E)
+    5

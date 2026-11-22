@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-12T08:33:36+07:00",
+  "origin": "real_local_reconstruction",
+  "sample_id": "pallets__flask-4575",
+  "case_id": "pallets__flask-4575-ds1-extra",
+  "run_id": "reproduce-20261112T000956887994Z",
+  "role": "test",
+  "repo": "https://github.com/pallets/flask",
+  "group_id": "https://github.com/pallets/flask",
+  "source_commit": "bd56d19b167822a9a23e2e9e2a07ccccc36baa8d",
+  "image_id": "sha256:ad11e810a4a328efb12099f4ca5b26300740718622dea481e056083fda199c25",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "quality": "silver",
+  "human_gold": "pending",
+  "experimental_use": "marked_silver_authorized_by_active_goal",
+  "input_sha256": "440e2a013b3aa4c6fd44bf7421b2585abf81872c77967008ddc759bc25ab8e5e",
+  "input_content_sha256": "042c8e3ffe998dd7324ca61fea385c107a1b606531a114f7ec58c0b0ab7a2b9e",
+  "reference_sha256": "3c284665727233478e591c8eea1e44dadd421fecacf4c10b95f7f3e48180de55",
+  "assessment_sha256": "fda8198d54414590029be93b3e6a8239db0604a21d886ea394831b32881b9d10",
+  "evidence_hashes": {
+    "manifest.json": "c9d3a408ab9e87a5f5435267682e1bd1ad856b7567d0fcc0004db8c0a75d5f54",
+    "license-evidence.json": "1b3ebb9908afadb5819a38e5e138ea2e332864ec7c0690ac4cc21564a72d2372",
+    "historical-base.stdout.txt": "8153187cd71cfb19fd6cd0299032b750bc59707567558d37220fe75b787c662a",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "6e98471b1d02430fde06218fd9222d9552f781d1efd04f12ec3b69094e019714",
+    "historical-fixed.stdout.txt": "8c2459ea7763e28971af43622478cdd5b40280ef63910e2f2aca394c5fffdb66",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b93b3fbf73f5ddb44aaab6a44b1b1941487194a75a2b5ae4b06d9e9371d06fa4"
+  },
+  "retrieval": {
+    "production_files_scanned": 31,
+    "ranked_function_count": 395,
+    "characters": 3846,
+    "method": "failure_stack_symbols_and_module_names_v2"
+  }
+}

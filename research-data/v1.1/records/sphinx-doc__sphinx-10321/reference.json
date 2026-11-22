@@ -1,0 +1,31 @@
+{
+  "sample_id": "sphinx-doc__sphinx-10321",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/preserve_defaults.py",
+      "function": "update_defvalue"
+    }
+  ],
+  "explanation": "The default-preservation loop skips required keyword-only parameters without consuming their None placeholder in kw_defaults. A later optional keyword parameter therefore reads the wrong AST default, and signature reconstruction fails or is omitted. Consuming that placeholder keeps parameter/default positions aligned.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "app"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "SphinxTestApp.__init__"
+    },
+    {
+      "file": "sphinx/application.py",
+      "function": "Sphinx.add_stylesheet"
+    },
+    {
+      "file": "sphinx/application.py",
+      "function": "Sphinx.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

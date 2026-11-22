@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18650",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow._eval_expand_power_base"
+    }
+  ],
+  "explanation": "Expansion of a rational power distributes across numeric power factors with evaluation disabled throughout. Nested numeric powers are left unsimplified, so sqrt(8)**(2/3) does not reach the expected2. Separating and evaluating the numeric rational-power factors permits that simplification.",
+  "retrieved_locations": [
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    },
+    {
+      "file": "sympy/polys/orderings.py",
+      "function": "InverseOrder.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

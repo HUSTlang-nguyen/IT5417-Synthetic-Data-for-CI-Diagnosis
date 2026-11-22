@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 2 items\n\nsympy/ntheory/tests/test_digits.py::test_digits FAILED                   [ 50%]\nsympy/ntheory/tests/test_digits.py::test_count_digits PASSED             [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_digits __________________________________\n\n    def test_digits():\n        assert all([digits(n, 2)[1:] == [int(d) for d in format(n, 'b')]\n                    for n in range(20)])\n        assert all([digits(n, 8)[1:] == [int(d) for d in format(n, 'o')]\n                    for n in range(20)])\n        assert all([digits(n, 16)[1:] == [int(d, 16) for d in format(n, 'x')]\n                    for n in range(20)])\n        assert digits(2345, 34) == [34, 2, 0, 33]\n        assert digits(384753, 71) == [71, 1, 5, 23, 4]\n        assert digits(93409, 10) == [10, 9, 3, 4, 0, 9]\n        assert digits(-92838, 11) == [-11, 6, 3, 8, 2, 9]\n        assert digits(35, 10) == [10, 3, 5]\n>       assert digits(35, 10, 3) == [10, 0, 3, 5]\nE       TypeError: digits() takes from 1 to 2 positional arguments but 3 were given\n\nsympy/ntheory/tests/test_digits.py:18: TypeError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/ntheory/tests/test_digits.py::test_digits - TypeError: digits() ...\n==================== 1 failed, 1 passed, 1 warning in 0.08s ====================\n",
+  "code": [
+    {
+      "file": "sympy/ntheory/digits.py",
+      "function": "digits",
+      "start_line": 9,
+      "end_line": 40,
+      "score": 50.980581,
+      "text": "sympy/ntheory/digits.py::digits lines 9-40\ndef digits(n, b=10):\n    \"\"\"\n    Return a list of the digits of ``n`` in base ``b``. The first\n    element in the list is ``b`` (or ``-b`` if ``n`` is negative).\n\n    Examples\n    ========\n\n    >>> from sympy.ntheory.digits import digits\n    >>> digits(35)\n    [10, 3, 5]\n    >>> digits(27, 2)\n    [2, 1, 1, 0, 1, 1]\n    >>> digits(65536, 256)\n    [256, 1, 0, 0]\n    >>> digits(-3958, 27)\n    [-27, 5, 11, 16]\n    \"\"\"\n\n    b = as_int(b)\n    n = as_int(n)\n    if b <= 1:\n        raise ValueError(\"b must be >= 2\")\n    else:\n        x, y = abs(n), []\n        while x >= b:\n            x, r = divmod(x, b)\n            y.append(r)\n        y.append(x)\n        y.append(-b if n < 0 else b)\n        y.reverse()\n        return y",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__",
+      "start_line": 24,
+      "end_line": 25,
+      "score": 31.732051,
+      "text": "sympy/holonomic/holonomicerrors.py::NotHolonomicError.__init__ lines 24-25\n    def __init__(self, m):\n        self.m = m",
+      "truncated": false
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9180",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/__init__.py",
+      "function": "Documenter.filter_members"
+    }
+  ],
+  "explanation": "Documented special attributes can take the special-member branch before attr_docs sets isattr. They are returned with isattr false even though their source attribute documentation exists. Downstream DataDocumenter eligibility requires isattr, so __documented_special__ is omitted. Setting the attribute flag before those selection branches preserves documentation.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/fixtures.py",
+      "function": "app"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "SphinxTestApp.__init__"
+    },
+    {
+      "file": "sphinx/application.py",
+      "function": "Sphinx.add_js_file"
+    },
+    {
+      "file": "sphinx/application.py",
+      "function": "Sphinx.add_css_file"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

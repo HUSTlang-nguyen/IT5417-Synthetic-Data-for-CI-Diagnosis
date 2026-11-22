@@ -1,0 +1,100 @@
+"""Prettyprinter by Jurjen Bos.
+(I hate spammers: mail me at pietjepuk314 at the reverse of ku.oc.oohay).
+All objects have a method that create a "stringPict",
+that can be used in the str method for pretty printing.
+
+Updates by Jason Gedge (email <my last name> at cs mun ca)
+    - terminal_string() method
+    - minor fixes and changes (mostly to prettyForm)
+
+TODO:
+    - Allow left/center/right alignment options for above/below and
+      top/center/bottom alignment options for left/right
+"""
+
+from __future__ import print_function, division
+
+from .pretty_symbology import hobj, vobj, xsym, xobj, pretty_use_unicode
+from sympy.core.compatibility import string_types, range
+
+
+class stringPict(object):
+    """An ASCII picture.
+    The pictures are represented as a list of equal length strings.
+    """
+    #special value for stringPict.below
+    LINE = 'line'
+
+    def __init__(self, s, baseline=0):
+        """Initialize from string.
+        Multiline strings are centered.
+        """
+        self.s = s
+        #picture is a string that just can be printed
+        self.picture = stringPict.equalLengths(s.splitlines())
+        #baseline is the line number of the "base line"
+        self.baseline = baseline
+        self.binding = None
+
+    @staticmethod
+    def equalLengths(lines):
+        # empty lines
+        if not lines:
+            return ['']
+
+        width = max(len(line) for line in lines)
+        return [line.center(width) for line in lines]
+
+    def height(self):
+        """The height of the picture in characters."""
+        return len(self.picture)
+
+    def width(self):
+        """The width of the picture in characters."""
+        return len(self.picture[0])
+
+    @staticmethod
+    def next(*args):
+        """Put a string of stringPicts next to each other.
+        Returns string, baseline arguments for stringPict.
+        """
+        #convert everything to stringPicts
+        objects = []
+        for arg in args:
+            if isinstance(arg, string_types):
+                arg = stringPict(arg)
+            objects.append(arg)
+
+        #make a list of pictures, with equal height and baseline
+        newBaseline = max(obj.baseline for obj in objects)
+        newHeightBelowBaseline = max(
+            obj.height() - obj.baseline
+            for obj in objects)
+        newHeight = newBaseline + newHeightBelowBaseline
+
+        pictures = []
+        for obj in objects:
+            oneEmptyLine = [' '*obj.width()]
+            basePadding = newBaseline - obj.baseline
+            totalPadding = newHeight - obj.height()
+            pictures.append(
+                oneEmptyLine * basePadding +
+                obj.picture +
+                oneEmptyLine * (totalPadding - basePadding))
+
+        result = [''.join(lines) for lines in zip(*pictures)]
+        return '\n'.join(result), newBaseline
+
+    def right(self, *args):
+        r"""Put pictures next to this one.
+        Returns string, baseline arguments for stringPict.
+        (Multiline) strings are allowed, and are given a baseline of 0.
+
+        Examples
+        ========
+
+        >>> from sympy.printing.pretty.stringpict import stringPict
+        >>> print(stringPict("10").right(" + ",stringPict("1\r-\r2",1))[0])
+             1
+        10 + -
+             2

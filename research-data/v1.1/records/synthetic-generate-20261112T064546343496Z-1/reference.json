@@ -1,0 +1,31 @@
+{
+  "sample_id": "synthetic-generate-20261112T064546343496Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem._validate_per_array"
+    }
+  ],
+  "explanation": "The scalar-broadcast predicate now selects tuples instead of non-tuples. A system-wide scalar reaches length validation as a one-element tuple for multiple arrays, raising the saved length-mismatch ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem._validate_per_array"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.get_irradiance"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.get_cell_temperature"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "Array.get_irradiance"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

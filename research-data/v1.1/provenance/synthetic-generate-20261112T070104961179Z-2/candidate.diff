@@ -1,0 +1,11 @@
+--- a/src/marshmallow/utils.py
++++ b/src/marshmallow/utils.py
+@@ -239,7 +239,7 @@
+     if localtime and dt.tzinfo is not None:
+         localized = dt
+     else:
+-        if dt.tzinfo is None:
++        if dt.tzinfo is not None:
+             localized = UTC.localize(dt)
+         else:
+             localized = dt.astimezone(UTC)

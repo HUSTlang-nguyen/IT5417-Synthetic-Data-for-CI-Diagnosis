@@ -1,0 +1,11 @@
+--- a/sympy/printing/conventions.py
++++ b/sympy/printing/conventions.py
+@@ -34,7 +34,7 @@
+     name = None
+     supers = []
+     subs = []
+-    while pos < len(text):
++    while pos <= len(text):
+         start = pos + 1
+         if text[pos:pos + 2] == "__":
+             start += 1

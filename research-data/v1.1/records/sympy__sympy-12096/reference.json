@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-12096",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/core/function.py",
+      "function": "Function._eval_evalf"
+    }
+  ],
+  "explanation": "The implemented-function fallback invokes a numeric implementation with unevaluated symbolic arguments. For nested f(f(2)), the result cannot be converted to Float and the caught error leaves the expression unevaluated. Evaluating each argument before calling _imp_ permits the expected numeric 16.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

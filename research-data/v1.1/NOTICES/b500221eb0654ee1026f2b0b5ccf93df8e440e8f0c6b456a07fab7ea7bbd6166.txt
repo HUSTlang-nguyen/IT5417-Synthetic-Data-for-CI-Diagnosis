@@ -1,0 +1,100 @@
+from sympy.core import Function, S, sympify
+from sympy.utilities.iterables import sift
+from sympy.core.add import Add
+from sympy.core.containers import Tuple
+from sympy.core.compatibility import ordered
+from sympy.core.operations import LatticeOp, ShortCircuit
+from sympy.core.function import (Application, Lambda,
+    ArgumentIndexError)
+from sympy.core.expr import Expr
+from sympy.core.mod import Mod
+from sympy.core.mul import Mul
+from sympy.core.numbers import Rational
+from sympy.core.power import Pow
+from sympy.core.relational import Eq, Relational
+from sympy.core.singleton import Singleton
+from sympy.core.symbol import Dummy
+from sympy.core.rules import Transform
+from sympy.core.logic import fuzzy_and, fuzzy_or, _torf
+from sympy.logic.boolalg import And, Or
+
+def _minmax_as_Piecewise(op, *args):
+    # helper for Min/Max rewrite as Piecewise
+    from sympy.functions.elementary.piecewise import Piecewise
+    ec = []
+    for i, a in enumerate(args):
+        c = []
+        for j in range(i + 1, len(args)):
+            c.append(Relational(a, args[j], op))
+        ec.append((a, And(*c)))
+    return Piecewise(*ec)
+
+
+class IdentityFunction(Lambda, metaclass=Singleton):
+    """
+    The identity function
+
+    Examples
+    ========
+
+    >>> from sympy import Id, Symbol
+    >>> x = Symbol('x')
+    >>> Id(x)
+    x
+
+    """
+
+    _symbol = Dummy('x')
+
+    @property
+    def signature(self):
+        return Tuple(self._symbol)
+
+    @property
+    def expr(self):
+        return self._symbol
+
+
+Id = S.IdentityFunction
+
+###############################################################################
+############################# ROOT and SQUARE ROOT FUNCTION ###################
+###############################################################################
+
+
+def sqrt(arg, evaluate=None):
+    """Returns the principal square root.
+
+    Parameters
+    ==========
+
+    evaluate : bool, optional
+        The parameter determines if the expression should be evaluated.
+        If ``None``, its value is taken from
+        ``global_parameters.evaluate``.
+
+    Examples
+    ========
+
+    >>> from sympy import sqrt, Symbol, S
+    >>> x = Symbol('x')
+
+    >>> sqrt(x)
+    sqrt(x)
+
+    >>> sqrt(x)**2
+    x
+
+    Note that sqrt(x**2) does not simplify to x.
+
+    >>> sqrt(x**2)
+    sqrt(x**2)
+
+    This is because the two are not equal to each other in general.
+    For example, consider x == -1:
+
+    >>> from sympy import Eq
+    >>> Eq(sqrt(x**2), x).subs(x, -1)
+    False
+
+    This is because sqrt computes the principal square root, so the square may

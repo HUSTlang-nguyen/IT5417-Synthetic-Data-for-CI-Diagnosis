@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T080342935405Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/geometry/util.py",
+      "function": "convex_hull"
+    }
+  ],
+  "explanation": "The dimension guard requires3coordinates while the algorithm and message support two dimensions. Saved valid2D hull input is rejected with ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/geometry/util.py",
+      "function": "convex_hull"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T061949245924Z",
+  "reviewed_at": "2026-11-12T18:28:49+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "875135bbeedcc0fe77cb25d84217c905019369737246f58129ae743605cd8aed",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "856cd2f6e130239b247feab1c08eb277077f5e41a70934a4dc95986d93574558",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c5cca2b267d6952d811f3eb06ee16c64c2e11afb6f28362a7ea16e181846429b",
+    "historical-fixed.stdout.txt": "56bb39a6ecc9a2f377ce4653c4b48530f5ca19bc7b683d2c44b404cd06c49f74",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e58a42cbeda19f65b5f09b85e2654b1406e7c38e2a4263303e06f57a11db24ca"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_zz_mignotte_bound"
+    }
+  ],
+  "mechanism": "The base coefficient-bound calculation uses the older norm/degree formula, yielding32 where the saved Knuth-Cohen variant contract expects6. The repair replaces the formula with the documented variant and rounding; nineteen tests pass.",
+  "limitations": "An older conservative bound is not automatically mathematically invalid. This is a versioned algorithm/output-contract change, not proof of an unsafe factor bound or a historical crash.",
+  "observed_junit": {
+    "base": {
+      "cases": 19,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 19,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_factortools::test_dup_zz_mignotte_bound",
+      "message": "assert 32 == 6\n +  where 32 = <bound method IPolys.dup_zz_mignotte_bound of Polynomial ring in x over ZZ with lex order>((((2 * (x ** 2)) + (3 * x)) + 4))\n +    where <bound method IPolys.dup_zz_mignotte_bound of Polynomial ring in x over ZZ with lex order> = Polynomial ring in x over ZZ with lex order.dup_zz_mignotte_bound"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

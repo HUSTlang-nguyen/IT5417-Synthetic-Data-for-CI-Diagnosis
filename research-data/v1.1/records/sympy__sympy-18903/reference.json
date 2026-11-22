@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18903",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "RoundFunction.eval"
+    }
+  ],
+  "explanation": "After separating an integer part, the remaining expression is wrapped in another rounding call even when it is already floor or ceiling. Nested rounding is not reduced as required, leaving floor(floor(x))+3. Reusing the already rounded symbolic part yields floor(x)+3.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_Eq"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_is_negative"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_is_nonnegative"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_rewrite_as_ceiling"
+    },
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "floor._eval_rewrite_as_frac"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

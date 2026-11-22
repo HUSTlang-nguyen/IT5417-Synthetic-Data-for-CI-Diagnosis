@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T011430979067Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals._contains"
+    }
+  ],
+  "explanation": "The explicit noninteger/nonpositive rejection branch returns True instead of False. Negative5 is accepted into Naturals, and ImageSet consumers inherit incorrect membership decisions.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Complexes.sets"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "ImageSet.__new__"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "ImageSet.doit"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals._contains"
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Naturals._boundary"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

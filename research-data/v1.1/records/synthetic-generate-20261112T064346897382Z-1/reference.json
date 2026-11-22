@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T064346897382Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "kahane_simplify"
+    }
+  ],
+  "explanation": "The lower-arc relinking guard moves a link next to a free index instead of a contracted one. The saved gamma-chain simplification loses a free gamma factor and fails tensor equality.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "_simplify_single_line"
+    },
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "simplify_gamma_expression"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.simplify"
+    },
+    {
+      "file": "sympy/logic/boolalg.py",
+      "function": "BooleanFunction.simplify"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixOperations.simplify"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

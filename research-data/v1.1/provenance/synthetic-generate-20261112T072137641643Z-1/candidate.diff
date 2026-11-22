@@ -1,0 +1,11 @@
+--- a/sympy/core/basic.py
++++ b/sympy/core/basic.py
+@@ -1762,7 +1762,7 @@
+         -I*(exp(I*x) - exp(-I*x))/2
+ 
+         """
+-        if not args:
++        if args:
+             return self
+         else:
+             pattern = args[:-1]

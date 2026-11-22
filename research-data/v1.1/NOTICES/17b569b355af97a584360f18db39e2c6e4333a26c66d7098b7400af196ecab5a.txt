@@ -1,0 +1,100 @@
+"""Support for providing temporary directories to test functions."""
+import os
+import re
+import tempfile
+from pathlib import Path
+from typing import Optional
+
+import attr
+import py
+
+from .pathlib import ensure_reset_dir
+from .pathlib import LOCK_TIMEOUT
+from .pathlib import make_numbered_dir
+from .pathlib import make_numbered_dir_with_cleanup
+from _pytest.compat import final
+from _pytest.config import Config
+from _pytest.deprecated import check_ispytest
+from _pytest.fixtures import fixture
+from _pytest.fixtures import FixtureRequest
+from _pytest.monkeypatch import MonkeyPatch
+
+
+@final
+@attr.s(init=False)
+class TempPathFactory:
+    """Factory for temporary directories under the common base temp directory.
+
+    The base directory can be configured using the ``--basetemp`` option.
+    """
+
+    _given_basetemp = attr.ib(type=Optional[Path])
+    _trace = attr.ib()
+    _basetemp = attr.ib(type=Optional[Path])
+
+    def __init__(
+        self,
+        given_basetemp: Optional[Path],
+        trace,
+        basetemp: Optional[Path] = None,
+        *,
+        _ispytest: bool = False,
+    ) -> None:
+        check_ispytest(_ispytest)
+        if given_basetemp is None:
+            self._given_basetemp = None
+        else:
+            # Use os.path.abspath() to get absolute path instead of resolve() as it
+            # does not work the same in all platforms (see #4427).
+            # Path.absolute() exists, but it is not public (see https://bugs.python.org/issue25012).
+            self._given_basetemp = Path(os.path.abspath(str(given_basetemp)))
+        self._trace = trace
+        self._basetemp = basetemp
+
+    @classmethod
+    def from_config(
+        cls,
+        config: Config,
+        *,
+        _ispytest: bool = False,
+    ) -> "TempPathFactory":
+        """Create a factory according to pytest configuration.
+
+        :meta private:
+        """
+        check_ispytest(_ispytest)
+        return cls(
+            given_basetemp=config.option.basetemp,
+            trace=config.trace.get("tmpdir"),
+            _ispytest=True,
+        )
+
+    def _ensure_relative_to_basetemp(self, basename: str) -> str:
+        basename = os.path.normpath(basename)
+        if (self.getbasetemp() / basename).resolve().parent != self.getbasetemp():
+            raise ValueError(f"{basename} is not a normalized and relative path")
+        return basename
+
+    def mktemp(self, basename: str, numbered: bool = True) -> Path:
+        """Create a new temporary directory managed by the factory.
+
+        :param basename:
+            Directory base name, must be a relative path.
+
+        :param numbered:
+            If ``True``, ensure the directory is unique by adding a numbered
+            suffix greater than any existing one: ``basename="foo-"`` and ``numbered=True``
+            means that this function will create directories named ``"foo-0"``,
+            ``"foo-1"``, ``"foo-2"`` and so on.
+
+        :returns:
+            The path to the new directory.
+        """
+        basename = self._ensure_relative_to_basetemp(basename)
+        if not numbered:
+            p = self.getbasetemp().joinpath(basename)
+            p.mkdir()
+        else:
+            p = make_numbered_dir(root=self.getbasetemp(), prefix=basename)
+            self._trace("mktemp", p)
+        return p

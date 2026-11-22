@@ -1,0 +1,60 @@
+{
+  "run_id": "reproduce-20261112T042530881414Z",
+  "reviewed_at": "2026-11-12T12:10:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c7fe014fdc2bf93b06c145eb4455f0b8345df37d346a3e5c62cf868351ae6995",
+    "license-evidence.json": "0ee51d42931dbc7a38ee94a188f2f18e50d1102cf301030d20ad4bf393973cbe",
+    "historical-base.stdout.txt": "28c8df303c028dcdb452bf3ce2bb2709ba3ddcf4e9edb01603c53025499cfde8",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "962e075aedb31baf6877f80e888a65dbe78c583c53499982d9a82d1167a8be86",
+    "historical-fixed.stdout.txt": "3e90d43d5468a19bdda2fbb1d2146187d89f1481de76c7caa8535e4526ca9a11",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5a6a6729db9c2eed76e5787b738394b1ff9714e115d581b74cb1f34ab88f6b58"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pvlib/soiling.py",
+      "function": "hsu"
+    }
+  ],
+  "mechanism": "The public HSU function names its angle argument tilt, while the saved callers use surface_tilt. Four tests raise unexpected-keyword TypeError before the physical calculation. Renaming that parameter and its internal use aligns the public API.",
+  "limitations": "The observed failures establish the keyword mismatch. They do not show a physical-model error; positional calls need not exhibit this failure.",
+  "observed_junit": {
+    "base": {
+      "cases": 8,
+      "failures_or_errors": 4,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 8,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pvlib.tests.test_soiling::test_hsu_no_cleaning",
+      "message": "TypeError: hsu() got an unexpected keyword argument 'surface_tilt'"
+    },
+    {
+      "test": "pvlib.tests.test_soiling::test_hsu",
+      "message": "TypeError: hsu() got an unexpected keyword argument 'surface_tilt'"
+    },
+    {
+      "test": "pvlib.tests.test_soiling::test_hsu_defaults",
+      "message": "TypeError: hsu() got an unexpected keyword argument 'surface_tilt'"
+    },
+    {
+      "test": "pvlib.tests.test_soiling::test_hsu_variable_time_intervals",
+      "message": "TypeError: hsu() got an unexpected keyword argument 'surface_tilt'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

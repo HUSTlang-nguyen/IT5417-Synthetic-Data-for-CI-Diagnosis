@@ -1,0 +1,27 @@
+{
+  "sample_id": "pvlib__pvlib-python-1782",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/singlediode.py",
+      "function": "_lambertw"
+    }
+  ],
+  "explanation": "A tiny negative open-circuit voltage from floating-point computation is used directly as the upper bound of a search starting at zero. The saved search rejects upper<lower. Clipping only the small negative roundoff range to zero keeps the search bounds valid.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/singlediode.py",
+      "function": "_lambertw"
+    },
+    {
+      "file": "pvlib/tools.py",
+      "function": "_golden_sect_DataFrame"
+    },
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "singlediode"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

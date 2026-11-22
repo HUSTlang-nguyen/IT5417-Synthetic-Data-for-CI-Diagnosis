@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-24066",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    }
+  ],
+  "explanation": "The function branch returns argument dimensions without normalizing system-equivalent dimensionless combinations to Dimension(1). An exp argument with time/(capacitance*impedance) consequently propagates that unsimplified dimension and the saved addition rejects it. Dimensionless normalization in the function branch supplies the correct representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_dimensional_expr"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_dimension_system"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.derived_units"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.extend"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

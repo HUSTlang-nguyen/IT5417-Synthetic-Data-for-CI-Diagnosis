@@ -1,0 +1,100 @@
+"""
+    Module to handle gamma matrices expressed as tensor objects.
+
+    Examples
+    ========
+
+    >>> from sympy.physics.hep.gamma_matrices import GammaMatrix as G, LorentzIndex
+    >>> from sympy.tensor.tensor import tensor_indices
+    >>> i = tensor_indices('i', LorentzIndex)
+    >>> G(i)
+    GammaMatrix(i)
+
+    Note that there is already an instance of GammaMatrixHead in four dimensions:
+    GammaMatrix, which is simply declare as
+
+    >>> from sympy.physics.hep.gamma_matrices import GammaMatrix
+    >>> from sympy.tensor.tensor import tensor_indices
+    >>> i = tensor_indices('i', LorentzIndex)
+    >>> GammaMatrix(i)
+    GammaMatrix(i)
+
+    To access the metric tensor
+
+    >>> LorentzIndex.metric
+    metric(LorentzIndex,LorentzIndex)
+
+"""
+from sympy.core.mul import Mul
+from sympy.core.singleton import S
+from sympy.matrices.dense import eye
+from sympy.matrices.expressions.trace import trace
+from sympy.tensor.tensor import TensorIndexType, TensorIndex,\
+    TensMul, TensAdd, tensor_mul, Tensor, TensorHead, TensorSymmetry
+
+
+# DiracSpinorIndex = TensorIndexType('DiracSpinorIndex', dim=4, dummy_name="S")
+
+
+LorentzIndex = TensorIndexType('LorentzIndex', dim=4, dummy_name="L")
+
+
+GammaMatrix = TensorHead("GammaMatrix", [LorentzIndex],
+                         TensorSymmetry.no_symmetry(1), comm=None)
+
+
+def extract_type_tens(expression, component):
+    """
+    Extract from a ``TensExpr`` all tensors with `component`.
+
+    Returns two tensor expressions:
+
+    * the first contains all ``Tensor`` of having `component`.
+    * the second contains all remaining.
+
+
+    """
+    if isinstance(expression, Tensor):
+        sp = [expression]
+    elif isinstance(expression, TensMul):
+        sp = expression.args
+    else:
+        raise ValueError('wrong type')
+
+    # Collect all gamma matrices of the same dimension
+    new_expr = S.One
+    residual_expr = S.One
+    for i in sp:
+        if isinstance(i, Tensor) and i.component == component:
+            new_expr *= i
+        else:
+            residual_expr *= i
+    return new_expr, residual_expr
+
+
+def simplify_gamma_expression(expression):
+    extracted_expr, residual_expr = extract_type_tens(expression, GammaMatrix)
+    res_expr = _simplify_single_line(extracted_expr)
+    return res_expr * residual_expr
+
+
+def simplify_gpgp(ex, sort=True):
+    """
+    simplify products ``G(i)*p(-i)*G(j)*p(-j) -> p(i)*p(-i)``
+
+    Examples
+    ========
+
+    >>> from sympy.physics.hep.gamma_matrices import GammaMatrix as G, \
+        LorentzIndex, simplify_gpgp
+    >>> from sympy.tensor.tensor import tensor_indices, tensor_heads
+    >>> p, q = tensor_heads('p, q', [LorentzIndex])
+    >>> i0,i1,i2,i3,i4,i5 = tensor_indices('i0:6', LorentzIndex)
+    >>> ps = p(i0)*G(-i0)
+    >>> qs = q(i0)*G(-i0)
+    >>> simplify_gpgp(ps*qs*qs)
+    GammaMatrix(-L_0)*p(L_0)*q(L_1)*q(-L_1)
+    """
+    def _simplify_gpgp(ex):
+        components = ex.components
+        a = []

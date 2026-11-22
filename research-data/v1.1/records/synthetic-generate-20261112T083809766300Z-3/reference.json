@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T083809766300Z-3",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.name"
+    }
+  ],
+  "explanation": "The name property reads args[1] rather than the name object at args[0]. A matrix dimension Integer is accessed as though it had a name attribute, causing the saved AttributeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixExpr.__pow__"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.name"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_sympifyit.deco.__sympifyit_wrapper"
+    },
+    {
+      "file": "sympy/core/_print_helpers.py",
+      "function": "Printable.__str__"
+    },
+    {
+      "file": "sympy/printing/printer.py",
+      "function": "_PrintFunction.__call__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

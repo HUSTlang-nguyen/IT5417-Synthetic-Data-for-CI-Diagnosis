@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T002201488764Z",
+  "reviewed_at": "2026-11-12T10:38:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7d8e0a9f0327191680da0e15f06143cc1a5a5f179d717b29fbc3c04faa194ef5",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "fa487e88446fb95cc0007df9d0417016d282deea983ca0ae3dda86d5221610d2",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e3dd47522d87f46fc34c42d4e49acbed106f4af74fc66e70957049326ec9644c",
+    "historical-fixed.stdout.txt": "186317d79a566508a03b2cfc1683db20e8db9fa9474d57c71a59abedd2e49919",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "f938e181d7e3a48bc2ef1ac7599f91f2a37d0541bc3f16909dc3dc5c6d5a14c9"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/simplify/trigsimp.py",
+      "function": "_futrig"
+    }
+  ],
+  "mechanism": "The simplification strategy runs TRmorrie before the inverse angle-sum rule TR10i. This ordering leaves the saved sin-cos dot product unsimplified. Moving TR10i before TRmorrie lets the strategy reach the required cos(1/50) expression.",
+  "limitations": "The code-order change and saved before/after assertion are direct evidence. The precise intermediate rewrite states are inferred from rule order, not recorded as a separate trace; no numeric inequality is claimed.",
+  "observed_junit": {
+    "base": {
+      "cases": 23,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 23,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.simplify.tests.test_trigsimp::test_issue_15129_trigsimp_methods",
+      "message": "assert sin(1/50)*sin(1/25) + cos(1/50)*cos(1/25) == cos(1/50)\n +  where sin(1/50)*sin(1/25) + cos(1/50)*cos(1/25) = trigsimp(sin(1/50)*sin(1/25) + cos(1/50)*cos(1/25))\n +  and   cos(1/50) = cos((1 / 50))\n +    where 1 = S(1)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

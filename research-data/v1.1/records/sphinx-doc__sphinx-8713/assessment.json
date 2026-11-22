@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000602779312Z",
+  "reviewed_at": "2026-11-12T07:59:20+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a8efd76ac115a7ae80b4cc5f87ad30620f850956e1c342e399b91a851d82392c",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "2f9a2bbbf12f6c63ec497a186525de04589be00f5417e8a55d67a9f819c1a6f1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "01b83836ed2ea7da9e154695678705e5e7cae4f0df264803994427a423e13696",
+    "historical-fixed.stdout.txt": "be1df0b180b68186a144267c19ab777f269dc26442f4f3b5c46a510862cfac7b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "515ff9893b2834a1939ee126bcd70924426e080ec67e9b9f5cb51e58145a5865"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sphinx/ext/napoleon/docstring.py",
+      "function": "GoogleDocstring._parse_other_parameters_section"
+    }
+  ],
+  "mechanism": "The Other Parameters handler ignores napoleon_use_param and always emits a generic Other Parameters field. With the option enabled, the saved test instead requires ordinary param/type directives, like the main Parameters handler. Reading the option and selecting the matching formatter honors that configuration.",
+  "limitations": "The diff in generated fields is directly observed; logic/value is a reasonable alternate taxonomy level. This is product configuration handling, not a missing dependency.",
+  "observed_junit": {
+    "base": {
+      "cases": 47,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 47,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_ext_napoleon_docstring.NumpyDocstringTest::test_parameters_with_class_reference",
+      "message": "AssertionError: ':par[72 chars]\\n\\n:param param2:\\n:type param2: :class:`MyCl[32 chars]ce\\n' != ':par[72 chars]\\n\\n:Other Parameters: **param2** (:class:`MyC[34 chars]e)\\n'\n  :param param1:\n  :type param1: :class:`MyClass <name.space.MyClass>` instance\n  \n- :param param2:\n- :type param2: :class:`MyClass <name.space.MyClass>` instance\n?   ^^ ^      ^^\n+ :Other Parameters: **param2** (:class:`MyClass <name.space.MyClass>` instance)\n?  + ^ ^^^^^^^^^^^^^^^^      ^^^^                                              +"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/base\nconfigfile: pyproject.toml\ncollecting ... collected 60 items\n\ntests/test_blueprints.py::test_blueprint_specific_error_handling PASSED  [  1%]\ntests/test_blueprints.py::test_blueprint_specific_user_error_handling PASSED [  3%]\ntests/test_blueprints.py::test_blueprint_app_error_handling PASSED       [  5%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[-/-/] PASSED       [  6%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/--/] PASSED       [  8%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/-/-/] PASSED      [ 10%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/foo--/foo] PASSED [ 11%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/foo/--/foo/] PASSED [ 13%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[-/bar-/bar] PASSED [ 15%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-/bar-/foo/bar] PASSED [ 16%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-bar-/foo/bar] PASSED [ 18%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/foo-/bar-/foo/bar] PASSED [ 20%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-//bar-/foo/bar] PASSED [ 21%]\ntests/test_blueprints.py::test_blueprint_prefix_slash[/foo//-/bar-/foo/bar] PASSED [ 23%]\ntests/test_blueprints.py::test_blueprint_url_defaults PASSED             [ 25%]\ntests/test_blueprints.py::test_blueprint_url_processors PASSED           [ 26%]\ntests/test_blueprints.py::test_templates_and_static PASSED               [ 28%]\ntests/test_blueprints.py::test_default_static_max_age PASSED             [ 30%]\ntests/test_blueprints.py::test_templates_list PASSED                     [ 31%]\ntests/test_blueprints.py::test_dotted_name_not_allowed PASSED            [ 33%]\ntests/test_blueprints.py::test_empty_name_not_allowed FAILED             [ 35%]\ntests/test_blueprints.py::test_dotted_names_from_app PASSED              [ 36%]\ntests/test_blueprints.py::test_empty_url_defaults PASSED                 [ 38%]\ntests/test_blueprints.py::test_route_decorator_custom_endpoint PASSED    [ 40%]\ntests/test_blueprints.py::test_route_decorator_custom_endpoint_with_dots PASSED [ 41%]\ntests/test_blueprints.py::test_endpoint_decorator PASSED                 [ 43%]\ntests/test_blueprints.py::test_template_filter PASSED                    [ 45%]\ntests/test_blueprints.py::test_add_template_filter PASSED                [ 46%]\ntests/test_blueprints.py::test_template_filter_with_name PASSED          [ 48%]\ntests/test_blueprints.py::test_add_template_filter_with_name PASSED      [ 50%]\ntests/test_blueprints.py::test_template_filter_with_template PASSED      [ 51%]\ntests/test_blueprints.py::test_template_filter_after_route_with_template PASSED [ 53%]\ntests/test_blueprints.py::test_add_template_filter_with_template PASSED  [ 55%]\ntests/test_blueprints.py::test_template_filter_with_name_and_template PASSED [ 56%]\ntests/test_blueprints.py::test_add_template_filter_with_name_and_template PASSED [ 58%]\ntests/test_blueprints.py::test_template_test PASSED                      [ 60%]\ntests/test_blueprints.py::test_add_template_test PASSED                  [ 61%]\ntests/test_blueprints.py::test_template_test_with_name PASSED            [ 63%]\ntests/test_blueprints.py::test_add_template_test_with_name PASSED        [ 65%]\ntests/test_blueprints.py::test_template_test_with_template PASSED        [ 66%]\ntests/test_blueprints.py::test_template_test_after_route_with_template PASSED [ 68%]\ntests/test_blueprints.py::test_add_template_test_with_template PASSED    [ 70%]\ntests/test_blueprints.py::test_template_test_with_name_and_template PASSED [ 71%]\ntests/test_blueprints.py::test_add_template_test_with_name_and_template PASSED [ 73%]\ntests/test_blueprints.py::test_context_processing PASSED                 [ 75%]\ntests/test_blueprints.py::test_template_global PASSED                    [ 76%]\ntests/test_blueprints.py::test_request_processing PASSED                 [ 78%]\ntests/test_blueprints.py::test_app_request_processing PASSED             [ 80%]\ntests/test_blueprints.py::test_app_url_processors PASSED                 [ 81%]\ntests/test_blueprints.py::test_nested_blueprint PASSED                   [ 83%]\ntests/test_blueprints.py::test_nested_callback_order PASSED              [ 85%]\ntests/test_blueprints.py::test_nesting_url_prefixes[/parent-/child-None-None] PASSED [ 86%]\ntests/test_blueprints.py::test_nesting_url_prefixes[/parent-None-None-/child] PASSED [ 88%]\ntests/test_blueprints.py::test_nesting_url_prefixes[None-None-/parent-/child] PASSED [ 90%]\ntests/test_blueprints.py::test_nesting_url_prefixes[/other-/something-/parent-/child] PASSED [ 91%]\ntests/test_blueprints.py::test_nesting_subdomains PASSED                 [ 93%]\ntests/test_blueprints.py::test_child_and_parent_subdomain PASSED         [ 95%]\ntests/test_blueprints.py::test_unique_blueprint_names PASSED             [ 96%]\ntests/test_blueprints.py::test_self_registration PASSED                  [ 98%]\ntests/test_blueprints.py::test_blueprint_renaming PASSED                 [100%]\n\n=================================== FAILURES ===================================\n_________________________ test_empty_name_not_allowed __________________________\n\napp = <Flask 'flask_test'>, client = <FlaskClient <Flask 'flask_test'>>\n\n    def test_empty_name_not_allowed(app, client):\n        with pytest.raises(ValueError):\n>           flask.Blueprint(\"\", __name__)\nE           Failed: DID NOT RAISE <class 'ValueError'>\n\ntests/test_blueprints.py:261: Failed\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_blueprints.py::test_empty_name_not_allowed - Failed: DID NO...\n========================= 1 failed, 59 passed in 0.25s =========================\n",
+  "code": [
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_test.register_template",
+      "start_line": 502,
+      "end_line": 503,
+      "score": 51.264911,
+      "text": "src/flask/blueprints.py::Blueprint.add_app_template_test.register_template lines 502-503\n        def register_template(state: BlueprintSetupState) -> None:\n            state.app.jinja_env.tests[name or f.__name__] = f",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_filter.register_template",
+      "start_line": 464,
+      "end_line": 465,
+      "score": 50.948683,
+      "text": "src/flask/blueprints.py::Blueprint.add_app_template_filter.register_template lines 464-465\n        def register_template(state: BlueprintSetupState) -> None:\n            state.app.jinja_env.filters[name or f.__name__] = f",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_global.register_template",
+      "start_line": 540,
+      "end_line": 541,
+      "score": 50.948683,
+      "text": "src/flask/blueprints.py::Blueprint.add_app_template_global.register_template lines 540-541\n        def register_template(state: BlueprintSetupState) -> None:\n            state.app.jinja_env.globals[name or f.__name__] = f",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.register_blueprint",
+      "start_line": 251,
+      "end_line": 266,
+      "score": 50.857143,
+      "text": "src/flask/blueprints.py::Blueprint.register_blueprint lines 251-266\n    def register_blueprint(self, blueprint: \"Blueprint\", **options: t.Any) -> None:\n        \"\"\"Register a :class:`~flask.Blueprint` on this blueprint. Keyword\n        arguments passed to this method will override the defaults set\n        on the blueprint.\n\n        .. versionchanged:: 2.0.1\n            The ``name`` option can be used to change the (pre-dotted)\n            name the blueprint is registered with. This allows the same\n            blueprint to be registered multiple times with unique names\n            for ``url_for``.\n\n        .. versionadded:: 2.0\n        \"\"\"\n        if blueprint is self:\n            raise ValueError(\"Cannot register a blueprint on itself\")\n        self._blueprints.append((blueprint, options))",
+      "truncated": false
+    },
+    {
+      "file": "src/flask/blueprints.py",
+      "function": "Blueprint.add_app_template_test",
+      "start_line": 489,
+      "end_line": 505,
+      "score": 50.800641,
+      "text": "src/flask/blueprints.py::Blueprint.add_app_template_test lines 489-505\n    def add_app_template_test(\n        self, f: ft.TemplateTestCallable, name: t.Optional[str] = None\n    ) -> None:\n        \"\"\"Register a template test, available in any template rendered by the\n        application. Works like the :meth:`app_template_test` decorator. Equivalent to\n        :meth:`.Flask.add_template_test`.\n\n        .. versionadded:: 0.10\n\n        :param name: the optional name of the test, otherwise the\n                     function name will be used.\n        \"\"\"\n\n        def register_template(state: BlueprintSetupState) -> None:\n            state.app.jinja_env.tests[name or f.__name__] = f\n\n        self.record_once(register_template)",
+      "truncated": false
+    }
+  ]
+}

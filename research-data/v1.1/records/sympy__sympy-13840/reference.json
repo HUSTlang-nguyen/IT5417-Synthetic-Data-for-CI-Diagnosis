@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13840",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/rcode.py",
+      "function": "<module>"
+    }
+  ],
+  "explanation": "The R known-function registry omits factorial, so otherwise valid output is prefixed with a Not supported in R diagnostic. Adding its mapping allows the saved factorial-plus-gamma string to match the contract.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T044350907986Z",
+  "reviewed_at": "2026-11-12T12:12:50+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "ff35f3fae5fd35cba89fe7dbd2e37f7db24d0f1e7eedb0ad81b8702f7ca0d867",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "78e2de8a2163f93544dcaf93f766d3ba18bd590906c42ba1ab35e8d58926eed3",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "1df0a81fd1fba767c6989015b21fb1c26ae6a72196c5e27fc17d37fca466a08d",
+    "historical-fixed.stdout.txt": "a31cd6fe1ddd4f27a29f4a2a61be29c6b2ea51ffba91efce2ba787f5dc1a8dc1",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "761a7687aad8092068d2103d60696a9f6be8496be58cb7e71b53d24836e82fb4"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/perm_groups.py",
+      "function": "PermutationGroup.minimal_blocks"
+    }
+  ],
+  "mechanism": "The function deletes entries from parallel block lists while iterating indices from the unchanged representative list. Subsequent deletions address shifted/out-of-range positions and the saved Sylow-subgroup test raises IndexError. Marking removals and filtering all lists together preserves alignment.",
+  "limitations": "The failing test is a caller of minimal_blocks; the causal deletion statement is in minimal_blocks, not in the test or the subgroup API.",
+  "observed_junit": {
+    "base": {
+      "cases": 57,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 57,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.combinatorics.tests.test_perm_groups::test_sylow_subgroup",
+      "message": "IndexError: list assignment index out of range"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,11 @@
+--- a/sympy/functions/elementary/integers.py
++++ b/sympy/functions/elementary/integers.py
+@@ -22,7 +22,7 @@
+     def eval(cls, arg):
+         from sympy import im
+         v = cls._eval_number(arg)
+-        if v is not None:
++        if v is None:
+             return v
+ 
+         if arg.is_integer or arg.is_finite is False:

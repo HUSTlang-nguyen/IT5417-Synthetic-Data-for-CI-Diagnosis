@@ -1,0 +1,19 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9320",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/cmd/quickstart.py",
+      "function": "ask_user"
+    }
+  ],
+  "explanation": "The reprompt promises Enter to exit but validates an empty response with is_path, which rejects it and asks again before ask_user can exit. The mock has only one response and exposes that extra prompt. An empty-accepting validator lets the existing exit branch run.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/cmd/quickstart.py",
+      "function": "ask_user"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

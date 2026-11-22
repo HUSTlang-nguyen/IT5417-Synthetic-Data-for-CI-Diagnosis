@@ -1,0 +1,100 @@
+# Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+
+import collections
+import contextlib
+import functools
+import operator
+import os
+import sys
+import tokenize
+import traceback
+import warnings
+from io import TextIOWrapper
+from typing import (
+    Any,
+    DefaultDict,
+    Dict,
+    Iterable,
+    Iterator,
+    List,
+    Optional,
+    Sequence,
+    Set,
+    Tuple,
+    Type,
+    Union,
+)
+
+import astroid
+from astroid import AstroidError, nodes
+
+from pylint import checkers, config, exceptions, interfaces, reporters
+from pylint.constants import (
+    MAIN_CHECKER_NAME,
+    MSG_STATE_CONFIDENCE,
+    MSG_STATE_SCOPE_CONFIG,
+    MSG_STATE_SCOPE_MODULE,
+    MSG_TYPES,
+    MSG_TYPES_LONG,
+    MSG_TYPES_STATUS,
+)
+from pylint.lint.expand_modules import expand_modules
+from pylint.lint.parallel import check_parallel
+from pylint.lint.report_functions import (
+    report_messages_by_module_stats,
+    report_messages_stats,
+    report_total_messages_stats,
+)
+from pylint.lint.utils import (
+    fix_import_path,
+    get_fatal_error_message,
+    prepare_crash_report,
+)
+from pylint.message import Message, MessageDefinition, MessageDefinitionStore
+from pylint.reporters.text import TextReporter
+from pylint.reporters.ureports import nodes as report_nodes
+from pylint.typing import (
+    FileItem,
+    ManagedMessage,
+    MessageLocationTuple,
+    ModuleDescriptionDict,
+)
+from pylint.utils import ASTWalker, FileState, LinterStats, get_global_option, utils
+from pylint.utils.pragma_parser import (
+    OPTION_PO,
+    InvalidPragmaError,
+    UnRecognizedOptionError,
+    parse_pragma,
+)
+
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
+
+OptionDict = Dict[str, Union[str, bool, int, Iterable[Union[str, int]]]]
+
+MANAGER = astroid.MANAGER
+
+
+def _read_stdin():
+    # https://mail.python.org/pipermail/python-list/2012-November/634424.html
+    sys.stdin = TextIOWrapper(sys.stdin.detach(), encoding="utf-8")
+    return sys.stdin.read()
+
+
+def _load_reporter_by_class(reporter_class: str) -> type:
+    qname = reporter_class
+    module_part = astroid.modutils.get_module_part(qname)
+    module = astroid.modutils.load_module_from_name(module_part)
+    class_name = qname.split(".")[-1]
+    return getattr(module, class_name)
+
+
+# Python Linter class #########################################################
+
+MSGS = {
+    "F0001": (
+        "%s",
+        "fatal",

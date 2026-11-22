@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041456024564Z",
+  "reviewed_at": "2026-11-12T12:06:02+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c73d32b00e3bcc7d6ab6084245659a361a260de6c3c6750f18d1ad3ec49820ed",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "8795e636718cf078af44ec3fb0cf01b9de79b5360e3c4d6c78c75639f4899c88",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "181b296ae2e8a9356869a160a641ea60df3d471d90fe8304c78c672d7a50c687",
+    "historical-fixed.stdout.txt": "dadb7c1316c8f88db072c893142e2b9806bd5e72d30357f2b0f8d1814c48dc84",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "294e71e8f4971b168596adbe1e805596673932e8e97df7a4f8378cce1fc4530a"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr.__pow__"
+    }
+  ],
+  "mechanism": "The power method and its binary sympification wrapper accept only the exponent. Three-argument pow passes an additional modulus and raises the saved takes2-not3 TypeError before modular exponentiation. Accepting the optional modulus and handling it separately restores that operator interface.",
+  "limitations": "The observed example is modular power of symbolic integers; the saved log does not exhaust all negative/modular exponent cases.",
+  "observed_junit": {
+    "base": {
+      "cases": 75,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 75,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_arit::test_mod_pow",
+      "message": "TypeError: __sympifyit_wrapper() takes 2 positional arguments but 3 were given"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

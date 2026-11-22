@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040233772595Z",
+  "reviewed_at": "2026-11-12T11:59:01+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b3aebf057e69319e353a51723c15cf99d235ab6ba28a67db1e0854e4cdea1a64",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "c2136aaa69d883a412fee55d8b3e760a5ed5bb7cc6337eed3a196e5c7d49f0b8",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0aa8e6cbd8ad25947218014a1f4e2464ae5eca7fa0fa030fd877dae2cf7bcd65",
+    "historical-fixed.stdout.txt": "70564be064a9fb3f34dd99b81d96a434e6a50518946a545d211ab46a74c90455",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "6f832a1bdedce02b4ee73c1c49e7d3473dad75af99a01848703b8f7f0a9fbc5a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.distance"
+    }
+  ],
+  "mechanism": "Distance zips coordinate lists and silently stops at the shorter point. Between Point3D(1,0,2) and Point2D(2,0), the third-coordinate contribution is discarded, yielding1 instead of sqrt(5). Padding the shorter point with zero preserves the embedding distance.",
+  "limitations": "The saved example proves mixed-dimension truncation. It is not an out-of-range exception or a claim that dimensionality must always match.",
+  "observed_junit": {
+    "base": {
+      "cases": 5,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 5,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.geometry.tests.test_point::test_issue_11617",
+      "message": "assert 1 == sqrt(5)\n +  where 1 = <bound method Point.distance of Point3D(1, 0, 2)>(Point2D(2, 0))\n +    where <bound method Point.distance of Point3D(1, 0, 2)> = Point3D(1, 0, 2).distance\n +  and   sqrt(5) = sqrt(5)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

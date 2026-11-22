@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T010206924992Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/conventions.py",
+      "function": "split_super_sub"
+    }
+  ],
+  "explanation": "The scanning loop includes pos==len(text). After the last valid segment this processes an empty trailing fragment; it matches none of the permitted suffix prefixes and raises the saved RuntimeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/conventions.py",
+      "function": "split_super_sub"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_Mul"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_RootSum"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_seq"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_Add"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

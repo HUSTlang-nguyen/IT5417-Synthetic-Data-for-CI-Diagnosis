@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T072634481697Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Float.__mul__"
+    }
+  ],
+  "explanation": "The multiplication result is stored with precision prec+1 even though the mpf multiplication was rounded with prec. Saved divmod representation changes its last displayed digit.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/relational.py",
+      "function": "Relational.__bool__"
+    },
+    {
+      "file": "sympy/core/relational.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

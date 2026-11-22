@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T083156594681Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "cse"
+    }
+  ],
+  "explanation": "The no-postprocessor return guard is inverted. Default calls fall through to invoking None and the saved CSE test raises TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "cse"
+    },
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "tree_cse"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

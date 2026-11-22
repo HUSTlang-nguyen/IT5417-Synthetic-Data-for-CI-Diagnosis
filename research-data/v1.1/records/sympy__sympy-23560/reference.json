@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-23560",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/geometry/util.py",
+      "function": "idiff"
+    }
+  ],
+  "explanation": "Implicit differentiation uses a generic solve call and retains a different uncancelled expression form. The saved third derivative of the circle is algebraically equivalent away from y=0 but fails the required structural output assertion. Direct linear coefficient extraction with cancellation/factoring supplies the expected normalized derivative.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/geometry/util.py",
+      "function": "idiff"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol.__new__"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol._diff_wrt"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.real"
+    },
+    {
+      "file": "sympy/stats/frv.py",
+      "function": "FinitePSpace.where"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

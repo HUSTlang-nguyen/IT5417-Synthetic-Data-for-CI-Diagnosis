@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T195704567492Z",
+  "reviewed_at": "2026-11-12T03:14:47+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "42c1e0bc04aefb2d514c95dbe844a29fc8721581df276b41cbee9130b47061ab",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "2fd94d0a00eec661c55688ce1b46eb490f7ae388d716b83905969ab814685267",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "abd63505eb8ae9a737b11df8bbd753fa4f23b423d54ccbd1fa2f4015af57d4f7",
+    "historical-fixed.stdout.txt": "6dce2200aac248b9bdcce9efc2fa016993b47c31305f682f8326531f3ef57956",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "74a05cc952af8716b7f0a2877b630ff3e38f105485237a8062f24b3fea6c3890"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/conventions.py",
+      "function": "split_super_sub"
+    }
+  ],
+  "mechanism": "For an empty string, the parsing loop does not run and name remains None. The function passes that None to the compiled name-with-digits regular expression, whose input must be a string/bytes, producing TypeError. The repair handles empty text before that invalid typed call.",
+  "evidence_reason": "Read full failing function in the saved traceback: pos=0/name=None, while pos<len(text), then _name_with_digits_p.match(name) at conventions.py:60. Both direct split_super_sub(empty) and Unicode pretty(Symbol(empty)) fail on base; fixed has 86 passed and F2P/P2P resolve.",
+  "limitations": "Class is grounded in the None-to-regex data flow, not assigned merely because the exception says TypeError. The missing empty-input boundary could also be described as a logic defect at a different taxonomy granularity."
+}

@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from collections import defaultdict
+
+from sympy import SYMPY_DEBUG
+
+from sympy.core import expand_power_base, sympify, Add, S, Mul, Derivative, Pow, symbols, expand_mul
+from sympy.core.add import _unevaluated_Add
+from sympy.core.compatibility import iterable, ordered, default_sort_key
+from sympy.core.parameters import global_parameters
+from sympy.core.exprtools import Factors, gcd_terms
+from sympy.core.function import _mexpand
+from sympy.core.mul import _keep_coeff, _unevaluated_Mul
+from sympy.core.numbers import Rational
+from sympy.functions import exp, sqrt, log
+from sympy.functions.elementary.complexes import Abs
+from sympy.polys import gcd
+from sympy.simplify.sqrtdenest import sqrtdenest
+
+
+
+
+def collect(expr, syms, func=None, evaluate=None, exact=False, distribute_order_term=True):
+    """
+    Collect additive terms of an expression.
+
+    This function collects additive terms of an expression with respect
+    to a list of expression up to powers with rational exponents. By the
+    term symbol here are meant arbitrary expressions, which can contain
+    powers, products, sums etc. In other words symbol is a pattern which
+    will be searched for in the expression's terms.
+
+    The input expression is not expanded by :func:`collect`, so user is
+    expected to provide an expression is an appropriate form. This makes
+    :func:`collect` more predictable as there is no magic happening behind the
+    scenes. However, it is important to note, that powers of products are
+    converted to products of powers using the :func:`~.expand_power_base`
+    function.
+
+    There are two possible types of output. First, if ``evaluate`` flag is
+    set, this function will return an expression with collected terms or
+    else it will return a dictionary with expressions up to rational powers
+    as keys and collected coefficients as values.
+
+    Examples
+    ========
+
+    >>> from sympy import S, collect, expand, factor, Wild
+    >>> from sympy.abc import a, b, c, x, y, z
+
+    This function can collect symbolic coefficients in polynomials or
+    rational expressions. It will manage to find all integer or rational
+    powers of collection variable::
+
+        >>> collect(a*x**2 + b*x**2 + a*x - b*x + c, x)
+        c + x**2*(a + b) + x*(a - b)
+
+    The same result can be achieved in dictionary form::
+
+        >>> d = collect(a*x**2 + b*x**2 + a*x - b*x + c, x, evaluate=False)
+        >>> d[x**2]
+        a + b
+        >>> d[x]
+        a - b
+        >>> d[S.One]
+        c
+
+    You can also work with multivariate polynomials. However, remember that
+    this function is greedy so it will care only about a single symbol at time,
+    in specification order::
+
+        >>> collect(x**2 + y*x**2 + x*y + y + a*y, [x, y])
+        x**2*(y + 1) + x*y + y*(a + 1)
+
+    Also more complicated expressions can be used as patterns::
+
+        >>> from sympy import sin, log
+        >>> collect(a*sin(2*x) + b*sin(2*x), sin(2*x))
+        (a + b)*sin(2*x)
+
+        >>> collect(a*x*log(x) + b*(x*log(x)), x*log(x))
+        x*(a + b)*log(x)
+
+    You can use wildcards in the pattern::
+
+        >>> w = Wild('w1')
+        >>> collect(a*x**y - b*x**y, w**y)
+        x**y*(a - b)
+
+    It is also possible to work with symbolic powers, although it has more
+    complicated behavior, because in this case power's base and symbolic part
+    of the exponent are treated as a single symbol::
+
+        >>> collect(a*x**c + b*x**c, x)
+        a*x**c + b*x**c
+        >>> collect(a*x**c + b*x**c, x**c)
+        x**c*(a + b)
+
+    However if you incorporate rationals to the exponents, then you will get
+    well known behavior::

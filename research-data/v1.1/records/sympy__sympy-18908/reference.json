@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18908",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_airyai"
+    }
+  ],
+  "explanation": "The SciPy printer lacks an Airy handler, falls back to unsupported-function output and emits airyai(x) rather than scipy.special.airy(x)[0]. The dedicated handler supplies the target API call and component.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_assoc_legendre"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_fresnels"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_fresnelc"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_lowergamma"
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "SciPyPrinter._print_uppergamma"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

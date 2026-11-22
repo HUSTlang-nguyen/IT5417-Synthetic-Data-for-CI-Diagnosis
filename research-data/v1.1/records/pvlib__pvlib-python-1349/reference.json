@@ -1,0 +1,23 @@
+{
+  "sample_id": "pvlib__pvlib-python-1349",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pvlib/spectrum/spectrl2.py",
+      "function": "spectrl2"
+    }
+  ],
+  "explanation": "The direct irradiance calculation multiplies by a negative cosine when incidence exceeds90degrees. The saved test reports negative poa_direct values with the sun behind the panel. Clipping the incidence projection to zero prevents this invalid irradiance.",
+  "retrieved_locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "PVSystem.surface_tilt"
+    },
+    {
+      "file": "pvlib/spectrum/spectrl2.py",
+      "function": "spectrl2"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

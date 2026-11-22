@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T210040921504Z",
+  "reviewed_at": "2026-11-12T07:28:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "3070720d2dfaa0791c63058deb7b333f4ce8fbe407df191014115beb824c9c73",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "8ec57357f62c1cfddd817309be992e6e80e14c21470018792a8d13f8009e13cb",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "5656be1000806cfdc5ee352d61d41d7ef292a0a87d23d7781ee0acb259c8a3cd",
+    "historical-fixed.stdout.txt": "b5a26379115da6024db547bcd093dab94359986fc128de4993f50e024de02ee6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "be1994e9e210929cdecfee3553943aef9efcd9f212b63c7efd838a82cf826742"
+  },
+  "cause_type": "API/type",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.get_ast"
+    }
+  ],
+  "mechanism": "Unexpected AST-building exceptions are caught and converted directly to an astroid-error message inside get_ast. That consumes the exception before the caller can generate its fatal-error issue template. Reraising a chained AstroidBuildingError routes it through the callers intended error protocol.",
+  "limitations": "The RecursionError is deliberately injected by a mock in the test, not a proven recursion defect in the parser. The observed missing Fatal error while checking text supports the lost exception-handling path; logic/value is an alternate coarse label.",
+  "observed_junit": {
+    "base": {
+      "cases": 3,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 3,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.lint.test_utils::test_issue_template_on_fatal_errors",
+      "message": "assert 'Fatal error while checking' in \"************* Module lint.test_utils\\ntests/lint/test_utils.py:1:0: F0002: <class 'RecursionError'>:  (astroid-error)\\n\"\n +  where \"************* Module lint.test_utils\\ntests/lint/test_utils.py:1:0: F0002: <class 'RecursionError'>:  (astroid-error)\\n\" = CaptureResult(out=\"************* Module lint.test_utils\\ntests/lint/test_utils.py:1:0: F0002: <class 'RecursionError'>:  (astroid-error)\\n\", err='Traceback (most recent call last):\\n  File \"/source/base/pylint/lint/pylinter.py\", line 1226, in get_ast\\n    return MANAGER.ast_from_file(filepath, modname, source=True)\\n  File \"/usr/local/lib/python3.9/unittest/mock.py\", line 1092, in __call__\\n    return self._mock_call(*args, **kwargs)\\n  File \"/usr/local/lib/python3.9/unittest/mock.py\", line 1096, in _mock_call\\n    return self._execute_mock_call(*args, **kwargs)\\n  File \"/usr/local/lib/python3.9/un"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T195022573390Z",
+  "reviewed_at": "2026-11-12T03:14:39+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "1fe1af2547ce1a4e4481458edbfba87e18dfbb3019963cb2f829f1f8333a392f",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "4d77a2f0c69941ea443d9002b9fcce191c4adaad58efeda7409276715f9aa95f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e67cd43233adf639e16c415827640efd3abf5588e118d66ac71f83737de996ba",
+    "historical-fixed.stdout.txt": "717efd1e60589c728596d82cf0415aa488a68500463991099a9653cefaf63fdd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ee39c5a61f8dfb10e49cebccba4d4f8bbc9e00fe8c811f6a9c7ebfc38e3b328a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/util/typing.py",
+      "function": "restify"
+    }
+  ],
+  "mechanism": "restify receives a string forward annotation but lacks a string identity branch. It reaches the repr fallback, which adds quote characters; the expected reStructuredText representation preserves the original string. The repair returns string annotations unchanged.",
+  "evidence_reason": "Read restify at typing.py:107-145 and the two-line repair. Base test_restify at test_util_typing.py:51 observes quoted str instead of str; fixed has 23 passed/2 skipped with reference F2P/P2P resolved.",
+  "limitations": "The label describes output representation, not a syntax or runtime-environment error. Skipped unrelated tests are not counted as passing source targets."
+}

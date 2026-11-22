@@ -1,0 +1,35 @@
+{
+  "sample_id": "marshmallow-code__marshmallow-1702",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Field.__init__"
+    }
+  ],
+  "explanation": "The constructor captures metadata=... inside arbitrary keyword metadata, nesting that mapping under a metadata key rather than exposing its entries. Saved field.metadata assertions show the extra nesting across field subclasses. An explicit metadata parameter merged with remaining keyword metadata preserves the expected mapping interface.",
+  "retrieved_locations": [
+    {
+      "file": "src/marshmallow/__init__.py",
+      "function": "<module>"
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "List.__init__"
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Nested.__init__"
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Field.__init__"
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Tuple.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

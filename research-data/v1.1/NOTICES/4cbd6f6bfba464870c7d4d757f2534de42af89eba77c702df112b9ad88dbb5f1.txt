@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+import collections
+from sympy.assumptions.refine import refine
+from sympy.core.add import Add
+from sympy.core.basic import Basic, Atom
+from sympy.core.expr import Expr
+from sympy.core.power import Pow
+from sympy.core.symbol import (Symbol, Dummy, symbols,
+    _uniquely_named_symbol)
+from sympy.core.numbers import Integer, ilcm, Float
+from sympy.core.singleton import S
+from sympy.core.sympify import sympify
+from sympy.functions.elementary.miscellaneous import sqrt, Max, Min
+from sympy.functions import Abs, exp, factorial
+from sympy.polys import PurePoly, roots, cancel, gcd
+from sympy.printing import sstr
+from sympy.simplify import simplify as _simplify, signsimp, nsimplify
+from sympy.core.compatibility import reduce, as_int, string_types
+
+from sympy.utilities.iterables import flatten, numbered_symbols
+from sympy.core.decorators import call_highest_priority
+from sympy.core.compatibility import is_sequence, default_sort_key, range, \
+    NotIterable
+
+
+from types import FunctionType
+
+from .common import (a2idx, classof, MatrixError, ShapeError,
+        NonSquareMatrixError, MatrixCommon)
+
+
+def _iszero(x):
+    """Returns True if x is zero."""
+    try:
+        return x.is_zero
+    except AttributeError:
+        return None
+
+
+class DeferredVector(Symbol, NotIterable):
+    """A vector whose components are deferred (e.g. for use with lambdify)
+
+    Examples
+    ========
+
+    >>> from sympy import DeferredVector, lambdify
+    >>> X = DeferredVector( 'X' )
+    >>> X
+    X
+    >>> expr = (X[0] + 2, X[2] + 3)
+    >>> func = lambdify( X, expr)
+    >>> func( [1, 2, 3] )
+    (3, 6)
+    """
+
+    def __getitem__(self, i):
+        if i == -0:
+            i = 0
+        if i < 0:
+            raise IndexError('DeferredVector index out of range')
+        component_name = '%s[%d]' % (self.name, i)
+        return Symbol(component_name)
+
+    def __str__(self):
+        return sstr(self)
+
+    def __repr__(self):
+        return "DeferredVector('%s')" % self.name
+
+
+class MatrixDeterminant(MatrixCommon):
+    """Provides basic matrix determinant operations.
+    Should not be instantiated directly."""
+
+    def _eval_berkowitz_toeplitz_matrix(self):
+        """Return (A,T) where T the Toeplitz matrix used in the Berkowitz algorithm
+        corresponding to `self` and A is the first principal submatrix."""
+
+        # the 0 x 0 case is trivial
+        if self.rows == 0 and self.cols == 0:
+            return self._new(1,1, [S.One])
+
+        #
+        # Partition self = [ a_11  R ]
+        #                  [ C     A ]
+        #
+
+        a, R = self[0,0],   self[0, 1:]
+        C, A = self[1:, 0], self[1:,1:]
+
+        #
+        # The Toeplitz matrix looks like
+        #
+        #  [ 1                                     ]
+        #  [ -a         1                          ]
+        #  [ -RC       -a        1                 ]
+        #  [ -RAC     -RC       -a       1         ]
+        #  [ -RA**2C -RAC      -RC      -a       1 ]
+        #  etc.

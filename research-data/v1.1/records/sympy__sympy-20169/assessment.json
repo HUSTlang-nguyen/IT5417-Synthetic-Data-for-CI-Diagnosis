@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261112T061802164399Z",
+  "reviewed_at": "2026-11-12T18:27:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "72ffbeb894666184b8d286c4c20879bea9d46ab8c97ae29d6d36dc1e8db0b72c",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "17256965370b8789a7444882bcf8be4ac7f7ea5c5debe24aab97c4122dadf668",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "716ea3d000b631bfe505a4d4e23c99ec9293673d89254f8df52064118010d7b2",
+    "historical-fixed.stdout.txt": "c1c1eb1af11ff2a9c2a7fc607eed38f183e97037bc456bc51de8a33c926f66cd",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "40c485f1f19264ff28a4b7ef365be4dcca4b29d8a796ca584b81e6801545f35c"
+  },
+  "cause_type": "API/type",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/physics/optics/utils.py",
+      "function": "lens_makers_formula"
+    }
+  ],
+  "mechanism": "The base lens formula has no thickness keyword d, so the saved thick-lens test raises unexpected-keyword TypeError. The repair extends that same function with the thickness term; all eleven selected tests pass.",
+  "limitations": "A second saved assertion is exact rational5 versus Float5.0 after changing radius sympification. Thus API/type describes the primary missing-thickness contract, not every observed subfailure; formula/representation changes in the same function remain explicit. No claim that the original thin-lens numerical formula is generally false.",
+  "observed_junit": {
+    "base": {
+      "cases": 11,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 11,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.optics.tests.test_utils::test_lens_makers_formula",
+      "message": "assert 5*n2/(n1 - n2) == ((5.0 * n2) / (n1 - n2))\n +  where 5*n2/(n1 - n2) = lens_makers_formula(n1, n2, 10, -10)"
+    },
+    {
+      "test": "sympy.physics.optics.tests.test_utils::test_lens_makers_formula_thick_lens",
+      "message": "TypeError: lens_makers_formula() got an unexpected keyword argument 'd'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

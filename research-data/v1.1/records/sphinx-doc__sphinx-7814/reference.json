@@ -1,0 +1,23 @@
+{
+  "sample_id": "sphinx-doc__sphinx-7814",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "PyAttribute.handle_signature"
+    }
+  ],
+  "explanation": "The attribute signature handler sends the entire type string to type_to_xref. Optional[str] becomes one cross-reference instead of separate Optional, bracket and str nodes. Parsing the annotation first gives the required structured signature.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

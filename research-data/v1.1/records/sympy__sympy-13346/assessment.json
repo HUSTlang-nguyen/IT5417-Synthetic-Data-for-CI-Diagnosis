@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001546070216Z",
+  "reviewed_at": "2026-11-12T10:35:12+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c83a87c279f0e8eabd2f0e3539153adafaf23d34fe0dc52cc30d8eac1b6509be",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "844e1ccdf4e31df14ec2482eaf2128870e2b2156c1802b8354576bcd3f440ad4",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "49e4b7a598334c4fc6ce026ded0bc15453971e82b50f041fc8745766d022dfc3",
+    "historical-fixed.stdout.txt": "570c68140707396d2cd4f9dd6c541ef79de6d13a36f0821422e578c39470db8c",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d5284b464bcd36cec56ba6ebbdd008dfca2d9763aa5efca99494207e8e7dba08"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Integer"
+    }
+  ],
+  "mechanism": "The integer printer wraps integer literals in mpmath.mpf. The default lambdified sin(x)**2 expression therefore computes an mpf result where the test requires a native float. Removing this override lets the inherited integer representation avoid that promotion.",
+  "limitations": "The failure is an actual result-type assertion, not a numerical accuracy assertion. This is related to printer/lambdify families and must retain its repository/commit group during dedup review.",
+  "observed_junit": {
+    "base": {
+      "cases": 47,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 47,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.utilities.tests.test_lambdify::test_sin",
+      "message": "AssertionError: assert False\n +  where False = isinstance(mpf('0.82682181043180603'), float)\n +    where mpf('0.82682181043180603') = <function <lambda> at 0x7d763ee051f0>(2)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

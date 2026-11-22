@@ -1,0 +1,60 @@
+{
+  "run_id": "reproduce-20261111T234743009042Z",
+  "reviewed_at": "2026-11-12T07:40:35+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "854dc2d5f9ff4a4995166dd89c691b533b204fe2f50b2759bf09136255668d5d",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "a4748ccceb4b094d51fc4b227311d44a1bd9ceaea52c171de145b61ef92721ef",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9ac41cf8ed7563bd52920eb96211c30e35d439c6951337ce0475955a84b10a6e",
+    "historical-fixed.stdout.txt": "b89814f7d663e0ceb6d56b09a18252d92f8fe139db46d632f5d2fb3e521de105",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "a7fbe2bfa7ee29a50025762ffead655751f66d05b79ad506e1c79ce93a9bbd25"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "Similar.append_stream"
+    }
+  ],
+  "mechanism": "Disabled duplicate-code lines are removed before the source is parsed for import/signature filtering. Removing an entire function body leaves a def with no suite, so the checker reparses its own mutilated intermediate source and crashes with AstroidSyntaxError. Retaining the original source for parsing and applying enabled-line filtering afterward avoids that structural corruption.",
+  "limitations": "The original input and checker code are valid Python; syntax is the downstream symptom of incorrect preprocessing. Inability to write a crash template is secondary environment context, not this fault. Four test failures share the same preprocessing mechanism.",
+  "observed_junit": {
+    "base": {
+      "cases": 11,
+      "failures_or_errors": 4,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 11,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_similar.TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_line_disable_all",
+      "message": "AssertionError: expected output status 0, got 1. Below pylint output: \n  Can't write the issue template for the crash in /tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt because of: '[Errno 2] No such file or directory: '/tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt''\n  Here's the content anyway:\n  First, please verify that the bug is not already filled:\n  https://github.com/PyCQA/pylint/issues/\n  \n  Then create a new crash issue:\n  https://github.com/PyCQA/pylint/issues/new?assignees=&labels=crash%2Cneeds+triage&template=BUG-REPORT.yml\n  \n  \n  Issue title:\n  Crash ``Parsing Python code failed:\n  expected an indented block (<unknown>, line 6)`` (if possible, be more specific about what made pylint crash)\n  Content:\n  When parsing the following file:\n  \n  <!--\n   If sharing the code is not an option, please state so,\n   but providing only the stacktrace would still be helpful.\n   -->"
+    },
+    {
+      "test": "tests.test_similar.TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope",
+      "message": "assert 'Fatal error' not in \"Can't write...d at 0.00/10\"\n  'Fatal error' is contained here:\n    Can't write the issue template for the crash in /tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt because of: '[Errno 2] No such file or directory: '/tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt''\n    Here's the content anyway:\n    First, please verify that the bug is not already filled:\n    https://github.com/PyCQA/pylint/issues/\n    \n    Then create a new crash issue:...\n  \n  ...Full output truncated (90 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "tests.test_similar.TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope_double",
+      "message": "AssertionError: expected output status 0, got 1. Below pylint output: \n  Can't write the issue template for the crash in /tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt because of: '[Errno 2] No such file or directory: '/tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt''\n  Here's the content anyway:\n  First, please verify that the bug is not already filled:\n  https://github.com/PyCQA/pylint/issues/\n  \n  Then create a new crash issue:\n  https://github.com/PyCQA/pylint/issues/new?assignees=&labels=crash%2Cneeds+triage&template=BUG-REPORT.yml\n  \n  \n  Issue title:\n  Crash ``Parsing Python code failed:\n  expected an indented block (<unknown>, line 6)`` (if possible, be more specific about what made pylint crash)\n  Content:\n  When parsing the following file:\n  \n  <!--\n   If sharing the code is not an option, please state so,\n   but providing only the stacktrace would still be helpful.\n   -->"
+    },
+    {
+      "test": "tests.test_similar.TestSimilarCodeChecker::test_duplicate_code_raw_strings_disable_scope_function",
+      "message": "assert 'Similar lines in 2 files' in 'Can\\'t write the issue template for the crash in /tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt because of: \\'[Errno 2] No such file or directory: \\'/tmp/.cache/pylint/pylint-crash-2026-11-11-23.txt\\'\\'\\nHere\\'s the content anyway:\\nFirst, please verify that the bug is not already filled:\\nhttps://github.com/PyCQA/pylint/issues/\\n\\nThen create a new crash issue:\\nhttps://github.com/PyCQA/pylint/issues/new?assignees=&labels=crash%2Cneeds+triage&template=BUG-REPORT.yml\\n\\n\\nIssue title:\\nCrash ``Parsing Python code failed:\\nexpected an indented block (<unknown>, line 8)`` (if possible, be more specific about what made pylint crash)\\nContent:\\nWhen parsing the following file:\\n\\n<!--\\n If sharing the code is not an option, please state so,\\n but providing only the stacktrace would still be helpful.\\n -->\\n\\n```python\\nr\"\"\"A raw docstring.\\n\"\"\"\\n\\n\\nd"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

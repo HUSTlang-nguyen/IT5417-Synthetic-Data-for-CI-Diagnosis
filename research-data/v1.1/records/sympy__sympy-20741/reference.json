@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-20741",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matmul.py",
+      "function": "distribute_monom"
+    }
+  ],
+  "explanation": "Canonicalization lacks the rule distributing a rational coefficient over a matrix sum. Saved expressions remain MatMul 2*(X+Y) instead of the expected MatAdd and expanded string. The added rule supplies that canonical matrix representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.free_symbols"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.shape"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol.name"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol._eval_simplify"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixSymbol._entry"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

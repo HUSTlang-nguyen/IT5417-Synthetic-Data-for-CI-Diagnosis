@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T042943295109Z",
+  "reviewed_at": "2026-11-12T12:09:14+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6317d893d9d3fb85afb1952568bf2db681c084fddace2066eb056f7bb6fca596",
+    "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+    "historical-base.stdout.txt": "39e0e61f26ec6d1caa62b694121b9ef1e0c8132e775316150f7e46b4004cd7f0",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "56b4f6444d8952c3fb01f45346cdd525470d97015ad6ecf75a963c40f922012d",
+    "historical-fixed.stdout.txt": "911f3ce908196fe504428e8f82861ace5120c9ed04b83e2332683e0822566e9e",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "8bfebc266574076ac60b1bb4bc284e6dbe2ad0179e88bfba286f5c3312ac66ed"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/geometry/util.py",
+      "function": "idiff"
+    }
+  ],
+  "mechanism": "Implicit differentiation uses a generic solve call and retains a different uncancelled expression form. The saved third derivative of the circle is algebraically equivalent away from y=0 but fails the required structural output assertion. Direct linear coefficient extraction with cancellation/factoring supplies the expected normalized derivative.",
+  "limitations": "This evidence proves a symbolic representation mismatch, not an incorrect numeric derivative. The broader performance/solver motivation is not measured by the saved run.",
+  "observed_junit": {
+    "base": {
+      "cases": 5,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 5,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.geometry.tests.test_util::test_idiff",
+      "message": "AssertionError: (-3*x**3/y - 3*x*y)/y**4\nassert -3*x*(x**2/y**2 + 1)/y**3 == (-3*x**3/y - 3*x*y)/y**4\n +  where (-3*x**3/y - 3*x*y)/y**4 = idiff(x**2 + y**2 - 4, y, x, 3)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T033656158431Z",
+  "reviewed_at": "2026-11-12T11:48:15+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "4e1fd9751c63593320b889acfa90558db1364ec1b54b37fae319c3e9ce0c935c",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "711b496446eb54c620e99e112b8e3095069e0599ce22a5e3dcc1a89865ee905b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "59f53575b8f63ac1c780fed3913891fc82d49d37ba3926cca6c06ba75cf294f4",
+    "historical-fixed.stdout.txt": "26219470413355680fb8d77e883a1cba8789ea5bb2d93bd6d08d44843838df95",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "bbf334416f1adcfbf58255146a1c5e8fac9a83c71dd3015196e661a908be2701"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/concrete/products.py",
+      "function": "Product._eval_product"
+    }
+  ],
+  "mechanism": "The additive-term fallback sums products of the additive pieces, applying an invalid distribution of finite product over addition. The saved finite substitution gives9/2 rather than15/2. Representing the joint product through an exponential of a sum of logs avoids that incorrect separation.",
+  "limitations": "The exact numeric substitution supports wrong product evaluation. General complex branch conditions of the log transformation were not independently analyzed in this review.",
+  "observed_junit": {
+    "base": {
+      "cases": 18,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 18,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.concrete.tests.test_products::test_issue_13546",
+      "message": "assert 9/2 == (15 / 2)\n +  where 9/2 = <bound method Atom.doit of 9/2>()\n +    where <bound method Atom.doit of 9/2> = 9/2.doit\n +      where 9/2 = <bound method Basic.subs of 2**(-n**2/2 + n/2)*(2**(n**2/2 - n/2)*n**n + 1)>(n, 2)\n +        where <bound method Basic.subs of 2**(-n**2/2 + n/2)*(2**(n**2/2 - n/2)*n**n + 1)> = 2**(-n**2/2 + n/2)*(2**(n**2/2 - n/2)*n**n + 1).subs\n +  and   15 = S(15)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

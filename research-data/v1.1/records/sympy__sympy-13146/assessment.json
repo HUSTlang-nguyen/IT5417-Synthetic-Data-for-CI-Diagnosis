@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T040127966221Z",
+  "reviewed_at": "2026-11-12T11:58:44+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a6ea6fd8186c29379b0522704243a49ec68bdfa0ae117aaf2c42cc5192aefdd6",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "c01ab80ef35d5b13a430a66e9f5163644111822977dafa2903676e2a5b563f8b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e7825e654448b600129365bed7f3d9e317f0a26039d74bc6e1dc1a3b5b116844",
+    "historical-fixed.stdout.txt": "96e5b02210af3d8fd075615a33b682e0a9fc889498803e9d8cd137b4387fa7c1",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d7051c1b7f98c8fe8c9cb951f24e526584157a077587f37116b5b75645ca8847"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sympy/core/operations.py",
+      "function": "AssocOp._eval_evalf"
+    }
+  ],
+  "mechanism": "The evaluator can preserve the old associative tail when structural sameness checks do not reflect the requested changed precision. The saved five-digit evaluation retains a fifteen-digit exponent representation. Reconstructing the operation from evaluated arguments preserves that requested precision in the result.",
+  "limitations": "The saved assertion directly establishes output precision formatting. The role of _aresame and nested reconstruction is inferred from the two changed branches; no independent numeric-accuracy trace was saved.",
+  "observed_junit": {
+    "base": {
+      "cases": 35,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 35,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_evalf::test_evalf_bugs",
+      "message": "AssertionError: assert '2.0000*x**2.50000000000000' == '2.0000*x**2.5000'\n  - 2.0000*x**2.5000\n  + 2.0000*x**2.50000000000000\n  ?                 ++++++++++"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

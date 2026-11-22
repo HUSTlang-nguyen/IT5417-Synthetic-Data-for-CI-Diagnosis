@@ -1,0 +1,35 @@
+{
+  "sample_id": "pytest-dev__pytest-8422",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxBase._approx_scalar"
+    }
+  ],
+  "explanation": "Decimal members of a list/dict are wrapped in the generic ApproxScalar. Its floating relative tolerance is multiplied by decimal.Decimal and raises the saved TypeError. Choosing ApproxDecimal for these members preserves compatible tolerance types.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxScalar.tolerance"
+    },
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxBase.__eq__"
+    },
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxScalar.__eq__"
+    },
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxSequencelike.__eq__"
+    },
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxMapping.__eq__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

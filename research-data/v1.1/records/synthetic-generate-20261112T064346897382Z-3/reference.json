@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T064346897382Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "kahane_simplify"
+    }
+  ],
+  "explanation": "The alternating-sign gate for virtual-index insertion tests positive rather than negative sign. The saved contracted chain yields minus2 times the identity rather than4, with tensor assertions failing.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "_simplify_single_line"
+    },
+    {
+      "file": "sympy/physics/hep/gamma_matrices.py",
+      "function": "kahane_simplify"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

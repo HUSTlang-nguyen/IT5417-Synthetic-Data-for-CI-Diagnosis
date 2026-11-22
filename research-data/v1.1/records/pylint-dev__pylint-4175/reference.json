@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-4175",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/lint/parallel.py",
+      "function": "check_parallel"
+    }
+  ],
+  "explanation": "check_parallel first lets map/reduce checkers update linter.stats, then overwrites those reducer-produced statistics by merging only worker stats. Including the existing linter.stats in the merge preserves reducer messages and restores single-process/parallel equivalence.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/lint/parallel.py",
+      "function": "check_parallel"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.check_single_file"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.any_fail_on_issues"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter._check_files"
+    },
+    {
+      "file": "pylint/lint/pylinter.py",
+      "function": "PyLinter.set_option"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

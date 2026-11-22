@@ -1,0 +1,66 @@
+{
+  "run_id": "reproduce-20261112T040100739551Z",
+  "reviewed_at": "2026-11-12T11:58:24+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "410f8cd007378603eb8a4d0cdcb69e93eca1ae517323e614cc2439c9d41fd34b",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "d5b816cf16fefcd2ab337fec429b24a0f14795d2889269fce935ef4b819d28d4",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e7669f70f0dcb01793e82dd4dd2d16cddf4d9c82e6f08ad9aeba4ca175ac045b",
+    "historical-fixed.stdout.txt": "65b73338bafe9b01346492c4849c546985963748af8408748d6674880d23b6fb",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b4baeaf221d1275479b77cd5a66246ee74a0b0c165a948fd1dc88df13996ae01"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/ccode.py",
+      "function": "CCodePrinter._print_Relational"
+    },
+    {
+      "file": "sympy/printing/ccode.py",
+      "function": "CCodePrinter._print_sinc"
+    }
+  ],
+  "mechanism": "The C printer lacks relational and sinc handlers. Saved output contains Eq(x,y) instead of x==y and a generic unsupported sinc(x) instead of the zero-aware sine quotient. The dedicated handlers provide those target-language forms.",
+  "limitations": "One source task adds two related code-generation handlers, both observed in failing assertions. Explicit missing definitions; output strings were not compiled as C during review.",
+  "observed_junit": {
+    "base": {
+      "cases": 31,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 31,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_ccode::test_ccode_Relational",
+      "message": "AssertionError: assert 'Eq(x, y)' == 'x == y'\n  - x == y\n  + Eq(x, y)"
+    },
+    {
+      "test": "sympy.printing.tests.test_ccode::test_ccode_sinc",
+      "message": "AssertionError: assert '// Not suppo...sinc\\nsinc(x)' == '((x != 0) ? ...: (\\n   1\\n))'\n  + // Not supported in C:\n  + // sinc\n  + sinc(x)\n  - ((x != 0) ? (\n  -    sin(x)/x\n  - )\n  - : (\n  -    1\n  - ))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence().",
+  "missing_definitions": [
+    {
+      "file": "sympy/printing/ccode.py",
+      "function": "CCodePrinter._print_Relational"
+    },
+    {
+      "file": "sympy/printing/ccode.py",
+      "function": "CCodePrinter._print_sinc"
+    }
+  ]
+}

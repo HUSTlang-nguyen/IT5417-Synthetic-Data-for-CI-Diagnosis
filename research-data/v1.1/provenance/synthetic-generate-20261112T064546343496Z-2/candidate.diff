@@ -1,0 +1,11 @@
+--- a/pvlib/pvsystem.py
++++ b/pvlib/pvsystem.py
+@@ -58,7 +58,7 @@
+     def f(*args, **kwargs):
+         unwrap = kwargs.pop('unwrap', True)
+         x = func(*args, **kwargs)
+-        if unwrap and len(x) == 1:
++        if unwrap and len(x) == 2:
+             return x[0]
+         return x
+     return f

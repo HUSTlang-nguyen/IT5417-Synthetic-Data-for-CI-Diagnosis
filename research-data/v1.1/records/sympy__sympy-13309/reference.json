@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13309",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/miscellaneous.py",
+      "function": "Max._eval_rewrite_as_Piecewise"
+    }
+  ],
+  "explanation": "Max has no Piecewise rewrite handler and the saved rewrite remains Max(a,b) instead of the requested two-branch expression. Adding the handler and shared relational helper supplies the expected conditional representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

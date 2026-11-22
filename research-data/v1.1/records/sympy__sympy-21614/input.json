@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 7 items\n\nsympy/core/tests/test_kind.py::test_Derivative_kind FAILED               [ 14%]\nsympy/core/tests/test_kind.py::test_NumberKind PASSED                    [ 28%]\nsympy/core/tests/test_kind.py::test_Add_kind PASSED                      [ 42%]\nsympy/core/tests/test_kind.py::test_mul_kind PASSED                      [ 57%]\nsympy/core/tests/test_kind.py::test_Symbol_kind PASSED                   [ 71%]\nsympy/core/tests/test_kind.py::test_Integral_kind PASSED                 [ 85%]\nsympy/core/tests/test_kind.py::test_Matrix_kind PASSED                   [100%]\n\n=================================== FAILURES ===================================\n_____________________________ test_Derivative_kind _____________________________\n\n    def test_Derivative_kind():\n        A = MatrixSymbol('A', 2,2)\n>       assert Derivative(comm_x, comm_x).kind is NumberKind\nE       assert UndefinedKind is NumberKind\nE        +  where UndefinedKind = Derivative(x, x).kind\nE        +    where Derivative(x, x) = Derivative(x, x)\n\nsympy/core/tests/test_kind.py:45: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/core/tests/test_kind.py::test_Derivative_kind - assert Undefined...\n==================== 1 failed, 6 passed, 1 warning in 0.11s ====================\n",
+  "code": [
+    {
+      "file": "sympy/core/kind.py",
+      "function": "KindDispatcher.__init__",
+      "start_line": 258,
+      "end_line": 262,
+      "score": 50.948683,
+      "text": "sympy/core/kind.py::KindDispatcher.__init__ lines 258-262\n    def __init__(self, name, commutative=False, doc=None):\n        self.name = name\n        self.doc = doc\n        self.commutative = commutative\n        self._dispatcher = Dispatcher(name)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "Symbol.kind",
+      "start_line": 210,
+      "end_line": 213,
+      "score": 31.889822,
+      "text": "sympy/core/symbol.py::Symbol.kind lines 210-213\n    def kind(self):\n        if self.is_commutative:\n            return NumberKind\n        return UndefinedKind",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    }
+  ]
+}

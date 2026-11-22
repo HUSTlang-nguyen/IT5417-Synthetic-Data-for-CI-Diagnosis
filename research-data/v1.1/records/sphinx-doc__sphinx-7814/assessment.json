@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T004958787187Z",
+  "reviewed_at": "2026-11-12T10:43:50+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c2be6200a2e5f6ef39f9aeba62c8c5c12b173b7581dc3ec317136cb2cf4f4ea4",
+    "license-evidence.json": "8dd0765a115cdb8942009d9cd8c4d4f8a9c2d128e5a114cbd873c13cb176f354",
+    "historical-base.stdout.txt": "6dc3ee5d3a5dbc3aa2b4ce13abee8b2735e510b3084fe64e0ae276a90c956d65",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "66707ac23d585a85ea5bb462d88a05b7a2ff38c94fc0579f82353adfc6df321a",
+    "historical-fixed.stdout.txt": "f761fb271ccd9d5471fb1148d5e543fcf7a5ae0ab019882e49cef014d3c4f0be",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "63bf226628a18b160b199feb6bce8efc1725f4bc96bc439370c3e0067abbe654"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "PyAttribute.handle_signature"
+    }
+  ],
+  "mechanism": "The attribute signature handler sends the entire type string to type_to_xref. Optional[str] becomes one cross-reference instead of separate Optional, bracket and str nodes. Parsing the annotation first gives the required structured signature.",
+  "limitations": "The repair applies the same pattern to PyVariable.handle_signature, but the saved failing test specifically establishes the attribute path. Related annotation-rendering tasks need family review before final dedup.",
+  "observed_junit": {
+    "base": {
+      "cases": 29,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 29,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_py::test_pyattribute",
+      "message": "AssertionError: The node[0][1] has 2 child nodes, not 5"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

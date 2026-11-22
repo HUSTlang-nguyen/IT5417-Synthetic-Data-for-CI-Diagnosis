@@ -1,0 +1,11 @@
+--- a/sympy/physics/hep/gamma_matrices.py
++++ b/sympy/physics/hep/gamma_matrices.py
+@@ -535,7 +535,7 @@
+                 # free indices. The product of two gamma^0 matrices is unity,
+                 # so the new expression being examined is the same as the
+                 # original one.
+-                if cum_sign == -1:
++                if cum_sign == 1:
+                     links[-1-i] = [-1-i+1]
+                     links[-1-i+1] = [-1-i]
+             if (i - cum_sign) in links:

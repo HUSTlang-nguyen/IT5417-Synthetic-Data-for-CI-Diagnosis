@@ -1,0 +1,100 @@
+"""
+    sphinx.io
+    ~~~~~~~~~
+
+    Input/Output files
+
+    :copyright: Copyright 2007-2020 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
+import codecs
+import warnings
+from typing import Any, List
+
+from docutils import nodes
+from docutils.core import Publisher
+from docutils.frontend import Values
+from docutils.io import FileInput, Input, NullOutput
+from docutils.parsers import Parser
+from docutils.parsers.rst import Parser as RSTParser
+from docutils.readers import standalone
+from docutils.transforms import Transform
+from docutils.transforms.references import DanglingReferences
+from docutils.writers import UnfilteredWriter
+
+from sphinx.deprecation import RemovedInSphinx40Warning, deprecated_alias
+from sphinx.environment import BuildEnvironment
+from sphinx.errors import FiletypeNotFoundError
+from sphinx.transforms import (
+    AutoIndexUpgrader, DoctreeReadEvent, FigureAligner, SphinxTransformer
+)
+from sphinx.transforms.i18n import (
+    PreserveTranslatableMessages, Locale, RemoveTranslatableInline,
+)
+from sphinx.transforms.references import SphinxDomains
+from sphinx.util import logging, get_filetype
+from sphinx.util import UnicodeDecodeErrorHandler
+from sphinx.util.docutils import LoggingReporter
+from sphinx.versioning import UIDTransform
+
+if False:
+    # For type annotation
+    from typing import Type  # for python3.5.1
+    from sphinx.application import Sphinx
+
+
+logger = logging.getLogger(__name__)
+
+
+class SphinxBaseReader(standalone.Reader):
+    """
+    A base class of readers for Sphinx.
+
+    This replaces reporter by Sphinx's on generating document.
+    """
+
+    transforms = []  # type: List[Type[Transform]]
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        from sphinx.application import Sphinx
+        if len(args) > 0 and isinstance(args[0], Sphinx):
+            self._app = args[0]
+            self._env = self._app.env
+            args = args[1:]
+
+        super().__init__(*args, **kwargs)
+
+    @property
+    def app(self) -> "Sphinx":
+        warnings.warn('SphinxBaseReader.app is deprecated.',
+                      RemovedInSphinx40Warning, stacklevel=2)
+        return self._app
+
+    @property
+    def env(self) -> BuildEnvironment:
+        warnings.warn('SphinxBaseReader.env is deprecated.',
+                      RemovedInSphinx40Warning, stacklevel=2)
+        return self._env
+
+    def setup(self, app: "Sphinx") -> None:
+        self._app = app      # hold application object only for compatibility
+        self._env = app.env
+
+    def get_transforms(self) -> List["Type[Transform]"]:
+        transforms = super().get_transforms() + self.transforms
+
+        # remove transforms which is not needed for Sphinx
+        unused = [DanglingReferences]
+        for transform in unused:
+            if transform in transforms:
+                transforms.remove(transform)
+
+        return transforms
+
+    def new_document(self) -> nodes.document:
+        """Creates a new document object which having a special reporter object good
+        for logging.
+        """
+        document = super().new_document()
+
+        # substitute transformer

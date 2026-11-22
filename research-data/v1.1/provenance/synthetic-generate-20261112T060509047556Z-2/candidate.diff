@@ -1,0 +1,11 @@
+--- a/sympy/simplify/trigsimp.py
++++ b/sympy/simplify/trigsimp.py
+@@ -237,7 +237,7 @@
+             for c, s, t, rel in (
+                     [cos, sin, tan, cos(x)**2 + sin(x)**2 - 1],
+                     [cosh, sinh, tanh, cosh(x)**2 - sinh(x)**2 - 1]):
+-                if coeff == 1 and fn in [c, s]:
++                if coeff == 0 and fn in [c, s]:
+                     I.append(rel)
+                 elif fn == t:
+                     I.append(t(coeff*x)*c(coeff*x) - s(coeff*x))

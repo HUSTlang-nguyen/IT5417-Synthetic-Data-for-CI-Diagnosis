@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T033612185310Z",
+  "reviewed_at": "2026-11-12T11:47:46+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "4595e1b909118c80144ecab9d167f6f65a81e6d60dbd0f05d38e5798efcc2f4b",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "8cdefeea44e09a9b1deb04cfee21a4a49a0d9d85cbe705e5f34d43448d7ef98c",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0dc41fd142ce972c12dedafd457aeaddeaf4fd4c54fd81211143404292f5a5fa",
+    "historical-fixed.stdout.txt": "87b5ec44765e223022d1c50714541954e2098d6f0d937e18d7640ec5afbc7641",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "731671528ef69ffd59597713a78cd4419868cff8e810f69a8f9ffd5b8c2058c7"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__new__"
+    }
+  ],
+  "mechanism": "With evaluation disabled, the imaginary-part expression for an ordinary real coordinate may stay unevaluated. Testing that symbolic expression by truthiness incorrectly rejects Point(1,2) as imaginary. Checking whether its zero predicate is explicitly False avoids that unsupported rejection.",
+  "limitations": "Read the frozen test: it uses evaluate(False) and numeric coordinates1,2. Do not claim the caller supplied genuinely imaginary coordinates or that unknown imaginary parts were independently evaluated.",
+  "observed_junit": {
+    "base": {
+      "cases": 12,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 12,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.geometry.tests.test_point::test_issue_22684",
+      "message": "ValueError: Imaginary coordinates are not permitted."
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

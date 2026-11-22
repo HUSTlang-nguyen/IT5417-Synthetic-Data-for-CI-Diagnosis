@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T055458799498Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "RoundFunction.eval"
+    }
+  ],
+  "explanation": "The numeric-evaluation result guard returns when v is None rather than when a value was found. Symbolic inputs then skip simplification, while handled NaN values fall through into generic integer conversion. Saved nested floor remains unsimplified and floor(nan) raises conversion ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/integers.py",
+      "function": "RoundFunction.eval"
+    },
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "get_integer_part"
+    },
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "get_integer_part.calc_part"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

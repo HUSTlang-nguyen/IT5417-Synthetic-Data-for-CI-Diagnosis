@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T000135696447Z",
+  "reviewed_at": "2026-11-12T07:45:15+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "11c09a2db524a6c08ca8e6caaf9ba3e3b2e166025e328829d9e739971ab23d3c",
+    "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+    "historical-base.stdout.txt": "be72fb84703896264ac7c0e276851f0e5310f8eb4a6d6e4d5a871e73ce960995",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "1b3cc8a69b1b7866565ffce93541aeae61957b4056c8ea8ec58efe142627fe89",
+    "historical-fixed.stdout.txt": "0e9bc4916be5035e55a79a535faf1062b4211226f9ec1fcfb8cf0f29ecc8fb6b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "dadd02909bce989295a3bedb06cb28af600060ef2767b4a46f3dd8697899f80f"
+  },
+  "cause_type": "logic/value",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "sphinx/domains/std.py",
+      "function": "<module>"
+    }
+  ],
+  "mechanism": "The option-description regex excludes a leading opening bracket from the option-name group. A valid [enable=]PATTERN form is therefore not parsed into the expected name and argument nodes. Allowing brackets in that group, with complementary optional-suffix handling, restores the documented structure.",
+  "limitations": "The primary failing case supports the module-level regex. The repair also updates Cmdoption.handle_signature for a trailing optional bracket; that secondary path is not separately proven by the first failure. Explicit module marker avoids inventing an existing function for the regex.",
+  "observed_junit": {
+    "base": {
+      "cases": 16,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 16,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_std::test_cmd_option_starting_with_bracket",
+      "message": "AssertionError: The node[1][0] has 1 child nodes, not 2"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

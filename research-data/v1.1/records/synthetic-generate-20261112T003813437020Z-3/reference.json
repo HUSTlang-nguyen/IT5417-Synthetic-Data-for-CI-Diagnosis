@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T003813437020Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.eval"
+    }
+  ],
+  "explanation": "The membership evaluator replaces its evaluated result with unconditional S.true. Concrete false memberships, such as -2 in Naturals and infinity in an open infinite interval, therefore return True. Both saved assertion failures match that changed return value.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.eval"
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.as_set"
+    },
+    {
+      "file": "sympy/sets/contains.py",
+      "function": "Contains.binary_symbols"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Interval.left_open"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Interval.right_open"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

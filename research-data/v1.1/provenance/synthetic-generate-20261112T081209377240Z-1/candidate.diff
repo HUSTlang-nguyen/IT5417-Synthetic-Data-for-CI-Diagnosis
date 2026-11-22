@@ -1,0 +1,11 @@
+--- a/sympy/tensor/toperators.py
++++ b/sympy/tensor/toperators.py
+@@ -186,7 +186,7 @@
+             for i, coeff in enumerate(coeff_array):
+                 coeff_index[0] = i
+                 array[tuple(coeff_index)] /= coeff
+-            if -varindex in indices:
++            if varindex in indices:
+                 pos = indices.index(-varindex)
+                 array = tensorcontraction(array, (0, pos+1))
+                 indices.pop(pos)

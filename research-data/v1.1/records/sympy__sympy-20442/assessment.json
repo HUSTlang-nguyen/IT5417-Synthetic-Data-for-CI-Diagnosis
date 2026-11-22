@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041258034772Z",
+  "reviewed_at": "2026-11-12T12:04:38+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "908d3047007f06b754828e5ce4044c0426c18f99269b66955f8aef9d6af16e0f",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "5897b4b627833775e8969c352357ef462956209b8252fd90fbc0c3a016ac0a57",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "bf7abcc912709b0e40b80d956242a66a4eeb922d5412c0c6f44305e1c4df6cb6",
+    "historical-fixed.stdout.txt": "3a54810035fdb70a69d2ad2f4bfb6e2518ca703dcc7c0740423fd1de8b0ec7b8",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "7edb479c25d02e1ec3468a9ddb868d1191b64e5931175c56c6c9d9edb96d1538"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/physics/units/util.py",
+      "function": "_get_conversion_matrix_for_expr"
+    }
+  ],
+  "mechanism": "The conversion helper solves incompatible unit dimensions by least squares and treats the approximate solution as an exact conversion. The saved joule*second to joule conversion returns an invalid fractional-power expression instead of retaining the original expression. Exact solving and its noninvertibility fallback reject that unsupported conversion.",
+  "limitations": "The saved test establishes dimensional incompatibility. It is not a missing dependency or a claim about every unit system.",
+  "observed_junit": {
+    "base": {
+      "cases": 25,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 25,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.physics.units.tests.test_quantities::test_convert_to",
+      "message": "assert 10**(2/3)*joule**(7/9) == (joule * second)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

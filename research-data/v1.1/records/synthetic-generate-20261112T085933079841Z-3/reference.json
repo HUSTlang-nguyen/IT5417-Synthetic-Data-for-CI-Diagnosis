@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T085933079841Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__repr__"
+    }
+  ],
+  "explanation": "The numeric repr loses its surrounding quote pair. The existing str path strips the first/last repr characters and therefore turns1.2 into a dot, causing the saved DS reconstruction/pickling ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__init__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

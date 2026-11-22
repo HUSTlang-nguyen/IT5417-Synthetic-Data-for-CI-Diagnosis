@@ -1,0 +1,100 @@
+#!/usr/bin/env python
+
+"""
+This example calculates the Ricci tensor from the metric and does this
+on the example of Schwarzschild solution.
+
+If you want to derive this by hand, follow the wiki page here:
+
+https://en.wikipedia.org/wiki/Deriving_the_Schwarzschild_solution
+
+Also read the above wiki and follow the references from there if
+something is not clear, like what the Ricci tensor is, etc.
+
+"""
+
+from sympy import (exp, Symbol, sin, dsolve, Function,
+                  Matrix, Eq, pprint, solve)
+
+
+def grad(f, X):
+    a = []
+    for x in X:
+        a.append(f.diff(x))
+    return a
+
+
+def d(m, x):
+    return grad(m[0, 0], x)
+
+
+class MT:
+    def __init__(self, m):
+        self.gdd = m
+        self.guu = m.inv()
+
+    def __str__(self):
+        return "g_dd =\n" + str(self.gdd)
+
+    def dd(self, i, j):
+        return self.gdd[i, j]
+
+    def uu(self, i, j):
+        return self.guu[i, j]
+
+
+class G:
+    def __init__(self, g, x):
+        self.g = g
+        self.x = x
+
+    def udd(self, i, k, l):
+        g = self.g
+        x = self.x
+        r = 0
+        for m in [0, 1, 2, 3]:
+            r += g.uu(i, m)/2 * (g.dd(m, k).diff(x[l]) + g.dd(m, l).diff(x[k])
+                    - g.dd(k, l).diff(x[m]))
+        return r
+
+
+class Riemann:
+    def __init__(self, G, x):
+        self.G = G
+        self.x = x
+
+    def uddd(self, rho, sigma, mu, nu):
+        G = self.G
+        x = self.x
+        r = G.udd(rho, nu, sigma).diff(x[mu]) - G.udd(rho, mu, sigma).diff(x[nu])
+        for lam in [0, 1, 2, 3]:
+            r += G.udd(rho, mu, lam)*G.udd(lam, nu, sigma) \
+                - G.udd(rho, nu, lam)*G.udd(lam, mu, sigma)
+        return r
+
+
+class Ricci:
+    def __init__(self, R, x):
+        self.R = R
+        self.x = x
+        self.g = R.G.g
+
+    def dd(self, mu, nu):
+        R = self.R
+        x = self.x
+        r = 0
+        for lam in [0, 1, 2, 3]:
+            r += R.uddd(lam, mu, lam, nu)
+        return r
+
+    def ud(self, mu, nu):
+        r = 0
+        for lam in [0, 1, 2, 3]:
+            r += self.g.uu(mu, lam)*self.dd(lam, nu)
+        return r.expand()
+
+
+def curvature(Rmn):
+    return Rmn.ud(0, 0) + Rmn.ud(1, 1) + Rmn.ud(2, 2) + Rmn.ud(3, 3)
+
+nu = Function("nu")

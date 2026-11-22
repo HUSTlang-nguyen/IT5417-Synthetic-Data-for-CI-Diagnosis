@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T234457851061Z",
+  "reviewed_at": "2026-11-12T07:35:47+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b581a03e3c00aa0bb0f6ff48d910a088f67c8da9557a91ee1392f868da13d54d",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "31e4798867c20da187c0c065e082e487865a31d70862e6cdaf71ce12deb0b98b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ab160481a90e53c8fca7a95750e48302d3cc2ff6e28c3f12a2e69d8aaa2e95cf",
+    "historical-fixed.stdout.txt": "908afe6e596f8aa32756b6be643523a4d49e7124542a39f4d5087b2d1a8d80e2",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ae702f03830eb809fa782c7f7bbcda6f1ab855115091827eedce81494e08adda"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/cmd/quickstart.py",
+      "function": "ask_user"
+    }
+  ],
+  "mechanism": "The reprompt promises Enter to exit but validates an empty response with is_path, which rejects it and asks again before ask_user can exit. The mock has only one response and exposes that extra prompt. An empty-accepting validator lets the existing exit branch run.",
+  "limitations": "The test helper assertion is the detector of an unexpected repeated prompt, not an independent input-mock defect. The repair adds is_path_or_empty, but the wrong validator choice is in the existing ask_user function.",
+  "observed_junit": {
+    "base": {
+      "cases": 10,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 10,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_quickstart::test_exits_when_existing_confpy",
+      "message": "AssertionError: answer for '> Please enter a new root path (or just Enter to exit) []: ' missing and no default present"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

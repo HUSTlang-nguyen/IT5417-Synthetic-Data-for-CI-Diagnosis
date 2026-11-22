@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13978",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/octave.py",
+      "function": "OctaveCodePrinter._print_Mul"
+    }
+  ],
+  "explanation": "The compact imaginary-literal branch checks only the rational coefficient, which is integer one for sqrt(3)*I. It consequently emits sqrt(3)i instead of the multiplication form sqrt(3)*1i. Requiring the whole imaginary multiplier to be an Integer confines that compact syntax to valid literal coefficients.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

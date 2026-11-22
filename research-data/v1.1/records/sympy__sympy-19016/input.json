@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 47 items\n\nsympy/sets/tests/test_fancysets.py::test_range_is_finite_set FAILED      [  2%]\nsympy/sets/tests/test_fancysets.py::test_naturals PASSED                 [  4%]\nsympy/sets/tests/test_fancysets.py::test_naturals0 PASSED                [  6%]\nsympy/sets/tests/test_fancysets.py::test_integers PASSED                 [  8%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet PASSED                 [ 10%]\nsympy/sets/tests/test_fancysets.py::test_image_is_ImageSet PASSED        [ 12%]\nsympy/sets/tests/test_fancysets.py::test_halfcircle PASSED               [ 14%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_iterator_not_injective PASSED [ 17%]\nsympy/sets/tests/test_fancysets.py::test_inf_Range_len PASSED            [ 19%]\nsympy/sets/tests/test_fancysets.py::test_Range_set PASSED                [ 21%]\nsympy/sets/tests/test_fancysets.py::test_Range_symbolic PASSED           [ 23%]\nsympy/sets/tests/test_fancysets.py::test_range_range_intersection PASSED [ 25%]\nsympy/sets/tests/test_fancysets.py::test_range_interval_intersection PASSED [ 27%]\nsympy/sets/tests/test_fancysets.py::test_Integers_eval_imageset PASSED   [ 29%]\nsympy/sets/tests/test_fancysets.py::test_Range_eval_imageset PASSED      [ 31%]\nsympy/sets/tests/test_fancysets.py::test_fun PASSED                      [ 34%]\nsympy/sets/tests/test_fancysets.py::test_Reals PASSED                    [ 36%]\nsympy/sets/tests/test_fancysets.py::test_Complex PASSED                  [ 38%]\nsympy/sets/tests/test_fancysets.py::test_intersections PASSED            [ 40%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_1 PASSED [ 42%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_2 PASSED [ 44%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_real PASSED  [ 46%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_interval PASSED [ 48%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersect_diophantine PASSED [ 51%]\nsympy/sets/tests/test_fancysets.py::test_infinitely_indexed_set_3 PASSED [ 53%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_simplification PASSED  [ 55%]\nsympy/sets/tests/test_fancysets.py::test_ImageSet_contains PASSED        [ 57%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_contains PASSED   [ 59%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_intersect PASSED  [ 61%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_union PASSED      [ 63%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_from_real PASSED  [ 65%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_measure PASSED    [ 68%]\nsympy/sets/tests/test_fancysets.py::test_normalize_theta_set PASSED      [ 70%]\nsympy/sets/tests/test_fancysets.py::test_ComplexRegion_FiniteSet PASSED  [ 72%]\nsympy/sets/tests/test_fancysets.py::test_union_RealSubSet PASSED         [ 74%]\nsympy/sets/tests/test_fancysets.py::test_issue_9980 PASSED               [ 76%]\nsympy/sets/tests/test_fancysets.py::test_issue_11732 PASSED              [ 78%]\nsympy/sets/tests/test_fancysets.py::test_issue_11730 PASSED              [ 80%]\nsympy/sets/tests/test_fancysets.py::test_issue_11938 PASSED              [ 82%]\nsympy/sets/tests/test_fancysets.py::test_issue_11914 PASSED              [ 85%]\nsympy/sets/tests/test_fancysets.py::test_issue_9543 PASSED               [ 87%]\nsympy/sets/tests/test_fancysets.py::test_issue_16871 PASSED              [ 89%]\nsympy/sets/tests/test_fancysets.py::test_issue_18050 PASSED              [ 91%]\nsympy/sets/tests/test_fancysets.py::test_Rationals PASSED                [ 93%]\nsympy/sets/tests/test_fancysets.py::test_NZQRC_unions PASSED             [ 95%]\nsympy/sets/tests/test_fancysets.py::test_imageset_intersection PASSED    [ 97%]\nsympy/sets/tests/test_fancysets.py::test_issue_17858 PASSED              [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_range_is_finite_set ___________________________\n\n    def test_range_is_finite_set():\n>       assert Range(-100, 100).is_finite_set is True\nE       assert None is True\nE        +  where None = Range(-100, 100, 1).is_finite_set\nE        +    where Range(-100, 100, 1) = Range(-100, 100)\n\nsympy/sets/tests/test_fancysets.py:450: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/sets/tests/test_fancysets.py::test_range_is_finite_set - assert ...\n=================== 1 failed, 46 passed, 1 warning in 2.34s ====================\n",
+  "code": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range._boundary",
+      "start_line": 908,
+      "end_line": 909,
+      "score": 51.0,
+      "text": "sympy/sets/fancysets.py::Range._boundary lines 908-909\n    def _boundary(self):\n        return self",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "ComplexRegion.sets",
+      "start_line": 1100,
+      "end_line": 1119,
+      "score": 50.970143,
+      "text": "sympy/sets/fancysets.py::ComplexRegion.sets lines 1100-1119\n    def sets(self):\n        \"\"\"\n        Return raw input sets to the self.\n\n        Examples\n        ========\n\n        >>> from sympy import Interval, ComplexRegion, Union\n        >>> a = Interval(2, 3)\n        >>> b = Interval(4, 5)\n        >>> c = Interval(1, 7)\n        >>> C1 = ComplexRegion(a*b)\n        >>> C1.sets\n        ProductSet(Interval(2, 3), Interval(4, 5))\n        >>> C2 = ComplexRegion(Union(a*b, b*c))\n        >>> C2.sets\n        Union(ProductSet(Interval(2, 3), Interval(4, 5)), ProductSet(Interval(4, 5), Interval(1, 7)))\n\n        \"\"\"\n        return self.args[0]",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.reversed",
+      "start_line": 652,
+      "end_line": 667,
+      "score": 50.834058,
+      "text": "sympy/sets/fancysets.py::Range.reversed lines 652-667\n    def reversed(self):\n        \"\"\"Return an equivalent Range in the opposite order.\n\n        Examples\n        ========\n\n        >>> from sympy import Range\n        >>> Range(10).reversed\n        Range(9, -1, -1)\n        \"\"\"\n        if self.has(Symbol):\n            _ = self.size  # validate\n        if not self:\n            return self\n        return self.func(\n            self.stop - self.step, self.start - self.step, -self.step)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.as_relational",
+      "start_line": 911,
+      "end_line": 920,
+      "score": 50.834058,
+      "text": "sympy/sets/fancysets.py::Range.as_relational lines 911-920\n    def as_relational(self, x):\n        \"\"\"Rewrite a Range in terms of equalities and logic operators. \"\"\"\n        from sympy.functions.elementary.integers import floor\n        if self.size == 1:\n            return Eq(x, self[0])\n        else:\n            return And(\n                Eq(x, floor(x)),\n                x >= self.inf if self.inf in self else x > self.inf,\n                x <= self.sup if self.sup in self else x < self.sup)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Range.__nonzero__",
+      "start_line": 732,
+      "end_line": 733,
+      "score": 50.816497,
+      "text": "sympy/sets/fancysets.py::Range.__nonzero__ lines 732-733\n    def __nonzero__(self):\n        return self.start != self.stop",
+      "truncated": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-14774",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Function"
+    }
+  ],
+  "explanation": "The inverse-trigonometric dispatch table omits acsc and asec, so these functions bypass inverse-trig style handling. With full style requested, acsc is printed instead of arccsc. Adding the missing function names reaches the existing style transformation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "FreeModule.convert"
+    },
+    {
+      "file": "sympy/plotting/plot.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

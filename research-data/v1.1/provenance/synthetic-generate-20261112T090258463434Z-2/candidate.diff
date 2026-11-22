@@ -1,0 +1,11 @@
+--- a/sympy/matrices/expressions/diagonal.py
++++ b/sympy/matrices/expressions/diagonal.py
+@@ -10,7 +10,7 @@
+     def _entry(self, i, j):
+         eq = Eq(i, j)
+         if eq is S.false:
+-            return S.Zero
++            return S.One
+         elif eq is S.true:
+             return self.arg[i, i]
+         return self.arg[i, j]*KroneckerDelta(i, j)

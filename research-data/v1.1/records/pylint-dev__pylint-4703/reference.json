@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-4703",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/checkers/imports.py",
+      "function": "ImportsChecker._add_imported_module"
+    }
+  ],
+  "explanation": "Imports under a TYPE_CHECKING guard enter the cycle-detection graph as runtime dependencies. Because their edges are not excluded, the linter reports a cyclic import for a typing-only relationship. Recognizing the typing guard and excluding its edge removes the false diagnostic.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/testutils/functional_test_file.py",
+      "function": "FunctionalTestFile.source"
+    },
+    {
+      "file": "pylint/pyreverse/diagrams.py",
+      "function": "ClassDiagram.nodes"
+    },
+    {
+      "file": "pylint/testutils/functional_test_file.py",
+      "function": "FunctionalTestFile.module"
+    },
+    {
+      "file": "pylint/reporters/multi_reporter.py",
+      "function": "MultiReporter.linter"
+    },
+    {
+      "file": "pylint/checkers/base_checker.py",
+      "function": "BaseChecker.messages"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,100 @@
+"""
+    sphinx.search
+    ~~~~~~~~~~~~~
+
+    Create a full-text search index for offline search.
+
+    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
+import html
+import pickle
+import re
+from importlib import import_module
+from os import path
+from typing import IO, Any, Dict, Iterable, List, Optional, Set, Tuple, Type
+
+from docutils import nodes
+from docutils.nodes import Node
+
+from sphinx import addnodes, package_dir
+from sphinx.environment import BuildEnvironment
+from sphinx.search.jssplitter import splitter_code
+from sphinx.util import jsdump
+
+
+class SearchLanguage:
+    """
+    This class is the base class for search natural language preprocessors.  If
+    you want to add support for a new language, you should override the methods
+    of this class.
+
+    You should override `lang` class property too (e.g. 'en', 'fr' and so on).
+
+    .. attribute:: stopwords
+
+       This is a set of stop words of the target language.  Default `stopwords`
+       is empty.  This word is used for building index and embedded in JS.
+
+    .. attribute:: js_splitter_code
+
+       Return splitter function of JavaScript version.  The function should be
+       named as ``splitQuery``.  And it should take a string and return list of
+       strings.
+
+       .. versionadded:: 3.0
+
+    .. attribute:: js_stemmer_code
+
+       Return stemmer class of JavaScript version.  This class' name should be
+       ``Stemmer`` and this class must have ``stemWord`` method.  This string is
+       embedded as-is in searchtools.js.
+
+       This class is used to preprocess search word which Sphinx HTML readers
+       type, before searching index. Default implementation does nothing.
+    """
+    lang: str = None
+    language_name: str = None
+    stopwords: Set[str] = set()
+    js_splitter_code: str = None
+    js_stemmer_rawcode: str = None
+    js_stemmer_code = """
+/**
+ * Dummy stemmer for languages without stemming rules.
+ */
+var Stemmer = function() {
+  this.stemWord = function(w) {
+    return w;
+  }
+}
+"""
+
+    _word_re = re.compile(r'(?u)\w+')
+
+    def __init__(self, options: Dict) -> None:
+        self.options = options
+        self.init(options)
+
+    def init(self, options: Dict) -> None:
+        """
+        Initialize the class with the options the user has given.
+        """
+
+    def split(self, input: str) -> List[str]:
+        """
+        This method splits a sentence into words.  Default splitter splits input
+        at white spaces, which should be enough for most languages except CJK
+        languages.
+        """
+        return self._word_re.findall(input)
+
+    def stem(self, word: str) -> str:
+        """
+        This method implements stemming algorithm of the Python version.
+
+        Default implementation does nothing.  You should implement this if the
+        language has any stemming rules.
+
+        This class is used to preprocess search words before registering them in
+        the search index.  The stemming of the Python version and the JS version
+        (given in the js_stemmer_code attribute) must be compatible.

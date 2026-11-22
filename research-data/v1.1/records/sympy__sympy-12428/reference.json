@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-12428",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/diagonal.py",
+      "function": "DiagonalMatrix._entry"
+    }
+  ],
+  "explanation": "A diagonal entry reads column0 of the source rather than its same row/column diagonal element. The saved D[1,1] result is X[1,0] instead of X[1,1]. Correct indexing and symbolic-equality handling preserve the intended diagonal matrix.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

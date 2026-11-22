@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T045626640539Z",
+  "reviewed_at": "2026-11-12T12:14:21+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "fb252dfcb51e7c5b6b04bbc3940c06214b9528791fcbb9763a8045b7f9ed79f1",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "f7c7df442d638d1dc608d97a2ecebb5ecc2dc7c7506233192201e81270d3702e",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "caf9b02feaea7e1021f2a13c0abde9b905ee0645262aa4a6514baf142ebdf8c8",
+    "historical-fixed.stdout.txt": "169e6f1bad67bab217b558b8f17b3f159e7377778f492799bcaa12e055003ac2",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "bbb474679ab0dbecff6b802130b65dbd70da0d9585832a1edac858c32d3768e3"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/mod.py",
+      "function": "Mod.eval"
+    }
+  ],
+  "mechanism": "The evaluator lacks same-modulus combination across an additive dividend. Saved Mod(Mod(x+1,2)+1,2) remains nested instead of reducing to Mod(x,2). Combining inner dividends under the shared outer modulus enables the required simplification.",
+  "limitations": "Related15599 reduces integer coefficients in a multiplicative dividend; this source adds missing nested-modulus addition/multiplication rules. The first saved oracle directly proves the additive path.",
+  "observed_junit": {
+    "base": {
+      "cases": 75,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 75,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_arit::test_Mod",
+      "message": "assert Mod(Mod(x + 1, 2) + 1, 2) == Mod(x, 2)\n +  where Mod(Mod(x + 1, 2) + 1, 2) = Mod((Mod(x + 1, 2) + 1), 2)\n +    where Mod(x + 1, 2) = Mod((x + 1), 2)\n +  and   Mod(x, 2) = Mod(x, 2)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T064216205182Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "iproduct"
+    }
+  ],
+  "explanation": "The empty-input Cartesian-product base case tests length1 instead of0. The saved no-argument call falls into recursion setup and indexes an empty tuple, raising IndexError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "iproduct"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "capture"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "_iproduct2"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "_iproduct2.append"
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "variations"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

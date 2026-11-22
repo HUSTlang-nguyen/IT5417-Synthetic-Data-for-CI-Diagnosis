@@ -1,0 +1,100 @@
+"""Geometrical Points.
+
+Contains
+========
+Point
+Point2D
+Point3D
+
+When methods of Point require 1 or more points as arguments, they
+can be passed as a sequence of coordinates or Points:
+
+>>> from sympy.geometry.point import Point
+>>> Point(1, 1).is_collinear((2, 2), (3, 4))
+False
+>>> Point(1, 1).is_collinear(Point(2, 2), Point(3, 4))
+False
+
+"""
+
+import warnings
+
+from sympy.core import S, sympify, Expr
+from sympy.core.add import Add
+from sympy.core.containers import Tuple
+from sympy.core.numbers import Float
+from sympy.core.parameters import global_parameters
+from sympy.simplify import nsimplify, simplify
+from sympy.geometry.exceptions import GeometryError
+from sympy.functions.elementary.miscellaneous import sqrt
+from sympy.functions.elementary.complexes import im
+from sympy.functions.elementary.trigonometric import cos, sin
+from sympy.matrices import Matrix
+from sympy.matrices.expressions import Transpose
+from sympy.utilities.iterables import uniq, is_sequence
+from sympy.utilities.misc import filldedent, func_name, Undecidable
+
+from .entity import GeometryEntity
+
+from mpmath.libmp.libmpf import prec_to_dps
+
+
+class Point(GeometryEntity):
+    """A point in a n-dimensional Euclidean space.
+
+    Parameters
+    ==========
+
+    coords : sequence of n-coordinate values. In the special
+        case where n=2 or 3, a Point2D or Point3D will be created
+        as appropriate.
+    evaluate : if `True` (default), all floats are turn into
+        exact types.
+    dim : number of coordinates the point should have.  If coordinates
+        are unspecified, they are padded with zeros.
+    on_morph : indicates what should happen when the number of
+        coordinates of a point need to be changed by adding or
+        removing zeros.  Possible values are `'warn'`, `'error'`, or
+        `ignore` (default).  No warning or error is given when `*args`
+        is empty and `dim` is given. An error is always raised when
+        trying to remove nonzero coordinates.
+
+
+    Attributes
+    ==========
+
+    length
+    origin: A `Point` representing the origin of the
+        appropriately-dimensioned space.
+
+    Raises
+    ======
+
+    TypeError : When instantiating with anything but a Point or sequence
+    ValueError : when instantiating with a sequence with length < 2 or
+        when trying to reduce dimensions if keyword `on_morph='error'` is
+        set.
+
+    See Also
+    ========
+
+    sympy.geometry.line.Segment : Connects two Points
+
+    Examples
+    ========
+
+    >>> from sympy.geometry import Point
+    >>> from sympy.abc import x
+    >>> Point(1, 2, 3)
+    Point3D(1, 2, 3)
+    >>> Point([1, 2])
+    Point2D(1, 2)
+    >>> Point(0, x)
+    Point2D(0, x)
+    >>> Point(dim=4)
+    Point(0, 0, 0, 0)
+
+    Floats are automatically converted to Rational unless the
+    evaluate flag is False:
+
+    >>> Point(0.5, 0.25)

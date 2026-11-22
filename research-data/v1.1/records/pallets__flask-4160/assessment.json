@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233102382247Z",
+  "reviewed_at": "2026-11-12T07:29:36+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e441a401a40e94c462909637a9dcf1bc5b4ee01471f6ffc4c43ff88cf47c5d94",
+    "license-evidence.json": "1b3ebb9908afadb5819a38e5e138ea2e332864ec7c0690ac4cc21564a72d2372",
+    "historical-base.stdout.txt": "248719cb4f9a7fbe502af3f28c2696070111a794148b5b9b79e18fef8e7c59e2",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a53675831e5e422e3bad833f88f6339eb7deea1e37394dcf9530c1cb912e62b6",
+    "historical-fixed.stdout.txt": "5d00833520fc5fa5de3fc011f062b6e797fae1271926578b8aeb622593290952",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "55353a701cc1d84ba52d2b9bc66ec818bff9383ebcdd803325869f624c6994c7"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/flask/json/__init__.py",
+      "function": "JSONEncoder.default"
+    }
+  ],
+  "mechanism": "The Flask JSON encoder handles UUID values as strings but has no Decimal branch. Decimal therefore reaches the standard encoder fallback and raises TypeError instead of being serialized as a decimal string. Extending the supported-type branch supplies that conversion.",
+  "limitations": "The standard json.encoder failure is the detector; the missing Flask conversion is causal. Added documentation hunks are not separate defects.",
+  "observed_junit": {
+    "base": {
+      "cases": 33,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 33,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_json::test_json_decimal",
+      "message": "TypeError: Object of type Decimal is not JSON serializable"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

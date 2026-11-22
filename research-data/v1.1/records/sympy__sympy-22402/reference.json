@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-22402",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg.eval"
+    }
+  ],
+  "explanation": "The argument evaluator does not bound nested arg applications whose values force an undefined angle. Saved arg(arg(arg(arg(x)))) remains nested instead of NaN. Inspecting the nesting and real-valued intermediate recognizes the undefined case.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg.eval"
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg._eval_rewrite_as_atan2"
+    },
+    {
+      "file": "sympy/functions/elementary/complexes.py",
+      "function": "arg._eval_derivative"
+    },
+    {
+      "file": "sympy/stats/drv_types.py",
+      "function": "FlorySchulzDistribution.check"
+    },
+    {
+      "file": "sympy/stats/drv_types.py",
+      "function": "GeometricDistribution.check"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

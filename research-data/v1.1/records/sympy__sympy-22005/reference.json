@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-22005",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_generic._solve_reduced_system"
+    }
+  ],
+  "explanation": "The reduced-system solver accepts a single univariate basis even when another requested generator remains unconstrained. It returns instead of rejecting the non-zero-dimensional system. Checking basis length against generator count prevents this unsupported finite-solution path.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/polysys.py",
+      "function": "solve_poly_system"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Rational.gcd"
+    },
+    {
+      "file": "sympy/polys/domains/domain.py",
+      "function": "Domain.sqrt"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Zero.__abs__"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Zero.__neg__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233558145128Z",
+  "reviewed_at": "2026-11-12T07:31:40+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b8d3cbf337cfbb15b0aa09ebf15cf43a2d5b4663ef3507fb8e0c3e4b284b8c4f",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "91dd30e90a5465ee89b7f81b51deebb5a2fb5cc5d359883cca71bfe60e22e4d5",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "45f619d71de99759628553a8d4e04c6c057692451d4b55225bfbd9617f084e0a",
+    "historical-fixed.stdout.txt": "ab18cf66dff4c117ba10bccacac5cffccaf6c3e25a69bfa9370ecb6f683cdc52",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "9efc664e55160309787fb69545c07c441ecf0bf571eb79fb34c169fd5042894b"
+  },
+  "cause_type": "dependency/configuration",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/config/__init__.py",
+      "function": "<module>"
+    }
+  ],
+  "mechanism": "Default PYLINT_HOME is built as the legacy ~/.pylint.d instead of the platform cache directory returned by appdirs. The saved test observes /tmp/.pylint.d rather than /tmp/.cache/pylint. The default configuration expression changes to user_cache_dir.",
+  "limitations": "Module-scope default path with explicit <module> marker; appdirs is present in the pinned execution profile, so this is not mislabeled as a missing-package environment failure. The setup.cfg addition is separate packaging support.",
+  "observed_junit": {
+    "base": {
+      "cases": 51,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 51,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.lint.unittest_lint::test_pylint_home",
+      "message": "AssertionError: assert '/tmp/.pylint.d' == '/tmp/.cache/pylint'\n  - /tmp/.cache/pylint\n  ?       ------\n  + /tmp/.pylint.d\n  ?             ++"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

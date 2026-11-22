@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261111T232932460044Z",
+  "reviewed_at": "2026-11-12T07:29:05+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "de7c10a64e805a94199134e77637d0dfd4f9389f3df389ddab265c821b030d7a",
+    "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+    "historical-base.stdout.txt": "1940095f485f438aa383da8c4e95b25953d4aa15e8d8ce7c4aa2cde90e6d9236",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9932618d2db5fadb3e489bd4e1173ec0d287334be982d57f04dd5fcafaad5aa7",
+    "historical-fixed.stdout.txt": "fcce3caa33ff229cbc8c02b79d318fa5f7e05e83ae4911ee7d723092f5bf86cc",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "b3a7c1536e3f43df90bf32a4ec8d153d6da2280d842739e2c8ffec602170b6fa"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "empty_value_for_VR"
+    }
+  ],
+  "mechanism": "For sequence VR, the helper always returns a list even for a raw data element. That list flows into buffer.write, which requires bytes and raises TypeError. Returning empty bytes for raw sequences and a list for decoded sequences restores the representation contract.",
+  "limitations": "The final tag_in_exception frame only rethrows the failure. The causal type selection is in empty_value_for_VR; both failing test classes exercise the same fault and count as one source situation.",
+  "observed_junit": {
+    "base": {
+      "cases": 151,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 151,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pydicom.tests.test_filewriter.TestWriteFile::test_write_empty_sequence",
+      "message": "TypeError: With tag (0008, 1111) got exception: a bytes-like object is required, not 'list'\nTraceback (most recent call last):\n  File \"/source/base/pydicom/tag.py\", line 30, in tag_in_exception\n    yield\n  File \"/source/base/pydicom/filewriter.py\", line 555, in write_dataset\n    write_data_element(fp, dataset.get_item(tag), dataset_encoding)\n  File \"/source/base/pydicom/filewriter.py\", line 463, in write_data_element\n    buffer.write(data_element.value)\nTypeError: a bytes-like object is required, not 'list'"
+    },
+    {
+      "test": "pydicom.tests.test_filewriter.TestScratchWriteDateTime::test_write_empty_sequence",
+      "message": "TypeError: With tag (0008, 1111) got exception: a bytes-like object is required, not 'list'\nTraceback (most recent call last):\n  File \"/source/base/pydicom/tag.py\", line 30, in tag_in_exception\n    yield\n  File \"/source/base/pydicom/filewriter.py\", line 555, in write_dataset\n    write_data_element(fp, dataset.get_item(tag), dataset_encoding)\n  File \"/source/base/pydicom/filewriter.py\", line 463, in write_data_element\n    buffer.write(data_element.value)\nTypeError: a bytes-like object is required, not 'list'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

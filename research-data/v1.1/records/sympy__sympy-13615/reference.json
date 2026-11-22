@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13615",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set._complement"
+    }
+  ],
+  "explanation": "Finite-set subtraction keeps every element whose containment is not exactly True, treating unknown membership as definite nonmembership. The saved symbolic complement collapses to {x,y} and loses its interval exclusion. Separating true/false/unknown membership preserves an unevaluated complement for uncertain elements.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

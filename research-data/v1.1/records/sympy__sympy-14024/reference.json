@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-14024",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer._eval_power"
+    },
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Rational._eval_power"
+    }
+  ],
+  "explanation": "Negative-exponent handling derives a sign factor from the exponent numerator modulo denominator plus a fixed minus sign. Saved negative bases raised to -10/3 have the wrong symbolic phase in both Integer and Rational branches. Preserving (-1)**expt uses the full signed exponent.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

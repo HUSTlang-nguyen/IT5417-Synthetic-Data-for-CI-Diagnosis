@@ -1,0 +1,100 @@
+"""
+Low-level functions for solving the single diode equation.
+"""
+
+import numpy as np
+from pvlib.tools import _golden_sect_DataFrame
+
+from scipy.optimize import brentq, newton
+from scipy.special import lambertw
+
+# newton method default parameters for this module
+NEWTON_DEFAULT_PARAMS = {
+    'tol': 1e-6,
+    'maxiter': 100
+}
+
+# intrinsic voltage per cell junction for a:Si, CdTe, Mertens et al.
+VOLTAGE_BUILTIN = 0.9  # [V]
+
+
+def estimate_voc(photocurrent, saturation_current, nNsVth):
+    """
+    Rough estimate of open circuit voltage useful for bounding searches for
+    ``i`` of ``v`` when using :func:`~pvlib.pvsystem.singlediode`.
+
+    Parameters
+    ----------
+    photocurrent : numeric
+        photo-generated current [A]
+    saturation_current : numeric
+        diode reverse saturation current [A]
+    nNsVth : numeric
+        product of thermal voltage ``Vth`` [V], diode ideality factor ``n``,
+        and number of series cells ``Ns``
+
+    Returns
+    -------
+    numeric
+        rough estimate of open circuit voltage [V]
+
+    Notes
+    -----
+    Calculating the open circuit voltage, :math:`V_{oc}`, of an ideal device
+    with infinite shunt resistance, :math:`R_{sh} \\to \\infty`, and zero
+    series resistance, :math:`R_s = 0`, yields the following equation [1]. As
+    an estimate of :math:`V_{oc}` it is useful as an upper bound for the
+    bisection method.
+
+    .. math::
+
+        V_{oc, est}=n Ns V_{th} \\log \\left( \\frac{I_L}{I_0} + 1 \\right)
+
+    .. [1] http://www.pveducation.org/pvcdrom/open-circuit-voltage
+    """
+
+    return nNsVth * np.log(np.asarray(photocurrent) / saturation_current + 1.0)
+
+
+def bishop88(diode_voltage, photocurrent, saturation_current,
+             resistance_series, resistance_shunt, nNsVth, d2mutau=0,
+             NsVbi=np.Inf, breakdown_factor=0., breakdown_voltage=-5.5,
+             breakdown_exp=3.28, gradients=False):
+    r"""
+    Explicit calculation of points on the IV curve described by the single
+    diode equation.  Values are calculated as described in [1]_.
+
+    The single diode equation with recombination current and reverse bias
+    breakdown is
+
+    .. math::
+
+        I = I_{L} - I_{0} \left (\exp \frac{V_{d}}{nN_{s}V_{th}} - 1 \right )
+        - \frac{V_{d}}{R_{sh}}
+        - \frac{I_{L} \frac{d^{2}}{\mu \tau}}{N_{s} V_{bi} - V_{d}}
+        - a \frac{V_{d}}{R_{sh}} \left (1 - \frac{V_{d}}{V_{br}} \right )^{-m}
+
+    The input `diode_voltage` must be :math:`V + I R_{s}`.
+
+
+    .. warning::
+       * Usage of ``d2mutau`` is required with PVSyst
+         coefficients for cadmium-telluride (CdTe) and amorphous-silicon
+         (a:Si) PV modules only.
+       * Do not use ``d2mutau`` with CEC coefficients.
+
+    Parameters
+    ----------
+    diode_voltage : numeric
+        diode voltage :math:`V_d` [V]
+    photocurrent : numeric
+        photo-generated current :math:`I_{L}` [A]
+    saturation_current : numeric
+        diode reverse saturation current :math:`I_{0}` [A]
+    resistance_series : numeric
+        series resistance :math:`R_{s}` [ohms]
+    resistance_shunt: numeric
+        shunt resistance :math:`R_{sh}` [ohms]
+    nNsVth : numeric
+        product of thermal voltage :math:`V_{th}` [V], diode ideality factor
+        :math:`n`, and number of series cells :math:`N_{s}` [V]

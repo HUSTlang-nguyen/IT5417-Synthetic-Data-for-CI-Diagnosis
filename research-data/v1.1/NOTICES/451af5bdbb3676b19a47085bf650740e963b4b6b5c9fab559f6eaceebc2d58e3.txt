@@ -1,0 +1,100 @@
+"""(Disabled by default) support for testing pytest and pytest plugins."""
+import collections.abc
+import gc
+import importlib
+import os
+import platform
+import re
+import subprocess
+import sys
+import traceback
+from fnmatch import fnmatch
+from io import StringIO
+from typing import Callable
+from typing import Dict
+from typing import Generator
+from typing import Iterable
+from typing import List
+from typing import Optional
+from typing import Sequence
+from typing import Tuple
+from typing import Union
+from weakref import WeakKeyDictionary
+
+import py
+from iniconfig import IniConfig
+
+import pytest
+from _pytest import timing
+from _pytest._code import Source
+from _pytest.capture import _get_multicapture
+from _pytest.compat import overload
+from _pytest.compat import TYPE_CHECKING
+from _pytest.config import _PluggyPlugin
+from _pytest.config import Config
+from _pytest.config import ExitCode
+from _pytest.config import PytestPluginManager
+from _pytest.config.argparsing import Parser
+from _pytest.fixtures import FixtureRequest
+from _pytest.main import Session
+from _pytest.monkeypatch import MonkeyPatch
+from _pytest.nodes import Collector
+from _pytest.nodes import Item
+from _pytest.pathlib import make_numbered_dir
+from _pytest.pathlib import Path
+from _pytest.python import Module
+from _pytest.reports import CollectReport
+from _pytest.reports import TestReport
+from _pytest.tmpdir import TempdirFactory
+
+if TYPE_CHECKING:
+    from typing import Type
+    from typing_extensions import Literal
+
+    import pexpect
+
+
+IGNORE_PAM = [  # filenames added when obtaining details about the current user
+    "/var/lib/sss/mc/passwd"
+]
+
+
+def pytest_addoption(parser: Parser) -> None:
+    parser.addoption(
+        "--lsof",
+        action="store_true",
+        dest="lsof",
+        default=False,
+        help="run FD checks if lsof is available",
+    )
+
+    parser.addoption(
+        "--runpytest",
+        default="inprocess",
+        dest="runpytest",
+        choices=("inprocess", "subprocess"),
+        help=(
+            "run pytest sub runs in tests using an 'inprocess' "
+            "or 'subprocess' (python -m main) method"
+        ),
+    )
+
+    parser.addini(
+        "pytester_example_dir", help="directory to take the pytester example files from"
+    )
+
+
+def pytest_configure(config: Config) -> None:
+    if config.getvalue("lsof"):
+        checker = LsofFdLeakChecker()
+        if checker.matching_platform():
+            config.pluginmanager.register(checker)
+
+    config.addinivalue_line(
+        "markers",
+        "pytester_example_path(*path_segments): join the given path "
+        "segments to `pytester_example_dir` for this test.",
+    )
+
+
+class LsofFdLeakChecker:

@@ -1,0 +1,19 @@
+{
+  "sample_id": "pytest-dev__pytest-10624",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "ApproxMapping._repr_compare"
+    }
+  ],
+  "explanation": "The relative-difference diagnostic divides by the expected mapping value without handling zero. A zero expected value triggers the saved ZeroDivisionError while formatting, replacing the useful comparison details. Using infinity for that zero-denominator case preserves the diagnostic.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/python_api.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

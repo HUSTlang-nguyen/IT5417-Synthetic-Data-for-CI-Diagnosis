@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T080139979659Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/integrals/rationaltools.py",
+      "function": "ratint_logpart._include_sign"
+    }
+  ],
+  "explanation": "Moving a negative factor sign into the square-free polynomial also increments its multiplicity k. The later resultant-map lookup uses that incorrect multiplicity and saved rational integration raises KeyError3.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/integrals/rationaltools.py",
+      "function": "ratint_logpart"
+    },
+    {
+      "file": "sympy/integrals/rationaltools.py",
+      "function": "ratint"
+    },
+    {
+      "file": "sympy/integrals/integrals.py",
+      "function": "Integral.doit"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

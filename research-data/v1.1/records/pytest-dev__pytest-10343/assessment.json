@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012855605698Z",
+  "reviewed_at": "2026-11-12T11:39:31+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "859b5d150ac7e8017a2566a0f84e60ee723b70cb072c61ebe49e068fb22e7e5f",
+    "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+    "historical-base.stdout.txt": "6ab51d76236b43e8a0b5391c650d2c8f9fc7264a266e408bfb3268f2534f0c82",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "fc3061d55da0aea528ad22b136033e52804ceb97f2084516c8ae3e97dc48356b",
+    "historical-fixed.stdout.txt": "23ae83976945ac9999d39e8fc90f420303c32d60d58911d86c2c2c4d58e5156b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "41179fccc1d4d75f1a9e9a417539b54cf1ecaef997b286d5f906162cdf3e9e76"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/warning_types.py",
+      "function": "warn_explicit_for"
+    }
+  ],
+  "mechanism": "When warnings are treated as errors, warnings.warn_explicit raises a Warning whose message lacks the supplied source location. The saved assertion sees only test instead of test plus filename/line. Re-raising that warning with explicit location text restores the required diagnostic.",
+  "limitations": "The source line in the reference is the warning helper. The regex uses the target method filename as evidence, not a confirmed causal location in that target method.",
+  "observed_junit": {
+    "base": {
+      "cases": 15,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 15,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.test_warning_types::test_warn_explicit_for_annotates_errors_with_location",
+      "message": "AssertionError: Regex pattern did not match.\n Regex: '(?m)test\\n at .*python_api.py:\\\\d+'\n Input: 'test'"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

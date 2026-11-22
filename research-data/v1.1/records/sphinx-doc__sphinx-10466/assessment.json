@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233805024807Z",
+  "reviewed_at": "2026-11-12T07:33:35+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "b73b7e029f420dc6e35b1f3c988ca16c96f4000ba17f14d4e567b41a2460fb9e",
+    "license-evidence.json": "ac76d90023608476a0a20c368aa3001956212d6e8d81685ad92a7d810fa25f21",
+    "historical-base.stdout.txt": "76a8bbfc80605fe1f4a0aa57c73355fae566f124b02c4c1ddf0eeef518ef6840",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "0d94dc2f2ad5b7878b1523ade485b046be77f8d4ce3763c2d430ec3868d7e108",
+    "historical-fixed.stdout.txt": "66ab21d59a670e9e0a1b7e5d25292891146a8e2fcde7cf3013f07fa7c1dce432",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c27cdc7d6977dcfb9628e776a01c810b259ae2570695ae096153b18947cdc699"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/builders/gettext.py",
+      "function": "Catalog.__iter__"
+    }
+  ],
+  "mechanism": "Message positions are emitted directly from metadata entries, so duplicate origins appear more than once. The saved catalog assertion includes a repeated filename/line pair. Deduplicating and sorting positions yields the unique deterministic locations while retaining UUID processing separately.",
+  "limitations": "Duplicate positions are directly observed; the test is not an additional source fault for each duplicated occurrence.",
+  "observed_junit": {
+    "base": {
+      "cases": 8,
+      "failures_or_errors": 1,
+      "skipped": 1
+    },
+    "head": {
+      "cases": 8,
+      "failures_or_errors": 0,
+      "skipped": 1
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_build_gettext::test_Catalog_duplicated_message",
+      "message": "AssertionError: assert [('/path/to/f...tanother', 1)] == [('/path/to/f...tanother', 1)]\n  At index 1 diff: ('/path/to/filename', 1) != ('/path/to/filename', 2)\n  Left contains one more item: ('/path/to/yetanother', 1)\n  Full diff:\n    [\n  +  ('/path/to/filename',\n  +   1),\n     ('/path/to/filename',...\n  \n  ...Full output truncated (6 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

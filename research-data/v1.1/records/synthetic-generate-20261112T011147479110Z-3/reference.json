@@ -1,0 +1,19 @@
+{
+  "sample_id": "synthetic-generate-20261112T011147479110Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/vector/vector.py",
+      "function": "Vector.__eq__"
+    }
+  ],
+  "explanation": "Equality normalizes scalar1 into Vector(0), while comparison with scalar0 now falls through type validation and returns False. The downstream stationary-axis check axis.dt(parent)==0 therefore rejects a zero derivative and raises the observed time-varying-axis ValueError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/vector/frame.py",
+      "function": "ReferenceFrame.orient"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

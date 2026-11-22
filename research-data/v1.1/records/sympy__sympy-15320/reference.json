@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-15320",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/polys/rootoftools.py",
+      "function": "ComplexRootOf.__new__"
+    }
+  ],
+  "explanation": "The root constructor accepts a PurePoly whose generator is exp(x), treating it like an ordinary symbolic polynomial and omitting the required rejection. The saved rootof(exp(x),0) does not raise PolynomialError. Requiring a Symbol generator prevents that ambiguous root representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/pytest.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

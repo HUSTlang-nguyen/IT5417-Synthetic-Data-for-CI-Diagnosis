@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 19 items\n\nsympy/polys/tests/test_factortools.py::test_dup_zz_mignotte_bound FAILED [  5%]\nsympy/polys/tests/test_factortools.py::test_dup_trial_division PASSED    [ 10%]\nsympy/polys/tests/test_factortools.py::test_dmp_trial_division PASSED    [ 15%]\nsympy/polys/tests/test_factortools.py::test_dmp_zz_mignotte_bound PASSED [ 21%]\nsympy/polys/tests/test_factortools.py::test_dup_zz_hensel_step PASSED    [ 26%]\nsympy/polys/tests/test_factortools.py::test_dup_zz_hensel_lift PASSED    [ 31%]\nsympy/polys/tests/test_factortools.py::test_dup_zz_irreducible_p PASSED  [ 36%]\nsympy/polys/tests/test_factortools.py::test_dup_cyclotomic_p PASSED      [ 42%]\nsympy/polys/tests/test_factortools.py::test_dup_zz_cyclotomic_poly PASSED [ 47%]\nsympy/polys/tests/test_factortools.py::test_dup_zz_cyclotomic_factor PASSED [ 52%]\nsympy/polys/tests/test_factortools.py::test_dup_zz_factor PASSED         [ 57%]\nsympy/polys/tests/test_factortools.py::test_dmp_zz_wang PASSED           [ 63%]\nsympy/polys/tests/test_factortools.py::test_issue_6355 PASSED            [ 68%]\nsympy/polys/tests/test_factortools.py::test_dmp_zz_factor PASSED         [ 73%]\nsympy/polys/tests/test_factortools.py::test_dup_ext_factor PASSED        [ 78%]\nsympy/polys/tests/test_factortools.py::test_dmp_ext_factor PASSED        [ 84%]\nsympy/polys/tests/test_factortools.py::test_dup_factor_list PASSED       [ 89%]\nsympy/polys/tests/test_factortools.py::test_dmp_factor_list PASSED       [ 94%]\nsympy/polys/tests/test_factortools.py::test_dup_irreducible_p PASSED     [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_dup_zz_mignotte_bound __________________________\n\n    def test_dup_zz_mignotte_bound():\n        R, x = ring(\"x\", ZZ)\n>       assert R.dup_zz_mignotte_bound(2*x**2 + 3*x + 4) == 6\nE       assert 32 == 6\nE        +  where 32 = <bound method IPolys.dup_zz_mignotte_bound of Polynomial ring in x over ZZ with lex order>((((2 * (x ** 2)) + (3 * x)) + 4))\nE        +    where <bound method IPolys.dup_zz_mignotte_bound of Polynomial ring in x over ZZ with lex order> = Polynomial ring in x over ZZ with lex order.dup_zz_mignotte_bound\n\nsympy/polys/tests/test_factortools.py:30: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/polys/tests/test_factortools.py::test_dup_zz_mignotte_bound - as...\n=================== 1 failed, 18 passed, 1 warning in 0.90s ====================\n",
+  "code": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_zz_mignotte_bound",
+      "start_line": 126,
+      "end_line": 132,
+      "score": 50.83205,
+      "text": "sympy/polys/factortools.py::dup_zz_mignotte_bound lines 126-132\ndef dup_zz_mignotte_bound(f, K):\n    \"\"\"Mignotte bound for univariate polynomials in `K[x]`. \"\"\"\n    a = dup_max_norm(f, K)\n    b = abs(dup_LC(f, K))\n    n = dup_degree(f)\n\n    return K.sqrt(K(n + 1))*2**n*a*b",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/agca/ideals.py",
+      "function": "Ideal.__init__",
+      "start_line": 108,
+      "end_line": 109,
+      "score": 32.0,
+      "text": "sympy/polys/agca/ideals.py::Ideal.__init__ lines 108-109\n    def __init__(self, ring):\n        self.ring = ring",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/agca/modules.py",
+      "function": "Module.__init__",
+      "start_line": 70,
+      "end_line": 71,
+      "score": 32.0,
+      "text": "sympy/polys/agca/modules.py::Module.__init__ lines 70-71\n    def __init__(self, ring):\n        self.ring = ring",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/polynomialring.py",
+      "function": "PolynomialRing.order",
+      "start_line": 56,
+      "end_line": 57,
+      "score": 31.788854,
+      "text": "sympy/polys/domains/polynomialring.py::PolynomialRing.order lines 56-57\n    def order(self):\n        return self.ring.order",
+      "truncated": false
+    },
+    {
+      "file": "sympy/polys/domains/quotientring.py",
+      "function": "QuotientRingElement.__init__",
+      "start_line": 26,
+      "end_line": 28,
+      "score": 31.788854,
+      "text": "sympy/polys/domains/quotientring.py::QuotientRingElement.__init__ lines 26-28\n    def __init__(self, ring, data):\n        self.ring = ring\n        self.data = data",
+      "truncated": false
+    }
+  ]
+}

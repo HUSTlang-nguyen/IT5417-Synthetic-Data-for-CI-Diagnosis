@@ -1,0 +1,11 @@
+--- a/sympy/core/evalf.py
++++ b/sympy/core/evalf.py
+@@ -899,7 +899,7 @@
+ def as_mpmath(x, prec, options):
+     from sympy.core.numbers import Infinity, NegativeInfinity, Zero
+     x = sympify(x)
+-    if isinstance(x, Zero) or x == 0:
++    if isinstance(x, Zero) or x == 1:
+         return mpf(0)
+     if isinstance(x, Infinity):
+         return mpf('inf')

@@ -1,0 +1,23 @@
+{
+  "sample_id": "pydicom__pydicom-1031",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "empty_value_for_VR"
+    }
+  ],
+  "explanation": "For sequence VR, the helper always returns a list even for a raw data element. That list flows into buffer.write, which requires bytes and raises TypeError. Returning empty bytes for raw sequences and a list for decoded sequences restores the representation contract.",
+  "retrieved_locations": [
+    {
+      "file": "pydicom/filewriter.py",
+      "function": "write_data_element"
+    },
+    {
+      "file": "pydicom/filewriter.py",
+      "function": "dcmwrite"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

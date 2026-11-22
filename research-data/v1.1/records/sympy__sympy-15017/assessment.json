@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001743250841Z",
+  "reviewed_at": "2026-11-12T10:36:56+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "bf2197ca5d9062805b9a66441a87e378229f19d1eaa48437fea44d0d78b9fd99",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "2a23bbb5980f564cc9acacc91205cb8992c484a745f862b8bf5f0def440a6e65",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b11636a0c56fe0c2b8d12762ec576410545709460c1e88d4798a99a2698e351d",
+    "historical-fixed.stdout.txt": "9d69fd45e4e65a7fcc7e227eddfd4f75d7519f488de47766e1011f669a72bed8",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5d50d498d1de9b342ed71879bda17f6c01c82f311a5a1eaa8d77c8558985a16f"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/tensor/array/dense_ndim_array.py",
+      "function": "ImmutableDenseNDimArray._new"
+    }
+  ],
+  "mechanism": "The empty shape of a scalar array is special-cased to loop size zero, so its reported length is zero. The product identity for an empty shape is one; reducing with initial value one gives the expected scalar length.",
+  "limitations": "The patch changes the immutable constructor only. A similar mutable-array expression is visible but is not separately repaired or counted.",
+  "observed_junit": {
+    "base": {
+      "cases": 15,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 15,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.tensor.array.tests.test_immutable_ndim_array::test_ndim_array_initiation",
+      "message": "assert 0 == 1\n +  where 0 = len(x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

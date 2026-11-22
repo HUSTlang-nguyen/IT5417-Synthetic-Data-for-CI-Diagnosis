@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T081209377240Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/tensor/toperators.py",
+      "function": "PartialDerivative._extract_data"
+    }
+  ],
+  "explanation": "Derivative-variable indices retain their sign rather than switching variance. The saved replacement with metric diag(1,-1) produces an all-positive identity array.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/tensor/tensor.py",
+      "function": "TensorElement.get_indices"
+    },
+    {
+      "file": "sympy/utilities/codegen.py",
+      "function": "ResultBase.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

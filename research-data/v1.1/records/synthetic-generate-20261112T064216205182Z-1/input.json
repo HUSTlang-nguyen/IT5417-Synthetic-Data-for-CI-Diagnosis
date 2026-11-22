@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 41 items\n\nsympy/utilities/tests/test_iterables.py::test_derangements PASSED        [  2%]\nsympy/utilities/tests/test_iterables.py::test_postorder_traversal PASSED [  4%]\nsympy/utilities/tests/test_iterables.py::test_flatten FAILED             [  7%]\nsympy/utilities/tests/test_iterables.py::test_iproduct PASSED            [  9%]\nsympy/utilities/tests/test_iterables.py::test_group PASSED               [ 12%]\nsympy/utilities/tests/test_iterables.py::test_subsets PASSED             [ 14%]\nsympy/utilities/tests/test_iterables.py::test_variations PASSED          [ 17%]\nsympy/utilities/tests/test_iterables.py::test_cartes PASSED              [ 19%]\nsympy/utilities/tests/test_iterables.py::test_filter_symbols PASSED      [ 21%]\nsympy/utilities/tests/test_iterables.py::test_numbered_symbols PASSED    [ 24%]\nsympy/utilities/tests/test_iterables.py::test_sift PASSED                [ 26%]\nsympy/utilities/tests/test_iterables.py::test_take PASSED                [ 29%]\nsympy/utilities/tests/test_iterables.py::test_dict_merge PASSED          [ 31%]\nsympy/utilities/tests/test_iterables.py::test_prefixes PASSED            [ 34%]\nsympy/utilities/tests/test_iterables.py::test_postfixes PASSED           [ 36%]\nsympy/utilities/tests/test_iterables.py::test_topological_sort PASSED    [ 39%]\nsympy/utilities/tests/test_iterables.py::test_strongly_connected_components PASSED [ 41%]\nsympy/utilities/tests/test_iterables.py::test_connected_components PASSED [ 43%]\nsympy/utilities/tests/test_iterables.py::test_rotate PASSED              [ 46%]\nsympy/utilities/tests/test_iterables.py::test_multiset_partitions PASSED [ 48%]\nsympy/utilities/tests/test_iterables.py::test_multiset_combinations PASSED [ 51%]\nsympy/utilities/tests/test_iterables.py::test_multiset_permutations PASSED [ 53%]\nsympy/utilities/tests/test_iterables.py::test_partitions PASSED          [ 56%]\nsympy/utilities/tests/test_iterables.py::test_binary_partitions PASSED   [ 58%]\nsympy/utilities/tests/test_iterables.py::test_bell_perm PASSED           [ 60%]\nsympy/utilities/tests/test_iterables.py::test_involutions PASSED         [ 63%]\nsympy/utilities/tests/test_iterables.py::test_necklaces PASSED           [ 65%]\nsympy/utilities/tests/test_iterables.py::test_bracelets PASSED           [ 68%]\nsympy/utilities/tests/test_iterables.py::test_generate_oriented_forest PASSED [ 70%]\nsympy/utilities/tests/test_iterables.py::test_unflatten PASSED           [ 73%]\nsympy/utilities/tests/test_iterables.py::test_common_prefix_suffix PASSED [ 75%]\nsympy/utilities/tests/test_iterables.py::test_minlex PASSED              [ 78%]\nsympy/utilities/tests/test_iterables.py::test_ordered PASSED             [ 80%]\nsympy/utilities/tests/test_iterables.py::test_runs PASSED                [ 82%]\nsympy/utilities/tests/test_iterables.py::test_reshape PASSED             [ 85%]\nsympy/utilities/tests/test_iterables.py::test_uniq PASSED                [ 87%]\nsympy/utilities/tests/test_iterables.py::test_kbins PASSED               [ 90%]\nsympy/utilities/tests/test_iterables.py::test_has_dups PASSED            [ 92%]\nsympy/utilities/tests/test_iterables.py::test__partition PASSED          [ 95%]\nsympy/utilities/tests/test_iterables.py::test_ordered_partitions PASSED  [ 97%]\nsympy/utilities/tests/test_iterables.py::test_rotations PASSED           [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_flatten _________________________________\n\n    def test_flatten():\n        assert flatten((1, (1,))) == [1, 1]\n        assert flatten((x, (x,))) == [x, x]\n    \n        ls = [[(-2, -1), (1, 2)], [(0, 0)]]\n    \n        assert flatten(ls, levels=0) == ls\n        assert flatten(ls, levels=1) == [(-2, -1), (1, 2), (0, 0)]\n        assert flatten(ls, levels=2) == [-2, -1, 1, 2, 0, 0]\n        assert flatten(ls, levels=3) == [-2, -1, 1, 2, 0, 0]\n    \n>       raises(ValueError, lambda: flatten(ls, levels=-1))\nE       Failed: DID NOT RAISE <class 'ValueError'>\n\nsympy/utilities/tests/test_iterables.py:68: Failed\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/utilities/tests/test_iterables.py::test_flatten - Failed: DID NO...\n=================== 1 failed, 40 passed, 1 warning in 0.85s ====================\n",
+  "code": [
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "flatten",
+      "start_line": 22,
+      "end_line": 83,
+      "score": 51.09141,
+      "text": "sympy/utilities/iterables.py::flatten lines 22-83\ndef flatten(iterable, levels=None, cls=None):\n    \"\"\"\n    Recursively denest iterable containers.\n\n    >>> from sympy.utilities.iterables import flatten\n\n    >>> flatten([1, 2, 3])\n    [1, 2, 3]\n    >>> flatten([1, 2, [3]])\n    [1, 2, 3]\n    >>> flatten([1, [2, 3], [4, 5]])\n    [1, 2, 3, 4, 5]\n    >>> flatten([1.0, 2, (1, None)])\n    [1.0, 2, 1, None]\n\n    If you want to denest only a specified number of levels of\n    nested containers, then set ``levels`` flag to the desired\n    number of levels::\n\n    >>> ls = [[(-2, -1), (1, 2)], [(0, 0)]]\n\n    >>> flatten(ls, levels=1)\n    [(-2, -1), (1, 2), (0, 0)]\n\n    If cls argument is specified, it will only flatten instances of that\n    class, for example:\n\n    >>> from sympy.core import Basic\n    >>> class MyOp(Basic):\n    ...     pass\n    ...\n    >>> flatten([MyOp(1, MyOp(2, 3))], cls=MyOp)\n    [1, 2, 3]\n\n    adapted from https://kogs-www.informatik.uni-hamburg.de/~meine/python_tricks\n    \"\"\"\n    from sympy.tensor.array import NDimArray\n    if levels is not None:\n        if levels is None or levels <= 0:\n            return iterable\n        elif levels > 0:\n            levels -= 1\n        else:\n            raise ValueError(\n                \"expected non-negative number of levels, got %s\" % levels)\n\n    if cls is None:\n        reducible = lambda x: is_sequence(x, set)\n    else:\n        reducible = lambda x: isinstance(x, cls)\n\n    result = []\n\n    for el in iterable:\n        if reducible(el):\n            if hasattr(el, 'args') and not isinstance(el, NDimArray):\n                el = el.args\n            result.extend(flatten(el, levels=levels, cls=cls))\n        else:\n            result.append(el)\n\n    return result",
+      "truncated": false
+    },
+    {
+      "file": "sympy/utilities/iterables.py",
+      "function": "capture",
+      "start_line": 663,
+      "end_line": 690,
+      "score": 50.960769,
+      "text": "sympy/utilities/iterables.py::capture lines 663-690\ndef capture(func):\n    \"\"\"Return the printed output of func().\n\n    ``func`` should be a function without arguments that produces output with\n    print statements.\n\n    >>> from sympy.utilities.iterables import capture\n    >>> from sympy import pprint\n    >>> from sympy.abc import x\n    >>> def foo():\n    ...     print('hello world!')\n    ...\n    >>> 'hello' in capture(foo) # foo, not foo()\n    True\n    >>> capture(lambda: pprint(2/x))\n    '2\\\\n-\\\\nx\\\\n'\n\n    \"\"\"\n    from sympy.core.compatibility import StringIO\n    import sys\n\n    stdout = sys.stdout\n    sys.stdout = file = StringIO()\n    try:\n        func()\n    finally:\n        sys.stdout = stdout\n    return file.getvalue()",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__",
+      "start_line": 77,
+      "end_line": 80,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Ricci.__init__ lines 77-80\n    def __init__(self, R, x):\n        self.R = R\n        self.x = x\n        self.g = R.G.g",
+      "truncated": false
+    }
+  ]
+}

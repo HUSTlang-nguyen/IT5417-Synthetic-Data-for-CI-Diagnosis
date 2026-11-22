@@ -1,0 +1,23 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9591",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "PyProperty.handle_signature"
+    }
+  ],
+  "explanation": "PyProperty.handle_signature appends the type option as one plain annotation text node. It does not parse the annotation into semantic nodes, so the property signature lacks the expected type cross-reference structure. The repair invokes _parse_annotation and builds a separate colon text plus parsed annotation children.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

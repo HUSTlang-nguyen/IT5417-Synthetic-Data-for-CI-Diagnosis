@@ -1,0 +1,11 @@
+--- a/sympy/polys/rings.py
++++ b/sympy/polys/rings.py
+@@ -410,7 +410,7 @@
+         elif isinstance(gen, int):
+             i = gen
+ 
+-            if 0 <= i and i < self.ngens:
++            if 0 <= i and i <= self.ngens:
+                 pass
+             elif -self.ngens <= i and i <= -1:
+                 i = -i - 1

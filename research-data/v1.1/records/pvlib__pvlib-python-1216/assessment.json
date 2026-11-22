@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T005842042128Z",
+  "reviewed_at": "2026-11-12T11:37:18+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "bbbc52695ce2e3d70d3bbd3723d5ebd7447ee115cff56438751fad2b618dadd1",
+    "license-evidence.json": "1fd90d3e1719cdf1291ae0330bb742b84ffebfa08abdd285e58bc07e3ea4f46c",
+    "historical-base.stdout.txt": "0f876b73e0b73af94b04027cf8cd33644d43a4d7a0b87de4fbd5eeebe41a1105",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "7ca1f8de9610264c7f18c8f1ba4708e3fa344c8ee237a48f8195573d805c79ee",
+    "historical-fixed.stdout.txt": "d46cac5c7b1f8e12bb960a4b73b6eafa320ed27b9cd96c08459259e5221c3503",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "2bc0a4bea5b4ec5b274572be62e1b88dfb3d1576440a7e010c2fd7ded8625caa"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pvlib/pvsystem.py",
+      "function": "calcparams_cec"
+    }
+  ],
+  "mechanism": "The CEC wrapper accepts extra physical-model parameters but forwards hard-coded defaults to calcparams_desoto. The saved spy sees default EgRef/dEgdT/irradiance/temperature values rather than the four supplied values. Forwarding the actual arguments restores the wrapper contract.",
+  "limitations": "The spy assertion directly proves argument values were discarded. It does not measure the size of a downstream physical prediction error; the label describes wrong data flow rather than a missing dependency.",
+  "observed_junit": {
+    "base": {
+      "cases": 243,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 243,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pvlib.tests.test_pvsystem::test_calcparams_cec_extra_params_propagation",
+      "message": "AssertionError: assert {'EgRef': 1.1...temp_ref': 25} == {'EgRef': 1.1...temp_ref': 23}\n  Differing items:\n  {'dEgdT': -0.0002677} != {'dEgdT': -0.0002688}\n  {'EgRef': 1.121} != {'EgRef': 1.123}\n  {'irrad_ref': 1000} != {'irrad_ref': 1100}\n  {'temp_ref': 25} != {'temp_ref': 23}\n  Full diff:\n  - {'EgRef': 1.123, 'dEgdT': -0.0002688, 'irrad_ref': 1100, 'temp_ref': 23}...\n  \n  ...Full output truncated (3 lines hidden), use '-vv' to show"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

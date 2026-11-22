@@ -1,0 +1,30 @@
+{
+  "run_id": "reproduce-20261111T201220091415Z",
+  "reviewed_at": "2026-11-12T06:50:19+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "c0bc90de8223d99518007ab29b3603b8f46bd4e6ebf4a01f739fbd7653e3b87e",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "11b60fd776c33744777916179fd18f6c8cb0967a89e11b26c8505ab6a7865b53",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f798886753e3e4021f99064d81411192621b7a68625a8ee9c0caa8e8d7e3d25a",
+    "historical-fixed.stdout.txt": "28e597f906585b5c093db02525db2a93a20a83e6a2a3bf09f45719aa490a3646",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "432195b2b013146ac4112c5e59eee816e33b3831b71b9cd13ac7fe7e301cc091"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pylint/reporters/text.py",
+      "function": "TextReporter.on_set_current_module"
+    }
+  ],
+  "mechanism": "The message-template field regex accepts arbitrary characters between braces, so literal escaped JSON braces are consumed as an unsupported field. The subsequent cleanup deletes valid template text and leaves a malformed report. Restricting the captured field name to word characters keeps the literal header while substituting category.",
+  "evidence_reason": "Read on_set_current_module at text.py:166-186 including warning/removal branch. Base unittest_reporting.py:126 gets only quote/closing-brace text instead of the expected Category:convention object. Fixed has 11 passed and source target IDs resolve.",
+  "limitations": "This is a parsing/formatting logic fault in a valid user template, not invalid Python grammar or an unsupported reporter attribute."
+}

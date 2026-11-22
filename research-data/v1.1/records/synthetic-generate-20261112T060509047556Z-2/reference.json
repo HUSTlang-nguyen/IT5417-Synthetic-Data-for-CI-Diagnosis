@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T060509047556Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/trigsimp.py",
+      "function": "trigsimp_groebner.build_ideal"
+    }
+  ],
+  "explanation": "The unit-coefficient sine/cosine identity is added only for coefficient0 instead of1. Ordinary unit generators therefore miss the circle/hyperbolic defining relation, and the saved rational trigonometric expression no longer simplifies to the required form.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

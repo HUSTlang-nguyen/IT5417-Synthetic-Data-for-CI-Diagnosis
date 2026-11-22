@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T081815994876Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.description"
+    }
+  ],
+  "explanation": "The implicit group-length tag is recognized with element1 instead of0. The saved element00100000 receives an empty description rather than Group Length.",
+  "retrieved_locations": [
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.name"
+    },
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.description"
+    },
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.__ne__"
+    },
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement.value"
+    },
+    {
+      "file": "pydicom/dataelem.py",
+      "function": "DataElement._convert"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

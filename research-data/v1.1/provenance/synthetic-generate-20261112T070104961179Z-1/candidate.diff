@@ -1,0 +1,11 @@
+--- a/src/marshmallow/utils.py
++++ b/src/marshmallow/utils.py
+@@ -283,7 +283,7 @@
+         return parser.parse(datestring)
+     else:
+         # Strip off timezone info.
+-        if '.' in datestring:
++        if ',' in datestring:
+             # datestring contains microseconds
+             (dt_nomstz, mstz) = datestring.split('.')
+             ms_notz = mstz[:len(mstz) - len(mstz.lstrip('0123456789'))]

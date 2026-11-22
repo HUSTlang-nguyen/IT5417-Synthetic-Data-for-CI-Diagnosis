@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T012712195207Z",
+  "reviewed_at": "2026-11-12T11:39:12+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "badf933fce5a525e83f12d3ffe49d877bcd61dc9741bf9f0c4cb32a6deb511a7",
+    "license-evidence.json": "3fc23e773ef56917e0967c5ad8387acf28ca79a5da5e45ceddf76eb2f22a812a",
+    "historical-base.stdout.txt": "97e6387ad01d014d08f80e653e89e937d4cf0f23c0644b53ae123cbc71cb2af7",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "b4318496e600955a97b0ee2629155b5cc9d841b9c0290fbd861f479bc71597b5",
+    "historical-fixed.stdout.txt": "26b4001b064f134c971922e6e9c0f422b839a2053e906347dfe17d434bf496f7",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "05fa5995c7f124d6ba4b2906c04265aa7a570c6bc4ee6f5ec00feefed73d23ea"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "src/_pytest/_code/source.py",
+      "function": "get_statement_startend2"
+    }
+  ],
+  "mechanism": "The AST statement-boundary collector omits decorator lines. On newer Python ASTs the function lineno points at def, so querying the decorator line selects the wrong statement and the saved result contains pass instead of @foo. Including decorator_list line numbers restores the boundary.",
+  "limitations": "The causal location is the AST-boundary collector, not the test decorator or the generic AST parser. This concerns runtime AST metadata compatibility.",
+  "observed_junit": {
+    "base": {
+      "cases": 55,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 55,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "testing.code.test_source::test_decorator",
+      "message": "AssertionError: assert '@foo' in '    pass'\n +  where '    pass' = str(<_pytest._code.source.Source object at 0x7d1e9e1007c0>)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 18 items\n\nsympy/printing/tests/test_pycode.py::test_PythonCodePrinter FAILED       [  5%]\nsympy/printing/tests/test_pycode.py::test_PythonCodePrinter_standard PASSED [ 11%]\nsympy/printing/tests/test_pycode.py::test_MpmathPrinter PASSED           [ 16%]\nsympy/printing/tests/test_pycode.py::test_NumPyPrinter PASSED            [ 22%]\nsympy/printing/tests/test_pycode.py::test_SciPyPrinter PASSED            [ 27%]\nsympy/printing/tests/test_pycode.py::test_pycode_reserved_words PASSED   [ 33%]\nsympy/printing/tests/test_pycode.py::test_sqrt PASSED                    [ 38%]\nsympy/printing/tests/test_pycode.py::test_frac PASSED                    [ 44%]\nsympy/printing/tests/test_pycode.py::test_printmethod PASSED             [ 50%]\nsympy/printing/tests/test_pycode.py::test_codegen_ast_nodes PASSED       [ 55%]\nsympy/printing/tests/test_pycode.py::test_issue_14283 PASSED             [ 61%]\nsympy/printing/tests/test_pycode.py::test_NumPyPrinter_print_seq PASSED  [ 66%]\nsympy/printing/tests/test_pycode.py::test_issue_16535_16536 PASSED       [ 72%]\nsympy/printing/tests/test_pycode.py::test_Integral PASSED                [ 77%]\nsympy/printing/tests/test_pycode.py::test_fresnel_integrals PASSED       [ 83%]\nsympy/printing/tests/test_pycode.py::test_beta PASSED                    [ 88%]\nsympy/printing/tests/test_pycode.py::test_airy PASSED                    [ 94%]\nsympy/printing/tests/test_pycode.py::test_airy_prime PASSED              [100%]\n\n=================================== FAILURES ===================================\n____________________________ test_PythonCodePrinter ____________________________\n\n    def test_PythonCodePrinter():\n        prntr = PythonCodePrinter()\n    \n        assert not prntr.module_imports\n    \n        assert prntr.doprint(x**y) == 'x**y'\n        assert prntr.doprint(Mod(x, 2)) == 'x % 2'\n        assert prntr.doprint(-Mod(x, y)) == '-(x % y)'\n        assert prntr.doprint(Mod(-x, y)) == '(-x) % y'\n        assert prntr.doprint(And(x, y)) == 'x and y'\n        assert prntr.doprint(Or(x, y)) == 'x or y'\n        assert not prntr.module_imports\n    \n        assert prntr.doprint(pi) == 'math.pi'\n        assert prntr.module_imports == {'math': {'pi'}}\n    \n        assert prntr.doprint(x**Rational(1, 2)) == 'math.sqrt(x)'\n        assert prntr.doprint(sqrt(x)) == 'math.sqrt(x)'\n        assert prntr.module_imports == {'math': {'pi', 'sqrt'}}\n    \n        assert prntr.doprint(acos(x)) == 'math.acos(x)'\n        assert prntr.doprint(Assignment(x, 2)) == 'x = 2'\n        assert prntr.doprint(Piecewise((1, Eq(x, 0)),\n                            (2, x>6))) == '((1) if (x == 0) else (2) if (x > 6) else None)'\n        assert prntr.doprint(Piecewise((2, Le(x, 0)),\n                            (3, Gt(x, 0)), evaluate=False)) == '((2) if (x <= 0) else'\\\n                                                            ' (3) if (x > 0) else None)'\n        assert prntr.doprint(sign(x)) == '(0.0 if x == 0 else math.copysign(1, x))'\n        assert prntr.doprint(p[0, 1]) == 'p[0, 1]'\n        assert prntr.doprint(KroneckerDelta(x,y)) == '(1 if x == y else 0)'\n    \n        assert prntr.doprint((2,3)) == \"(2, 3)\"\n        assert prntr.doprint([2,3]) == \"[2, 3]\"\n    \n>       assert prntr.doprint(Min(x, y)) == \"min(x, y)\"\nE       AssertionError: assert '((x) if (x <= y) else (y))' == 'min(x, y)'\nE         - min(x, y)\nE         + ((x) if (x <= y) else (y))\n\nsympy/printing/tests/test_pycode.py:61: AssertionError\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/printing/tests/test_pycode.py::test_PythonCodePrinter - Assertio...\n========================= 1 failed, 17 passed in 0.41s =========================\n",
+  "code": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_sign",
+      "start_line": 427,
+      "end_line": 429,
+      "score": 51.206045,
+      "text": "sympy/printing/pycode.py::PythonCodePrinter._print_sign lines 427-429\n    def _print_sign(self, e):\n        return '(0.0 if {e} == 0 else {f}(1, {e}))'.format(\n            f=self._module_format('math.copysign'), e=self._print(e.args[0]))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_frac",
+      "start_line": 449,
+      "end_line": 451,
+      "score": 50.83205,
+      "text": "sympy/printing/pycode.py::PythonCodePrinter._print_frac lines 449-451\n    def _print_frac(self, expr):\n        from sympy.core.mod import Mod\n        return self._print_Mod(Mod(expr.args[0], 1))",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_Pow",
+      "start_line": 440,
+      "end_line": 441,
+      "score": 50.707107,
+      "text": "sympy/printing/pycode.py::PythonCodePrinter._print_Pow lines 440-441\n    def _print_Pow(self, expr, rational=False):\n        return self._hprint_Pow(expr, rational=rational)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_Not",
+      "start_line": 431,
+      "end_line": 433,
+      "score": 50.603023,
+      "text": "sympy/printing/pycode.py::PythonCodePrinter._print_Not lines 431-433\n    def _print_Not(self, expr):\n        PREC = precedence(expr)\n        return self._operators['not'] + self.parenthesize(expr.args[0], PREC)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "PythonCodePrinter._print_Rational",
+      "start_line": 443,
+      "end_line": 444,
+      "score": 50.408248,
+      "text": "sympy/printing/pycode.py::PythonCodePrinter._print_Rational lines 443-444\n    def _print_Rational(self, expr):\n        return '{}/{}'.format(expr.p, expr.q)",
+      "truncated": false
+    }
+  ]
+}

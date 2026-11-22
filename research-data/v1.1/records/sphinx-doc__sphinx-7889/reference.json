@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-7889",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__getitem__"
+    }
+  ],
+  "explanation": "Mock subscription forwards a TypeVar key directly as the name of a synthetic subclass. _make_subclass then concatenates that key with strings and raises TypeError. Converting the accepted subscription key to str at the caller meets the string-name contract.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_make_subclass"
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__getitem__"
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__getattr__"
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__new__"
+    },
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__repr__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

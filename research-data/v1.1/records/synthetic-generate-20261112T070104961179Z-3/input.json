@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\nrootdir: /source/head\nconfigfile: setup.cfg\ncollecting ... collected 38 items\n\ntests/test_utils.py::test_missing_singleton_copy PASSED                  [  2%]\ntests/test_utils.py::test_to_marshallable_type PASSED                    [  5%]\ntests/test_utils.py::test_to_marshallable_type_none PASSED               [  7%]\ntests/test_utils.py::test_to_marshallable_type_with_namedtuple PASSED    [ 10%]\ntests/test_utils.py::test_get_value_from_object[obj0] PASSED             [ 13%]\ntests/test_utils.py::test_get_value_from_object[obj1] PASSED             [ 15%]\ntests/test_utils.py::test_get_value_from_object[obj2] PASSED             [ 18%]\ntests/test_utils.py::test_get_value_from_namedtuple_with_default PASSED  [ 21%]\ntests/test_utils.py::test_get_value_for_nested_object PASSED             [ 23%]\ntests/test_utils.py::test_get_value_from_dict PASSED                     [ 26%]\ntests/test_utils.py::test_get_value PASSED                               [ 28%]\ntests/test_utils.py::test_set_value PASSED                               [ 31%]\ntests/test_utils.py::test_is_keyed_tuple PASSED                          [ 34%]\ntests/test_utils.py::test_to_marshallable_type_list PASSED               [ 36%]\ntests/test_utils.py::test_to_marshallable_type_generator PASSED          [ 39%]\ntests/test_utils.py::test_marshallable PASSED                            [ 42%]\ntests/test_utils.py::test_is_collection PASSED                           [ 44%]\ntests/test_utils.py::test_rfcformat_gmt_naive PASSED                     [ 47%]\ntests/test_utils.py::test_rfcformat_central PASSED                       [ 50%]\ntests/test_utils.py::test_rfcformat_central_localized PASSED             [ 52%]\ntests/test_utils.py::test_isoformat PASSED                               [ 55%]\ntests/test_utils.py::test_isoformat_tzaware PASSED                       [ 57%]\ntests/test_utils.py::test_isoformat_localtime FAILED                     [ 60%]\ntests/test_utils.py::test_from_datestring PASSED                         [ 63%]\ntests/test_utils.py::test_from_rfc[True] PASSED                          [ 65%]\ntests/test_utils.py::test_from_rfc[False] PASSED                         [ 68%]\ntests/test_utils.py::test_from_iso_datetime[None-True] PASSED            [ 71%]\ntests/test_utils.py::test_from_iso_datetime[None-False] PASSED           [ 73%]\ntests/test_utils.py::test_from_iso_datetime[timezone1-True] PASSED       [ 76%]\ntests/test_utils.py::test_from_iso_datetime[timezone1-False] PASSED      [ 78%]\ntests/test_utils.py::test_from_iso_with_tz PASSED                        [ 81%]\ntests/test_utils.py::test_from_iso_time_with_microseconds[True] PASSED   [ 84%]\ntests/test_utils.py::test_from_iso_time_with_microseconds[False] PASSED  [ 86%]\ntests/test_utils.py::test_from_iso_time_without_microseconds[True] PASSED [ 89%]\ntests/test_utils.py::test_from_iso_time_without_microseconds[False] PASSED [ 92%]\ntests/test_utils.py::test_from_iso_date[True] PASSED                     [ 94%]\ntests/test_utils.py::test_from_iso_date[False] PASSED                    [ 97%]\ntests/test_utils.py::test_get_func_args PASSED                           [100%]\n\n=================================== FAILURES ===================================\n___________________________ test_isoformat_localtime ___________________________\ntests/test_utils.py:177: in test_isoformat_localtime\n    assert utils.isoformat(d, localtime=True) == \"2013-11-10T01:23:45-06:00\"\nE   AssertionError: assert '2013-11-10T07:23:45+00:00' == '2013-11-10T01:23:45-06:00'\nE     - 2013-11-10T01:23:45-06:00\nE     ?             ^      ^ ^\nE     + 2013-11-10T07:23:45+00:00\nE     ?             ^      ^ ^\n=============================== warnings summary ===============================\nsrc/marshmallow/__init__.py:19\n  /source/head/src/marshmallow/__init__.py:19: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    __version_info__ = tuple(LooseVersion(__version__).version)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n=========================== short test summary info ============================\nFAILED tests/test_utils.py::test_isoformat_localtime - AssertionError: assert...\n=================== 1 failed, 37 passed, 1 warning in 0.15s ====================\n",
+  "code": [
+    {
+      "file": "src/marshmallow/__init__.py",
+      "function": "<module>",
+      "start_line": 1,
+      "end_line": 36,
+      "score": 1101.352247,
+      "text": "src/marshmallow/__init__.py::<module> lines 1-36\n# -*- coding: utf-8 -*-\nfrom __future__ import absolute_import\n\nfrom marshmallow.schema import (\n    Schema,\n    SchemaOpts,\n    MarshalResult,\n    UnmarshalResult,\n)\nfrom . import fields\nfrom marshmallow.decorators import (\n    pre_dump, post_dump, pre_load, post_load, validates, validates_schema\n)\nfrom marshmallow.utils import pprint, missing\nfrom marshmallow.exceptions import ValidationError\nfrom distutils.version import LooseVersion\n\n__version__ = '2.19.4'\n__version_info__ = tuple(LooseVersion(__version__).version)\n__author__ = 'Steven Loria'\n__all__ = [\n    'Schema',\n    'SchemaOpts',\n    'fields',\n    'validates',\n    'validates_schema',\n    'pre_dump',\n    'post_dump',\n    'pre_load',\n    'post_load',\n    'pprint',\n    'MarshalResult',\n    'UnmarshalResult',\n    'ValidationError',\n    'missing',\n]",
+      "truncated": false
+    },
+    {
+      "file": "src/marshmallow/utils.py",
+      "function": "isoformat",
+      "start_line": 236,
+      "end_line": 246,
+      "score": 50.426401,
+      "text": "src/marshmallow/utils.py::isoformat lines 236-246\ndef isoformat(dt, localtime=False, *args, **kwargs):\n    \"\"\"Return the ISO8601-formatted UTC representation of a datetime object.\n    \"\"\"\n    if localtime and dt.tzinfo is None:\n        localized = dt\n    else:\n        if dt.tzinfo is None:\n            localized = UTC.localize(dt)\n        else:\n            localized = dt.astimezone(UTC)\n    return localized.isoformat(*args, **kwargs)",
+      "truncated": false
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "FormattedString.__init__",
+      "start_line": 834,
+      "end_line": 838,
+      "score": 31.279204,
+      "text": "src/marshmallow/fields.py::FormattedString.__init__ lines 834-838\n    def __init__(self, src_str, *args, **kwargs):\n        warnings.warn('FormattedString is deprecated and will be removed in marshmallow 3. '\n                      'Use a Method or Function field instead.', RemovedInMarshmallow3Warning)\n        Field.__init__(self, *args, **kwargs)\n        self.src_str = text_type(src_str)",
+      "truncated": false
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Function.__init__",
+      "start_line": 1247,
+      "end_line": 1254,
+      "score": 31.224745,
+      "text": "src/marshmallow/fields.py::Function.__init__ lines 1247-1254\n    def __init__(self, serialize=None, deserialize=None, func=None, **kwargs):\n        if func:\n            warnings.warn('\"func\" argument of fields.Function is deprecated. '\n                          'Use the \"serialize\" argument instead.', RemovedInMarshmallow3Warning)\n            serialize = func\n        super(Function, self).__init__(**kwargs)\n        self.serialize_func = self.func = serialize and utils.callable_or_raise(serialize)\n        self.deserialize_func = deserialize and utils.callable_or_raise(deserialize)",
+      "truncated": false
+    },
+    {
+      "file": "src/marshmallow/fields.py",
+      "function": "Method.__init__",
+      "start_line": 1190,
+      "end_line": 1197,
+      "score": 31.066004,
+      "text": "src/marshmallow/fields.py::Method.__init__ lines 1190-1197\n    def __init__(self, serialize=None, deserialize=None, method_name=None, **kwargs):\n        if method_name is not None:\n            warnings.warn('\"method_name\" argument of fields.Method is deprecated. '\n                          'Use the \"serialize\" argument instead.', RemovedInMarshmallow3Warning)\n\n        self.serialize_method_name = self.method_name = serialize or method_name\n        self.deserialize_method_name = deserialize\n        super(Method, self).__init__(**kwargs)",
+      "truncated": false
+    }
+  ]
+}

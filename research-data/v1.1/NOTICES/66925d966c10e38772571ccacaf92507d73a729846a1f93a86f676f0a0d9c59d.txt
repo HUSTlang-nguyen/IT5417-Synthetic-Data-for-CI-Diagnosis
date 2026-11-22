@@ -1,0 +1,100 @@
+# Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+
+
+try:
+    import isort.api
+
+    HAS_ISORT_5 = True
+except ImportError:  # isort < 5
+    import isort
+
+    HAS_ISORT_5 = False
+
+import codecs
+import os
+import re
+import sys
+import textwrap
+import tokenize
+from io import BufferedReader, BytesIO
+from typing import (
+    TYPE_CHECKING,
+    List,
+    Optional,
+    Pattern,
+    TextIO,
+    Tuple,
+    TypeVar,
+    Union,
+    overload,
+)
+
+from astroid import Module, modutils, nodes
+
+from pylint.constants import PY_EXTS
+
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
+
+if TYPE_CHECKING:
+    from pylint.checkers.base_checker import BaseChecker
+
+DEFAULT_LINE_LENGTH = 79
+
+# These are types used to overload get_global_option() and refer to the options type
+GLOBAL_OPTION_BOOL = Literal[
+    "ignore-mixin-members",
+    "suggestion-mode",
+    "analyse-fallback-blocks",
+    "allow-global-unused-variables",
+]
+GLOBAL_OPTION_INT = Literal["max-line-length", "docstring-min-length"]
+GLOBAL_OPTION_LIST = Literal["ignored-modules"]
+GLOBAL_OPTION_PATTERN = Literal[
+    "no-docstring-rgx", "dummy-variables-rgx", "ignored-argument-names"
+]
+GLOBAL_OPTION_TUPLE_INT = Literal["py-version"]
+GLOBAL_OPTION_NAMES = Union[
+    GLOBAL_OPTION_BOOL,
+    GLOBAL_OPTION_INT,
+    GLOBAL_OPTION_LIST,
+    GLOBAL_OPTION_PATTERN,
+    GLOBAL_OPTION_TUPLE_INT,
+]
+T_GlobalOptionReturnTypes = TypeVar(
+    "T_GlobalOptionReturnTypes", bool, int, List[str], Pattern[str], Tuple[int, ...]
+)
+
+
+def normalize_text(text, line_len=DEFAULT_LINE_LENGTH, indent=""):
+    """Wrap the text on the given line length."""
+    return "\n".join(
+        textwrap.wrap(
+            text, width=line_len, initial_indent=indent, subsequent_indent=indent
+        )
+    )
+
+
+CMPS = ["=", "-", "+"]
+
+
+# py3k has no more cmp builtin
+def cmp(a, b):  # pylint: disable=redefined-builtin
+    return (a > b) - (a < b)
+
+
+def diff_string(old, new):
+    """given an old and new int value, return a string representing the
+    difference
+    """
+    diff = abs(old - new)
+    diff_str = f"{CMPS[cmp(old, new)]}{diff and f'{diff:.2f}' or ''}"
+    return diff_str
+
+
+def get_module_and_frameid(node):
+    """return the module name and the frame id in the module"""
+    frame = node.frame()

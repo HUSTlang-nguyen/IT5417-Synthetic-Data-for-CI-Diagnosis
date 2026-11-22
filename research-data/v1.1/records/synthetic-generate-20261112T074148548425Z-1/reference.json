@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T074148548425Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Rational.__new__"
+    }
+  ],
+  "explanation": "The normalization guard skips gcd2 by requiring a divisor greater than2. Numerators/denominators sharing factor2 remain noncanonical, and saved rational modulo assertions fail.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "mod_inverse"
+    },
+    {
+      "file": "sympy/core/expr.py",
+      "function": "Expr._expand_hint"
+    },
+    {
+      "file": "sympy/functions/elementary/trigonometric.py",
+      "function": "cos.eval"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

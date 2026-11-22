@@ -1,0 +1,100 @@
+"""
+    sphinx.jinja2glue
+    ~~~~~~~~~~~~~~~~~
+
+    Glue code for the jinja2 templating engine.
+
+    :copyright: Copyright 2007-2021 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+"""
+
+from os import path
+from pprint import pformat
+from typing import TYPE_CHECKING, Any, Callable, Dict, Iterator, List, Tuple, Union
+
+from jinja2 import BaseLoader, FileSystemLoader, TemplateNotFound, contextfunction
+from jinja2.environment import Environment
+from jinja2.sandbox import SandboxedEnvironment
+from jinja2.utils import open_if_exists
+
+from sphinx.application import TemplateBridge
+from sphinx.theming import Theme
+from sphinx.util import logging
+from sphinx.util.osutil import mtimes_of_files
+
+if TYPE_CHECKING:
+    from sphinx.builders import Builder
+
+
+def _tobool(val: str) -> bool:
+    if isinstance(val, str):
+        return val.lower() in ('true', '1', 'yes', 'on')
+    return bool(val)
+
+
+def _toint(val: str) -> int:
+    try:
+        return int(val)
+    except ValueError:
+        return 0
+
+
+def _todim(val: Union[int, str]) -> str:
+    """
+    Make val a css dimension. In particular the following transformations
+    are performed:
+
+    - None -> 'initial' (default CSS value)
+    - 0 -> '0'
+    - ints and string representations of ints are interpreted as pixels.
+
+    Everything else is returned unchanged.
+    """
+    if val is None:
+        return 'initial'
+    elif str(val).isdigit():
+        return '0' if int(val) == 0 else '%spx' % val
+    return val  # type: ignore
+
+
+def _slice_index(values: List, slices: int) -> Iterator[List]:
+    seq = list(values)
+    length = 0
+    for value in values:
+        length += 1 + len(value[1][1])  # count includes subitems
+    items_per_slice = length // slices
+    offset = 0
+    for slice_number in range(slices):
+        count = 0
+        start = offset
+        if slices == slice_number + 1:  # last column
+            offset = len(seq)
+        else:
+            for value in values[offset:]:
+                count += 1 + len(value[1][1])
+                offset += 1
+                if count >= items_per_slice:
+                    break
+        yield seq[start:offset]
+
+
+def accesskey(context: Any, key: str) -> str:
+    """Helper to output each access key only once."""
+    if '_accesskeys' not in context:
+        context.vars['_accesskeys'] = {}
+    if key and key not in context.vars['_accesskeys']:
+        context.vars['_accesskeys'][key] = 1
+        return 'accesskey="%s"' % key
+    return ''
+
+
+class idgen:
+    def __init__(self) -> None:
+        self.id = 0
+
+    def current(self) -> int:
+        return self.id
+
+    def __next__(self) -> int:
+        self.id += 1
+        return self.id

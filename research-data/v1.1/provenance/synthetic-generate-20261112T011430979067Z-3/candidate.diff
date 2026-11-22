@@ -1,0 +1,11 @@
+--- a/sympy/sets/fancysets.py
++++ b/sympy/sets/fancysets.py
+@@ -42,7 +42,7 @@
+     def _contains(self, other):
+         if not isinstance(other, Expr):
+             return False
+-        return other.is_rational
++        return other.is_integer
+ 
+     def __iter__(self):
+         from sympy.core.numbers import igcd, Rational

@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-21612",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_Mul"
+    }
+  ],
+  "explanation": "The denominator-parenthesization guard handles a Mul base but omits a Pow base. A nested reciprocal is consequently printed as x/1/y instead of x/(1/y), changing the grouping visible in the expression. Including Pow in that guard retains the required parentheses.",
+  "retrieved_locations": [
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    },
+    {
+      "file": "sympy/polys/orderings.py",
+      "function": "InverseOrder.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

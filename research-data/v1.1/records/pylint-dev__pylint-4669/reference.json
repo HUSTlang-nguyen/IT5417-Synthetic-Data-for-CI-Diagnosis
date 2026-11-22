@@ -1,0 +1,23 @@
+{
+  "sample_id": "pylint-dev__pylint-4669",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "stripped_lines"
+    }
+  ],
+  "explanation": "Signature-line collection ignores functions with empty AST bodies. Their signature lines therefore remain in duplicate-code comparison even with ignore-signatures enabled. Using the function end line when no body exists includes those lines in the ignored range.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/checkers/similar.py",
+      "function": "Run"
+    },
+    {
+      "file": "pylint/lint/run.py",
+      "function": "Run.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

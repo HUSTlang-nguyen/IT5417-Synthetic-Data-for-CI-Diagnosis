@@ -1,0 +1,19 @@
+{
+  "sample_id": "sympy__sympy-21849",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_LambertW"
+    }
+  ],
+  "explanation": "Power-printing dispatch passes exp to the LambertW handler, whose signature omits it. The saved call raises unexpected-keyword TypeError. Accepting exp and rendering that superscript makes the handler conform to the printer interface.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "latex"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

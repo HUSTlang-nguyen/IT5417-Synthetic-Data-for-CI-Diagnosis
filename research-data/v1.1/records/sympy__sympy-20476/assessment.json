@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T033730976093Z",
+  "reviewed_at": "2026-11-12T11:48:41+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "cfb381846f25cb11c98fb2d77ca4b79bc6d05df12b18ccf1fda0cf0f2c247e03",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "624b56f0a0911638f1e2710fa3ac3d437007bd38ec00c9aa2e5f1d8be9c90dfe",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c602a9d9d61a7a3defef7ee058f45e89d4770ae5504e368823cd6a43e5684be4",
+    "historical-fixed.stdout.txt": "0365c4a105afeef037f36b467a7e6ca051f9c68355a3b724d29e9ba94097df81",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "a9b273c6185001e984320ed8e8faed5c7724a9e8586f1a8fa08874ff9acd523a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/simplify/fu.py",
+      "function": "TRmorrie.f"
+    }
+  ],
+  "mechanism": "Residual cosine factors not consumed by a doubling chain are reconstructed without their remaining exponent. The saved cos(x)**3 example loses one cosine power. Reattaching each residual as b**coss[b] preserves multiplicity.",
+  "limitations": "The inner function is the actual reconstruction site; the outer TRmorrie name is not substituted for its qualified scope.",
+  "observed_junit": {
+    "base": {
+      "cases": 27,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 27,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.simplify.tests.test_fu::test_TRmorrie",
+      "message": "assert sin(2*x)*cos(x)/4 == ((sin(2*x) * (cos(x) ** 2)) / 4)\n +  where sin(2*x)*cos(x)/4 = TRmorrie(sin(x/2)*cos(x/2)*cos(x)**3)\n +  and   sin(2*x) = sin((2 * x))\n +  and   cos(x) = cos(x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

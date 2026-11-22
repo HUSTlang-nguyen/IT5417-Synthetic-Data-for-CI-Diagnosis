@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T002059878814Z",
+  "reviewed_at": "2026-11-12T10:37:42+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "bb3c651ecdc4495bcc6b913b69739c8ec6c84ba6f022d2695324b3bd39b53b73",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "d081012d94762e63a1e2e065505e9e43d3517cb557b82485f68dca0923eeafbf",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a954b974e684542406632afda27ab8dde26dc054fc6e9d0edf443826ed989623",
+    "historical-fixed.stdout.txt": "8c6e4edd1350ffaa1d09bb20bcfe625de13a4030a66192537d070f0105289ab2",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "08debc108463fa0d8c5f9c64f7506074148d26bca6cdc6ed3f7ad148f2c2ce4b"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/core/add.py",
+      "function": "Add.flatten"
+    }
+  ],
+  "mechanism": "After an AccumBounds operand has become the accumulated coefficient, the numeric-operand branch updates it only if coeff.is_Number. AccumBounds is excluded and the later infinity contribution is dropped, leaving AccumBounds(-1,1) rather than infinity. Including AccumBounds in the update preserves the numeric contribution.",
+  "limitations": "The saved substitution assertion and branch structure support this specific lost-addend mechanism; the broad addition implementation has other independent branches.",
+  "observed_junit": {
+    "base": {
+      "cases": 74,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 74,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.core.tests.test_subs::test_add",
+      "message": "assert AccumBounds(-1, 1) == oo\n +  where AccumBounds(-1, 1) = <bound method Basic.subs of exp(x) + cos(x)>(x, oo)\n +    where <bound method Basic.subs of exp(x) + cos(x)> = (exp(x) + cos(x)).subs\n +      where exp(x) = exp(x)\n +      and   cos(x) = cos(x)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

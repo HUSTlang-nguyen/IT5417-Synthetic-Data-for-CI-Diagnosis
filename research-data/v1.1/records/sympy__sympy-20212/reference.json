@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-20212",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow.__new__"
+    }
+  ],
+  "explanation": "The evaluated power constructor lacks the zero-to-negative-infinity boundary case. Consequently 0**-oo is not reduced to ComplexInfinity as required by the test. The explicit branch returns that singleton before the generic power evaluation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/power.py",
+      "function": "Pow.as_base_exp"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__"
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Ricci.__init__"
+    },
+    {
+      "file": "sympy/holonomic/holonomicerrors.py",
+      "function": "NotHolonomicError.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

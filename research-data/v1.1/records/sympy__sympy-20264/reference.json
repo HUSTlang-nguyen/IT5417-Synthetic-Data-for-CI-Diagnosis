@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-20264",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Pow"
+    }
+  ],
+  "explanation": "A preserved reciprocal rational power is delegated to the multiplication printer, which routes the same expression back to power printing. The saved stack repeats that cycle until RecursionError. Handling the rational reciprocal explicitly emits a finite nested-fraction string.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Pow"
+    },
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "latex"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

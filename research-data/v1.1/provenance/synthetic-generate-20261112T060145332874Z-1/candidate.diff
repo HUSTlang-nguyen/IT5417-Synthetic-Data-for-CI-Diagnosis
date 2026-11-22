@@ -1,0 +1,11 @@
+--- a/sympy/tensor/array/dense_ndim_array.py
++++ b/sympy/tensor/array/dense_ndim_array.py
+@@ -65,7 +65,7 @@
+                 return self._array[index]
+             else:
+                 index = self._parse_index(index)
+-                return self._array[index]
++                return self._array[index + 1]
+ 
+     @classmethod
+     def zeros(cls, *shape):

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T071234875048Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.length"
+    }
+  ],
+  "explanation": "The point length property returns the multiplicative identity1 instead of additive identity0. The saved Point3D length assertion fails.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__new__"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point3D.are_collinear"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point2D.translate"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point.__mul__"
+    },
+    {
+      "file": "sympy/geometry/point.py",
+      "function": "Point3D.x"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

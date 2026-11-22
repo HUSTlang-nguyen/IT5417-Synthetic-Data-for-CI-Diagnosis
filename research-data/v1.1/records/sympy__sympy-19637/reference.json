@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-19637",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/sympify.py",
+      "function": "kernS"
+    }
+  ],
+  "explanation": "kern is assigned only in the space-containing branch, but hit = kern in s executes outside that branch. A parenthesized expression without a generated separator therefore reads an unbound local. Keeping the read inside its assignment branch and setting hit false otherwise prevents that invalid control flow.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/sympify.py",
+      "function": "kernS"
+    },
+    {
+      "file": "sympy/core/sympify.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

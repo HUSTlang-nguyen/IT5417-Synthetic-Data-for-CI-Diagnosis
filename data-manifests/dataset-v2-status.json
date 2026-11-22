@@ -1,0 +1,113 @@
+{
+  "updated_at": "2026-11-23T02:31:50+07:00",
+  "status": "preflight",
+  "goal_complete": false,
+  "plan": "docs/dataset-v2-plan.md",
+  "specification": "data-manifests/dataset-v2.json",
+  "git_recovery": "repaired_relocated_parent_D_GitHub",
+  "portable_v1_1": {
+    "records": 351,
+    "counts": {
+      "train/real_local_reconstruction": 175,
+      "test/real_local_reconstruction": 38,
+      "validation/real_local_reconstruction": 37,
+      "train/controlled_synthetic": 101
+    },
+    "source_lock_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
+    "publication": "pending_license_attribution_privacy_audit",
+    "checked_at": "2026-11-23T01:57:58+07:00",
+    "relocated_without_raw_or_models": true,
+    "publication_authorized": false
+  },
+  "v2_real_selected": 0,
+  "v2_synthetic_selected": 0,
+  "new_case_attempts": 2,
+  "new_generator_requests": 0,
+  "live_worker": null,
+  "collection_budget_initialized": true,
+  "next_task": "Commit/push verified v1.1 package and v2 progress on codex; expand bounded recipe batches and improve uniform retrieval. Goal count gates remain incomplete.",
+  "qualification": "Portable v1.1 staging is not published; package verification is not a full raw evidence or license audit. No new real reconstruction/generation/training/test inference.",
+  "study_run_id": "dataset-v2-20261122T190232092876Z",
+  "execution_enabled": true,
+  "preledger_charge_seconds": 300,
+  "publication_audit": {
+    "records": 351,
+    "repos": 9,
+    "license_variants": 28,
+    "credential_pattern_findings": 0,
+    "home_path_findings": 102,
+    "status": "notice_and_path_review_pending"
+  },
+  "software_tests": {
+    "total": 138,
+    "passed": 137,
+    "skipped": 1,
+    "log": ".cache/software-tests-dataset-v2-before-first-batch.txt"
+  },
+  "budget_guard": "implemented_and_tested",
+  "baseline_worker_session": null,
+  "generator_preflight": {
+    "checked_at": "2026-11-23T02:07:30+07:00",
+    "model": "qwen2.5-coder:7b-instruct",
+    "digest": "dae161e27b0e90dd1856c8bb3209201fd6736d8eb66298e75ed87571486f4364",
+    "matches_v1_generator": true,
+    "model_called": false
+  },
+  "portable_v1_1_metadata_safe": {
+    "path": ".cache/portable-v1.1-metadata-safe",
+    "records": 351,
+    "input_reference_bytes_unchanged": true,
+    "local_modelfile_field_removed": 101,
+    "publication": "notice_attribution_review_pending"
+  },
+  "artifact_baseline_complete": true,
+  "execution_seconds_charged": 796.0,
+  "source_roles": {
+    "path": "data-manifests/dataset-v2-source-roles.json",
+    "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+    "metadata_candidates": 2264,
+    "by_role": {
+      "train": 856,
+      "validation": 1043,
+      "test": 365
+    },
+    "repository_counts": {
+      "train": 10,
+      "validation": 4,
+      "test": 3
+    },
+    "qualification": "Frozen metadata candidates, no reconstructed sample claim"
+  },
+  "development_worklist": {
+    "path": ".cache/dataset-v2-development-review-worklist.json",
+    "real": 50,
+    "synthetic": 30,
+    "status": "input_reference_metadata_hashes_checked_causal_review_pending"
+  },
+  "development_review": {
+    "real": 50,
+    "synthetic": 30,
+    "artifact_hashes_checked": 1270,
+    "retain_recommendations": 77,
+    "quarantined": 3,
+    "receipt": "docs/evidence/dataset-v2-development-review.json",
+    "gold": "pending"
+  },
+  "new_cases_strict_reproduced": 1,
+  "new_passing_seeds": 1,
+  "new_real_silver_prototype_exports": 1,
+  "first_batch": {
+    "status": "finished",
+    "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
+    "result": "1 strict reproduction out of 2 new source cases",
+    "failed_case": "pvlib__pvlib-python-1154",
+    "failure": "fixed harness retains unrelated AOI floating-point tolerance failure; excluded, no test changes"
+  },
+  "portable_v1_1_publication": {
+    "path": "research-data/v1.1",
+    "records": 351,
+    "bytes": 15226034,
+    "receipt": "docs/evidence/dataset-v1-portable-publication-check.json",
+    "git_push": "pending"
+  }
+}

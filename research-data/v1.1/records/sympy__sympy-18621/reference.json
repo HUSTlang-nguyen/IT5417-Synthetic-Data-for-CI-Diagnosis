@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18621",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/blockmatrix.py",
+      "function": "BlockDiagMatrix.blocks"
+    }
+  ],
+  "explanation": "The block container is constructed with default evaluation, allowing nested matrix blocks to be evaluated into scalar entries. Later BlockMatrix._entry expects a matrix block and subscripts the scalar One, causing the observed TypeError. Constructing ImmutableDenseMatrix with evaluate=False preserves block objects.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/expressions/blockmatrix.py",
+      "function": "BlockMatrix._entry"
+    },
+    {
+      "file": "sympy/matrices/dense.py",
+      "function": "MutableDenseMatrix._new"
+    },
+    {
+      "file": "sympy/matrices/dense.py",
+      "function": "MutableDenseMatrix.__new__"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixExpr.as_explicit"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixBase._handle_creation_inputs"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

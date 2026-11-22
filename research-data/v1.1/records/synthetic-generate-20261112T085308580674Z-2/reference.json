@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T085308580674Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    }
+  ],
+  "explanation": "The addend-dimension comparison raises when dimensions are equal instead of unequal. A saved dimensionless exponential is rejected with a message saying Dimension(1) should be Dimension(1).",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_dimensional_expr"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_dimension_system"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.derived_units"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_units_non_prefixed"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

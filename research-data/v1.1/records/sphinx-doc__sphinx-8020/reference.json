@@ -1,0 +1,23 @@
+{
+  "sample_id": "sphinx-doc__sphinx-8020",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "_parse_annotation.unparse"
+    }
+  ],
+  "explanation": "The AST annotation visitor lacks Constant/Ellipsis handling. An ellipsis in Tuple[int,...] reaches the unsupported branch, and the outer fallback turns the entire annotation into one cross-reference instead of the expected six nodes. Supporting the literal AST variants preserves structured annotation rendering.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

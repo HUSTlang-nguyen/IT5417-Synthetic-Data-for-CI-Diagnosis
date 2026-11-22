@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/base\nconfigfile: pytest.ini\ncollecting ... collected 14 items\n\nsympy/assumptions/tests/test_refine.py::test_arg FAILED                  [  7%]\nsympy/assumptions/tests/test_refine.py::test_Abs PASSED                  [ 14%]\nsympy/assumptions/tests/test_refine.py::test_pow1 PASSED                 [ 21%]\nsympy/assumptions/tests/test_refine.py::test_pow2 PASSED                 [ 28%]\nsympy/assumptions/tests/test_refine.py::test_exp PASSED                  [ 35%]\nsympy/assumptions/tests/test_refine.py::test_Piecewise PASSED            [ 42%]\nsympy/assumptions/tests/test_refine.py::test_atan2 PASSED                [ 50%]\nsympy/assumptions/tests/test_refine.py::test_re PASSED                   [ 57%]\nsympy/assumptions/tests/test_refine.py::test_im PASSED                   [ 64%]\nsympy/assumptions/tests/test_refine.py::test_complex PASSED              [ 71%]\nsympy/assumptions/tests/test_refine.py::test_sign PASSED                 [ 78%]\nsympy/assumptions/tests/test_refine.py::test_func_args PASSED            [ 85%]\nsympy/assumptions/tests/test_refine.py::test_eval_refine PASSED          [ 92%]\nsympy/assumptions/tests/test_refine.py::test_refine_issue_12724 PASSED   [100%]\n\n=================================== FAILURES ===================================\n___________________________________ test_arg ___________________________________\n\n    def test_arg():\n        x = Symbol('x', complex = True)\n>       assert refine(arg(x), Q.positive(x)) == 0\nE       assert arg(x) == 0\nE        +  where arg(x) = refine(arg(x), Q.positive(x))\nE        +    where arg(x) = arg(x)\nE        +    and   Q.positive(x) = Q.positive(x)\nE        +      where Q.positive = <sympy.assumptions.ask.AssumptionKeys object at 0x784d4b8d61c0>.positive\n\nsympy/assumptions/tests/test_refine.py:165: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/assumptions/tests/test_refine.py::test_arg - assert arg(x) == 0\n=================== 1 failed, 13 passed, 1 warning in 1.87s ====================\n",
+  "code": [
+    {
+      "file": "sympy/assumptions/refine.py",
+      "function": "refine",
+      "start_line": 9,
+      "end_line": 66,
+      "score": 50.85769,
+      "text": "sympy/assumptions/refine.py::refine lines 9-66\ndef refine(expr, assumptions=True):\n    \"\"\"\n    Simplify an expression using assumptions.\n\n    Explanation\n    ===========\n\n    Unlike :func:`~.simplify()` which performs structural simplification\n    without any assumption, this function transforms the expression into\n    the form which is only valid under certain assumptions. Note that\n    ``simplify()`` is generally not done in refining process.\n\n    Refining boolean expression involves reducing it to ``True`` or\n    ``False``. Unlike :func:~.`ask()`, the expression will not be reduced\n    if the truth value cannot be determined.\n\n    Examples\n    ========\n\n    >>> from sympy import refine, sqrt, Q\n    >>> from sympy.abc import x\n    >>> refine(sqrt(x**2), Q.real(x))\n    Abs(x)\n    >>> refine(sqrt(x**2), Q.positive(x))\n    x\n\n    >>> refine(Q.real(x), Q.positive(x))\n    True\n    >>> refine(Q.positive(x), Q.real(x))\n    Q.positive(x)\n\n    See Also\n    ========\n\n    sympy.simplify.simplify.simplify : Structural simplification without assumptions.\n    sympy.assumptions.ask.ask : Query for boolean expressions using assumptions.\n    \"\"\"\n    if not isinstance(expr, Basic):\n        return expr\n\n    if not expr.is_Atom:\n        args = [refine(arg, assumptions) for arg in expr.args]\n        # TODO: this will probably not work with Integral or Polynomial\n        expr = expr.func(*args)\n    if hasattr(expr, '_eval_refine'):\n        ref_expr = expr._eval_refine(assumptions)\n        if ref_expr is not None:\n            return ref_expr\n    name = expr.__class__.__name__\n    handler = handlers_dict.get(name, None)\n    if handler is None:\n        return expr\n    new_expr = handler(expr, assumptions)\n    if (new_expr is None) or (expr == new_expr):\n        return expr\n    if not isinstance(new_expr, Expr):\n        return new_expr\n    return refine(new_expr, assumptions)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/unify/core.py",
+      "function": "Variable.__init__",
+      "start_line": 42,
+      "end_line": 43,
+      "score": 32.0,
+      "text": "sympy/unify/core.py::Variable.__init__ lines 42-43\n    def __init__(self, arg):\n        self.arg = arg",
+      "truncated": false
+    },
+    {
+      "file": "sympy/unify/core.py",
+      "function": "CondVariable.__init__",
+      "start_line": 60,
+      "end_line": 62,
+      "score": 31.788854,
+      "text": "sympy/unify/core.py::CondVariable.__init__ lines 60-62\n    def __init__(self, arg, valid):\n        self.arg = arg\n        self.valid = valid",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "G.__init__",
+      "start_line": 47,
+      "end_line": 49,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::G.__init__ lines 47-49\n    def __init__(self, g, x):\n        self.g = g\n        self.x = x",
+      "truncated": false
+    },
+    {
+      "file": "examples/advanced/relativity.py",
+      "function": "Riemann.__init__",
+      "start_line": 62,
+      "end_line": 64,
+      "score": 31.732051,
+      "text": "examples/advanced/relativity.py::Riemann.__init__ lines 62-64\n    def __init__(self, G, x):\n        self.G = G\n        self.x = x",
+      "truncated": false
+    }
+  ]
+}

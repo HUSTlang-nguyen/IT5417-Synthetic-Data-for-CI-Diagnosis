@@ -1,0 +1,39 @@
+{
+  "sample_id": "sympy__sympy-24443",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "_check_homomorphism"
+    },
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "_check_homomorphism._image"
+    }
+  ],
+  "explanation": "The relator checker mixes presentation free-generator symbols with domain generators while accumulating mapped words. A saved homomorphism construction is rejected as invalid; the repair maps each presentation symbol explicitly to its domain generator and then accumulates image powers, with both selected tests passing.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "homomorphism"
+    },
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "GroupHomomorphism.is_trivial"
+    },
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "GroupHomomorphism.compose"
+    },
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "_check_homomorphism"
+    },
+    {
+      "file": "sympy/combinatorics/homomorphisms.py",
+      "function": "GroupHomomorphism.invert"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

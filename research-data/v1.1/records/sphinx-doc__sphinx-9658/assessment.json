@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T004935904145Z",
+  "reviewed_at": "2026-11-12T10:43:36+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "dad5517c335f0e2a74b5f1f20072c31f078b4e5bd97360f59f224598bcaf9b26",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "d0df82eff7f2f50b2c8dece3f1ec7b2348dc16ffd07bc8d6b40d0b02655e9af7",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2a007da99b956b3ec1490f4f4d670fde093c264eaabb4e19de2a8f146cdd77db",
+    "historical-fixed.stdout.txt": "03175495ae19b7e2e822baac2ebe5ac72fb37c9c1df3c3cda05a92e31abb58c7",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "c961f4b147940d6381a5f57d05398fa6ef0b567f8d0924be99f91e1b2ac3497c"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/ext/autodoc/mock.py",
+      "function": "_MockObject.__init__"
+    }
+  ],
+  "mechanism": "Mock instances initialize __qualname__ to the empty string instead of their generated name. Restifying unknown.secret.Class therefore loses Class and emits unknown.secret. The repair supplies __name__ during subclass creation and copies it into the instance qualified name.",
+  "limitations": "Naming metadata crosses _make_subclass and the constructor. The selected existing constructor is the direct empty-qualified-name assignment; no claim that a real optional library failed to import is made.",
+  "observed_junit": {
+    "base": {
+      "cases": 27,
+      "failures_or_errors": 1,
+      "skipped": 2
+    },
+    "head": {
+      "cases": 27,
+      "failures_or_errors": 0,
+      "skipped": 2
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_util_typing::test_restify_mock",
+      "message": "AssertionError: assert ':py:class:`unknown.secret.`' == ':py:class:`u...secret.Class`'\n  - :py:class:`unknown.secret.Class`\n  ?                           -----\n  + :py:class:`unknown.secret.`"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

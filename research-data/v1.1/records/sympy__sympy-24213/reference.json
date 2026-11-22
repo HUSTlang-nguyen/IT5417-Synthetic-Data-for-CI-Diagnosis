@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-24213",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    }
+  ],
+  "explanation": "Addition compares dimension expressions structurally instead of using dimension-system equivalence. Velocity and acceleration*time are rejected as different although equivalent in the system, producing the saved ValueError. equivalent_dims performs the required comparison.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem._collect_factor_and_dimension"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_dimensional_expr"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_dimension_system"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.get_unit_system"
+    },
+    {
+      "file": "sympy/physics/units/unitsystem.py",
+      "function": "UnitSystem.derived_units"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T052750252431Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping._eval_col_del"
+    }
+  ],
+  "explanation": "Deleting a column allocates cols+1 instead of cols-1 while its callback still skips one source column. The callback then requests an element beyond source storage and the saved test raises tuple IndexError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "_MinimalMatrix.__getitem__"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping._eval_col_del"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "_MinimalMatrix.__init__"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping.col_del"
+    },
+    {
+      "file": "sympy/matrices/common.py",
+      "function": "MatrixShaping._eval_col_del.entry"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

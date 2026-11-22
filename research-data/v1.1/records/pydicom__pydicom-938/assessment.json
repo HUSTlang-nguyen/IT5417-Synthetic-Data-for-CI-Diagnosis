@@ -1,0 +1,64 @@
+{
+  "run_id": "reproduce-20261112T042843765450Z",
+  "reviewed_at": "2026-11-12T12:08:36+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "17223828d813695c1293522a64a9f80adca9c7e16b87476f58bc5d9f7aa6b3dc",
+    "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+    "historical-base.stdout.txt": "db6b04f2d61e307e3971106458498d33e7e61f7f8bb39485e9e599917f5f298b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "8071ec44fe24245139619424120ac9c9a0c482d72a7e1e86b2e488953daa7e8c",
+    "historical-fixed.stdout.txt": "95e7b976c586484bfbfe4ca95367707685153813a59944df92ec360a85899c1d",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "96ee60b1cb096ba1cd400a5cd1cea7491e6544c1499f68da8e2af2f82045ceec"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__str__"
+    },
+    {
+      "file": "pydicom/valuerep.py",
+      "function": "DSfloat.__repr__"
+    }
+  ],
+  "mechanism": "The float subclass string fallback enters repr while its custom repr calls str again. The saved DSfloat str/repr tests alternate between those two methods until RecursionError. Calling the underlying numeric repr and deriving the quoted/plain forms breaks that cycle.",
+  "limitations": "The repair also changes IS formatting and four tests fail overall. These locations describe the two directly inspected DSfloat recursion traces; no independent fault count is assigned to the extra assertions.",
+  "observed_junit": {
+    "base": {
+      "cases": 37,
+      "failures_or_errors": 4,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 37,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "pydicom.tests.test_valuerep.TestDSfloat::test_str",
+      "message": "RecursionError: maximum recursion depth exceeded while calling a Python object"
+    },
+    {
+      "test": "pydicom.tests.test_valuerep.TestDSfloat::test_repr",
+      "message": "RecursionError: maximum recursion depth exceeded"
+    },
+    {
+      "test": "pydicom.tests.test_valuerep.TestIS::test_str",
+      "message": "RecursionError: maximum recursion depth exceeded"
+    },
+    {
+      "test": "pydicom.tests.test_valuerep.TestIS::test_repr",
+      "message": "RecursionError: maximum recursion depth exceeded"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041823491142Z",
+  "reviewed_at": "2026-11-12T12:07:23+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "237e57740c9bfdcb840f9fbc4082525408412205c1739dc959bef5804d6987bc",
+    "license-evidence.json": "6f323a30a49d63671a95f5375666ce6eb4bc60156a8fcdd4067837fff279625b",
+    "historical-base.stdout.txt": "a6e14fd81a7d75131d1f8e17ce2070ab0e9e7a2b86bc2244057086494630d977",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "58e55f10cf2f884b06f232a6c7355a947f92b4299e4f487cc132d1cd7c7f5d5d",
+    "historical-fixed.stdout.txt": "a2ea521fce0612f1366f5d1b67663cf418c05f33d10bb66db9884f72ca907fef",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "1457d013c46344911f4c52decab5c1109aa13320df0d6ac660fa7a63d4d36053"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.object_build"
+    }
+  ],
+  "mechanism": "Module inspection calls hasattr on a foreign object whose __getattr__ raises an ordinary Exception. That exception escapes and aborts the saved inspect_build test. Guarding the attribute probe treats this unsupported introspection as absent instead of crashing.",
+  "limitations": "The log directly identifies object_build and the foreign __getattr__; the added safe helper supplies error handling. Source1962 repeats the same mechanism and oracle.",
+  "observed_junit": {
+    "base": {
+      "cases": 12,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 12,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.unittest_raw_building.RawBuildingTC::test_module_object_with_broken_getattr",
+      "message": "Exception: boom"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,35 @@
+{
+  "sample_id": "sphinx-doc__sphinx-7961",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "sphinx/ext/mathjax.py",
+      "function": "setup"
+    }
+  ],
+  "explanation": "The registered MathJax default URL points to the old version-two script rather than the version-three URL required by the frozen output test. Generated HTML therefore references the old asset. Updating the default path corrects that observed configuration contract.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "BuiltinTemplateLoader.init"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "warning"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "accesskey"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "BuiltinTemplateLoader.render_string"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

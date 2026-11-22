@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18532",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.atoms"
+    }
+  ],
+  "explanation": "Default atom selection requires instances of the Atom subclass rather than objects with no expression arguments. Leaf Basic/String nodes are omitted, so both saved calls return empty sets instead of their expected leaves. Testing node.args when no explicit type is supplied restores the contract.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.copy"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic._eval_rewrite"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.__getnewargs__"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.expr_free_symbols"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic._has"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,39 @@
+{
+  "sample_id": "pytest-dev__pytest-9064",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "src/_pytest/stepwise.py",
+      "function": "pytest_configure"
+    },
+    {
+      "file": "src/_pytest/stepwise.py",
+      "function": "pytest_addoption"
+    }
+  ],
+  "explanation": "The stepwise-skip flag does not enable stepwise plugin registration by itself, so all three failing nested tests run instead of stopping at the second. The option help also omits that implication. Enabling stepwise during configuration and describing the implication satisfy the two saved checks.",
+  "retrieved_locations": [
+    {
+      "file": "src/_pytest/pytester_assertions.py",
+      "function": "assert_outcomes"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.getitems"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "RunResult.assert_outcomes"
+    },
+    {
+      "file": "src/_pytest/pytester.py",
+      "function": "Pytester.inline_runsource"
+    },
+    {
+      "file": "src/_pytest/fixtures.py",
+      "function": "wrap_function_to_error_out_if_called_directly.result"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

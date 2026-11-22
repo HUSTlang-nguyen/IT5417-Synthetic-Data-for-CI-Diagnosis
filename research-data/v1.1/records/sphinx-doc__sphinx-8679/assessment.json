@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T235437287616Z",
+  "reviewed_at": "2026-11-12T07:39:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "361ede2af9230556408076148ff70ab682ddf3776cb09c2d349b0b36729ae600",
+    "license-evidence.json": "5117e8e2bf42f87d8fe94d640c0782c05996bce6a54496f9daac88dd581f1b66",
+    "historical-base.stdout.txt": "fca85a2ebd63f253e2a1ea100f28eee7c9cc236b631f5d99c41f73ca1cb9b027",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e6569dc7906e6deecfabbcd73c0f4774adc4e6acd59baa315222e32200f8c978",
+    "historical-fixed.stdout.txt": "997e8cf9239b8b8016252177b30d8ae670f61ca89f46a35ae099c7049fc61c7a",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ee79dba035f149898f1ae85ba95b349902414cf20e49c4a6d2212c09c87af354"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/domains/std.py",
+      "function": "StandardDomain.process_doc"
+    }
+  ],
+  "mechanism": "A rubric is processed like a section by reading only node[0] as its title. Inline markup splits rubric text across child nodes, so only the first fragment blah is stored as the label. Cleaning the full rubric node preserves blah blah blah.",
+  "limitations": "This is lost text during node traversal, not a missing document or external service.",
+  "observed_junit": {
+    "base": {
+      "cases": 17,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 17,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.test_domain_std::test_labeled_rubric",
+      "message": "AssertionError: assert ('index', 'label', 'blah ') == ('index', 'la...ah blah blah')\n  At index 2 diff: 'blah ' != 'blah blah blah'\n  Full diff:\n  - ('index', 'label', 'blah blah blah')\n  ?                          ---------\n  + ('index', 'label', 'blah ')"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

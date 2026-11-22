@@ -1,0 +1,27 @@
+{
+  "sample_id": "pylint-dev__astroid-1959",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.object_build"
+    }
+  ],
+  "explanation": "Module inspection calls hasattr on a foreign object whose __getattr__ raises an ordinary Exception. That exception escapes and aborts the saved inspect_build test. Guarding the attribute probe treats this unsupported introspection as absent instead of crashing.",
+  "retrieved_locations": [
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.inspect_build"
+    },
+    {
+      "file": "astroid/raw_building.py",
+      "function": "InspectBuilder.object_build"
+    },
+    {
+      "file": "astroid/raw_building.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

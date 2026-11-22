@@ -1,0 +1,52 @@
+{
+  "run_id": "reproduce-20261111T204917830266Z",
+  "reviewed_at": "2026-11-12T07:24:35+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "224cd7fb32be7df7a81a03cb1bbaf81eeb87b8da7cc43a9e66f60b3f9102996c",
+    "license-evidence.json": "83c85dcf018b12b18cd16f41789437dd5a48746499333d9a3c8bbc4d8392a940",
+    "historical-base.stdout.txt": "c06e4b61b5d41a59115962a78f7718751298f16808844af7eb257a52c1f65bd1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "c353ccf139ffd3ab5c1734e468d4e53e1c329bfb776d9daa4382066f208ccbaa",
+    "historical-fixed.stdout.txt": "8e64011eb90388ad06ab9283031df26604653c340978bd03c6adeef5ad7280f9",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "5c2e1ab086d4678df1970a1e51602f78137e1f9f06904eb06d681ed2ef33a9ff"
+  },
+  "cause_type": "API/type",
+  "confidence": "medium",
+  "locations": [
+    {
+      "file": "pylint/config/argument.py",
+      "function": "_regexp_csv_transfomer"
+    }
+  ],
+  "mechanism": "The comma-separated regex transformer calls re.compile directly without translating re.error into argparse.ArgumentTypeError. An invalid pattern therefore escapes as a regex exception rather than the CLI input-error protocol. The new wrapper performs that translation; the plain-regexp registry is also routed through it.",
+  "limitations": "The CSV failing test supports this existing function location. The plain-regexp test additionally involves a module-level registry entry; that secondary site is not claimed as the sole function cause. Configuration classification is a plausible alternate granularity.",
+  "observed_junit": {
+    "base": {
+      "cases": 12,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 12,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "tests.config.test_config::test_regex_error",
+      "message": "re.error: bad escape \\p at position 1"
+    },
+    {
+      "test": "tests.config.test_config::test_csv_regex_error",
+      "message": "re.error: missing ), unterminated subpattern at position 0"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

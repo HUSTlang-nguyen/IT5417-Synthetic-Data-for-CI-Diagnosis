@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-18605",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "Idx.__new__"
+    }
+  ],
+  "explanation": "The range guard negates an integer predicate that can be unknown. A symbolic dimension with unknown integer status is consequently rejected as noninteger and raises the saved TypeError. Rejecting only a definitely false predicate preserves admissible symbolic dimensions.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "Idx.__new__"
+    },
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "Indexed.__new__"
+    },
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "Idx.label"
+    },
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "IndexedBase.__new__"
+    },
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "Idx.lower"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

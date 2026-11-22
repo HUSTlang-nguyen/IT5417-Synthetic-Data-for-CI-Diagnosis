@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035831684629Z",
+  "reviewed_at": "2026-11-12T11:57:17+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "caef15cb4b0d3159e566d6056780ff5bfe6fa1ded739a519e9e011708b492110",
+    "license-evidence.json": "36cf01fc8363168e27503e14d0b3ef65bb6f29dd5d26222efe92e3f0508e7e89",
+    "historical-base.stdout.txt": "27faa15205fee369c0ec3fd7cf2ce15ab5e623f49ced1f3d2bed57726865559b",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "a0feae1a85eb97d5e80034e7b0cdf6149dc45473d6223b6f38757a5561f755b5",
+    "historical-fixed.stdout.txt": "413a4a63730d2f34be1e83970cf315e1346066543cb87bf7cddde0e5cbdd62c0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "6ee5e0bcb4a1d072040d97d424204567fa84fad7589ce288833c9cdbc03aaadb"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/str.py",
+      "function": "StrPrinter._print_Mul"
+    }
+  ],
+  "mechanism": "After splitting an unevaluated product into numerator and denominator factors, the printer indexes n[0] without checking that the numerator list is nonempty. A reciprocal-only form raises the saved IndexError. Guarding the list and supplying numerator1 handles that boundary.",
+  "limitations": "The saved failure proves the empty-list access. The default numerator also preserves a useful reciprocal representation, but no separate new sample is counted for it.",
+  "observed_junit": {
+    "base": {
+      "cases": 107,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 107,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_str::test_issue_22689",
+      "message": "IndexError: list index out of range"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

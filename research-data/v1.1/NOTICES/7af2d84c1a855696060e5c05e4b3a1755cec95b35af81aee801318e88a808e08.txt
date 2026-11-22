@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+import itertools
+
+from sympy.core import S
+from sympy.core.containers import Tuple
+from sympy.core.function import _coeff_isneg
+from sympy.core.mod import Mod
+from sympy.core.mul import Mul
+from sympy.core.numbers import Rational
+from sympy.core.power import Pow
+from sympy.core.relational import Equality
+from sympy.core.symbol import Symbol
+from sympy.printing.precedence import PRECEDENCE, precedence, precedence_traditional
+from sympy.utilities import group
+from sympy.utilities.iterables import has_variety
+from sympy.core.sympify import SympifyError
+from sympy.core.compatibility import range
+from sympy.core.add import Add
+
+from sympy.printing.printer import Printer
+from sympy.printing.str import sstr
+from sympy.printing.conventions import requires_partial
+
+from .stringpict import prettyForm, stringPict
+from .pretty_symbology import xstr, hobj, vobj, xobj, xsym, pretty_symbol, \
+    pretty_atom, pretty_use_unicode, pretty_try_use_unicode, greek_unicode, U, \
+    annotated
+
+from sympy.utilities import default_sort_key
+
+# rename for usage from outside
+pprint_use_unicode = pretty_use_unicode
+pprint_try_use_unicode = pretty_try_use_unicode
+
+
+class PrettyPrinter(Printer):
+    """Printer, which converts an expression into 2D ASCII-art figure."""
+    printmethod = "_pretty"
+
+    _default_settings = {
+        "order": None,
+        "full_prec": "auto",
+        "use_unicode": None,
+        "wrap_line": True,
+        "num_columns": None,
+        "use_unicode_sqrt_char": True,
+    }
+
+    def __init__(self, settings=None):
+        Printer.__init__(self, settings)
+        self.emptyPrinter = lambda x: prettyForm(xstr(x))
+
+    @property
+    def _use_unicode(self):
+        if self._settings['use_unicode']:
+            return True
+        else:
+            return pretty_use_unicode()
+
+    def doprint(self, expr):
+        return self._print(expr).render(**self._settings)
+
+    # empty op so _print(stringPict) returns the same
+    def _print_stringPict(self, e):
+        return e
+
+    def _print_basestring(self, e):
+        return prettyForm(e)
+
+    def _print_atan2(self, e):
+        pform = prettyForm(*self._print_seq(e.args).parens())
+        pform = prettyForm(*pform.left('atan2'))
+        return pform
+
+    def _print_Symbol(self, e):
+        symb = pretty_symbol(e.name)
+        return prettyForm(symb)
+    _print_RandomSymbol = _print_Symbol
+
+    def _print_Float(self, e):
+        # we will use StrPrinter's Float printer, but we need to handle the
+        # full_prec ourselves, according to the self._print_level
+        full_prec = self._settings["full_prec"]
+        if full_prec == "auto":
+            full_prec = self._print_level == 1
+        return prettyForm(sstr(e, full_prec=full_prec))
+
+    def _print_Cross(self, e):
+        vec1 = e._expr1
+        vec2 = e._expr2
+        pform = self._print(vec2)
+        pform = prettyForm(*pform.left('('))
+        pform = prettyForm(*pform.right(')'))
+        pform = prettyForm(*pform.left(self._print(U('MULTIPLICATION SIGN'))))
+        pform = prettyForm(*pform.left(')'))
+        pform = prettyForm(*pform.left(self._print(vec1)))
+        pform = prettyForm(*pform.left('('))
+        return pform
+

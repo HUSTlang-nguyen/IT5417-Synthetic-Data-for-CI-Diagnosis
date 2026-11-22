@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-11822",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/conventions.py",
+      "function": "split_super_sub"
+    }
+  ],
+  "explanation": "For an empty string, the parsing loop does not run and name remains None. The function passes that None to the compiled name-with-digits regular expression, whose input must be a string/bytes, producing TypeError. The repair handles empty text before that invalid typed call.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/conventions.py",
+      "function": "split_super_sub"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter.doprint"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_Symbol"
+    },
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "pretty"
+    },
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

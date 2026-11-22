@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-15346",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/simplify/trigsimp.py",
+      "function": "_futrig"
+    }
+  ],
+  "explanation": "The simplification strategy runs TRmorrie before the inverse angle-sum rule TR10i. This ordering leaves the saved sin-cos dot product unsimplified. Moving TR10i before TRmorrie lets the strategy reach the required cos(1/50) expression.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

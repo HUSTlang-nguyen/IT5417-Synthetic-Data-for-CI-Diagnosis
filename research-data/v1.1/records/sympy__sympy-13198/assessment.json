@@ -1,0 +1,60 @@
+{
+  "run_id": "reproduce-20261112T045544386997Z",
+  "reviewed_at": "2026-11-12T12:16:03+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "6b8b076ccb8009da91cd660280eae62a2c6425e08c60a981528a7f0ff12226f2",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "1b97a80f660a07b41ddbfeba8eb05a804911e92afa8f5d0c0157cbe78c647a70",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "650a81fff935ce1e220f32915bbfcd86a0792d2dae4caafd2f408985c6c3f358",
+    "historical-fixed.stdout.txt": "869fba978f6ecd5efe6228dc5af0a66d8ad5fe687dcdd554c6c4ec8c3b0a09a0",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4e7aa4982272f1dad3383299a905a7b58b78e47fc8a8172ac628b3489e69bf2c"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dup_factor_list"
+    },
+    {
+      "file": "sympy/polys/factortools.py",
+      "function": "dmp_factor_list"
+    }
+  ],
+  "mechanism": "When converting exact factors back to an inexact domain, normalization divides each factor by the cleared denominator and omits the corresponding coefficient adjustment. Saved univariate/multivariate factor-list assertions report wrong normalized leading coefficients/factors. Normalizing by each factor maximum norm and accumulating its multiplicity in the coefficient preserves the required factorization representation.",
+  "limitations": "Both changed functions have saved failing tests. The assertions establish normalized-output differences; the review does not claim that every old product reconstruction was numerically unequal.",
+  "observed_junit": {
+    "base": {
+      "cases": 153,
+      "failures_or_errors": 3,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 153,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_factortools::test_dup_factor_list",
+      "message": "assert 1.0 == 10.6463972754741\n +  where 10.6463972754741 = RR(10.6463972754741)"
+    },
+    {
+      "test": "sympy.polys.tests.test_factortools::test_dmp_factor_list",
+      "message": "assert (2.0, [(x - 2... + 2.0*y, 1)]) == (8.0, [(0.5*x....5*x + y, 1)])\n  At index 0 diff: 2.0 != 8.0\n  Full diff:\n  - (8.0, [(0.5*x - y, 1), (0.5*x + y, 1)])\n  + (2.0, [(x - 2.0*y, 1), (x + 2.0*y, 1)])"
+    },
+    {
+      "test": "sympy.simplify.tests.test_combsimp::test_combsimp",
+      "message": "assert -1.0*(1.0*n + 2.0)*binomial(n + 1.0, k + 2.0)/(k - n) == (-2.0*(0.5*n + 1.0)*binomial(n + 1.0, k + 2.0) / (k - n))\n +  where -1.0*(1.0*n + 2.0)*binomial(n + 1.0, k + 2.0)/(k - n) = combsimp(binomial(n + 2, k + 2.0))\n +    where binomial(n + 2, k + 2.0) = binomial((n + 2), (k + 2.0))\n +  and   -2.0*(0.5*n + 1.0)*binomial(n + 1.0, k + 2.0) = Mul(-2.0, ((0.5 * n) + 1.0), binomial(n + 1.0, k + 2.0), evaluate=False)\n +    where binomial(n + 1.0, k + 2.0) = binomial((n + 1.0), (k + 2.0))"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

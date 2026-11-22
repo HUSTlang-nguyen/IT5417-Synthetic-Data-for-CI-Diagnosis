@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T051727604977Z-1",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_sympifyit.deco.__sympifyit_wrapper"
+    }
+  ],
+  "explanation": "The binary-method wrapper calls func with b,a instead of self-like a and operand b. Decorated matrix operators receive the wrong receiver/operand order, and the saved calls recurse through priority wrappers or produce mismatched zero-matrix representations.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixExpr._eval_Eq"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixExpr.__sub__"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "MatrixExpr.__mul__"
+    },
+    {
+      "file": "sympy/matrices/expressions/matexpr.py",
+      "function": "_sympifyit.deco.__sympifyit_wrapper"
+    },
+    {
+      "file": "sympy/matrices/expressions/matmul.py",
+      "function": "validate"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

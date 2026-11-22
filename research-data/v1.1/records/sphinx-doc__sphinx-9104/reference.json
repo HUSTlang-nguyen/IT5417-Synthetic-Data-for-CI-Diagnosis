@@ -1,0 +1,27 @@
+{
+  "sample_id": "sphinx-doc__sphinx-9104",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "PyXrefMixin.make_xrefs"
+    }
+  ],
+  "explanation": "The type-reference delimiter regex omits ellipsis. A Tuple-style ... token is sent to make_xref as a type name instead of being emitted as punctuation, producing a pending_xref where a literal node is expected. Adding ellipsis to the delimiter alternatives preserves the intended document tree.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/jinja2glue.py",
+      "function": "warning"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

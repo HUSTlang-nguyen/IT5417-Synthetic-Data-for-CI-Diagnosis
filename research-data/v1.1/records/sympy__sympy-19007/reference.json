@@ -1,0 +1,35 @@
+{
+  "sample_id": "sympy__sympy-19007",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/blockmatrix.py",
+      "function": "BlockMatrix._entry"
+    }
+  ],
+  "explanation": "Block selection treats an undecidable symbolic boundary comparison as if the index were inside the first block. Saved A[0,0] or A[i,j] prematurely becomes A1[...] even when block sizes/indices do not establish membership. Returning an unevaluated whole-matrix element preserves the unknown boundary.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/assumptions/ask.py",
+      "function": "AssumptionKeys.nonnegative"
+    },
+    {
+      "file": "sympy/assumptions/ask.py",
+      "function": "AssumptionKeys.negative"
+    },
+    {
+      "file": "sympy/assumptions/ask.py",
+      "function": "AssumptionKeys.positive"
+    },
+    {
+      "file": "sympy/assumptions/ask.py",
+      "function": "AssumptionKeys.nonzero"
+    },
+    {
+      "file": "sympy/polys/domains/finitefield.py",
+      "function": "FiniteField.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

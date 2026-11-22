@@ -1,0 +1,39 @@
+{
+  "sample_id": "sympy__sympy-21567",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "coth._eval_expand_trig"
+    },
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "ReciprocalHyperbolicFunction._eval_expand_trig"
+    }
+  ],
+  "explanation": "Coth and reciprocal hyperbolic classes lack trig-expansion handlers. Saved expand_trig leaves coth(2*x) and csch(x+y) unchanged instead of the required identities. The added coth expansion and reciprocal forwarding provide those forms.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "cosh.as_real_imag"
+    },
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "tanh.as_real_imag"
+    },
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "coth.as_real_imag"
+    },
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "sinh.as_real_imag"
+    },
+    {
+      "file": "sympy/functions/elementary/hyperbolic.py",
+      "function": "tanh._eval_is_real"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

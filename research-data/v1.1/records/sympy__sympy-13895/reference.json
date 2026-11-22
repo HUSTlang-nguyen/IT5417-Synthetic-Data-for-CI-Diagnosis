@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-13895",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/numbers.py",
+      "function": "Integer._eval_power"
+    }
+  ],
+  "explanation": "Negative integer factorization mixes the sign into the perfect-root extraction and compares its positive residual with the signed original. The saved negative rational powers fail canonical simplification, and a substitution/evaluation comparison differs by about0.61. Factoring the absolute base and applying the sign power separately preserves the branch-sensitive result.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

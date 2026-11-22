@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T042205985730Z",
+  "reviewed_at": "2026-11-12T12:08:43+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "edd6ced2812c17afc297fa53359333215fa250ea615bd43928e051ef7be6bb6b",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "8ef15d41ab62e1e149f93905cc1c81fbe07354933827b96839866e148d306eeb",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "4f61bb38a335638c9de621631f8a538935c03354947a2bba946def415f789e16",
+    "historical-fixed.stdout.txt": "cff6886c449195173461d98f5461ee43560afca811e326d590623f958e19df66",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "d50ceca5e8d9ccbab325217cebd0bcd6ebd90084c28c1bc21daf65332786cf37"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "_symbolic_factor_list"
+    }
+  ],
+  "mechanism": "The square-free factor helper emits separate factors having the same multiplicity instead of combining them into one square-free component. Saved sqf_list(x*(x+y)) returns two exponent1 factors instead of the single product x**2+x*y. Grouping factors by multiplicity preserves the square-free decomposition convention.",
+  "limitations": "The factors multiply to the same polynomial; the defect is the requested decomposition representation rather than a changed product value.",
+  "observed_junit": {
+    "base": {
+      "cases": 148,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 148,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.polys.tests.test_polytools::test_factor_terms",
+      "message": "assert (1, [(x, 1), (x + y, 1)]) == (1, [(x**2 + x*y, 1)])\n  At index 1 diff: [(x, 1), (x + y, 1)] != [(x**2 + x*y, 1)]\n  Full diff:\n  - (1, [(x**2 + x*y, 1)])\n  + (1, [(x, 1), (x + y, 1)])"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

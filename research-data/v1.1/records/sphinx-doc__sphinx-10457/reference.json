@@ -1,0 +1,23 @@
+{
+  "sample_id": "sphinx-doc__sphinx-10457",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sphinx/domains/python.py",
+      "function": "filter_meta_fields"
+    }
+  ],
+  "explanation": "The field filter removes the first meta field and then breaks, leaving further metadata visible in the document tree. The saved assertion sees two remaining child fields instead of one. Iterating in reverse and removing every matching field avoids skipped items while filtering all metadata.",
+  "retrieved_locations": [
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "assert_node"
+    },
+    {
+      "file": "sphinx/testing/util.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

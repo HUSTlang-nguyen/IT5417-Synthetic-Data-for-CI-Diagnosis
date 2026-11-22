@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-11788",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_SingularityFunction"
+    }
+  ],
+  "explanation": "The printer emits a power without bracing the complete exponent. The saved output has a space after the caret and an ungrouped five instead of the required braced exponent. Bracing the printed power fixes the exact LaTeX representation.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/stats/rv.py",
+      "function": "given"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

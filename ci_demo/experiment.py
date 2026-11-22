@@ -89,6 +89,9 @@ class Experiment:
             record.setdefault("artifacts", {}).update(artifacts)
             write_json(self.manifest, state)
 
+    def before_reservation(self, state, stage):
+        """Additional study-specific gates, under the reservation lock."""
+
     def reserve(self, operation, stage, *, request_role=None, timeout=0):
         if not re.fullmatch(r"[A-Za-z0-9_.-]{1,160}", operation):
             raise ValueError("Invalid operation identity")
@@ -101,6 +104,7 @@ class Experiment:
                     return previous
                 raise RuntimeError("Operation already reserved; inspect prior artifacts before any new trial: " + operation)
             timestamp, remaining = self._check(state, stage, timeout)
+            self.before_reservation(state, stage)
             stage_state = state.setdefault("stage_budget_started", {})
             if request_role is not None:
                 request_limits = state["request_limits"]

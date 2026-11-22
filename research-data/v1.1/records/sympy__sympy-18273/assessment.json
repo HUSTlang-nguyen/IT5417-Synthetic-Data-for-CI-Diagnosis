@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035641861593Z",
+  "reviewed_at": "2026-11-12T11:55:52+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "073c9071294ab22bff57cba1e394802d75937c4668a17a020db6aee97898c9fa",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "de20dc85edf7fc0df70cd51085d12276da1df8781436827d976213f086b17c54",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2a2ed938ca256da3358a8b54f1287620c25f1c364c5df1059002ff4c91e7b674",
+    "historical-fixed.stdout.txt": "00007bfeb60b8a2fea5e7778108460b1cc58bcaf2acb31789b4868935801d3dc",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e415d01a55e1ab73b3b9bcbcb9c5ef46b3d31e670516b08eb96ad6ce4f1b6804"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/simplify/cse_main.py",
+      "function": "tree_cse._find_repeated"
+    }
+  ],
+  "mechanism": "Common-subexpression discovery descends into RootOf internals and replaces its defining polynomial with a temporary symbol. Rebuilding then changes polynomial degree and the saved root index becomes invalid. Treating RootOf as opaque prevents that invalid extraction.",
+  "limitations": "The root constructor is the downstream detector; the CSE traversal is the causal reference. The saved IndexError is not evidence that the original RootOf index was invalid.",
+  "observed_junit": {
+    "base": {
+      "cases": 37,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 37,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.simplify.tests.test_cse::test_issue_18203",
+      "message": "IndexError: root index out of [-1, 0] range, got 1"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

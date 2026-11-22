@@ -1,0 +1,56 @@
+{
+  "run_id": "reproduce-20261112T034817709187Z",
+  "reviewed_at": "2026-11-12T11:50:26+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "39f9bbe97bcd399f7948d1f0876ab7e66cc5448ad412d576722ce69059c9fbda",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "7dedad769d72e78d47eff9f89fc74bf38d1c81ba8c8d53f2e466dda685cff787",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "efed2c561df7b4740e058bac0a2d9f1b649bcad5f35843fbef2397c7a8200250",
+    "historical-fixed.stdout.txt": "3aef2f757420210a512ab59b8f9169de21f279dd2fb6335cf4c010c46ef99be7",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "ba20c3d1788aa602657310637cb0e8b6eb903188c81335f9c9d253fbae90202a"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixProperties.is_upper"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixProperties._eval_is_upper_hessenberg"
+    }
+  ],
+  "mechanism": "The triangular and Hessenberg scans derive column bounds from row index alone, assuming a sufficiently wide matrix. Tall zero matrices reach column2 when only two columns exist, causing both saved IndexErrors. Bounding each inner range by self.cols preserves valid rectangular traversal.",
+  "limitations": "Two existing property functions share the same rectangular-bound assumption in one source task. The indexing helper is the downstream detector, not either causal loop.",
+  "observed_junit": {
+    "base": {
+      "cases": 136,
+      "failures_or_errors": 2,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 136,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.tests.test_matrices::test_is_upper",
+      "message": "IndexError: Index out of range: a[2]"
+    },
+    {
+      "test": "sympy.matrices.tests.test_matrices::test_hessenberg",
+      "message": "IndexError: Index out of range: a[2]"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

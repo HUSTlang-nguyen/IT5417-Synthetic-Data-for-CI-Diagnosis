@@ -1,0 +1,50 @@
+{
+  "execution_log": "============================= test session starts ==============================\nplatform linux -- Python 3.9.25, pytest-7.4.4, pluggy-1.6.0 -- /opt/venv/bin/python\narchitecture: 64-bit\ncache:        yes\nground types: python \n\nrootdir: /source/head\nconfigfile: pytest.ini\ncollecting ... collected 30 items\n\nsympy/codegen/tests/test_cnodes.py::test_sizeof PASSED                   [  3%]\nsympy/core/tests/test_basic.py::test_atoms PASSED                        [  6%]\nsympy/codegen/tests/test_cnodes.py::test_alignof PASSED                  [ 10%]\nsympy/codegen/tests/test_cnodes.py::test_CommaOperator PASSED            [ 13%]\nsympy/codegen/tests/test_cnodes.py::test_goto_Label PASSED               [ 16%]\nsympy/codegen/tests/test_cnodes.py::test_PreDecrement PASSED             [ 20%]\nsympy/codegen/tests/test_cnodes.py::test_PostDecrement PASSED            [ 23%]\nsympy/codegen/tests/test_cnodes.py::test_PreIncrement PASSED             [ 26%]\nsympy/codegen/tests/test_cnodes.py::test_PostIncrement PASSED            [ 30%]\nsympy/codegen/tests/test_cnodes.py::test_struct PASSED                   [ 33%]\nsympy/core/tests/test_basic.py::test__aresame PASSED                     [ 36%]\nsympy/core/tests/test_basic.py::test_structure PASSED                    [ 40%]\nsympy/core/tests/test_basic.py::test_equality PASSED                     [ 43%]\nsympy/core/tests/test_basic.py::test_matches_basic PASSED                [ 46%]\nsympy/core/tests/test_basic.py::test_has PASSED                          [ 50%]\nsympy/core/tests/test_basic.py::test_subs PASSED                         [ 53%]\nsympy/core/tests/test_basic.py::test_subs_with_unicode_symbols PASSED    [ 56%]\nsympy/core/tests/test_basic.py::test_free_symbols_empty PASSED           [ 60%]\nsympy/core/tests/test_basic.py::test_doit PASSED                         [ 63%]\nsympy/core/tests/test_basic.py::test_S PASSED                            [ 66%]\nsympy/core/tests/test_basic.py::test_xreplace PASSED                     [ 70%]\nsympy/core/tests/test_basic.py::test_preorder_traversal PASSED           [ 73%]\nsympy/core/tests/test_basic.py::test_sorted_args PASSED                  [ 76%]\nsympy/core/tests/test_basic.py::test_call PASSED                         [ 80%]\nsympy/core/tests/test_basic.py::test_rewrite FAILED                      [ 83%]\nsympy/core/tests/test_basic.py::test_literal_evalf_is_number_is_zero_is_comparable PASSED [ 86%]\nsympy/core/tests/test_basic.py::test_as_Basic PASSED                     [ 90%]\nsympy/core/tests/test_basic.py::test_atomic PASSED                       [ 93%]\nsympy/core/tests/test_basic.py::test_as_dummy PASSED                     [ 96%]\nsympy/core/tests/test_basic.py::test_canonical_variables PASSED          [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_rewrite _________________________________\n\n    def test_rewrite():\n        x, y, z = symbols('x y z')\n        a, b = symbols('a b')\n        f1 = sin(x) + cos(x)\n>       assert f1.rewrite(cos,exp) == exp(I*x)/2 + sin(x) + exp(-I*x)/2\nE       assert sin(x) + cos(x) == (((exp(I*x) / 2) + sin(x)) + (exp(-I*x) / 2))\nE        +  where sin(x) + cos(x) = <bound method Basic.rewrite of sin(x) + cos(x)>(cos, exp)\nE        +    where <bound method Basic.rewrite of sin(x) + cos(x)> = sin(x) + cos(x).rewrite\nE        +  and   exp(I*x) = exp((I * x))\nE        +  and   sin(x) = sin(x)\nE        +  and   exp(-I*x) = exp((-I * x))\n\nsympy/core/tests/test_basic.py:226: AssertionError\n=============================== warnings summary ===============================\n../../opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373\n  /opt/venv/lib/python3.9/site-packages/_pytest/config/__init__.py:1373: PytestConfigWarning: Unknown config option: doctestplus\n  \n    self._warn_or_fail_if_strict(f\"Unknown config option: {key}\\n\")\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n------------------- generated xml file: /results/results.xml -------------------\n                                DO *NOT* COMMIT!                                \n=========================== short test summary info ============================\nFAILED sympy/core/tests/test_basic.py::test_rewrite - assert sin(x) + cos(x) ...\n=================== 1 failed, 29 passed, 1 warning in 0.28s ====================\n",
+  "code": [
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.matches",
+      "start_line": 1556,
+      "end_line": 1589,
+      "score": 51.13555,
+      "text": "sympy/core/basic.py::Basic.matches lines 1556-1589\n    def matches(self, expr, repl_dict={}, old=False):\n        \"\"\"\n        Helper method for match() that looks for a match between Wild symbols\n        in self and expressions in expr.\n\n        Examples\n        ========\n\n        >>> from sympy import symbols, Wild, Basic\n        >>> a, b, c = symbols('a b c')\n        >>> x = Wild('x')\n        >>> Basic(a + x, x).matches(Basic(a + b, c)) is None\n        True\n        >>> Basic(a + x, x).matches(Basic(a + b + c, b + c))\n        {x_: b + c}\n        \"\"\"\n        expr = sympify(expr)\n        if not isinstance(expr, self.__class__):\n            return None\n\n        if self == expr:\n            return repl_dict\n\n        if len(self.args) != len(expr.args):\n            return None\n\n        d = repl_dict.copy()\n        for arg, other_arg in zip(self.args, expr.args):\n            if arg == other_arg:\n                continue\n            d = arg.xreplace(d).matches(other_arg, d, old=old)\n            if d is None:\n                return None\n        return d",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.as_content_primitive",
+      "start_line": 766,
+      "end_line": 775,
+      "score": 51.095445,
+      "text": "sympy/core/basic.py::Basic.as_content_primitive lines 766-775\n    def as_content_primitive(self, radical=False, clear=True):\n        \"\"\"A stub to allow Basic args (like Tuple) to be skipped when computing\n        the content and primitive components of an expression.\n\n        See Also\n        ========\n\n        sympy.core.expr.Expr.as_content_primitive\n        \"\"\"\n        return S.One, self",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic._compare_pretty",
+      "start_line": 218,
+      "end_line": 242,
+      "score": 51.066004,
+      "text": "sympy/core/basic.py::Basic._compare_pretty lines 218-242\n    def _compare_pretty(a, b):\n        from sympy.series.order import Order\n        if isinstance(a, Order) and not isinstance(b, Order):\n            return 1\n        if not isinstance(a, Order) and isinstance(b, Order):\n            return -1\n\n        if a.is_Rational and b.is_Rational:\n            l = a.p * b.q\n            r = b.p * a.q\n            return (l > r) - (l < r)\n        else:\n            from sympy.core.symbol import Wild\n            p1, p2, p3 = Wild(\"p1\"), Wild(\"p2\"), Wild(\"p3\")\n            r_a = a.match(p1 * p2**p3)\n            if r_a and p3 in r_a:\n                a3 = r_a[p3]\n                r_b = b.match(p1 * p2**p3)\n                if r_b and p3 in r_b:\n                    b3 = r_b[p3]\n                    c = Basic.compare(a3, b3)\n                    if c != 0:\n                        return c\n\n        return Basic.compare(a, b)",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.sort_key",
+      "start_line": 268,
+      "end_line": 296,
+      "score": 51.014185,
+      "text": "sympy/core/basic.py::Basic.sort_key lines 268-296\n    def sort_key(self, order=None):\n        \"\"\"\n        Return a sort key.\n\n        Examples\n        ========\n\n        >>> from sympy.core import S, I\n\n        >>> sorted([S(1)/2, I, -I], key=lambda x: x.sort_key())\n        [1/2, -I, I]\n\n        >>> S(\"[x, 1/x, 1/x**2, x**2, x**(1/2), x**(1/4), x**(3/2)]\")\n        [x, 1/x, x**(-2), x**2, sqrt(x), x**(1/4), x**(3/2)]\n        >>> sorted(_, key=lambda x: x.sort_key())\n        [x**(-2), 1/x, x**(1/4), sqrt(x), x, x**(3/2), x**2]\n\n        \"\"\"\n\n        # XXX: remove this when issue 5169 is fixed\n        def inner_key(arg):\n            if isinstance(arg, Basic):\n                return arg.sort_key(order)\n            else:\n                return arg\n\n        args = self._sorted_args\n        args = len(args), tuple([inner_key(arg) for arg in args])\n        return self.class_key(), args, S.One.sort_key(), S.One",
+      "truncated": false
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "Basic.__getstate__",
+      "start_line": 113,
+      "end_line": 114,
+      "score": 51.0,
+      "text": "sympy/core/basic.py::Basic.__getstate__ lines 113-114\n    def __getstate__(self):\n        return {}",
+      "truncated": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-13173",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/polys/polytools.py",
+      "function": "degree"
+    }
+  ],
+  "explanation": "The public degree helper silently chooses a generator when given a multivariate expression without an explicit symbol. The saved degree(y**2+x**3) does not raise its required TypeError. Checking multiple free symbols before choosing a default enforces the unambiguous-argument contract.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/utilities/pytest.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

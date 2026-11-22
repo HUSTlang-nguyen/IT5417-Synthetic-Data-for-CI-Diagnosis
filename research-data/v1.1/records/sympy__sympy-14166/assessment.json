@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T233833280949Z",
+  "reviewed_at": "2026-11-12T07:33:48+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "8e639d330128d3c273ebe87b166dd3beb0bd2419de6c2b0d3ea403a74cc1cf42",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "abafe34b1b66316699e931a0a63428e8a60fa7ca09e9c1d3a020eff963761bb1",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "23e7800b605d3d2bfad8526a81c15148f583992c372da2d0f4dc9bcb01fc4784",
+    "historical-fixed.stdout.txt": "30187cfd0a6fbb16089623b23bba63bbc36174ae096a19d2a358d8f86dcf4c2b",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "dad2158ac3dd60ab93b33507644509191f0da392bd3b1dd9ce7947e0deefe663"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Order"
+    }
+  ],
+  "mechanism": "The Order printer emits a calligraphic O while the tested notation contract requires plain O. The return format therefore differs by the mathcal wrapper. Replacing only that wrapper matches the exact saved expected LaTeX string.",
+  "limitations": "This is a representation/notation defect with a narrow string-level oracle, not proof of incorrect mathematical order computation or TeX syntax.",
+  "observed_junit": {
+    "base": {
+      "cases": 113,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 113,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_functions",
+      "message": "AssertionError: assert '\\\\mathcal{O}\\\\left(x\\\\right)' == 'O\\\\left(x\\\\right)'\n  - O\\left(x\\right)\n  + \\mathcal{O}\\left(x\\right)\n  ? +++++++++ +"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

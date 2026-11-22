@@ -1,0 +1,31 @@
+{
+  "sample_id": "synthetic-generate-20261112T075646073138Z-2",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixArithmetic.__div__"
+    }
+  ],
+  "explanation": "The reciprocal scale uses floor division instead of ordinary division. A symbolic scalar reaches Integer conversion and saved execution raises TypeError instead of producing reciprocal matrix entries.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixBase.QRdecomposition"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixBase.QRsolve"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixBase.inverse_ADJ"
+    },
+    {
+      "file": "sympy/matrices/matrices.py",
+      "function": "MatrixBase.inv"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

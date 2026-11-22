@@ -1,0 +1,23 @@
+{
+  "sample_id": "synthetic-generate-20261112T072946060850Z-1",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "as_mpmath"
+    }
+  ],
+  "explanation": "The zero-equality fallback tests equality with1. Floating zero is not the Zero singleton, so it falls through conversion to an unusable result and the saved mpmath call raises cannot-create-mpf-from-None TypeError.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "as_mpmath"
+    },
+    {
+      "file": "sympy/core/evalf.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,27 @@
+{
+  "sample_id": "synthetic-generate-20261112T090258463434Z-3",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/matrices/expressions/diagonal.py",
+      "function": "DiagonalMatrix._entry"
+    }
+  ],
+  "explanation": "The zero-return guard checks Eq(i,j) true rather than false, shadowing the actual diagonal-value branch. Saved D[1,1] becomes0 instead of X[1,1].",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/solveset.py",
+      "function": "solveset"
+    },
+    {
+      "file": "sympy/sets/sets.py",
+      "function": "Set.complement"
+    },
+    {
+      "file": "sympy/core/symbol.py",
+      "function": "symbols"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

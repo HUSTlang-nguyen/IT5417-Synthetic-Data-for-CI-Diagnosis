@@ -1,0 +1,72 @@
+{
+  "schema_version": 2,
+  "kind": "dataset_collection",
+  "protocol": "dataset-v2",
+  "status": "preflight",
+  "targets": {
+    "real": {
+      "train": 700,
+      "validation": 150,
+      "test": 150
+    },
+    "synthetic_train": 700
+  },
+  "minimum_repositories": {
+    "train": 8,
+    "validation": 3,
+    "test": 3
+  },
+  "maximum_per_repository": {
+    "real_train": 140,
+    "synthetic_train": 140,
+    "validation": 60,
+    "test": 60
+  },
+  "labels": [
+    "syntax",
+    "dependency/configuration",
+    "API/type",
+    "logic/value"
+  ],
+  "minimum_real_per_class": {
+    "train": 30,
+    "validation": 10,
+    "test": 10
+  },
+  "limits": {
+    "execution_seconds": 172800,
+    "new_source_cases": 2000,
+    "new_generator_requests": 3000,
+    "screened_source_identities": 5000,
+    "minimum_free_bytes": 42949672960,
+    "maximum_artifact_growth_bytes": 107374182400,
+    "build_seconds": 1200,
+    "test_seconds": 300,
+    "model_seconds": 180
+  },
+  "models": {
+    "generator": "7B_current_pinned_digest_to_verify_before_first_request",
+    "diagnoser_requests": 0
+  },
+  "source_policy": {
+    "primary": "SWE-bench",
+    "supplementary": "AIDev",
+    "source_ratio": null,
+    "repo_roles": "freeze_before_execution",
+    "v1_heldout": "development_only_excluded_from_v2_training_and_heldout"
+  },
+  "publication": {
+    "root": "research-data",
+    "max_file_bytes": 10485760,
+    "max_total_package_bytes": 104857600,
+    "license_attribution_privacy_audit_required": true,
+    "raw_in_git": false
+  },
+  "preflight_gates": [
+    "verify_generator_digest",
+    "initialize_persistent_operation_ledger_and_storage_baseline",
+    "freeze_source_revisions_and_repo_roles"
+  ],
+  "training_authorized": false,
+  "test_inference_authorized": false
+}

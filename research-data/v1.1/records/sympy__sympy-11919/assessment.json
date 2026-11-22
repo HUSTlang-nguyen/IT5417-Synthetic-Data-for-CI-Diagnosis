@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035039157426Z",
+  "reviewed_at": "2026-11-12T11:52:13+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "9b7c87a0a539615de5bb6d4a7f18d4309176ccf424fb28c49740b4c6a7913036",
+    "license-evidence.json": "cdca85fca87616de40478482e4afe239f1be3f318c58ba80669a3a89506043ee",
+    "historical-base.stdout.txt": "96aa106e71761eff03ffb437fa8ab9053721e334d9a11b31df338af7afc17c96",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e6f1064fc99b6547b05cf1b95dca89fcf9f811c4f6dc12038956f9913289d236",
+    "historical-fixed.stdout.txt": "df72724f0e3ac0d64a7e63c288773695adf8d5d03fffb7669edf4bd67214fc99",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "41d7c2c05bd66b4e74352cc03dd2660d9c656bba1864b8d5240c447fbe511de1"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_gamma"
+    }
+  ],
+  "mechanism": "Dispatch by the name gamma sends both the built-in gamma function and a user-defined function with that name to a handler that always emits uppercase Gamma. The saved user-defined case requires lowercase gamma. Checking the actual function identity distinguishes them.",
+  "limitations": "This is symbol rendering, not a numerical gamma calculation. Built-in and user-defined functions sharing a name are different objects.",
+  "observed_junit": {
+    "base": {
+      "cases": 86,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 86,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.pretty.tests.test_pretty::test_gammas",
+      "message": "AssertionError: assert 'Γ(x)' == 'γ(x)'\n  - γ(x)\n  ? ^\n  + Γ(x)\n  ? ^"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

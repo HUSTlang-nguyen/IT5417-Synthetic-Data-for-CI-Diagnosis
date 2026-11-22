@@ -1,0 +1,35 @@
+{
+  "sample_id": "pylint-dev__pylint-5859",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "pylint/checkers/misc.py",
+      "function": "EncodingChecker.open"
+    }
+  ],
+  "explanation": "The fixme-note regex requires a word boundary after the configured marker. A punctuation-only marker such as ??? has no word boundary before whitespace/end, so the checker emits no expected fixme message. A colon/whitespace/end lookahead expresses the actual marker delimiter rule.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/testutils/checker_test_case.py",
+      "function": "CheckerTestCase.assertAddsMessages"
+    },
+    {
+      "file": "pylint/testutils/checker_test_case.py",
+      "function": "CheckerTestCase.assertNoMessages"
+    },
+    {
+      "file": "pylint/testutils/checker_test_case.py",
+      "function": "CheckerTestCase.walk"
+    },
+    {
+      "file": "pylint/testutils/checker_test_case.py",
+      "function": "<module>"
+    },
+    {
+      "file": "pylint/testutils/checker_test_case.py",
+      "function": "CheckerTestCase.setup_method"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

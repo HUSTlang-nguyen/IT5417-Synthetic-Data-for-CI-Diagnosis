@@ -1,0 +1,23 @@
+{
+  "sample_id": "sympy__sympy-21847",
+  "cause_type": "logic/value",
+  "locations": [
+    {
+      "file": "sympy/polys/monomials.py",
+      "function": "itermonomials"
+    }
+  ],
+  "explanation": "Minimum total degree is checked with the maximum individual exponent instead of the sum. Mixed monomials x**2*y and x*y**2 are incorrectly omitted from the saved total-degree3 set. Summing exponents implements the total-degree bound.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/polys/monomials.py",
+      "function": "itermonomials"
+    },
+    {
+      "file": "sympy/stats/crv_types.py",
+      "function": "BoundedParetoDistribution.set"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

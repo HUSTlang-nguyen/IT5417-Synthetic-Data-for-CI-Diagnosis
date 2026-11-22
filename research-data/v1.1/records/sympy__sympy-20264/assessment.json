@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T035443050523Z",
+  "reviewed_at": "2026-11-12T11:54:20+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "a6af6e917d85c2b9bfe9c695bfa9bf7f77ffed39422c6f8654ff50204c32cbff",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "07ef1334fb17f1a780899408e3282f530dd5737388e896515b8b8051a0f77684",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "e138dee3ab51c510e93e3c9fe0b7e6399771dd16754996c8f7f281fac49742ce",
+    "historical-fixed.stdout.txt": "1f7fa35863bbb48d8de0c9c2522675cf5b63a76bd3c5d01a0efd660f1c53d829",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4629f240a3e033c23b6d62d9c64250d0dab5bb282d332c09bc9abaa8a932415c"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/latex.py",
+      "function": "LatexPrinter._print_Pow"
+    }
+  ],
+  "mechanism": "A preserved reciprocal rational power is delegated to the multiplication printer, which routes the same expression back to power printing. The saved stack repeats that cycle until RecursionError. Handling the rational reciprocal explicitly emits a finite nested-fraction string.",
+  "limitations": "The test intentionally preserves an unevaluated power. The reference is the dispatch branch, not a generic increase in recursion limit.",
+  "observed_junit": {
+    "base": {
+      "cases": 151,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 151,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.tests.test_latex::test_latex_basic",
+      "message": "RecursionError: maximum recursion depth exceeded"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041336617357Z",
+  "reviewed_at": "2026-11-12T12:05:04+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "aaa13ea449a83d226740333e899257ca9f7282d2f45580e22350f9be681b6357",
+    "license-evidence.json": "21aafe359af1642ffe36e3ef3e65a38db9d11167d7913dc9dcc8579b03d3d7f5",
+    "historical-base.stdout.txt": "23d99e7750754b8635e0b2f59706cfe688ee99b3e9454bc0cb905249b0909b9f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "f57b6f5124b1cd1a16539c6f037b628f8f64d61deef22ee8cd429c5c05b0d067",
+    "historical-fixed.stdout.txt": "3a6ea423c5e95df5438fa228cda512403bc26420b3e1516836e474db59920cb6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "2b0c8c5eb1643ab41483a7d8ac9a3ba9584a53c5458c687372410e4126c800fc"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/tensor/indexed.py",
+      "function": "Idx.__new__"
+    }
+  ],
+  "mechanism": "The range guard negates an integer predicate that can be unknown. A symbolic dimension with unknown integer status is consequently rejected as noninteger and raises the saved TypeError. Rejecting only a definitely false predicate preserves admissible symbolic dimensions.",
+  "limitations": "The TypeError is the symptom of three-valued predicate handling, rather than evidence of a wrong caller argument type.",
+  "observed_junit": {
+    "base": {
+      "cases": 28,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 28,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.tensor.tests.test_indexed::test_issue_18604",
+      "message": "TypeError: Idx object requires an integer dimension."
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

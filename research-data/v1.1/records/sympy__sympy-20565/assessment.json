@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261111T204726350635Z",
+  "reviewed_at": "2026-11-12T07:23:50+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "9565c5c6d6d9adb29610ed868773715f90b25a07396fc1b7e49e9f0c668a1652",
+    "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+    "historical-base.stdout.txt": "506e07ad88ae0169eefd9903bfc2f7a9d27f677db7cec0bb2b42c127a2b2efee",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "18426915ebb3ac8e528704ba71483246fd991d0e13bbdcee63ea561a83446702",
+    "historical-fixed.stdout.txt": "c35c04d7c77fec9b28e5d32d8cc9cca29fc4c0aa638bf86b3cc391cbb227aba6",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "06f73a2d31c9339936ab09cd624de7ef401cdfdeadb4bd8be800ccc127ddf278"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/sets/fancysets.py",
+      "function": "Rationals._contains"
+    }
+  ],
+  "mechanism": "For Number instances membership uses is_Rational, a structural class flag, rather than the mathematical is_rational assumption. Float 0.5 is therefore rejected as false instead of retaining an unevaluated membership when rationality is unknown. Removing the special Number branch preserves the assumption-based semantics.",
+  "limitations": "Although an API field choice triggers it, the observed fault is an incorrect membership truth value; label follows semantics rather than the Float type alone.",
+  "observed_junit": {
+    "base": {
+      "cases": 47,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 47,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.sets.tests.test_fancysets::test_Rationals",
+      "message": "assert False == Contains(0.5, Rationals)\n +  where False = <bound method Set.contains of Rationals>(0.5)\n +    where <bound method Set.contains of Rationals> = Rationals.contains\n +      where Rationals = S.Rationals\n +  and   Contains(0.5, Rationals) = Contains(0.5, Rationals, evaluate=False)\n +    where Rationals = S.Rationals"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

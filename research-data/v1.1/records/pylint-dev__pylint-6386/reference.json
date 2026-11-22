@@ -1,0 +1,23 @@
+{
+  "sample_id": "pylint-dev__pylint-6386",
+  "cause_type": "dependency/configuration",
+  "locations": [
+    {
+      "file": "pylint/config/utils.py",
+      "function": "_preprocess_options"
+    }
+  ],
+  "explanation": "The preprocessing loop recognizes only arguments starting with two hyphens, and its callback map lacks the -v alias. The short verbose flag therefore reaches ordinary argparse handling, which expects an argument and exits with status 2. Processing single-hyphen options and registering -v reaches the existing no-value verbose callback.",
+  "retrieved_locations": [
+    {
+      "file": "pylint/config/config_initialization.py",
+      "function": "_config_initialization"
+    },
+    {
+      "file": "pylint/lint/run.py",
+      "function": "Run.__init__"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

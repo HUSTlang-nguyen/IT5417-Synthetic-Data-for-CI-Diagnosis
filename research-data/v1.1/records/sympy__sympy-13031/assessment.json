@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T041530921579Z",
+  "reviewed_at": "2026-11-12T12:06:22+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "7cb8f6e5d9895638632c24073dcb773e16e3108d66c2a107fe70cb595239aae5",
+    "license-evidence.json": "d257f66426a8d183fb4e10a6fc1a9012de25fc04a2097f0cc98e9f0b25d7b302",
+    "historical-base.stdout.txt": "96d0110d278a28b15d97b95e9248914fb500946d09f5c8e4836be4e3689f082f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "986e980294327b6e9dcf9f6823ab4d2c270d6a8af0c67bc6f0bf68cfa32d9e77",
+    "historical-fixed.stdout.txt": "8a2dbf26df7babf5d9f9c4c8b2d0a36d4a164351d0bcb3498759dbbbee99e7e7",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "1314ffb8e993f369682527584990867817a675aa348e805f3c5d764927f180a1"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/matrices/sparse.py",
+      "function": "MutableSparseMatrix.row_join"
+    }
+  ],
+  "mechanism": "The early empty-matrix shortcut returns only the other operand and discards existing zero-row column dimensions. The saved hstack of widths0,1,2,3 yields width3 instead of6. Keeping the appropriate empty shape through normal row joining preserves the total width.",
+  "limitations": "The patch also corrects column joining. The first saved failure directly proves the horizontal/row_join path.",
+  "observed_junit": {
+    "base": {
+      "cases": 10,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 10,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.matrices.tests.test_sparse::test_sparse_matrix",
+      "message": "assert Matrix(0, 3, []) == Matrix(0, 6, [])\n  Full diff:\n  - Matrix(0, 6, [])\n  ?           ^\n  + Matrix(0, 3, [])\n  ?           ^"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

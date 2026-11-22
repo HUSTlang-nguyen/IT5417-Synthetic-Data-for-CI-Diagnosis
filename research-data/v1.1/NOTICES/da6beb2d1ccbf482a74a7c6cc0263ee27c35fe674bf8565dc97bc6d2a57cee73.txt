@@ -1,0 +1,100 @@
+from __future__ import print_function, division
+
+from collections import MutableMapping, defaultdict
+
+from sympy.core import (Add, Mul, Pow, Integer, Number, NumberSymbol,)
+from sympy.core.numbers import ImaginaryUnit
+from sympy.core.sympify import _sympify
+from sympy.core.rules import Transform
+from sympy.core.logic import fuzzy_or, fuzzy_and
+from sympy.matrices.expressions import MatMul
+
+from sympy.functions.elementary.complexes import Abs
+
+from sympy.assumptions.ask import Q
+from sympy.assumptions.assume import Predicate, AppliedPredicate
+from sympy.logic.boolalg import (Equivalent, Implies, And, Or,
+    BooleanFunction, Not)
+
+# APIs here may be subject to change
+
+# XXX: Better name?
+class UnevaluatedOnFree(BooleanFunction):
+    """
+    Represents a Boolean function that remains unevaluated on free predicates
+
+    This is intended to be a superclass of other classes, which define the
+    behavior on singly applied predicates.
+
+    A free predicate is a predicate that is not applied, or a combination
+    thereof. For example, Q.zero or Or(Q.positive, Q.negative).
+
+    A singly applied predicate is a free predicate applied everywhere to a
+    single expression. For instance, Q.zero(x) and Or(Q.positive(x*y),
+    Q.negative(x*y)) are singly applied, but Or(Q.positive(x), Q.negative(y))
+    and Or(Q.positive, Q.negative(y)) are not.
+
+    The boolean literals True and False are considered to be both free and
+    singly applied.
+
+    This class raises ValueError unless the input is a free predicate or a
+    singly applied predicate.
+
+    On a free predicate, this class remains unevaluated. On a singly applied
+    predicate, the method apply() is called and returned, or the original
+    expression returned if apply() returns None. When apply() is called,
+    self.expr is set to the unique expression that the predicates are applied
+    at. self.pred is set to the free form of the predicate.
+
+    The typical usage is to create this class with free predicates and
+    evaluate it using .rcall().
+
+    """
+    def __new__(cls, arg):
+        # Mostly type checking here
+        arg = _sympify(arg)
+        predicates = arg.atoms(Predicate)
+        applied_predicates = arg.atoms(AppliedPredicate)
+        if predicates and applied_predicates:
+            raise ValueError("arg must be either completely free or singly applied")
+        if not applied_predicates:
+            obj = BooleanFunction.__new__(cls, arg)
+            obj.pred = arg
+            obj.expr = None
+            return obj
+        predicate_args = {pred.args[0] for pred in applied_predicates}
+        if len(predicate_args) > 1:
+            raise ValueError("The AppliedPredicates in arg must be applied to a single expression.")
+        obj = BooleanFunction.__new__(cls, arg)
+        obj.expr = predicate_args.pop()
+        obj.pred = arg.xreplace(Transform(lambda e: e.func, lambda e:
+            isinstance(e, AppliedPredicate)))
+        applied = obj.apply()
+        if applied is None:
+            return obj
+        return applied
+
+    def apply(self):
+        return
+
+
+class AllArgs(UnevaluatedOnFree):
+    """
+    Class representing vectorizing a predicate over all the .args of an
+    expression
+
+    See the docstring of UnevaluatedOnFree for more information on this
+    class.
+
+    The typical usage is to evaluate predicates with expressions using .rcall().
+
+    Example
+    =======
+
+    >>> from sympy.assumptions.sathandlers import AllArgs
+    >>> from sympy import symbols, Q
+    >>> x, y = symbols('x y')
+    >>> a = AllArgs(Q.positive | Q.negative)
+    >>> a
+    AllArgs(Q.negative | Q.positive)
+    >>> a.rcall(x*y)

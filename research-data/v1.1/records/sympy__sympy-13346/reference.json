@@ -1,0 +1,27 @@
+{
+  "sample_id": "sympy__sympy-13346",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/pycode.py",
+      "function": "MpmathPrinter._print_Integer"
+    }
+  ],
+  "explanation": "The integer printer wraps integer literals in mpmath.mpf. The default lambdified sin(x)**2 expression therefore computes an mpf result where the test requires a native float. Removing this override lets the inherited integer representation avoid that promotion.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/solvers/diophantine.py",
+      "function": "power_representation"
+    },
+    {
+      "file": "sympy/core/basic.py",
+      "function": "<module>"
+    },
+    {
+      "file": "sympy/plotting/plot.py",
+      "function": "<module>"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}

@@ -1,0 +1,36 @@
+{
+  "run_id": "reproduce-20261111T194603913913Z",
+  "reviewed_at": "2026-11-12T02:53:26+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "human_confirmation": "pending",
+  "evidence_hashes": {
+    "manifest.json": "e4a3d45fc1b6b8b050f6e816b99efbb533c139c5b598a6f5129ff48e796d7709",
+    "license-evidence.json": "ac76d90023608476a0a20c368aa3001956212d6e8d81685ad92a7d810fa25f21",
+    "historical-base.stdout.txt": "e2aeaf7da18cd8f7553c7344633debca368933bcbf97ee42f83b31742e31d5cb",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "9564fd5b9db035cae6f03646f67b27ab182c5b21699158d979397b020b608962",
+    "historical-fixed.stdout.txt": "8663516090fdcde7c7570334b4a221284ca4c35ce997a48c52380a4081a7977f",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "e1e0f087c5da37897e6cf4498766168df3a3a5700cbf3ad8682773528d23d265"
+  },
+  "cause_type": "logic/value",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sphinx/util/inspect.py",
+      "function": "TypeAliasForwardRef.__repr__"
+    }
+  ],
+  "missing_definitions": [
+    {
+      "file": "sphinx/util/inspect.py",
+      "function": "TypeAliasForwardRef.__repr__"
+    }
+  ],
+  "mechanism": "TypeAliasForwardRef stores its alias name but has no __repr__. stringify reaches repr(annotation), producing the default object representation instead of example. The reference repair supplies __repr__ returning self.name, after which the frozen test passes.",
+  "evidence_reason": "Base test_TypeAliasForwardRef fails at test_util_inspect.py:21: object repr instead of example; 71 other tests pass. Fixed has 72 passed. Read inspect.py class at lines 475-488, typing.py stringify fallback, and repair patch adding __repr__ and __hash__.",
+  "limitations": "Missing-method localization is an inferred causal absence, explicitly recorded as missing_definition; it is not an existing failing-source line. The patch also adds __hash__, but that is not established as the cause of the observed first representation assertion."
+}

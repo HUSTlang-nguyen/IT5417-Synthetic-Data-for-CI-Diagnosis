@@ -1,0 +1,48 @@
+{
+  "run_id": "reproduce-20261112T001931567702Z",
+  "reviewed_at": "2026-11-12T10:37:16+07:00",
+  "quality": "silver",
+  "disposition": "include",
+  "actor": "unknown",
+  "human_confirmation": "pending",
+  "label_source": "evidence_review_by_coding_assistant_not_expert_gold",
+  "evidence_hashes": {
+    "manifest.json": "e32ad40af8191a8b6cfef9360f8d92ea33a54d8d7656334890ee7471f9564a8b",
+    "license-evidence.json": "0abf0c889fcc9bb9dd3d2c9fce2d5413213c72324aa9dfe62fd39e9f272fb0da",
+    "historical-base.stdout.txt": "e8e163c9b33987e86c214d3a07c535aa0aa3c1402f178d447f6330948bc11a3f",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "ff59a6b3e966d0d4f66d3ae29ef2fac5396230eb38c75b24702411cc86863138",
+    "historical-fixed.stdout.txt": "1effaf6b405868f989eb47a8d28bd39be63d3728a149a792f0397e9565aa5af7",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "4dac2ad35b0898874855da688bd54476304bfde8d0042115644cc1a5e55b9f45"
+  },
+  "cause_type": "API/type",
+  "confidence": "high",
+  "locations": [
+    {
+      "file": "sympy/printing/pretty/pretty.py",
+      "function": "PrettyPrinter._print_MatAdd"
+    }
+  ],
+  "mechanism": "The matrix-sum printer assumes item.args[0] is a scalar coefficient. For a matrix symbol that argument is its textual name; sympifying a name such as y* raises the saved SympifyError. Extracting the scalar coefficient with as_coeff_mmul avoids parsing the matrix name as an expression.",
+  "limitations": "The reported SyntaxError belongs to an attempted parse of a symbolic name, not invalid Python source. The causal reference is the wrong argument interpretation in the printer.",
+  "observed_junit": {
+    "base": {
+      "cases": 112,
+      "failures_or_errors": 1,
+      "skipped": 0
+    },
+    "head": {
+      "cases": 112,
+      "failures_or_errors": 0,
+      "skipped": 0
+    }
+  },
+  "observed_failures": [
+    {
+      "test": "sympy.printing.pretty.tests.test_pretty::test_MatrixSymbol_printing",
+      "message": "sympy.core.sympify.SympifyError: Sympify of expression 'could not parse 'y*'' failed, because of exception being raised:\nSyntaxError: unexpected EOF while parsing (<string>, line 1)"
+    }
+  ],
+  "evidence_reason": "Read repair, surrounding base source and saved JUnit; verified frozen source/F2P/P2P/hash/image/cleanup evidence with real_evidence()."
+}

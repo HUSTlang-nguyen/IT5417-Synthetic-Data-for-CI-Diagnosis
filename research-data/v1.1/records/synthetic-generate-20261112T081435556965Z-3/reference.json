@@ -1,0 +1,35 @@
+{
+  "sample_id": "synthetic-generate-20261112T081435556965Z-3",
+  "cause_type": "API/type",
+  "locations": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Function"
+    }
+  ],
+  "explanation": "Function dispatch reads self.unknown_functions instead of the existing known_functions table. Saved printing raises AttributeError for that absent attribute.",
+  "retrieved_locations": [
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Mul"
+    },
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Derivative"
+    },
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Integral"
+    },
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Function"
+    },
+    {
+      "file": "sympy/printing/mathematica.py",
+      "function": "MCodePrinter._print_Pow"
+    }
+  ],
+  "quality": "silver",
+  "human_gold": "pending"
+}
