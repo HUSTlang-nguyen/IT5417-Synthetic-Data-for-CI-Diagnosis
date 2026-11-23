@@ -1,0 +1,215 @@
+{
+  "reviewed_at": "2026-11-23T18:22:01+07:00",
+  "input_protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+  "records": [
+    {
+      "sample_id": "mwaskom__seaborn-3407",
+      "run_id": "reproduce-20261123T073036547595Z",
+      "role": "validation",
+      "assessment": {
+        "run_id": "reproduce-20261123T073036547595Z",
+        "evidence_hashes": {
+          "manifest.json": "032778dfe2d36a12d6040b2ddf475818c6f07fc56056375073bf5d8433fe556f",
+          "license-evidence.json": "42524059f36150db468d110d45a06272757d6d2da451b87386f3397e2993e43f",
+          "historical-base.stdout.txt": "6c69331a93abb1fa31b8f4d162a3e511e2754d234414afc36c9df2990fbacb3f",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "d6f3c212a86311be5fae8d2ee92c6d715b6135c5512dfaf48b1acb3c80eb1025",
+          "historical-fixed.stdout.txt": "612dd94e23fed5582e4e9c2c1d2b7cb7dd291dfb15561f8e6a7f04d24c8469d3",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "d7467443fa35ea83d400a234b4da93b8c6991b6bfb6370bd0f3ebcfe0d567719"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "seaborn/axisgrid.py",
+            "function": "PairGrid.map_diag"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Converting a list of tuple MultiIndex column labels to an object ndarray makes individual labels array-like rather than preserving each tuple key. Downstream DataFrame lookup interprets the label as multiple keys. Keeping the original list preserves tuple identity.",
+        "evidence_reason": "Saved pairplot MultiIndex regression raises KeyError [1] not in index; fixed harness passes. The repair removes the ndarray conversion at axisgrid.py:1475; pandas is the detection site, not the production cause.",
+        "limitations": "Representation-preservation logic is the proposed cause. NumPy/pandas are present; do not call this a dependency error just because the final exception occurs in pandas.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "19e4abc6f16f7b6fe64106ac4778775577339a8d8c74a85c5c62add9a5f527a4",
+      "source_sha256": "abff9c2096a5840f0ab1433c8282d93ebe26d252f6c872ca1b760809ceff3610",
+      "location_availability": [
+        {
+          "file": "seaborn/axisgrid.py",
+          "function": "PairGrid.map_diag",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/mwaskom__seaborn-3407-ds2-heldout2/repair.patch",
+      "repair_patch_sha256": "a1d60cf5bd6ca42f45bbd89aef9d736758cdf9ca4c81357efddf7fb78a942b1a",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/mwaskom__seaborn-3407",
+      "manifest_sha256": "c91f506dec24668fef59872f939c53b261b79882b1b2154b48fb174628e462cc"
+    },
+    {
+      "sample_id": "pydata__xarray-3677",
+      "run_id": "reproduce-20261123T073402827628Z",
+      "role": "test",
+      "assessment": {
+        "run_id": "reproduce-20261123T073402827628Z",
+        "evidence_hashes": {
+          "manifest.json": "326a1c88e24049f4eadef7b86202108f8b1c02e23fcb29b11310e47ea229747a",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "63cd0435c8874ca17e18990ea3e8b5e0a43f4925361a73282ee8b08c943f2fee",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "768cd8befca790b2a7be99fc132b2504d076e8bbc97eded2466d003b0df67dde",
+          "historical-fixed.stdout.txt": "58f60d94104a57c7d3ed0ea6e7803269618d9f80aa8a9406a105adc8a95f86f4",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "7a06b0c6bb801d09783d2bca68a98f2479c54e5967e20b6983dc99c88c74a660"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/dataset.py",
+            "function": "Dataset.merge"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Dataset.merge passes a DataArray directly to dataset_merge_method without converting it to a Dataset. Internal merge code assumes an object with items(), but DataArray does not provide that interface. The repair converts the argument with to_dataset().",
+        "evidence_reason": "Saved test_merge_dataarray fails with missing DataArray.items and fixed suite passes. Source issue contrasts working top-level merge with the failing dataset method.",
+        "limitations": "Dataset.merge is the causal missing conversion; common.py.__getattr__ is where the incompatible access is detected. The frozen input/retriever is not changed using this heldout sample.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "1b5a441263a11d64e93d4fc2fd25c0086189770b38552a8f15170f21b1a5a017",
+      "source_sha256": "9754b97e301b12f3933b2287a726535f6203b6940a8a390cac27f8259c84c05f",
+      "location_availability": [
+        {
+          "file": "xarray/core/dataset.py",
+          "function": "Dataset.merge",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3677-ds2-heldout2/repair.patch",
+      "repair_patch_sha256": "eb6bc3dcb4a4406f23abc17190cffd828ee58e1948e5621cc75abbd9fae142cd",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/pydata__xarray-3677",
+      "manifest_sha256": "cbe5f84cda711bffd41885f41e8be5539ff8ff8491e82a30458f8bd650351e84"
+    },
+    {
+      "sample_id": "pydata__xarray-4629",
+      "run_id": "reproduce-20261123T073520487495Z",
+      "role": "test",
+      "assessment": {
+        "run_id": "reproduce-20261123T073520487495Z",
+        "evidence_hashes": {
+          "manifest.json": "af3de4f1b428119554bc3717657a2c1fdc8fe13b6131a8c869706383aa1e933f",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "555d054aa090f7348c981aa8303f03d2b80c52596a719fc5ce7134f293ac4353",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "cc5e7804235e769ce530dab4e85260775b81182da1165abf206efbaa73a753be",
+          "historical-fixed.stdout.txt": "c170d5b49a62a7c4c9d2b6b795ff858f493ff79cb4ba7e9ac44c89619af82d45",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "7699200364bab3ef9ce82ee25a0082b821b18ccfe4349b534ac1f7895f117c7b"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/merge.py",
+            "function": "merge_attrs"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "combine_attrs=override returns the first input attributes dictionary by reference. Mutating the merged dataset then mutates the source dataset. The repair returns a shallow dict copy to avoid aliasing the top-level mapping.",
+        "evidence_reason": "Saved test_merge_attrs_override_copy assigns merged attrs x=2 and unexpectedly observes source x=2 instead of0; fixed suite passes. Source issue describes unintended source mutation.",
+        "limitations": "The evidence supports top-level dictionary ownership, not a guarantee that every nested attribute is deep-copied.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "82b652d3244baca7e84479743b20ee4116aa1daceea6e0793db366eb26eefa58",
+      "source_sha256": "84e0cbc5b6aeff78894d06e5c1f7a0d0de247f241b6162329a3838bf7f882fa6",
+      "location_availability": [
+        {
+          "file": "xarray/core/merge.py",
+          "function": "merge_attrs",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4629-ds2-heldout2/repair.patch",
+      "repair_patch_sha256": "2d14d22404ac99712ca5fbe084fc6fe646388f2028a01aade72cfcabfdaca2bc",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/pydata__xarray-4629",
+      "manifest_sha256": "76b8df1ca066fead02697088752bbc912d31938e5dad6685d67330c170aa9515"
+    },
+    {
+      "sample_id": "psf__requests-6028",
+      "run_id": "reproduce-20261123T110438250093Z",
+      "role": "test",
+      "assessment": {
+        "run_id": "reproduce-20261123T110438250093Z",
+        "evidence_hashes": {
+          "manifest.json": "7fba53774eef86c2194945915f7b76cde8a9e7552d1ddab5a8092ef9de09ab44",
+          "license-evidence.json": "5f51625933f7f52926b8deaa0cf240b51b41c1586c10d3dfa42bbf22d4c0a5e6",
+          "historical-base.stdout.txt": "384eb7e8c19a079f0449c208caa001d5a1012b233be9556a2b60d855b5e279af",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "499cf38a2a919adede828029a46bb30868a13fe8e974c3939bbe7c1aac7465d7",
+          "historical-fixed.stdout.txt": "61ea1035a5d939c162973b04e9b0148ff66def9addc21a186c19d1a74fc59ac6",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "01e5e78bb91679cf36b5a11260c86109d53ec759dba6687c71a76be679e35015"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "requests/utils.py",
+            "function": "prepend_scheme_if_needed"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The function unpacks parsed auth separately but builds urlunparse using parsed.netloc, which omits auth. Credentials disappear even when the URL already has a scheme. The repair rejoins auth and netloc before reconstructing the URL.",
+        "evidence_reason": "Two saved URL utility tests lose user or user:pass in actual output; fixed suite passes and original F2P/P2P resolve under the separately declared official source-parser conventions.",
+        "limitations": "Local tests verify URL credential preservation without a proxy/network request. The reported remote407 is source issue context, not a locally reproduced HTTP result. Existing comments are natural source documentation; repair explanation remains outside diagnosis input.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "432166f1490b5adbd6285157a8985143f5102f7eb6cc521cb7c841aa33e2ec2e",
+      "source_sha256": "7938f802679da01f5768d41526f22b63fcef2a96c491ec030b755c87bab3958d",
+      "location_availability": [
+        {
+          "file": "requests/utils.py",
+          "function": "prepend_scheme_if_needed",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/psf__requests-6028-ds2-heldout2/repair.patch",
+      "repair_patch_sha256": "9cd3e2a2c10cc8b9555156f0e9cda00c67aa4e08f40ebd125f417bbeb41b2fb3",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/psf__requests-6028",
+      "manifest_sha256": "b062b2b24e214e433ed6623a5c9719a73d722fad3701dc2da788e0296359c174"
+    }
+  ],
+  "qualification": "Four evidence-bound silver heldout candidates, frozen reference-free input v3. Human/gold/training pending; not final v2 quota/family selection. No source/model execution for review."
+}

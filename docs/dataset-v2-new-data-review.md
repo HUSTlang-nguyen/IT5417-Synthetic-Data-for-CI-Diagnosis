@@ -64,3 +64,16 @@ Số tái hiện đạt có thể lớn hơn số ứng viên được giữ. Kh
 | marshmallow-1343 | Dữ liệu nested sai kiểu trả None; validator vẫn subscript như mapping và chỉ bắt KeyError. JUnit báo NoneType not subscriptable tại schema.py:894, fixed pass sau khi bắt thêm TypeError. | API/type, BaseSchema._invoke_field_validators; vừa. Mô tả việc dùng interface mapping trên None, đồng thời ghi ranh giới taxonomy với logic/error-path guarding. Giữ ứng viên silver. |
 
 Log là tái dựng local; exception name không tự quyết định nhãn. Input chỉ có failing code/log, không chứa repair/issue/assessment. Người dùng review kết luận, không phải tự dò lại code/log.
+
+## Bốn mẫu heldout tiếp theo
+
+[Receipt, hash và xuất v3](evidence/dataset-v2-heldout-wave2-four-review.json). Đã rà sau khi input protocol khóa; không chỉnh retrieval từ heldout.
+
+| Case / role | Quan sát → nguyên nhân đề xuất | Nhãn / vị trí và kiến nghị |
+|---|---|---|
+| seaborn-3407 / validation | MultiIndex tuple bị chuyển thành ndarray; pandas nhận thành nhiều key, báo KeyError [1] not in index. Giữ list tránh làm mất biểu diễn tuple. Fixed pass. | logic/value, PairGrid.map_diag tại seaborn/axisgrid.py:1475; giữ silver. Lỗi ở pandas là điểm phát hiện, không tự thành lỗi dependency. |
+| xarray-3677 / test | Dataset.merge đưa DataArray vào nhánh cần interface items(), không đổi sang Dataset. Log báo thiếu DataArray.items; fixed pass. | API/type, Dataset.merge tại xarray/core/dataset.py:3607; giữ silver. common.py.__getattr__ là nơi phát hiện. |
+| xarray-4629 / test | merge_attrs trả dictionary attrs đầu vào theo reference. Sửa attrs ở kết quả làm nguồn đổi x từ0 thành2. Fixed pass sau shallow copy. | logic/value, merge_attrs tại xarray/core/merge.py:504; giữ silver. Không khẳng định deep-copy mọi giá trị lồng nhau. |
+| requests-6028 / test | Ghép lại URL bằng netloc nhưng bỏ phần auth được parse riêng, mất user/password trong hai test utility. Fixed pass. | logic/value, prepend_scheme_if_needed tại requests/utils.py:966–982; giữ silver. Không gọi proxy/network, không coi HTTP407 trong issue là kết quả local. |
+
+Cả bốn đã đối chiếu full inventory, patch/log/JUnit và source F2P/P2P; Requests dùng profile hiệu chỉnh ID đã khai báo. Silver, xác nhận người dùng/gold/training vẫn pending. xarray4098 chưa được gán nhãn/chọn: issue chỉ nói groupby nên hỗ trợ name=None, còn cần phân biệt sửa lỗi với mở rộng điều kiện API.

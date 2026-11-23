@@ -53,6 +53,10 @@ def validate_case(case):
         raise ValueError("Test working directory must be source or isolated work tmpfs")
     if case.get("system_tools", []) not in ([], ["git"]):
         raise ValueError("Only the declared git build/runtime tool is supported")
+    if 'git_test_fixture' in case and (case['git_test_fixture'] is not True
+            or case['repo_url'] != 'https://github.com/gitpython-developers/GitPython'
+            or case.get('system_tools') != ['git']):
+        raise ValueError('Pinned Git fixture requires its declared GitPython recipe/tool')
     if case.get("source_kind") not in {"aidev", "swebench"}: raise ValueError("Unknown source adapter")
     if case.get("test_reference_policy") is not None:
         from .upstream_tests import provenance
@@ -255,6 +259,22 @@ def pinned_license(base, declared):
             "qualification": "Pinned full license retained; family marker check, not legal review"}
 
 
+def prepare_git_fixture(case, repo, work, evidence, guard=None):
+    """GitPython's TestBase needs a real repo even for its pure utility tests."""
+    fixture = work / 'fixture.git'
+    checked(['git', '-c', 'core.longpaths=true', '-c', 'init.templateDir=', 'init', '--bare', 'fixture.git'], evidence, 'fixture-init', cwd=work, guard=guard)
+    prefix = ['git', '-c', 'core.longpaths=true', '--git-dir=fixture.git']
+    checked([*prefix, 'fetch', '--depth=1', str(repo.resolve()), case['base']], evidence, 'fixture-fetch', cwd=work, guard=guard)
+    checked([*prefix, 'update-ref', 'refs/heads/pinned-source', case['base']], evidence, 'fixture-ref', cwd=work, guard=guard)
+    checked([*prefix, 'symbolic-ref', 'HEAD', 'refs/heads/pinned-source'], evidence, 'fixture-head', cwd=work, guard=guard)
+    actual = subprocess.check_output([*prefix, 'rev-parse', 'HEAD'], cwd=work, text=True, timeout=30).strip()
+    if actual != case['base'] or (fixture / 'objects/info/alternates').exists():
+        raise ValueError('Git fixture must contain the pinned commit without host alternates')
+    metadata = {'commit': actual, 'inventory': inventory(fixture), 'runtime_path': '/fixtures/source.git'}
+    write_json(evidence / 'git-test-fixture.json', metadata)
+    return metadata
+
+
 def prepare_case(case, evidence, guard=None):
     validate_case(case)
     identity = hashlib.sha256(json.dumps(case, sort_keys=True).encode()).hexdigest()[:16]
@@ -297,6 +317,7 @@ def prepare_case(case, evidence, guard=None):
     resolved_targets = source_function_targets(case, work / "head") if case.get("source_id_matching") == "exact_unique_function_name" else case["test_targets"]
     if case.get("verify_pinned_license"):
         write_json(evidence / "license-evidence.json", pinned_license(work / "base", case["license"]))
+    fixture = prepare_git_fixture(case, repo, work, evidence, guard) if case.get('git_test_fixture') else None
     dependencies = ["setuptools==75.6.0", "wheel==0.45.1", "pytest==" + case.get("pytest_version", "7.4.4"), *case.get("dependencies", [])]
     install = ["/opt/venv/bin/pip", "install", "--disable-pip-version-check", *dependencies]
     dockerfile = ("FROM " + case.get("python_image", "python:3.11-slim-bookworm") + "\n"
@@ -307,6 +328,10 @@ def prepare_case(case, evidence, guard=None):
                   "RUN python -m venv /opt/venv\n"
                   "RUN " + json.dumps(install) + "\n"
                   "COPY base /source/base\nCOPY head /source/head\n")
+    if fixture:
+        dockerfile += ('COPY fixture.git /fixtures/source.git\n'
+                       'RUN git config --system --add safe.directory /fixtures/source.git\n'
+                       'ENV GIT_PYTHON_TEST_GIT_REPO_BASE=/fixtures/source.git\n')
     links = [("/source/" + role + "/" + path, target) for role in ("base", "head") for path, target in source_links[role].items()]
     if links:
         program = ("import os; links=" + repr(links) + "; "
@@ -328,6 +353,8 @@ def prepare_case(case, evidence, guard=None):
             "reproduction_run": evidence.name, "build": result, "head_passed": False}
     gate["resolved_test_targets"] = resolved_targets
     gate["source_links"] = source_links
+    if fixture:
+        gate['git_test_fixture'] = fixture
     write_json(evidence / "environment.json", gate)
     return gate
 
@@ -511,12 +538,21 @@ def reproduce_case(case, folder=None, guard=None):
     return manifest
 
 
+def check_git_fixture(case, gate):
+    if case.get('git_test_fixture'):
+        fixture = gate.get('git_test_fixture') or {}
+        if (fixture.get('commit') != case['base'] or fixture.get('runtime_path') != '/fixtures/source.git'
+                or inventory(Path(gate['context']) / 'fixture.git') != fixture.get('inventory')):
+            raise ValueError('Pinned Git fixture changed or missing')
+
+
 def check_gate(case, gate):
     if not gate.get("head_passed") or gate["case_id"] != case["case_id"]: raise ValueError("No matching passing seed")
     expected = hashlib.sha256(json.dumps(case, sort_keys=True).encode()).hexdigest()[:16]
     if gate["case_hash"] != expected: raise ValueError("Case configuration changed")
     head = Path(gate["context"]) / "head"
     if inventory(head) != gate["inventories"]["head"]: raise ValueError("Pinned source/tests changed")
+    check_git_fixture(case, gate)
     return head
 
 

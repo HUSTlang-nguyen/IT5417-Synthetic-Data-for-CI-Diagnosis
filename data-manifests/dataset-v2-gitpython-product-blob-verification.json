@@ -1,0 +1,27 @@
+{
+  "verified_at": "2026-11-23T18:21:29+07:00",
+  "records": [
+    {
+      "source_case_id": "gitpython-developers__GitPython-946",
+      "repo": "gitpython-developers/GitPython",
+      "blobs": [
+        {
+          "path": "git/objects/util.py",
+          "source_repaired_blob": "5dbd982242b59c3211d004360aa3b2827921ac71",
+          "upstream_head_blob": "5dbd982242b59c3211d004360aa3b2827921ac71",
+          "equal": true
+        }
+      ],
+      "all_product_blobs_equal": true,
+      "test_paths": [
+        "git/test/test_util.py"
+      ],
+      "test_patch_sha256": "3ccf07e6683de9a085bf1ed4eb585745a46dbd72d2825c4ffb66b8da160c1b79",
+      "source_repair_patch_sha256": "a42cedb4de7ab9de37e0675ce677084b92b88807549e3bde3478984f0f2b0e94",
+      "source_record_sha256": "ff1e54add550a72d39be84b6f6be750e15b9d6a06abaac1e28161ba85c6ed9f9",
+      "decision": "upstream_test_recovery_candidate",
+      "qualification": "Earlier text diff comparison disagreed only on hunk function-context headers. This checks exact Git blob bytes after applying the unchanged dataset patch to its pinned base index; no source code executed."
+    }
+  ],
+  "qualification": "Append-only stronger verification of the same previously screened source identity, not an additional eligibility screen or experiment runs."
+}

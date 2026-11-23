@@ -19,6 +19,59 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_pinned_git_fixture_is_self_contained_and_detects_tampering(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);repo=root/'repo';repo.mkdir();work=root/('long-path-'+160*'a');work.mkdir();evidence=root/'evidence';evidence.mkdir()
+            subprocess.run(['git','init',str(repo)],check=True,capture_output=True)
+            (repo/'inert.txt').write_bytes(b'fixture only\n')
+            subprocess.run(['git','-C',str(repo),'add','inert.txt'],check=True,capture_output=True)
+            subprocess.run(['git','-C',str(repo),'-c','user.name=fixture','-c','user.email=fixture@example.invalid',
+                            'commit','-m','inert fixture'],check=True,capture_output=True)
+            revision=subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD'],text=True).strip()
+            case={'git_test_fixture':True,'base':revision}
+            guard=Mock()
+            try:metadata=multicase.prepare_git_fixture(case,repo,work,evidence,guard)
+            except RuntimeError:
+                self.fail('\n'.join(p.read_text() for p in evidence.glob('*.stderr.txt')))
+            self.assertEqual(metadata['commit'],revision)
+            self.assertFalse((work/'fixture.git/objects/info/alternates').exists())
+            self.assertFalse((work/'fixture.git/hooks').exists())
+            gate={'context':str(work),'git_test_fixture':metadata}
+            multicase.check_git_fixture(case,gate)
+            self.assertEqual(guard.call_count,4)
+            (work/'fixture.git/config').write_text('tampered',encoding='utf-8')
+            with self.assertRaisesRegex(ValueError,'fixture changed'):multicase.check_git_fixture(case,gate)
+            with self.assertRaises(ValueError):multicase.check_git_fixture(case,{'context':str(work)})
+
+    def test_git_fixture_recipe_scope_and_docker_readonly_location(self):
+        case=config();case.update(repo_url='https://github.com/gitpython-developers/GitPython',system_tools=['git'],git_test_fixture=True,install_project=False)
+        multicase.validate_case(case)
+        for changes in [{'repo_url':'https://github.com/example/repo'},{'system_tools':[]},{'git_test_fixture':'../host.git'}]:
+            with self.subTest(changes=changes),self.assertRaises(ValueError):multicase.validate_case({**case,**changes})
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);evidence=root/'evidence';evidence.mkdir()
+            def export(repo,revision,destination,*args):
+                for name in ['package/api.py','tests/test_api.py']:
+                    p=destination/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('# inert\n')
+                return {}
+            def checked(args,folder,name,**kwargs):
+                if name=='image-inspect':
+                    identity=args[-1].split(':')[-1]
+                    write_json(folder/'image.json',[{'Id':'sha256:fixture','Config':{'Labels':{'it5417.case':identity}}}])
+                return {'stdout':'image.json'}
+            metadata={'commit':case['base'],'inventory':{},'runtime_path':'/fixtures/source.git'}
+            with patch.object(multicase,'CACHE',root/'cache'),patch.object(multicase,'export_commit',side_effect=export), \
+                    patch.object(multicase,'checked',side_effect=checked),patch.object(multicase,'prepare_git_fixture',return_value=metadata):
+                gate=multicase.prepare_case(case,evidence)
+            dockerfile=(Path(gate['context'])/'Dockerfile').read_text()
+            self.assertIn('COPY fixture.git /fixtures/source.git',dockerfile)
+            self.assertIn('safe.directory /fixtures/source.git',dockerfile)
+            self.assertNotIn('safe.directory *',dockerfile)
+            self.assertIn('GIT_PYTHON_TEST_GIT_REPO_BASE=/fixtures/source.git',dockerfile)
+            self.assertIn('USER 65534:65534',dockerfile)
+            self.assertEqual(gate['git_test_fixture'],metadata)
+
     def test_swe_option_mapping_checks_every_member_of_an_official_canonical_group(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);file=folder/'report.xml'

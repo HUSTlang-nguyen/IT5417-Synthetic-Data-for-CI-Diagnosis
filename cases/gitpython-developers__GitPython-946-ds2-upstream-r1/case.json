@@ -1,0 +1,76 @@
+{
+  "case_id": "gitpython-developers__GitPython-946-ds2-upstream-r1",
+  "source_case_id": "gitpython-developers__GitPython-946",
+  "record_id": "gitpython-developers__GitPython-946",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "train",
+  "repo_url": "https://github.com/gitpython-developers/GitPython",
+  "base": "43564d2e8f3b95f33e10a5c8cc2d75c0252d659a",
+  "head": "base+repair:a42cedb4de7ab9de37e0675ce677084b92b88807549e3bde3478984f0f2b0e94",
+  "allowed_file": "git/objects/util.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "dataset_protocol": "dataset-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-946-ds2-upstream/repair.patch",
+  "repair_patch_sha256": "a42cedb4de7ab9de37e0675ce677084b92b88807549e3bde3478984f0f2b0e94",
+  "test_patch": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-946-ds2-upstream/test.patch",
+  "test_patch_sha256": "3ccf07e6683de9a085bf1ed4eb585745a46dbd72d2825c4ffb66b8da160c1b79",
+  "source_record_sha256": "ff1e54add550a72d39be84b6f6be750e15b9d6a06abaac1e28161ba85c6ed9f9",
+  "fail_to_pass": [],
+  "pass_to_pass": [],
+  "test_reference_policy": "upstream_pr_recovered_v1",
+  "local_expected_failures": [
+    "git/test/test_util.py::TestUtils::test_pickle_tzoffset"
+  ],
+  "local_expected_passes": [
+    "git/test/test_util.py::TestUtils::test_it_should_dashify"
+  ],
+  "upstream_test_provenance": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-946-ds2-upstream/upstream-provenance.json",
+  "upstream_test_provenance_sha256": "ae3d607ebb8ee2bc0405560e2c16896d7371fbc196e83255fd0552821590f72a",
+  "source_id_matching": "exact",
+  "test_targets": [
+    "git/test/test_util.py::TestUtils::test_pickle_tzoffset",
+    "git/test/test_util.py::TestUtils::test_it_should_dashify"
+  ],
+  "frozen_test_files": [
+    "git/test/test_util.py"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "python_image": "python:3.9-slim-bookworm",
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [],
+  "dependencies": [
+    "gitdb2==2.0.6",
+    "smmap2==2.0.5",
+    "ddt==1.6.0",
+    "nose==1.3.7"
+  ],
+  "system_tools": [
+    "git"
+  ],
+  "git_test_fixture": true,
+  "install_project": false,
+  "test_workdir": "work",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned upstream tzoffset pickle regression fails on base and passes after original repair under unchanged upstream test; dashify control remains passing. Local reconstruction, not historical CI or supplied benchmark F2P/P2P.",
+  "recipe_basis": "Python3.9 utility tests with pinned gitdb/smmap/ddt/nose and explicit real read-only base-commit Git fixture. Two upstream methods chosen before execution. No network/service, source/test edits or dependency installation into host.",
+  "profile_parent_case_id": "gitpython-developers__GitPython-946-ds2-upstream",
+  "prior_reproduction_run": "reproduce-20261123T112527083964Z",
+  "environment_correction": "Windows Git long-path pack write failed before Docker. Use per-command core.longpaths=true and a relative Git directory from the same controlled context; source/test/commit and recipe dependencies remain unchanged.",
+  "correction_evidence": "docs/evidence/dataset-v2-git-fixture-first-preflight-failure.json"
+}

@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-11-23T18:27:34+07:00",
+  "run_id": "reproduce-20261123T112527083964Z",
+  "manifest_sha256": "f79fb1e5136c883960be4584d4286b5f0fd02d9be72972d85bab3e5e641eeacd",
+  "stderr_sha256": "f30db58780e9cc76cac5cc9bdf1fd7a020647509be0d8d433b1c0be67f22b53f",
+  "failure": "Windows Git pack keep filename exceeds legacy path limit in deep worktree; pre-build, no test/model run",
+  "correction": "Per-command core.longpaths=true and relative --git-dir=fixture.git with controlled cwd; native Git fixture checks the long-path case. No global Git setting or source/test/commit change.",
+  "raw_preserved": true
+}

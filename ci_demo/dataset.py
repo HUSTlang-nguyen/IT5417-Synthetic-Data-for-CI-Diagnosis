@@ -28,6 +28,7 @@ def real_evidence(run_id):
     for role in ("base", "head"):
         if inventory(Path(gate["context"]) / role) != gate["inventories"][role]:
             raise ValueError("Source/test inventory changed: " + role)
+    multicase.check_git_fixture(case, gate)
     if not test_passed(raw["head"], folder):
         raise ValueError("Fixed execution no longer supported by saved evidence")
     mode = case.get("source_id_matching", "exact")
@@ -45,6 +46,8 @@ def real_evidence(run_id):
             raise ValueError("PASS_TO_PASS reference IDs not supported")
     artifacts = {"manifest.json": sha256(folder / "manifest.json"),
                  "license-evidence.json": sha256(folder / "license-evidence.json")}
+    if case.get('git_test_fixture'):
+        artifacts['git-test-fixture.json'] = sha256(folder / 'git-test-fixture.json')
     for role in ("base", "head"):
         result = raw[role]
         if not result.get("container_removed") or result.get("timed_out"):

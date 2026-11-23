@@ -1,0 +1,51 @@
+{
+  "created_at": "2026-11-23T18:27:34+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "gitpython-developers__GitPython-946",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "43564d2e8f3b95f33e10a5c8cc2d75c0252d659a",
+      "upstream_head": "9d34ee26781657d95381024053f53e956ff7743e",
+      "source_version": "3.0.3",
+      "product_files": [
+        "git/objects/util.py"
+      ],
+      "test_files": [
+        "git/test/test_util.py"
+      ],
+      "case_id": "gitpython-developers__GitPython-946-ds2-upstream-r1",
+      "case_sha256": "be03ac960fb4e8d2009234621e75bd3f331d19960e7adf0e258c7d5ac178e1bc",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Only environment correction for GitPython946, exact source/test references/bytes unchanged. First raw failure retained; no automatic retry."
+}
