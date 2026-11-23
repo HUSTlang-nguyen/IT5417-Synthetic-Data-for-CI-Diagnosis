@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-11-24T02:06:46+07:00",
+  "outcomes": [
+    {
+      "source_case_id": "aidev-3226294394",
+      "repo": "MForofontov/pyutils-collection",
+      "role": "train",
+      "metadata_only": true,
+      "license_resolution": {
+        "api_hint": "MIT",
+        "pinned_base_family": "GPL-3.0",
+        "basis": "Full original base LICENSE contains GNU GPL Version 3. Current repository hint does not override immutable source license."
+      },
+      "status": "prepared",
+      "case_id": "aidev-3226294394-ds2-compile-license",
+      "source_blobs": {
+        "base": "ade012390f1873bd287e5d8b547261338216cecf",
+        "head": "7b1529134d08e0afaf4a653b4ae346800e1620c7"
+      }
+    }
+  ],
+  "prepared": 1,
+  "prior_failed_preparation_receipt": "docs/evidence/dataset-v2-aidev-screen20-preparation.json",
+  "qualification": "No source compiled/executed during preparation; no new eligibility identities or trial success asserted."
+}

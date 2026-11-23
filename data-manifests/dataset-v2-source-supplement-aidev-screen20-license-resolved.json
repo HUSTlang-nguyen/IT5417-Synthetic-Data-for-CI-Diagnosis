@@ -1,0 +1,33 @@
+{
+  "schema": "v2-source-role-supplement-v1",
+  "created_at": "2026-11-24T02:06:46+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "repo_roles": {
+    "MForofontov/pyutils-collection": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3226294394",
+      "repo": "MForofontov/pyutils-collection",
+      "role": "train",
+      "base_commit": "376b82f9d969fbe25a450908a6e46c8716dea6b2",
+      "upstream_head": "12310c6be8cadfd1800e0e9b903e25dd22572f63",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "print_functions/print_message.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3226294394-ds2-compile-license",
+      "case_sha256": "3e73a9b9df63435a99d969f2d13e57d6fec1b25e84f4bf812b43f1933715f4de",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "repo_provenance": {
+    "MForofontov/pyutils-collection": {
+      "pr_metadata": ".cache/dataset-v2-aidev-compilation-probe/3226294394-license-resolved/pr.json",
+      "pr_metadata_sha256": "2195e4f635591a602749d14d279ce755b5f2abd850d4f4fb0d6a716abd1cca8b"
+    }
+  },
+  "qualification": "Previously screened identities, original role proposals honored before execution. Owned compilation only; no labels or upstream CI claim. Failed preparations not trialed."
+}

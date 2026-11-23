@@ -48,7 +48,7 @@
 
 - A0 done: khôi phục Git, baseline artifact và study/spec/budget riêng.
 - A1 done: portable v1.1 đã publish codex, kiểm tra archive/relocation và hash lock gốc.
-- B done trong phạm vi calibration: review50real/30synthetic development; khóa input v3 từ train-only calibration, trước held-out causal review. Nhãn vẫn silver.
+- B done trong phạm vi calibration: review50real/30synthetic development; khóa input v3 từ train-only calibration trước held-out causal review; bổ sung v4 từ51train với source snapshot/hash riêng trước review syntax held-out mới. V3 và export cũ giữ nguyên; coverage không phải accuracy. Nhãn vẫn silver.
 - C doing: source-role lock đã ghim; sàng lọc/tái hiện, review và mở rộng các repo/class còn thiếu. Worker và số liệu hiện tại tại [snapshot](../data-manifests/dataset-v2-status.json).
 - D todo: chốt train seeds/quota rồi sinh, kiểm chứng và curate synthetic theo ngân sách đã duyệt.
 - E todo: đủ toàn bộ cổng mới khóa/audit/export v2, kiểm tra phục hồi và publish; không giảm mục tiêu để gọi hoàn tất.

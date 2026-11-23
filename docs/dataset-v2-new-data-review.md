@@ -100,3 +100,26 @@ GitPython dùng upstream recovered local expectations, không phải F2P/P2P có
 - **Vị trí đề xuất:** syntax / `analyse_gui.py::AstroImageAnalyzerGUI.finalize_analysis`, chắc chắn cao. Header3117 và toàn bộ prefix trước nó không đổi so với fixed. Đây là hàm hiện hữu trong file lỗi cú pháp, không phải causal absence; dùng trường unparseable_definitions riêng. Dòng Python phát hiện lỗi và đầu block gây lỗi được phân biệt.
 - **Kiến nghị:** giữ ứng viên silver cho chẩn đoán; không dùng làm seed sinh vì chỉ có compile check. AIDev metadata cho biết tác giả PR sửa lỗi, không chứng minh ai đưa lỗi vào code. Input giữ source/log, repair/PR/nhận định ở ngoài.
 - **Giới hạn input/người dùng review:** v3 lấy được file lỗi nhưng không có tên finalize_analysis trong input đã xuất; không coi đây là mẫu đã đủ evidence để model trả đúng hàm. Giữ kết quả coverage thay vì thêm đáp án vào input hoặc loại âm thầm. Gold và training eligibility vẫn pending. Người dùng review các kết luận/kiến nghị này; không phải tự phân tích lại log.
+
+## Sáu lượt AIDev từ đợt sàng lọc 20
+
+[Receipt, run IDs, hash và nhận định](evidence/dataset-v2-aidev-screen20-compilation-review.json). Cả sáu giữ vai trò repo đã ghim trước kết quả. Chỉ kiểm chứng biên dịch Python3.11 bằng owned harness; không gọi là test chức năng hoặc CI lịch sử. Không có generator tự gán nhãn cho các case thật này.
+
+| Case / role | Code → hành vi → log | Kiến nghị |
+|---|---|---|
+| 3194109543 / train | `Gallery_tab.add_tag_changes`: `last_tag` dòng718 ngang mức `if`716 nên block chỉ có comment, không có statement. Log báo expected an indented block, fixed pass khi indent assignment. Header507 không đổi. | syntax, chắc chắn cao; giữ ứng viên silver, đã export v4. |
+| 3245143429 / validation | `_determine_bpjs_field_name`: sau docstring, assignment161 thụt thêm mức dù không mở block. Log unexpected indent, fixed pass. Repair còn sửa các nhánh khác; không coi từng lỗi tiềm ẩn là một lượt đã thực thi riêng. | syntax, chắc chắn cao; giữ ứng viên silver, đã export v4. |
+| 3263598324 / validation | `AutoML.py`: khai báo class ở8932 bị đưa ra module, trong khi class tiếp theo tại8958 vẫn indent4; parser không có mức4 để quay về. Log phát hiện tại8958, repair đổi khai báo8932. | syntax, `<module>` vì nguyên nhân nằm ở khai báo class; giữ silver. Retrieval v4 chưa trả vị trí tham chiếu module: ghi miss, không sửa protocol từ heldout. |
+| 3137319809 / train | `resolve` được chuyển từ module vào `AttackAction`, nhưng base và fixed đều compile pass. Thay đổi ownership có thể ảnh hưởng hành vi; compile-only không kiểm chứng được điều đó. | Loại khỏi subset lỗi cú pháp của harness này; không kết luận repo không có lỗi, không gán syntax theo tiêu đề. |
+| 3136962971 / test | Đổi nesting của các thao tác reproject/combine; base và fixed đều compile pass. | Không xuất mẫu lỗi từ kết quả này; không suy nhãn từ thay đổi indentation, không tự retry test khác. |
+| 3226294394 / train | Docstring tại6 không indent sau `def print_message`5; log expected an indented block, fixed pass. Repair còn thêm import/fallback và đổi annotation header. | Đề xuất syntax / `print_message`, nhưng giữ pending binding, chưa export: validator hiện yêu cầu prefix/header không đổi. Không ép sang module hoặc causal absence để vượt gate. |
+
+GPL3 của case3226294394 được đọc từ LICENSE của đúng base; API hiện tại gợi ý MIT không thay giấy phép nguồn đã ghim. Lần chuẩn bị thất bại trước đó vẫn lưu; đây là lượt tái hiện đầu tiên, không phải retry môi trường.
+
+Tất cả source/log/patch giữ nguyên. Input chỉ có failing source và log, không chứa repair, PR body hay assessment. Comment tự nhiên và stack trace không tự bị coi là lộ đáp án. Các nhãn/vị trí trên là nhận định kỹ thuật; người dùng review kết luận/kiến nghị, không phải tự dò lại log. Xác nhận người dùng, gold và training eligibility vẫn pending.
+
+## Export v4, giữ lịch sử v3
+
+[Kiểm tra chuyển27mẫu](evidence/dataset-v2-uniform-v4-export-27.json), [calibration train51](evidence/dataset-v2-retrieval-v4-train-calibration-51-r2.json), [protocol](../data-manifests/dataset-v2-input-protocol-v4.json). Cùng27danh tính, không cộng thêm27mẫu:26input không đổi; chỉ case3232895285 bổ sung được header hàm từ source quan sát. Nhãn/vị trí nguyên nhân và assessment không đổi, v3/raw giữ nguyên. Phần coverage v3 ở mục cũ là kết quả lịch sử, không bị viết lại.
+
+Sau ba export mới, hiện có30ứng viên silver khác danh tính; chưa có final selection v2. Calibration16/51→17/51 là độ hiện diện header sau crop, không phải độ chính xác model. Với các mẫu mới, trường reference_location_retrieved trong receipt chỉ đo metadata retrieval trước token crop; không suy thành điểm hàm hay chẩn đoán.

@@ -1,0 +1,57 @@
+{
+  "created_at": "2026-11-24T02:06:46+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train",
+    "IMOGI-ITB/Payroll-Indonesia": "validation",
+    "TonyDeRosia/evennia-minimud": "train",
+    "MelkorBalrog/AutoML": "validation",
+    "x-CK-x/Dataset-Curation-Tool": "train",
+    "tinystork/zeseestarstacker": "test",
+    "MForofontov/pyutils-collection": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3226294394",
+      "repo": "MForofontov/pyutils-collection",
+      "role": "train",
+      "base_commit": "376b82f9d969fbe25a450908a6e46c8716dea6b2",
+      "upstream_head": "12310c6be8cadfd1800e0e9b903e25dd22572f63",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "print_functions/print_message.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3226294394-ds2-compile-license",
+      "case_sha256": "3e73a9b9df63435a99d969f2d13e57d6fec1b25e84f4bf812b43f1933715f4de",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Pinned local compilation source trials only. Roles fixed before outcomes; no generation; labels require actual evidence review."
+}

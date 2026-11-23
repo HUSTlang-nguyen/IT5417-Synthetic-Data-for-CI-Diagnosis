@@ -1,0 +1,239 @@
+{
+  "reviewed_at": "2026-11-24T02:13:22+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "aidev-3194109543",
+      "run_id": "reproduce-20261123T184518687571Z",
+      "role": "train",
+      "source_file": "UI_tabs/gallery_tab.py",
+      "detection_line": 718,
+      "unchanged_function_header": 507,
+      "assessment": {
+        "run_id": "reproduce-20261123T184518687571Z",
+        "evidence_hashes": {
+          "manifest.json": "e17d55f43b7b79196612adf4484c816cd79440e5b568d5a62914485330548de0",
+          "license-evidence.json": "acc396b39d1a664c9ccc73e36eae788abab081ae0705d7e30aad069b17b29a4a",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "b994f290944b4cbfd3e9230b535ded6a1c85806ee91ce89ff21bcd27c165a434",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "de6031d3b3d45ed832a259b727c56b6c10ece39f4b7b8055061166c4d65fe107",
+          "historical-fixed.stdout.txt": "8bb5a289e928c8aceb3f03196220d301f6b129ad5d2c770d2c658932bf7765c0",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "910cb41135ab6c3195718965c2e785b678bf7d3ab83881fbe7e9e22f20887153"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "UI_tabs/gallery_tab.py",
+            "function": "Gallery_tab.add_tag_changes"
+          }
+        ],
+        "missing_definitions": [],
+        "unparseable_definitions": [
+          {
+            "file": "UI_tabs/gallery_tab.py",
+            "function": "Gallery_tab.add_tag_changes"
+          }
+        ],
+        "mechanism": "The if statement at716 has no indented suite: last_tag at718 is aligned with if, and a comment does not count as a statement. The original repair indents the multiline assignment into the body.",
+        "evidence_reason": "Python3.11 reports expected an indented block after if at716, pointing at718; the same owned compilation test passes fixed. The qualified method header507 and earlier prefix are unchanged.",
+        "limitations": "Only owned local Python3.11 compilation is evidenced, not application import/runtime behavior or historical CI. Lexical retrieval may miss causal scope; keep measured misses, do not inject reference. PR authorship does not identify fault author.",
+        "label_source": "agent_code_patch_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log input only. No repair, issue, proposed label or assessment enters retrieval; natural comments are not automatically excluded."
+      },
+      "assessment_sha256": "2bcef81935350c8c16d46c2b4c5023556610344c090eb14efcb1c75a09d70987",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3194109543",
+      "manifest_sha256": "5ad1bdf7ae992b25e8986554fac2df6735c8b767f1ebb327e95f732c4ab2936c",
+      "reference_location_retrieved": true
+    },
+    {
+      "sample_id": "aidev-3245143429",
+      "run_id": "reproduce-20261123T184251279896Z",
+      "role": "validation",
+      "source_file": "payroll_indonesia/config/gl_account_mapper.py",
+      "detection_line": 161,
+      "unchanged_function_header": 152,
+      "assessment": {
+        "run_id": "reproduce-20261123T184251279896Z",
+        "evidence_hashes": {
+          "manifest.json": "8e2dc3e5109bdfa742025645c7160dd5c13e30f05984d0449f9d749502b7bc10",
+          "license-evidence.json": "2220d56324398c27cb475f42039984cf70d343861ceadd21ff3bfa2999f1954e",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "6368af6663d6dc4679d3340999bf842b6b7a708ed5dd5d3c82b7f67cc0b2c839",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "093b0f4d4f136b2b9a520616298b3824881e2cdc9f8f09155445fa042f62edb0",
+          "historical-fixed.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "877196de48419abf38fa673f790a4d5da4489111cb174ea5135bdd64b9d46dfe"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "payroll_indonesia/config/gl_account_mapper.py",
+            "function": "_determine_bpjs_field_name"
+          }
+        ],
+        "missing_definitions": [],
+        "unparseable_definitions": [
+          {
+            "file": "payroll_indonesia/config/gl_account_mapper.py",
+            "function": "_determine_bpjs_field_name"
+          }
+        ],
+        "mechanism": "The function docstring ends at160 at the normal function body indentation, but component at161 is indented an extra level without a preceding block opener. Other if/return indentation is also repaired; only the first parser failure is directly observed.",
+        "evidence_reason": "Base reports unexpected indent at161; fixed compiles. The function header152 is unchanged. Do not claim individual downstream errors were separately executed.",
+        "limitations": "Only owned local Python3.11 compilation is evidenced, not application import/runtime behavior or historical CI. Lexical retrieval may miss causal scope; keep measured misses, do not inject reference. PR authorship does not identify fault author.",
+        "label_source": "agent_code_patch_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log input only. No repair, issue, proposed label or assessment enters retrieval; natural comments are not automatically excluded."
+      },
+      "assessment_sha256": "2e96fad3da5f5fe00ebf71482f94e6597de6b892ec22b1b6566d5e577ad7c968",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3245143429",
+      "manifest_sha256": "b2e8bf5dbb22d5d16715e1b155ad84e96ed0484082f31a1508eb51bd5a2f2067",
+      "reference_location_retrieved": true
+    },
+    {
+      "sample_id": "aidev-3263598324",
+      "run_id": "reproduce-20261123T184639354933Z",
+      "role": "validation",
+      "source_file": "AutoML.py",
+      "detection_line": 8958,
+      "unchanged_function_header": null,
+      "assessment": {
+        "run_id": "reproduce-20261123T184639354933Z",
+        "evidence_hashes": {
+          "manifest.json": "071898b6f1df012619f6c82c51f54d5b547a7b41b5b5b12d4b5e7490bfa87dd6",
+          "license-evidence.json": "0e50870e8136c0537ef7ef31d3598470654646e053563bfdf5951f8b74322fc0",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "830263bbec252c46747a0d2aaf493bdb9fbba9455be9805d32c91f3491ad3bd2",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "72dd2ab373cb4a2cba644f17b75ac25f746b64b7d31e82e6f778197ee95c088f",
+          "historical-fixed.stdout.txt": "11195dee740bbf982bc7527b7499bcaabd51e207e14b88587c5388cfeda0e535",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "9c3fca1b6d23fbeaa754cafbfe543d67c6db77ae102406e670541830d4703f14"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "AutoML.py",
+            "function": "<module>"
+          }
+        ],
+        "missing_definitions": [],
+        "unparseable_definitions": [],
+        "mechanism": "SelectBaseEventDialog at8932 is at module indentation instead of being nested in FaultTreeApp. Its methods use eight spaces; the later class at8958 dedents to four, which is not an enclosing indentation level. The one-line original repair nests the earlier class at four spaces.",
+        "evidence_reason": "Base reports unindent does not match any outer indentation level at8958; unchanged owned harness passes fixed. The causal class declaration is8932, distinct from the reported detection line; class declaration scope is represented as module, not a fabricated function.",
+        "limitations": "Only owned local Python3.11 compilation is evidenced, not application import/runtime behavior or historical CI. Lexical retrieval may miss causal scope; keep measured misses, do not inject reference. PR authorship does not identify fault author.",
+        "label_source": "agent_code_patch_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log input only. No repair, issue, proposed label or assessment enters retrieval; natural comments are not automatically excluded."
+      },
+      "assessment_sha256": "440bb35efde5af0b3d5e44cf808e839823a277f592574c11d70670c8df70556c",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3263598324",
+      "manifest_sha256": "a395ff37a464e8c46f2069904a496e34f7f22d180af4bde594182982a4852656",
+      "reference_location_retrieved": false
+    },
+    {
+      "sample_id": "aidev-3137319809",
+      "run_id": "reproduce-20261123T184135300288Z",
+      "role": "train",
+      "disposition": "exclude_from_syntax_smoke_subset",
+      "proposed_label": null,
+      "mechanism_status": "not_demonstrated_by_this_harness",
+      "reason": "Both base/fixed compile. The repair moves resolve from module into AttackAction: semantic ownership may matter, but compilation does not demonstrate it. No syntax label or functional execution claim.",
+      "evidence_hashes": {
+        "manifest.json": "0ed2007f0203f75153564731f206a063594e83520db0eeac35f3c15c548e1d70",
+        "historical-base.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "d9ea2060975470d6390e253cad5e1853d51ef9b5215a253b8c0a9d5a59ca7e32",
+        "historical-fixed.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "23c031965ab7753f762f09c8e097adaede8084679302ddb55f39bb094a5b0927"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "aidev-3136962971",
+      "run_id": "reproduce-20261123T184404483520Z",
+      "role": "test",
+      "disposition": "exclude_from_syntax_smoke_subset",
+      "proposed_label": null,
+      "mechanism_status": "not_demonstrated_by_this_harness",
+      "reason": "Both base/fixed compile. Repair changes nesting of reproject/combine operations; grammar smoke cannot establish behavioral failure. No syntax label inferred from title or indentation diff.",
+      "evidence_hashes": {
+        "manifest.json": "d0077c71bdc61e1122f62655b2f99d0abbf1031f2aeaf179f1e9af3f4767f9a7",
+        "historical-base.stdout.txt": "286cab9bb46d6df3a043380caa7281a1040fbf4808991516efb4579719a52b13",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "3fbcb87e430d6ac03ddefaa397dc1518d5fce489a4313075b36a8fc7d8378e8b",
+        "historical-fixed.stdout.txt": "02660f8e5e82f4eb20239ca60f20f30f7fff51cb8c99a8dbe1c0c4ae0170baae",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "ae91b5e8340255169f76ce475ff526f583bed527e6bdf4441244a116287676cc"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "aidev-3226294394",
+      "run_id": "reproduce-20261123T190744652875Z",
+      "role": "train",
+      "execution": "strict_local_compilation_supported",
+      "disposition": "pending_safe_reference_binding_no_export",
+      "proposed_cause_type": "syntax",
+      "proposed_locations": [
+        {
+          "file": "print_functions/print_message.py",
+          "function": "print_message"
+        }
+      ],
+      "mechanism": "The docstring begins at column zero immediately after the def at5, so the function has no indented suite. Base compilation reports expected an indented block at6; original repair indents the docstring and fixed compiles.",
+      "limitations": "The repair also adds imports/fallback and changes the header annotation. Existing unparseable function validation requires an unchanged prefix through the fixed header, which does not hold. Do not mislabel module or causal absence merely to export. Runtime behavior/imports were not tested.",
+      "evidence_hashes": {
+        "manifest.json": "29b12b325dc1c9f093656c257e7941a67b304c2151d50977f912c1d7f525f5ef",
+        "license-evidence.json": "0e50870e8136c0537ef7ef31d3598470654646e053563bfdf5951f8b74322fc0",
+        "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+        "historical-base.stdout.txt": "381d842dfd000e32f1a64993b1b97bbbafe048fb826aababfc3d8af0994dfacd",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "525bb038d3272be5c39ecc072eda581b7ccf225c1a2d29243e4a87e214ffe101",
+        "historical-fixed.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "18a7bbe3e725ca124f43dc75f093b1e2a85d23cf25b60c3d8db709453dfb7bda"
+      },
+      "base_header_line": 5,
+      "fixed_header_line": 9,
+      "confidence": "high_cause_pending_safe_location_binding",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_prototypes": 3,
+  "not_confirmed": 2,
+  "pending_safe_reference_binding": 1,
+  "qualification": "Saved evidence only; no model, Docker or source execution during review. Generator has not self-labeled these real cases. Human/gold/training pending; no final v2 quota selection."
+}

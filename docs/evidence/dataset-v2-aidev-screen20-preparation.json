@@ -1,0 +1,75 @@
+{
+  "recorded_at": "2026-11-23T19:53:15+07:00",
+  "outcomes": [
+    {
+      "source_case_id": "aidev-3245143429",
+      "repo": "IMOGI-ITB/Payroll-Indonesia",
+      "role": "validation",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3245143429-ds2-compile20",
+      "source_blobs": {
+        "base": "c6bd1fcad39230f34e0bb4af9dfee477ed35af8d",
+        "head": "de35ff7c9f2814bb65d3b2a4652608da4db56eeb"
+      }
+    },
+    {
+      "source_case_id": "aidev-3137319809",
+      "repo": "TonyDeRosia/evennia-minimud",
+      "role": "train",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3137319809-ds2-compile20",
+      "source_blobs": {
+        "base": "08f43924aa376f414c7b69f06ac3d464c837f97f",
+        "head": "13a700fa08fa81410312b9541ede6c4ad94e934f"
+      }
+    },
+    {
+      "source_case_id": "aidev-3226294394",
+      "repo": "MForofontov/pyutils-collection",
+      "role": "train",
+      "metadata_only": true,
+      "status": "preparation_failed_no_trial",
+      "error": "ValueError('Pinned license family not confirmed')"
+    },
+    {
+      "source_case_id": "aidev-3263598324",
+      "repo": "MelkorBalrog/AutoML",
+      "role": "validation",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3263598324-ds2-compile20",
+      "source_blobs": {
+        "base": "cb4e88f6a3a2d0eb03eafa26e56decb108f5c6a0",
+        "head": "f1a9c322f4ed462edbfba96cde4487ba46d5615f"
+      }
+    },
+    {
+      "source_case_id": "aidev-3194109543",
+      "repo": "x-CK-x/Dataset-Curation-Tool",
+      "role": "train",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3194109543-ds2-compile20",
+      "source_blobs": {
+        "base": "e10e702d755aa882d6731c43bbf5252fc9974964",
+        "head": "d13b91c8fa7d2e7c645f51cc46f285d6ce691c01"
+      }
+    },
+    {
+      "source_case_id": "aidev-3136962971",
+      "repo": "tinystork/zeseestarstacker",
+      "role": "test",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3136962971-ds2-compile20",
+      "source_blobs": {
+        "base": "93a183feb99f887eaf214cbd4f0796377f493634",
+        "head": "169486a4d19cc651df67f25966d091ab49644ec1"
+      }
+    }
+  ],
+  "prepared": 5,
+  "qualification": "No source compiled/executed during preparation; no new eligibility identities or trial success asserted."
+}

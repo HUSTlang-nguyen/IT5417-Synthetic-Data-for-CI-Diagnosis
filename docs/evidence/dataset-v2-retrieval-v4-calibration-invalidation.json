@@ -1,0 +1,10 @@
+{
+  "recorded_at": "2026-11-24T01:58:01+07:00",
+  "receipt": "docs\\evidence\\dataset-v2-retrieval-v4-train-calibration-51.json",
+  "receipt_sha256": "df669261da0264244d37bbd13df44785c9de77f3beb3da7ba7a5f30fe70775fb",
+  "accepted_for_protocol_freeze": false,
+  "reason": "Prototype source changed on disk after the worker imported it. End-of-run source hash cannot establish the loaded implementation. Preserve this result; repeat software-only calibration with a frozen start snapshot and end hash assertion.",
+  "replacement_operation": "train-retrieval-syntax-header-calibration-51-v4-r2",
+  "model_requests": 0,
+  "docker_runs": 0
+}

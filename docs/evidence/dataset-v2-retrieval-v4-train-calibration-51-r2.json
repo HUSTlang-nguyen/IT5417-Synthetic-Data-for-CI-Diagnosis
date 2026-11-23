@@ -1,0 +1,1250 @@
+{
+  "checked_at": "2026-11-24T02:06:05+07:00",
+  "scope": "50 previously selected real train development records plus one new TRAIN syntax case only; no heldout source/labels or model predictions queried; tokenizer, no model weights/inference; references used only for post-hoc coverage, never retrieval query.",
+  "records": [
+    {
+      "sample_id": "marshmallow-code__marshmallow-1252",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1545,
+        "prompt_sha256": "d45e323175923a20a4bcaf86aa38e0a5a4a5d5f4ef7b31f1dbde66fc7efc84c7",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1545,
+        "prompt_sha256": "d45e323175923a20a4bcaf86aa38e0a5a4a5d5f4ef7b31f1dbde66fc7efc84c7",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1216",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1636,
+        "prompt_sha256": "860aa52e45ee76cc3ec65fa12a6d8198355896c994a0ad5c6fdbbf2a4fedfbc5",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1636,
+        "prompt_sha256": "860aa52e45ee76cc3ec65fa12a6d8198355896c994a0ad5c6fdbbf2a4fedfbc5",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pydicom__pydicom-1031",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "41eea7bba4c466a6e5e15bb47af48fc7eb03de0b0d505da7768244f32747b8b0",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "41eea7bba4c466a6e5e15bb47af48fc7eb03de0b0d505da7768244f32747b8b0",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1262",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1420,
+        "prompt_sha256": "b5b7411131cdc5346070333995209cd7cb798889752b2f2c897efea2f2947dc2",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1420,
+        "prompt_sha256": "b5b7411131cdc5346070333995209cd7cb798889752b2f2c897efea2f2947dc2",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11400",
+      "reference_functions_present_in_base": 0,
+      "reference_function_count": 2,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "6061d0d4d8b8b920e232ace9814ed708351f80c06ff46246348136a608dc6fa9",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "6061d0d4d8b8b920e232ace9814ed708351f80c06ff46246348136a608dc6fa9",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "marshmallow-code__marshmallow-1702",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1629,
+        "prompt_sha256": "ae41b9114ea353273918096197b5b59342e88e01ede486190d5e46613cc0ca40",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1629,
+        "prompt_sha256": "ae41b9114ea353273918096197b5b59342e88e01ede486190d5e46613cc0ca40",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1224",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1580,
+        "prompt_sha256": "189c6f9478a97a5bdeaaaca2cd748c5b70f5db96434c1e57e2a30b37d18ada9c",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1580,
+        "prompt_sha256": "189c6f9478a97a5bdeaaaca2cd748c5b70f5db96434c1e57e2a30b37d18ada9c",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pydicom__pydicom-800",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1627,
+        "prompt_sha256": "3dc8ece983963aa2a1ad95374241bbc8dc7622194d75b5199dd5317871076e5d",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1627,
+        "prompt_sha256": "3dc8ece983963aa2a1ad95374241bbc8dc7622194d75b5199dd5317871076e5d",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1719",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1564,
+        "prompt_sha256": "3b17279ee3baaac378db42da1e6ec3997f1bc34dd8df92f15437457cc2b9ca10",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1564,
+        "prompt_sha256": "3b17279ee3baaac378db42da1e6ec3997f1bc34dd8df92f15437457cc2b9ca10",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11438",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "8a41985d80e447b8824af89d6c02ec4814c3b348fca19b537fd5c25c9a05fc48",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "8a41985d80e447b8824af89d6c02ec4814c3b348fca19b537fd5c25c9a05fc48",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1349",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1431,
+        "prompt_sha256": "d20d686307a323c6abb9e5c5a2716d384c141fbd7e42db21d58a562399e1db61",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1431,
+        "prompt_sha256": "d20d686307a323c6abb9e5c5a2716d384c141fbd7e42db21d58a562399e1db61",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pydicom__pydicom-900",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "14116740544ec2d1b3b9fcdaa51431e831d4536093e50b3ab7f4c501a5884df3",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "14116740544ec2d1b3b9fcdaa51431e831d4536093e50b3ab7f4c501a5884df3",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1959",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1447,
+        "prompt_sha256": "c38ef6f4ac9659f3611900ebab94b88efff26bf163890cc497be1724d0f748a4",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1447,
+        "prompt_sha256": "c38ef6f4ac9659f3611900ebab94b88efff26bf163890cc497be1724d0f748a4",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11618",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "116c36fa6e9e7fd2278c6bcab77cbe6d7e164d42eaef0834c38403ba46df7d51",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "116c36fa6e9e7fd2278c6bcab77cbe6d7e164d42eaef0834c38403ba46df7d51",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1738",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1634,
+        "prompt_sha256": "e443190f4265973ac536bf3a7f3475cbf1e93547e31fc5cf3918e873503408b9",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1634,
+        "prompt_sha256": "e443190f4265973ac536bf3a7f3475cbf1e93547e31fc5cf3918e873503408b9",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pydicom__pydicom-938",
+      "reference_functions_present_in_base": 2,
+      "reference_function_count": 2,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1358,
+        "prompt_sha256": "46c1ecf76984e002db3eb01292f8508c4c9def49af7a6f59690b5141e7ae5a10",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1358,
+        "prompt_sha256": "46c1ecf76984e002db3eb01292f8508c4c9def49af7a6f59690b5141e7ae5a10",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pylint-dev__astroid-2023",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1445,
+        "prompt_sha256": "f7b10bc83a66412becf27a158d812c78e3f7266b78024a6f863214e53d1f0fa8",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1445,
+        "prompt_sha256": "f7b10bc83a66412becf27a158d812c78e3f7266b78024a6f863214e53d1f0fa8",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11788",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "6a7e69a88690617fefde556643955a4b4602d24d52c8c287c998a6d8dfafdacb",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "6a7e69a88690617fefde556643955a4b4602d24d52c8c287c998a6d8dfafdacb",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1782",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1581,
+        "prompt_sha256": "9390e6a9ec2c1db46c565a36d2c1e50b7094a731bfe7e114f0fdb2549b1ab224",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1581,
+        "prompt_sha256": "9390e6a9ec2c1db46c565a36d2c1e50b7094a731bfe7e114f0fdb2549b1ab224",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pylint-dev__astroid-2309",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1404,
+        "prompt_sha256": "3ac61513544443ddabf77c17c615216e81673db98441e057c6493a6791da03e6",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1404,
+        "prompt_sha256": "3ac61513544443ddabf77c17c615216e81673db98441e057c6493a6791da03e6",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11794",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "e7e17846edff5900078396c46101c08943405d601226b02ba37f58b2b60f4e25",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "e7e17846edff5900078396c46101c08943405d601226b02ba37f58b2b60f4e25",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-980",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1635,
+        "prompt_sha256": "53d73c7226b3c6bb738ba6585170613a7520ca2d5960b7a3cb8c25ceecc51f1c",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1635,
+        "prompt_sha256": "53d73c7226b3c6bb738ba6585170613a7520ca2d5960b7a3cb8c25ceecc51f1c",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11796",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "9383cdff49720f80c621b2d417683fbcd325dec1fe6d47b41d9a5d51178487d6",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "9383cdff49720f80c621b2d417683fbcd325dec1fe6d47b41d9a5d51178487d6",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11822",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1632,
+        "prompt_sha256": "96b06b600db66bd8dd2764071a90eca479ed17fbdbdd4f42c2612314b32cfe82",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1632,
+        "prompt_sha256": "96b06b600db66bd8dd2764071a90eca479ed17fbdbdd4f42c2612314b32cfe82",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11831",
+      "reference_functions_present_in_base": 0,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "e6eec3424926a21f2acfa78aeb27d362be9393bd1e391d5309b4c796e17af585",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "e6eec3424926a21f2acfa78aeb27d362be9393bd1e391d5309b4c796e17af585",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11870",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "3fd67e8f7905eb9bf65f4a689515f68a42ed27740ae38546a56cf8b1d43e8967",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "3fd67e8f7905eb9bf65f4a689515f68a42ed27740ae38546a56cf8b1d43e8967",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11897",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "b32cd1f4c7f9422b089abdd3ff5cd0cdce3120eb6b31743c53f1f8a54d707ba9",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "b32cd1f4c7f9422b089abdd3ff5cd0cdce3120eb6b31743c53f1f8a54d707ba9",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11919",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "0e67b3a45f3f4caa25acf20e5ae08e04106a2d1b50c06df7b6a120832d5f954a",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "0e67b3a45f3f4caa25acf20e5ae08e04106a2d1b50c06df7b6a120832d5f954a",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12096",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "b2021c4ea65a8e35afac730efa928801169119f5776ed40eb07d77987068c688",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "b2021c4ea65a8e35afac730efa928801169119f5776ed40eb07d77987068c688",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12171",
+      "reference_functions_present_in_base": 0,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "f50a08ab56ffc9939dc79ed998b9e2b7fe7a4f6b0e861ebaf1f009acc3a00e48",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "f50a08ab56ffc9939dc79ed998b9e2b7fe7a4f6b0e861ebaf1f009acc3a00e48",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12183",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "1f08388ee623e162e903d0b25c72bf91d4028260357ae2c18d61d1f3e3512264",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "1f08388ee623e162e903d0b25c72bf91d4028260357ae2c18d61d1f3e3512264",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12301",
+      "reference_functions_present_in_base": 2,
+      "reference_function_count": 2,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "fcfc1762a662f4d4e9c9c5108b46a95b9faaf34642f1ab702f231dffd4cdd58d",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "fcfc1762a662f4d4e9c9c5108b46a95b9faaf34642f1ab702f231dffd4cdd58d",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12307",
+      "reference_functions_present_in_base": 0,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1632,
+        "prompt_sha256": "31dd46ee6df99b98f82adb805ffe5824e369b3a86860c79f943acb529ce9114b",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1632,
+        "prompt_sha256": "31dd46ee6df99b98f82adb805ffe5824e369b3a86860c79f943acb529ce9114b",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12419",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "1f0e4946362fc7f7f832b23fb9c2ed243e8c464104158448eb8910363faabdb4",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "1f0e4946362fc7f7f832b23fb9c2ed243e8c464104158448eb8910363faabdb4",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12428",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "91f42c55f1e5e252a7eac02380612a2fd953bf0403cc6c11420ce56f0f483f7e",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "91f42c55f1e5e252a7eac02380612a2fd953bf0403cc6c11420ce56f0f483f7e",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12454",
+      "reference_functions_present_in_base": 2,
+      "reference_function_count": 2,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1539,
+        "prompt_sha256": "cde75eaac3b8de094b2a8058160b78404d833a12f1c2dfb20baa9b6f88ae6e96",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1539,
+        "prompt_sha256": "cde75eaac3b8de094b2a8058160b78404d833a12f1c2dfb20baa9b6f88ae6e96",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12481",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1633,
+        "prompt_sha256": "0511f16f6669e7f243d3afc34661c9d4f4334b0eb46f14603708b45cee7b59e3",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1633,
+        "prompt_sha256": "0511f16f6669e7f243d3afc34661c9d4f4334b0eb46f14603708b45cee7b59e3",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-12529",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1602,
+        "prompt_sha256": "c027495bcc284719b35173e309ecb667ee8f1fa9e8036f6c790935951bff4205",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1602,
+        "prompt_sha256": "c027495bcc284719b35173e309ecb667ee8f1fa9e8036f6c790935951bff4205",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13031",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "d1f78d38ed53b2647aa3788f782ef8922b7c66c71c9cd434845c3ef91e0c0864",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "d1f78d38ed53b2647aa3788f782ef8922b7c66c71c9cd434845c3ef91e0c0864",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13043",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "3589a9bad0216b7cda709c9ad514d5065f87d2174a9be219b624c79f9c92026e",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "3589a9bad0216b7cda709c9ad514d5065f87d2174a9be219b624c79f9c92026e",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13146",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "56e7c3ddefd57f81cfeaa67a59df1695b5ef9fd557cab4e5a26ac5c10bfaa7bf",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "56e7c3ddefd57f81cfeaa67a59df1695b5ef9fd557cab4e5a26ac5c10bfaa7bf",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13173",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "4bacc6f80f9407988146043369ef170bffd145372c6ceaa18cfb4e29093d6bb5",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "4bacc6f80f9407988146043369ef170bffd145372c6ceaa18cfb4e29093d6bb5",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13185",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1606,
+        "prompt_sha256": "3d8e5494de512afed601ab8ef5a48106aad21dfbc91420924654c0017ab030eb",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1606,
+        "prompt_sha256": "3d8e5494de512afed601ab8ef5a48106aad21dfbc91420924654c0017ab030eb",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13198",
+      "reference_functions_present_in_base": 2,
+      "reference_function_count": 2,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "c36c3580ae1e39437587fac4324a24ae5a576a25b804f6d419e73b7600972b02",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "c36c3580ae1e39437587fac4324a24ae5a576a25b804f6d419e73b7600972b02",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13309",
+      "reference_functions_present_in_base": 0,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "7efecc35fd302ab4211918c094562993dee059cdf589ea266eed4767fb742d0d",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "7efecc35fd302ab4211918c094562993dee059cdf589ea266eed4767fb742d0d",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13346",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "90b9dbbd0303e8e49652ecafe9d13f0f2bb9edf35a52b0d7bc8f6686b6d356af",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "90b9dbbd0303e8e49652ecafe9d13f0f2bb9edf35a52b0d7bc8f6686b6d356af",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13361",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "4e50c030bd3bda9433dc5a122a2a2ac9bdbc1566e01c70842cf080ce8b58a2f5",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "4e50c030bd3bda9433dc5a122a2a2ac9bdbc1566e01c70842cf080ce8b58a2f5",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13364",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "914b5e1f97506701c6e85681395a8353f93c2e85b66c667c9f6ba0f4e50d0657",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "914b5e1f97506701c6e85681395a8353f93c2e85b66c667c9f6ba0f4e50d0657",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13369",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "4b15f091ffdfe9a9f0451439d8ac5b5408cf4dd7d85eba9b0da36d25aece8e8c",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1635,
+        "prompt_sha256": "4b15f091ffdfe9a9f0451439d8ac5b5408cf4dd7d85eba9b0da36d25aece8e8c",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-13372",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1633,
+        "prompt_sha256": "2268d5634765dccdd180d47b102ab39ed23605104fb6062891ad309fe7013366",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1633,
+        "prompt_sha256": "2268d5634765dccdd180d47b102ab39ed23605104fb6062891ad309fe7013366",
+        "snippets": 5
+      }
+    },
+    {
+      "sample_id": "aidev-3232895285",
+      "reference_functions_present_in_base": 1,
+      "reference_function_count": 1,
+      "role": "train",
+      "v3": {
+        "reference_before_crop": false,
+        "reference_after_crop": false,
+        "available_reference_after_crop": false,
+        "reference_header_in_final_user_message": false,
+        "input_tokens": 1225,
+        "prompt_sha256": "72d4da292ca481be15d350ec5a7bbbd4007565cdfbdfaf2d4672c7e1aadae781",
+        "snippets": 5
+      },
+      "v4": {
+        "reference_before_crop": true,
+        "reference_after_crop": true,
+        "available_reference_after_crop": true,
+        "reference_header_in_final_user_message": true,
+        "input_tokens": 1177,
+        "prompt_sha256": "7e999239cb9e2bab703fecd95a996972186d9ba928673fe349d0ce8bba942af8",
+        "snippets": 5
+      }
+    }
+  ],
+  "coverage_after_crop": {
+    "v3": 16,
+    "v4": 17
+  },
+  "reference_absence_cases": [
+    "sympy__sympy-11400",
+    "sympy__sympy-11831",
+    "sympy__sympy-12171",
+    "sympy__sympy-12307",
+    "sympy__sympy-13309"
+  ],
+  "regressions": [],
+  "improvements": [
+    "aidev-3232895285"
+  ],
+  "model_inference_requests": 0,
+  "prototype_sha256": "f470f70d572a4429fd1ec054dd80436644370f123a61a44ffbc0c89c002cd691",
+  "prototype_snapshot": ".cache\\dataset-v2\\calibration-snapshots\\retrieval-v4-r2.py",
+  "supersedes_unaccepted_receipt": "docs/evidence/dataset-v2-retrieval-v4-train-calibration-51.json",
+  "unchanged_50_train_prompts": true
+}

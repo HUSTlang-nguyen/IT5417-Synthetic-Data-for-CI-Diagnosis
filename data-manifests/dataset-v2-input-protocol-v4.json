@@ -1,0 +1,57 @@
+{
+  "protocol": "dataset-v2-input-v4",
+  "frozen_at": "2026-11-24T02:06:23+07:00",
+  "retrieval": "ci_demo.retrieval_v4.retrieve_syntax_headers",
+  "parameters": {
+    "max_functions": 5,
+    "max_chars": 6000,
+    "context": 2048,
+    "output_budget": 384
+  },
+  "source_sha256": {
+    "ci_demo/retrieval_v3.py": "65ea00c540442d0d4c0f52e8892c6f530195387ba4dfbd1caa8a1f971ef05f33",
+    "ci_demo/diagnosis.py": "1fb8f08148521264a098d1e96d27f05bac14623687780c8e97691ad165da3f6d",
+    "ci_demo/ml.py": "4a018dd1770b996ae5c29bbc97b33b1efb411b21a0285917b95c8672d8082bf4",
+    "ci_demo/retrieval_v4.py": "f470f70d572a4429fd1ec054dd80436644370f123a61a44ffbc0c89c002cd691",
+    "ci_demo/input_protocol.py": "ff49e53711494d7176ec97f4e7ac392bf7fe3147612473e92484cfbdee93629a"
+  },
+  "helper_source_sha256": {
+    "is_test": "7fd3930339ce1e74981f75af9073079da8330564b0e73538fc15b548ae93dc48",
+    "safe_relative": "17c348c10eb4c72cf8d03a8887fccd1df5ce4d0f0792a660c97aa7c254bad778"
+  },
+  "tokenizer_sha256": {
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4"
+  },
+  "calibration": {
+    "train_receipt": "docs/evidence/dataset-v2-retrieval-v4-train-calibration-51-r2.json",
+    "train_receipt_sha256": "10ae62f3c87d9aac98ceaa7d64ef4ed87b56827a57ddd6907f2e3f15d775879d",
+    "coverage_after_crop": {
+      "v3": 16,
+      "v4": 17
+    },
+    "records": 51,
+    "unchanged_prior_train_prompts": 50,
+    "regressions": 0,
+    "qualification": "Function-header presence in prepared input, not diagnosis accuracy or complete causal body coverage. One new train syntax sample; references used only for post-hoc measurement."
+  },
+  "decision": "Preserve v3 for valid source and module faults; for observed syntax failure in invalid source, retain lexical function header from the failing source within the unchanged character/token budgets. Do not filter retrieval misses.",
+  "input_boundary": [
+    "execution_log",
+    "code"
+  ],
+  "reference_separate": [
+    "repair_patch",
+    "cause_type",
+    "locations",
+    "explanation",
+    "assessment"
+  ],
+  "missing_definition_policy": "Record causal absence separately from function present in failing source; do not invent base lines or discard samples for missing definition/retrieval misses.",
+  "heldout_policy": "Earlier SWE heldout causal reviews already exist under v3. This change uses only the original50train development inputs plus one TRAIN syntax source and owned fixtures; no new heldout syntax causal source/label was inspected for selection. Freeze before those reviews/exports; no claim that all historical heldout was unseen.",
+  "model_inference_requests": 0,
+  "parent_protocol": {
+    "path": "data-manifests\\dataset-v2-input-protocol.json",
+    "sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c"
+  }
+}
