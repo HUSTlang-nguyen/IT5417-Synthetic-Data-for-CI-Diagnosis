@@ -1,0 +1,90 @@
+{
+  "case_id": "mwaskom__seaborn-3217-ds2-heldout3",
+  "source_case_id": "mwaskom__seaborn-3217",
+  "record_id": "mwaskom__seaborn-3217",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/mwaskom/seaborn",
+  "base": "623b0b723c671e99f04e8ababf19adc563f30168",
+  "head": "base+repair:e4704a5056c436bb78a12af92534f1c353aa20bbb1de5e5e767b673dbc24479d",
+  "allowed_file": "seaborn/_core/plot.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "validation",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/mwaskom__seaborn-3217-ds2-heldout3/repair.patch",
+  "repair_patch_sha256": "e4704a5056c436bb78a12af92534f1c353aa20bbb1de5e5e767b673dbc24479d",
+  "test_patch": ".cache/dataset-v2-source/cases/mwaskom__seaborn-3217-ds2-heldout3/test.patch",
+  "test_patch_sha256": "11fab5dd919e773b79955d8a421dd2c4966134fc259b3612c6aff56ed545e315",
+  "source_record_sha256": "a58651990b096f2fdd31f362d56d98fa0b9e233719ba0bf6edbe435db32ed591",
+  "fail_to_pass": [
+    "tests/_marks/test_bar.py::TestBars::test_log_scale"
+  ],
+  "pass_to_pass": [
+    "tests/_marks/test_bar.py::TestBar::test_categorical_positions_vertical",
+    "tests/_marks/test_bar.py::TestBar::test_categorical_positions_horizontal",
+    "tests/_marks/test_bar.py::TestBar::test_numeric_positions_vertical",
+    "tests/_marks/test_bar.py::TestBar::test_numeric_positions_horizontal",
+    "tests/_marks/test_bar.py::TestBar::test_set_properties",
+    "tests/_marks/test_bar.py::TestBar::test_mapped_properties",
+    "tests/_marks/test_bar.py::TestBar::test_zero_height_skipped",
+    "tests/_marks/test_bar.py::TestBar::test_artist_kws_clip",
+    "tests/_marks/test_bar.py::TestBars::test_positions",
+    "tests/_marks/test_bar.py::TestBars::test_positions_horizontal",
+    "tests/_marks/test_bar.py::TestBars::test_width",
+    "tests/_marks/test_bar.py::TestBars::test_mapped_color_direct_alpha",
+    "tests/_marks/test_bar.py::TestBars::test_mapped_edgewidth",
+    "tests/_marks/test_bar.py::TestBars::test_auto_edgewidth",
+    "tests/_marks/test_bar.py::TestBars::test_unfilled"
+  ],
+  "test_targets": [
+    "tests/_marks/test_bar.py"
+  ],
+  "frozen_test_files": [
+    "tests/_marks/test_bar.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "contourpy==1.1.0",
+    "cycler==0.11.0",
+    "fonttools==4.42.1",
+    "importlib-resources==6.0.1",
+    "kiwisolver==1.4.5",
+    "matplotlib==3.7.2",
+    "numpy==1.25.2",
+    "packaging==23.1",
+    "pandas==2.0.0",
+    "pillow==10.0.0",
+    "pyparsing==3.0.9",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3.post1",
+    "scipy==1.11.2",
+    "six==1.16.0",
+    "tzdata==2023.1",
+    "zipp==3.16.2"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_parent_case_id": "mwaskom__seaborn-3276-ds2-heldout",
+  "recipe_basis": "Same repo/source version as passing profile; exact source/test patches and original source references. No performance or causal-label filtering."
+}

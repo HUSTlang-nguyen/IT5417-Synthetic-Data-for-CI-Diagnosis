@@ -1,0 +1,83 @@
+{
+  "case_id": "pydata__xarray-3406-ds2-heldout3",
+  "source_case_id": "pydata__xarray-3406",
+  "record_id": "pydata__xarray-3406",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "fb0cf7b5fe56519a933ffcecbce9e9327fe236a6",
+  "head": "base+repair:75476b5ec08c23e5e9dce3fe9edb427bc59dfdd2cd75c1c3296feba122a9ad1c",
+  "allowed_file": "xarray/core/groupby.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3406-ds2-heldout3/repair.patch",
+  "repair_patch_sha256": "75476b5ec08c23e5e9dce3fe9edb427bc59dfdd2cd75c1c3296feba122a9ad1c",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3406-ds2-heldout3/test.patch",
+  "test_patch_sha256": "6a4be8072a64afbd57371dc68834b8ec35437fb6259d1678a803263d3aa259aa",
+  "source_record_sha256": "1fe898287ef2fef36b243cf9f0bacf53fa2b4fd5d94d381aaac0e6d5d2e32a23",
+  "fail_to_pass": [
+    "xarray/tests/test_groupby.py::test_groupby_drops_nans"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_groupby.py::test_consolidate_slices",
+    "xarray/tests/test_groupby.py::test_groupby_dims_property",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_apply",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_sum",
+    "xarray/tests/test_groupby.py::test_groupby_da_datetime",
+    "xarray/tests/test_groupby.py::test_groupby_duplicate_coordinate_labels",
+    "xarray/tests/test_groupby.py::test_groupby_input_mutation",
+    "xarray/tests/test_groupby.py::test_da_groupby_apply_func_args",
+    "xarray/tests/test_groupby.py::test_ds_groupby_apply_func_args",
+    "xarray/tests/test_groupby.py::test_da_groupby_empty",
+    "xarray/tests/test_groupby.py::test_da_groupby_quantile",
+    "xarray/tests/test_groupby.py::test_da_groupby_assign_coords",
+    "xarray/tests/test_groupby.py::test_groupby_repr[obj0-z]",
+    "xarray/tests/test_groupby.py::test_groupby_repr[obj1-z]",
+    "xarray/tests/test_groupby.py::test_groupby_grouping_errors",
+    "xarray/tests/test_groupby.py::test_groupby_reduce_dimension_error",
+    "xarray/tests/test_groupby.py::test_groupby_bins_timeseries"
+  ],
+  "test_targets": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repo/source version as passing profile; exact source/test patches and original source references. No performance or causal-label filtering.",
+  "recipe_parent_case_id": "pydata__xarray-3677-ds2-heldout2"
+}

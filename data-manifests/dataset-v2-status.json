@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T18:08:34+07:00",
+  "updated_at": "2026-11-23T18:15:47+07:00",
   "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
@@ -24,7 +24,7 @@
   },
   "v2_real_selected": 0,
   "v2_synthetic_selected": 0,
-  "new_case_attempts": 46,
+  "new_case_attempts": 51,
   "new_generator_requests": 0,
   "live_worker": {
     "session_id": 91773,
@@ -70,7 +70,7 @@
     "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 9263.0,
+  "execution_seconds_charged": 9696.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -102,8 +102,8 @@
     "receipt": "docs/evidence/dataset-v2-development-review.json",
     "gold": "pending"
   },
-  "new_cases_strict_reproduced": 29,
-  "new_passing_seeds": 33,
+  "new_cases_strict_reproduced": 32,
+  "new_passing_seeds": 37,
   "new_real_silver_prototype_exports": 18,
   "first_batch": {
     "status": "finished",
@@ -160,11 +160,11 @@
   },
   "by_role": {
     "train": {
-      "attempted_profiles": 40,
-      "attempted_source_cases": 39,
-      "finished_profiles": 39,
-      "strict_reproduced": 22,
-      "passing_source_cases": 26
+      "attempted_profiles": 45,
+      "attempted_source_cases": 44,
+      "finished_profiles": 44,
+      "strict_reproduced": 25,
+      "passing_source_cases": 30
     },
     "validation": {
       "attempted_profiles": 2,
@@ -239,12 +239,10 @@
     "artifact_growth": "Full scan enforced by stage guard; not measured again for this status snapshot."
   },
   "latest_code_publication": {
-    "verified_at": "2026-11-23T13:57:24+07:00",
+    "verified_at": "2026-11-23T18:15:47+07:00",
     "branch": "codex/w1-review-skill",
-    "commit": "336efe79398b43d02bd5fd3af4b8c6534f637842",
-    "remote_verified": true,
-    "main_unchanged": "289ddea569bc7ea24a3c8fff3270ca75bf5f6c63",
-    "qualification": "Partial collection/software milestone, not final v2 publication."
+    "commit": "59ac5d35c6058ebe7f19281b97804763250c22b2",
+    "main_unchanged": true
   },
   "guard_upgrade": {
     "previous_worker": 71523,
@@ -277,7 +275,7 @@
     "status": "prepared_and_frozen_not_started",
     "sha256": "8131af53557de7a1dd491e5143e64dc637f240f5ed4b7aab3ea572b1d2cba107"
   },
-  "new_reproduction_profiles": 48,
+  "new_reproduction_profiles": 53,
   "source_role_supplements": [
     {
       "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
@@ -292,5 +290,18 @@
     "requests_correction": "reproduce-20261123T110438250093Z",
     "requests_correction_status": "hypothesis_supported_locally",
     "qualification": "Source-ID options normalization only; original failed profile unchanged."
+  },
+  "queued_serial_worker": {
+    "session_id": 11867,
+    "log": ".cache/dataset-v2-serial-next-live.txt",
+    "status": "waiting_for_wave2_terminal",
+    "steps": [
+      "Verify previously probed GitPython product blobs",
+      "Review/export four heldout silver candidates from saved evidence",
+      "Run23-source heldout-wave3 sequentially"
+    ],
+    "plan": "data-manifests/dataset-v2-heldout-wave3.json",
+    "plan_sha256": "be7c08bdc38f584564575bc4422f7bcba12d63c48508268348592661943d8214",
+    "qualification": "Wait uses reproduction worker OS lock, no reservation/model call. Stops if parent wave incomplete or any source uncertain; existing caps remain enforced."
   }
 }

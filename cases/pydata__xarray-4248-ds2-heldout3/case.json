@@ -1,0 +1,84 @@
+{
+  "case_id": "pydata__xarray-4248-ds2-heldout3",
+  "source_case_id": "pydata__xarray-4248",
+  "record_id": "pydata__xarray-4248",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "98dc1f4ea18738492e074e9e51ddfed5cd30ab94",
+  "head": "base+repair:cb60278c84b3245408864d4fde2f83e88229e920e6345b0f64ed74092b8f02d2",
+  "allowed_file": "xarray/core/formatting.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4248-ds2-heldout3/repair.patch",
+  "repair_patch_sha256": "cb60278c84b3245408864d4fde2f83e88229e920e6345b0f64ed74092b8f02d2",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4248-ds2-heldout3/test.patch",
+  "test_patch_sha256": "c295e6acb9392b7f9b5a89b45bc53049472ed16319c5626198653d0e77ac5fc6",
+  "source_record_sha256": "38285985e6c20bad1f97ff203806f2b6aaad01bb6073ad455e6983389fdc4943",
+  "fail_to_pass": [
+    "xarray/tests/test_formatting.py::test_inline_variable_array_repr_custom_repr"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_formatting.py::TestFormatting::test_get_indexer_at_least_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_first_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_last_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_last_item",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_item",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_array_flat",
+    "xarray/tests/test_formatting.py::TestFormatting::test_pretty_print",
+    "xarray/tests/test_formatting.py::TestFormatting::test_maybe_truncate",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_timestamp_out_of_bounds",
+    "xarray/tests/test_formatting.py::TestFormatting::test_attribute_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_array_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_attrs_repr_with_array",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_dataset_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_array_repr",
+    "xarray/tests/test_formatting.py::test_set_numpy_options",
+    "xarray/tests/test_formatting.py::test_short_numpy_repr",
+    "xarray/tests/test_formatting.py::test_large_array_repr_length"
+  ],
+  "test_targets": [
+    "xarray/tests/test_formatting.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_formatting.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repo/source version as passing profile; exact source/test patches and original source references. No performance or causal-label filtering.",
+  "recipe_parent_case_id": "pydata__xarray-3677-ds2-heldout2"
+}

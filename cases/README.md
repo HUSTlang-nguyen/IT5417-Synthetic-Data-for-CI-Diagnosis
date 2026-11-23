@@ -2,6 +2,8 @@
 
 Mỗi thư mục con chứa `case.json`; source checkout, weights và raw runs ở cache/runtime bị ignore. `-r1` là profile hiệu chỉnh của cùng case nguồn, không phải PR mới.
 
+Dataset v2: [wave train114](../data-manifests/dataset-v2-wave2-interleaved.json), [heldout5](../data-manifests/dataset-v2-heldout-wave2.json) và [heldout23 đã chuẩn bị](../data-manifests/dataset-v2-heldout-wave3.json). Case/profile là recipe, không phải số mẫu đạt. [Snapshot hiện tại](../data-manifests/dataset-v2-status.json) tách unique source, profiles, strict reproduction và curation; không cộng số folder để báo dữ liệu train.
+
 Dataset v1 thêm 443 ứng viên `-ds1` trong [manifest ghim](../data-manifests/dataset-v1-plan.json), cùng các profile `-env2` trong [recipe correction](../data-manifests/dataset-v1-plan-env2.json). Đây là cấu hình ứng viên, không phải mọi case đã chạy hoặc đạt. Profile hiệu chỉnh giữ cùng `source_case_id`; không cộng chúng thành case lỗi độc lập. Xem [dataset card](../docs/dataset-card.md) và checkpoint experiment để biết trạng thái thật. Bảng dưới chỉ liệt kê các cohort lịch sử W1/expansion.
 
 Pool hiện hành có **525 source identities** trong [manifest SCM-ready](../data-manifests/dataset-v1-plan-scm-ready.json): 300 train/100 validation/125 test. Manifest env-ready468 là checkpoint lịch sử. File `-extra`, `-env2`, `-deps`, `-r1` biểu diễn lựa chọn/profile/version recipe khác nhau; `source_case_id` mới là khóa nguồn để tránh cộng trùng. Manifest cũ và profile lỗi vẫn giữ nguyên. Số ứng viên khác số tái hiện được hoặc được chọn vào dataset; xem checkpoint đầu [dataset card](../docs/dataset-card.md).

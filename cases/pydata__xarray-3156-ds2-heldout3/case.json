@@ -1,0 +1,75 @@
+{
+  "case_id": "pydata__xarray-3156-ds2-heldout3",
+  "source_case_id": "pydata__xarray-3156",
+  "record_id": "pydata__xarray-3156",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "118f4d996e7711c9aced916e6049af9f28d5ec66",
+  "head": "base+repair:db1d4e15e6496acfee373238bc4b200c38cfbff086ac8d8ee3a3115875503e07",
+  "allowed_file": "xarray/core/groupby.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3156-ds2-heldout3/repair.patch",
+  "repair_patch_sha256": "db1d4e15e6496acfee373238bc4b200c38cfbff086ac8d8ee3a3115875503e07",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3156-ds2-heldout3/test.patch",
+  "test_patch_sha256": "0c12b4c15f52109fea0f3dd94d8fcd8020f8064beb9d8b3a5b4cd9a4f2af31ee",
+  "source_record_sha256": "8449015c4de642fe5f6fe534c972749a0c87e8dcb754d11006d7c515670238ad",
+  "fail_to_pass": [
+    "xarray/tests/test_groupby.py::test_da_groupby_empty"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_groupby.py::test_consolidate_slices",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_apply",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_sum",
+    "xarray/tests/test_groupby.py::test_groupby_da_datetime",
+    "xarray/tests/test_groupby.py::test_groupby_duplicate_coordinate_labels",
+    "xarray/tests/test_groupby.py::test_groupby_input_mutation",
+    "xarray/tests/test_groupby.py::test_da_groupby_apply_func_args",
+    "xarray/tests/test_groupby.py::test_ds_groupby_apply_func_args",
+    "xarray/tests/test_groupby.py::test_da_groupby_quantile"
+  ],
+  "test_targets": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repo/source version as passing profile; exact source/test patches and original source references. No performance or causal-label filtering.",
+  "recipe_parent_case_id": "pydata__xarray-3677-ds2-heldout2"
+}

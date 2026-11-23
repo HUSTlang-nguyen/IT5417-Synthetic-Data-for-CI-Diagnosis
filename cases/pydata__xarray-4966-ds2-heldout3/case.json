@@ -1,0 +1,90 @@
+{
+  "case_id": "pydata__xarray-4966-ds2-heldout3",
+  "source_case_id": "pydata__xarray-4966",
+  "record_id": "pydata__xarray-4966",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "37522e991a32ee3c0ad1a5ff8afe8e3eb1885550",
+  "head": "base+repair:cb53386602c86509ce13becf894477b5ecc93235cbb5ea8a80d0cdec3397d9be",
+  "allowed_file": "xarray/coding/variables.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4966-ds2-heldout3/repair.patch",
+  "repair_patch_sha256": "cb53386602c86509ce13becf894477b5ecc93235cbb5ea8a80d0cdec3397d9be",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4966-ds2-heldout3/test.patch",
+  "test_patch_sha256": "edfb2b5cb581062533dcd9053aeac1e09b71a3ba93764abbb39b9716e87c6cdd",
+  "source_record_sha256": "d0d92211471e61000948c8da5eda6bde4f8210bdf819eb7588681767bf2f6748",
+  "fail_to_pass": [
+    "xarray/tests/test_coding.py::test_decode_signed_from_unsigned[1]",
+    "xarray/tests/test_coding.py::test_decode_signed_from_unsigned[2]",
+    "xarray/tests/test_coding.py::test_decode_signed_from_unsigned[4]",
+    "xarray/tests/test_coding.py::test_decode_signed_from_unsigned[8]"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_coding.py::test_CFMaskCoder_decode",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_encode_missing_fill_values_conflict[numeric-with-dtype]",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_encode_missing_fill_values_conflict[numeric-without-dtype]",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_encode_missing_fill_values_conflict[times-with-dtype]",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_missing_value",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_decode_dask",
+    "xarray/tests/test_coding.py::test_coder_roundtrip",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[u1]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[u2]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[i1]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[i2]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[f2]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[f4]",
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[0.1-10]",
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[0.1-scale_factor1]",
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[add_offset1-10]",
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[add_offset1-scale_factor1]",
+    "xarray/tests/test_coding.py::test_decode_unsigned_from_signed[1]",
+    "xarray/tests/test_coding.py::test_decode_unsigned_from_signed[2]",
+    "xarray/tests/test_coding.py::test_decode_unsigned_from_signed[4]",
+    "xarray/tests/test_coding.py::test_decode_unsigned_from_signed[8]"
+  ],
+  "test_targets": [
+    "xarray/tests/test_coding.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_coding.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repo/source version as passing profile; exact source/test patches and original source references. No performance or causal-label filtering.",
+  "recipe_parent_case_id": "pydata__xarray-3677-ds2-heldout2"
+}

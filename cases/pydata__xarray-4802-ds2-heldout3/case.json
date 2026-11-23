@@ -1,0 +1,82 @@
+{
+  "case_id": "pydata__xarray-4802-ds2-heldout3",
+  "source_case_id": "pydata__xarray-4802",
+  "record_id": "pydata__xarray-4802",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "84df75d366edaaa0af172047145a3409cac9bb3a",
+  "head": "base+repair:3bc9c0d51bcd02af94964295a382bec7e542097a1d620b687386b7c051f92e5a",
+  "allowed_file": "xarray/coding/variables.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4802-ds2-heldout3/repair.patch",
+  "repair_patch_sha256": "3bc9c0d51bcd02af94964295a382bec7e542097a1d620b687386b7c051f92e5a",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4802-ds2-heldout3/test.patch",
+  "test_patch_sha256": "b32c8a759e9499bf313a0948396ec77e770ca478bd22d0fa8d72838f4b42c1d3",
+  "source_record_sha256": "4abd0cbb198253bb6d62fa8d3316db704a53f445d7a5ae6c92963e8d557073f3",
+  "fail_to_pass": [
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[0.1-scale_factor1]",
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[add_offset1-10]",
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[add_offset1-scale_factor1]"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_coding.py::test_CFMaskCoder_decode",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_encode_missing_fill_values_conflict[numeric-with-dtype]",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_encode_missing_fill_values_conflict[numeric-without-dtype]",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_encode_missing_fill_values_conflict[times-with-dtype]",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_missing_value",
+    "xarray/tests/test_coding.py::test_CFMaskCoder_decode_dask",
+    "xarray/tests/test_coding.py::test_coder_roundtrip",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[u1]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[u2]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[i1]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[i2]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[f2]",
+    "xarray/tests/test_coding.py::test_scaling_converts_to_float32[f4]",
+    "xarray/tests/test_coding.py::test_scaling_offset_as_list[0.1-10]"
+  ],
+  "test_targets": [
+    "xarray/tests/test_coding.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_coding.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repo/source version as passing profile; exact source/test patches and original source references. No performance or causal-label filtering.",
+  "recipe_parent_case_id": "pydata__xarray-3677-ds2-heldout2"
+}

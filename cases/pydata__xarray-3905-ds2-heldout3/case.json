@@ -1,0 +1,83 @@
+{
+  "case_id": "pydata__xarray-3905-ds2-heldout3",
+  "source_case_id": "pydata__xarray-3905",
+  "record_id": "pydata__xarray-3905",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "fb5fe79a2881055065cc2c0ed3f49f5448afdf32",
+  "head": "base+repair:b7c50a1468bd1428ccb6f5ca9373d2ef36677862f2c3b981e4d7e80cb1e97b13",
+  "allowed_file": "xarray/core/formatting.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3905-ds2-heldout3/repair.patch",
+  "repair_patch_sha256": "b7c50a1468bd1428ccb6f5ca9373d2ef36677862f2c3b981e4d7e80cb1e97b13",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3905-ds2-heldout3/test.patch",
+  "test_patch_sha256": "b9bf3b3664114c3e802f02c1aaf127f76f103187db02f7e0d91dbeb932ba399d",
+  "source_record_sha256": "0eaabec7528bf644d895b05e50d58f17e8b7eea7b9ecd47e3ea7b3e6e501398c",
+  "fail_to_pass": [
+    "xarray/tests/test_formatting.py::test_large_array_repr_length"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_formatting.py::TestFormatting::test_get_indexer_at_least_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_first_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_last_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_last_item",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_item",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_array_flat",
+    "xarray/tests/test_formatting.py::TestFormatting::test_pretty_print",
+    "xarray/tests/test_formatting.py::TestFormatting::test_maybe_truncate",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_timestamp_out_of_bounds",
+    "xarray/tests/test_formatting.py::TestFormatting::test_attribute_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_array_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_attrs_repr_with_array",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_dataset_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_array_repr",
+    "xarray/tests/test_formatting.py::test_set_numpy_options",
+    "xarray/tests/test_formatting.py::test_short_numpy_repr"
+  ],
+  "test_targets": [
+    "xarray/tests/test_formatting.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_formatting.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repo/source version as passing profile; exact source/test patches and original source references. No performance or causal-label filtering.",
+  "recipe_parent_case_id": "pydata__xarray-3677-ds2-heldout2"
+}
