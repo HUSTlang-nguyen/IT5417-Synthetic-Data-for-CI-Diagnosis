@@ -1,0 +1,99 @@
+{
+  "reviewed_at": "2026-11-23T13:21:14+07:00",
+  "input_protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+  "records": [
+    {
+      "sample_id": "mwaskom__seaborn-3276",
+      "run_id": "reproduce-20261123T060252918758Z",
+      "role": "validation",
+      "strict_reproduction": true,
+      "decision": "retain_silver_validation_candidate",
+      "assessment": {
+        "run_id": "reproduce-20261123T060252918758Z",
+        "evidence_hashes": {
+          "manifest.json": "a7da7214775c82f4ab87c1580e58156accdbfab415fec5094afd37b31df53828",
+          "license-evidence.json": "fda60ea955e31ae6f1b2138273062b5155f351df1d76935ebf9589ba525bcdb6",
+          "historical-base.stdout.txt": "882fde439f2f7c7b359c8435af7f287885cadd1caae7dbe571439967670fc60d",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "4cc4b9c9294f868e3ebc5e7b34249f11b8ebdbadfc4404145962710e49c8d7cd",
+          "historical-fixed.stdout.txt": "677c27e9961961d78b5f582ec87500e0cfe44735d1c9f1d0f4e4eabb709740bf",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "22c0142c3b3245cb7bc6959e8158164873298ebfa19cd4c6302779b51cf46300"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "seaborn/matrix.py",
+            "function": "_HeatMapper.plot"
+          }
+        ],
+        "mechanism": "The condition checks whether norm is a dictionary key rather than whether its value is non-None. Passing norm=None therefore suppresses vmin/vmax defaults, changing the color normalization relative to omitting norm. The repair checks kws.get(norm) is None.",
+        "evidence_reason": "Base JUnit reports different RGBA colors; issue statement explicitly describes norm=None losing vmin/vmax; repair changes matrix.py:301 and the same frozen harness passes.",
+        "limitations": "This is incorrect keyword-state branching with a visual/numeric effect, not a syntax error or missing plotting dependency. No claim of historical CI log provenance.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 retrieval uses failing code/log only. Repair, issue narrative and proposed target remain outside diagnosis input."
+      },
+      "assessment_sha256": "b22694e0a8d11436c28fdb88e9584722242078da0c3d956d2925cfa0291020f9",
+      "source_sha256": "cc824ab7eab2d39d0977891cd58237b0538ffb73ea0a6fc7fd07c46fd737f62d",
+      "source_file": "seaborn/matrix.py",
+      "base_commit": "3733590d86a7f2c2a95cd9940a34aa7df5f5a3d2",
+      "source_issue_title": "`heatmap(..., norm=None, ...)` has different behaviour than without specifying the `norm` argument",
+      "source_record_sha256": "f9126b76b1f4a704482892e9750e079446cc1ab68389f06ba613aee56e0b90b2",
+      "repair_patch": ".cache/dataset-v2-source/cases/mwaskom__seaborn-3276-ds2-heldout/repair.patch",
+      "repair_patch_sha256": "1e2443d6c645a3355a69a5a80ac2f3932218f2cab0bf25482e95238ca31c072f"
+    },
+    {
+      "sample_id": "pydata__xarray-3812",
+      "run_id": "reproduce-20261123T060846438451Z",
+      "role": "test",
+      "strict_reproduction": true,
+      "decision": "exclude_feature_only_change_from_real_fault_cohort",
+      "assessment": {
+        "run_id": "reproduce-20261123T060846438451Z",
+        "evidence_hashes": {
+          "manifest.json": "df6e871a27afe24b775be65215ede38bc249a2573a05a791a0d5a2d56b57faeb",
+          "license-evidence.json": "8ad3c3bcf3de840669d0fab8a15841b4e94a5d8b0b61e227004b83d722ab797c",
+          "historical-base.stdout.txt": "c73a26adbadf7faedb056a6d7f44433ba4f1e3aa0b7c409dda6079f6b84a62aa",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "8e75d84d074389b3914d0c54218976099c56507d4f91165a82ac9a5c630e093f",
+          "historical-fixed.stdout.txt": "601975a50e1888569bb1f35659aeda4e3ab17177e94e04dd8f737878dfc64ab1",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "13f6dc0ffc244f0edd4fe338c669ada8573fa457e1cd0e0dfc8196808e9d9e87"
+        },
+        "quality": "silver",
+        "disposition": "exclude",
+        "cause_type": null,
+        "locations": [
+          {
+            "file": "xarray/core/options.py",
+            "function": "<module>"
+          }
+        ],
+        "mechanism": "OPTIONS display_style is text on base, html after repair. The new test expects html.",
+        "evidence_reason": "Base assertion text != html and repaired pass are supported. Source issue is titled Turn on _repr_html_ by default? and asks whether changing a previously available display option default is reasonable.",
+        "exclusion_reason": "Feature/default-preference change; existing evidence does not establish a preexisting CI defect. Strict execution difference alone is insufficient for the v2 real-fault cohort.",
+        "label_source": "agent_issue_patch_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "excluded_from_v2_real_fault_candidates"
+      },
+      "assessment_sha256": "e65de3647477527fbbe971e5f9ba06cd01572171235d9e167312bfe3ce01b4a4",
+      "source_sha256": "74dbe4a33caeae90f81be3c56678ec24bc8fc59855d72730ca648380a05af54a",
+      "source_file": "xarray/core/options.py",
+      "base_commit": "8512b7bf498c0c300f146447c0b05545842e9404",
+      "source_issue_title": "Turn on _repr_html_ by default?",
+      "source_record_sha256": "b7efc49ce17d2c75a132884145f910f3d55a3e227084c9e3bb5d4a24168ef470",
+      "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3812-ds2-heldout/repair.patch",
+      "repair_patch_sha256": "65b233edec5d9d07eb4647ea8b8cd03448f826ec50446deabbd2a01b520ded31"
+    }
+  ],
+  "qualification": "Held-out causal review performed after input protocol freeze. No held-out-driven retrieval changes, inference or training. Recommendations and silver labels are not human/gold approval."
+}

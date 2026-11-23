@@ -1,0 +1,75 @@
+{
+  "case_id": "pydicom__pydicom-944-ds2-wave2",
+  "source_case_id": "pydicom__pydicom-944",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-944",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "a0300a69a1da1626caef0d9738cff29b17ce79cc",
+  "head": "base+repair:771962ed672df276d99e7cc09ac60280fe92e3d41ec6e43e8ae56adf7d538462",
+  "allowed_file": "pydicom/valuerep.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-944-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "771962ed672df276d99e7cc09ac60280fe92e3d41ec6e43e8ae56adf7d538462",
+  "test_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-944-ds2-wave2/test.patch",
+  "test_patch_sha256": "6d2b7c6485a446682358e17da95ce3a2e2a0737436a3449bc1139e8b8c9caab6",
+  "source_record_sha256": "81730317be3585e48ebd2e4b07a0612d16748b012fdebbe1bb87e6fb48205ec5",
+  "fail_to_pass": [
+    "pydicom/tests/test_values.py::TestConvertText::test_value_ending_with_padding"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_values.py::TestConvertTag::test_big_endian",
+    "pydicom/tests/test_values.py::TestConvertTag::test_little_endian",
+    "pydicom/tests/test_values.py::TestConvertTag::test_offset",
+    "pydicom/tests/test_values.py::TestConvertAE::test_strip_blanks",
+    "pydicom/tests/test_values.py::TestConvertText::test_single_value",
+    "pydicom/tests/test_values.py::TestConvertText::test_multi_value",
+    "pydicom/tests/test_values.py::TestConvertText::test_single_value_with_backslash",
+    "pydicom/tests/test_values.py::TestConvertText::test_single_value_with_delimiters",
+    "pydicom/tests/test_values.py::TestConvertAT::test_big_endian",
+    "pydicom/tests/test_values.py::TestConvertAT::test_little_endian",
+    "pydicom/tests/test_values.py::TestConvertAT::test_empty_bytestring",
+    "pydicom/tests/test_values.py::TestConvertDA::test_big_endian",
+    "pydicom/tests/test_values.py::TestConvertDA::test_little_endian",
+    "pydicom/tests/test_values.py::TestConvertDA::test_empty_bytestring",
+    "pydicom/tests/test_values.py::TestConvertValue::test_convert_value_raises"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_values.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_values.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pydicom__pydicom-1000-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "test_workdir": "work",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pydicom__pydicom-1000-ds1-env2"
+}

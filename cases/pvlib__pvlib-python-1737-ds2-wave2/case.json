@@ -1,0 +1,77 @@
+{
+  "case_id": "pvlib__pvlib-python-1737-ds2-wave2",
+  "source_case_id": "pvlib__pvlib-python-1737",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1737",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "5119b4281fa9de8a4dc97002b5c10a6d73c25a4f",
+  "head": "base+repair:3ec09b6e1a1b34879d9ff04f288cf33c69215ca42d7e34f89f14e08d10e4ec3a",
+  "allowed_file": "pvlib/iotools/tmy.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1737-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "3ec09b6e1a1b34879d9ff04f288cf33c69215ca42d7e34f89f14e08d10e4ec3a",
+  "test_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1737-ds2-wave2/test.patch",
+  "test_patch_sha256": "1d2c2a381e824c589463d56645cda9f736f327c969e112f0d620d5f3d97af31f",
+  "source_record_sha256": "834aa8b11ea6d7b2f1085584a65940a866c8395349fe076a0a6c889470960c8b",
+  "fail_to_pass": [
+    "pvlib/tests/iotools/test_tmy.py::test_solaranywhere_tmy3"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3_recolumn",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3_norecolumn",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3_raise_valueerror",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3_map_variables",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3_map_variables_deprecating_warning",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3_coerce_year",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy3_no_coerce_year",
+    "pvlib/tests/iotools/test_tmy.py::test_read_tmy2",
+    "pvlib/tests/iotools/test_tmy.py::test_gh865_read_tmy3_feb_leapyear_hr24"
+  ],
+  "test_targets": [
+    "pvlib/tests/iotools/test_tmy.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/iotools/test_tmy.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2",
+    "pytest-mock==3.11.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "pytest_mock"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pvlib__pvlib-python-1738-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pvlib__pvlib-python-1738-ds1-env2"
+}

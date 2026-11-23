@@ -1,0 +1,104 @@
+{
+  "screened_at": "2026-11-23T13:18:15+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "eligibility_reviews": 3,
+  "records": [
+    {
+      "dataset_id": 3232895285,
+      "repo": "tinystork/zeanalyser",
+      "pr": 52,
+      "dataset_merged_at": "2025-07-15T16:21:43Z",
+      "artifacts": {
+        "repo": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3232895285\\repo.json",
+          "sha256": "78d71f3cb01b40db5e636cc29bfa972961499ebd4dc3ab2223735a50348dea3e"
+        },
+        "pr": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3232895285\\pr.json",
+          "sha256": "43a7fa140558bba5e610d7f7b99477f94b47894cad70babbf7307ab71eff407e"
+        },
+        "files": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3232895285\\files.json",
+          "sha256": "8b2266443f1324b5894674a25bf7e36207f05ac6957cf61fd2c096e41f681591"
+        }
+      },
+      "license_spdx": "GPL-3.0",
+      "fork": false,
+      "parent_repo": null,
+      "base": "ef4e7a920c3df3d63b46f590db1734077da8bb7f",
+      "head": "0f9212e8d034643a7a51e2bc2b18f72fca17fa88",
+      "merged_timestamp_matches": true,
+      "changed_files": 1,
+      "file_paths": [
+        "analyse_gui.py"
+      ],
+      "files_complete": true,
+      "decision": "requires_pinned_license_and_upstream_harness_review"
+    },
+    {
+      "dataset_id": 3311235824,
+      "repo": "saptarshihalder/price-optim-ai-",
+      "pr": 1,
+      "dataset_merged_at": "2025-08-11T18:48:40Z",
+      "artifacts": {
+        "repo": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3311235824\\repo.json",
+          "sha256": "a8dfeaf03ebcb45998d661d7840d0722d4c858305bab22573fffca42318e6ba9"
+        },
+        "pr": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3311235824\\pr.json",
+          "sha256": "b5f50d797e5b637fb11201ebed65f891a8fab14879f742b93774fb73274da4c6"
+        },
+        "files": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3311235824\\files.json",
+          "sha256": "d8833353b8898966ba03e65eafe4e9bbb29ac928467cf2dd6a80a603f1ea1d19"
+        }
+      },
+      "license_spdx": null,
+      "fork": false,
+      "parent_repo": null,
+      "base": "82e05cb133e2562b6b92501fab487eeb25650442",
+      "head": "46be92ddaaafc462b3fde4718cf9c14e7468dafc",
+      "merged_timestamp_matches": true,
+      "changed_files": 1,
+      "file_paths": [
+        "backend/app/apis/competitor_scraping/__init__.py"
+      ],
+      "files_complete": true,
+      "decision": "exclude_provenance_or_license_not_resolved"
+    },
+    {
+      "dataset_id": 3127209131,
+      "repo": "AmirAli-Kalbasi/kntu_gui",
+      "pr": 6,
+      "dataset_merged_at": "2025-06-07T16:03:41Z",
+      "artifacts": {
+        "repo": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3127209131\\repo.json",
+          "sha256": "e0f8d1965dc4a14fe4cbce2f501d71d28ea16ccf24a7b112a290964453452229"
+        },
+        "pr": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3127209131\\pr.json",
+          "sha256": "5e2456aa5b44005cac1e1d9bbed113676acac3381ffd68dd07fd6f78f3f15b23"
+        },
+        "files": {
+          "path": ".cache\\dataset-v2-aidev-syntax-provenance\\3127209131\\files.json",
+          "sha256": "826989ade24b7f9ebbecf11fd7765d368eb339a077416cf15ef395a19b3f1f41"
+        }
+      },
+      "license_spdx": null,
+      "fork": false,
+      "parent_repo": null,
+      "base": "4e4998dde171d4621fed94f2200968cef53e4c45",
+      "head": "8de9fa002277375dc4ef7033457689bd1d55441e",
+      "merged_timestamp_matches": true,
+      "changed_files": 1,
+      "file_paths": [
+        "models/data_loader.py"
+      ],
+      "files_complete": true,
+      "decision": "exclude_provenance_or_license_not_resolved"
+    }
+  ],
+  "qualification": "Metadata provenance and current repo license hints only; pinned license/harness review still required. No experiment, label or actor attribution."
+}

@@ -1,0 +1,198 @@
+{
+  "reviewed_at": "2026-11-23T13:04:32+07:00",
+  "records": [
+    {
+      "sample_id": "pvlib__pvlib-python-1072",
+      "run_id": "reproduce-20261122T195036811138Z",
+      "role": "train",
+      "cause_type_proposed": "API/type",
+      "locations_proposed": [
+        {
+          "file": "pvlib/temperature.py",
+          "function": "fuentes"
+        }
+      ],
+      "mechanism": "Timezone-aware timestamp differences produce Timedelta objects; np.diff(index).astype(float) assumes directly float-convertible values and raises TypeError. The repair uses Series.diff().dt.total_seconds() before conversion to hours.",
+      "observed_evidence": "Saved base JUnit reports TypeError at temperature.py:602; the same frozen harness passes on the repaired source.",
+      "limitations": "This is datetime representation/API compatibility in the pinned environment, not proof that a dependency is missing.",
+      "recommendation": "retain_as_silver_candidate_pending_final_v2_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "assessment_sha256": "42ac18a2e59bdab30c0c81702683c5123c90ada71a14db6011f8eeb391bd4da1",
+      "source_file": "pvlib/temperature.py",
+      "source_sha256": "9783abb6683ec0ee59e0546b6961c3acc9023024f3a02391907dec50806c9863",
+      "source_lines": [
+        602,
+        603
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1072-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "d18c3f99799433eb709ff9c4153b1d5e846e487d3a2b25443b64dfd1b4b35bcd",
+      "execution_artifacts": {
+        "directory": "runs\\reproduce-20261122T195036811138Z",
+        "hashes": {
+          "manifest.json": "1928c8431a2a803fd20dd0665fb5f9c3298cf01a9d791097438bdfc4ac431a9f",
+          "license-evidence.json": "68b449c4825b8435e3b0e32b91b8aa5f9ffa7df8e606fea417eed23a9bd618eb",
+          "historical-base.stdout.txt": "99110999ea1e92f895e93e0a83ca5c2b3a515a580929aa346d577ef199dc5013",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "05239f9d1617abc5d08a14b5307dcb0d586e89458e936f06b61f150b48393e1b",
+          "historical-fixed.stdout.txt": "154a7fb0a721e8aa0616587ad8a7e3bb80591602c00d93f6dfb18c005f6d8de8",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "9cbd71264c65e7afe593bd1ffa57c8c8235a83190a11d8e7187055f197555bb4"
+        }
+      },
+      "failures": [
+        {
+          "type": null,
+          "message": "TypeError: float() argument must be a string or a number, not 'Timedelta'"
+        }
+      ],
+      "prototype_export": ".cache\\dataset-v2\\records-retrieval-v2\\pvlib__pvlib-python-1072"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1854",
+      "run_id": "reproduce-20261122T195403215786Z",
+      "role": "train",
+      "cause_type_proposed": "API/type",
+      "locations_proposed": [
+        {
+          "file": "pvlib/pvsystem.py",
+          "function": "PVSystem.__init__"
+        }
+      ],
+      "mechanism": "PVSystem.__init__ treats every non-None arrays argument as a sized iterable. A single Array has no len(), so len(arrays) raises TypeError before normalization. The repair wraps an Array instance in a one-element tuple.",
+      "observed_evidence": "Saved base JUnit reports object of type Array has no len() at pvsystem.py:223; repaired harness passes.",
+      "limitations": "The repair also extends the documented accepted input. The observed compatibility case is a single Array, not all possible iterables.",
+      "recommendation": "retain_as_silver_candidate_pending_final_v2_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "assessment_sha256": "e72db3d0ffaa3dc9cc255eddbc9a57eec240ecae4ef9775b51e7c448ffc2357f",
+      "source_file": "pvlib/pvsystem.py",
+      "source_sha256": "e574fb75ca4b02da87214821aeb6ef566ec3b82ff048bfa6e8cf93ce36fa88a5",
+      "source_lines": [
+        223,
+        230
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1854-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "00ad5db17b590c3a1fc9c806a3f44098ebc96aca495199a5dab988868d01a4da",
+      "execution_artifacts": {
+        "directory": "runs\\reproduce-20261122T195403215786Z",
+        "hashes": {
+          "manifest.json": "5e3f60e7b038e34692081737e72ed5dadf45306d8988fb71db052afdbd024e24",
+          "license-evidence.json": "0ee51d42931dbc7a38ee94a188f2f18e50d1102cf301030d20ad4bf393973cbe",
+          "historical-base.stdout.txt": "118099697b38d3d3e2c39d3de1b5ef0c93cb25f0460d056d656096176370f0ef",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "2d870bbf1a7cd11a3d5ffbfde53193de4b558f9bb836cd6bec20838f68a6b49f",
+          "historical-fixed.stdout.txt": "2943588f3183c6bff5f8e4e0fec97ebaf413b44cf79596b85364d2a2655f5f4f",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "9cfe19d9f9eb830e29b772d5b3c8ef142bf76ede7d02ea627525c95fa879c0e1"
+        }
+      },
+      "failures": [
+        {
+          "type": null,
+          "message": "TypeError: object of type 'Array' has no len()"
+        }
+      ],
+      "prototype_export": ".cache\\dataset-v2\\records-retrieval-v2\\pvlib__pvlib-python-1854"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1707",
+      "run_id": "reproduce-20261122T195747529073Z",
+      "role": "train",
+      "cause_type_proposed": "logic/value",
+      "locations_proposed": [
+        {
+          "file": "pvlib/iam.py",
+          "function": "physical"
+        }
+      ],
+      "mechanism": "At n=1 and L=0, grazing/backside incidence creates zero denominators and NaN in the optical calculation. The function lacks an explicit zero-transmission boundary for aoi >= 90. The repair handles numerical warnings and assigns zero for this boundary while preserving Series representation.",
+      "observed_evidence": "test_physical_n1_L0 expects zero at 90 and 100 degrees but base returns NaN; saved repaired harness passes.",
+      "limitations": "Numerical boundary handling is the proposed cause; RuntimeWarning or NaN does not by itself imply an API/type error.",
+      "recommendation": "retain_as_silver_candidate_pending_final_v2_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "assessment_sha256": "e9299183391387de0ccbb645fab031672e40fb0778298905672d63aa6263a85f",
+      "source_file": "pvlib/iam.py",
+      "source_sha256": "0cb6fb7501d390a2f4873700c63e65ca7b21fdcf4c74b2ad32f398437a7886f7",
+      "source_lines": [
+        166,
+        218
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1707-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "e59ef7e4f9d4b98262066347448800074334e4a27810c65b1686e0e10f2e4917",
+      "execution_artifacts": {
+        "directory": "runs\\reproduce-20261122T195747529073Z",
+        "hashes": {
+          "manifest.json": "4680b222c1d6bc620380f44f8818a042c9fcc4a6fc28f4c23a32d8cd4a6dc9fc",
+          "license-evidence.json": "0ee51d42931dbc7a38ee94a188f2f18e50d1102cf301030d20ad4bf393973cbe",
+          "historical-base.stdout.txt": "c6be6cd247d1f7a60d55cb327b4c80024f81ddce8cb34579334c48170463eb90",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "cbab1aba4c1139c52d1f8ac5743225b60738ce286d1c7414b4b5f83996d5eea3",
+          "historical-fixed.stdout.txt": "0b0820f9bc96573a63e307291dfe953f65d62aab3254f5fbfb185533a85ce890",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "3b6dcc80765d8543218e0ea57f1ba58bd29fe8154ae9338551e65c49c8f68b4c"
+        }
+      },
+      "failures": [
+        {
+          "type": null,
+          "message": "AssertionError: \nNot equal to tolerance rtol=1e-07, atol=0\n\nx and y nan location mismatch:\n x: array([ 1.,  1.,  1.,  1., nan, nan, nan])\n y: array([ 1.,  1.,  1.,  1.,  0.,  0., nan])"
+        }
+      ],
+      "prototype_export": ".cache\\dataset-v2\\records-retrieval-v2\\pvlib__pvlib-python-1707"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1606",
+      "run_id": "reproduce-20261122T200131499467Z",
+      "role": "train",
+      "cause_type_proposed": "logic/value",
+      "locations_proposed": [
+        {
+          "file": "pvlib/tools.py",
+          "function": "_golden_sect_DataFrame"
+        }
+      ],
+      "mechanism": "The golden-section loop uses a separately estimated iteration ceiling and raises when that ceiling is exceeded, even in the saved valid optimization case. The repair removes this premature termination, bases convergence on the interval width and evaluates the midpoint estimate; it also validates reversed bounds.",
+      "observed_evidence": "Saved base JUnit raises Iterations exceeded maximum at tools.py:383; the frozen repaired harness passes.",
+      "limitations": "The patch contains several related numerical changes; the saved failure directly proves premature iteration termination, not an independent failure for every changed hunk.",
+      "recommendation": "retain_as_silver_candidate_pending_final_v2_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "assessment_sha256": "c1bd45be236520ec637ac5db308c18390bdd76ef972dac9e9df8757aecdf675c",
+      "source_file": "pvlib/tools.py",
+      "source_sha256": "e899538ede4640f6b08b088d2bd8ff294347d4caab45041816931ef1454da8fb",
+      "source_lines": [
+        351,
+        393
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1606-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "e5d1affcf45d62c9c6a201ed98d7f824b8a6fc7936301e4fb0ddafac8a6898d1",
+      "execution_artifacts": {
+        "directory": "runs\\reproduce-20261122T200131499467Z",
+        "hashes": {
+          "manifest.json": "16d9d6f9f0d24d02a6db442b929d4207d8689b4d407ac8818f9ca42032affa21",
+          "license-evidence.json": "1fd90d3e1719cdf1291ae0330bb742b84ffebfa08abdd285e58bc07e3ea4f46c",
+          "historical-base.stdout.txt": "14daee3f95fd5dbabe0c212611b783457d5fcd548439af5cb027e79209dcea20",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "6cc1b69df59365059c8b1acb437c83dead23c90fa6ee4cc98fabdadd2bd5c729",
+          "historical-fixed.stdout.txt": "645a4896f974a836193896e281e06d1b5b478e3a410fb3e47230ab22d63ee7c7",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "973c8e898f510bd545e9a04e6d866db66fea98633ecc275570598a65eee3a27e"
+        }
+      },
+      "failures": [
+        {
+          "type": null,
+          "message": "Exception: ('Iterations exceeded maximum. Check that func', ' is not NaN in (lower, upper)')"
+        }
+      ],
+      "prototype_export": ".cache\\dataset-v2\\records-retrieval-v2\\pvlib__pvlib-python-1606"
+    }
+  ],
+  "qualification": "Read-only causal review and prototype export, not final v2 selection or human/gold approval. Existing retrieval v2; uniform final retrieval pending."
+}

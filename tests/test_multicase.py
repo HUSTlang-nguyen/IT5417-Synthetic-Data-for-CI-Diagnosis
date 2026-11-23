@@ -19,6 +19,22 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_pinned_license_markdown_and_apache_still_reject_missing_or_wrong_family(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            with self.assertRaisesRegex(ValueError, "missing"):
+                multicase.pinned_license(base, "Apache-2.0")
+            license_file = base / "LICENSE.md"
+            license_file.write_text("Apache License\nVersion 2.0", encoding="utf-8")
+            result = multicase.pinned_license(base, "Apache-2.0")
+            self.assertEqual(result["path"], "LICENSE.md")
+            self.assertEqual(result["sha256"], multicase.sha256(license_file))
+            for declared in ("MIT", "unknown"):
+                with self.assertRaisesRegex(ValueError, "does not match"):
+                    multicase.pinned_license(base, declared)
+            license_file.write_text("Redistribution and use in source and binary forms", encoding="utf-8")
+            self.assertEqual(multicase.pinned_license(base, "BSD-3-Clause")["declared_license"], "BSD-3-Clause")
+
     def test_parameter_node_separators_are_literal_parameter_content(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

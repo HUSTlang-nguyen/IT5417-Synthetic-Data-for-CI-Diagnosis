@@ -1,0 +1,77 @@
+{
+  "case_id": "sympy__sympy-16331-ds2-wave2",
+  "source_case_id": "sympy__sympy-16331",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-16331",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "356a73cd676e0c3f1a1c3057a6895db0d82a1be7",
+  "head": "base+repair:5121069d865ca992296ea523db8184074fed692cb5bb33db81c40b23794ff247",
+  "allowed_file": "sympy/utilities/autowrap.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-16331-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "5121069d865ca992296ea523db8184074fed692cb5bb33db81c40b23794ff247",
+  "test_patch": ".cache/dataset-v2-source/cases/sympy__sympy-16331-ds2-wave2/test.patch",
+  "test_patch_sha256": "8e7a3d891600faa9eef41444ceb8096da248bce5e2b338e70ab4aa16027b9df0",
+  "source_record_sha256": "c39a068b416d849d2af2e90f3e787809a4aa57e4e29ab127100faac1ed5b041e",
+  "fail_to_pass": [
+    "test_cython_wrapper_unique_dummyvars"
+  ],
+  "pass_to_pass": [
+    "test_cython_wrapper_scalar_function",
+    "test_cython_wrapper_outarg",
+    "test_cython_wrapper_inoutarg",
+    "test_cython_wrapper_compile_flags",
+    "test_autowrap_dummy",
+    "test_autowrap_args",
+    "test_autowrap_store_files",
+    "test_autowrap_store_files_issue_gh12939",
+    "test_binary_function",
+    "test_ufuncify_source"
+  ],
+  "test_targets": [
+    "test_autowrap_args",
+    "test_autowrap_dummy",
+    "test_autowrap_store_files",
+    "test_autowrap_store_files_issue_gh12939",
+    "test_binary_function",
+    "test_cython_wrapper_compile_flags",
+    "test_cython_wrapper_inoutarg",
+    "test_cython_wrapper_outarg",
+    "test_cython_wrapper_scalar_function",
+    "test_cython_wrapper_unique_dummyvars",
+    "test_ufuncify_source"
+  ],
+  "frozen_test_files": [
+    "sympy/utilities/tests/test_autowrap.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "sympy__sympy-15225-ds1"
+}

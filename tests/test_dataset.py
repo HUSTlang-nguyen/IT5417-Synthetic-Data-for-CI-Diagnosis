@@ -2,7 +2,7 @@
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 from ci_demo.common import read_json, write_json, sha256
 from ci_demo.dataset import audit_real_exports, check_assessment, export_real
@@ -82,6 +82,12 @@ class DatasetTests(unittest.TestCase):
                 self.assertNotIn("SECRET_REFERENCE", text)
                 self.assertNotIn("cause_type", text)
                 self.assertEqual(read_json(root / "output/reference.json")["quality"], "silver")
+                retriever = Mock(return_value={"snippets": [], "method": "fixture_v2_export"})
+                export_real("run", root / "assessment.json", root / "new-input-version", retriever=retriever)
+                retriever.assert_called_once_with(root / "source/base", (root / "run/base.stdout.txt").read_text())
+                self.assertEqual(read_json(root / "new-input-version/manifest.json")["retrieval"]["method"], "fixture_v2_export")
+                for field in ("sample_id", "cause_type", "locations", "explanation"):
+                    self.assertEqual(read_json(root / "new-input-version/reference.json")[field], read_json(root / "output/reference.json")[field])
                 with self.assertRaises(ValueError):
                     export_real("run", root / "assessment.json", root / "output")
 

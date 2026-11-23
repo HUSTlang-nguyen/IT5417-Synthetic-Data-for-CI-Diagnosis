@@ -1,0 +1,78 @@
+{
+  "created_at": "2026-11-23T02:43:59+07:00",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test"
+  },
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "selected": [
+    {
+      "source_case_id": "pydata__xarray-3812",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "8512b7bf498c0c300f146447c0b05545842e9404",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/options.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_options.py"
+      ],
+      "repair_bytes": 363,
+      "f2p_count": 1,
+      "p2p_count": 11,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydata__xarray-3812-ds2-heldout",
+      "case_sha256": "b8dd0faea4f6d2e0f227fbb0dd1751e4a2069bedc9cfeaa6c12d0f693b98b68b"
+    },
+    {
+      "source_case_id": "mwaskom__seaborn-3276",
+      "repo": "mwaskom/seaborn",
+      "role": "validation",
+      "base_commit": "3733590d86a7f2c2a95cd9940a34aa7df5f5a3d2",
+      "source_version": "0.13",
+      "product_files": [
+        "seaborn/matrix.py"
+      ],
+      "test_files": [
+        "tests/test_matrix.py"
+      ],
+      "repair_bytes": 421,
+      "f2p_count": 1,
+      "p2p_count": 88,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "mwaskom__seaborn-3276-ds2-heldout",
+      "case_sha256": "70a378a60636dac35983fd2024d222b756c0d51a282338740cd9674794fbefde"
+    }
+  ],
+  "recipe_reference": {
+    "repository": "https://github.com/SWE-bench/SWE-bench",
+    "commit": "726c5461e2ef52d83cf1ea2107870a8bb3328d57",
+    "file": "swebench/harness/constants/python.py",
+    "sha256": "ce4f0e0f0939745944d84c51356530f5da57f486ac839523556d7ffdb2f9072b"
+  },
+  "qualification": "Held-out metadata recipes prepared before evaluation. Pending runner license recognition for Apache-2.0 and LICENSE.md; do not run until that support is tested after live wave1. Not official SWE-bench benchmark configuration."
+}

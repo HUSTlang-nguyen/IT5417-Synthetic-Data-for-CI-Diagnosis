@@ -143,7 +143,7 @@ def synthetic_evidence(run_id, index):
     return generated, verified, item, {str(p.relative_to(ROOT).as_posix()): sha256(p) for p in paths}
 
 
-def export_synthetic(run_id, index, assessment_path, destination):
+def export_synthetic(run_id, index, assessment_path, destination, *, retriever=None):
     generated, verified, item, hashes = synthetic_evidence(run_id, index)
     case, gate = generated["source"], generated["passing_seed"]
     assessment = read_json(assessment_path)
@@ -156,7 +156,7 @@ def export_synthetic(run_id, index, assessment_path, destination):
     candidate = run_path(generated["run_id"]) / item["directory"] / "candidate.py"
     log = (run_path(run_id) / item["directory"] / item["repetitions"][0]["stdout"]).read_text(encoding="utf-8")
     # Overlay represents the failing repository version; it adds no query terms or ranking boost.
-    retrieval = retrieve(Path(gate["context"]) / "head", log,
+    retrieval = (retriever or retrieve)(Path(gate["context"]) / "head", log,
         source_overrides={case["allowed_file"]: candidate.read_bytes().decode("utf-8")})
     model_input = {"execution_log": log, "code": retrieval["snippets"]}
     sample_id = "synthetic-" + generated["run_id"] + "-" + str(index)
@@ -184,7 +184,7 @@ def export_synthetic(run_id, index, assessment_path, destination):
     return metadata
 
 
-def export_real(run_id, assessment_path, destination):
+def export_real(run_id, assessment_path, destination, *, retriever=None):
     """Export observed input first; use the separate assessment only for target/metadata."""
     raw, evidence_hashes = real_evidence(run_id)
     case, gate = raw["source"], raw["environment"]
@@ -194,7 +194,7 @@ def export_real(run_id, assessment_path, destination):
     expected = check_assessment(assessment, raw)
     source = Path(gate["context"]) / "base"
     log = (run_path(run_id) / raw["base"]["stdout"]).read_text(encoding="utf-8")
-    retrieval = retrieve(source, log)
+    retrieval = (retriever or retrieve)(source, log)
     # No repair patch, selected edit, assessment or reference location is supplied to retrieve().
     model_input = {"execution_log": log, "code": retrieval["snippets"]}
     model_input_hash = hashlib.sha256(json.dumps(model_input, sort_keys=True, ensure_ascii=False).encode()).hexdigest()

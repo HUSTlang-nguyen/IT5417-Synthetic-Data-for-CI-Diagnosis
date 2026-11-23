@@ -80,6 +80,11 @@ class SyntheticDatasetTests(unittest.TestCase):
                 self.assertEqual((root / "context/head/package/api.py").read_text(), (generated / "original.py").read_text())
                 self.assertEqual(meta["origin"], "controlled_synthetic")
                 self.assertEqual(meta["role"], "train")
+                from ci_demo.retrieval_v3 import retrieve_balanced
+                updated = dataset.export_synthetic(verified.name, 1, root / "assessment.json", root / "v3-output", retriever=retrieve_balanced)
+                self.assertEqual(updated["retrieval"]["method"], "balanced_source_excerpts_v3")
+                self.assertIn("return x - 1", (root / "v3-output/input.json").read_text())
+                self.assertNotIn("SECRET_", (root / "v3-output/input.json").read_text())
                 with self.assertRaises(ValueError):
                     dataset.export_synthetic(verified.name, 1, root / "assessment.json", root / "output")
                 (candidate / "candidate.py").write_text("tampered fixture")

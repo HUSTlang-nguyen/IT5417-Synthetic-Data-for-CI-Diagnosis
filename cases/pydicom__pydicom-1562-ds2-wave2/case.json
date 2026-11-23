@@ -1,0 +1,76 @@
+{
+  "case_id": "pydicom__pydicom-1562-ds2-wave2",
+  "source_case_id": "pydicom__pydicom-1562",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-1562",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "e1a035a88fe36d466579b2f3940bde5b8b1bc84d",
+  "head": "base+repair:e1fc32c44dfac7b1b02bd769c7494280fd295061585bad89b313e923c6590554",
+  "allowed_file": "pydicom/datadict.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1562-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "e1fc32c44dfac7b1b02bd769c7494280fd295061585bad89b313e923c6590554",
+  "test_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1562-ds2-wave2/test.patch",
+  "test_patch_sha256": "a284be3836645968a782725a34a207a8ad2fea60224c9567616e3202fa88a332",
+  "source_record_sha256": "6b60cb2686ef021300d888a8b3b6f959d78e5e43939c5ee5c95a3d2623f18c93",
+  "fail_to_pass": [
+    "pydicom/tests/test_dictionary.py::TestDict::test_dict_has_tag"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_dictionary.py::TestDict::test_tag_not_found",
+    "pydicom/tests/test_dictionary.py::TestDict::test_repeaters",
+    "pydicom/tests/test_dictionary.py::TestDict::test_repeater_has_tag",
+    "pydicom/tests/test_dictionary.py::TestDict::test_repeater_has_keyword",
+    "pydicom/tests/test_dictionary.py::TestDict::test_get_private_entry",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_entry",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_entry_raises_for_private_tag",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_entries",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_entries_raises_for_private_tags",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_private_entry",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_private_entry_raises_for_non_private_tag",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_private_entries",
+    "pydicom/tests/test_dictionary.py::TestDict::test_add_private_entries_raises_for_non_private_tags",
+    "pydicom/tests/test_dictionary.py::TestDict::test_dictionary_VM",
+    "pydicom/tests/test_dictionary.py::TestDict::test_private_dict_VR",
+    "pydicom/tests/test_dictionary.py::TestDict::test_private_dict_VM"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_dictionary.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_dictionary.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pydicom__pydicom-1458-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "test_workdir": "work",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pydicom__pydicom-1458-ds1-env2"
+}

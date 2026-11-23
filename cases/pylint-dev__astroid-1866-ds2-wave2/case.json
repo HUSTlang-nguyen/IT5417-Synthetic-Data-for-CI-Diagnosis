@@ -1,0 +1,69 @@
+{
+  "case_id": "pylint-dev__astroid-1866-ds2-wave2",
+  "source_case_id": "pylint-dev__astroid-1866",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-1866",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "base": "6cf238d089cf4b6753c94cfc089b4a47487711e5",
+  "head": "base+repair:76265db946427ad0483591634ee8825bc04250a177da9bd3c1cb8f39ab7a081d",
+  "allowed_file": "astroid/brain/brain_builtin_inference.py",
+  "license": "LGPL-2.1-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1866-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "76265db946427ad0483591634ee8825bc04250a177da9bd3c1cb8f39ab7a081d",
+  "test_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1866-ds2-wave2/test.patch",
+  "test_patch_sha256": "6766eeab12626eea18c4ceb933c12a3713f1b775573ce6d912cfc6ab86fd2060",
+  "source_record_sha256": "4df90e9a00ae27598530a02b84780e7181ba593c774a23a969bd6cd8a70dfabf",
+  "fail_to_pass": [
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\\n"
+  ],
+  "pass_to_pass": [
+    "tests/unittest_brain_builtin.py::BuiltinsTest::test_infer_property",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes-from-positional]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes-from-keyword]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[mixed-indexes-from-mixed]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes-on-variable]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\"I",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_with_specs"
+  ],
+  "test_targets": [
+    "tests/unittest_brain_builtin.py"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_brain_builtin.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "wrapt==1.15.0",
+    "lazy-object-proxy==1.9.0",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pylint-dev__astroid-1719-ds1"
+}

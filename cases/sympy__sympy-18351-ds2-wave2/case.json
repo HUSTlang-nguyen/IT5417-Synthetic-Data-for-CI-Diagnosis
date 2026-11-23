@@ -1,0 +1,81 @@
+{
+  "case_id": "sympy__sympy-18351-ds2-wave2",
+  "source_case_id": "sympy__sympy-18351",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-18351",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "a2beda4187ec0d1cbfda74a7bc1d090e86375d87",
+  "head": "base+repair:7e526cc58e21050262137db835df187efa35c0358d1a9d95a56a89c9d5957e5a",
+  "allowed_file": "sympy/printing/pycode.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-18351-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "7e526cc58e21050262137db835df187efa35c0358d1a9d95a56a89c9d5957e5a",
+  "test_patch": ".cache/dataset-v2-source/cases/sympy__sympy-18351-ds2-wave2/test.patch",
+  "test_patch_sha256": "69bc07c5f17e69649571f2b39e54a4cda9ae07d13cb2fbefc9a473ce9ab43812",
+  "source_record_sha256": "796054fd54849c2dd7634859f028a0a87e7558a95a8b1040b05c6480383df572",
+  "fail_to_pass": [
+    "test_NumPyPrinter"
+  ],
+  "pass_to_pass": [
+    "test_PythonCodePrinter",
+    "test_PythonCodePrinter_standard",
+    "test_MpmathPrinter",
+    "test_SciPyPrinter",
+    "test_pycode_reserved_words",
+    "test_sqrt",
+    "test_printmethod",
+    "test_codegen_ast_nodes",
+    "test_issue_14283",
+    "test_NumPyPrinter_print_seq",
+    "test_issue_16535_16536",
+    "test_fresnel_integrals"
+  ],
+  "test_targets": [
+    "test_MpmathPrinter",
+    "test_NumPyPrinter",
+    "test_NumPyPrinter_print_seq",
+    "test_PythonCodePrinter",
+    "test_PythonCodePrinter_standard",
+    "test_SciPyPrinter",
+    "test_codegen_ast_nodes",
+    "test_fresnel_integrals",
+    "test_issue_14283",
+    "test_issue_16535_16536",
+    "test_printmethod",
+    "test_pycode_reserved_words",
+    "test_sqrt"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_pycode.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "sympy__sympy-18057-ds1"
+}

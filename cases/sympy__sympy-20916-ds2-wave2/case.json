@@ -1,0 +1,59 @@
+{
+  "case_id": "sympy__sympy-20916-ds2-wave2",
+  "source_case_id": "sympy__sympy-20916",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-20916",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "82298df6a51491bfaad0c6d1980e7e3ca808ae93",
+  "head": "base+repair:2a3a6996ca7c8b9fe56a7d5df836eb04a95d9ec3d0903b30c237f88a6ae8f3ae",
+  "allowed_file": "sympy/printing/conventions.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-20916-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "2a3a6996ca7c8b9fe56a7d5df836eb04a95d9ec3d0903b30c237f88a6ae8f3ae",
+  "test_patch": ".cache/dataset-v2-source/cases/sympy__sympy-20916-ds2-wave2/test.patch",
+  "test_patch_sha256": "3c08320af56592925054dd610a4818e0642559cf18d41246b73aab13ce159464",
+  "source_record_sha256": "d5ffef7ff720e26012dc179fb18126d8cd48b157892754981fac6b5131f81502",
+  "fail_to_pass": [
+    "test_super_sub"
+  ],
+  "pass_to_pass": [
+    "test_requires_partial"
+  ],
+  "test_targets": [
+    "test_requires_partial",
+    "test_super_sub"
+  ],
+  "frozen_test_files": [
+    "sympy/printing/tests/test_conventions.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "sympy__sympy-20264-ds1"
+}

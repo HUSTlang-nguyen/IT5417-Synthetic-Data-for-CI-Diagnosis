@@ -1,0 +1,2382 @@
+{
+  "created_at": "2026-11-23T13:06:08+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test"
+  },
+  "selected": [
+    {
+      "source_case_id": "marshmallow-code__marshmallow-1359",
+      "repo": "marshmallow-code/marshmallow",
+      "role": "train",
+      "base_commit": "b40a0f4e33823e6d0f341f7e8684e359a99060d1",
+      "source_version": "3.0",
+      "product_files": [
+        "src/marshmallow/fields.py"
+      ],
+      "test_files": [
+        "tests/test_fields.py"
+      ],
+      "repair_bytes": 483,
+      "f2p_count": 1,
+      "p2p_count": 76,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "marshmallow-code__marshmallow-1359-ds2-wave2",
+      "case_sha256": "d25855731c0084ad67fb913fc30c6176a65d9686126a12140de0acf25b851cb4"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1458",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "a0812b12584cfd5e662fa5aeb8972090763a671f",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/iotools/sodapro.py"
+      ],
+      "test_files": [
+        "pvlib/tests/iotools/test_sodapro.py"
+      ],
+      "repair_bytes": 2637,
+      "f2p_count": 3,
+      "p2p_count": 6,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1458-ds2-wave2",
+      "case_sha256": "18cd2662c6062213b2d3ef8f083b170dbee7db006e9714ccbe5ee55263ee87c4"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-958",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "40652fc0a18fd9f1204cb3d4b9829e3a8be5cbe0",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/charset.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_charset.py"
+      ],
+      "repair_bytes": 5190,
+      "f2p_count": 4,
+      "p2p_count": 40,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-958-ds2-wave2",
+      "case_sha256": "80da821ea051645360d33cd504529f9bc9b4596c569b48d013b8f24b630c924a"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-1268",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "ce5cbce5ba11cdc2f8139ade66feea1e181a7944",
+      "source_version": "2.9",
+      "product_files": [
+        "astroid/nodes/as_string.py"
+      ],
+      "test_files": [
+        "tests/unittest_nodes.py"
+      ],
+      "repair_bytes": 599,
+      "f2p_count": 1,
+      "p2p_count": 91,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-1268-ds2-wave2",
+      "case_sha256": "154504d46b74368051317a78320c7282e8b999fecf4702b6ab9062c60051ada4"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-11160",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "6995257cf470d2143ad1683824962de4071c0eb7",
+      "source_version": "8.0",
+      "product_files": [
+        "src/_pytest/recwarn.py"
+      ],
+      "test_files": [
+        "testing/test_recwarn.py"
+      ],
+      "repair_bytes": 1238,
+      "f2p_count": 2,
+      "p2p_count": 47,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-11160-ds2-wave2",
+      "case_sha256": "962736891b432239d6176d7f6641d05583134a0dab3479354bc137977228cbc4"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7350",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "c75470f9b79046f6d32344be5eacf60a4e1c1b7d",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/ext/napoleon/docstring.py"
+      ],
+      "test_files": [
+        "tests/test_ext_napoleon_docstring.py"
+      ],
+      "repair_bytes": 1228,
+      "f2p_count": 1,
+      "p2p_count": 27,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-7350-ds2-wave2",
+      "case_sha256": "f87922bcbba0e444e08c04cbe116c84ec673129628ba2a58e13c974c3fa3171b"
+    },
+    {
+      "source_case_id": "sympy__sympy-24102",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "58598660a3f6ab3d918781c4988c2e4b2bdd9297",
+      "source_version": "1.12",
+      "product_files": [
+        "sympy/parsing/mathematica.py"
+      ],
+      "test_files": [
+        "sympy/parsing/tests/test_mathematica.py"
+      ],
+      "repair_bytes": 633,
+      "f2p_count": 2,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-24102-ds2-wave2",
+      "case_sha256": "b83c4b0f0ae31d77e367809689fcf88d4604bf67434055c95559c1d7dc405a7c"
+    },
+    {
+      "source_case_id": "marshmallow-code__marshmallow-1343",
+      "repo": "marshmallow-code/marshmallow",
+      "role": "train",
+      "base_commit": "2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0",
+      "source_version": "2.20",
+      "product_files": [
+        "src/marshmallow/schema.py"
+      ],
+      "test_files": [
+        "tests/test_marshalling.py"
+      ],
+      "repair_bytes": 959,
+      "f2p_count": 1,
+      "p2p_count": 24,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "marshmallow-code__marshmallow-1343-ds2-wave2",
+      "case_sha256": "0c26fb9e3c584169a361f4c971d10cb0ea158872dd0c99a93c941e1636b9bea5"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1165",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "b40df75ddbc467a113b87643c1faef073cc37b3e",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/modelchain.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_modelchain.py"
+      ],
+      "repair_bytes": 3024,
+      "f2p_count": 2,
+      "p2p_count": 152,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1165-ds2-wave2",
+      "case_sha256": "386375e9ae1035a4ecdf1b6369570a300f32acd23c0af4d6492f76d23614dd64"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1562",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "e1a035a88fe36d466579b2f3940bde5b8b1bc84d",
+      "source_version": "2.2",
+      "product_files": [
+        "pydicom/datadict.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_dictionary.py"
+      ],
+      "repair_bytes": 5849,
+      "f2p_count": 1,
+      "p2p_count": 16,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1562-ds2-wave2",
+      "case_sha256": "fb2606afbb136085e88c06ec4805fdfabb9e6897381b839ce20d5491f8c42ffd"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-1866",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "6cf238d089cf4b6753c94cfc089b4a47487711e5",
+      "source_version": "2.13",
+      "product_files": [
+        "astroid/brain/brain_builtin_inference.py"
+      ],
+      "test_files": [
+        "tests/unittest_brain_builtin.py"
+      ],
+      "repair_bytes": 767,
+      "f2p_count": 1,
+      "p2p_count": 10,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-1866-ds2-wave2",
+      "case_sha256": "65fd0264bd88ecd5cf6e7022b3b39fe45f0b2f338ebe481d6bdb6d52c70fef51"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7571",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "422685d0bdc110547535036c1ff398b5e1c44145",
+      "source_version": "6.0",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "test_files": [
+        "testing/logging/test_fixture.py"
+      ],
+      "repair_bytes": 1307,
+      "f2p_count": 1,
+      "p2p_count": 14,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-7571-ds2-wave2",
+      "case_sha256": "cbe60e7bc117775622a72a276b9d5f1365efafe60dfa3ba148104358e5338064"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8951",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "b923165d5ef289ba39bb964201d4a036eb5a5ff6",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/domains/cpp.py"
+      ],
+      "test_files": [
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 1237,
+      "f2p_count": 2,
+      "p2p_count": 28,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-8951-ds2-wave2",
+      "case_sha256": "c158bd43ef2029c3e61b600fdd5caad74db35d168b1eb54891a9fd189d92a328"
+    },
+    {
+      "source_case_id": "sympy__sympy-20916",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "82298df6a51491bfaad0c6d1980e7e3ca808ae93",
+      "source_version": "1.8",
+      "product_files": [
+        "sympy/printing/conventions.py"
+      ],
+      "test_files": [
+        "sympy/printing/tests/test_conventions.py"
+      ],
+      "repair_bytes": 744,
+      "f2p_count": 1,
+      "p2p_count": 1,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-20916-ds2-wave2",
+      "case_sha256": "73b1fa6b4486f3349fca7626653c580a7d5ba7c7ac03aeae0d99c40589c0a0e2"
+    },
+    {
+      "source_case_id": "marshmallow-code__marshmallow-1229",
+      "repo": "marshmallow-code/marshmallow",
+      "role": "train",
+      "base_commit": "456bacbbead4fa30a1a82892c9446ac9efb8055b",
+      "source_version": "3.0",
+      "product_files": [
+        "src/marshmallow/fields.py"
+      ],
+      "test_files": [
+        "tests/test_fields.py"
+      ],
+      "repair_bytes": 2663,
+      "f2p_count": 8,
+      "p2p_count": 61,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "marshmallow-code__marshmallow-1229-ds2-wave2",
+      "case_sha256": "6c4f1b7d56c0bc61685052b30911d0b735f01313f6739ae1a119fd7048e07207"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1739",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "909f86dc67eddc88154c9e7bff73fd9d6bfe2e4d",
+      "source_version": "0.9",
+      "product_files": [
+        "pvlib/iotools/pvgis.py"
+      ],
+      "test_files": [
+        "pvlib/tests/iotools/test_pvgis.py"
+      ],
+      "repair_bytes": 3117,
+      "f2p_count": 5,
+      "p2p_count": 14,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1739-ds2-wave2",
+      "case_sha256": "2dc295374ce1507f6bef6ca542d189dcd52b97e6a7829fba47fde109e35a6eac"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1375",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "c14bf96040e4cc930db890638b9f190d4ede0a21",
+      "source_version": "2.1",
+      "product_files": [
+        "pydicom/valuerep.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_valuerep.py"
+      ],
+      "repair_bytes": 7645,
+      "f2p_count": 4,
+      "p2p_count": 213,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1375-ds2-wave2",
+      "case_sha256": "8a74be4a9b22cea6a93b2f2dd30450cd60ab7bfbe15dfd60000f1618bc6b0fb3"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-1333",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "d2a5b3c7b1e203fec3c7ca73c30eb1785d3d4d0a",
+      "source_version": "2.10",
+      "product_files": [
+        "astroid/modutils.py"
+      ],
+      "test_files": [
+        "tests/unittest_modutils.py"
+      ],
+      "repair_bytes": 1032,
+      "f2p_count": 1,
+      "p2p_count": 46,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-1333-ds2-wave2",
+      "case_sha256": "2e4f6fc7badcbd00ab2470a4e46205331ac96cac23ad51407a046af92d518a95"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-10371",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "bc2c3b66aa084fa4ff64f836aee73eae4cb72818",
+      "source_version": "7.2",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "test_files": [
+        "testing/logging/test_reporting.py"
+      ],
+      "repair_bytes": 1309,
+      "f2p_count": 3,
+      "p2p_count": 43,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-10371-ds2-wave2",
+      "case_sha256": "f3b7c1d713df6a228cc69e0cfb4bb765fbe5d1a4dc14467c39ba9a1d0c3d0fe5"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9281",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "8ec06e9a1bd862cd713b9db748e039ccc7b3e15b",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/test_util_inspect.py"
+      ],
+      "repair_bytes": 1248,
+      "f2p_count": 1,
+      "p2p_count": 38,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-9281-ds2-wave2",
+      "case_sha256": "6df16c4ad1f5b94289d7c1734ca3e9b35e609d6721926a1340a57726be5286de"
+    },
+    {
+      "source_case_id": "sympy__sympy-11989",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "32035c98bf6e16e8868b9320e4d5b3892fdc292d",
+      "source_version": "1.0",
+      "product_files": [
+        "sympy/solvers/diophantine.py"
+      ],
+      "test_files": [
+        "sympy/solvers/tests/test_diophantine.py"
+      ],
+      "repair_bytes": 2512,
+      "f2p_count": 1,
+      "p2p_count": 25,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-11989-ds2-wave2",
+      "case_sha256": "05a40ae62dc09a01bcdc8c13c61a0f33a0da3d9e217e7b9f2a7900dc26e9d219"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1653",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "faf27fee1fcbae3b7056bd02f9e98b7d6e5cb42d",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/snow.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_snow.py"
+      ],
+      "repair_bytes": 5092,
+      "f2p_count": 5,
+      "p2p_count": 8,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1653-ds2-wave2",
+      "case_sha256": "1a50f74848b76d06bb3f2ced61f0b5a0f8409d40124b0dc3aa4b5092d7cb08ce"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-997",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "41e984c8df5533805ae13cbcf419e6c5f63da30c",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/encaps.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_encaps.py"
+      ],
+      "repair_bytes": 9165,
+      "f2p_count": 70,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-997-ds2-wave2",
+      "case_sha256": "978535d5d66fc673de7556388d2118de0e31cb198802e20a4219b47b6055480c"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-1196",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "39c2a9805970ca57093d32bbaf0e6a63e05041d8",
+      "source_version": "2.12",
+      "product_files": [
+        "astroid/nodes/node_classes.py"
+      ],
+      "test_files": [
+        "tests/unittest_python3.py"
+      ],
+      "repair_bytes": 1623,
+      "f2p_count": 2,
+      "p2p_count": 24,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-1196-ds2-wave2",
+      "case_sha256": "a01769413adbfc46a4ec796063f27605575abf98052d57f66e4a5254f6cbfd6c"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-9681",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "fc72ffa39ed3b34b21fba83d6f80144ab0ae8a36",
+      "source_version": "7.1",
+      "product_files": [
+        "src/_pytest/pathlib.py"
+      ],
+      "test_files": [
+        "testing/test_collection.py",
+        "testing/test_pathlib.py"
+      ],
+      "repair_bytes": 1331,
+      "f2p_count": 1,
+      "p2p_count": 132,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-9681-ds2-wave2",
+      "case_sha256": "82c8f15c15ca0678598218f5dc4f591095ce8882019f5775d397094d4c7af53a"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10614",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "ac2b7599d212af7d04649959ce6926c63c3133fa",
+      "source_version": "7.2",
+      "product_files": [
+        "sphinx/ext/inheritance_diagram.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-inheritance_diagram/conf.py",
+        "tests/roots/test-ext-inheritance_diagram/subdir/other.py",
+        "tests/roots/test-ext-inheritance_diagram/test.py",
+        "tests/test_ext_inheritance_diagram.py"
+      ],
+      "repair_bytes": 1276,
+      "f2p_count": 1,
+      "p2p_count": 5,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-10614-ds2-wave2",
+      "case_sha256": "3e169094d24cb07a7ffcf9279c096758c08939136a0436e3d39828fa992ba2c7"
+    },
+    {
+      "source_case_id": "sympy__sympy-11787",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "a53c4ad94a9657702764e9b5dc4a3eaa01c0f54d",
+      "source_version": "1.0",
+      "product_files": [
+        "sympy/solvers/solvers.py"
+      ],
+      "test_files": [
+        "sympy/solvers/tests/test_numeric.py"
+      ],
+      "repair_bytes": 2521,
+      "f2p_count": 1,
+      "p2p_count": 3,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-11787-ds2-wave2",
+      "case_sha256": "337f2b96214c8565b1ad8fb4d554e06bbd06bfb804b96a291abb8ed54dc0d457"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1737",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "5119b4281fa9de8a4dc97002b5c10a6d73c25a4f",
+      "source_version": "0.9",
+      "product_files": [
+        "pvlib/iotools/tmy.py"
+      ],
+      "test_files": [
+        "pvlib/tests/iotools/test_tmy.py"
+      ],
+      "repair_bytes": 5486,
+      "f2p_count": 1,
+      "p2p_count": 10,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1737-ds2-wave2",
+      "case_sha256": "388ceab242de4a51acbf4132eed1d4710ffb7ba17440f4804deec4f53d2ff3a1"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1241",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "9d69811e539774f296c2f289839147e741251716",
+      "source_version": "2.0",
+      "product_files": [
+        "pydicom/encaps.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_encaps.py"
+      ],
+      "repair_bytes": 9673,
+      "f2p_count": 72,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1241-ds2-wave2",
+      "case_sha256": "155fb5e4cc596537b4a8df8c2482ae2ee103490e213c41ad81747bc77cdf8ab0"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-1978",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "0c9ab0fe56703fa83c73e514a1020d398d23fa7f",
+      "source_version": "2.14",
+      "product_files": [
+        "astroid/raw_building.py"
+      ],
+      "test_files": [
+        "tests/unittest_raw_building.py"
+      ],
+      "repair_bytes": 1952,
+      "f2p_count": 1,
+      "p2p_count": 12,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-1978-ds2-wave2",
+      "case_sha256": "5899d9007c9d3d35668400c1203349639265ae16ac1ae8bb18bb6a1c1be2f4e5"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-8022",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "e986d84466dfa98dbbc55cc1bf5fcb99075f4ac3",
+      "source_version": "6.2",
+      "product_files": [
+        "src/_pytest/main.py"
+      ],
+      "test_files": [
+        "testing/test_doctest.py"
+      ],
+      "repair_bytes": 1398,
+      "f2p_count": 1,
+      "p2p_count": 126,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-8022-ds2-wave2",
+      "case_sha256": "08578432c6e9f98a32fd5cdeaae9e6548eaa557c1351865e4056176faa283639"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9711",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "81a4fd973d4cfcb25d01a7b0be62cdb28f82406d",
+      "source_version": "4.3",
+      "product_files": [
+        "sphinx/extension.py"
+      ],
+      "test_files": [
+        "tests/test_extension.py"
+      ],
+      "repair_bytes": 1284,
+      "f2p_count": 1,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-9711-ds2-wave2",
+      "case_sha256": "c2227ed643ef47ed102458b3e4bf0f7ec5297d6945aa1ce2549966701e2a075d"
+    },
+    {
+      "source_case_id": "sympy__sympy-21259",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "3ac1464b8840d5f8b618a654f9fbf09c452fe969",
+      "source_version": "1.8",
+      "product_files": [
+        "sympy/sets/fancysets.py"
+      ],
+      "test_files": [
+        "sympy/sets/tests/test_fancysets.py",
+        "sympy/solvers/tests/test_inequalities.py"
+      ],
+      "repair_bytes": 2530,
+      "f2p_count": 4,
+      "p2p_count": 67,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-21259-ds2-wave2",
+      "case_sha256": "729c39a7791f7e16570c92062e23d912ae8d1f912359f64a07253886e59b5cf1"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1368",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "93e84041387c80bf8738fe96409a0cfd5852c29a",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/iotools/crn.py"
+      ],
+      "test_files": [
+        "pvlib/tests/iotools/test_crn.py"
+      ],
+      "repair_bytes": 5695,
+      "f2p_count": 1,
+      "p2p_count": 1,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1368-ds2-wave2",
+      "case_sha256": "db4d7d0303b3f560c301f201dc354275e5338ab4d8862ec5eb865ff7be858bcf"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-863",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "b4b44acbf1ddcaf03df16210aac46cb3a8acd6b9",
+      "source_version": "1.2",
+      "product_files": [
+        "pydicom/charset.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_charset.py"
+      ],
+      "repair_bytes": 10174,
+      "f2p_count": 3,
+      "p2p_count": 40,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-863-ds2-wave2",
+      "case_sha256": "591abbea6a98aa86dbecffdd5be5cebfdf8254172d7e90d609dc6ea91f4bbc46"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-1351",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "cfd9e74f7b4cbac08357cadec03c736501368afa",
+      "source_version": "2.10",
+      "product_files": [
+        "astroid/nodes/node_ng.py",
+        "astroid/rebuilder.py"
+      ],
+      "test_files": [
+        "tests/unittest_builder.py",
+        "tests/unittest_nodes_lineno.py",
+        "tests/unittest_scoped_nodes.py"
+      ],
+      "repair_bytes": 1878,
+      "f2p_count": 3,
+      "p2p_count": 192,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-1351-ds2-wave2",
+      "case_sha256": "80de75f2f5d5a3949d770a447ccbb2cfe846eab61a268456aa317beba2ae18ed"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-11178",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "97ed533f63d5780a05702a711555cb6744247a37",
+      "source_version": "8.0",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "test_files": [
+        "testing/python/approx.py"
+      ],
+      "repair_bytes": 1597,
+      "f2p_count": 1,
+      "p2p_count": 65,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-11178-ds2-wave2",
+      "case_sha256": "c46d4cd20c0b384eaf0177761e5f8be9ba84a6b32beabc7cb4eee73ddf999583"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8435",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "5d8d6275a54f2c5fb72b82383b5712c22d337634",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/annotations.py",
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 1289,
+      "f2p_count": 1,
+      "p2p_count": 16,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-8435-ds2-wave2",
+      "case_sha256": "fa836e1d2d5059a9624d5972f25ffe764d1991d7f593b48783a4c01c47796a34"
+    },
+    {
+      "source_case_id": "sympy__sympy-15225",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "4f41286b22a05d5d75f456f1e574d8c115bab5d4",
+      "source_version": "1.4",
+      "product_files": [
+        "sympy/logic/boolalg.py"
+      ],
+      "test_files": [
+        "sympy/logic/tests/test_boolalg.py"
+      ],
+      "repair_bytes": 2544,
+      "f2p_count": 1,
+      "p2p_count": 47,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-15225-ds2-wave2",
+      "case_sha256": "d3dda1b5d4bb0f0ec81b5cab845451d00a46aa7bb223214d183a69e75590ed4e"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1616",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "25af86599845f23b0ce57dc1cbe743b3a1e68d1a",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/iam.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_iam.py"
+      ],
+      "repair_bytes": 5963,
+      "f2p_count": 2,
+      "p2p_count": 28,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1616-ds2-wave2",
+      "case_sha256": "c8c2bcab841be5a691528d7d96174c49a39abccd14c298b7c0fe68758c99e372"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1334",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "24a86b316441ac3a46e569779627e24482786a8a",
+      "source_version": "2.1",
+      "product_files": [
+        "pydicom/valuerep.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_valuerep.py"
+      ],
+      "repair_bytes": 11667,
+      "f2p_count": 137,
+      "p2p_count": 64,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1334-ds2-wave2",
+      "case_sha256": "bd084d3037b23233b374543721546df19f4bf02e654ac8fc620c3a633b5cc22a"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-983",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "53a20335357bbd734d74c3bfe22e3518f74f4d11",
+      "source_version": "2.5",
+      "product_files": [
+        "astroid/bases.py",
+        "astroid/scoped_nodes.py"
+      ],
+      "test_files": [
+        "tests/unittest_inference.py",
+        "tests/unittest_scoped_nodes.py"
+      ],
+      "repair_bytes": 2423,
+      "f2p_count": 3,
+      "p2p_count": 429,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-983-ds2-wave2",
+      "case_sha256": "f8f24d14a31c0477a4bbf478820c0c8f1af4a1c3614f2b26f8bc67c2088e91d6"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7490",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "7f7a36478abe7dd1fa993b115d22606aa0e35e88",
+      "source_version": "6.0",
+      "product_files": [
+        "src/_pytest/skipping.py"
+      ],
+      "test_files": [
+        "testing/test_skipping.py"
+      ],
+      "repair_bytes": 1711,
+      "f2p_count": 2,
+      "p2p_count": 78,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-7490-ds2-wave2",
+      "case_sha256": "c11cd5eb961cefe8ab2317e4358fd51a9f6a5301297e25a527ba388c577f7bb0"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10551",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "571b55328d401a6e1d50e37407df56586065a7be",
+      "source_version": "5.1",
+      "product_files": [
+        "sphinx/pycode/ast.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py",
+        "tests/test_pycode_ast.py"
+      ],
+      "repair_bytes": 1327,
+      "f2p_count": 7,
+      "p2p_count": 72,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-10551-ds2-wave2",
+      "case_sha256": "8f38f9bafd8168e553e7b2a26959f09bebd2b1cc7bafebe60652d8799f796b39"
+    },
+    {
+      "source_case_id": "sympy__sympy-13852",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "c935e1d106743efd5bf0705fbeedbd18fadff4dc",
+      "source_version": "1.1",
+      "product_files": [
+        "sympy/functions/special/zeta_functions.py"
+      ],
+      "test_files": [
+        "sympy/functions/special/tests/test_zeta_functions.py"
+      ],
+      "repair_bytes": 2593,
+      "f2p_count": 1,
+      "p2p_count": 4,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-13852-ds2-wave2",
+      "case_sha256": "4af089afb0d4d1805bed90092cb9c25b11a74c73b5ce845e648799e9a53ebd9a"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1213",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "40ba4bd5c8b91754aa73e638ed984ab9657847cd",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/scaling.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_scaling.py"
+      ],
+      "repair_bytes": 6558,
+      "f2p_count": 7,
+      "p2p_count": 6,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1213-ds2-wave2",
+      "case_sha256": "b9a09a601eea04b1beb37a7b62cf3e8f39b74fbc9a52844693ec17aa278e2a4d"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1076",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "caf0db105ddf389ff5025937fd5f3aa1e61e85e7",
+      "source_version": "1.4",
+      "product_files": [
+        "pydicom/filewriter.py",
+        "pydicom/values.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filereader.py",
+        "pydicom/tests/test_filewriter.py",
+        "pydicom/tests/test_values.py"
+      ],
+      "repair_bytes": 877,
+      "f2p_count": 3,
+      "p2p_count": 274,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1076-ds2-wave2",
+      "case_sha256": "7e15e212c5efb3de9ab503532f90b7a3c3b516f47f9373724223d0d8bff8d51a"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-941",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "962becc0ae86c16f7b33140f43cd6ed8f1e8a045",
+      "source_version": "2.5",
+      "product_files": [
+        "astroid/brain/brain_namedtuple_enum.py",
+        "astroid/scoped_nodes.py"
+      ],
+      "test_files": [
+        "tests/unittest_scoped_nodes.py"
+      ],
+      "repair_bytes": 2891,
+      "f2p_count": 2,
+      "p2p_count": 113,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-941-ds2-wave2",
+      "case_sha256": "301bd2150cdd7a9db3e91c1308de4c9bb5000de37401ea7d61fd97d7aeac5e68"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-10356",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "3c1534944cbd34e8a41bc9e76818018fadefc9a1",
+      "source_version": "7.2",
+      "product_files": [
+        "src/_pytest/mark/structures.py"
+      ],
+      "test_files": [
+        "testing/test_mark.py"
+      ],
+      "repair_bytes": 2091,
+      "f2p_count": 1,
+      "p2p_count": 79,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-10356-ds2-wave2",
+      "case_sha256": "085b72044b0ab4f88a2260b738c4d30e938bf9e8169e0748662ce5a93cf594ca"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10427",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "f58771c093a1d5c692eecd6fdeddf60959b174bd",
+      "source_version": "5.0",
+      "product_files": [
+        "sphinx/ext/autodoc/preserve_defaults.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/preserve_defaults.py",
+        "tests/test_ext_autodoc_preserve_defaults.py"
+      ],
+      "repair_bytes": 1331,
+      "f2p_count": 1,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-10427-ds2-wave2",
+      "case_sha256": "2d609999d7fbd9b35814689c768710fbeaf9a4b630c277689e5edc5c66c789fb"
+    },
+    {
+      "source_case_id": "sympy__sympy-23191",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "fa9b4b140ec0eaf75a62c1111131626ef0f6f524",
+      "source_version": "1.11",
+      "product_files": [
+        "sympy/printing/pretty/pretty.py"
+      ],
+      "test_files": [
+        "sympy/vector/tests/test_printing.py"
+      ],
+      "repair_bytes": 2606,
+      "f2p_count": 1,
+      "p2p_count": 3,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-23191-ds2-wave2",
+      "case_sha256": "d5df908fef3963cbcdf1623cbb2c1ee467bcf75baa0a6036a98015aa8e9c75ae"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1225",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "0415365031ca8d0b2867f2a2877e0ad9d7098ffc",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/irradiance.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_irradiance.py"
+      ],
+      "repair_bytes": 7276,
+      "f2p_count": 4,
+      "p2p_count": 98,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1225-ds2-wave2",
+      "case_sha256": "8178edccc116fe3d99ab39518687647f2e9ffddb3e68b79c4942a1056adaadbb"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-944",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "a0300a69a1da1626caef0d9738cff29b17ce79cc",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/valuerep.py",
+        "pydicom/values.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_values.py"
+      ],
+      "repair_bytes": 896,
+      "f2p_count": 1,
+      "p2p_count": 15,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-944-ds2-wave2",
+      "case_sha256": "496eefd8f04425cdd079f115170b84240e023fabba1d0e14b5aa52952a3eeec1"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-984",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "d2394a3e24236106355418e102b1bb0f1bef879c",
+      "source_version": "2.5",
+      "product_files": [
+        "astroid/interpreter/_import/spec.py",
+        "astroid/manager.py",
+        "astroid/modutils.py"
+      ],
+      "test_files": [
+        "tests/unittest_modutils.py"
+      ],
+      "repair_bytes": 3264,
+      "f2p_count": 2,
+      "p2p_count": 42,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-984-ds2-wave2",
+      "case_sha256": "26b2c3f654c14067eab7a0e764a8b29848a7e1bec4b4490843d8f2d6bd28f681"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-10988",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "78403237cf5026f23618ea7a867bf8b674116e6f",
+      "source_version": "7.4",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "test_files": [
+        "testing/test_collection.py",
+        "testing/test_conftest.py"
+      ],
+      "repair_bytes": 2147,
+      "f2p_count": 16,
+      "p2p_count": 123,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-10988-ds2-wave2",
+      "case_sha256": "93e92a0bee0385e4e45447440c411534437629e51cf1f3fbc7e1e1f9f32053d9"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8273",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "88b81a06eb635a1596617f8971fa97a84c069e93",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/builders/manpage.py"
+      ],
+      "test_files": [
+        "tests/test_build_manpage.py"
+      ],
+      "repair_bytes": 1454,
+      "f2p_count": 1,
+      "p2p_count": 3,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-8273-ds2-wave2",
+      "case_sha256": "4821a3314c829080abc9afa4c038dce5ef88d35d1aca4120f333ba16068b899e"
+    },
+    {
+      "source_case_id": "sympy__sympy-20049",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "d57aaf064041fe52c0fa357639b069100f8b28e1",
+      "source_version": "1.7",
+      "product_files": [
+        "sympy/physics/vector/point.py"
+      ],
+      "test_files": [
+        "sympy/physics/vector/tests/test_point.py"
+      ],
+      "repair_bytes": 2614,
+      "f2p_count": 4,
+      "p2p_count": 9,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-20049-ds2-wave2",
+      "case_sha256": "e96c7d099988ada14b30af6760d2d03269833c6c3aa584f10a774daa3f067011"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1181",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "8b98768818ee5ad85d9479877533651a2e9dc2cd",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/modelchain.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_modelchain.py"
+      ],
+      "repair_bytes": 8615,
+      "f2p_count": 2,
+      "p2p_count": 144,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1181-ds2-wave2",
+      "case_sha256": "ef5bfaca28163c16cf4381d4347f398c57581cef6696f6395f2ff71540041718"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1598",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "e9fc645cd8e75d71f7835c0d6e3c0b94b22c2808",
+      "source_version": "2.2",
+      "product_files": [
+        "pydicom/dataset.py",
+        "pydicom/fileset.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_fileset.py"
+      ],
+      "repair_bytes": 1537,
+      "f2p_count": 1,
+      "p2p_count": 141,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1598-ds2-wave2",
+      "case_sha256": "8231632a5a89b64c78d389f577ae64029e8792cada078dbc0354127c61ad42d7"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-2015",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "56a65daf1ba391cc85d1a32a8802cfd0c7b7b2ab",
+      "source_version": "2.15",
+      "product_files": [
+        "astroid/_backport_stdlib_names.py",
+        "astroid/manager.py",
+        "astroid/modutils.py"
+      ],
+      "test_files": [
+        "tests/test_manager.py",
+        "tests/test_modutils.py"
+      ],
+      "repair_bytes": 10917,
+      "f2p_count": 100,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-2015-ds2-wave2",
+      "case_sha256": "0f03ca8e5d9d22c9be883b6c8dfe023597bd2cd244d8ef13c8c3dae8675ca5dc"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-11047",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "fbfd4b50050080413c8faca5368b9cb9b1ac9313",
+      "source_version": "7.4",
+      "product_files": [
+        "src/_pytest/logging.py"
+      ],
+      "test_files": [
+        "testing/logging/test_reporting.py"
+      ],
+      "repair_bytes": 2461,
+      "f2p_count": 2,
+      "p2p_count": 48,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-11047-ds2-wave2",
+      "case_sha256": "bad4e7314e62e622dc5d6a28c30a6731f2a5a66236eb015bd8ec1148c230fa4d"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7985",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "f30284ef926ebaf04b176f21b421e2dffc679792",
+      "source_version": "3.2",
+      "product_files": [
+        "sphinx/builders/linkcheck.py"
+      ],
+      "test_files": [
+        "tests/test_build_linkcheck.py"
+      ],
+      "repair_bytes": 1472,
+      "f2p_count": 2,
+      "p2p_count": 3,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-7985-ds2-wave2",
+      "case_sha256": "9b3fd41c5e682ed336a44a293ee756739486e5fa3c97c9e1fe10c36d8ba7a14f"
+    },
+    {
+      "source_case_id": "sympy__sympy-16331",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "356a73cd676e0c3f1a1c3057a6895db0d82a1be7",
+      "source_version": "1.4",
+      "product_files": [
+        "sympy/utilities/autowrap.py"
+      ],
+      "test_files": [
+        "sympy/utilities/tests/test_autowrap.py"
+      ],
+      "repair_bytes": 2632,
+      "f2p_count": 1,
+      "p2p_count": 10,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-16331-ds2-wave2",
+      "case_sha256": "dc0099a44bb9ca49449e8e9c47935d2e656a2525f5f387ee40711797eaa52316"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1764",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "964dc435ca117d47c74da47345ace976b70a471f",
+      "source_version": "0.9",
+      "product_files": [
+        "pvlib/singlediode.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_singlediode.py"
+      ],
+      "repair_bytes": 15224,
+      "f2p_count": 4,
+      "p2p_count": 28,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1764-ds2-wave2",
+      "case_sha256": "a72346fe062a97b5ec628dddb0090e460df57f1b46550644cfb50ab67b96c52d"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-955",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "fdd4fc8098920b1cda6127bdc05ff1e542b519fb",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/dataelem.py",
+        "pydicom/pixel_data_handlers/util.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filereader.py",
+        "pydicom/tests/test_handler_util.py"
+      ],
+      "repair_bytes": 2122,
+      "f2p_count": 1,
+      "p2p_count": 354,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-955-ds2-wave2",
+      "case_sha256": "534c8aa5a946ba35bddccc14a3d0052dcc6a0af4622f7ae008bc47ae4ab3e668"
+    },
+    {
+      "source_case_id": "pylint-dev__astroid-2240",
+      "repo": "pylint-dev/astroid",
+      "role": "train",
+      "base_commit": "514991036806e9cda2b12cef8ab3184ac373bd6c",
+      "source_version": "3.0",
+      "product_files": [
+        "astroid/arguments.py",
+        "astroid/nodes/node_classes.py",
+        "astroid/nodes/scoped_nodes/scoped_nodes.py",
+        "astroid/protocols.py",
+        "astroid/rebuilder.py"
+      ],
+      "test_files": [
+        "tests/test_nodes.py"
+      ],
+      "repair_bytes": 9276,
+      "f2p_count": 1,
+      "p2p_count": 177,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pylint-dev__astroid-2240-ds2-wave2",
+      "case_sha256": "49822eadc0b90859d17dcecfc96200765c40f34ea6eb5e430aa952e32dd1984b"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-10115",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "966d4fb3e4640de721f87e4190427975ea020c67",
+      "source_version": "7.2",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "test_files": [
+        "testing/test_assertrewrite.py"
+      ],
+      "repair_bytes": 2547,
+      "f2p_count": 1,
+      "p2p_count": 96,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-10115-ds2-wave2",
+      "case_sha256": "39c44f6118ac6dbb378002820c9a3087b042649213b46ea0914c048307ec7a03"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10325",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "7bdc11e87c7d86dcc2a087eccb7a7c129a473415",
+      "source_version": "5.0",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/inheritance.py",
+        "tests/test_ext_autodoc_automodule.py"
+      ],
+      "repair_bytes": 1474,
+      "f2p_count": 1,
+      "p2p_count": 5,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-10325-ds2-wave2",
+      "case_sha256": "e03dee34c393f5c1bffd3cd2b5a8cfc894d166990d7d59ac6378ca0cafbb5de1"
+    },
+    {
+      "source_case_id": "sympy__sympy-17813",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "21183076095704d7844a832d2e7f387555934f0c",
+      "source_version": "1.5",
+      "product_files": [
+        "sympy/sets/handlers/intersection.py"
+      ],
+      "test_files": [
+        "sympy/sets/tests/test_fancysets.py"
+      ],
+      "repair_bytes": 2632,
+      "f2p_count": 1,
+      "p2p_count": 40,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-17813-ds2-wave2",
+      "case_sha256": "77408a961da01d95e05b84cdfea2b5b771b38233ce12f1c0561fee9656f35e73"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1589",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "bd86597f62013f576670a452869ea88a47c58c01",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/bifacial/infinite_sheds.py",
+        "pvlib/shading.py"
+      ],
+      "test_files": [
+        "pvlib/tests/bifacial/test_infinite_sheds.py",
+        "pvlib/tests/test_shading.py"
+      ],
+      "repair_bytes": 1254,
+      "f2p_count": 2,
+      "p2p_count": 19,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1589-ds2-wave2",
+      "case_sha256": "8ec5f43658e8c54fbac251686c98f0014872bb00962e747b9d851d7128792c1b"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-965",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "ee775c8a137cd8e0b69b46dc24c23648c31fe34c",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/config.py",
+        "pydicom/dataelem.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_dataelem.py"
+      ],
+      "repair_bytes": 2412,
+      "f2p_count": 1,
+      "p2p_count": 38,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-965-ds2-wave2",
+      "case_sha256": "d5061eb0ebab3301f67b4dfbf412684affc28b20fee1a0e431462fa204025b2d"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-9646",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "6aaa017b1e81f6eccc48ee4f6b52d25c49747554",
+      "source_version": "7.1",
+      "product_files": [
+        "src/_pytest/nodes.py"
+      ],
+      "test_files": [
+        "testing/test_nodes.py"
+      ],
+      "repair_bytes": 2569,
+      "f2p_count": 1,
+      "p2p_count": 17,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-9646-ds2-wave2",
+      "case_sha256": "0508798bcf9e18f66a6bcb43204c53e22ffcc8cea6cda2efbe3801eadf4ea1ad"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11109",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "609b2f2650dfea191e688ce6238ba567da551052",
+      "source_version": "6.2",
+      "product_files": [
+        "sphinx/domains/python.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py"
+      ],
+      "repair_bytes": 1498,
+      "f2p_count": 1,
+      "p2p_count": 55,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-11109-ds2-wave2",
+      "case_sha256": "20b2d584818b97927d3bcb40d46666b5bd0fcc2dc3d1db9b35c7779efe898814"
+    },
+    {
+      "source_case_id": "sympy__sympy-21596",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "110997fe18b9f7d5ba7d22f624d156a29bf40759",
+      "source_version": "1.9",
+      "product_files": [
+        "sympy/sets/handlers/intersection.py"
+      ],
+      "test_files": [
+        "sympy/sets/tests/test_fancysets.py"
+      ],
+      "repair_bytes": 2659,
+      "f2p_count": 1,
+      "p2p_count": 46,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-21596-ds2-wave2",
+      "case_sha256": "64802936c6c3f2f056afead9ca4f50df07571da021b49e73aac10ce84648ed0e"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1031",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "27872b83b0932cc419116f79e442963cced935bb",
+      "source_version": "0.7",
+      "product_files": [
+        "pvlib/pvsystem.py",
+        "pvlib/tracking.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_pvsystem.py",
+        "pvlib/tests/test_tracking.py"
+      ],
+      "repair_bytes": 1826,
+      "f2p_count": 5,
+      "p2p_count": 155,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1031-ds2-wave2",
+      "case_sha256": "acdfc522c004f72d76e99b66036e8fb7eea96539139e0e65d11d36f9aec69ec3"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-995",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "29be72498a4f4131808a45843b15692234ae7652",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/dataset.py",
+        "pydicom/pixel_data_handlers/util.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_dataset.py",
+        "pydicom/tests/test_numpy_pixel_data.py"
+      ],
+      "repair_bytes": 4962,
+      "f2p_count": 256,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-995-ds2-wave2",
+      "case_sha256": "32021a6331b70d146e645bfcc719cbfa85a9b40efcfe6b9a5b9d94c76748dfe0"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-11041",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "fbfd4b50050080413c8faca5368b9cb9b1ac9313",
+      "source_version": "7.4",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "test_files": [
+        "testing/test_assertrewrite.py"
+      ],
+      "repair_bytes": 3054,
+      "f2p_count": 5,
+      "p2p_count": 109,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-11041-ds2-wave2",
+      "case_sha256": "e9930342bb0a94d8bd06cb27b6799bdf503633e6aabd176796eada3bf4e59386"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11445",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "71db08c05197545944949d5aa76cd340e7143627",
+      "source_version": "7.1",
+      "product_files": [
+        "sphinx/util/rst.py"
+      ],
+      "test_files": [
+        "tests/test_util_rst.py"
+      ],
+      "repair_bytes": 1508,
+      "f2p_count": 2,
+      "p2p_count": 8,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-11445-ds2-wave2",
+      "case_sha256": "cf1ef5b294c182cbedb69846037dc56fb71bedad674fa5806c6d070f80c7abcb"
+    },
+    {
+      "source_case_id": "sympy__sympy-17194",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "fec5dc5fd0d9a04cf974f733bc375bd8db853d4c",
+      "source_version": "1.5",
+      "product_files": [
+        "sympy/printing/mathml.py"
+      ],
+      "test_files": [
+        "sympy/printing/tests/test_mathml.py"
+      ],
+      "repair_bytes": 2696,
+      "f2p_count": 3,
+      "p2p_count": 98,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-17194-ds2-wave2",
+      "case_sha256": "aa390d5feb34d2d15a69b5009b0791f4f68014c3b02f1bd414897ca7c019965a"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1395",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "26579bec7e65296223503b9e05da4af914af6777",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/iotools/__init__.py",
+        "pvlib/iotools/pvgis.py"
+      ],
+      "test_files": [
+        "pvlib/tests/iotools/test_pvgis.py"
+      ],
+      "repair_bytes": 2720,
+      "f2p_count": 19,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1395-ds2-wave2",
+      "case_sha256": "acc6437cb4ce7ac5dd09dfa720c7be6a97848bf1d81c1b9962c81256f2e260a4"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-933",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "38436b6824c079564b8760ea6acfa4c0fd3ee9c3",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/dataset.py",
+        "pydicom/filereader.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filereader.py"
+      ],
+      "repair_bytes": 5217,
+      "f2p_count": 1,
+      "p2p_count": 91,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-933-ds2-wave2",
+      "case_sha256": "c9dbc4174703310ad3b3e1ec5ed28cc05a26eee4df8fe92dc06ad5ecb0552534"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-8033",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "66311ff702d98450f29a448a47c0cd5fd0c51081",
+      "source_version": "6.2",
+      "product_files": [
+        "src/_pytest/unittest.py"
+      ],
+      "test_files": [
+        "testing/test_unittest.py"
+      ],
+      "repair_bytes": 3056,
+      "f2p_count": 3,
+      "p2p_count": 56,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-8033-ds2-wave2",
+      "case_sha256": "fdd5af000192281113d3289f03a021ce2544dc007dad78bd9a296fc67ef74250"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8863",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "66aa22f1ea9ef79034812c801432ba152ad96b41",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/writers/latex.py"
+      ],
+      "test_files": [
+        "tests/test_build_latex.py"
+      ],
+      "repair_bytes": 1520,
+      "f2p_count": 1,
+      "p2p_count": 59,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-8863-ds2-wave2",
+      "case_sha256": "2f92bbd037127b361c22ce519e03e2d9afa9254b42bf98212f41858f3562d1bd"
+    },
+    {
+      "source_case_id": "sympy__sympy-18351",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "a2beda4187ec0d1cbfda74a7bc1d090e86375d87",
+      "source_version": "1.6",
+      "product_files": [
+        "sympy/printing/pycode.py"
+      ],
+      "test_files": [
+        "sympy/printing/tests/test_pycode.py"
+      ],
+      "repair_bytes": 2716,
+      "f2p_count": 1,
+      "p2p_count": 12,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-18351-ds2-wave2",
+      "case_sha256": "706abfa9ba4dd6889ce7649bd58016d298b7555aced10a0172fc3868f1e3df55"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1089",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "d5d1d66aae4913f0e23b9a79c655efa1bdafe5f4",
+      "source_version": "0.7",
+      "product_files": [
+        "pvlib/ivtools/sdm.py",
+        "pvlib/tools.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_pvsystem.py",
+        "pvlib/tests/test_tools.py"
+      ],
+      "repair_bytes": 4034,
+      "f2p_count": 9,
+      "p2p_count": 244,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1089-ds2-wave2",
+      "case_sha256": "f50a439fd75fca398f1c0bc09e1f71c7f54224e9182a66480dcfbf697617a69c"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1017",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "7241f5d9db0de589b230bb84212fbb643a7c86c3",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/filewriter.py",
+        "pydicom/values.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filereader.py"
+      ],
+      "repair_bytes": 5440,
+      "f2p_count": 14,
+      "p2p_count": 86,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1017-ds2-wave2",
+      "case_sha256": "b51d1b682868a4544dff8495ea25f9e675a1cf2e8550bf35b639da0643840c70"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-9709",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "0c80a1c836616b0206a4af2fe72001ff797a5f8f",
+      "source_version": "7.1",
+      "product_files": [
+        "src/_pytest/python_api.py"
+      ],
+      "test_files": [
+        "testing/python/approx.py"
+      ],
+      "repair_bytes": 4036,
+      "f2p_count": 2,
+      "p2p_count": 56,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-9709-ds2-wave2",
+      "case_sha256": "6da8c89ffc9980817d9f880c5daa8267bb2f4ce12e1332ed0bef93c2508b547f"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8552",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "57ed10c68057c96491acbd3e62254ccfaf9e3861",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/ext/napoleon/docstring.py"
+      ],
+      "test_files": [
+        "tests/test_ext_napoleon_docstring.py"
+      ],
+      "repair_bytes": 1522,
+      "f2p_count": 2,
+      "p2p_count": 44,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-8552-ds2-wave2",
+      "case_sha256": "31ddef004cc11a68a6d354b5a578edbf45258b625d753f2d60c0c459a67f0e34"
+    },
+    {
+      "source_case_id": "sympy__sympy-12270",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "a79801c044c2b0ed74176e4abc18f4ca2b38ac58",
+      "source_version": "1.0",
+      "product_files": [
+        "sympy/core/expr.py"
+      ],
+      "test_files": [
+        "sympy/core/tests/test_expr.py"
+      ],
+      "repair_bytes": 2727,
+      "f2p_count": 1,
+      "p2p_count": 71,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-12270-ds2-wave2",
+      "case_sha256": "cb8b29c5e6de84f3f220cbf3b96b61290f017ad483479b12d8421ff19de0dc8b"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1073",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "b105021f7c1a47f888363af5585083fc27aefd4c",
+      "source_version": "0.7",
+      "product_files": [
+        "pvlib/modelchain.py",
+        "pvlib/pvsystem.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_modelchain.py",
+        "pvlib/tests/test_pvsystem.py"
+      ],
+      "repair_bytes": 4080,
+      "f2p_count": 4,
+      "p2p_count": 215,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1073-ds2-wave2",
+      "case_sha256": "5685590d53305c18242a5dd2f22ba9889827086e4e660351e6f99a246cb4fafb"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1033",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "701c1062bf66de2b29df68fa5540be6009943885",
+      "source_version": "1.4",
+      "product_files": [
+        "pydicom/dataelem.py",
+        "pydicom/dataset.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_json.py"
+      ],
+      "repair_bytes": 5587,
+      "f2p_count": 3,
+      "p2p_count": 18,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1033-ds2-wave2",
+      "case_sha256": "d67ec070489f23b68cc54f7e7c9dccfcd7295614dbed94b05bd5f17cb031bc37"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7939",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "65e6e39b76c236999fc53823892c26367a85a8f8",
+      "source_version": "6.2",
+      "product_files": [
+        "src/_pytest/stepwise.py"
+      ],
+      "test_files": [
+        "testing/test_stepwise.py"
+      ],
+      "repair_bytes": 5436,
+      "f2p_count": 1,
+      "p2p_count": 9,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-7939-ds2-wave2",
+      "case_sha256": "cd69cb731086bee297b3734cc481b2bf4bfd316ff0ee2ff5377b764f1a220c39"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8265",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "b428cd2404675475a5c3dc2a2b0790ba57676202",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/pycode/ast.py"
+      ],
+      "test_files": [
+        "tests/test_pycode_ast.py"
+      ],
+      "repair_bytes": 1560,
+      "f2p_count": 1,
+      "p2p_count": 22,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-8265-ds2-wave2",
+      "case_sha256": "a4b37924b3e873707fb03e16274c8b972137b4cb6ebf72f64abfceb88b8ecb83"
+    },
+    {
+      "source_case_id": "sympy__sympy-16637",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "df58361055cbd92b03cef14dba41ac6f0a004fd7",
+      "source_version": "1.5",
+      "product_files": [
+        "sympy/geometry/plane.py"
+      ],
+      "test_files": [
+        "sympy/geometry/tests/test_plane.py"
+      ],
+      "repair_bytes": 2756,
+      "f2p_count": 1,
+      "p2p_count": 1,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-16637-ds2-wave2",
+      "case_sha256": "8a147d0c71ed04a42d8cbb95f10d7ad441673989bb8b99fd5c64b664befd7e8f"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1138",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "56971c614e7faea3c24013445f1bf6ffe9943305",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/modelchain.py",
+        "pvlib/pvsystem.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_modelchain.py"
+      ],
+      "repair_bytes": 4642,
+      "f2p_count": 1,
+      "p2p_count": 134,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1138-ds2-wave2",
+      "case_sha256": "d88f2d4a1f5e2ab28696da746b7be8dfacd10b2d82d1b8efbfd1456f1f19ec96"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1090",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "5098c9147fadcb3e5918487036867931435adeb8",
+      "source_version": "1.4",
+      "product_files": [
+        "pydicom/filereader.py",
+        "pydicom/filewriter.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filewriter.py"
+      ],
+      "repair_bytes": 5965,
+      "f2p_count": 4,
+      "p2p_count": 155,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1090-ds2-wave2",
+      "case_sha256": "918ce74429c64e40c5691999b38ca601bce0d216ec5952bf316faa54a99206b5"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-10758",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "d5dda84ef346b83e0b634a92e00c62a8a10e0061",
+      "source_version": "7.2",
+      "product_files": [
+        "src/_pytest/assertion/rewrite.py"
+      ],
+      "test_files": [
+        "testing/test_assertrewrite.py"
+      ],
+      "repair_bytes": 5539,
+      "f2p_count": 6,
+      "p2p_count": 102,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-10758-ds2-wave2",
+      "case_sha256": "ca2e047a764731fc4385706ed1f7ebc3fae6a6ceab8d2e2cfc508c04ea1733d7"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7615",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "6ce265dc813f9ecb92bf1cdf8733fbada7f5c967",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/transforms/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_markup.py"
+      ],
+      "repair_bytes": 1566,
+      "f2p_count": 1,
+      "p2p_count": 30,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-7615-ds2-wave2",
+      "case_sha256": "d0c46dbbd343b72d981520dd20b4686528713b99c44170c43c14eb953df2a086"
+    },
+    {
+      "source_case_id": "sympy__sympy-20134",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "a24d96d03eccee7f0bdb3d97017d5bebc79f9b47",
+      "source_version": "1.7",
+      "product_files": [
+        "sympy/printing/pycode.py"
+      ],
+      "test_files": [
+        "sympy/printing/tests/test_pycode.py",
+        "sympy/solvers/tests/test_numeric.py",
+        "sympy/utilities/tests/test_lambdify.py"
+      ],
+      "repair_bytes": 2758,
+      "f2p_count": 4,
+      "p2p_count": 82,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-20134-ds2-wave2",
+      "case_sha256": "78c02e7b884105f7e438e9c313eb68e7f2552b24a3d65d9e91e04be3bd7f02dd"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1852",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "f8b129418025b47ad669ba4802d03348a275e329",
+      "source_version": "0.9",
+      "product_files": [
+        "pvlib/pvsystem.py",
+        "pvlib/tracking.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_pvsystem.py",
+        "pvlib/tests/test_tracking.py"
+      ],
+      "repair_bytes": 4700,
+      "f2p_count": 2,
+      "p2p_count": 300,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1852-ds2-wave2",
+      "case_sha256": "d4af1721c946f90aa2e19c71ebb3d7798cda873d368d9057fb347927644e6f99"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1674",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "e77e6586fa38e6f7e98efca80d560d0fea8a9669",
+      "source_version": "2.3",
+      "product_files": [
+        "pydicom/cli/main.py",
+        "pydicom/util/codify.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_cli.py",
+        "pydicom/tests/test_util.py"
+      ],
+      "repair_bytes": 8612,
+      "f2p_count": 3,
+      "p2p_count": 50,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1674-ds2-wave2",
+      "case_sha256": "20877bd49501dd3df635141cfd9f0a345e694c40da50704ad7d5397ae442e5c0"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-11125",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "797b924fc44189d0b9c2ad905410f0bd89461ab7",
+      "source_version": "7.4",
+      "product_files": [
+        "src/_pytest/config/__init__.py"
+      ],
+      "test_files": [
+        "testing/test_collection.py",
+        "testing/test_conftest.py"
+      ],
+      "repair_bytes": 7595,
+      "f2p_count": 16,
+      "p2p_count": 123,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-11125-ds2-wave2",
+      "case_sha256": "9daa07b2233f5d344decdfd3341b17958e9ff23e4ed83acc20c1875772cfd08e"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10451",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "195e911f1dab04b8ddeacbe04b7d214aaf81bb0b",
+      "source_version": "5.1",
+      "product_files": [
+        "sphinx/ext/autodoc/typehints.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/typehints.py",
+        "tests/roots/test-ext-napoleon/conf.py",
+        "tests/roots/test-ext-napoleon/mypackage/typehints.py",
+        "tests/test_ext_autodoc_configs.py",
+        "tests/test_ext_napoleon_docstring.py"
+      ],
+      "repair_bytes": 1614,
+      "f2p_count": 2,
+      "p2p_count": 80,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-10451-ds2-wave2",
+      "case_sha256": "e0ce7ce49b8c6b65dc661e1d4510c132f4a83a055310a7e7139bd2216913f05a"
+    },
+    {
+      "source_case_id": "sympy__sympy-20322",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "ab864967e71c950a15771bb6c3723636026ba876",
+      "source_version": "1.8",
+      "product_files": [
+        "sympy/core/mul.py"
+      ],
+      "test_files": [
+        "sympy/core/tests/test_arit.py"
+      ],
+      "repair_bytes": 2777,
+      "f2p_count": 1,
+      "p2p_count": 89,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-20322-ds2-wave2",
+      "case_sha256": "ffb72d3197443e1d36ccc620faed8dbc56657407bc4f52a70771cb2b07213b37"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1296",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "bc0f0ff4e8580797af6672ff7c590caa1c78d6ed",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/spectrum/__init__.py",
+        "pvlib/spectrum/mismatch.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_spectrum.py"
+      ],
+      "repair_bytes": 5185,
+      "f2p_count": 9,
+      "p2p_count": 22,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1296-ds2-wave2",
+      "case_sha256": "0da78e98b705984088bb6b32c614a57d4c1167be060bc4b729a679344c0fb561"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1236",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "c2c6145d679adc97924d6c8a761a50b8e2819e3f",
+      "source_version": "2.0",
+      "product_files": [
+        "pydicom/pixel_data_handlers/__init__.py",
+        "pydicom/pixel_data_handlers/util.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_handler_util.py"
+      ],
+      "repair_bytes": 21198,
+      "f2p_count": 307,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-1236-ds2-wave2",
+      "case_sha256": "3492ba029b463a79171b0364a90e537ceabe90fe41e239f40012ecfe29e139c7"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-8952",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "6d6bc97231f2d9a68002f1d191828fd3476ca8b8",
+      "source_version": "7.0",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "test_files": [
+        "testing/test_nose.py",
+        "testing/test_pytester.py"
+      ],
+      "repair_bytes": 1556,
+      "f2p_count": 1,
+      "p2p_count": 52,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-8952-ds2-wave2",
+      "case_sha256": "1336e5bdc2fd186fe766b4aa9b1baf0a8bb8aa12562bc6561e3302cbd279bf11"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10191",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "301c7bdf57eee47426c9ad4d96392bff623ee6c3",
+      "source_version": "5.0",
+      "product_files": [
+        "sphinx/writers/latex.py"
+      ],
+      "test_files": [
+        "tests/test_build_latex.py"
+      ],
+      "repair_bytes": 1619,
+      "f2p_count": 7,
+      "p2p_count": 67,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-10191-ds2-wave2",
+      "case_sha256": "b1165aa4b56da5d6799672ad96c8f9d6cbcf5cdadd5d12d639b914bb3f1d816a"
+    },
+    {
+      "source_case_id": "sympy__sympy-20131",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "706007ca2fe279020e099d36dd1db0e33123ac4c",
+      "source_version": "1.7",
+      "product_files": [
+        "sympy/physics/vector/point.py"
+      ],
+      "test_files": [
+        "sympy/physics/vector/tests/test_point.py"
+      ],
+      "repair_bytes": 2786,
+      "f2p_count": 3,
+      "p2p_count": 14,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-20131-ds2-wave2",
+      "case_sha256": "1763f1a647853f392eedc5bc0757efb575572fab9237e31c71f9a517a988ee4b"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1480",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "35af84e9a7bede8dfe86d6d6c73002393544ab5a",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/tools.py",
+        "pvlib/tracking.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_tracking.py"
+      ],
+      "repair_bytes": 9160,
+      "f2p_count": 3,
+      "p2p_count": 20,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pvlib__pvlib-python-1480-ds2-wave2",
+      "case_sha256": "5aa5792dc94bad05edfd71c48e834aa3d651c9780bb2061ef2c3be66c4922d8f"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-897",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "b682e1dc71eda183786ad724da25f2fb30b5a621",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/dataelem.py",
+        "pydicom/multival.py",
+        "pydicom/valuerep.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_dataelem.py",
+        "pydicom/tests/test_multival.py"
+      ],
+      "repair_bytes": 3238,
+      "f2p_count": 2,
+      "p2p_count": 44,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydicom__pydicom-897-ds2-wave2",
+      "case_sha256": "f964c386797b13943bd6a804214b40633a4221be6bf6f943a923dcc68591a736"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-9133",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "7720154ca023da23581d87244a31acf5b14979f2",
+      "source_version": "7.0",
+      "product_files": [
+        "src/_pytest/pytester.py",
+        "src/_pytest/pytester_assertions.py"
+      ],
+      "test_files": [
+        "testing/test_pytester.py"
+      ],
+      "repair_bytes": 1588,
+      "f2p_count": 1,
+      "p2p_count": 53,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pytest-dev__pytest-9133-ds2-wave2",
+      "case_sha256": "dae1b1385403c5806bb902b614a7e04ad5824cdc4878d46bd3e0f5b1e8d40cac"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8684",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "6101077aab43529128496915c1c30ba3b1ce373c",
+      "source_version": "3.5",
+      "product_files": [
+        "sphinx/directives/code.py"
+      ],
+      "test_files": [
+        "tests/test_directive_code.py"
+      ],
+      "repair_bytes": 1629,
+      "f2p_count": 1,
+      "p2p_count": 32,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sphinx-doc__sphinx-8684-ds2-wave2",
+      "case_sha256": "ee464207f1e298ddd7d516a07e78be5ca50669c79fd627007c6b79f00cd7461c"
+    },
+    {
+      "source_case_id": "sympy__sympy-13808",
+      "repo": "sympy/sympy",
+      "role": "train",
+      "base_commit": "4af4487cfd254af747670a2324b6f24ae0a55a66",
+      "source_version": "1.1",
+      "product_files": [
+        "sympy/integrals/integrals.py"
+      ],
+      "test_files": [
+        "sympy/integrals/tests/test_integrals.py"
+      ],
+      "repair_bytes": 2806,
+      "f2p_count": 3,
+      "p2p_count": 93,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "sympy__sympy-13808-ds2-wave2",
+      "case_sha256": "3f49b97c015b9da4b182a78461e5717f4607a3d5e05d125ce87cba3ea390e05f"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Bounded new-source train wave; metadata/version recipe matching only, not reproduced samples. Pinned license checked before build.",
+  "scheduling": "Round-robin repositories in the same frozen-role train cohort; no outcome-based ordering"
+}

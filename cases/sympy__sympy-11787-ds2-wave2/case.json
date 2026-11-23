@@ -1,0 +1,63 @@
+{
+  "case_id": "sympy__sympy-11787-ds2-wave2",
+  "source_case_id": "sympy__sympy-11787",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-11787",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "a53c4ad94a9657702764e9b5dc4a3eaa01c0f54d",
+  "head": "base+repair:c807e22adef1d94a301b27b77591ba87ceeb7da10accd19b56c1f2b62da067a8",
+  "allowed_file": "sympy/solvers/solvers.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-11787-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "c807e22adef1d94a301b27b77591ba87ceeb7da10accd19b56c1f2b62da067a8",
+  "test_patch": ".cache/dataset-v2-source/cases/sympy__sympy-11787-ds2-wave2/test.patch",
+  "test_patch_sha256": "f6b4afef3518fdcd57a1a58aa044a4152eb357351618f9027efff301928df081",
+  "source_record_sha256": "fbdcce81c155519bfc69ea32d6b028cd0ba89e24872139b48753288e887b2b92",
+  "fail_to_pass": [
+    "test_nsolve_denominator"
+  ],
+  "pass_to_pass": [
+    "test_nsolve",
+    "test_issue_6408",
+    "test_increased_dps"
+  ],
+  "test_targets": [
+    "test_increased_dps",
+    "test_issue_6408",
+    "test_nsolve",
+    "test_nsolve_denominator"
+  ],
+  "frozen_test_files": [
+    "sympy/solvers/tests/test_numeric.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "sympy__sympy-11400-ds1"
+}

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23T02:37:10+07:00",
-  "status": "preflight",
+  "updated_at": "2026-11-23T13:25:03+07:00",
+  "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
   "specification": "data-manifests/dataset-v2.json",
@@ -14,23 +14,28 @@
       "train/controlled_synthetic": 101
     },
     "source_lock_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
-    "publication": "pending_license_attribution_privacy_audit",
+    "publication": "published_codex",
     "checked_at": "2026-11-23T01:57:58+07:00",
     "relocated_without_raw_or_models": true,
-    "publication_authorized": false
+    "publication_authorized": true,
+    "path": "research-data/v1.1",
+    "publication_commit": "9f44bd99ff1ed1b2db56a57786a90acd584a33f8",
+    "receipt": "docs/evidence/dataset-v1-portable-publication-check.json"
   },
   "v2_real_selected": 0,
   "v2_synthetic_selected": 0,
-  "new_case_attempts": 3,
+  "new_case_attempts": 23,
   "new_generator_requests": 0,
   "live_worker": {
-    "session_id": 51624,
-    "log": ".cache/dataset-v2-wave1-live.txt",
-    "plan": "data-manifests/dataset-v2-wave1.json"
+    "session_id": 71523,
+    "log": ".cache/dataset-v2-wave2-live.txt",
+    "plan": "data-manifests/dataset-v2-wave2-interleaved.json",
+    "last_observed_at": "2026-11-23T13:25:03+07:00",
+    "observation": "Session71523 returned running; first marshmallow passed, pvlib1458 not confirmed."
   },
   "collection_budget_initialized": true,
-  "next_task": "Poll live wave1 session51624 to terminal, do not launch duplicate. Review accepted new real evidence, broaden held-out recipes, improve uniform retrieval; full v2 quotas/class gates remain unmet.",
-  "qualification": "Portable v1.1 staging is not published; package verification is not a full raw evidence or license audit. No new real reconstruction/generation/training/test inference.",
+  "next_task": "Follow71523 without replay; review completed train evidence, expand heldout recipes, and continue rare-class AIDev screening. Input v3 frozen; uniform exports are candidates, not final quota/dedup selection.",
+  "qualification": "Portable v1.1 published and relocation verified. New counts are reconstruction outcomes; silver prototypes are not finalized v2 selection. No new generator or diagnosis/training calls.",
   "study_run_id": "dataset-v2-20261122T190232092876Z",
   "execution_enabled": true,
   "preledger_charge_seconds": 300,
@@ -40,13 +45,13 @@
     "license_variants": 28,
     "credential_pattern_findings": 0,
     "home_path_findings": 102,
-    "status": "notice_and_path_review_pending"
+    "status": "completed_for_published_v1_1"
   },
   "software_tests": {
-    "total": 138,
-    "passed": 137,
+    "total": 142,
+    "passed": 141,
     "skipped": 1,
-    "log": ".cache/software-tests-dataset-v2-before-first-batch.txt"
+    "log": ".cache/software-tests-dataset-v2-export-retriever.txt"
   },
   "budget_guard": "implemented_and_tested",
   "baseline_worker_session": null,
@@ -62,10 +67,10 @@
     "records": 351,
     "input_reference_bytes_unchanged": true,
     "local_modelfile_field_removed": 101,
-    "publication": "notice_attribution_review_pending"
+    "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 796.0,
+  "execution_seconds_charged": 6047.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -86,7 +91,7 @@
     "path": ".cache/dataset-v2-development-review-worklist.json",
     "real": 50,
     "synthetic": 30,
-    "status": "input_reference_metadata_hashes_checked_causal_review_pending"
+    "status": "review_completed_silver_human_pending"
   },
   "development_review": {
     "real": 50,
@@ -97,9 +102,9 @@
     "receipt": "docs/evidence/dataset-v2-development-review.json",
     "gold": "pending"
   },
-  "new_cases_strict_reproduced": 1,
-  "new_passing_seeds": 1,
-  "new_real_silver_prototype_exports": 1,
+  "new_cases_strict_reproduced": 14,
+  "new_passing_seeds": 14,
+  "new_real_silver_prototype_exports": 12,
   "first_batch": {
     "status": "finished",
     "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
@@ -117,5 +122,111 @@
     "branch": "codex/w1-review-skill",
     "main_unchanged": true,
     "committed_archive_relocation_verified": true
+  },
+  "retrieval_v3_train_preflight": {
+    "records": 8,
+    "function_coverage_after_crop_v2": 3,
+    "function_coverage_after_crop_v3": 4,
+    "model_calls": 0,
+    "status": "development_candidate_not_frozen"
+  },
+  "heldout_recipe_plan": {
+    "path": "data-manifests/dataset-v2-heldout-first-recipes.json",
+    "cases": 2,
+    "pending": null,
+    "status": "first_batch_finished_two_strict_one_fault_candidate"
+  },
+  "aidev_discovery": {
+    "cached_index_rows": 200000,
+    "keyword_query_hits": 10699,
+    "shortlisted_for_provenance_review": 150,
+    "provenance_checked": 1,
+    "candidate": "MontrealAI/AGI-Alpha-Agent-v0#2198",
+    "dataset_merge_matches_api": true,
+    "status": "first_candidate_excluded_low_cost_stage_upstream_conftest_heavy_autoinstall",
+    "screening": "data-manifests/dataset-v2-aidev-screening.json",
+    "additional_title_syntax_hits": 136,
+    "additional_provenance_screened": 3,
+    "additional_receipt": "data-manifests/dataset-v2-aidev-syntax-screening-3.json",
+    "qualification": "Index hits are not eligibility approvals. Three additional provenance screens: two unresolved license, one GPL candidate needs directly relevant upstream harness."
+  },
+  "wave1": {
+    "plan": "data-manifests/dataset-v2-wave1.json",
+    "session_id": 51624,
+    "status": "finished_exit_0",
+    "new_source_cases": 16,
+    "strict_reproduced": 10,
+    "cumulative_receipt": "runs/dataset-v2-20261122T190232092876Z/real-reproduction-summary.json"
+  },
+  "by_role": {
+    "train": {
+      "attempted": 21,
+      "strict_reproduced": 12
+    },
+    "validation": {
+      "attempted": 1,
+      "strict_reproduced": 1
+    },
+    "test": {
+      "attempted": 1,
+      "strict_reproduced": 1
+    }
+  },
+  "new_data_review": "docs/dataset-v2-new-data-review.md",
+  "next_wave": {
+    "path": "data-manifests/dataset-v2-wave2-interleaved.json",
+    "source_cases": 114,
+    "repos": 7,
+    "status": "running_session71523",
+    "sha256": "915ae2d45f92275f3db6e8d4f4d3fab5f7ab4de9086e912918384a15ff4ce2c5"
+  },
+  "retrieval_calibration_worker": {
+    "session_id": 23771,
+    "status": "finished_exit_0",
+    "completed_records": 50,
+    "receipt": "docs/evidence/dataset-v2-retrieval-v3-calibration-50.json"
+  },
+  "uniform_v3_exports": 12,
+  "retrieval_v3_calibration": {
+    "protocol": "data-manifests/dataset-v2-input-protocol.json",
+    "protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+    "train_records": 50,
+    "legacy_coverage": 16,
+    "balanced_coverage": 16,
+    "regressions": 0,
+    "status": "frozen_before_heldout_causal_review",
+    "qualification": "Header/location presence, not accuracy or full causal code coverage; earlier8 overlaps this cohort."
+  },
+  "heldout_first_batch": {
+    "session_id": 45769,
+    "status": "finished_exit_0",
+    "attempted": 2,
+    "strict_reproduced": 2,
+    "review_retained_candidates": 1,
+    "feature_only_excluded": 1,
+    "review": "docs/evidence/dataset-v2-first-heldout-review.json"
+  },
+  "new_data_curation": {
+    "reviewed": 13,
+    "retain_silver_candidates": 12,
+    "excluded_feature_only": 1,
+    "human_confirmation": "pending",
+    "gold": "pending",
+    "training_eligibility": "pending",
+    "final_selected": 0
+  },
+  "eligibility_screen_count": {
+    "swebench": 2519,
+    "aidev": 4,
+    "total": 2523,
+    "limit": 5000
+  },
+  "storage_snapshot": {
+    "measured_at": "2026-11-23T13:25:03+07:00",
+    "free_bytes": {
+      "C:/": 168101265408,
+      "D:/": 199478419456
+    },
+    "artifact_growth": "Full scan enforced by stage guard; not measured again for this status snapshot."
   }
 }

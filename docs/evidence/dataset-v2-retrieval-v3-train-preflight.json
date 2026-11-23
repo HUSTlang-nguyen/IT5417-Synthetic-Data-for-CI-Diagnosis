@@ -1,0 +1,164 @@
+{
+  "checked_at": "2026-11-23T02:47:28+07:00",
+  "scope": "8real train records only, first7development round-robin worklist plus first new train reproduction. Tokenizer only; no model loaded/called, no held-out input inspected. Reference used solely for after-the-fact coverage measurement.",
+  "records": [
+    {
+      "sample_id": "marshmallow-code__marshmallow-1252",
+      "role": "train",
+      "source_commit": "b063a103ae5222a5953cd7453a1eb0d161dc5b52",
+      "v2": {
+        "reference_function_before_crop": true,
+        "reference_function_after_crop": true,
+        "input_tokens": 1632,
+        "prompt_sha256": "be0a7e63ec7b5ea68dc4933411b28d7604ed9c5664b36867753af488c076437e",
+        "snippet_count": 2
+      },
+      "v3": {
+        "reference_function_before_crop": true,
+        "reference_function_after_crop": true,
+        "input_tokens": 1545,
+        "prompt_sha256": "d45e323175923a20a4bcaf86aa38e0a5a4a5d5f4ef7b31f1dbde66fc7efc84c7",
+        "snippet_count": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1216",
+      "role": "train",
+      "source_commit": "01a23e31bcb9e4f844c5877a48cd7681406c6696",
+      "v2": {
+        "reference_function_before_crop": true,
+        "reference_function_after_crop": true,
+        "input_tokens": 1634,
+        "prompt_sha256": "256bc22e0751280e1c1aa0adfa27247de9f956c77f00e497a48ad9ce1669dfc2",
+        "snippet_count": 3
+      },
+      "v3": {
+        "reference_function_before_crop": true,
+        "reference_function_after_crop": true,
+        "input_tokens": 1636,
+        "prompt_sha256": "860aa52e45ee76cc3ec65fa12a6d8198355896c994a0ad5c6fdbbf2a4fedfbc5",
+        "snippet_count": 5
+      }
+    },
+    {
+      "sample_id": "pydicom__pydicom-1031",
+      "role": "train",
+      "source_commit": "64f5b8daaa798836579c56912244b7732ab073be",
+      "v2": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "35a5a2d069b99007585aaf0be2de7f962540b5ab35995ad690c59111fa17f878",
+        "snippet_count": 2
+      },
+      "v3": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1634,
+        "prompt_sha256": "41eea7bba4c466a6e5e15bb47af48fc7eb03de0b0d505da7768244f32747b8b0",
+        "snippet_count": 5
+      }
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1262",
+      "role": "train",
+      "source_commit": "e840a7c54d3d8b5be2db1e66f34a5368c64fc3f7",
+      "v2": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1420,
+        "prompt_sha256": "b5b7411131cdc5346070333995209cd7cb798889752b2f2c897efea2f2947dc2",
+        "snippet_count": 5
+      },
+      "v3": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1420,
+        "prompt_sha256": "b5b7411131cdc5346070333995209cd7cb798889752b2f2c897efea2f2947dc2",
+        "snippet_count": 5
+      }
+    },
+    {
+      "sample_id": "sympy__sympy-11400",
+      "role": "train",
+      "source_commit": "8dcb12a6cf500e8738d6729ab954a261758f49ca",
+      "v2": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1470,
+        "prompt_sha256": "2f9771cb908ec5214c8b28fa1468aabd4c1c85273100ddbdc8a7d286875223ab",
+        "snippet_count": 3
+      },
+      "v3": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1633,
+        "prompt_sha256": "6061d0d4d8b8b920e232ace9814ed708351f80c06ff46246348136a608dc6fa9",
+        "snippet_count": 5
+      }
+    },
+    {
+      "sample_id": "marshmallow-code__marshmallow-1702",
+      "role": "train",
+      "source_commit": "fa6c7379468f59d4568e29cbbeb06b797d656215",
+      "v2": {
+        "reference_function_before_crop": true,
+        "reference_function_after_crop": true,
+        "input_tokens": 1629,
+        "prompt_sha256": "ae41b9114ea353273918096197b5b59342e88e01ede486190d5e46613cc0ca40",
+        "snippet_count": 5
+      },
+      "v3": {
+        "reference_function_before_crop": true,
+        "reference_function_after_crop": true,
+        "input_tokens": 1629,
+        "prompt_sha256": "ae41b9114ea353273918096197b5b59342e88e01ede486190d5e46613cc0ca40",
+        "snippet_count": 5
+      }
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1224",
+      "role": "train",
+      "source_commit": "50dcc7fe412d9e27fe06670b8057e3d8e9ce5b19",
+      "v2": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1432,
+        "prompt_sha256": "75a40645f948c240624b74e9dea1f307a919a434a2d0a9dc99b438ed21ec2847",
+        "snippet_count": 4
+      },
+      "v3": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1580,
+        "prompt_sha256": "189c6f9478a97a5bdeaaaca2cd748c5b70f5db96434c1e57e2a30b37d18ada9c",
+        "snippet_count": 5
+      }
+    },
+    {
+      "sample_id": "pydicom__pydicom-1256",
+      "role": "train",
+      "source_commit": "49a3da4a3d9c24d7e8427a25048a1c7d5c4f7724",
+      "v2": {
+        "reference_function_before_crop": false,
+        "reference_function_after_crop": false,
+        "input_tokens": 1450,
+        "prompt_sha256": "3da53ce387a90510ae14fb68e1f09e28cf6798f5762a2a88c38624579be8cc16",
+        "snippet_count": 3
+      },
+      "v3": {
+        "reference_function_before_crop": true,
+        "reference_function_after_crop": true,
+        "input_tokens": 1635,
+        "prompt_sha256": "759f85fc906de40e9b9de923b94f2c46c0af1c5881083b8ab7ec847668ad67aa",
+        "snippet_count": 5
+      }
+    }
+  ],
+  "coverage_after_crop": {
+    "v2": 3,
+    "v3": 4
+  },
+  "model_inference_requests": 0,
+  "implementation_sha256": "65ea00c540442d0d4c0f52e8892c6f530195387ba4dfbd1caa8a1f971ef05f33"
+}

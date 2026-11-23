@@ -1,0 +1,51 @@
+{
+  "protocol": "dataset-v2-input-v3",
+  "frozen_at": "2026-11-23T13:19:00+07:00",
+  "retrieval": "ci_demo.retrieval_v3.retrieve_balanced",
+  "parameters": {
+    "max_functions": 5,
+    "max_chars": 6000,
+    "context": 2048,
+    "output_budget": 384
+  },
+  "source_sha256": {
+    "ci_demo/retrieval_v3.py": "65ea00c540442d0d4c0f52e8892c6f530195387ba4dfbd1caa8a1f971ef05f33",
+    "ci_demo/diagnosis.py": "1fb8f08148521264a098d1e96d27f05bac14623687780c8e97691ad165da3f6d",
+    "ci_demo/ml.py": "4a018dd1770b996ae5c29bbc97b33b1efb411b21a0285917b95c8672d8082bf4"
+  },
+  "helper_source_sha256": {
+    "is_test": "7fd3930339ce1e74981f75af9073079da8330564b0e73538fc15b548ae93dc48",
+    "safe_relative": "17c348c10eb4c72cf8d03a8887fccd1df5ce4d0f0792a660c97aa7c254bad778"
+  },
+  "tokenizer_sha256": {
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4"
+  },
+  "calibration": {
+    "50_train_receipt": "docs/evidence/dataset-v2-retrieval-v3-calibration-50.json",
+    "50_train_sha256": "5d30ccfaa1a8673b6b96ed61abce8ae2c9b6c88d8028bedb914cf96d26e2cd51",
+    "coverage_after_crop": {
+      "legacy": 16,
+      "balanced": 16
+    },
+    "regressions": 0,
+    "earlier_8_train_receipt": "docs/evidence/dataset-v2-retrieval-v3-train-preflight.json",
+    "earlier_8_train_sha256": "c510132cb71f4188b7ec5e2bc02a8370310400cd5634d1bd6b80c841ec1f3eb3",
+    "qualification": "The eight-record preflight overlaps the 50-record cohort. Balanced excerpts recover pydicom1256 outside that cohort; no overall accuracy claim. Presence coverage measures file/function headers, not full causal body retention."
+  },
+  "decision": "Freeze balanced excerpts for uniform v2 inputs: no loss in the 50 train development cases and avoids first-function character starvation. Remaining misses are retained, never reference-assisted or filtered.",
+  "input_boundary": [
+    "execution_log",
+    "code"
+  ],
+  "reference_separate": [
+    "repair_patch",
+    "cause_type",
+    "locations",
+    "explanation",
+    "assessment"
+  ],
+  "missing_definition_policy": "Record causal absence separately from function present in failing source; do not invent base lines or discard samples for missing definition/retrieval misses.",
+  "heldout_policy": "No heldout causal input, labels or model predictions used for retrieval tuning before this freeze. Existing heldout reconstruction success states are environment gates only.",
+  "model_inference_requests": 0
+}

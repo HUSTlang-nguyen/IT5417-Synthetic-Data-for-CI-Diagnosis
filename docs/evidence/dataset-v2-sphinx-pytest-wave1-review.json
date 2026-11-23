@@ -1,0 +1,166 @@
+{
+  "reviewed_at": "2026-11-23T13:13:12+07:00",
+  "records": [
+    {
+      "sample_id": "sphinx-doc__sphinx-7910",
+      "run_id": "reproduce-20261122T200514161835Z",
+      "cause_type_proposed": "logic/value",
+      "locations_proposed": [
+        {
+          "file": "sphinx/ext/napoleon/__init__.py",
+          "function": "_skip_member"
+        }
+      ],
+      "confidence": "medium",
+      "mechanism": "Decorated method ownership is resolved through the wrapper __globals__ instead of the wrapped function namespace. A failed lookup is swallowed and cls_is_owner becomes false, so the documented special method is not explicitly included. The repair unwraps the object before resolving its class.",
+      "observed_evidence": "test_class_decorated_doc observes None rather than False from _skip_member; repaired harness passes.",
+      "limitations": "Wrapper-namespace mechanism is inferred from the code/repair and assertion; the swallowed intermediate exception is not separately logged. Proposed logic/value describes ownership inference, not missing dependency.",
+      "recommendation": "retain_silver_candidate_pending_final_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "source_file": "sphinx/ext/napoleon/__init__.py",
+      "source_sha256": "24caa9980a2aae60e03c2e22b975cb0a261f81d10b8e3dca8f1ab33a023c1980",
+      "focal_base_line": 441,
+      "assessment_sha256": "e40d573a155d13b6b27ff21d859286b48496d8ba3de682894d9a475a0349da71",
+      "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-7910-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "3a3ae319f1526b94676fed79e819675b2c99b644821db17dd1c8c331a6b92249",
+      "execution_artifacts": {
+        "directory": "runs/reproduce-20261122T200514161835Z",
+        "hashes": {
+          "manifest.json": "636f5d16c861cea29e5c4441663fa32ef9d1ff344e42a9be8a45ab6283906d10",
+          "license-evidence.json": "a1e4353a305afe24e3452d28f918af58e9b9f23a4397df8bf92be9071b74d244",
+          "historical-base.stdout.txt": "18d649877838dce8e0cae2eed4bf0e14cd493532e1905979f11dad6e170f9659",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "f139662e85c1c790a52f81f1b4d910ebc6585941942a6cff63c339f899fc65c2",
+          "historical-fixed.stdout.txt": "0639edf3644e8b4f266b9e0a5f55fff6f18826519b39763cae3136ff37d07dc9",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "976d8905e7b9c08dcd40258d8adbb8d01b04cbfa26488cb4103693b1deec9876"
+        }
+      }
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-11192",
+      "run_id": "reproduce-20261122T201255610751Z",
+      "cause_type_proposed": "logic/value",
+      "locations_proposed": [
+        {
+          "file": "sphinx/builders/html/__init__.py",
+          "function": "StandaloneHTMLBuilder.write_doc"
+        },
+        {
+          "file": "sphinx/builders/html/__init__.py",
+          "function": "StandaloneHTMLBuilder.write_doc_serialized"
+        }
+      ],
+      "confidence": "medium",
+      "mechanism": "Search-index mutation occurs in write_doc, a parallel-writing phase, so worker-local index additions are not retained in the parent index. The repair moves title/index_page processing to write_doc_serialized, the serialized phase.",
+      "observed_evidence": "Parallel search test saves only index instead of index, nosearch and tocitem; repaired harness passes.",
+      "limitations": "The saved output proves missing parallel index entries; process-local mutation is the code/repair-based explanation, not an additional runtime trace of worker memory.",
+      "recommendation": "retain_silver_candidate_pending_final_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "source_file": "sphinx/builders/html/__init__.py",
+      "source_sha256": "45ebe0f4e947278b6b3e9bb39f75085b3bd0e493fef5375dbec5ce82d6d4857c",
+      "focal_base_line": 657,
+      "assessment_sha256": "a2f283addebed24e2c1d8a063efb0fa75a53bd5e45792216db29f6cd9ba99fac",
+      "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-11192-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "aefe4b43261cd526138c22a6b2384f708cb1b871f2784e9ad334553bd94ba666",
+      "execution_artifacts": {
+        "directory": "runs/reproduce-20261122T201255610751Z",
+        "hashes": {
+          "manifest.json": "af8700a12cd0aa9d11ae3e9f2b036145b8d37ebaf6698d421a010f6725811ada",
+          "license-evidence.json": "636edfe300a1fd6406b8ace0126fb91f6f912e20cf29ea31c92b9aeb2782563a",
+          "historical-base.stdout.txt": "85cf4ccc48ad071abe5752c860bee6104cc41e13dc3e740ba08004a6be1595d6",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "2b0a1d28f80b6f912fdec71219f5c6fba318c3047f703dcbb8fc66d9a3b808af",
+          "historical-fixed.stdout.txt": "9e9a1aeb49fe73b302fe95e9b0d82ab37dcacb907851c01a12ec200552026bb5",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "660e65354bf03bc4a0969d36f48240806f8b3c9d00f97d7b42e239ed9ae9afe8"
+        }
+      }
+    },
+    {
+      "sample_id": "pytest-dev__pytest-10051",
+      "run_id": "reproduce-20261122T202352603821Z",
+      "cause_type_proposed": "logic/value",
+      "locations_proposed": [
+        {
+          "file": "src/_pytest/logging.py",
+          "function": "LogCaptureHandler.reset"
+        },
+        {
+          "file": "src/_pytest/logging.py",
+          "function": "LogCaptureFixture.clear"
+        }
+      ],
+      "confidence": "high",
+      "mechanism": "LogCaptureFixture.clear calls reset, which replaces handler.records with a new list. The per-phase stash still references the old list, so get_records(call) retains a_call_log. The repair clears the list in place through a separate handler.clear, preserving shared-list identity.",
+      "observed_evidence": "Saved test asserts get_records(call) == [] after caplog.clear(), but receives the previous LogRecord; repaired harness passes. Base lines399/699 show stash reads and storage of handler.records.",
+      "limitations": "This is shared-state/reference handling in production pytest code. File paths under src/_pytest are production, not tests despite the package name.",
+      "recommendation": "retain_silver_candidate_pending_final_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "source_file": "src/_pytest/logging.py",
+      "source_sha256": "2d890fd063ffd93fd4b132506ffb55fc29b17f0a65e8387ddd44bc4254223dcb",
+      "focal_base_line": 344,
+      "assessment_sha256": "431289fc9f49b650c70e615cfe0933436dfdc81a50dc06b02ee74b6b449bc9f7",
+      "repair_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-10051-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "9662c12536a07d0cc5a6ce6f781edb31ea013af4df0e156522ca624aaed634c0",
+      "execution_artifacts": {
+        "directory": "runs/reproduce-20261122T202352603821Z",
+        "hashes": {
+          "manifest.json": "ced63292df1a9c2ba07af59b934627707ae532ba2fa05ccd654ff829e92c23ca",
+          "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+          "historical-base.stdout.txt": "3c45e7dccb8cfdaf0e8f444bb78b830ed1a28ed0c1c254ffa8ae61da6d834dbd",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "a381bdac21c98f5968f24a32c55e5dddc275d5f3cf2d51d7bca50a5e022854ff",
+          "historical-fixed.stdout.txt": "e810570dbebbc74c3ff5749a6e03a46c5c79155efabddcc9673e5ef67c41b8e7",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "52ef9d2f6bd1728f7f30a57bb885f32482541bd929da0fe0bc11fed206278b60"
+        }
+      }
+    },
+    {
+      "sample_id": "pytest-dev__pytest-11044",
+      "run_id": "reproduce-20261122T202714148970Z",
+      "cause_type_proposed": "logic/value",
+      "locations_proposed": [
+        {
+          "file": "src/_pytest/config/__init__.py",
+          "function": "Config.parse"
+        }
+      ],
+      "confidence": "medium",
+      "mechanism": "Configured testpaths glob to no files, then Config.parse silently falls back to the invocation directory without the expected configuration warning. The repair emits PytestConfigWarning before retaining that fallback behavior.",
+      "observed_evidence": "Saved test fails matching the expected No files were found in testpaths warning; repaired harness passes.",
+      "limitations": "This is a missing diagnostic/control-flow behavior. Proposed logic/value is provisional: the observed trigger is a testpaths configuration, but no required runtime dependency or broken environment is established.",
+      "recommendation": "retain_silver_candidate_pending_final_audit",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending",
+      "source_file": "src/_pytest/config/__init__.py",
+      "source_sha256": "1ca675eb8f86992b03e5187f5f2857a6cbec9aa4f780b0e402732098ea8373f1",
+      "focal_base_line": 1382,
+      "assessment_sha256": "37c25b68c8daa2fd863f57d566db37f6411c9c14c20c7cb395cd1296618d6a2d",
+      "repair_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-11044-ds2-wave1/repair.patch",
+      "repair_patch_sha256": "1194da3892bb4b759315d23a09cbab437a1b2f09403f870745e50d044364594e",
+      "execution_artifacts": {
+        "directory": "runs/reproduce-20261122T202714148970Z",
+        "hashes": {
+          "manifest.json": "75c3f8e7dcfc0a9128948fe0462bb203758b37ac3ed1ccb68dbf66c71f27574c",
+          "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+          "historical-base.stdout.txt": "f78da32ca4ec0314d3bf590bcc615fd38293a4dbfa49c64906612689ba03e8ae",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "1b00c961b5611d82bdb84fc326ca63e76ae3d9120e4f8a0a460cb832500f639d",
+          "historical-fixed.stdout.txt": "acf9f473881eef5b39f712eae6d61f363ed0701eb7049ae3ba787258929fc967",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "1b82877504121da05d0c85d07f8752648710431cad8db17f78c86a9a33c77edd"
+        }
+      }
+    }
+  ],
+  "qualification": "Four read-only train reviews and prototype exports using legacy retrieval. Not final v2 selection, expert gold or user approval."
+}

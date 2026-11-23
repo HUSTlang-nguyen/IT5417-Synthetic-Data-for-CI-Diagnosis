@@ -1,0 +1,85 @@
+{
+  "case_id": "pvlib__pvlib-python-1739-ds2-wave2",
+  "source_case_id": "pvlib__pvlib-python-1739",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1739",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "909f86dc67eddc88154c9e7bff73fd9d6bfe2e4d",
+  "head": "base+repair:5ee853f3620fd54c3bd06406b615d1ebea10a611325eca19e991f35e37abc576",
+  "allowed_file": "pvlib/iotools/pvgis.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1739-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "5ee853f3620fd54c3bd06406b615d1ebea10a611325eca19e991f35e37abc576",
+  "test_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1739-ds2-wave2/test.patch",
+  "test_patch_sha256": "9d3e331d8f61e2ab2de77790684abc27c0147dc5a994d313a9a6b51dac7ba090",
+  "source_record_sha256": "2d6530e9346a5fad078dfd416ec0d9f20031e3c784462346247bb719ca70d43a",
+  "fail_to_pass": [
+    "pvlib/tests/iotools/test_pvgis.py::test_get_pvgis_hourly[testfile0-expected_radiation_csv-args0-False-https://re.jrc.ec.europa.eu/api/seriescalc?lat=45&lon=8&outputformat=csv&angle=30&aspect=0&usehorizon=0&pvtechchoice=crystSi&mountingplace=free&trackingtype=0&components=1&raddatabase=PVGIS-SARAH&startyear=2016&endyear=2016]",
+    "pvlib/tests/iotools/test_pvgis.py::test_get_pvgis_hourly[testfile1-expected_radiation_csv_mapped-args1-True-https://re.jrc.ec.europa.eu/api/seriescalc?lat=45&lon=8&outputformat=csv&angle=30&aspect=0&usehorizon=0&pvtechchoice=crystSi&mountingplace=free&trackingtype=0&components=1&raddatabase=PVGIS-SARAH&startyear=2016&endyear=2016]",
+    "pvlib/tests/iotools/test_pvgis.py::test_get_pvgis_hourly[testfile2-expected_pv_json-args2-False-https://re.jrc.ec.europa.eu/api/v5_2/seriescalc?lat=45&lon=8&outputformat=json&angle=30&aspect=0&pvtechchoice=CIS&mountingplace=free&trackingtype=2&components=0&usehorizon=1&raddatabase=PVGIS-SARAH2&startyear=2013&endyear=2014&pvcalculation=1&peakpower=10&loss=5&optimalangles=1]",
+    "pvlib/tests/iotools/test_pvgis.py::test_get_pvgis_hourly[testfile3-expected_pv_json_mapped-args3-True-https://re.jrc.ec.europa.eu/api/v5_2/seriescalc?lat=45&lon=8&outputformat=json&angle=30&aspect=0&pvtechchoice=CIS&mountingplace=free&trackingtype=2&components=0&usehorizon=1&raddatabase=PVGIS-SARAH2&startyear=2013&endyear=2014&pvcalculation=1&peakpower=10&loss=5&optimalangles=1]",
+    "pvlib/tests/iotools/test_pvgis.py::test_get_pvgis_hourly_bad_status_code"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_hourly[testfile0-expected_radiation_csv-metadata_exp0-inputs_exp0-False-None]",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_hourly[testfile1-expected_radiation_csv_mapped-metadata_exp1-inputs_exp1-True-csv]",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_hourly[testfile2-expected_pv_json-metadata_exp2-inputs_exp2-False-None]",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_hourly[testfile3-expected_pv_json_mapped-metadata_exp3-inputs_exp3-True-json]",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_hourly_bad_extension",
+    "pvlib/tests/iotools/test_pvgis.py::test_get_pvgis_hourly_bad_outputformat",
+    "pvlib/tests/iotools/test_pvgis.py::test_get_pvgis_hourly_additional_inputs",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_hourly_empty_file",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_tmy_map_variables",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_tmy_json",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_tmy_epw",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_tmy_csv",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_tmy_basic",
+    "pvlib/tests/iotools/test_pvgis.py::test_read_pvgis_tmy_exception"
+  ],
+  "test_targets": [
+    "pvlib/tests/iotools/test_pvgis.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/iotools/test_pvgis.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2",
+    "pytest-mock==3.11.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "pytest_mock"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pvlib__pvlib-python-1738-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pvlib__pvlib-python-1738-ds1-env2"
+}

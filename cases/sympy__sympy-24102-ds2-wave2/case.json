@@ -1,0 +1,58 @@
+{
+  "case_id": "sympy__sympy-24102-ds2-wave2",
+  "source_case_id": "sympy__sympy-24102",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-24102",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "58598660a3f6ab3d918781c4988c2e4b2bdd9297",
+  "head": "base+repair:af6b2f3a4bf9eef3970f39b2da378c7527dc545586bd16c2994f80806255c980",
+  "allowed_file": "sympy/parsing/mathematica.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-24102-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "af6b2f3a4bf9eef3970f39b2da378c7527dc545586bd16c2994f80806255c980",
+  "test_patch": ".cache/dataset-v2-source/cases/sympy__sympy-24102-ds2-wave2/test.patch",
+  "test_patch_sha256": "9c33817f9197fdb1691b6269979c76a510eb90d6db26c0daed1431218f39bd5b",
+  "source_record_sha256": "f41ea496889ea5e34206ae706869998fe886e167f3a174618da294d3dfc7ea1a",
+  "fail_to_pass": [
+    "test_mathematica",
+    "test_parser_mathematica_tokenizer"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "test_mathematica",
+    "test_parser_mathematica_tokenizer"
+  ],
+  "frozen_test_files": [
+    "sympy/parsing/tests/test_mathematica.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "sympy__sympy-23808-ds1"
+}

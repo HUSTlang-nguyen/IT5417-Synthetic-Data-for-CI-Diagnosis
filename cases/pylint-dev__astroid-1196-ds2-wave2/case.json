@@ -1,0 +1,84 @@
+{
+  "case_id": "pylint-dev__astroid-1196-ds2-wave2",
+  "source_case_id": "pylint-dev__astroid-1196",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-1196",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "base": "39c2a9805970ca57093d32bbaf0e6a63e05041d8",
+  "head": "base+repair:7b792b116c841e5efe20500b3362fc08213a9531ab04c8d1901526c1735b2330",
+  "allowed_file": "astroid/nodes/node_classes.py",
+  "license": "LGPL-2.1-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1196-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "7b792b116c841e5efe20500b3362fc08213a9531ab04c8d1901526c1735b2330",
+  "test_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1196-ds2-wave2/test.patch",
+  "test_patch_sha256": "ba7739e4cfe0d7beac3c114bd6d926dc07e1cfc2d14aa155dc1dd35ff010acf9",
+  "source_record_sha256": "a84feb064925db915f4c2157686ec661e5cc7048f33de3dc74464f5fc4b747e7",
+  "fail_to_pass": [
+    "tests/unittest_python3.py::Python3TC::test_unpacking_in_dict_getitem_uninferable",
+    "tests/unittest_python3.py::Python3TC::test_unpacking_in_dict_getitem_with_ref"
+  ],
+  "pass_to_pass": [
+    "tests/unittest_python3.py::Python3TC::test_annotation_as_string",
+    "tests/unittest_python3.py::Python3TC::test_annotation_support",
+    "tests/unittest_python3.py::Python3TC::test_as_string",
+    "tests/unittest_python3.py::Python3TC::test_async_comprehensions",
+    "tests/unittest_python3.py::Python3TC::test_async_comprehensions_as_string",
+    "tests/unittest_python3.py::Python3TC::test_async_comprehensions_outside_coroutine",
+    "tests/unittest_python3.py::Python3TC::test_format_string",
+    "tests/unittest_python3.py::Python3TC::test_kwonlyargs_annotations_supper",
+    "tests/unittest_python3.py::Python3TC::test_metaclass_ancestors",
+    "tests/unittest_python3.py::Python3TC::test_metaclass_error",
+    "tests/unittest_python3.py::Python3TC::test_metaclass_imported",
+    "tests/unittest_python3.py::Python3TC::test_metaclass_multiple_keywords",
+    "tests/unittest_python3.py::Python3TC::test_metaclass_yes_leak",
+    "tests/unittest_python3.py::Python3TC::test_nested_unpacking_in_dicts",
+    "tests/unittest_python3.py::Python3TC::test_old_syntax_works",
+    "tests/unittest_python3.py::Python3TC::test_parent_metaclass",
+    "tests/unittest_python3.py::Python3TC::test_simple_metaclass",
+    "tests/unittest_python3.py::Python3TC::test_starred_notation",
+    "tests/unittest_python3.py::Python3TC::test_underscores_in_numeral_literal",
+    "tests/unittest_python3.py::Python3TC::test_unpacking_in_dict_getitem",
+    "tests/unittest_python3.py::Python3TC::test_unpacking_in_dicts",
+    "tests/unittest_python3.py::Python3TC::test_yield_from",
+    "tests/unittest_python3.py::Python3TC::test_yield_from_as_string",
+    "tests/unittest_python3.py::Python3TC::test_yield_from_is_generator"
+  ],
+  "test_targets": [
+    "tests/unittest_python3.py"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_python3.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "wrapt==1.15.0",
+    "lazy-object-proxy==1.9.0",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pylint-dev__astroid-1614-ds1"
+}

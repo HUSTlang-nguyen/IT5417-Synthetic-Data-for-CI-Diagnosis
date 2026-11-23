@@ -1,0 +1,81 @@
+{
+  "case_id": "pydicom__pydicom-1033-ds2-wave2",
+  "source_case_id": "pydicom__pydicom-1033",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-1033",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "701c1062bf66de2b29df68fa5540be6009943885",
+  "head": "base+repair:43f67c0f9a54dbc1f8ac61f7a31d941e511d4fc7c4f79ef88e22d77f89eb7d6e",
+  "allowed_file": "pydicom/dataelem.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1033-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "43f67c0f9a54dbc1f8ac61f7a31d941e511d4fc7c4f79ef88e22d77f89eb7d6e",
+  "test_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1033-ds2-wave2/test.patch",
+  "test_patch_sha256": "2cff267c80f2db9749d132bbb722614725a6af0d8455cde78a5b85825d8d6fab",
+  "source_record_sha256": "e9f4b399d69237c737f7535ce3157f08ea83677b62ce1b4b0cb2b11da8af7f1a",
+  "fail_to_pass": [
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_json_from_dicom_file",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_roundtrip",
+    "pydicom/tests/test_json.py::TestBinary::test_inline_binary"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_json.py::TestPersonName::test_json_pn_from_file",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_from_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_empty_value",
+    "pydicom/tests/test_json.py::TestPersonName::test_multi_value_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_dataelem_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_to_json",
+    "pydicom/tests/test_json.py::TestAT::test_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_value_in_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_tag_in_json",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataset_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataelement_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_sort_order",
+    "pydicom/tests/test_json.py::TestSequence::test_nested_sequences",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_inline_binary",
+    "pydicom/tests/test_json.py::TestBinary::test_valid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_json.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_json.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pydicom__pydicom-1031-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "test_workdir": "work",
+  "runner_revision": "work-tmpfs-mode1777",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pydicom__pydicom-1031-ds1-env2-r1"
+}

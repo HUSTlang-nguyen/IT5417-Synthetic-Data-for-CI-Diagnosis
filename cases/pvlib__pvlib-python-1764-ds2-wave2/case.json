@@ -1,0 +1,98 @@
+{
+  "case_id": "pvlib__pvlib-python-1764-ds2-wave2",
+  "source_case_id": "pvlib__pvlib-python-1764",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1764",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "964dc435ca117d47c74da47345ace976b70a471f",
+  "head": "base+repair:6118e1a63aa45cd7ab610616b92a1880c23f8e5cdf54f3384b3d6c6703098adb",
+  "allowed_file": "pvlib/singlediode.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1764-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "6118e1a63aa45cd7ab610616b92a1880c23f8e5cdf54f3384b3d6c6703098adb",
+  "test_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1764-ds2-wave2/test.patch",
+  "test_patch_sha256": "f9bc8df523211e0a05f40bd5407bb200560647bec88850ecee9fa34ee3ab0ae2",
+  "source_record_sha256": "81cfa6af21f07ebb995ccfe58f65bfa762fd0818e8d2204deed96c44c108e5a3",
+  "fail_to_pass": [
+    "pvlib/tests/test_singlediode.py::test_bishop88_kwargs_transfer[newton-method_kwargs0]",
+    "pvlib/tests/test_singlediode.py::test_bishop88_kwargs_transfer[brentq-method_kwargs1]",
+    "pvlib/tests/test_singlediode.py::test_bishop88_full_output_kwarg[newton]",
+    "pvlib/tests/test_singlediode.py::test_bishop88_full_output_kwarg[brentq]"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/test_singlediode.py::test_method_spr_e20_327[brentq]",
+    "pvlib/tests/test_singlediode.py::test_method_spr_e20_327[newton]",
+    "pvlib/tests/test_singlediode.py::test_newton_fs_495[brentq]",
+    "pvlib/tests/test_singlediode.py::test_newton_fs_495[newton]",
+    "pvlib/tests/test_singlediode.py::test_singlediode_precision[1-lambertw]",
+    "pvlib/tests/test_singlediode.py::test_singlediode_precision[1-brentq]",
+    "pvlib/tests/test_singlediode.py::test_singlediode_precision[1-newton]",
+    "pvlib/tests/test_singlediode.py::test_singlediode_precision[2-lambertw]",
+    "pvlib/tests/test_singlediode.py::test_singlediode_precision[2-brentq]",
+    "pvlib/tests/test_singlediode.py::test_singlediode_precision[2-newton]",
+    "pvlib/tests/test_singlediode.py::test_ivcurve_pnts_precision[1-lambertw]",
+    "pvlib/tests/test_singlediode.py::test_ivcurve_pnts_precision[2-lambertw]",
+    "pvlib/tests/test_singlediode.py::test_v_from_i_i_from_v_precision[1-lambertw]",
+    "pvlib/tests/test_singlediode.py::test_v_from_i_i_from_v_precision[1-brentq]",
+    "pvlib/tests/test_singlediode.py::test_v_from_i_i_from_v_precision[1-newton]",
+    "pvlib/tests/test_singlediode.py::test_v_from_i_i_from_v_precision[2-lambertw]",
+    "pvlib/tests/test_singlediode.py::test_v_from_i_i_from_v_precision[2-brentq]",
+    "pvlib/tests/test_singlediode.py::test_v_from_i_i_from_v_precision[2-newton]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_recombination_loss[newton-1000-25-expected0-tol0]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_recombination_loss[newton-888-55-expected1-tol1]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_recombination_loss[brentq-1000-25-expected0-tol0]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_recombination_loss[brentq-888-55-expected1-tol1]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_breakdown[newton-brk_params0-recomb_params0-1000-25-expected0-tol0]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_breakdown[newton-brk_params1-recomb_params1-888-55-expected1-tol1]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_breakdown[brentq-brk_params0-recomb_params0-1000-25-expected0-tol0]",
+    "pvlib/tests/test_singlediode.py::test_pvsyst_breakdown[brentq-brk_params1-recomb_params1-888-55-expected1-tol1]",
+    "pvlib/tests/test_singlediode.py::test_bishop88_kwargs_fails[newton-method_kwargs0]",
+    "pvlib/tests/test_singlediode.py::test_bishop88_kwargs_fails[brentq-method_kwargs1]"
+  ],
+  "test_targets": [
+    "pvlib/tests/test_singlediode.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/test_singlediode.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2",
+    "pytest-mock==3.11.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "pytest_mock"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pvlib__pvlib-python-1738-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "pvlib__pvlib-python-1738-ds1-env2"
+}

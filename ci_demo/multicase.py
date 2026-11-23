@@ -232,6 +232,22 @@ def apply_patch_file(tree, path, evidence, name, guard):
     checked([*prefix, str(path.resolve())], evidence, name, cwd=tree, guard=guard)
 
 
+def pinned_license(base, declared):
+    candidates = [base / name for name in ("LICENSE", "LICENSE.txt", "LICENSE.rst", "LICENSE.md", "COPYING", "COPYING.txt")]
+    license_file = next((p for p in candidates if p.is_file()), None)
+    if license_file is None:
+        raise ValueError("Pinned source license missing")
+    text = license_file.read_text(encoding="utf-8", errors="replace")
+    markers = {"BSD-3-Clause": "Redistribution and use", "BSD-2-Clause": "Redistribution and use",
+               "MIT": "Permission is hereby granted", "GPL-2.0-or-later": "GNU GENERAL PUBLIC LICENSE",
+               "LGPL-2.1-or-later": "GNU LESSER GENERAL PUBLIC LICENSE", "Apache-2.0": "Apache License"}
+    if markers.get(declared, "<unrecognized>").lower() not in text.lower():
+        raise ValueError("Pinned license does not match declared family; manual review required")
+    return {"path": license_file.relative_to(base).as_posix(), "sha256": sha256(license_file),
+            "declared_license": declared,
+            "qualification": "Pinned full license retained; family marker check, not legal review"}
+
+
 def prepare_case(case, evidence, guard=None):
     validate_case(case)
     identity = hashlib.sha256(json.dumps(case, sort_keys=True).encode()).hexdigest()[:16]
@@ -270,19 +286,7 @@ def prepare_case(case, evidence, guard=None):
     if not source.is_file(): raise ValueError("Allowlisted source file missing")
     resolved_targets = source_function_targets(case, work / "head") if case.get("source_id_matching") == "exact_unique_function_name" else case["test_targets"]
     if case.get("verify_pinned_license"):
-        candidates = [work / "base" / name for name in ("LICENSE", "LICENSE.txt", "LICENSE.rst", "COPYING", "COPYING.txt")]
-        license_file = next((p for p in candidates if p.is_file()), None)
-        if license_file is None:
-            raise ValueError("Pinned source license missing")
-        text = license_file.read_text(encoding="utf-8", errors="replace")
-        markers = {"BSD-3-Clause": "Redistribution and use", "BSD-2-Clause": "Redistribution and use",
-                   "MIT": "Permission is hereby granted", "GPL-2.0-or-later": "GNU GENERAL PUBLIC LICENSE",
-                   "LGPL-2.1-or-later": "GNU LESSER GENERAL PUBLIC LICENSE"}
-        if markers.get(case["license"], "<unrecognized>").lower() not in text.lower():
-            raise ValueError("Pinned license does not match declared family; manual review required")
-        write_json(evidence / "license-evidence.json", {"path": license_file.relative_to(work / "base").as_posix(),
-                   "sha256": sha256(license_file), "declared_license": case["license"],
-                   "qualification": "Pinned full license retained; family marker check, not legal review"})
+        write_json(evidence / "license-evidence.json", pinned_license(work / "base", case["license"]))
     dependencies = ["setuptools==75.6.0", "wheel==0.45.1", "pytest==" + case.get("pytest_version", "7.4.4"), *case.get("dependencies", [])]
     install = ["/opt/venv/bin/pip", "install", "--disable-pip-version-check", *dependencies]
     dockerfile = ("FROM " + case.get("python_image", "python:3.11-slim-bookworm") + "\n"

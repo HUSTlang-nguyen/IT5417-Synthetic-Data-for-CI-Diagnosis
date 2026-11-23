@@ -2,6 +2,7 @@
 from pathlib import Path
 import copy
 import json
+import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -10,9 +11,13 @@ from ci_demo.common import CACHE,read_json,write_json,sha256,now
 from ci_demo.multicase import validate_case
 
 
-def prepare(destination):
+def prepare(destination, per_repo=4):
     destination=Path(destination)
     if destination.exists():raise ValueError('Never overwrite an execution plan')
+    if isinstance(per_repo,bool) or not isinstance(per_repo,int) or not 1<=per_repo<=140:
+        raise ValueError('Per-repo wave size must be between1and140')
+    wave=destination.stem.removeprefix('dataset-v2-')
+    if not re.fullmatch(r'[a-zA-Z0-9-]{1,32}',wave):raise ValueError('Invalid wave identifier')
     roles=read_json(ROOT/'data-manifests/dataset-v2-source-roles.json')
     rows={r['instance_id']:r for name in ['records.json','test-records.json'] for r in read_json(CACHE/'dataset-v1-source'/name)}
     tried=set()
@@ -29,11 +34,12 @@ def prepare(destination):
         score=sum(tag in case['case_id'] for tag in ['env2','-r1','deps','scm'])
         if key not in prototypes or score>prototypes[key][0]:prototypes[key]=(score,case)
     selected=[]
-    for repo in ['pydicom/pydicom','pvlib/pvlib-python','sphinx-doc/sphinx','pytest-dev/pytest']:
+    for repo,role in sorted(roles['repo_roles'].items()):
+        if role!='train':continue
         choices=[r for r in roles['selected'] if r['repo']==repo and r['role']=='train' and r['source_case_id'] not in tried and (repo,r['source_version']) in prototypes]
-        for item in choices[:4]:
+        for item in choices[:per_repo]:
             source=rows[item['source_case_id']];parent=prototypes[(repo,item['source_version'])][1];case=copy.deepcopy(parent)
-            identity=item['source_case_id']+'-ds2-wave1'
+            identity=item['source_case_id']+'-ds2-'+wave
             raw=CACHE/'dataset-v2-source/cases'/identity
             if raw.exists() or (ROOT/'cases'/identity).exists():raise ValueError('Existing profile; inspect instead of overwrite')
             raw.mkdir(parents=True);write_json(raw/'source-record.json',source)
@@ -63,4 +69,6 @@ def prepare(destination):
 if __name__=='__main__':
     import argparse
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--destination',type=Path,required=True)
-    prepare(parser.parse_args().destination)
+    parser.add_argument('--per-repo',type=int,default=4)
+    args=parser.parse_args()
+    prepare(args.destination,args.per_repo)

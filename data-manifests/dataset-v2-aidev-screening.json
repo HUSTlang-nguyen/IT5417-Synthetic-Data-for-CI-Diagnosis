@@ -1,0 +1,23 @@
+{
+  "screened_at": "2026-11-23T13:08:52+07:00",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "eligibility_reviews": 1,
+  "records": [
+    {
+      "dataset_id": 3147564540,
+      "repo": "MontrealAI/AGI-Alpha-Agent-v0",
+      "pr": 2198,
+      "provenance": "dataset/API merge timestamps match, base/head pinned",
+      "decision": "exclude_initial_low_cost_collection",
+      "reason": "Upstream tests/conftest.py invokes check_env --auto-install and requires yaml, protobuf, cachetools, numpy and src.simulation.replay; dependency closure exceeds the isolated small-module recipe. No conftest removal, fixture stubs or test changes authorized. Syntax candidate remains metadata-only; not reproduced or labelled.",
+      "source_files": {
+        "alpha_factory_v1____init__.py": "34a5fddf628f4bcc6882e21d5bbda0688efb0089aaf128f923ebc572510ae364",
+        "alpha_factory_v1__demos____init__.py": "626cef476f562249a8beee8a45cbb2561ec3c8c188014c22c1e4eb7c982ec32c",
+        "alpha_factory_v1__demos__self_healing_repo____init__.py": "b8e0f6287df03f05921a107c8099f18317a6f21405160ddcb43e4d7dad8b9aa4",
+        "alpha_factory_v1__demos__self_healing_repo__agent_core____init__.py": "32ea4ee047c6ba4c399f3635bf5a54d195c8e63a2d3019be2d6809d18c491f9e",
+        "tests__conftest.py": "b4435ab081cf76fff5ead778993651b6da93d331ff6b31e265d7bc4212f0f9be"
+      },
+      "execution_attempted": false
+    }
+  ]
+}

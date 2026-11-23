@@ -1,0 +1,59 @@
+{
+  "case_id": "sympy__sympy-16637-ds2-wave2",
+  "source_case_id": "sympy__sympy-16637",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sympy__sympy-16637",
+  "repo_url": "https://github.com/sympy/sympy",
+  "base": "df58361055cbd92b03cef14dba41ac6f0a004fd7",
+  "head": "base+repair:ff6e5e818366faf8ca0036e5e091c24560c222657af8878e514a46031199bdd8",
+  "allowed_file": "sympy/geometry/plane.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-16637-ds2-wave2/repair.patch",
+  "repair_patch_sha256": "ff6e5e818366faf8ca0036e5e091c24560c222657af8878e514a46031199bdd8",
+  "test_patch": ".cache/dataset-v2-source/cases/sympy__sympy-16637-ds2-wave2/test.patch",
+  "test_patch_sha256": "97690e3809f3122fd7b6af02269fe346af37db27b107f51330d146c608dc11ea",
+  "source_record_sha256": "cfcbdca3e3e2fd79121076e5cc612c7049e7983359bb0bfe69bd0f7a430b0622",
+  "fail_to_pass": [
+    "test_plane"
+  ],
+  "pass_to_pass": [
+    "test_dimension_normalization"
+  ],
+  "test_targets": [
+    "test_dimension_normalization",
+    "test_plane"
+  ],
+  "frozen_test_files": [
+    "sympy/geometry/tests/test_plane.py"
+  ],
+  "source_id_matching": "exact_unique_function_name",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Source tests fail on base, pass with frozen reference repair; local reconstruction only",
+  "dependencies": [
+    "mpmath==1.2.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_parent_case_id": "sympy__sympy-16422-ds1"
+}

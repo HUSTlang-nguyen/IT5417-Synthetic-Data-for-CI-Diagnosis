@@ -1,0 +1,190 @@
+{
+  "exported_at": "2026-11-23T13:20:44+07:00",
+  "input_protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+  "records": [
+    {
+      "sample_id": "pvlib__pvlib-python-1072",
+      "run_id": "reproduce-20261122T195036811138Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pvlib__pvlib-python-1072",
+      "manifest_sha256": "e3d81fb9fb536217b891a9b058d0d7c3a04bbdbd39bdb1776543edb92694842b",
+      "cause_type": "API/type",
+      "location_availability": [
+        {
+          "file": "pvlib/temperature.py",
+          "function": "fuentes",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1606",
+      "run_id": "reproduce-20261122T200131499467Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pvlib__pvlib-python-1606",
+      "manifest_sha256": "9993aad6533b5406f8e918c55f5efb20548f07de9be0ec52cde54de8194f1147",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "pvlib/tools.py",
+          "function": "_golden_sect_DataFrame",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1707",
+      "run_id": "reproduce-20261122T195747529073Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pvlib__pvlib-python-1707",
+      "manifest_sha256": "3acebf9327117f52dc92a94cdc7ac9ec24165f57aa02fcefde27ac8b82fd5e28",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "pvlib/iam.py",
+          "function": "physical",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1854",
+      "run_id": "reproduce-20261122T195403215786Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pvlib__pvlib-python-1854",
+      "manifest_sha256": "f83e99c4aa5e5878e82108d94ac4bdc0c10675e92468532263192775ba9dee8f",
+      "cause_type": "API/type",
+      "location_availability": [
+        {
+          "file": "pvlib/pvsystem.py",
+          "function": "PVSystem.__init__",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "pydicom__pydicom-1139",
+      "run_id": "reproduce-20261122T194004618647Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pydicom__pydicom-1139",
+      "manifest_sha256": "9f9928e3588025fb06c3867acb44c37d3a827ce99761a89e98bce6a70ed5f872",
+      "cause_type": "API/type",
+      "location_availability": [
+        {
+          "file": "pydicom/valuerep.py",
+          "function": "PersonName.__iter__",
+          "present_in_failing_source": false,
+          "relationship": "reviewed_causal_absence"
+        },
+        {
+          "file": "pydicom/valuerep.py",
+          "function": "PersonName.__contains__",
+          "present_in_failing_source": false,
+          "relationship": "reviewed_causal_absence"
+        }
+      ]
+    },
+    {
+      "sample_id": "pydicom__pydicom-1256",
+      "run_id": "reproduce-20261122T192305300764Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pydicom__pydicom-1256",
+      "manifest_sha256": "588a2cb9becf21fbf517ce0c81a428aa7fb60e3fdfab5ef72f500a42f2a16613",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "pydicom/jsonrep.py",
+          "function": "JsonDataElementConverter.get_sequence_item",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "pydicom__pydicom-1694",
+      "run_id": "reproduce-20261122T193639658831Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pydicom__pydicom-1694",
+      "manifest_sha256": "86229730dee80c08fbdee7c487c2d13737f91738475e1fa62ffc7b43e198ea88",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "pydicom/dataset.py",
+          "function": "Dataset.to_json_dict",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "pytest-dev__pytest-10051",
+      "run_id": "reproduce-20261122T202352603821Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pytest-dev__pytest-10051",
+      "manifest_sha256": "5006f0ebab602bc5cfb3df66c62b186fbe84c04abd6bd2aaf478bc1becc2730f",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "src/_pytest/logging.py",
+          "function": "LogCaptureHandler.reset",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        },
+        {
+          "file": "src/_pytest/logging.py",
+          "function": "LogCaptureFixture.clear",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "pytest-dev__pytest-11044",
+      "run_id": "reproduce-20261122T202714148970Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\pytest-dev__pytest-11044",
+      "manifest_sha256": "c526fa6e207f21feeb49c841bbd491f26ff6cdb81520fcc495d7c697aa922bac",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "src/_pytest/config/__init__.py",
+          "function": "Config.parse",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-11192",
+      "run_id": "reproduce-20261122T201255610751Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\sphinx-doc__sphinx-11192",
+      "manifest_sha256": "dbfc936c92068408d20571db4166557f8d4e3491b01814ecffe42c1c6ec9305a",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "sphinx/builders/html/__init__.py",
+          "function": "StandaloneHTMLBuilder.write_doc",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        },
+        {
+          "file": "sphinx/builders/html/__init__.py",
+          "function": "StandaloneHTMLBuilder.write_doc_serialized",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7910",
+      "run_id": "reproduce-20261122T200514161835Z",
+      "directory": ".cache\\dataset-v2\\records-retrieval-v3\\sphinx-doc__sphinx-7910",
+      "manifest_sha256": "1816440ecbc0db646004843dcf526498e033154f3d85a27430a0c445ae737965",
+      "cause_type": "logic/value",
+      "location_availability": [
+        {
+          "file": "sphinx/ext/napoleon/__init__.py",
+          "function": "_skip_member",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ]
+    }
+  ],
+  "qualification": "Reviewed silver train candidates with uniform frozen input protocol; still not final v2 quota/dedup selection. Old v1 and prototype v2 exports unchanged."
+}
