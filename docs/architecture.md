@@ -229,3 +229,9 @@ Optional `scm_build_version` is a validated version derived from a clean pinned 
 ### Fresh verification timeout stop
 
 The next quality-r3 worker stops candidate repetitions after its first timeout, still executes restoration, and records `verification_policy=stop_repetitions_after_timeout_restore_still_required_v1`. Acceptance still requires three stable test failures; a timeout can never pass. Three generation attempts remain in the denominator, with incomplete repetition count visible. The in-flight quality-r2 cohort is unchanged. The prior waiting r3 queue was cancelled before calling run_batch and replaced to load the tested verifier; no completed seed is repeated. Software106:105pass/1skip.
+
+## Dataset v2 source recovery and exact source identifiers
+
+Append-only source-role supplements validate canonical non-fork repo identity, immutable record revision and cross-role commits. Explicit upstream_pr_recovered_v1 train cases retain empty source F2P/P2P and separate local_expected test references; unchanged upstream test patch applies to base/fixed and fixed product blobs must match upstream head before build. Default dataset-supplied reference checks remain unchanged. Source export and patch application pin Git LF per command, independent of host autocrlf.
+
+Explicit swebench_pytest_options matching is limited to declared SWE source repos. It reproduces source parser whitespace/absolute-path parameter normalization; all observed nodes sharing a source canonical ID must match the expected status. No arbitrary prefix match or mixed-status acceptance. Requests6028 uses a separate environment correction profile; prior raw evidence is immutable. V2 allows at most one correction with exact parent and reason per source, not automatic retries.

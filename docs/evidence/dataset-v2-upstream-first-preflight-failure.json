@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-23T14:19:43+07:00",
+  "run_id": "reproduce-20261123T071730158816Z",
+  "source_case_id": "ytdl-org__youtube-dl-23199",
+  "status": "prebuild_provenance_rejection",
+  "actual_sha256": "e72f8338ac4dcc709708d5495dd2935c7f6936ef1779cb945bb7d2cd9a8f2dcc",
+  "expected_sha256": "2d1df7d08e007f0e61d773893ad2ce3c450f9c1a77798ce3cc066fd2acdb486c",
+  "actual_bytes": 169353,
+  "expected_bytes": 163754,
+  "actual_CRLF": 5599,
+  "expected_CRLF": 0,
+  "equal_after_CRLF_to_LF": true,
+  "source_file": ".cache/case-contexts/ytdl-org__youtube-dl-23199-ds2-upstream/9566ed35256f0741/reproduce-20261123T071730158816Z/head/youtube_dl/utils.py",
+  "qualification": "Read-only byte comparison. Rejected context and raw run retained. No baseline/fixed execution, output repair or provenance gate bypass."
+}

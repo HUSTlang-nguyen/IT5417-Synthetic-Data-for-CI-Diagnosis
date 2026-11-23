@@ -1,0 +1,50 @@
+{
+  "created_at": "2026-11-23T14:10:38+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "ytdl-org__youtube-dl-23199",
+      "repo": "ytdl-org/youtube-dl",
+      "role": "train",
+      "base_commit": "0de9fd24dc8723c78a90cb546e4a05818304521e",
+      "upstream_head": "0d35d2e97f3d54830153c6ad95dd4e25e9a7f6a6",
+      "source_version": "not_supplied",
+      "product_files": [
+        "youtube_dl/utils.py"
+      ],
+      "test_files": [
+        "test/test_utils.py"
+      ],
+      "case_id": "ytdl-org__youtube-dl-23199-ds2-upstream",
+      "case_sha256": "f5dce287b59f3299a502d0e1714cadaff27379ae38dab95ec1b2171e92e365dc",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Prepared metadata/provenance self-check only; runtime validation, supplemental role binding and recovered-reference policy integration required before execution."
+}

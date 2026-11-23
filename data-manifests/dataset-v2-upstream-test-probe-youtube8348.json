@@ -1,0 +1,25 @@
+{
+  "probed_at": "2026-11-23T14:33:47+07:00",
+  "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "eligibility_reviews": 1,
+  "records": [
+    {
+      "source_case_id": "ytdl-org__youtube-dl-8348",
+      "repo": "ytdl-org/youtube-dl",
+      "base_commit": "ed7cd1e859cf97e975a28a5e8c58a1d1aca819fe",
+      "upstream_head": "2b14cb566fde3e5482ce9a63b2be7103cec939e0",
+      "api_base_matches_source": true,
+      "product_patch_matches_source": true,
+      "upstream_test_paths": [],
+      "source_supplied_test_patch": false,
+      "source_fail_to_pass": "[]",
+      "decision": "exclude_no_matching_product_or_upstream_test_delta",
+      "source_record_sha256": "925b1b226c45a4c2ad9e986b274dbb1c1d298ebde05b5663b7ee6903c1c7eb4b",
+      "pr_metadata_sha256": "6d65178fd4a388c077ada9edca8821cc9b178ea0886ab458f11723e7379a0e04",
+      "upstream_product_patch_sha256": "f40080439947cad82ee1b8bb3cf7ff36eb61cf98c462872150dcc39e59d149b7",
+      "upstream_test_patch_sha256": null,
+      "artifact_directory": ".cache/dataset-v2-upstream-test-probes/ytdl-org__youtube-dl-8348"
+    }
+  ],
+  "qualification": "Upstream commit/test provenance probe only, not reproduced faults or dataset approval. No source code imported/executed; any recovered tests must be frozen before a separately recorded experiment."
+}

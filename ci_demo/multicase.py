@@ -54,6 +54,9 @@ def validate_case(case):
     if case.get("system_tools", []) not in ([], ["git"]):
         raise ValueError("Only the declared git build/runtime tool is supported")
     if case.get("source_kind") not in {"aidev", "swebench"}: raise ValueError("Unknown source adapter")
+    if case.get("test_reference_policy") is not None:
+        from .upstream_tests import provenance
+        provenance(case)
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,120}", case["case_id"]):
         raise ValueError("Invalid case ID")
     if not re.fullmatch(r"https://github.com/[\w.-]+/[\w.-]+", case["repo_url"]):
@@ -83,8 +86,11 @@ def validate_case(case):
             raise ValueError("Runtime tmpfs must not cover source/tests")
     if case.get("generation_protocol", PROTOCOL) not in {PROTOCOL, SITE_PROTOCOL}:
         raise ValueError("Unknown generator protocol")
-    if case.get("source_id_matching", "exact") not in {"exact", "exact_or_unique_truncated_param", "exact_unique_function_name"}:
+    if case.get("source_id_matching", "exact") not in {"exact", "exact_or_unique_truncated_param", "exact_unique_function_name", "swebench_pytest_options"}:
         raise ValueError("Unknown source test identity matching policy")
+    if case.get('source_id_matching') == 'swebench_pytest_options' and (case.get('source_kind') != 'swebench' or case['repo_url'] not in {
+            'https://github.com/psf/requests','https://github.com/pydicom/pydicom','https://github.com/pylint-dev/pylint'}):
+        raise ValueError('SWE pytest option normalization requires its declared source parser')
     if case.get("source_id_matching") == "exact_unique_function_name" and case["repo_url"] != "https://github.com/sympy/sympy":
         raise ValueError("Function-name source identifiers are specific to SymPy")
     if case.get("pytest_version", "7.4.4") not in {"6.2.5", "7.4.4", "8.3.5"}:
@@ -175,7 +181,7 @@ def export_commit(repo, revision, destination, evidence, name, guard):
         checked(["git", "-C", repo, "fetch", "--depth=1", "origin", revision], evidence, name + "-fetch", guard=guard)
     actual = subprocess.check_output(["git", "-C", str(repo), "rev-parse", revision + "^{commit}"], text=True).strip()
     if actual != revision: raise ValueError("Fetched commit identity mismatch")
-    raw = subprocess.check_output(["git", "-C", str(repo), "archive", revision], timeout=90)
+    raw = subprocess.check_output(["git", "-c", "core.autocrlf=false", "-c", "core.eol=lf", "-C", str(repo), "archive", revision], timeout=90)
     destination.mkdir(parents=True)
     with tarfile.open(fileobj=io.BytesIO(raw)) as archive:
         links = archive_links(archive)
@@ -227,7 +233,7 @@ def apply_patch_file(tree, path, evidence, name, guard):
     metadata = tree.parent / ".patch-git"
     if not metadata.exists():
         checked(["git", "init", "--bare", metadata], evidence, "patch-repository-init", guard=guard)
-    prefix = ["git", "--git-dir=" + str(metadata.resolve()), "--work-tree=" + str(tree.resolve()), "apply"]
+    prefix = ["git", "-c", "core.autocrlf=false", "-c", "core.eol=lf", "--git-dir=" + str(metadata.resolve()), "--work-tree=" + str(tree.resolve()), "apply"]
     checked([*prefix, "--check", str(path.resolve())], evidence, name + "-check", cwd=tree, guard=guard)
     checked([*prefix, str(path.resolve())], evidence, name, cwd=tree, guard=guard)
 
@@ -240,7 +246,8 @@ def pinned_license(base, declared):
     text = license_file.read_text(encoding="utf-8", errors="replace")
     markers = {"BSD-3-Clause": "Redistribution and use", "BSD-2-Clause": "Redistribution and use",
                "MIT": "Permission is hereby granted", "GPL-2.0-or-later": "GNU GENERAL PUBLIC LICENSE",
-               "LGPL-2.1-or-later": "GNU LESSER GENERAL PUBLIC LICENSE", "Apache-2.0": "Apache License"}
+               "LGPL-2.1-or-later": "GNU LESSER GENERAL PUBLIC LICENSE", "Apache-2.0": "Apache License",
+               "Unlicense": "This is free and unencumbered software released into the public domain"}
     if markers.get(declared, "<unrecognized>").lower() not in text.lower():
         raise ValueError("Pinned license does not match declared family; manual review required")
     return {"path": license_file.relative_to(base).as_posix(), "sha256": sha256(license_file),
@@ -265,6 +272,9 @@ def prepare_case(case, evidence, guard=None):
         for role in ("base", "head"):
             apply_patch_file(work / role, ROOT / case["test_patch"], evidence, role + "-test-patch", guard)
         apply_patch_file(work / "head", ROOT / case["repair_patch"], evidence, "gold-repair", guard)
+        if case.get("test_reference_policy") is not None:
+            from .upstream_tests import verify_products
+            verify_products(case, work / "head")
     else:
         source_links["head"] = export_commit(repo, case["head"], work / "head", evidence, "head", guard) or {}
         # Freeze declared head tests onto the base as a reconstruction harness.
@@ -428,6 +438,25 @@ def resolve_targets(result, folder, targets, expected, mode="exact"):
         parts = split_test_id(target); cls = parts[0].removesuffix(".py")
         if len(parts) > 2: cls += "/" + "/".join(parts[1:-1])
         name = parts[-1]; resolved = name if (cls, name) in outcomes else None; how = "exact"
+        if mode == 'swebench_pytest_options':
+            # SWE-bench v4.1.0 parse_log_pytest_options canonicalizes absolute path parameters.
+            def canonical(value):
+                tokens = value.split(maxsplit=1)
+                if not tokens: return value
+                value = tokens[0]
+                prefix, boundary, parameter = value.partition('[')
+                parameter = parameter[:-1] if value.endswith(']') else ''
+                if boundary and parameter.startswith('/') and not parameter.startswith('//') and '*' not in parameter:
+                    return prefix + '[/' + parameter.rsplit('/', 1)[-1] + ']'
+                return value
+            matches = sorted(n for c, n in outcomes if c == cls and canonical(n) == name)
+            statuses = {outcomes[(cls, n)] for n in matches}
+            observed = next(iter(statuses)) if len(statuses) == 1 else 'mixed' if statuses else None
+            records.append({'source_id': target, 'resolved_class': cls,
+                            'resolved_name': matches[0] if len(matches) == 1 else name if matches else None,
+                            'resolved_names': matches, 'resolution': 'swebench_canonical_group' if matches else 'unresolved',
+                            'expected': expected, 'observed': observed})
+            continue
         if resolved is None and mode == "exact_or_unique_truncated_param" and "[" in name and not name.endswith("]"):
             matches = [n for c, n in outcomes if c == cls and n.startswith(name)]
             if len(matches) == 1: resolved = matches[0]; how = "unique_truncated_parameter_prefix"
@@ -450,17 +479,24 @@ def reproduce_case(case, folder=None, guard=None):
         fixed_pass = test_passed(manifest["head"], folder)
         supported = base_fail and fixed_pass
         if case["source_kind"] == "swebench":
+            from . import upstream_tests
+            fail_to_pass, pass_to_pass, origin = upstream_tests.references(case)
             mode = case.get("source_id_matching", "exact")
-            manifest["source_test_resolution"] = []
+            recovered = origin == 'upstream_recovered_local'
+            resolution_key = 'local_test_resolution' if recovered else 'source_test_resolution'
+            manifest[resolution_key] = []
+            if recovered:
+                manifest['test_reference_origin'] = origin
+                manifest['test_reference_implementation_sha256'] = sha256(upstream_tests.__file__)
             for role, expectation in (("base", "fail"), ("head", "pass")):
-                ok, detail = resolve_targets(manifest[role], folder, case["fail_to_pass"], expectation, mode)
+                ok, detail = resolve_targets(manifest[role], folder, fail_to_pass, expectation, mode)
                 supported = supported and ok
-                manifest["source_test_resolution"].append({"role": role, "set": "FAIL_TO_PASS", "matching_mode": mode, "records": detail})
+                manifest[resolution_key].append({"role": role, "set": "LOCAL_EXPECTED_FAILURES" if recovered else "FAIL_TO_PASS", "matching_mode": mode, "records": detail})
             for role in ("base", "head"):
-                if case.get("pass_to_pass"):
-                    ok, detail = resolve_targets(manifest[role], folder, case["pass_to_pass"], "pass", mode)
+                if pass_to_pass:
+                    ok, detail = resolve_targets(manifest[role], folder, pass_to_pass, "pass", mode)
                     supported = supported and ok
-                    manifest["source_test_resolution"].append({"role": role, "set": "PASS_TO_PASS", "matching_mode": mode, "records": detail})
+                    manifest[resolution_key].append({"role": role, "set": "LOCAL_EXPECTED_PASSES" if recovered else "PASS_TO_PASS", "matching_mode": mode, "records": detail})
         manifest["historical_supported"] = bool(supported)
         gate["head_passed"] = bool(fixed_pass)
         manifest["status"] = "hypothesis_supported_locally" if supported else "hypothesis_not_confirmed"

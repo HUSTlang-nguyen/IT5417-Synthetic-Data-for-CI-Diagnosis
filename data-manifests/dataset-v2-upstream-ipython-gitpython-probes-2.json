@@ -1,0 +1,44 @@
+{
+  "probed_at": "2026-11-23T14:38:24+07:00",
+  "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "eligibility_reviews": 2,
+  "records": [
+    {
+      "source_case_id": "ipython__ipython-12952",
+      "repo": "ipython/ipython",
+      "base_commit": "6c3c263840f21ca9ccf9d192fbbeb0d2aee0eacf",
+      "upstream_head": "1f29ce5ff5e305d4ce5c2126b2a7c4beb58244e6",
+      "api_base_matches_source": true,
+      "product_patch_text_equal": false,
+      "upstream_test_paths": [],
+      "source_supplied_test_patch": false,
+      "source_fail_to_pass": "[]",
+      "decision": "exclude_no_upstream_test_delta",
+      "source_record_sha256": "948aa59743ba82082e0bf26e9f07adc45c013a85475404a060a83e2ba7746490",
+      "pr_metadata_sha256": "47191fe5179fd95025584a4713d92268551e031c37b224161005bf3c1735419a",
+      "upstream_product_patch_sha256": "052ce38ab78ac2a98fb88b502a941b8e4519bc5aab8721cdea051f358c994e9a",
+      "upstream_test_patch_sha256": null,
+      "artifact_directory": ".cache/dataset-v2-upstream-test-probes/ipython__ipython-12952"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-946",
+      "repo": "gitpython-developers/GitPython",
+      "base_commit": "43564d2e8f3b95f33e10a5c8cc2d75c0252d659a",
+      "upstream_head": "9d34ee26781657d95381024053f53e956ff7743e",
+      "api_base_matches_source": true,
+      "product_patch_text_equal": false,
+      "upstream_test_paths": [
+        "git/test/test_util.py"
+      ],
+      "source_supplied_test_patch": false,
+      "source_fail_to_pass": "[]",
+      "decision": "upstream_test_candidate_requires_blob_verification",
+      "source_record_sha256": "ff1e54add550a72d39be84b6f6be750e15b9d6a06abaac1e28161ba85c6ed9f9",
+      "pr_metadata_sha256": "e00ada7ffefa35bdddeade9ff62e5bda61a29201098231332013aea620426543",
+      "upstream_product_patch_sha256": "83d017e33be95103e7c624b43bcc128e2379b495cfec971d4ac92a472f64a89e",
+      "upstream_test_patch_sha256": "3ccf07e6683de9a085bf1ed4eb585745a46dbd72d2825c4ffb66b8da160c1b79",
+      "artifact_directory": ".cache/dataset-v2-upstream-test-probes/gitpython-developers__GitPython-946"
+    }
+  ],
+  "qualification": "Upstream commit/test provenance probe only, not reproduced faults or dataset approval. No source code imported/executed; any recovered tests must be frozen before a separately recorded experiment."
+}

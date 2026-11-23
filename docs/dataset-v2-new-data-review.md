@@ -53,3 +53,14 @@ Số tái hiện đạt có thể lớn hơn số ứng viên được giữ. Kh
 | sphinx-7350 | Khi phát sinh directive attribute/method, Napoleon không truyền tiếp noindex đã có trong options. Test thấy thiếu hai dòng `:noindex:`. | logic/value; `sphinx/ext/napoleon/docstring.py::GoogleDocstring._parse_attributes_section` và `_parse_methods_section` | Giữ ứng viên silver; đây là bỏ sót option đã tồn tại. Issue yêu cầu sửa việc option bị bỏ qua. |
 
 Đã xuất cả bốn bằng input v3 đã khóa; reference, issue và assessment vẫn ở ngoài input. Chưa có nhãn gold hoặc training approval. Các mẫu không thấy causal function trong retrieved code vẫn giữ nguyên trạng thái coverage, không thêm reference vào truy xuất.
+
+## Hai mẫu train tiếp theo ở wave 2
+
+[Receipt và hash nguồn/log](evidence/dataset-v2-wave2-next2-review.json). Cả hai qua full real_evidence và xuất input v3 cố định; chưa có xác nhận người dùng, gold hoặc training approval.
+
+| Case | Quan sát và giải thích | Nhãn/vị trí đề xuất; kiến nghị |
+|---|---|---|
+| sympy-24102 | Hai test parser báo SyntaxError ở mathematica.py:909, fixed pass. Biểu thức tokenizer tại dòng657 áp regex định hướng ASCII lên cả ký tự Hy Lạp, làm mất toán hạng; patch giữ nguyên toán hạng non-ASCII. | logic/value, MathematicaParser._from_mathematica_to_tokens; cao. Python không sai grammar: đây là exception do thư viện báo khi xử lý input hợp lệ. Giữ ứng viên silver. |
+| marshmallow-1343 | Dữ liệu nested sai kiểu trả None; validator vẫn subscript như mapping và chỉ bắt KeyError. JUnit báo NoneType not subscriptable tại schema.py:894, fixed pass sau khi bắt thêm TypeError. | API/type, BaseSchema._invoke_field_validators; vừa. Mô tả việc dùng interface mapping trên None, đồng thời ghi ranh giới taxonomy với logic/error-path guarding. Giữ ứng viên silver. |
+
+Log là tái dựng local; exception name không tự quyết định nhãn. Input chỉ có failing code/log, không chứa repair/issue/assessment. Người dùng review kết luận, không phải tự dò lại code/log.

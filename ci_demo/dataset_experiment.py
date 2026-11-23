@@ -19,13 +19,8 @@ def freeze_plan(experiment, path):
     if len(identities) != len(set(identities)) or plan["targets"]["real"] != target:
         raise ValueError("Duplicate profile or changed real-data target")
     if isinstance(experiment, DataStudy):
-        binding = read_json(experiment.manifest)['source_role_lock']
-        if sha256(ROOT / binding['path']) != binding['sha256']:
-            raise ValueError('Source-role lock changed')
-        roles = read_json(ROOT / binding['path'])
-        allowed = {(r['source_case_id'],r['repo'],r['role']) for r in roles['selected']}
-        if plan['repo_roles'] != roles['repo_roles'] or any((r['source_case_id'],r['repo'],r['role']) not in allowed for r in plan['selected']):
-            raise ValueError('Recipe plan differs from frozen source roles')
+        from .source_roles import validate_plan_sources
+        expected_sources = validate_plan_sources(read_json(experiment.manifest), plan)
     if destination.exists():
         locked = read_json(destination)
         if locked["plan_sha256"] != sha256(path):
@@ -47,6 +42,10 @@ def freeze_plan(experiment, path):
     for row in plan["selected"]:
         identity = row["case_id"]
         case = case_config(identity)
+        if isinstance(experiment, DataStudy):
+            expected = expected_sources[row['source_case_id']]
+            if case['base'] != expected['base_commit'] or case['dataset_revision'] != expected['source_revision']:
+                raise ValueError('Case commit/revision differs from frozen source cohort')
         hashes = locked["cases"][identity]
         if sha256(ROOT / "cases" / identity / "case.json") != hashes["case_sha256"]:
             raise ValueError("Frozen case changed: " + identity)
@@ -117,6 +116,17 @@ def reproduce(experiment, plan, *, limit=None):
                    case_config(r["artifacts"]["case_id"])["source_case_id"] == row["source_case_id"]
                    for name, r in state.get("operations", {}).items() if name.startswith("real-")):
                 continue
+            if isinstance(experiment, DataStudy):
+                profiles = [r for name, r in state.get('operations', {}).items() if name.startswith('real-')
+                            and case_config(r['artifacts']['case_id'])['source_case_id'] == row['source_case_id']]
+                if len(profiles) >= 2:
+                    raise BudgetStop('Only one environment correction is allowed per source case')
+                if profiles:
+                    correction = case_config(row['case_id'])
+                    reason = correction.get('environment_correction')
+                    if (correction.get('profile_parent_case_id') != profiles[0]['artifacts']['case_id']
+                            or not isinstance(reason, str) or not reason.strip()):
+                        raise ValueError('Environment correction needs its exact parent and recorded reason')
             if limit is not None and processed >= limit:
                 break
             experiment.reserve(operation, "real_reproduction", timeout=1200)
@@ -124,9 +134,10 @@ def reproduce(experiment, plan, *, limit=None):
             experiment.attach(operation, run_id=folder.name, case_id=row["case_id"], role=row["role"])
             experiment.attach(operation, implementation_sha256=sha256(multicase.__file__))
             if isinstance(experiment, DataStudy):
-                from . import data_study
+                from . import data_study, source_roles
                 experiment.attach(operation, budget_guard_sha256=sha256(data_study.__file__),
-                                  orchestration_sha256=sha256(__file__))
+                                  orchestration_sha256=sha256(__file__),
+                                  source_role_policy_sha256=sha256(source_roles.__file__))
 
             def guard(name):
                 timeout = 1200 if name == "docker-build" else 300 if name.startswith("historical-") else 180

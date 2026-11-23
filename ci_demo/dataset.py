@@ -31,10 +31,17 @@ def real_evidence(run_id):
     if not test_passed(raw["head"], folder):
         raise ValueError("Fixed execution no longer supported by saved evidence")
     mode = case.get("source_id_matching", "exact")
+    from .upstream_tests import references
+    fail_to_pass, pass_to_pass, origin = references(case)
+    if origin == 'upstream_recovered_local':
+        from .upstream_tests import verify_products
+        if raw.get('test_reference_origin') != origin:
+            raise ValueError('Recovered-test origin missing from execution evidence')
+        verify_products(case, Path(gate['context']) / 'head')
     for role, expectation in (("base", "fail"), ("head", "pass")):
-        if not resolve_targets(raw[role], folder, case["fail_to_pass"], expectation, mode)[0]:
+        if not resolve_targets(raw[role], folder, fail_to_pass, expectation, mode)[0]:
             raise ValueError("FAIL_TO_PASS reference IDs not supported")
-        if case.get("pass_to_pass") and not resolve_targets(raw[role], folder, case["pass_to_pass"], "pass", mode)[0]:
+        if pass_to_pass and not resolve_targets(raw[role], folder, pass_to_pass, "pass", mode)[0]:
             raise ValueError("PASS_TO_PASS reference IDs not supported")
     artifacts = {"manifest.json": sha256(folder / "manifest.json"),
                  "license-evidence.json": sha256(folder / "license-evidence.json")}
@@ -220,6 +227,9 @@ def export_real(run_id, assessment_path, destination, *, retriever=None):
                 "reference_sha256": sha256(destination / "reference.json"),
                 "assessment_sha256": sha256(assessment_path), "evidence_hashes": evidence_hashes,
                 "retrieval": {k: v for k, v in retrieval.items() if k != "snippets"}}
+    if case.get('test_reference_policy'):
+        metadata['source_test_reference_policy'] = case['test_reference_policy']
+        metadata['source_test_reference_qualification'] = 'Upstream recovered local expectations; source F2P/P2P absent'
     write_json(destination / "manifest.json", metadata)
     return metadata
 

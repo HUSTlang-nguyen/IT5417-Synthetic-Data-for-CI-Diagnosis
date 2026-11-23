@@ -11,6 +11,22 @@ from ci_demo.experiment import Experiment
 
 
 class DatasetExperimentTests(unittest.TestCase):
+    def test_v2_refuses_unexplained_or_third_environment_profile_before_reservation(self):
+        from ci_demo.data_study import DataStudy
+        from ci_demo.batch import BudgetStop
+        for previous_count in [1,2]:
+            with self.subTest(previous_count=previous_count),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp)
+                operations={f'real-old{i}':{'status':'finished','artifacts':{'case_id':f'old{i}'},
+                    'result':{'historical_supported':False}} for i in range(previous_count)}
+                write_json(root/'manifest.json',{'operations':operations})
+                experiment=Mock(spec=DataStudy);experiment.folder=root;experiment.lock=root/'lock';experiment.manifest=root/'manifest.json'
+                plan={'selected':[{'case_id':'new','source_case_id':'same','role':'train'}],'targets':{'train':1}}
+                with patch('ci_demo.dataset_experiment.case_config',return_value={'source_case_id':'same'}), \
+                     patch('ci_demo.dataset_experiment.summary',return_value={'by_role':{'train':{}}}):
+                    with self.assertRaises(BudgetStop if previous_count==2 else ValueError):reproduce(experiment,plan)
+                experiment.reserve.assert_not_called()
+
     def test_v2_full_storage_checks_remain_at_each_build_and_test_boundary(self):
         from ci_demo.data_study import DataStudy
         with tempfile.TemporaryDirectory() as tmp:

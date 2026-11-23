@@ -19,6 +19,27 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_swe_option_mapping_checks_every_member_of_an_official_canonical_group(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);file=folder/'report.xml'
+            result={'junit':file.name,'timed_out':False}
+            file.write_text('<testsuite><testcase classname="tests.test_utils.TestPaths" name="test_path[/source/base/tests/example.py]"/></testsuite>')
+            target='tests/test_utils.py::TestPaths::test_path[/example.py]'
+            self.assertFalse(multicase.resolve_targets(result,folder,[target],'pass')[0])
+            ok,rows=multicase.resolve_targets(result,folder,[target],'pass','swebench_pytest_options')
+            self.assertTrue(ok);self.assertEqual(rows[0]['resolved_name'],'test_path[/source/base/tests/example.py]')
+            file.write_text('<testsuite><testcase classname="tests.test_utils.TestPaths" name="test_path[/source/a/example.py]"/><testcase classname="tests.test_utils.TestPaths" name="test_path[/source/b/example.py]"/></testsuite>')
+            ok,rows=multicase.resolve_targets(result,folder,[target],'pass','swebench_pytest_options')
+            self.assertTrue(ok);self.assertEqual(len(rows[0]['resolved_names']),2)
+            file.write_text('<testsuite><testcase classname="tests.test_utils.TestPaths" name="test_path[/source/a/example.py]"/><testcase classname="tests.test_utils.TestPaths" name="test_path[/source/b/example.py]"><failure>fixture</failure></testcase></testsuite>')
+            self.assertFalse(multicase.resolve_targets(result,folder,[target],'pass','swebench_pytest_options')[0])
+            file.write_text('<testsuite><testcase classname="tests.test_utils.TestPaths" name="test_path[a space one]"/><testcase classname="tests.test_utils.TestPaths" name="test_path[a space two]"/></testsuite>')
+            truncated='tests/test_utils.py::TestPaths::test_path[a'
+            self.assertTrue(multicase.resolve_targets(result,folder,[truncated],'pass','swebench_pytest_options')[0])
+            for value in ['//server/example.py','/source/*.py','relative/example.py','https://host/example.py']:
+                file.write_text('<testsuite><testcase classname="tests.test_utils.TestPaths" name="test_path['+value+']"/></testsuite>')
+                self.assertFalse(multicase.resolve_targets(result,folder,[target],'pass','swebench_pytest_options')[0])
+
     def test_pinned_license_markdown_and_apache_still_reject_missing_or_wrong_family(self):
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp)
@@ -34,6 +55,39 @@ class CaseTests(unittest.TestCase):
                     multicase.pinned_license(base, declared)
             license_file.write_text("Redistribution and use in source and binary forms", encoding="utf-8")
             self.assertEqual(multicase.pinned_license(base, "BSD-3-Clause")["declared_license"], "BSD-3-Clause")
+            license_file.write_text("This is free and unencumbered software released into the public domain.", encoding="utf-8")
+            self.assertEqual(multicase.pinned_license(base, "Unlicense")["declared_license"], "Unlicense")
+
+    def test_recovered_local_regression_uses_explicit_nodes_and_retains_dataset_reference_format(self):
+        for recovered in [False,True]:
+            with self.subTest(recovered=recovered),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);folder=root/'run';folder.mkdir()
+                for role,failure in [('base','<failure type="AssertionError">fixture</failure>'),('head','')]:
+                    (folder/(role+'.xml')).write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_regression">'+failure+'</testcase><testcase classname="tests.test_api.TestAPI" name="test_control"/></testsuite>')
+                fail=['tests/test_api.py::TestAPI::test_regression'];passed=['tests/test_api.py::TestAPI::test_control']
+                case={**config(),'source_kind':'swebench','fail_to_pass':fail,'pass_to_pass':passed}
+                if recovered:
+                    case.update(test_reference_policy='upstream_pr_recovered_v1',fail_to_pass=[],pass_to_pass=[],
+                                local_expected_failures=fail,local_expected_passes=passed)
+                outcomes=[{'exit_code':1,'timed_out':False,'container_removed':True,'junit':'base.xml'},
+                          {'exit_code':0,'timed_out':False,'container_removed':True,'junit':'head.xml'}]
+                with patch.object(multicase,'CACHE',root/'cache'), \
+                     patch.object(multicase,'prepare_case',return_value={'case_hash':'fixture'}), \
+                     patch.object(multicase,'execute',side_effect=outcomes), \
+                     patch('ci_demo.upstream_tests.provenance',return_value={}):
+                    result=multicase.reproduce_case(case,folder)
+                self.assertTrue(result['historical_supported'])
+                key='local_test_resolution' if recovered else 'source_test_resolution'
+                self.assertEqual(len(result[key]),4)
+                if recovered:self.assertNotIn('source_test_resolution',result)
+                # An unrelated failure cannot substitute for the selected regression.
+                (folder/'base.xml').write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_regression"/><testcase classname="tests.test_api.TestAPI" name="test_control"><failure type="AssertionError">unrelated</failure></testcase></testsuite>')
+                with patch.object(multicase,'CACHE',root/'cache'), \
+                     patch.object(multicase,'prepare_case',return_value={'case_hash':'fixture'}), \
+                     patch.object(multicase,'execute',side_effect=outcomes), \
+                     patch('ci_demo.upstream_tests.provenance',return_value={}):
+                    result=multicase.reproduce_case(case,folder)
+                self.assertFalse(result['historical_supported'])
 
     def test_parameter_node_separators_are_literal_parameter_content(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -255,11 +309,32 @@ class CaseTests(unittest.TestCase):
     def test_patch_applies_to_export_not_outer_repository(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); tree = root / "export"; tree.mkdir(); evidence = root / "evidence"; evidence.mkdir()
-            (tree / "fixture.txt").write_text("before\n")
+            (tree / "fixture.txt").write_bytes(b"before\n")
             patch_file = root / "fix.patch"
-            patch_file.write_text("--- a/fixture.txt\n+++ b/fixture.txt\n@@ -1 +1 @@\n-before\n+after\n")
-            multicase.apply_patch_file(tree, patch_file, evidence, "fixture-patch", None)
-            self.assertEqual((tree / "fixture.txt").read_text(), "after\n")
+            patch_file.write_bytes(b"--- a/fixture.txt\n+++ b/fixture.txt\n@@ -1 +1 @@\n-before\n+after\n")
+            with patch.dict('os.environ',{'GIT_CONFIG_COUNT':'1','GIT_CONFIG_KEY_0':'core.autocrlf','GIT_CONFIG_VALUE_0':'true'}):
+                multicase.apply_patch_file(tree, patch_file, evidence, "fixture-patch", None)
+            self.assertEqual((tree / "fixture.txt").read_bytes(), b"after\n")
+
+    def test_archive_and_patch_preserve_blob_bytes_under_host_crlf_configuration(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);repo=root/'repo';repo.mkdir();evidence=root/'evidence';evidence.mkdir()
+            subprocess.run(['git','init',str(repo)],check=True,capture_output=True)
+            subprocess.run(['git','-C',str(repo),'config','core.autocrlf','false'],check=True,capture_output=True)
+            (repo/'fixture.txt').write_bytes(b'before\n')
+            subprocess.run(['git','-C',str(repo),'add','fixture.txt'],check=True,capture_output=True)
+            subprocess.run(['git','-C',str(repo),'-c','user.name=fixture','-c','user.email=fixture@example.invalid',
+                            'commit','-m','inert software fixture'],check=True,capture_output=True)
+            revision=subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD'],text=True).strip()
+            subprocess.run(['git','-C',str(repo),'config','core.autocrlf','true'],check=True,capture_output=True)
+            tree=root/'export'
+            multicase.export_commit(repo,revision,tree,evidence,'fixture-base',None)
+            self.assertEqual((tree/'fixture.txt').read_bytes(),b'before\n')
+            patch_file=root/'fix.patch';patch_file.write_bytes(b'--- a/fixture.txt\n+++ b/fixture.txt\n@@ -1 +1 @@\n-before\n+after\n')
+            with patch.dict('os.environ',{'GIT_CONFIG_COUNT':'1','GIT_CONFIG_KEY_0':'core.autocrlf','GIT_CONFIG_VALUE_0':'true'}):
+                multicase.apply_patch_file(tree,patch_file,evidence,'fixture-fix',None)
+            self.assertEqual((tree/'fixture.txt').read_bytes(),b'after\n')
 
     def test_validation_rejects_unsafe_or_unapproved_cases(self):
         multicase.validate_case(config())

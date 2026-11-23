@@ -1,0 +1,111 @@
+{
+  "reviewed_at": "2026-11-23T18:10:29+07:00",
+  "input_protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+  "records": [
+    {
+      "sample_id": "sympy__sympy-24102",
+      "run_id": "reproduce-20261123T064159740594Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T064159740594Z",
+        "evidence_hashes": {
+          "manifest.json": "5e1e85f831914d18d3e4ba610da2de2b43dbcf7816c869c95ddcef478195249d",
+          "license-evidence.json": "175fec1da88c6f9c068c995b3182ed813d1145eb5287bef26c57b34538f42bc5",
+          "historical-base.stdout.txt": "faeb994912272cf3675e3f0036aa8efd064d7d01dc64d50e09e144e12f5212d5",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "747f500fbab06ddb98eb5e3f175136da144286131b92956c31a16f1ceaea468a",
+          "historical-fixed.stdout.txt": "611d83f33d2054ae0885da2b74d9816a5b0becab096892b348d4678f1397d1fd",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "7bcd96c41c560beaa84f4302af34246dc3e57605ff3fb8e1958b1020a1b29ceb"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sympy/parsing/mathematica.py",
+            "function": "MathematicaParser._from_mathematica_to_tokens"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "An ASCII-oriented regular expression tokenizes every input string, dropping a valid non-ASCII Mathematica symbol such as lambda. The repair preserves non-ASCII operands instead of applying that regex; missing operands later prevent construction of a single AST.",
+        "evidence_reason": "Both saved parser tests raise SyntaxError at mathematica.py:909 on base and pass on fixed. The causal tokenization expression is line657; source issue describes a regression in valid Greek-symbol handling.",
+        "limitations": "Python source grammar is valid. The library raises SyntaxError while processing valid input, so the proposed category is logic/value rather than syntax. No claim of complete Unicode grammar support.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "9c4ecf40678c3a9aaef2f5647c641c67e8a587405db67be23d012e553f253da5",
+      "source_sha256": "379bd62cabc464657b389a67f9a4c10e1d6ab6be1a85e8f020159d240023d68b",
+      "location_availability": [
+        {
+          "file": "sympy/parsing/mathematica.py",
+          "function": "MathematicaParser._from_mathematica_to_tokens",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-24102-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "af6b2f3a4bf9eef3970f39b2da378c7527dc545586bd16c2994f80806255c980",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/sympy__sympy-24102",
+      "manifest_sha256": "0524b13235dbfbea0a8718995872c12bf7f298d62ac3ae86f7317752f074b375"
+    },
+    {
+      "sample_id": "marshmallow-code__marshmallow-1343",
+      "run_id": "reproduce-20261123T064632054289Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T064632054289Z",
+        "evidence_hashes": {
+          "manifest.json": "8141c8742178238845201789fab38ac4cc2ec921688970e31353a6f0224410ee",
+          "license-evidence.json": "aac7b99507ae298906567fb4b7f7aa581da63245e01a9d3fe141942a452e6fd9",
+          "historical-base.stdout.txt": "816bc603067db82abccc0dc1744f6e1ca0d38b2755fb35282b2d5f103461f17f",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "71320f093451ae176a6a96980f7e79b207c2282164da87487b8f5b0d5d2f99b7",
+          "historical-fixed.stdout.txt": "23256efbb999e343960fa9d5348c85563c301a77c77b4680fc33cfa849c73a76",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "505bdfe2874198af404e608d7dab552604c80ec044f8b9b763e3d29a801e7a85"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "medium",
+        "locations": [
+          {
+            "file": "src/marshmallow/schema.py",
+            "function": "BaseSchema._invoke_field_validators"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "After invalid nested data deserializes to None, field validation still subscripts data as a mapping. Only KeyError is caught, so None raises TypeError. The repair handles TypeError in both scalar and many-item branches.",
+        "evidence_reason": "Saved test_deserialize_wrong_nested_type_with_validates_method fails with NoneType not subscriptable at schema.py:894; fixed suite passes. The wrong nested value should yield validation errors rather than an uncaught exception.",
+        "limitations": "The proposed API/type class describes using a non-mapping value through the mapping interface. Incomplete error-path guarding also has a logic aspect; taxonomy confidence is medium, not determined solely from the exception name.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "ac68dacba49883c17d659cc276e9c76df961725387b0b9d5ab1bceffdf4e8004",
+      "source_sha256": "ecbc061c2d30b64eb9318f3b1b86ed3f2355006aaeceead5ebdd89d758460775",
+      "location_availability": [
+        {
+          "file": "src/marshmallow/schema.py",
+          "function": "BaseSchema._invoke_field_validators",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/marshmallow-code__marshmallow-1343-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "fb93d3650801b4da32dce01c6f7cc72194236aa7445189dd5edfb9d5081d3ecf",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/marshmallow-code__marshmallow-1343",
+      "manifest_sha256": "4e45e56790a9d7f3900d1818633d971796f6b41c2fb96cbee147c0415352ed2e"
+    }
+  ],
+  "qualification": "Two evidence-bound silver train candidates, frozen reference-free input v3. Human/gold/training pending; not final v2 quota/family selection. No source/model execution for review."
+}

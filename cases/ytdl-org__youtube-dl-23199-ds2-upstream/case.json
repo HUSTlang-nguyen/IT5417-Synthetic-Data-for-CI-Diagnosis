@@ -1,0 +1,63 @@
+{
+  "case_id": "ytdl-org__youtube-dl-23199-ds2-upstream",
+  "source_case_id": "ytdl-org__youtube-dl-23199",
+  "record_id": "ytdl-org__youtube-dl-23199",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "train",
+  "repo_url": "https://github.com/ytdl-org/youtube-dl",
+  "base": "0de9fd24dc8723c78a90cb546e4a05818304521e",
+  "head": "base+repair:2dd3345d7f24cbb55e83326bb813481d55d2d58040be3e2f3f61e38fd141b580",
+  "allowed_file": "youtube_dl/utils.py",
+  "license": "Unlicense",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "dataset_protocol": "dataset-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/ytdl-org__youtube-dl-23199-ds2-upstream/repair.patch",
+  "repair_patch_sha256": "2dd3345d7f24cbb55e83326bb813481d55d2d58040be3e2f3f61e38fd141b580",
+  "test_patch": ".cache/dataset-v2-source/cases/ytdl-org__youtube-dl-23199-ds2-upstream/test.patch",
+  "test_patch_sha256": "bc14c4ab1272847bde3890c023502c9b4dbdfe6971dcb1161db71a5ec28b51f0",
+  "source_record_sha256": "4e12a29de885eea3ff7e002de52fdaceeeefeb31b1d81913a61f4e91b41534ff",
+  "fail_to_pass": [],
+  "pass_to_pass": [],
+  "test_reference_policy": "upstream_pr_recovered_v1",
+  "local_expected_failures": [
+    "test/test_utils.py::TestUtil::test_unified_dates"
+  ],
+  "local_expected_passes": [
+    "test/test_utils.py::TestUtil::test_unified_timestamps"
+  ],
+  "upstream_test_provenance": ".cache/dataset-v2-source/cases/ytdl-org__youtube-dl-23199-ds2-upstream/upstream-provenance.json",
+  "upstream_test_provenance_sha256": "7523af54319cad23600be68ec3fe1b7a0ef98abe2233da479ec8b3c2880a37ad",
+  "source_id_matching": "exact",
+  "test_targets": [
+    "test/test_utils.py::TestUtil::test_unified_dates",
+    "test/test_utils.py::TestUtil::test_unified_timestamps"
+  ],
+  "frozen_test_files": [
+    "test/test_utils.py"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "python_image": "python:3.9-slim-bookworm",
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [],
+  "dependencies": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned upstream date regression fails on base and passes after original repair under unchanged upstream unit methods; timestamps method remains passing. Local reconstruction, not historical CI or supplied benchmark F2P/P2P.",
+  "recipe_basis": "Python3.9 standard-library utility tests, explicit two upstream unit methods chosen before execution. No network/service, source/test edits or dependency installation into host."
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "v2-source-role-supplement-v1",
+  "created_at": "2026-11-23T14:10:38+07:00",
+  "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "repo_roles": {
+    "ytdl-org/youtube-dl": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "ytdl-org__youtube-dl-23199",
+      "repo": "ytdl-org/youtube-dl",
+      "role": "train",
+      "base_commit": "0de9fd24dc8723c78a90cb546e4a05818304521e",
+      "upstream_head": "0d35d2e97f3d54830153c6ad95dd4e25e9a7f6a6",
+      "source_version": "not_supplied",
+      "product_files": [
+        "youtube_dl/utils.py"
+      ],
+      "test_files": [
+        "test/test_utils.py"
+      ],
+      "case_id": "ytdl-org__youtube-dl-23199-ds2-upstream",
+      "case_sha256": "f5dce287b59f3299a502d0e1714cadaff27379ae38dab95ec1b2171e92e365dc",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    }
+  ],
+  "repo_provenance": {
+    "ytdl-org/youtube-dl": {
+      "pr_metadata": ".cache/dataset-v2-upstream-test-probes/ytdl-org__youtube-dl-23199/pr.json",
+      "pr_metadata_sha256": "33d89c536649beb072411c6c80db0df6907722158b85a9bf7314cbafa31b0658"
+    }
+  },
+  "qualification": "Append-only new train source with recovered upstream tests, not reproduced/approved data. Original source references remain absent; no existing role changed."
+}

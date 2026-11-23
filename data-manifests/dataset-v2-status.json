@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T13:54:03+07:00",
+  "updated_at": "2026-11-23T18:08:34+07:00",
   "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
@@ -24,17 +24,17 @@
   },
   "v2_real_selected": 0,
   "v2_synthetic_selected": 0,
-  "new_case_attempts": 30,
+  "new_case_attempts": 46,
   "new_generator_requests": 0,
   "live_worker": {
-    "session_id": 54676,
-    "log": ".cache/dataset-v2-wave2-stage-guards-live.txt",
+    "session_id": 91773,
+    "log": ".cache/dataset-v2-wave2-resume-20261123-live.txt",
     "plan": "data-manifests/dataset-v2-wave2-interleaved.json",
-    "last_observed_at": "2026-11-23T13:54:03+07:00",
-    "observation": "Resumed after clean case-boundary handoff. First new source pvlib1165 finished not confirmed; prior8wave2 cases skipped."
+    "last_observed_at": "2026-11-23T18:08:34+07:00",
+    "observation": "Resumed only unfinished wave2 entries after Requests correction terminal; no replay/reset."
   },
   "collection_budget_initialized": true,
-  "next_task": "Follow54676; review remaining strict wave2 cases. Run prepared5-source heldout plan serially after this wave. Expand train source cohort with recovered upstream test provenance and append-only repo roles; source capacity626 cannot meet700. Preserve missing source reference labels and all gates.",
+  "next_task": "Follow91773 serial wave2; review/export new strict evidence using frozen v3. Expand source capacity and rare classes, then curate/synthesize. Full target unchanged.",
   "qualification": "Portable v1.1 published and relocation verified. New counts are reconstruction outcomes; silver prototypes are not finalized v2 selection. No new generator or diagnosis/training calls.",
   "study_run_id": "dataset-v2-20261122T190232092876Z",
   "execution_enabled": true,
@@ -48,11 +48,10 @@
     "status": "completed_for_published_v1_1"
   },
   "software_tests": {
-    "total": 144,
-    "passed": 143,
+    "total": 153,
+    "passed": 152,
     "skipped": 1,
-    "log": ".cache/software-tests-dataset-v2-stage-boundaries.txt",
-    "additional_focused_guard_tests": 3
+    "log": ".cache/software-tests-dataset-v2-reference-options-groups.txt"
   },
   "budget_guard": "implemented_and_tested",
   "baseline_worker_session": null,
@@ -71,7 +70,7 @@
     "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 7720.0,
+  "execution_seconds_charged": 9263.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -103,9 +102,9 @@
     "receipt": "docs/evidence/dataset-v2-development-review.json",
     "gold": "pending"
   },
-  "new_cases_strict_reproduced": 20,
-  "new_passing_seeds": 22,
-  "new_real_silver_prototype_exports": 16,
+  "new_cases_strict_reproduced": 29,
+  "new_passing_seeds": 33,
+  "new_real_silver_prototype_exports": 18,
   "first_batch": {
     "status": "finished",
     "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
@@ -161,16 +160,25 @@
   },
   "by_role": {
     "train": {
-      "attempted": 28,
-      "strict_reproduced": 18
+      "attempted_profiles": 40,
+      "attempted_source_cases": 39,
+      "finished_profiles": 39,
+      "strict_reproduced": 22,
+      "passing_source_cases": 26
     },
     "validation": {
-      "attempted": 1,
-      "strict_reproduced": 1
+      "attempted_profiles": 2,
+      "attempted_source_cases": 2,
+      "finished_profiles": 2,
+      "strict_reproduced": 2,
+      "passing_source_cases": 2
     },
     "test": {
-      "attempted": 1,
-      "strict_reproduced": 1
+      "attempted_profiles": 6,
+      "attempted_source_cases": 5,
+      "finished_profiles": 6,
+      "strict_reproduced": 5,
+      "passing_source_cases": 5
     }
   },
   "new_data_review": "docs/dataset-v2-new-data-review.md",
@@ -178,7 +186,7 @@
     "path": "data-manifests/dataset-v2-wave2-interleaved.json",
     "source_cases": 114,
     "repos": 7,
-    "status": "running_session71523",
+    "status": "running_session91773",
     "sha256": "915ae2d45f92275f3db6e8d4f4d3fab5f7ab4de9086e912918384a15ff4ce2c5"
   },
   "retrieval_calibration_worker": {
@@ -187,7 +195,7 @@
     "completed_records": 50,
     "receipt": "docs/evidence/dataset-v2-retrieval-v3-calibration-50.json"
   },
-  "uniform_v3_exports": 16,
+  "uniform_v3_exports": 18,
   "retrieval_v3_calibration": {
     "protocol": "data-manifests/dataset-v2-input-protocol.json",
     "protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
@@ -208,8 +216,8 @@
     "review": "docs/evidence/dataset-v2-first-heldout-review.json"
   },
   "new_data_curation": {
-    "reviewed": 17,
-    "retain_silver_candidates": 16,
+    "reviewed": 19,
+    "retain_silver_candidates": 18,
     "excluded_feature_only": 1,
     "human_confirmation": "pending",
     "gold": "pending",
@@ -217,9 +225,9 @@
     "final_selected": 0
   },
   "eligibility_screen_count": {
-    "swebench": 2521,
+    "swebench": 2524,
     "aidev": 4,
-    "total": 2525,
+    "total": 2528,
     "limit": 5000
   },
   "storage_snapshot": {
@@ -231,12 +239,12 @@
     "artifact_growth": "Full scan enforced by stage guard; not measured again for this status snapshot."
   },
   "latest_code_publication": {
-    "verified_at": "2026-11-23T13:27:50+07:00",
+    "verified_at": "2026-11-23T13:57:24+07:00",
     "branch": "codex/w1-review-skill",
-    "commit": "420e283c998402b88fe8bf6bb93234bfcb19ed8a",
+    "commit": "336efe79398b43d02bd5fd3af4b8c6534f637842",
     "remote_verified": true,
     "main_unchanged": "289ddea569bc7ea24a3c8fff3270ca75bf5f6c63",
-    "qualification": "Partial collection/code/review milestone, not a completed v2 dataset publication."
+    "qualification": "Partial collection/software milestone, not final v2 publication."
   },
   "guard_upgrade": {
     "previous_worker": 71523,
@@ -268,5 +276,21 @@
     "repos": 3,
     "status": "prepared_and_frozen_not_started",
     "sha256": "8131af53557de7a1dd491e5143e64dc637f240f5ed4b7aab3ea572b1d2cba107"
+  },
+  "new_reproduction_profiles": 48,
+  "source_role_supplements": [
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
+      "sha256": "2afbad2e905902b224ba772044e7994a2f4fd384e9848bb4086763e7197b965a"
+    }
+  ],
+  "heldout_wave2": {
+    "plan": "data-manifests/dataset-v2-heldout-wave2.json",
+    "status": "finished",
+    "sources": 5,
+    "strict_first_profile": 4,
+    "requests_correction": "reproduce-20261123T110438250093Z",
+    "requests_correction_status": "hypothesis_supported_locally",
+    "qualification": "Source-ID options normalization only; original failed profile unchanged."
   }
 }
