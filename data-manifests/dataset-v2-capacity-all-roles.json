@@ -1,0 +1,73 @@
+{
+  "checked_at": "2026-11-23T18:40:13+07:00",
+  "source_role_lock": {
+    "path": "data-manifests/dataset-v2-source-roles.json",
+    "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da"
+  },
+  "supplements": [
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
+      "sha256": "2afbad2e905902b224ba772044e7994a2f4fd384e9848bb4086763e7197b965a"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-gitpython.json",
+      "sha256": "69cdacd81b507abeb050fe4bfd5bd62410fa40d306bb88b778201dfbce1801ca"
+    }
+  ],
+  "by_role": {
+    "train": {
+      "metadata_source_cases": 858,
+      "repositories": 12,
+      "by_repository": {
+        "gitpython-developers/GitPython": 1,
+        "marshmallow-code/marshmallow": 9,
+        "pallets/flask": 8,
+        "pvlib/pvlib-python": 62,
+        "pydicom/pydicom": 54,
+        "pylint-dev/astroid": 27,
+        "pylint-dev/pylint": 38,
+        "pytest-dev/pytest": 101,
+        "sphinx-doc/sphinx": 147,
+        "sqlfluff/sqlfluff": 47,
+        "sympy/sympy": 363,
+        "ytdl-org/youtube-dl": 1
+      },
+      "per_repository_limit": 140,
+      "theoretical_upper_bound": 628,
+      "target": 700,
+      "guaranteed_shortfall_even_if_all_pass": 72,
+      "required_acceptance_fraction": 1.1146496815286624
+    },
+    "validation": {
+      "metadata_source_cases": 1043,
+      "repositories": 4,
+      "by_repository": {
+        "django/django": 828,
+        "matplotlib/matplotlib": 180,
+        "mwaskom/seaborn": 21,
+        "pyvista/pyvista": 14
+      },
+      "per_repository_limit": 60,
+      "theoretical_upper_bound": 155,
+      "target": 150,
+      "guaranteed_shortfall_even_if_all_pass": 0,
+      "required_acceptance_fraction": 0.967741935483871
+    },
+    "test": {
+      "metadata_source_cases": 365,
+      "repositories": 3,
+      "by_repository": {
+        "psf/requests": 43,
+        "pydata/xarray": 102,
+        "scikit-learn/scikit-learn": 220
+      },
+      "per_repository_limit": 60,
+      "theoretical_upper_bound": 163,
+      "target": 150,
+      "guaranteed_shortfall_even_if_all_pass": 0,
+      "required_acceptance_fraction": 0.9202453987730062
+    }
+  },
+  "qualification": "Distinct-source theoretical bounds before execution/fault curation/dedup/class/license gates. Reused v1 train identities are already within the original cohort, not added twice. Bound train includes one exhausted Youtube source; therefore remains optimistic. Metadata counts are not dataset counts.",
+  "decision": "Additional source cohorts are necessary for train and prudent for both heldout roles: validation tolerates only5 exclusions, test13 before any class requirements. Freeze any new repository role before execution; do not change old roles, targets or input protocol."
+}

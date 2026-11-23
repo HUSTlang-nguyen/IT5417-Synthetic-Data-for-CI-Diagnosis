@@ -77,3 +77,16 @@ Log là tái dựng local; exception name không tự quyết định nhãn. Inp
 | requests-6028 / test | Ghép lại URL bằng netloc nhưng bỏ phần auth được parse riêng, mất user/password trong hai test utility. Fixed pass. | logic/value, prepend_scheme_if_needed tại requests/utils.py:966–982; giữ silver. Không gọi proxy/network, không coi HTTP407 trong issue là kết quả local. |
 
 Cả bốn đã đối chiếu full inventory, patch/log/JUnit và source F2P/P2P; Requests dùng profile hiệu chỉnh ID đã khai báo. Silver, xác nhận người dùng/gold/training vẫn pending. xarray4098 chưa được gán nhãn/chọn: issue chỉ nói groupby nên hỗ trợ name=None, còn cần phân biệt sửa lỗi với mở rộng điều kiện API.
+
+## Bốn mẫu train: GitPython và wave 2
+
+[Receipt, full inventory/log/patch hashes và bản xuất v3](evidence/dataset-v2-train-plus-gitpython-four-review.json). Nhãn đề xuất dưới đây còn pending xác nhận/gold/training.
+
+| Case | Chuỗi nguyên nhân và phạm vi chứng minh | Nhãn / vị trí đề xuất |
+|---|---|---|
+| GitPython-946 | Constructor tzoffset cần offset, nhưng pickle mặc định không cung cấp đối số khi dựng lại object. Test pickle.loads báo thiếu secs_west_of_utc; sửa __reduce__ cung cấp constructor/offset/name và test pass. Control dashify pass hai phía. | API/type; tzoffset.__reduce__ (causal absence) và tzoffset.__init__, git/objects/util.py. Giữ silver; không bịa dòng method chưa có hoặc khẳng định đã chạy chương trình multiprocessing trong issue. |
+| pytest-7571 | set_level đổi cả logger và handler, nhưng state/finalizer chỉ lưu/khôi phục logger. Handler level rò sang test kế tiếp; test nested nhận2fail thay vì3pass. Fixed pass. | logic/value; LogCaptureFixture._finalize, set_level và __init__, src/_pytest/logging.py. Giữ silver; chỉ xác nhận chuỗi test đã lưu, không mọi cách gọi set_level lặp lại. |
+| SymPy-20916 | Regex module chỉ nhận chữ/digit ASCII, nên split_super_sub không tách Unicode letter/digit thành subscript. Assertion nhận tên chưa tách và list subscript rỗng; fixed pass. | logic/value; <module> (regex _name_with_digits_p) và split_super_sub, sympy/printing/conventions.py. Giữ silver. Ký tự Unicode ngoài BMP bị JUnit hiển thị #x...; source test thực có Unicode, không phải chuỗi literal #x. |
+| astroid-1196 | Dict.getitem gọi .getitem lên AST Name của biểu thức unpack, chưa infer thành Dict. Hai test báo Name thiếu getitem tại node_classes.py:2364; fixed pass khi infer/check type trước. | API/type; Dict.getitem, astroid/nodes/node_classes.py. Giữ silver; TODO về overriding là giới hạn riêng, không coi mọi pattern unpack đều đã kiểm chứng. |
+
+GitPython dùng upstream recovered local expectations, không phải F2P/P2P có sẵn từ nguồn. Cả bốn input chỉ là log/failing code theo v3 khóa; reference, patch, issue và nhận định ở ngoài input.

@@ -1,0 +1,261 @@
+{
+  "reviewed_at": "2026-11-23T18:41:15+07:00",
+  "input_protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+  "records": [
+    {
+      "sample_id": "gitpython-developers__GitPython-946",
+      "run_id": "reproduce-20261123T112846407762Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T112846407762Z",
+        "evidence_hashes": {
+          "manifest.json": "d8015331f6dc697ea1e5fd89edf24d5ed39c20137160e435aacdf8d2a34ac9d0",
+          "license-evidence.json": "2cc04b8d6a5409eb21c075fc60daf87cff2dd5c6701d6e24531afbe02f958176",
+          "git-test-fixture.json": "588dc587ea8278e20c539d5a0d17fea668366c7f712234921a2202a1ece6c8c4",
+          "historical-base.stdout.txt": "0d721f12c4e41dcd660e7b91581b4d6292925024a8a73aa08ae398a6e3fcfb3a",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "8bd56f6d635490a51d841cd89549b7f6d38cf9ed90ab52ec41deb4f4b4764a89",
+          "historical-fixed.stdout.txt": "33aca91a8a77843dbea309fd6a882307d77d5fa52ff3740c5b8e87e3f9b8cc24",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "0cc0c09e36dfd1140cb686af8f20db6890c67716288e1557a1b49a3e5bc0c0ee"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "git/objects/util.py",
+            "function": "tzoffset.__reduce__"
+          },
+          {
+            "file": "git/objects/util.py",
+            "function": "tzoffset.__init__"
+          }
+        ],
+        "missing_definitions": [
+          {
+            "file": "git/objects/util.py",
+            "function": "tzoffset.__reduce__"
+          }
+        ],
+        "mechanism": "tzoffset requires secs_west_of_utc at construction, but its inherited pickle reconstruction supplies no such argument. The missing custom reduction contract prevents deserialization. The repair supplies the constructor and preserved offset/name arguments through __reduce__.",
+        "evidence_reason": "Saved upstream test_pickle_tzoffset fails with missing required constructor argument during pickle.loads and passes after the unchanged original repair; the dashify control passes on both. Product bytes match pinned upstream head.",
+        "limitations": "This tests pickle reconstruction, not the full multiprocessing program in the source issue. The causal __reduce__ is absent from base: record reviewed causal absence, not an invented line or historical CI log.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "d14a50653794a60ebd001d7ee5a47a25b24cbf9eeaac1474af0dec0be5f02890",
+      "source_sha256": "19120058b47581a2b6404dece53b6636637f2ea3a31019549195a2a2e24c55ef",
+      "location_availability": [
+        {
+          "file": "git/objects/util.py",
+          "function": "tzoffset.__reduce__",
+          "present_in_failing_source": false,
+          "relationship": "reviewed_causal_absence"
+        },
+        {
+          "file": "git/objects/util.py",
+          "function": "tzoffset.__init__",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-946-ds2-upstream/repair.patch",
+      "repair_patch_sha256": "a42cedb4de7ab9de37e0675ce677084b92b88807549e3bde3478984f0f2b0e94",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/gitpython-developers__GitPython-946",
+      "manifest_sha256": "45b0e126fa35d8737b7e58eea3b328368c2b651908cf02d9cf174dfc65207bd1"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7571",
+      "run_id": "reproduce-20261123T065533438572Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T065533438572Z",
+        "evidence_hashes": {
+          "manifest.json": "fdb26f65af83db1340f7146e6a292d1a9395800bfcdca7b29e8e8bc85f4bcb7c",
+          "license-evidence.json": "4086635bf1564d7ca9b51829f33adc44ba24a82d295a93b1a27bd57c17a71823",
+          "historical-base.stdout.txt": "25766a32c0f16427e57639a5f53d75d292ba1dbf2aaa2c706bdf48b7e549dccb",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "fba3cdcca7ea1548ec61982307b2663c3b7920f0edc424d15256fad2f6d3d013",
+          "historical-fixed.stdout.txt": "6ec934e4d0eacb827c3b15e8e0d546580d4466cce276f70226692c612ddebfc0",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "270b42263d34126b1d7657e32c39cdb10e64f7a86b30bfbfd2619559f77c80bf"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/_pytest/logging.py",
+            "function": "LogCaptureFixture._finalize"
+          },
+          {
+            "file": "src/_pytest/logging.py",
+            "function": "LogCaptureFixture.set_level"
+          },
+          {
+            "file": "src/_pytest/logging.py",
+            "function": "LogCaptureFixture.__init__"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "set_level changes both logger and handler levels, but fixture state/finalization save and restore only logger levels. The handler level leaks into subsequent tests. The repair captures initial handler level and restores it during finalization.",
+        "evidence_reason": "Saved regression runs three nested tests and sees two failures instead of three passes; source issue explicitly describes behavior changing at pytest6.0. Fixed suite passes.",
+        "limitations": "The supported claim is restoration for the saved tested sequence, not proof of all possible repeated set_level call patterns. This is pytest production lifecycle logic, not an environmental logging dependency.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "a58d0ef73bfcd4921bfe41dbd983138ce88a677fcdc58e569efe68cf2b8f7299",
+      "source_sha256": "a713183779503129dd39a3882fab17ad0b7c7b15eebe9506f99a34c206f37939",
+      "location_availability": [
+        {
+          "file": "src/_pytest/logging.py",
+          "function": "LogCaptureFixture._finalize",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        },
+        {
+          "file": "src/_pytest/logging.py",
+          "function": "LogCaptureFixture.set_level",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        },
+        {
+          "file": "src/_pytest/logging.py",
+          "function": "LogCaptureFixture.__init__",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-7571-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "37e8f7df78a7ad5ab31b32b2785a8009b5d9ebf99c1762e999e6e1cc3384ec24",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/pytest-dev__pytest-7571",
+      "manifest_sha256": "e8988347ce8c25170ee5a05717d44bd210df5c24f9fcdc699240761f9c4aa562"
+    },
+    {
+      "sample_id": "sympy__sympy-20916",
+      "run_id": "reproduce-20261123T065834778805Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T065834778805Z",
+        "evidence_hashes": {
+          "manifest.json": "e438bf08c14145c95d8e9d339231c836b6bbf2e0c066b6654cc520b55604fa60",
+          "license-evidence.json": "8a9d6f561c6aad3da616e51aae95c074d50186ac470fb394b2c8b5fbcb7b869f",
+          "historical-base.stdout.txt": "4f31006e8e321ac4279b10f562fc4398ce74ba00e5546ab74e1ae89d8a88d2ff",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "a27be8e1e9ab8c3019a642db2f40b83664e884f3ccddc9eaba3f20fb25378c50",
+          "historical-fixed.stdout.txt": "67d7cfb2296883232385a9f8ded9e8c6102fc17c2f53693634ebb91c6687e15c",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "b901bf1003bb80123d39edde41764389f15307cc15df523e3835186f783a3c88"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sympy/printing/conventions.py",
+            "function": "<module>"
+          },
+          {
+            "file": "sympy/printing/conventions.py",
+            "function": "split_super_sub"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The module regex _name_with_digits_p restricts names to ASCII letters and digits. split_super_sub therefore does not separate Unicode trailing digits or Greek-letter names into the expected subscript representation. The repair uses Unicode letter/digit character classes.",
+        "evidence_reason": "Saved test_super_sub returns an unsplit name and empty subscript list instead of the expected split; fixed harness passes. Source issue shows missing Greek-letter subscript formatting.",
+        "limitations": "The root restriction is the module-level regex, with split_super_sub as its consuming function. Do not claim a Python SyntaxError or use Unicode console encoding failures as experiment evidence.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "7bc69f35c46d5ae53997ac1e300f80fc033147a55233feaefb1ebcb72ff41cf2",
+      "source_sha256": "5e895568985d22f19c4385673697405413af12ec3b935934dd45cace91f01a9d",
+      "location_availability": [
+        {
+          "file": "sympy/printing/conventions.py",
+          "function": "<module>",
+          "present_in_failing_source": true,
+          "relationship": "module_constant"
+        },
+        {
+          "file": "sympy/printing/conventions.py",
+          "function": "split_super_sub",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/sympy__sympy-20916-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "2a3a6996ca7c8b9fe56a7d5df836eb04a95d9ec3d0903b30c237f88a6ae8f3ae",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/sympy__sympy-20916",
+      "manifest_sha256": "29eb6e2b4e115d1120209a31957d1b5d3532a25d33c0e0e84ca962e9b346b7c1"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1196",
+      "run_id": "reproduce-20261123T111321721548Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T111321721548Z",
+        "evidence_hashes": {
+          "manifest.json": "7065d165ac772b537ddae7ecab60e91a164acd867743e754ccbc06ed9e2b952d",
+          "license-evidence.json": "33c381e6fd544e86ee047b9063265bcdd4bacf287b0282bb2e0001e7a8afd21a",
+          "historical-base.stdout.txt": "020727b4c6330e8d46e54e5842bafeb4c745d12b72663348335ac43a2cf5725e",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "6647b30f5137b956a6e068924f0b1a958d67ddc0025a537bbf06c199867d2b80",
+          "historical-fixed.stdout.txt": "9f22dc86c6d98f048a804d63e01fe174aafc25742a4c83024e42f967d02cd330",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "85e4ed1bb9b9f2c1132e3fb2e7e53ae7312fff933aad4ba3c3d4a5f9a4ec7242"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "astroid/nodes/node_classes.py",
+            "function": "Dict.getitem"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "For dictionary unpacking, Dict.getitem calls getitem directly on an AST Name expression rather than inferring the expression to its dictionary value. Name has no getitem interface. The repair infers the value, checks it is a Dict and handles unsupported inference.",
+        "evidence_reason": "Two saved tests fail with Name has no attribute getitem at node_classes.py:2364; fixed suite passes. Source issue distinguishes inferable references and uninferable unpacked values.",
+        "limitations": "A causal missing inference/type check is proposed, rather than a claim that every dictionary-unpacking pattern is supported. Existing source TODO about overriding remains a separate limitation.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "d2a084412aabbcdb9ceed7603bc9bc90f91b5503570bfd517dffc923f13af350",
+      "source_sha256": "e6a3184f30cd3e158b1e32640f53c6745d87326a79dde6952ee2e9a427665ffb",
+      "location_availability": [
+        {
+          "file": "astroid/nodes/node_classes.py",
+          "function": "Dict.getitem",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1196-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "7b792b116c841e5efe20500b3362fc08213a9531ab04c8d1901526c1735b2330",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/pylint-dev__astroid-1196",
+      "manifest_sha256": "bdb637bf42c9c1c676a3083c7807d08764a093b3a8c31be2bf79884cde449435"
+    }
+  ],
+  "qualification": "Four evidence-bound silver train candidates, frozen reference-free input v3. Human/gold/training pending; not final v2 quota/family selection. No source/model execution for review."
+}

@@ -16,6 +16,8 @@ Trạng thái: `todo` / `doing` / `waiting_user` / `blocked` / `done` / `deferre
 
 ## Điểm tiếp tục hiện tại
 
+- **2026-11-23T18:45:34+07:00 — current:** 57source/60profiles, 37strict,26reviewed v3 candidates; finalselected0. **Worker14776live:**23heldout then86remaining train, log.cache/dataset-v2-heldout-then-wave2-live.txt. Metadata77026/review80484terminal0.155tests154pass/1skip; code GitPython milestone pushed9e4ff61. **Next:** follow14776; broaden cohorts and real rare classes. All-role upper bounds628/155/163 are before curation, so keep targets700/150/150, no double-countedv1. New heldout recovery requires separate versioned policy; no existing role or retrieval changes.
+
 - **2026-11-23T18:35:35+07:00 — current v2:** 55 source identities/58 profiles, 36 strict, 22reviewed v3 candidates; finalselected0. GitPython946 r1 strict with original upstream/local references, eighth strict train repo.155tests154pass/1skip. **Live77026:**8pip metadata probes, no Docker/model.91773 clean exit0 at56terminal profiles;11867 refused incomplete parent before side effects. **Next:** finish77026, run prepared train review helper, then23heldout and remaining86wave2 profiles serially. No extra correction for GitPython/Youtube.
 
 - **2026-11-23T18:08:34+07:00 — current v2:** 46 unique source cases/48 profiles, 29 strict reproductions; 18 reviewed v3 candidates, final selected0. Requests6028 correction passed; old raw verdict retained. Worker91773 resumes unfinished114-case wave2, log.cache/dataset-v2-wave2-resume-20261123-live.txt.153tests152pass/1skip. **Next: follow91773 and review saved strict results; expand source cohorts/rare classes.** Do not edit live runner, replay trials, reset budgets or call3B/train.

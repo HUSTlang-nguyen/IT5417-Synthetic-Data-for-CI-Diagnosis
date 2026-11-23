@@ -39,3 +39,9 @@ Requests6028 có lỗi ánh xạ ID tham số: nguồn dùng quy tắc tách whi
 `gitpython-developers__GitPython-946` có product blob khớp upstream head và test pickle nguyên gốc được khôi phục; nguồn vẫn thiếu F2P/P2P tham chiếu. [Proof](../data-manifests/dataset-v2-gitpython-product-blob-verification.json). Harness dùng bare Git fixture chứa đúng base commit, không host alternates và chỉ đọc trong Docker; hai upstream unit methods được chọn trước khi chạy.
 
 Lượt đầu dừng trước build do giới hạn đường dẫn Windows, [receipt](evidence/dataset-v2-git-fixture-first-preflight-failure.json). Chỉ một profile hiệu chỉnh: Git longpaths riêng lệnh, Git directory tương đối trong context kiểm soát; không đổi cấu hình toàn máy, commit, test hoặc dependency. Run `reproduce-20261123T112846407762Z` đạt base fail/fixed pass cho pickle, control dashify pass ở cả hai. Không thử profile thứ ba. Đây là tái dựng local qua hai unit methods, chưa chứng minh toàn bộ chương trình multiprocessing của issue. Silver review/selection riêng, không tự thành gold hoặc training approval.
+
+## Dung lượng nguồn theo cả ba vai trò
+
+[Receipt tính từ source-role lock và hai supplement](../data-manifests/dataset-v2-capacity-all-roles.json): trần lý thuyết train628/700, validation155/150, test163/150, trước tái hiện, curation, lớp và dedup. Train còn thiếu ngay cả nếu mọi case đạt; validation chỉ chịu được5 trường hợp bị loại, test13. Vì vậy cần thêm cohort cho cả heldout, giữ vai trò repo cũ và quota hiện hành. Không cộng lại175v1train đã nằm trong pool.
+
+[Probe8pip utility PR](../data-manifests/dataset-v2-upstream-pip-probes-8.json) mới là metadata/Git provenance:3không có test delta,5có đường dẫn test/helper thay đổi. Chưa có case pip được tái hiện, chốt role hoặc nhận làm mẫu; helper-only/feature/functional-service còn phải sàng lọc và đối chiếu blob. Chính sách upstream_pr_recovered_v1 hiện vẫn train-only; chưa nới cho heldout hoặc gọi đó là benchmark F2P/P2P.
