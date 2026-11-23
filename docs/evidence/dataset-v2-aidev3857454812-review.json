@@ -1,0 +1,51 @@
+{
+  "reviewed_at": "2026-11-24T03:34:10+07:00",
+  "sample_id": "aidev-3857454812",
+  "run_id": "reproduce-20261123T201622155100Z",
+  "role": "validation",
+  "assessment": {
+    "run_id": "reproduce-20261123T201622155100Z",
+    "evidence_hashes": {
+      "manifest.json": "284468171405bbfc50472070c48e930be7bcd170dbd9a813ae3c0b0d63bcaa4a",
+      "license-evidence.json": "60f564532088fcf6f31c22046c82ef521c6ca55badff02061c2236c35750eeff",
+      "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+      "historical-base.stdout.txt": "c518e93ba0ef59490fde6cbac6c8c1896af13f73ca3ea5b94c4e9d4eada6bce4",
+      "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical-base.junit.xml": "9347e4ff90397d55160df84701bbf92116206d98f822bbd39e6554fcdbac9a65",
+      "historical-fixed.stdout.txt": "9a395ae88ad7d4eae01fcebc3bc557778ba18840a825e4edfe29c2bce8659542",
+      "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical-fixed.junit.xml": "f326f1e01f132f67984b32e70514c6e1718fdedac86e87a1aee9be3f46706847"
+    },
+    "quality": "silver",
+    "disposition": "include",
+    "cause_type": "syntax",
+    "confidence": "high",
+    "locations": [
+      {
+        "file": "19build_updated_v6.py",
+        "function": "load_icon"
+      }
+    ],
+    "unparseable_definitions": [
+      {
+        "file": "19build_updated_v6.py",
+        "function": "load_icon"
+      }
+    ],
+    "missing_definitions": [],
+    "mechanism": "The fallback try statement at308 is indented eight spaces but its icon assignment at309 stays at eight, leaving the try suite empty. The original one-line repair dedents try to four spaces, matching the assignment/except structure.",
+    "evidence_reason": "Saved Python3.11 compilation reports expected an indented block after try at308, pointing at309; fixed compilation passes. load_icon header287 and its entire preceding prefix are unchanged.",
+    "limitations": "Owned compilation only: no Tk/Pillow import, icon loading, GUI behavior or historical CI run. PR author identifies repair authorship, not original fault actor.",
+    "label_source": "agent_code_patch_and_saved_execution_review",
+    "actor": "unknown",
+    "human_confirmation": "pending",
+    "gold": "pending",
+    "training_eligibility": "pending",
+    "input_leakage_review": "Frozen v4 failing source/log only; PR metadata, repair and assessment excluded. Natural source comments are not automatically answer leakage."
+  },
+  "assessment_sha256": "92a764b6f675304e2e5bfbb9d4aa0b8a1313085689aad58707a7af331eb0d405",
+  "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3857454812",
+  "manifest_sha256": "516f4611e39ab8efb2f7a97a0e153e65c7963434b504e2b7da406b04dd606f19",
+  "reference_location_retrieved_before_token_crop": true,
+  "qualification": "One new silver prototype, not final selection, gold or training approval. No model/source execution during review; compile-only source is not a generator seed."
+}

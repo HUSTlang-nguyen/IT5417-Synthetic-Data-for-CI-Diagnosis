@@ -1,0 +1,33 @@
+{
+  "schema": "v2-source-role-supplement-v1",
+  "created_at": "2026-11-24T03:09:41+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "repo_roles": {
+    "bartoszskarbek-pixel/pdf-renamer": "validation"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3857454812",
+      "repo": "bartoszskarbek-pixel/pdf-renamer",
+      "role": "validation",
+      "base_commit": "07f14b93148b24e531191b66145a119b03dab4ee",
+      "upstream_head": "d690ddc3f933d23d46204b6538b56123f6310137",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "19build_updated_v6.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3857454812-ds2-compile-proj",
+      "case_sha256": "8d6241b3d1c1d3769522e2d35c10076dbf136e683a5b2bd0533374b31291bac4",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "repo_provenance": {
+    "bartoszskarbek-pixel/pdf-renamer": {
+      "pr_metadata": ".cache/dataset-v2-aidev-projected-compilation-probe/3857454812/pr.json",
+      "pr_metadata_sha256": "6cd42f06eb05c5d50293b0f72a28bf3f4e14f19d45a1dfd2b08a14a3b7be093e"
+    }
+  },
+  "qualification": "Previously screened identities, original role proposals honored before execution. Owned compilation only; no labels or upstream CI claim. Failed preparations not trialed."
+}

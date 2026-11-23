@@ -1,0 +1,680 @@
+{
+  "checked_at": "2026-11-24T06:54:06+07:00",
+  "worklist": "data-manifests/dataset-v2-aidev-dependency-screen-worklist20.json",
+  "worklist_sha256": "333fc4bc2e3a04e1cd7fac68d136675c87c2f9b37a0e81f91e30ecb8d3066116",
+  "requested": 20,
+  "attempted": 20,
+  "unattempted": 0,
+  "results": [
+    {
+      "dataset_id": 3328279754,
+      "repo": "AlexBomber12/AWA-App",
+      "pr": 222,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:27+07:00",
+      "source_record_sha256": "e177c2015f9d1c732566a9e9f8df47fd8e64dd13dd53796e0f750ed4f0aab1a8",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3328279754/repo.json",
+          "sha256": "b9e14da579e1f8fb81b5a16e52ff12a0737d6675a329938b4731d3dd3685e710"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3328279754/pr.json",
+          "sha256": "34c87741b7738febba9e1d47e2a018d1a77936fc023c5ddb6c68aec97bc885c0"
+        }
+      },
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "AlexBomber12/AWA-App",
+      "base": "144123e9be592a5485f3ee0e01a5d89fe2015398",
+      "head": "c47319c4f59a71e3bb8a9060d79e340b3d5966ed",
+      "changed_files": 133,
+      "merged_timestamp_matches": true,
+      "decision": "defer_large_patch",
+      "finished_at": "2026-11-24T06:53:28+07:00"
+    },
+    {
+      "dataset_id": 3563277316,
+      "repo": "AlphaWhalez/Whalez-AI",
+      "pr": 30,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:28+07:00",
+      "source_record_sha256": "44db48301349f165edd1af7c3c0c582dacb63b5faa009e80f30642f17e29ef79",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3563277316/repo.json",
+          "sha256": "97364edb35d62871a052da07979d6cabc87f3de89ca199656a86fe47d7b94be9"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3563277316/pr.json",
+          "sha256": "20284637f943b5341a8fa1f2a7b50dddf0c8ef41a47f3aaa33481d2cfa44c7a4"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3563277316/files.json",
+          "sha256": "c0422d7f90f68eb53fd789c1d53b5c31771b95119d752abf16f49892b7365240"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "AlphaWhalez/Whalez-AI",
+      "base": "78540aad08f396fd5d0b420ed0c3a7c4a8593db8",
+      "head": "f353a7185718ccee5ef38b4b0f206d87b491c62f",
+      "changed_files": 3,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "web/package-lock.json",
+        "web/package.json",
+        "web/src/api.js"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:30+07:00"
+    },
+    {
+      "dataset_id": 3946813500,
+      "repo": "Bigdaddy1990/pawcontrol",
+      "pr": 1237,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T06:53:30+07:00",
+      "source_record_sha256": "654c778ebc3fd8654298ab196dbd8875b2c8140736f8b919c8fc27001144272f",
+      "artifacts": {},
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 404
+      },
+      "finished_at": "2026-11-24T06:53:31+07:00"
+    },
+    {
+      "dataset_id": 4023568668,
+      "repo": "defffis/Open-ipa-Library",
+      "pr": 5,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:31+07:00",
+      "source_record_sha256": "989f3a62ac82ecb3944cfbc4fe3251c4244a6bf8e90df4158ab0e1d3118daf6c",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4023568668/repo.json",
+          "sha256": "1dc3b2cdb8cbaba2904d8c14e0687321170713aca7cdb9e98f0c5fadb2463cb1"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4023568668/pr.json",
+          "sha256": "cdc64f7687eb9de348f033fda81948bd897ee22e0c733bc904d9657268a58b95"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4023568668/files.json",
+          "sha256": "cb27e437fa22732b69e826815928dc859ce102458d43b61858e8bc0b760d59a7"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "defffis/Open-ipa-Library",
+      "base": "310883dbc63963fb3ebd703618c7ad0281868895",
+      "head": "2baf18b0e631ac859aabff633df14aba32c61380",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "src/app.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:33+07:00"
+    },
+    {
+      "dataset_id": 3146316413,
+      "repo": "doodmeister/slm",
+      "pr": 4,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T06:53:33+07:00",
+      "source_record_sha256": "e7ec9dcb4974dc75b84df8ec4359715331e628b5b4fcdf857c42020c2560dbfc",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3146316413/repo.json",
+          "sha256": "c9bc3f0ac011f3f12364f612274d05ae5ec1e3fbb69398d10ba7d80338894159"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3146316413/pr.json",
+          "sha256": "7eb90f01ba5dba9fe922ac6cae4357a2d7810cd189b8b1268ce0d7bcf843868f"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3146316413/files.json",
+          "sha256": "6fab543c7d8885e077cbf1c03854978f530f0448616a842c9a7d91b5e8379f3c"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "doodmeister/slm",
+      "base": "15cb87748de8047f0999e6c7224d6489b0b4f453",
+      "head": "395a501502923657432d37de39272901c9b7ed56",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:34+07:00"
+    },
+    {
+      "dataset_id": 3122497433,
+      "repo": "DylanLRPollock/Monkey-Head-Project",
+      "pr": 26,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:34+07:00",
+      "source_record_sha256": "98cd4a664f8790f8a4d83906e27e69e8e36a70a5586835323d7f49b72caa3a99",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3122497433/repo.json",
+          "sha256": "61119515ae317291ca9972ce2c20ad78c00991f5989c4e2d752917e2b6c75300"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3122497433/pr.json",
+          "sha256": "ab022dba70c0943865608410e447efa6184ea325d0d2ed539a2881098aa6b43a"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3122497433/files.json",
+          "sha256": "566e8a97f33a3d9abcb8f8d5e8e66ee528d198933c6ffca9b969b356e29176a0"
+        }
+      },
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "DylanLRPollock/Monkey-Head-Project",
+      "base": "00c9e4b50e99ff3349ce7999b7b47b12b42c06c7",
+      "head": "88fb0234b41705720b55b7b4a3fc0333d3392f0c",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "setup.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:36+07:00"
+    },
+    {
+      "dataset_id": 3460751539,
+      "repo": "eotter-beep/devicemanager",
+      "pr": 2,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:36+07:00",
+      "source_record_sha256": "e30353a1ba0df1307fd534d0b88a5deffa0ffae995eb325960b2ce709cb432d1",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3460751539/repo.json",
+          "sha256": "3cf3eaedd7702f9180fc5d665384c3ef1492dae0af63062e44960fae5a587629"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3460751539/pr.json",
+          "sha256": "2e9ffef2f966f532e044a0d6b19fdf29bbe03fc44e2be92b5a583abbdb21327f"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3460751539/files.json",
+          "sha256": "cb721bf7902147e17de8cbe72cc1b9cc6af630d81144c4454a3ea59b17efbf32"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "eotter-beep/devicemanager",
+      "base": "6161423ca2bc473d5db38b321dc9b87f0c22272f",
+      "head": "3f853eecc5ad18221822db0b6d3df83ac35777e1",
+      "changed_files": 2,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "README.md",
+        "installer.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:38+07:00"
+    },
+    {
+      "dataset_id": 3126899461,
+      "repo": "fuzzylabs/capsule-mcp",
+      "pr": 10,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T06:53:38+07:00",
+      "source_record_sha256": "3ad1e7e1f40da419b732947b216edd80e7f40dcdb25607036242115bae6660db",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3126899461/repo.json",
+          "sha256": "c2a9e823a7f4599b386cf21e557cda2635156d4b7f3d3d0a638b408a77af75fb"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3126899461/pr.json",
+          "sha256": "d86ba0d464ebf2fdbc61a07d9afdaa05a255284bd950b5913114ee14b47fd13b"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3126899461/files.json",
+          "sha256": "e8e785ecc72736f011d575f789383bd82dbe743b187c8d5f95d3dab455ec44f0"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "fuzzylabs/capsule-mcp",
+      "base": "734a123a7ce8995fae881497d574f694f5c2683d",
+      "head": "2323b63308ced456350a164ef7a173586c4ac4cd",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "pyproject.toml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:41+07:00"
+    },
+    {
+      "dataset_id": 3262445674,
+      "repo": "jacobvoss/geopolitical-dashboard",
+      "pr": 1,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T06:53:41+07:00",
+      "source_record_sha256": "67d99584307120efc3c44e30a65c56c82d54af21b82dafdf82f9047320dd56aa",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3262445674/repo.json",
+          "sha256": "087e986c2a4cdbba60beb8b5530cc1982758c6e41196dce92fd5f28d7b51da49"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3262445674/pr.json",
+          "sha256": "7fea81bf7389332769ad77ee002c99ae230831c58dfaeecfed18a31ab7c21179"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3262445674/files.json",
+          "sha256": "256407e2694a701f742011cfafb613834a55b3449062d7d2538488cb74950ded"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "jacobvoss/geopolitical-dashboard",
+      "base": "a6a6f6ca379a283e9ced303ca79e675e258009d8",
+      "head": "9bc515b120c92992198b15f0189b26b105836504",
+      "changed_files": 2,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "README.md",
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:43+07:00"
+    },
+    {
+      "dataset_id": 3164784768,
+      "repo": "jcval94/yahoo",
+      "pr": 18,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:43+07:00",
+      "source_record_sha256": "d73637e081a6412f2f485ae5c25db096f826c72fcc1b276728c589d55bf19caa",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3164784768/repo.json",
+          "sha256": "3e2435cb1ac9b10f21c10da5b862bd9990eebfe0ad766b00d8557a6403a704c7"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3164784768/pr.json",
+          "sha256": "f831ce4088bf15dd671cb5c735c8dff6f414715971c2edb409e66594fcd4f137"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3164784768/files.json",
+          "sha256": "553d968ab7d8d16940444048faf3a0a0e154c25f47266b71e08b0e2423e05e7b"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "jcval94/yahoo",
+      "base": "52527f4406ce5a58e935caca14174ab71e0c51fe",
+      "head": "513bdb47cfae24d0c17cc45236d3a35db5407306",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:45+07:00"
+    },
+    {
+      "dataset_id": 3116401639,
+      "repo": "kaveeshagim/ai-content-creator-agent",
+      "pr": 5,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T06:53:45+07:00",
+      "source_record_sha256": "7d2bcf26c9fc3bba5d84384305aa88ca67a6c2d3885f521a1fa9772f85eede9d",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3116401639/repo.json",
+          "sha256": "620f32f50cf4ca9ae5dfc0918e3db264865a875ebee363ce9eb3ac4767c5f5e3"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3116401639/pr.json",
+          "sha256": "3514676b2744add8e0692ee84c6a54334ec0542bfc2a9bfec9ce1634af633e09"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3116401639/files.json",
+          "sha256": "b30551b4b1a63d1163a4a3c2afac61b3a5a1b36badc7769c73c7193bbac77372"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "kaveeshagim/ai-content-creator-agent",
+      "base": "37e736a19da9dc34c2355bb622aa23935cdb7760",
+      "head": "26b78876d5b74af097e184bddcc143fe857c1a98",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:47+07:00"
+    },
+    {
+      "dataset_id": 3947510058,
+      "repo": "KleinerBaum/Miris-Mikroabenteuer-Guide-2026",
+      "pr": 81,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:47+07:00",
+      "source_record_sha256": "4b287ef4cbb90c656fc7543c2db8a720233d4e79e8d95bff679cc256eef427cf",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3947510058/repo.json",
+          "sha256": "3fbfa6988225489a533d5fd50380d6674ab2b670ab68a529bcd2ec377146e566"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3947510058/pr.json",
+          "sha256": "c5f2f08ac7cfa75550b8906bc2b8a460d73cf1ddeebb8dae34f7e64b0b96faf5"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3947510058/files.json",
+          "sha256": "14da866d3bd7812d9b2706ad1f0906019221e4426fb152b185bcb18c04f0a2ac"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "KleinerBaum/Miris-Mikroabenteuer-Guide-2026",
+      "base": "b5261d16beb58201b4a7d3580b7cf13a953c02a9",
+      "head": "f2aad58aa9299333bbaf3a45a4671eb80f20ca9d",
+      "changed_files": 5,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "CHANGELOG.md",
+        "Dockerfile",
+        "README.md",
+        "requirements.txt",
+        "tests/test_import_smoke.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:49+07:00"
+    },
+    {
+      "dataset_id": 3245261050,
+      "repo": "nyacly/runyoro-llm-data-pipeline",
+      "pr": 10,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T06:53:49+07:00",
+      "source_record_sha256": "f0b470133320c06cfb9976d5fbb91211b9f07efbda0bf737c71aa347917e8ffd",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3245261050/repo.json",
+          "sha256": "e160a26d6a777aef4cef2cd6f29785129046203eb69ea39814e1017ee2c41723"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3245261050/pr.json",
+          "sha256": "9a3c571b112e43287a3804dfaee55ae6fdf5d54033dea39c98683b71f684a3fe"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3245261050/files.json",
+          "sha256": "621868a42b9f684dd9a25968a65fccbb3746816c6de8959d1ad4260846dd1096"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "nyacly/runyoro-llm-data-pipeline",
+      "base": "55b674d2c7c2e3a5ea7cdf8c6314012540d9ab88",
+      "head": "d61fe4c510e699c4d4a29ba5807122b00daee096",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:52+07:00"
+    },
+    {
+      "dataset_id": 4005390637,
+      "repo": "obinexusmk2/pyics",
+      "pr": 1,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T06:53:52+07:00",
+      "source_record_sha256": "a747b7984edd52c573d488c22b0246a927b5a3bc545da48d0954a35aec78b6bb",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4005390637/repo.json",
+          "sha256": "845011978ed08290ec927a35881a2bfff0d8b96d59dcc93cf91550e3f6049224"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4005390637/pr.json",
+          "sha256": "2088152ef4ac7089b4b2b52be24b30e87cbe03a1887cf839ab03166fbb8a806a"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4005390637/files.json",
+          "sha256": "01be5f0030ebc144ade4e30b017301f5bafd2f88af7fe94fc61abb6af80abd83"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "obinexusmk2/pyics",
+      "base": "bea72e2896cf105705d726919ad3710d6252c7ef",
+      "head": "85b8b9ecad3d7ff46dc41bb5b768e1523325a891",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "pyproject.toml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:54+07:00"
+    },
+    {
+      "dataset_id": 3760272404,
+      "repo": "Organization5762/heart",
+      "pr": 429,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T06:53:54+07:00",
+      "source_record_sha256": "22c77d856b5997de8b5cef6ee3677334e75238e8d65c0918bb5d13afca1307e6",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3760272404/repo.json",
+          "sha256": "67605337d97dfbf6c3516bd731698428fafae682efd500c550a69f88a3dcb30d"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3760272404/pr.json",
+          "sha256": "f2fab18efb113f454ca6279a9b4aa563d5d940d1a0e7bc2ca6eae7626749b860"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3760272404/files.json",
+          "sha256": "898a1b3c63338f9f3e0bb3eeae7bd8c352b57756453c0e141a96ce20db009ea6"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "Organization5762/heart",
+      "base": "f2a9edc607c9cf063e054fd45dd747a2faddd3d7",
+      "head": "5e176b19871020520b6376d0d31dab52b2b7755b",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "pyproject.toml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:56+07:00"
+    },
+    {
+      "dataset_id": 3557743746,
+      "repo": "RNA4219/katamari",
+      "pr": 462,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T06:53:56+07:00",
+      "source_record_sha256": "f9a4f6a191f6e769af24615db120c52d04d011ae88853bc4cb1140a360d30c13",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3557743746/repo.json",
+          "sha256": "26ab517a993edf1e673aea173901bd9ca5e4d81c98a052b1dab6f96e6513131c"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3557743746/pr.json",
+          "sha256": "9be78cdaae52f9d02f31e0f51267357207a3435de20c19c70ca51d9d372abbd6"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3557743746/files.json",
+          "sha256": "4a613234f459922268669a8af1cc79e8dcfbd9b97b29293ff9e4b2d5c3b2924f"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "RNA4219/katamari",
+      "base": "8f5bd6d186ab9c504ded8cf1cb71b294917d5093",
+      "head": "05281438fc51e8b0e91879507af6143be7041662",
+      "changed_files": 2,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "src/providers/openai_client.py",
+        "tests/providers/test_openai_provider_stream.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:53:58+07:00"
+    },
+    {
+      "dataset_id": 4019753268,
+      "repo": "sandeepsn1997/OpenPaw",
+      "pr": 6,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:53:58+07:00",
+      "source_record_sha256": "a8ce05aae65a02436c1c846927c0f5038bb012f6bf317986c1bef213d8727789",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4019753268/repo.json",
+          "sha256": "5fb33b5106211df0ce67f5339ae2013bf3b5c3c9a793dd5931b4a0d8f4722a59"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4019753268/pr.json",
+          "sha256": "21c3b38df85be569a5084bd6aa152039829e2bab61a192626c1695cbae3243da"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4019753268/files.json",
+          "sha256": "7bd92995d27017e0b788d77c4f15b06216c48f0f3da33c09e90e702e2a387bd6"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "sandeepsn1997/OpenPaw",
+      "base": "ac818662e0ead0eafdc32317d5c39df66630cbd1",
+      "head": "92bf9476c2fc84db772ea0f0e228ef5a8df666c7",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:54:00+07:00"
+    },
+    {
+      "dataset_id": 3249789883,
+      "repo": "swerb420/grok721",
+      "pr": 14,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:54:00+07:00",
+      "source_record_sha256": "2c5cf73450f5e2fb66cdf3bf5cb41446cea4b3e7d46c14157205e6b9f3e1c485",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3249789883/repo.json",
+          "sha256": "5988273bb4bf1f2e7e8a10301652ae531f6eab29f6bc6d0afac377952fec2aec"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3249789883/pr.json",
+          "sha256": "7d6d432f6a93317149d35e1db7ffb9fc173052753ca55a306c6f9cf85ef77d92"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3249789883/files.json",
+          "sha256": "46f7d11dd07497fee9d23a6da5460603ab97d7593e35e482c68663c3c07fb04b"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "swerb420/grok721",
+      "base": "f439df12958eacf3173f0384c5a4481b7454e88c",
+      "head": "1c31e7a035005037a187d521cfc880a6cf1b2b28",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:54:02+07:00"
+    },
+    {
+      "dataset_id": 3985713186,
+      "repo": "tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM",
+      "pr": 115,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T06:54:02+07:00",
+      "source_record_sha256": "e26faf67bdd3417d92e18f107393f0b8c18e3beabc5a7d867030c3cb4334c3e2",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3985713186/repo.json",
+          "sha256": "42351d7e7dfdc0348b268cd68708542e7cabdfc4e7799a6e4ac7fe7e94abbfd8"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3985713186/pr.json",
+          "sha256": "facb6d38d60e5a0cad33ea56c18fce7ce03108a3ce043717c1fff76b7975a9c3"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3985713186/files.json",
+          "sha256": "17cba103c89a04744359d8b6f2155dfba13571baea66987092d52c38317d0cb9"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM",
+      "base": "531d5c9d223d40b284342b3ecf937f9bd8788afe",
+      "head": "aa60097a896e6a6a75390e51867dc0d9456e4c6e",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "pyproject.toml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:54:04+07:00"
+    },
+    {
+      "dataset_id": 3120908793,
+      "repo": "tsilva/parsehealthlog",
+      "pr": 1,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T06:54:04+07:00",
+      "source_record_sha256": "6430307576aea8b2452f230828143db5116d7b4b677ce87b5b7e8fc5d4b0d142",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3120908793/repo.json",
+          "sha256": "ccb3bfb839dbbc2a5bf8b3671d4f6c4693818c6db8f6e899225640e52b32188b"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3120908793/pr.json",
+          "sha256": "aaf69415fae888d01a89e544b45768f8c92d72c114fc4b246217d3179017528c"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3120908793/files.json",
+          "sha256": "10099d52cb88f76db2bbca551d573942fa400885dc68287176cf1b8db95ed4bf"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "tsilva/parsehealthlog",
+      "base": "72731e78c89347b19427a566936758b5925a5c8c",
+      "head": "c2e36e4a70324916c6923bfc0e84e3a9ce65662b",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T06:54:06+07:00"
+    }
+  ],
+  "decision_counts": {
+    "defer_large_patch": 1,
+    "candidate_requires_causal_harness_and_pinned_license_review": 18,
+    "metadata_http_error": 1
+  },
+  "stop": null,
+  "model_calls": 0,
+  "qualification": "Provenance/patch metadata only; titles and missing imports do not establish dependency fault labels. No execution, pinned-base license approval, gold labels or historical CI claims."
+}

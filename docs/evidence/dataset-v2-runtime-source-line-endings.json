@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-11-24T06:50:10+07:00",
+  "sources": [
+    {
+      "source": "ci_demo/data_study.py",
+      "runtime_sha256": "7a0901174313e965cb8b288c289576d49b1a4523def001d1d956da64875e9526",
+      "git_lf_sha256": "6fcee3f383b747b81b5bea4cf78230adc5008d0f36b8d853c9d74117f774d439",
+      "snapshot": ".cache/dataset-v2/implementation-snapshots/7a0901174313e965cb8b288c289576d49b1a4523def001d1d956da64875e9526/ci_demo/data_study.py",
+      "crlf_count": 130
+    },
+    {
+      "source": "ci_demo/dataset_experiment.py",
+      "runtime_sha256": "5f7c359e6ac95040dad8a8537383942d08dd9ae752139906492dc83ab13d3c4e",
+      "git_lf_sha256": "75d3761775b6993321f1d9e696017c2203e8d5763c666b752bd1bee1a3db8d75",
+      "snapshot": ".cache/dataset-v2/implementation-snapshots/5f7c359e6ac95040dad8a8537383942d08dd9ae752139906492dc83ab13d3c4e/ci_demo/dataset_experiment.py",
+      "crlf_count": 193
+    },
+    {
+      "source": "ci_demo/experiment.py",
+      "runtime_sha256": "6b5231d13be592002deb719dbcd31d48adc8cfb4826bd73d2efcd534d3577c9b",
+      "git_lf_sha256": "c0270f8ececc6ae94b34647b8a141cb5b4df327a2f50db352fa4d80739973d2d",
+      "snapshot": ".cache/dataset-v2/implementation-snapshots/6b5231d13be592002deb719dbcd31d48adc8cfb4826bd73d2efcd534d3577c9b/ci_demo/experiment.py",
+      "crlf_count": 181
+    },
+    {
+      "source": "ci_demo/multicase.py",
+      "runtime_sha256": "926704e12a4868a78b0255f554426178fdc0b2d6e88ae15ef81b6791b37cb9c6",
+      "git_lf_sha256": "926704e12a4868a78b0255f554426178fdc0b2d6e88ae15ef81b6791b37cb9c6",
+      "snapshot": ".cache/dataset-v2/implementation-snapshots/926704e12a4868a78b0255f554426178fdc0b2d6e88ae15ef81b6791b37cb9c6/ci_demo/multicase.py",
+      "crlf_count": 0
+    }
+  ],
+  "no_reserved_operations": true,
+  "qualification": "Runtime bytes retained in ignored hash-addressed snapshots before LF normalization for Git; no semantic change or experiment replay. Later operations bind the normalized hashes."
+}

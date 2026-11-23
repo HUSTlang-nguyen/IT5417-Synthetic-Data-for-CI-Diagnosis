@@ -1,0 +1,59 @@
+{
+  "created_at": "2026-11-24T03:09:41+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train",
+    "IMOGI-ITB/Payroll-Indonesia": "validation",
+    "TonyDeRosia/evennia-minimud": "train",
+    "MelkorBalrog/AutoML": "validation",
+    "x-CK-x/Dataset-Curation-Tool": "train",
+    "tinystork/zeseestarstacker": "test",
+    "MForofontov/pyutils-collection": "train",
+    "pypa/pip": "train",
+    "bartoszskarbek-pixel/pdf-renamer": "validation"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3857454812",
+      "repo": "bartoszskarbek-pixel/pdf-renamer",
+      "role": "validation",
+      "base_commit": "07f14b93148b24e531191b66145a119b03dab4ee",
+      "upstream_head": "d690ddc3f933d23d46204b6538b56123f6310137",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "19build_updated_v6.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3857454812-ds2-compile-proj",
+      "case_sha256": "8d6241b3d1c1d3769522e2d35c10076dbf136e683a5b2bd0533374b31291bac4",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Pinned local compilation source trials only. Roles fixed before outcomes; no generation; labels require actual evidence review."
+}

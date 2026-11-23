@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-11-24T03:09:41+07:00",
+  "outcomes": [
+    {
+      "source_case_id": "aidev-4038888973",
+      "repo": "LSB-Helsinki/scripts",
+      "role": "train",
+      "metadata_only": true,
+      "status": "preparation_failed_no_trial",
+      "error": "ValueError('Pinned source license missing; no trial')"
+    },
+    {
+      "source_case_id": "aidev-3857454812",
+      "repo": "bartoszskarbek-pixel/pdf-renamer",
+      "role": "validation",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3857454812-ds2-compile-proj",
+      "source_blobs": {
+        "base": "92d5dd2774a95de6937969de4d44b05a5f629a81",
+        "head": "a5540cb596dd4499e1106be34003408c7a13aec6"
+      }
+    }
+  ],
+  "prepared": 1,
+  "qualification": "No source compiled/executed during preparation; no new eligibility identities or trial success asserted."
+}

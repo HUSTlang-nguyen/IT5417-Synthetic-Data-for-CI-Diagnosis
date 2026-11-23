@@ -2,13 +2,49 @@ from datetime import datetime
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock, MagicMock
+from contextlib import nullcontext
 from ci_demo.common import read_json, write_json, sha256
 from ci_demo.data_study import DataStudy, elapsed, tree_bytes
 from ci_demo.batch import BudgetStop
 
 
 class StudyTests(unittest.TestCase):
+    def test_collection_waits_for_metadata_scan_without_changing_learning_default(self):
+        from ci_demo.experiment import Experiment
+        for cls, seconds in [(Experiment, 30), (DataStudy, 120)]:
+            study = object.__new__(cls)
+            study.lock, study.manifest = Path('fixture.lock'), Path('fixture.json')
+            study._check = Mock(return_value=(None, 5))
+            with patch('ci_demo.experiment.batch_lock', return_value=nullcontext()) as lock, patch('ci_demo.experiment.read_json', return_value={}):
+                self.assertEqual(study.check('metadata'), 5)
+                lock.assert_called_once_with(study.lock, wait_seconds=seconds)
+
+    def test_storage_scan_handles_temporary_disappearance_but_not_permission_errors(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            present = root / 'present'
+            present.write_bytes(b'1234567')
+            gone_file = Mock()
+            gone_file.stat.side_effect = FileNotFoundError
+            stable_file = Mock()
+            stable_file.stat.return_value = present.stat()
+            gone_dir = Mock(path=str(root / 'gone'))
+            gone_dir.stat.return_value = root.stat()
+            scan = MagicMock()
+            scan.__enter__.return_value = scan
+            scan.__iter__.return_value = iter([gone_file, stable_file, gone_dir])
+            with patch('ci_demo.data_study.os.scandir', side_effect=[scan, FileNotFoundError]):
+                self.assertEqual(tree_bytes(root), 7)
+            denied = Mock()
+            denied.stat.side_effect = PermissionError
+            scan = MagicMock()
+            scan.__enter__.return_value = scan
+            scan.__iter__.return_value = iter([denied])
+            with patch('ci_demo.data_study.os.scandir', return_value=scan):
+                with self.assertRaises(PermissionError):
+                    tree_bytes(root)
+
     def test_union_and_unfinished_intervals_charge_without_budget_reset(self):
         state={'preledger_charge_seconds':300,'operations':{
             'a':{'reserved_at':'2026-01-01T00:00:00+00:00','finished_at':'2026-01-01T00:00:10+00:00'},

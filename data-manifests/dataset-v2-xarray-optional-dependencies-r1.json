@@ -1,0 +1,55 @@
+{
+  "created_at": "2026-11-24T02:20:08+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test"
+  },
+  "selected": [
+    {
+      "source_case_id": "pydata__xarray-2905",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "7c4e2ac83f7b4306296ff9b7b51aaf016e5ad614",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/variable.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_variable.py"
+      ],
+      "repair_bytes": 529,
+      "f2p_count": 1,
+      "p2p_count": 364,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydata__xarray-2905-ds2-optional-r1",
+      "case_sha256": "d274230f234f8a037ea77f10c02259380205445f06bea311a23cdbb151976040"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Saved base/fixed F2P both satisfy expectations, but P2P rank_dask_raises/rank/as_sparse are skipped for missing bottleneck/sparse. Add those optional dependencies with compatible pinned numba runtime; preserve original source, tests, IDs, commands and matching. One explicit environment correction, no blind retry or skipped-test acceptance.",
+  "parent_execution": "reproduce-20261123T191355897006Z",
+  "environment_only": true,
+  "execution": "not_started"
+}

@@ -111,7 +111,8 @@ def reproduce(experiment, plan, *, limit=None):
                     raise RuntimeError("Uncertain interrupted operation; inspect artifacts, do not replay: " + operation)
                 continue
             counts = summary(experiment, plan)["by_role"][row["role"]]
-            if counts.get("strict_reproduced", 0) >= plan["targets"][row["role"]]:
+            # V2 still needs fault curation, deduplication and class/repository quotas.
+            if not isinstance(experiment, DataStudy) and counts.get("strict_reproduced", 0) >= plan["targets"][row["role"]]:
                 continue
             state = read_json(experiment.manifest)
             if any((r.get("result") or {}).get("historical_supported") and
@@ -178,7 +179,7 @@ def main():
         experiment = DataStudy(read_json(CACHE / 'dataset-v2-active.json')['run_id'])
     else:
         experiment = active_experiment()
-    with batch_lock(experiment.lock, wait_seconds=30):
+    with batch_lock(experiment.lock, wait_seconds=experiment.metadata_lock_wait_seconds):
         plan = freeze_plan(experiment, ROOT / args.plan)
     plan["_locked_plan_sha256"] = sha256(ROOT / args.plan)
     try:

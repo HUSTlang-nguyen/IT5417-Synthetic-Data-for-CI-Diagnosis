@@ -19,6 +19,28 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_conflicting_bootstrap_pins_fail_before_build(self):
+        case = config()
+        case['pytest_version'] = '6.2.5'
+        multicase.check_bootstrap_pins({**case, 'dependencies': multicase.bootstrap_dependencies(case)})
+        for requirement in ['setuptools==57.5.0', 'wheel==0.37.1', 'pytest==7.4.4']:
+            with self.subTest(requirement=requirement), self.assertRaisesRegex(ValueError, 'bootstrap pin'):
+                multicase.check_bootstrap_pins({**case, 'dependencies': [requirement]})
+        multicase.check_bootstrap_pins({**case, 'dependencies': ['setuptools-scm==7.0.5']})
+        historical = {**case, 'dependencies': ['setuptools==57.5.0']}
+        multicase.validate_case(historical)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_json(root / 'cases/example/case.json', historical)
+            from ci_demo import common
+            with patch.object(common, 'ROOT', root):
+                self.assertEqual(common.case_config('example'), historical)
+            with patch.object(multicase, 'checked') as command:
+                with self.assertRaisesRegex(ValueError, 'bootstrap pin'):
+                    multicase.prepare_case(historical, root / 'evidence')
+                command.assert_not_called()
+                self.assertFalse((root / 'evidence').exists())
+
     def test_pinned_git_fixture_is_self_contained_and_detects_tampering(self):
         import subprocess
         with tempfile.TemporaryDirectory() as tmp:

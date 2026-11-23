@@ -44,6 +44,18 @@ def safe_relative(value):
     return value
 
 
+def bootstrap_dependencies(case):
+    return ["setuptools==75.6.0", "wheel==0.45.1", "pytest==" + case.get("pytest_version", "7.4.4")]
+
+
+def check_bootstrap_pins(case):
+    bootstrap = {p.split('==')[0]: p.lower() for p in bootstrap_dependencies(case)}
+    for package in case.get('dependencies', []):
+        name = package.split('==')[0].lower()
+        if name in bootstrap and '==' in package and package.lower() != bootstrap[name]:
+            raise ValueError('Dependency conflicts with fixed bootstrap pin: ' + package)
+
+
 def validate_case(case):
     if case.get("runner_kind") != "python-source-v2" or case.get("split") != "development":
         raise ValueError("Only registered development cases are supported")
@@ -281,6 +293,7 @@ def prepare_git_fixture(case, repo, work, evidence, guard=None):
 
 def prepare_case(case, evidence, guard=None):
     validate_case(case)
+    check_bootstrap_pins(case)
     identity = hashlib.sha256(json.dumps(case, sort_keys=True).encode()).hexdigest()[:16]
     work = CACHE / "case-contexts" / case["case_id"] / identity / evidence.name
     work.mkdir(parents=True)
@@ -326,7 +339,7 @@ def prepare_case(case, evidence, guard=None):
     if case.get('local_compilation_check'):
         from .compilation import prepare
         compilation_harness = prepare(case, work, evidence)
-    dependencies = ["setuptools==75.6.0", "wheel==0.45.1", "pytest==" + case.get("pytest_version", "7.4.4"), *case.get("dependencies", [])]
+    dependencies = bootstrap_dependencies(case) + case.get("dependencies", [])
     install = ["/opt/venv/bin/pip", "install", "--disable-pip-version-check", *dependencies]
     dockerfile = ("FROM " + case.get("python_image", "python:3.11-slim-bookworm") + "\n"
                   "ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1\n")

@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-11-24T02:46:44+07:00",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "url": "https://huggingface.co/datasets/hao-li/AIDev/resolve/b8dc67df93e7c11f6f20c84129db7232eb1ec253/all_pull_request.parquet",
+  "parquet_metadata": {
+    "groups": 39,
+    "rows": 7685281,
+    "first_group_rows": 200000
+  },
+  "groups": [
+    {
+      "row_group": 1,
+      "rows_read": 200000,
+      "matches": 224,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    },
+    {
+      "row_group": 2,
+      "rows_read": 200000,
+      "matches": 277,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    }
+  ],
+  "candidate_rows": 501,
+  "unique_candidate_ids": 501,
+  "raw_index": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+  "raw_index_sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035",
+  "new_case_eligibility_reviews": 0,
+  "model_calls": 0,
+  "qualification": "Bounded column-projected discovery index, not full-file download or screened/approved samples. Full Parquet LFS hash is published upstream but not reverified by this partial read; provenance is pinned revision plus actual projected cache hash. Raw projections remain outside Git."
+}

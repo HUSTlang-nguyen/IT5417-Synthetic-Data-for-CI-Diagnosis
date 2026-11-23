@@ -1,0 +1,49 @@
+{
+  "recorded_at": "2026-11-24T02:56:01+07:00",
+  "worklist_sha256": "4d5875811d19f1deacdc35c4be5941a1c8d3fdcbaaeea7ca8dbab3d73923279a",
+  "requested": 20,
+  "attempted": 1,
+  "records": [
+    {
+      "dataset_id": 3185692251,
+      "repo": "arthurbraga9/Habits",
+      "pr": 20,
+      "proposed_role": "train",
+      "source_record_sha256": "20bc86716ddf27dd5df68bb7afaf4c261aa94d71ab1d114389021b143cf5651e",
+      "artifacts": {},
+      "started_at": "2026-11-24T02:56:00+07:00",
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 403
+      },
+      "finished_at": "2026-11-24T02:56:01+07:00"
+    }
+  ],
+  "stop": {
+    "http_status": 403,
+    "qualification": "Stop new requests, no retry; remaining worklist entries are unattempted"
+  },
+  "unattempted_ids": [
+    3267868238,
+    3425716093,
+    3459692136,
+    3766102274,
+    3786049174,
+    3802705854,
+    3807508689,
+    3809189024,
+    3857454812,
+    3915177126,
+    3919225568,
+    3942145121,
+    3966116117,
+    3974735846,
+    3978975167,
+    3985221923,
+    4020074028,
+    4038888973,
+    4097365016
+  ],
+  "candidate_count": 0,
+  "qualification": "Metadata/role proposals only. No new fault labels, pinned-license approval, reproduced source, model request or gold. Original records/API bodies remain ignored."
+}

@@ -1,0 +1,169 @@
+{
+  "created_at": "2026-11-24T02:29:43+07:00",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "source_role_lock": {
+    "path": "data-manifests/dataset-v2-source-roles.json",
+    "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da"
+  },
+  "records": [
+    {
+      "source_case_id": "gitpython-developers__GitPython-219",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "891b124f5cc6bfd242b217759f362878b596f6e2",
+      "source_version": "",
+      "product_files": [
+        "git/objects/util.py"
+      ],
+      "changed_product_lines": 5,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "0d6d101b098e318ea8e1456f9baa3f2948364d0b7025574f9c52068e6ee439dc",
+      "source_repair_sha256": "2f89d1d5ab78017294011ff7cd8c6dc640b756158c154df45d4224dc1148891c",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1314",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "8e226ed8865f0ad78cec6b83f0b5436ce11017bf",
+      "source_version": "",
+      "product_files": [
+        "git/util.py"
+      ],
+      "changed_product_lines": 6,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "f542d24d9d91124634f14c21959374c920479195730cf167a345699a56129ae6",
+      "source_repair_sha256": "2c74795c5630d7d75b01a8435287fb6b9764b5d67364cc1383c5ca06e9c10684",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-368",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "0900a51f986f3ed736d9556b3296d37933018196",
+      "source_version": "",
+      "product_files": [
+        "git/util.py"
+      ],
+      "changed_product_lines": 6,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "d67e62347fd6f3af4eaa6b443e54d2698363840de19f85b778fdbd50e7a7a5bd",
+      "source_repair_sha256": "762788375d2bc06ff7348ec9f029d388cc82954840e0f5cc7bbfbf7382f2904a",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-746",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "0857d33852b6b2f4d7bc470b4c97502c7f978180",
+      "source_version": "",
+      "product_files": [
+        "git/objects/util.py"
+      ],
+      "changed_product_lines": 7,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "c78c13c8be2adc83c450192d2384b547263398ddd9a1602275efc95b27cde3b8",
+      "source_repair_sha256": "49c03b210abefa2c989d89957d949d3bb948b6fd0ca05c906793eb9b94d5e9c0",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1240",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "e76b5379cf55fcd31a2e8696fb97adf8c4df1a8d",
+      "source_version": "",
+      "product_files": [
+        "git/util.py"
+      ],
+      "changed_product_lines": 11,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "d4adcdaab7b4a93d6295059d7c5753cfde0514d4b275b96b6a99cffee19d4a6c",
+      "source_repair_sha256": "904e0341188f8edddd206c47aafbd97052ea4a1135bf4fc270f339eb89baa7d4",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1547",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "cc92d5126b2fc80f7cc6866fc8f99b3ffb0189ae",
+      "source_version": "",
+      "product_files": [
+        "git/objects/util.py"
+      ],
+      "changed_product_lines": 35,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "8c3ffa3639e218002920cab174ae84a6c8b97f9fdf7369fa1aa4adf6f4015be7",
+      "source_repair_sha256": "9e448bcf3f69f0db5d636a6015acba16a705756465e741cbc88d907d0ee2b287",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-950",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "dfa0eac1578bff14a8f7fa00bfc3c57aba24f877",
+      "source_version": "",
+      "product_files": [
+        "git/config.py"
+      ],
+      "changed_product_lines": 41,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "c59f3ba0f3ffb43ad49b29fab207e2fe412e54507ef9eea3b5e1854368e4ba44",
+      "source_repair_sha256": "b840ea2b734680852c343fe85b4c894668ebb9736d413c85244315e9f4229e47",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1190",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "e62078d023ba436d84458d6e9d7a56f657b613ef",
+      "source_version": "",
+      "product_files": [
+        "git/refs/symbolic.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 1,
+      "canonical_record_content_sha256": "666312cecaa9cb6627738950f137c608928137637b19f7f441a33125923f6a64",
+      "source_repair_sha256": "834a7c46927be1255e3b7e19d12474795e1cb65ebb39b175b0d3ffa30860d7d4",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1214",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "651a81ded00eb993977bcdc6d65f157c751edb02",
+      "source_version": "",
+      "product_files": [
+        "git/cmd.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 1,
+      "canonical_record_content_sha256": "311a90b6b87a80f4a50b61e28bf723fd844c4d4a0c7d51f8e6f494501bd7f030",
+      "source_repair_sha256": "4fa0565677573c8090c996ec2ffd2086cd79d08bf09e85d391f170bce64aa4d4",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1263",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "17643e0bd1b65155412ba5dba8f995a4f0080188",
+      "source_version": "",
+      "product_files": [
+        "git/remote.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 1,
+      "canonical_record_content_sha256": "0fce94378923fb1ce0190b4ddeade6e966cb979683c91994f0744ef2b8765dbb",
+      "source_repair_sha256": "94ce185d6c85cf4ed1b3d8d4652f1725a82df57be7f1d57eb65d43ab8a4a743f",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    }
+  ],
+  "selected_count": 10,
+  "by_repo": {
+    "gitpython-developers/GitPython": 10
+  },
+  "eligibility_reviews": 10,
+  "prior_eligibility_reviews": 2556,
+  "eligibility_total_after": 2566,
+  "selection": "Existing frozen train repositories; unadmitted SWE train IDs without supplied tests; one production Python file, <=100changed lines; utility/config/dict/field path rank then change count then source ID, up to10perrepo. No outcome or label selection.",
+  "qualification": "Metadata screening only: no retrieved upstream test, proven license, environment recipe, reconstruction, label or final dataset admission. Original absent benchmark references remain absent. Original train rows stay in ignored cache."
+}

@@ -1,0 +1,304 @@
+{
+  "reviewed_at": "2026-11-24T03:18:53+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "pydata__xarray-2905",
+      "run_id": "reproduce-20261123T194000447039Z",
+      "role": "test",
+      "profile_parent_case_id": "pydata__xarray-2905-ds2-heldout3",
+      "assessment": {
+        "run_id": "reproduce-20261123T194000447039Z",
+        "evidence_hashes": {
+          "manifest.json": "1e9d6803b25f99b265873d4f13934682ace7fedac88179f7445737903722e2cb",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "d45d1405f20e1a4946a259df562b206679aceadfc16b7b0958fcbdbb24869830",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "a4b2565553ef636e786a76f09e30b7c63cfaec2f5025c460a9a975ca77689ad9",
+          "historical-fixed.stdout.txt": "f9aec1db6820e5e7ea19afc0aad2823ca27537526ba2dbc1f90fb26faa892db0",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "52fabb161d761e1c9c6a3d3981aaa3ce0feaffbc5ab5e3b0d4fbdd9eac462c3d"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/variable.py",
+            "function": "as_compatible_data"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The generic getattr(data, values, data) unwraps arbitrary objects exposing values as if they were pandas data. Their representation/dimensionality changes before Variable construction. The repair unwraps only Series/Index/DataFrame.",
+        "evidence_reason": "Saved unsupported-type regression raises a dimensions/ndim ValueError on base and passes fixed. The original issue describes unwanted object coercion; do not claim its separate lmfit example was executed.",
+        "limitations": "The parent already satisfied F2P but failed P2P due missing optional bottleneck/sparse. This one corrected environment satisfies all source references; old verdict/source/tests remain unchanged.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 observed source/log only. Repair, source issue and assessment remain outside input. Stacktrace and natural source comments are not automatic leakage."
+      },
+      "assessment_sha256": "203008668136512100a6da9f8c02923d9193a35943aa48ca2a28f6ce89feca02",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydata__xarray-2905",
+      "manifest_sha256": "d428a6f836e2fa6b0abc769a70f7004c8cd2f35b91ad4845a19c4190644612e3"
+    },
+    {
+      "sample_id": "pydata__xarray-4419",
+      "run_id": "reproduce-20261123T191723388342Z",
+      "role": "test",
+      "profile_parent_case_id": null,
+      "assessment": {
+        "run_id": "reproduce-20261123T191723388342Z",
+        "evidence_hashes": {
+          "manifest.json": "5ebaf67e2084b0587f21372d42def49104b12201d12dc2dc6d7531213483fbfa",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "5731795e4876f087f9d9173fb1de0f565a92301a060220a373f66f39b177153f",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "eb9731c7d2b810aee538b99bcae435680c10f706c1d500834afb7ee7f0b4f0cc",
+          "historical-fixed.stdout.txt": "44f54049ee72b505e2744a766cdc8452aade05361c459a766bf48b583a5936a6",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "2888c29ea268cf04a4867f83c2d9af5bf3ee5365bbd170a207761fddc9b40c62"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/concat.py",
+            "function": "_dataset_concat"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Merged variables are inserted into result_vars before the concatenated-variable loop. Existing nonconcatenated entries are not reinserted in first-dataset order, so output variable/dimension ordering changes. The repair pops/reinserts those entries during the same ordered traversal.",
+        "evidence_reason": "Saved order assertion obtains x instead of time; fixed passes. The changed lines belong to _dataset_concat, outside its inner ensure_common_dims helper.",
+        "limitations": "Ordering is the observed defect; no array-value corruption or performance measurement is inferred.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 observed source/log only. Repair, source issue and assessment remain outside input. Stacktrace and natural source comments are not automatic leakage."
+      },
+      "assessment_sha256": "616e7d5c3e9cd8da3f0e6df8b7dfedc05562ca84467bec3d1443fdb3b5bb7a16",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydata__xarray-4419",
+      "manifest_sha256": "715d1e3cc638a8530467e6252cf37b82d6c9f4dac75f9db5345846f146ee3704"
+    },
+    {
+      "sample_id": "pydata__xarray-3156",
+      "run_id": "reproduce-20261123T192008027050Z",
+      "role": "test",
+      "profile_parent_case_id": null,
+      "assessment": {
+        "run_id": "reproduce-20261123T192008027050Z",
+        "evidence_hashes": {
+          "manifest.json": "4f0cc93d0640d5a839415cf04f4a0ba9592f38c68635f2e21eb10e02309b5cae",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "c7e094de4bb53360e54643d7299bc72d88d2f72200b572fa566df6719f90dac3",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "51d89cdc6f4cce49c7f2ff73d883180785a2971c48e0b457c917ecd261dc9ba3",
+          "historical-fixed.stdout.txt": "8003829caee9994fdb5b59f5d4da083b883c67f3457425b3d0eb69acb64f634a",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "33a0e587a65163550be1b5b70cc704faf9bbbe36f52c577c8dc61658d9548ce2"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/groupby.py",
+            "function": "GroupBy.__init__"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The lookup branch accepts a zero-length grouping coordinate without an early validation error. Later operations can leak iteration behavior. The original repair rejects it with a descriptive ValueError immediately after lookup.",
+        "evidence_reason": "Saved F2P reports DID NOT RAISE ValueError; fixed passes with the length check. StopIteration is described by the source issue, not the exception observed in this saved test.",
+        "limitations": "Only the saved named-coordinate branch is proved; do not assert all possible empty-array group argument forms were checked.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 observed source/log only. Repair, source issue and assessment remain outside input. Stacktrace and natural source comments are not automatic leakage."
+      },
+      "assessment_sha256": "9dc8226bee2580110eb2a0f043aecc4472bf6e480e7d23450f593f6409fa129d",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydata__xarray-3156",
+      "manifest_sha256": "941c45b6ab40a56aae0c2644f63e4dc5fa3ba10baec7ed707b13ba080bb261d2"
+    },
+    {
+      "sample_id": "pydata__xarray-4802",
+      "run_id": "reproduce-20261123T192129520658Z",
+      "role": "test",
+      "profile_parent_case_id": null,
+      "assessment": {
+        "run_id": "reproduce-20261123T192129520658Z",
+        "evidence_hashes": {
+          "manifest.json": "095f35a168e64b6ca4c7a8db010e3a2f9dbe95b9e23d78c918a61e2d262aea06",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "9f1f40bbb6eeded5c6f6954c1d37891afb5a369f45d63721d4eef19e84f7192d",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "01e4e763233f8926174c12927580041b0407dbfd5901526b7809bb11528639cd",
+          "historical-fixed.stdout.txt": "20a4a636b99b625698199029d7329c72bd3e27be7f5d9fa62dfede09da31aa88",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "219018d2ba88e8f5916b7763be2c24f0b97fb0c7f218d5cadce5ef3cb529af06"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/coding/variables.py",
+            "function": "CFScaleOffsetCoder.decode"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "A positive np.ndim is treated as proof that scale_factor/add_offset implement ndarray.item. Length-one Python lists do not expose that method. The original repair converts the values to arrays before item extraction.",
+        "evidence_reason": "Saved parametrized regressions raise list has no attribute item; fixed passes.",
+        "limitations": "The claim concerns length-one encoding attributes; malformed longer arrays and broader CF compatibility remain outside the saved evidence.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 observed source/log only. Repair, source issue and assessment remain outside input. Stacktrace and natural source comments are not automatic leakage."
+      },
+      "assessment_sha256": "4553e4eb19aa438d6fbf66fd332f56145e357161f564ecca53e6e20194a345d2",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydata__xarray-4802",
+      "manifest_sha256": "ad722adbc826d1209e29066a9b99c99ae94406370820ff022f9d5bbd23b9895c"
+    },
+    {
+      "sample_id": "pydata__xarray-3406",
+      "run_id": "reproduce-20261123T192423156690Z",
+      "role": "test",
+      "profile_parent_case_id": null,
+      "assessment": {
+        "run_id": "reproduce-20261123T192423156690Z",
+        "evidence_hashes": {
+          "manifest.json": "2038c95e25d3dfd7ee3b61348a324df5bed1b288cc84fa525c66872440672a90",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "762eb1511a1a963e173086ddf14c0554b89f81e8aaa42022e6cb8ecddf02699e",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "78a822db2b71d3d5ac597b2669bda780f80cf66a5d8a4165412f4745e5ea564b",
+          "historical-fixed.stdout.txt": "0edfc312d413ef613ad44136a801a38e6d48862a529d5e4d7e46a97ad68b8f2f",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "4663b1e6cb346425371e1534f24a55d356f5a302f835930c2e0d2cf2687a4fb0"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/groupby.py",
+            "function": "GroupBy.__init__"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Null group labels are not removed consistently from grouping coordinates and source data. Group positions then refer to mismatched lengths during grouped application. The repair filters obj and group together before deriving unique groups.",
+        "evidence_reason": "Saved base raises IndexError index10 out of bounds for size9; fixed passes.",
+        "limitations": "The source issue uses a random example, but no new random experiment was run. Duplicate-coordinate rationale comes from the original where-based repair, not a separate measurement.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 observed source/log only. Repair, source issue and assessment remain outside input. Stacktrace and natural source comments are not automatic leakage."
+      },
+      "assessment_sha256": "37c5f58ba73c3ddb525c1a24359ba307f71c33f11ac9b202a6a92d4ce6975a09",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydata__xarray-3406",
+      "manifest_sha256": "2ab8e060003ca4c1dc955983dca0bfcf0ac4dfb21389ac734180cdaf1d63bba8"
+    },
+    {
+      "sample_id": "pypa__pip-10079",
+      "run_id": "reproduce-20261123T195025627828Z",
+      "role": "train",
+      "profile_parent_case_id": "pypa__pip-10079-ds2-upstream",
+      "assessment": {
+        "run_id": "reproduce-20261123T195025627828Z",
+        "evidence_hashes": {
+          "manifest.json": "119c53d1df55795da6c77fc41fe5e007e62f9f9cc31d382cc262442d3158e229",
+          "license-evidence.json": "b4836c3c2fb885310498c4cb41443e8fa9980dd04a449528ec9827ba532f7add",
+          "historical-base.stdout.txt": "db000209319fb254dbb49cc570f284f4a7baeee4735c84c0ed7d6d62deece561",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "af305f848e03e3ea7980f0aa08267772dec4b21c1d51675bbe70366fb85bfe73",
+          "historical-fixed.stdout.txt": "062218bf49ae8644abd51873a7c0b502eb155ac91805027170b3119d4b994c89",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "fb03dd7c153fe1d0a97121675f60e49312ac6a7e71df26669907a7173fa5f7b5"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/pip/_internal/models/link.py",
+            "function": "links_equivalent"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "URL equivalence is implemented as raw Link equality, so a redundant egg fragment makes two references to the same package compare unequal. The original repair compares normalized URL components while retaining meaningful hashes/subdirectories.",
+        "evidence_reason": "Saved drop-egg unit returns false and fails the truth assertion; fixed passes. The different-hash control passes both. Product blobs match original source repair and upstream head.",
+        "limitations": "Offline utility tests only: no full package install, network resolver transaction or historical CI. Source F2P/P2P were absent and remain separate from explicit recovered local expectations. The original failed bootstrap recipe is retained; this is its only correction.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 observed source/log only. Repair, source issue and assessment remain outside input. Stacktrace and natural source comments are not automatic leakage."
+      },
+      "assessment_sha256": "942d45bae680e3437be68befa4c9eba1f2d1d136f9a86d1d10b8f5066902dabc",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pypa__pip-10079",
+      "manifest_sha256": "8a738c5f15ce474305ad3a16d447c1139b36a9ea36afbfbae59985e8032408b5"
+    },
+    {
+      "sample_id": "pydata__xarray-4248",
+      "run_id": "reproduce-20261123T191845724705Z",
+      "role": "test",
+      "disposition": "exclude_feature_extension",
+      "reason": "Explicit feature request to show units in the dataset overview; repair adds an inline representation hook. New expected output is absent before the extension, not established as an existing fault contract. Exclude from current real-fault subset.",
+      "evidence_hashes": {
+        "manifest.json": "464f51e38d7b64d8c586bbf40401d3eac29281efae52f36083803691c11c2e55",
+        "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+        "historical-base.stdout.txt": "ba0ea66a54f083c8375384951a9b6d991e98c6d53b6618dd2052c5a90c233b9f",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "ed3c6caaa60bc8d917070eac5a42ea8adb389b4b28122c630b5573e69df9255d",
+        "historical-fixed.stdout.txt": "ea662de9a2a20681d25297719c053d8546d3475ad4a0904ab846b9fe161065d6",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "603fbd9c2e16bf8845770cdc01fbf99b7013927eb31e62ce5763192b44c70706"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "pydata__xarray-3364",
+      "run_id": "reproduce-20261123T192545942544Z",
+      "role": "test",
+      "disposition": "exclude_feature_extension",
+      "reason": "Source requests a more permissive concat option/outer-join treatment for datasets with differing variables. The old code explicitly rejects missing variables; the patch changes that API behavior. Exclude feature extension rather than assigning a fault label from the ValueError alone.",
+      "evidence_hashes": {
+        "manifest.json": "f9f2c08bfe8505ce04042a514ad1235afb6d7258d0afc58968e7fcf95ef3c83a",
+        "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+        "historical-base.stdout.txt": "fd6cb8113bbcea0d465347d2658aea2595de8b7248c80af57cb99e04baa7f526",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "beb0d571a6430dd7edcb84716a2d62ed1ddef4bf70c483101e263f8cb67d79af",
+        "historical-fixed.stdout.txt": "67c73b08f0c1278d5adb19cce0d17ae3cfc02cd4e6abf7d8cb55af43647d956f",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "0b47035eda9145f58c05b9da61aa4844397240c5bf9ae13392e500fe6995d4aa"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 6,
+  "feature_excluded": 2,
+  "qualification": "Eight unique strict source cases reviewed from saved code/patch/JUnit only; no new source/model execution during review. Corrected profiles remain the same source identities. Human/gold/training pending; not final quota/family selection."
+}

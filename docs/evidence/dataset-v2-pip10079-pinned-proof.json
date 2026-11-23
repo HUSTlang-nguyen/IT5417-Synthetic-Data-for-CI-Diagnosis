@@ -1,0 +1,29 @@
+{
+  "verified_at": "2026-11-24T02:34:10+07:00",
+  "source_case_id": "pypa__pip-10079",
+  "proposed_role": "train",
+  "qualification": "Development source inspected, never a v2 heldout candidate. Stronger proof for previously counted pip screen, no additional source eligibility identity or trial. No source execution.",
+  "blobs": [
+    {
+      "path": "src/pip/_internal/models/link.py",
+      "source_repaired_blob": "770bdd304353682c102e92670d3800249bbac5f8",
+      "upstream_head_blob": "770bdd304353682c102e92670d3800249bbac5f8",
+      "equal": true
+    }
+  ],
+  "all_product_blobs_equal": true,
+  "source_repair_patch_sha256": "75eb0160aa86c9c102c7d2c353ae5eb440ae7cc7a8f5a53cf110e34ddb2964e0",
+  "source_record_sha256": "54b802fc5cad411cdd034f0b5c1de19b5cdcb6ce431804f3499a6be0b76074fd",
+  "source_test_patch_sha256": "46ab39ae1b308c6e1bbfc4636a605807a6467c915fe9a9507f2c83bd8140d1eb",
+  "source_test_paths": [
+    "tests/functional/test_install_reqs.py",
+    "tests/functional/test_new_resolver.py",
+    "tests/unit/test_link.py"
+  ],
+  "pinned_base_license": {
+    "family": "MIT",
+    "source_filename": "LICENSE.txt",
+    "path": ".cache/dataset-v2-upstream-pinned-proofs/pypa__pip-10079/base-LICENSE",
+    "sha256": "23a7361c2b1581028bc623b9da2bd24997abcaa4781ace6ad444a37944f8dae1"
+  }
+}

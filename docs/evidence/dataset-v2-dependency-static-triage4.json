@@ -1,0 +1,118 @@
+{
+  "checked_at": "2026-11-24T06:55:02+07:00",
+  "items": [
+    {
+      "dataset_id": 4023568668,
+      "repo": "defffis/Open-ipa-Library",
+      "base": "310883dbc63963fb3ebd703618c7ad0281868895",
+      "head": "2baf18b0e631ac859aabff633df14aba32c61380",
+      "proposed_role": "train",
+      "evidence": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4023568668/repo.json",
+          "sha256": "1dc3b2cdb8cbaba2904d8c14e0687321170713aca7cdb9e98f0c5fadb2463cb1"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4023568668/pr.json",
+          "sha256": "cdc64f7687eb9de348f033fda81948bd897ee22e0c733bc904d9657268a58b95"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4023568668/files.json",
+          "sha256": "cb27e437fa22732b69e826815928dc859ce102458d43b61858e8bc0b760d59a7"
+        }
+      },
+      "scope_to_investigate_not_confirmed_location": "src/app.py::main",
+      "static_observation_and_uncertainty": "Repair inserts project root into sys.path and removes the fallback import; local package resolution is a hypothesis, not proof of a missing third-party dependency. Need pinned source and original target invocation/logs.",
+      "execution_status": "not_run",
+      "proposed_cause_type": "pending_evidence",
+      "human_review": "pending",
+      "gold_label": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "dataset_id": 3122497433,
+      "repo": "DylanLRPollock/Monkey-Head-Project",
+      "base": "00c9e4b50e99ff3349ce7999b7b47b12b42c06c7",
+      "head": "88fb0234b41705720b55b7b4a3fc0333d3392f0c",
+      "proposed_role": "train",
+      "evidence": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3122497433/repo.json",
+          "sha256": "61119515ae317291ca9972ce2c20ad78c00991f5989c4e2d752917e2b6c75300"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3122497433/pr.json",
+          "sha256": "ab022dba70c0943865608410e447efa6184ea325d0d2ed539a2881098aa6b43a"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3122497433/files.json",
+          "sha256": "566e8a97f33a3d9abcb8f8d5e8e66ee528d198933c6ffca9b969b356e29176a0"
+        }
+      },
+      "scope_to_investigate_not_confirmed_location": "setup.py::<module>",
+      "static_observation_and_uncertainty": "Repair adds pyyaml==6.0.2 to install_requires. Installation metadata can omit a direct dependency, but inherited/transitive installs and actual yaml usage must be checked; no runtime failure observed here.",
+      "execution_status": "not_run",
+      "proposed_cause_type": "pending_evidence",
+      "human_review": "pending",
+      "gold_label": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "dataset_id": 3126899461,
+      "repo": "fuzzylabs/capsule-mcp",
+      "base": "734a123a7ce8995fae881497d574f694f5c2683d",
+      "head": "2323b63308ced456350a164ef7a173586c4ac4cd",
+      "proposed_role": "test",
+      "evidence": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3126899461/repo.json",
+          "sha256": "c2a9e823a7f4599b386cf21e557cda2635156d4b7f3d3d0a638b408a77af75fb"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3126899461/pr.json",
+          "sha256": "d86ba0d464ebf2fdbc61a07d9afdaa05a255284bd950b5913114ee14b47fd13b"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/3126899461/files.json",
+          "sha256": "e8e785ecc72736f011d575f789383bd82dbe743b187c8d5f95d3dab455ec44f0"
+        }
+      },
+      "scope_to_investigate_not_confirmed_location": "pyproject.toml::<module>",
+      "static_observation_and_uncertainty": "Repair adds fastapi>=0.68.0. Existing fastmcp can transitively provide it, so omission alone does not establish an observable failure. Need an isolated declared environment and original import/test evidence.",
+      "execution_status": "not_run",
+      "proposed_cause_type": "pending_evidence",
+      "human_review": "pending",
+      "gold_label": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "dataset_id": 4005390637,
+      "repo": "obinexusmk2/pyics",
+      "base": "bea72e2896cf105705d726919ad3710d6252c7ef",
+      "head": "85b8b9ecad3d7ff46dc41bb5b768e1523325a891",
+      "proposed_role": "validation",
+      "evidence": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4005390637/repo.json",
+          "sha256": "845011978ed08290ec927a35881a2bfff0d8b96d59dcc93cf91550e3f6049224"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4005390637/pr.json",
+          "sha256": "2088152ef4ac7089b4b2b52be24b30e87cbe03a1887cf839ab03166fbb8a806a"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-dependency-screen20/4005390637/files.json",
+          "sha256": "01be5f0030ebc144ade4e30b017301f5bafd2f88af7fe94fc61abb6af80abd83"
+        }
+      },
+      "scope_to_investigate_not_confirmed_location": "pyproject.toml::<module>",
+      "static_observation_and_uncertainty": "Saved diff shows duplicate project.scripts and tool.setuptools tables in the base and removes duplicates in the repair, plus other packaging changes. TOML validation is a plausible cheap source-specific check; no base/fixed TOML or build executed. Config-only input/harness must be explicitly supported before any export.",
+      "execution_status": "not_run",
+      "proposed_cause_type": "pending_evidence",
+      "human_review": "pending",
+      "gold_label": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "qualification": "Four read-only preliminary diff triages, not reproduced source cases or silver exports. API diff hashes checked; full pinned source, license-at-base, harness and logs still missing. No model, Docker, candidate execution or new causal labels. Gold repair stays separate from future diagnosis input."
+}

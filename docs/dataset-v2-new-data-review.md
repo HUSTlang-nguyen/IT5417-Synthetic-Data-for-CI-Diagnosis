@@ -123,3 +123,63 @@ Tất cả source/log/patch giữ nguyên. Input chỉ có failing source và lo
 [Kiểm tra chuyển27mẫu](evidence/dataset-v2-uniform-v4-export-27.json), [calibration train51](evidence/dataset-v2-retrieval-v4-train-calibration-51-r2.json), [protocol](../data-manifests/dataset-v2-input-protocol-v4.json). Cùng27danh tính, không cộng thêm27mẫu:26input không đổi; chỉ case3232895285 bổ sung được header hàm từ source quan sát. Nhãn/vị trí nguyên nhân và assessment không đổi, v3/raw giữ nguyên. Phần coverage v3 ở mục cũ là kết quả lịch sử, không bị viết lại.
 
 Sau ba export mới, hiện có30ứng viên silver khác danh tính; chưa có final selection v2. Calibration16/51→17/51 là độ hiện diện header sau crop, không phải độ chính xác model. Với các mẫu mới, trường reference_location_retrieved trong receipt chỉ đo metadata retrieval trước token crop; không suy thành điểm hàm hay chẩn đoán.
+
+## Rà13case tồn sau tái hiện
+
+[Receipt, code/log hashes và assessment từng mẫu](evidence/dataset-v2-backlog13-data-review.json). Đã kiểm tra lại toàn bộ inventory source/test, patch và JUnit bằng `real_evidence`; xuất theo input v4 đã khóa. Không chạy lại source/model cho review.
+
+| Case | Code → hành vi → log | Nhãn/vị trí đề xuất; kiến nghị |
+|---|---|---|
+| pydicom-1562 | So string PatientName trực tiếp với key Tag/int thay vì chuẩn hóa; trả False dù annotation/API cho phép keyword. Fixed chuẩn hóa Tag. | API/type; `dictionary_has_tag`; giữ silver, cao. Lỗi quan sát là boolean sai, không phải TypeError. |
+| marshmallow-1229 | List/Mapping không nhận/truyền only/exclude đến Nested khi khởi tạo và bind; tám assertion về lựa chọn field sai, fixed pass. | logic/value; `List.__init__`, `List._bind_to_schema`, `Mapping.__init__`, `Mapping._bind_to_schema`; giữ, cao. |
+| sphinx-9281 | Enum rơi vào repr chung, trả `<MyEnum.FOO: 1>` thay vì `MyEnum.FOO`; fixed xử lý Enum riêng. | logic/value; `object_description`; giữ, cao; lỗi biểu diễn có phạm vi hẹp. |
+| pytest-9681 | Tạo module placeholder dù package thật có thể import; placeholder che package và làm import tests.subpath báo không phải package. | logic/value; `insert_missing_modules`; giữ, cao. Không phải thiếu dependency bên ngoài. |
+| sympy-11787 | Bỏ mẫu số trước tìm nghiệm đưa nghiệm đã bị khử trở lại; test nhận -2 thay vì -1 cho biểu thức đã lưu. | logic/value; `nsolve`; giữ, cao. Không dùng ví dụ khác trong issue như một run đã đo. |
+| seaborn-3216 | Figure do người dùng cấp bị đặt layout engine=None dù không yêu cầu đổi; test nhận NoneType thay MockEngine. | logic/value; `Plotter._finalize_figure`; giữ, cao; chưa đo lại ảnh/title. |
+| seaborn-3217 | Đổi width riêng sang data space rồi căn giữa tuyến tính gây sai mép bar trên log scale; hai mép lẽ ra trùng lại khác nhau. | logic/value; `Plotter._unscale_coords` và `BarBase._make_patches`; giữ, cao. |
+| seaborn-3394 | pd.NA còn trong suy kiểu nên dữ liệu số thành categorical; đường coordinate giữ nullable Int64 thay float. | logic/value; `_core.rules.variable_type`, `_oldcore.VectorPlotter.comp_data`; giữ, cao. |
+| xarray-4098 | GroupBy chặn tên None bằng ValueError thay vì dùng tên mặc định; fixed pass. | logic/value; `GroupBy.__init__`; giữ đề xuất silver, vừa. Issue rất ngắn; ranh giới sửa restriction hay mở rộng API cần giữ trong curation. |
+| xarray-5131 | Chuỗi repr có một space ngay trước newline, làm nhiều assertion biểu diễn fail; fixed bỏ space. | logic/value; `GroupBy.__repr__`; giữ, cao. Không gọi là lỗi cấu hình flake8 hay CI lịch sử đã đo. |
+| sphinx-8951 | Thêm toán tử spaceship của C++20 vào grammar parser; log DefinitionError trên cú pháp C++ mới được hỗ trợ. | Kiến nghị loại khỏi subset lỗi hiện hữu vì là mở rộng tính năng; Python source không sai syntax. |
+| pvlib-1653 | Issue có lỗi mô hình thật, nhưng patch đồng thời thêm string_factor trước angle_of_repose. Test mới gọi10đối số hoặc bị bind đối số thứ9 sang angle cũ. | Quarantine: lỗi giao diện mới và sai số mô hình bị trộn trong log, chưa xuất một nhãn đơn để train. Không sửa test hoặc chạy lại ngầm. |
+| pvlib-1737 | Test mới truyền encoding, base chỉ báo unexpected keyword; patch còn đổi đọc thời gian/file. | Quarantine: failure này chưa tách riêng lỗi file/phút ban đầu. Giữ evidence, chưa xuất làm lỗi gốc được chứng minh. |
+
+Mười bản export mới là ứng viên, không phải mười mẫu đã duyệt huấn luyện. Tổng hiện40danh tính silver v4; toàn bộ human confirmation, gold và training eligibility còn pending. Các comment/source/log trong input đã xác định, repair/issue/assessment ở ngoài. Các kiến nghị trên là phần để người dùng review, không phải yêu cầu người dùng tự phân tích code/log lại.
+
+## Tám case wave3 và pip
+
+[Receipt/hash/assessment](evidence/dataset-v2-wave3-plus-pip-review.json): sáu export silver, hai yêu cầu mở rộng tính năng được kiến nghị loại. Hai profile hiệu chỉnh vẫn là hai danh tính nguồn cũ, không tạo thêm case mới.
+
+| Case | Quan sát → nguyên nhân đề xuất | Kiến nghị |
+|---|---|---|
+| xarray-2905 | `getattr(data, values, data)` bóc `.values` của object bất kỳ, làm đổi shape/kiểu trước dựng Variable. Log ValueError về dimensions/ndim; fixed giới hạn bóc giá trị cho đối tượng pandas. | API/type; `as_compatible_data`; giữ, cao. Profile r1 bổ sung bottleneck/sparse để toàn bộ P2P hết skip; test/source không sửa. |
+| xarray-4419 | Dict kết quả chèn biến merge trước các biến concat, không tái lập đúng thứ tự ban đầu; assertion nhận x thay time. | logic/value; `_dataset_concat`; giữ, cao. Hunk ghi tên helper ensure_common_dims nhưng dòng sửa nằm ngoài helper. |
+| xarray-3156 | Thiếu kiểm tra group rỗng ở constructor; test mong ValueError nhưng không raise. | logic/value; `GroupBy.__init__`; giữ, cao. StopIteration là mô tả issue, không phải exception đã thấy trong run này. |
+| xarray-4802 | `np.ndim > 0` không đảm bảo có `.item()`; list một phần tử gây AttributeError. | API/type; `CFScaleOffsetCoder.decode`; giữ, cao; fixed chuyển sang ndarray trước lấy scalar. |
+| xarray-3406 | Nhãn nhóm NaN và dữ liệu không được lọc đồng bộ; index10 vượt size9. | logic/value; `GroupBy.__init__`; giữ, cao; không chạy lại ví dụ ngẫu nhiên trong issue. |
+| pip-10079 | So Link/URL nguyên trạng làm fragment egg dư thừa bị xem khác package; drop-egg assertion fail trên base, fixed pass; control khác hash pass cả hai. | logic/value; `links_equivalent`; giữ, cao. Unit offline, không phải full pip install hay log CI lịch sử; nguồn train không cung cấp F2P/P2P. |
+| xarray-4248 | Issue yêu cầu hiển thị đơn vị trong overview; patch thêm hook biểu diễn inline. | Loại feature extension khỏi subset lỗi hiện hữu, không ép nhãn theo assertion mới. |
+| xarray-3364 | Yêu cầu concat linh hoạt hơn khi thiếu biến; code cũ chủ động từ chối, patch đổi chính sách. | Loại feature extension; ValueError không tự chứng minh lỗi gốc. |
+
+Nguồn pip đã đối chiếu original repair với blob upstream, giấy phép MIT tại base và hai node unit chọn trước chạy. Profile đầu lỗi do hai ghim setuptools/wheel của recipe mâu thuẫn bootstrap runner; chỉ r1 loại hai ghim trùng, raw thất bại vẫn giữ. Không tự thêm lần thử thứ ba.
+
+## AIDev projected groups: load_icon
+
+[Receipt](evidence/dataset-v2-aidev3857454812-review.json), run `reproduce-20261123T201622155100Z`, case3857454812 / validation. Source được lấy từ projection metadata tại revision ghim, không tạo body thay thế; Git blobs/API merge/license tại base được kiểm tra riêng.
+
+Trong `19build_updated_v6.py`, try308 indent8 nhưng assignment309 vẫn indent8 nên try không có body. Log phát hiện309; repair một dòng dedent try về4. Fixed compile pass; header `load_icon`287 và prefix không đổi. Kiến nghị syntax / load_icon, chắc chắn cao cho lỗi grammar đã đo. Chưa import Tk/Pillow, chưa chạy GUI/icon và không dùng compile-only làm seed sinh. Input v4 lấy được vị trí hàm trước crop; không suy thành điểm chẩn đoán.
+
+Ứng viên LSB-Helsinki không được thử vì chưa thấy giấy phép ở đúng base, dù API hiện tại gợi ý MIT. Metadata/title discovery không được cộng thành mẫu đạt. Sau đợt này47prototype khác danh tính; human/gold/training eligibility vẫn pending, final v2 selection vẫn0.
+
+## Sàng lọc dependency/configuration sau khi hoàn tất lô nguồn
+
+[Sàng lọc20case](../data-manifests/dataset-v2-aidev-dependency-screen-results20.json) có18case cần điều tra tiếp,1patch lớn và1HTTPerror. Đây là metadata, không phải18mẫu lỗi được chứng minh. [Triage4 chỉ đọc diff](evidence/dataset-v2-dependency-static-triage4.json) giữ hash và phần chưa biết:
+
+| Case | Quan sát từ diff | Kiến nghị tiếp theo |
+|---|---|---|
+| Open-ipa-Library4023568668 | Thêm project root vào sys.path trước import src.orchestrator | Điều tra cách gọi chương trình và package resolution; chưa kết luận thiếu thư viện ngoài |
+| Monkey-Head-Project3122497433 | Thêm pyyaml vào install_requires | Kiểm tra import thực tế và môi trường sạch; dependency bắc cầu có thể che lỗi |
+| capsule-mcp3126899461 | Thêm fastapi trong pyproject | Kiểm tra fastmcp có cung cấp fastapi bắc cầu hay không, chưa có log fail/pass |
+| pyics4005390637 | Diff thể hiện lặp bảng project.scripts/tool.setuptools ở base và sửa nhiều phần packaging | Ưu tiên xác minh file/license ở commit ghim; cần policy kiểm tra TOML và input cấu hình rõ ràng trước chạy/export |
+
+Chưa có log thực thi cho bốn case này, chưa gán nhãn silver hoặc vị trí được xác nhận. Không có generator tham gia; gold/human/training vẫn pending. Không đưa patch sửa hoặc nhận định ở đây vào input chẩn đoán. 44case strict mới còn chờ phân tích nhân quả; tổng prototype vẫn47.

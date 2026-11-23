@@ -1,0 +1,78 @@
+{
+  "created_at": "2026-11-24T03:37:31+07:00",
+  "source_role_lock": {
+    "path": "data-manifests/dataset-v2-source-roles.json",
+    "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da"
+  },
+  "supplements": [
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
+      "sha256": "2afbad2e905902b224ba772044e7994a2f4fd384e9848bb4086763e7197b965a"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-gitpython.json",
+      "sha256": "69cdacd81b507abeb050fe4bfd5bd62410fa40d306bb88b778201dfbce1801ca"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-compilation.json",
+      "sha256": "0ec280d78c8c86f9918ddd20de9ebbfda42864dbd2556de1fc408882405350a3"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-screen20.json",
+      "sha256": "5ed288de9fad6968d325e8ee65004a462d2060fd07adfd22feb4919e4e1f663f"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-screen20-license-resolved.json",
+      "sha256": "7bbc2ef0fe801f5be5c9b73d32058beee3a5644ded58eac7fbfdfcf1e571445d"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-pip.json",
+      "sha256": "d0e2f1737bb478e2d506075c4c47bcf14cd33bb25d9c457aba076cd2e4133e83"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-projected-two.json",
+      "sha256": "653de327595b98f197986871e842f8ff1a7edef7acde0795f0801c3885e993e0"
+    }
+  ],
+  "metadata_sources_by_repo": {
+    "IMOGI-ITB/Payroll-Indonesia": 1,
+    "MForofontov/pyutils-collection": 1,
+    "MelkorBalrog/AutoML": 1,
+    "TonyDeRosia/evennia-minimud": 1,
+    "bartoszskarbek-pixel/pdf-renamer": 1,
+    "django/django": 828,
+    "gitpython-developers/GitPython": 1,
+    "marshmallow-code/marshmallow": 9,
+    "matplotlib/matplotlib": 180,
+    "mwaskom/seaborn": 21,
+    "pallets/flask": 8,
+    "psf/requests": 43,
+    "pvlib/pvlib-python": 62,
+    "pydata/xarray": 102,
+    "pydicom/pydicom": 54,
+    "pylint-dev/astroid": 27,
+    "pylint-dev/pylint": 38,
+    "pypa/pip": 1,
+    "pytest-dev/pytest": 101,
+    "pyvista/pyvista": 14,
+    "scikit-learn/scikit-learn": 220,
+    "sphinx-doc/sphinx": 147,
+    "sqlfluff/sqlfluff": 47,
+    "sympy/sympy": 363,
+    "tinystork/zeanalyser": 1,
+    "tinystork/zeseestarstacker": 1,
+    "x-CK-x/Dataset-Curation-Tool": 1,
+    "ytdl-org/youtube-dl": 1
+  },
+  "upper_bound_by_role": {
+    "train": 633,
+    "validation": 158,
+    "test": 164
+  },
+  "targets": {
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Admitted distinct source IDs only, before reproduction/fault curation/classes/dedup. V1 reuse already included, compile-only sources are not generator seeds. GitPython10unadmitted discovery and501title signals do not increase these bounds."
+}

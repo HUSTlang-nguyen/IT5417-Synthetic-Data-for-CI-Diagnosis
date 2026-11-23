@@ -1,0 +1,223 @@
+{
+  "created_at": "2026-11-24T02:54:58+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "source_projection": {
+    "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+    "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035",
+    "columns": [
+      "id",
+      "number",
+      "title",
+      "repo_url",
+      "html_url",
+      "merged_at",
+      "agent"
+    ]
+  },
+  "kind": "metadata_discovery_worklist",
+  "selected": [
+    {
+      "id": 3185692251,
+      "row_idx": 178,
+      "number": 20,
+      "repo_url": "https://api.github.com/repos/arthurbraga9/Habits",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 153725
+    },
+    {
+      "id": 3267868238,
+      "row_idx": 48,
+      "number": 799,
+      "repo_url": "https://api.github.com/repos/Bryan-Roe-ai/semantic-kernel",
+      "proposed_role": "validation",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 43731
+    },
+    {
+      "id": 3425716093,
+      "row_idx": 346,
+      "number": 18,
+      "repo_url": "https://api.github.com/repos/vdo89/iam-demo-aks-cnpg-keycloak-midpoint",
+      "proposed_role": "validation",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 91803
+    },
+    {
+      "id": 3459692136,
+      "row_idx": 173,
+      "number": 61,
+      "repo_url": "https://api.github.com/repos/Alice-Sabrina-Ivy/asi-letter",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 151005
+    },
+    {
+      "id": 3766102274,
+      "row_idx": 201,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/bigbusinessborsalino/tag-remover-telegram-bot",
+      "proposed_role": "test",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 174036
+    },
+    {
+      "id": 3786049174,
+      "row_idx": 20,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/synchromite/GTNH-Helper",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 20918
+    },
+    {
+      "id": 3802705854,
+      "row_idx": 329,
+      "number": 99,
+      "repo_url": "https://api.github.com/repos/lukeblanc/mossy-4x-render",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 78779
+    },
+    {
+      "id": 3807508689,
+      "row_idx": 256,
+      "number": 709,
+      "repo_url": "https://api.github.com/repos/Pixiepinks/samprox_erp",
+      "proposed_role": "validation",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 20739
+    },
+    {
+      "id": 3809189024,
+      "row_idx": 280,
+      "number": 92,
+      "repo_url": "https://api.github.com/repos/kasherehauwa01-sudo/svodMP",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 38351
+    },
+    {
+      "id": 3857454812,
+      "row_idx": 322,
+      "number": 50,
+      "repo_url": "https://api.github.com/repos/bartoszskarbek-pixel/pdf-renamer",
+      "proposed_role": "validation",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 72222
+    },
+    {
+      "id": 3915177126,
+      "row_idx": 453,
+      "number": 7,
+      "repo_url": "https://api.github.com/repos/amarhamzah3340-creator/ip-vendor-lookup",
+      "proposed_role": "test",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 166237
+    },
+    {
+      "id": 3919225568,
+      "row_idx": 267,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/Dark10701/Proxy_server",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 26741
+    },
+    {
+      "id": 3942145121,
+      "row_idx": 361,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/juliourb/estudo-beautiful-soup",
+      "proposed_role": "validation",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 109367
+    },
+    {
+      "id": 3966116117,
+      "row_idx": 356,
+      "number": 52,
+      "repo_url": "https://api.github.com/repos/jgouch/FSA_schedule",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 105230
+    },
+    {
+      "id": 3974735846,
+      "row_idx": 377,
+      "number": 26,
+      "repo_url": "https://api.github.com/repos/Frantejeda1993/Mueble",
+      "proposed_role": "test",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 120812
+    },
+    {
+      "id": 3978975167,
+      "row_idx": 494,
+      "number": 117,
+      "repo_url": "https://api.github.com/repos/itanmidnight-ux/reco-trading",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 196166
+    },
+    {
+      "id": 3985221923,
+      "row_idx": 152,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/ojromanSE/SE_PERMIT_V2",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 137748
+    },
+    {
+      "id": 4020074028,
+      "row_idx": 70,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/zanardibabu-cpu/vigilant-rpg-bot",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 61865
+    },
+    {
+      "id": 4038888973,
+      "row_idx": 203,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/LSB-Helsinki/scripts",
+      "proposed_role": "train",
+      "title_cost_rank": 0,
+      "row_group": 1,
+      "row_in_group": 175590
+    },
+    {
+      "id": 4097365016,
+      "row_idx": 380,
+      "number": 31,
+      "repo_url": "https://api.github.com/repos/timarcelomendes/Metrics",
+      "proposed_role": "validation",
+      "title_cost_rank": 0,
+      "row_group": 2,
+      "row_in_group": 123167
+    }
+  ],
+  "selection": "Newly indexed groups1/2 only; exclude already admitted, prior20screen repos and historical development repos. One source per new repo; explicit Python/exception/file title rank, then indentation, generic syntax, then source ID. No outcomes/causal labels used.",
+  "role_proposals": "SHA256(lowercase repo)mod5:0/1/2train,3validation,4test; proposals only until proof/admission before execution.",
+  "qualification": "20screens planned, not eligible/reproduced/labeled data. Dataset projection omits body rather than synthesizing it; PR/file/merge/commit/license proof still required."
+}

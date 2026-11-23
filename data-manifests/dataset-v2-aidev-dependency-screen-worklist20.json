@@ -1,0 +1,291 @@
+{
+  "created_at": "2026-11-24T06:52:56+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "discovery": {
+    "path": "data-manifests/dataset-v2-aidev-licensed-python-discovery.json",
+    "sha256": "acc9dbe7782087916719d28b267477150ff8eabd9472ba139baf3b8335aeda98"
+  },
+  "selected": [
+    {
+      "id": 3328279754,
+      "row_idx": 387,
+      "number": 222,
+      "repo_url": "https://api.github.com/repos/AlexBomber12/AWA-App",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix repricer container missing dependencies",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3563277316,
+      "row_idx": 128,
+      "number": 30,
+      "repo_url": "https://api.github.com/repos/AlphaWhalez/Whalez-AI",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "fix(web): resolve missing dependencies for build",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3946813500,
+      "row_idx": 1386,
+      "number": 1237,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix Ruff CI by correcting pyproject.toml syntax",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4023568668,
+      "row_idx": 133,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/defffis/Open-ipa-Library",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix ModuleNotFoundError when running `python src/app.py` in CI",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3146316413,
+      "row_idx": 400,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/doodmeister/slm",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3122497433,
+      "row_idx": 1025,
+      "number": 26,
+      "repo_url": "https://api.github.com/repos/DylanLRPollock/Monkey-Head-Project",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for yaml parser",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3460751539,
+      "row_idx": 947,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/eotter-beep/devicemanager",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Install missing dependencies in DeviceManager installer",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3126899461,
+      "row_idx": 241,
+      "number": 10,
+      "repo_url": "https://api.github.com/repos/fuzzylabs/capsule-mcp",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3262445674,
+      "row_idx": 1343,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/jacobvoss/geopolitical-dashboard",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for dashboard",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3164784768,
+      "row_idx": 195,
+      "number": 18,
+      "repo_url": "https://api.github.com/repos/jcval94/yahoo",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for data fetch",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3116401639,
+      "row_idx": 814,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/kaveeshagim/ai-content-creator-agent",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3947510058,
+      "row_idx": 61,
+      "number": 81,
+      "repo_url": "https://api.github.com/repos/KleinerBaum/Miris-Mikroabenteuer-Guide-2026",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix: make `mikroabenteuer` importable by installing local package via `requirements.txt`",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3245261050,
+      "row_idx": 1238,
+      "number": 10,
+      "repo_url": "https://api.github.com/repos/nyacly/runyoro-llm-data-pipeline",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4005390637,
+      "row_idx": 1415,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/obinexusmk2/pyics",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix pyproject.toml: valid PEP 621 layout and consolidated setuptools/scripts metadata",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3760272404,
+      "row_idx": 1052,
+      "number": 429,
+      "repo_url": "https://api.github.com/repos/Organization5762/heart",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Resolve project metadata placeholders in pyproject.toml",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3557743746,
+      "row_idx": 1287,
+      "number": 462,
+      "repo_url": "https://api.github.com/repos/RNA4219/katamari",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add lazy OpenAI import with missing dependency guard",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4019753268,
+      "row_idx": 879,
+      "number": 6,
+      "repo_url": "https://api.github.com/repos/sandeepsn1997/OpenPaw",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing Python dependencies for WhatsApp and HTTP modules",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3249789883,
+      "row_idx": 91,
+      "number": 14,
+      "repo_url": "https://api.github.com/repos/swerb420/grok721",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3985713186,
+      "row_idx": 933,
+      "number": 115,
+      "repo_url": "https://api.github.com/repos/tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix setuptools build-backend in pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3120908793,
+      "row_idx": 310,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/tsilva/parsehealthlog",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    }
+  ],
+  "qualification": "Frozen title-driven provenance screen only, one source per previously unadmitted repo; no causal labels or execution eligibility implied. Roles proposed before outcomes, pending canonical/family checks."
+}

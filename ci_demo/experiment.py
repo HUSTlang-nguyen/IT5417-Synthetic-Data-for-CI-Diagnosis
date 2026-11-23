@@ -12,6 +12,8 @@ from .common import CACHE, ROOT, new_run, now, read_json, run_path, sha256, writ
 
 
 class Experiment:
+    metadata_lock_wait_seconds = 30
+
     def __init__(self, run_id):
         self.folder = run_path(run_id)
         self.manifest = self.folder / "manifest.json"
@@ -50,7 +52,7 @@ class Experiment:
 
     def configure_learning_stages(self):
         """Each independent SFT has its own cap; evaluation counts actual operation time."""
-        with batch_lock(self.lock, wait_seconds=30):
+        with batch_lock(self.lock, wait_seconds=self.metadata_lock_wait_seconds):
             state = read_json(self.manifest)
             limits = state["stage_limits_seconds"]
             for name in ("training_M2", "training_M5"):
@@ -62,7 +64,7 @@ class Experiment:
 
     def configure_execution_accounting(self):
         """Charge recorded work, including in-flight operations, without resetting any cap."""
-        with batch_lock(self.lock, wait_seconds=30):
+        with batch_lock(self.lock, wait_seconds=self.metadata_lock_wait_seconds):
             state = read_json(self.manifest)
             if datetime.fromisoformat(now()) >= datetime.fromisoformat(state["deadline"]):
                 raise BudgetStop("Experiment deadline already reached")
@@ -77,11 +79,11 @@ class Experiment:
                 write_json(self.manifest, state)
 
     def check(self, stage, *, timeout=0):
-        with batch_lock(self.lock, wait_seconds=30):
+        with batch_lock(self.lock, wait_seconds=self.metadata_lock_wait_seconds):
             return self._check(read_json(self.manifest), stage, timeout)[1]
 
     def attach(self, operation, **artifacts):
-        with batch_lock(self.lock, wait_seconds=30):
+        with batch_lock(self.lock, wait_seconds=self.metadata_lock_wait_seconds):
             state = read_json(self.manifest)
             record = state["operations"][operation]
             if record["status"] != "reserved":
@@ -95,7 +97,7 @@ class Experiment:
     def reserve(self, operation, stage, *, request_role=None, timeout=0):
         if not re.fullmatch(r"[A-Za-z0-9_.-]{1,160}", operation):
             raise ValueError("Invalid operation identity")
-        with batch_lock(self.lock, wait_seconds=30):
+        with batch_lock(self.lock, wait_seconds=self.metadata_lock_wait_seconds):
             state = read_json(self.manifest)
             operations = state.setdefault("operations", {})
             if operation in operations:
@@ -124,7 +126,7 @@ class Experiment:
     def finish(self, operation, status, *, result=None, error=None):
         if status not in {"finished", "failed", "unknown"}:
             raise ValueError("Invalid terminal operation state")
-        with batch_lock(self.lock, wait_seconds=30):
+        with batch_lock(self.lock, wait_seconds=self.metadata_lock_wait_seconds):
             state = read_json(self.manifest)
             record = state["operations"][operation]
             if record["status"] != "reserved":

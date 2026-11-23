@@ -11,6 +11,20 @@ from ci_demo.experiment import Experiment
 
 
 class DatasetExperimentTests(unittest.TestCase):
+    def test_v2_raw_success_target_does_not_replace_curated_quota(self):
+        from ci_demo.data_study import DataStudy
+        for cls, expected_calls in [(Experiment, 0), (DataStudy, 1)]:
+            with self.subTest(cls=cls), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                write_json(root / 'manifest.json', {'operations': {}})
+                study = Mock(spec=cls)
+                study.folder, study.manifest, study.lock = root, root / 'manifest.json', root / 'lock'
+                plan = {'selected': [{'case_id': 'fixture', 'source_case_id': 'source', 'role': 'train'}], 'targets': {'train': 1}}
+                with patch('ci_demo.dataset_experiment.case_config', return_value={'source_case_id': 'source'}), patch('ci_demo.dataset_experiment.summary', return_value={'by_role': {'train': {'strict_reproduced': 1}}}), patch('ci_demo.dataset_experiment.new_run', return_value=root / 'reproduce'), patch('ci_demo.dataset_experiment.multicase.reproduce_case', return_value={'status': 'software_fixture'}) as execute:
+                    reproduce(study, plan)
+                self.assertEqual(execute.call_count, expected_calls)
+                self.assertEqual(study.reserve.call_count, expected_calls)
+
     def test_v2_aidev_head_must_match_the_frozen_source_cohort(self):
         from ci_demo.data_study import DataStudy
         for head in ['b'*40,'c'*40]:

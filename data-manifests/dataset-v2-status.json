@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T02:15:10+07:00",
+  "updated_at": "2026-11-24T06:55:01+07:00",
   "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
@@ -24,17 +24,11 @@
   },
   "v2_real_selected": 0,
   "v2_synthetic_selected": 0,
-  "new_case_attempts": 69,
+  "new_case_attempts": 173,
   "new_generator_requests": 0,
-  "live_worker": {
-    "session_id": 18099,
-    "kind": "serial_real_reconstruction",
-    "log": ".cache/dataset-v2-heldout-then-wave2-resume-20261124-live.txt",
-    "last_observed_at": "2026-11-24T02:15:10+07:00",
-    "observation": "Resume17heldout and86train; terminal operations skipped, no model. Follow same handle, do not edit imported runners/guards."
-  },
+  "live_worker": null,
   "collection_budget_initialized": true,
-  "next_task": "Follow18099 to case/plan completion, review new saved evidence, broaden admitted source cohorts/rare dependency class. Current source metadata cap632/157/164 is before failures, so targets remain unmet; do not reset or replay.",
+  "next_task": "Review saved44 strict outcomes; investigate pinned-base license and actual test/harness for dependency candidates, starting pyics4005390637 and local-import4023568668. Config-only files need explicit evidence/input policy before execution/export. Expand finite source cohorts; no completed stage replay. Finalselected0, new7B0, no3B/train/modeltest.",
   "qualification": "Portable v1.1 published and relocation verified. New counts are reconstruction outcomes; silver prototypes are not finalized v2 selection. No new generator or diagnosis/training calls.",
   "study_run_id": "dataset-v2-20261122T190232092876Z",
   "execution_enabled": true,
@@ -48,10 +42,11 @@
     "status": "completed_for_published_v1_1"
   },
   "software_tests": {
-    "total": 165,
-    "passed": 164,
+    "total": 169,
+    "passed": 168,
     "skipped": 1,
-    "log": ".cache/software-tests-dataset-v2-bound-retrieval-v4.txt"
+    "log": ".cache/software-tests-dataset-v2-lf-ml-checkpoint.txt",
+    "seconds": 30.112
   },
   "budget_guard": "implemented_and_tested",
   "baseline_worker_session": null,
@@ -70,7 +65,7 @@
     "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 14768.0,
+  "execution_seconds_charged": 25148.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -102,9 +97,9 @@
     "receipt": "docs/evidence/dataset-v2-development-review.json",
     "gold": "pending"
   },
-  "new_cases_strict_reproduced": 45,
-  "new_passing_seeds": 54,
-  "new_real_silver_prototype_exports": 30,
+  "new_cases_strict_reproduced": 99,
+  "new_passing_seeds": 130,
+  "new_real_silver_prototype_exports": 47,
   "first_batch": {
     "status": "finished",
     "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
@@ -230,9 +225,9 @@
     "final_selected": 0
   },
   "eligibility_screen_count": {
-    "swebench": 2532,
-    "aidev": 24,
-    "total": 2556,
+    "swebench": 2542,
+    "aidev": 64,
+    "total": 2606,
     "limit": 5000
   },
   "storage_snapshot": {
@@ -279,7 +274,7 @@
     "status": "prepared_and_frozen_not_started",
     "sha256": "8131af53557de7a1dd491e5143e64dc637f240f5ed4b7aab3ea572b1d2cba107"
   },
-  "new_reproduction_profiles": 72,
+  "new_reproduction_profiles": 178,
   "source_role_supplements": [
     {
       "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
@@ -335,23 +330,23 @@
     "repo_role": "not_assigned",
     "receipt": "data-manifests/dataset-v2-upstream-pip-probes-8.json"
   },
-  "new_passing_fixed_sources": 54,
+  "new_passing_fixed_sources": 130,
   "new_passing_seeds_qualification": "Legacy fixed-pass count includes heldout and compile-only cases; not generator eligibility. Final selected train sources remains0.",
   "functional_strict_train_candidates_before_curation": 29,
   "proposed_silver_class_counts": {
-    "syntax": 4,
-    "API/type": 9,
-    "logic/value": 17,
+    "syntax": 5,
+    "API/type": 12,
+    "logic/value": 30,
     "dependency/configuration": 0
   },
   "source_breakdown": {
     "swebench": {
-      "attempted_source_cases": 62,
-      "attempted_profiles": 65
+      "attempted_source_cases": 165,
+      "attempted_profiles": 170
     },
     "aidev": {
-      "attempted_source_cases": 7,
-      "attempted_profiles": 7
+      "attempted_source_cases": 8,
+      "attempted_profiles": 8
     }
   },
   "aidev_screen20": {
@@ -378,21 +373,12 @@
     "qualification": "Syntax only, no GUI/upstream tests/historical CI result. Function absent from exported input; no training approval."
   },
   "current_metadata_upper_bounds": {
-    "train": 632,
-    "validation": 157,
+    "train": 633,
+    "validation": 158,
     "test": 164
   },
-  "remaining_execution_plans": [
-    {
-      "plan": "data-manifests/dataset-v2-heldout-wave3.json",
-      "remaining_profiles": 17
-    },
-    {
-      "plan": "data-manifests/dataset-v2-wave2-interleaved.json",
-      "remaining_profiles": 86
-    }
-  ],
-  "storage_free_bytes_snapshot": 163639603200,
+  "remaining_execution_plans": [],
+  "storage_free_bytes_snapshot": 157314437120,
   "input_protocol": {
     "path": "data-manifests/dataset-v2-input-protocol-v4.json",
     "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
@@ -413,23 +399,22 @@
   },
   "reproduction_by_role": {
     "train": {
-      "profiles": 54,
-      "finished": 54,
-      "strict": 32
+      "profiles": 142,
+      "finished": 142,
+      "strict": 75
     },
     "validation": {
-      "profiles": 7,
-      "finished": 7,
-      "strict": 7
+      "profiles": 8,
+      "finished": 8,
+      "strict": 8
     },
     "test": {
-      "profiles": 11,
-      "finished": 10,
-      "strict": 6,
-      "reserved": 1
+      "profiles": 28,
+      "finished": 28,
+      "strict": 16
     }
   },
-  "uniform_v4_exports": 30,
+  "uniform_v4_exports": 47,
   "review_screen20": {
     "receipt": "docs/evidence/dataset-v2-aidev-screen20-compilation-review.json",
     "trials": 6,
@@ -438,5 +423,69 @@
     "not_confirmed": 2,
     "pending_safe_reference_binding": 1,
     "all_human_gold_training": "pending"
+  },
+  "prototype_root": ".cache/dataset-v2/records-retrieval-v4",
+  "metadata_projection": {
+    "receipt": "docs/evidence/dataset-v2-aidev-projected-title-index-groups1-2.json",
+    "rows_indexed": 400000,
+    "candidate_title_signals": 501,
+    "new_case_eligibility_reviews": 0,
+    "additional_receipt": "docs/evidence/dataset-v2-aidev-projected-title-index-groups3-8.json",
+    "additional_rows_indexed": 1200000,
+    "additional_candidate_title_signals": 1416
+  },
+  "projected_syntax_screen": {
+    "original_requested": 20,
+    "original_http403": 1,
+    "remaining_authenticated_screens": 19,
+    "candidates": 2,
+    "prepared_with_pinned_license": 1,
+    "license_missing_at_base_no_trial": 1,
+    "receipt": "data-manifests/dataset-v2-aidev-projected-syntax-screen-results-remaining19.json"
+  },
+  "backlog13_review": {
+    "receipt": "docs/evidence/dataset-v2-backlog13-data-review.json",
+    "new_exports": 10,
+    "feature_excluded": 1,
+    "quarantined_api_confounds": 2
+  },
+  "wave3_pip_review": {
+    "receipt": "docs/evidence/dataset-v2-wave3-plus-pip-review.json",
+    "new_exports": 6,
+    "feature_excluded": 2
+  },
+  "latest_syntax_review": "docs/evidence/dataset-v2-aidev3857454812-review.json",
+  "metadata_concurrency": {
+    "collection_lock_wait_seconds": 120,
+    "learning_lock_wait_seconds": 30,
+    "full_storage_scan_preserved": true,
+    "temporary_disappearance_only_skipped": true,
+    "raw_success_is_not_curated_quota": true
+  },
+  "source_worker_terminal": {
+    "session_id": 2373,
+    "exit_code": 0,
+    "completed_at": "2026-11-24T05:59:46+07:00",
+    "both_frozen_plans_complete": true
+  },
+  "metadata_worker_terminal": {
+    "sessions": [
+      24490,
+      9474,
+      5617
+    ],
+    "operations_finished": true
+  },
+  "dependency_metadata_screen": {
+    "receipt": "data-manifests/dataset-v2-aidev-dependency-screen-results20.json",
+    "attempted": 20,
+    "requested": 20
+  },
+  "licensed_python_discovery": {
+    "path": "data-manifests/dataset-v2-aidev-licensed-python-discovery.json",
+    "candidates": 258,
+    "dependency_title_signals": 79,
+    "syntax_title_signals": 179,
+    "approved_samples": 0
   }
 }

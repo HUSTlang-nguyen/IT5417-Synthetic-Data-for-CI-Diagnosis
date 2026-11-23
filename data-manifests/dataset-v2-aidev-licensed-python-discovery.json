@@ -1,0 +1,3653 @@
+{
+  "created_at": "2026-11-24T06:51:39+07:00",
+  "kind": "metadata_discovery_not_eligibility",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "repository_hints": {
+    "url": "https://huggingface.co/datasets/hao-li/AIDev/resolve/b8dc67df93e7c11f6f20c84129db7232eb1ec253/all_repository.parquet",
+    "cache": ".cache/dataset-v2-aidev-all-repository-matched-hints.json",
+    "sha256": "54674862392d469ceb96439d83bf6c9184fcbae56045cb2c16386de1c700f40f",
+    "projected_columns": [
+      "url",
+      "full_name",
+      "language",
+      "license",
+      "is_forked"
+    ]
+  },
+  "source_indices": [
+    {
+      "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+      "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+    },
+    {
+      "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+      "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+    }
+  ],
+  "matched_repository_count": 1542,
+  "candidate_count": 258,
+  "signal_counts": {
+    "dependency_title": 79,
+    "syntax_title": 179
+  },
+  "role_counts": {
+    "train": 145,
+    "validation": 58,
+    "test": 55
+  },
+  "selected": [
+    {
+      "id": 3123275429,
+      "row_idx": 74,
+      "number": 11,
+      "repo_url": "https://api.github.com/repos/ALEPola/Elbot",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3328279754,
+      "row_idx": 387,
+      "number": 222,
+      "repo_url": "https://api.github.com/repos/AlexBomber12/AWA-App",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix repricer container missing dependencies",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3563277316,
+      "row_idx": 128,
+      "number": 30,
+      "repo_url": "https://api.github.com/repos/AlphaWhalez/Whalez-AI",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "fix(web): resolve missing dependencies for build",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3552045394,
+      "row_idx": 376,
+      "number": 47,
+      "repo_url": "https://api.github.com/repos/Alphonsus411/sqliteplus",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Normalize requirements.txt handling",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3635360854,
+      "row_idx": 635,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/amol-/linetable",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Migrate to pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3115551503,
+      "row_idx": 1120,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/apchau/python-openai-voice-agent",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3074933682,
+      "row_idx": 513,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/armanas/OrthoReduce",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "fix: add missing newline in requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3376004778,
+      "row_idx": 302,
+      "number": 501,
+      "repo_url": "https://api.github.com/repos/ArneDeutsch/hippo-llm-memory",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Improve preflight diagnostics for missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3946813500,
+      "row_idx": 1386,
+      "number": 1237,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix Ruff CI by correcting pyproject.toml syntax",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3788494028,
+      "row_idx": 54,
+      "number": 337,
+      "repo_url": "https://api.github.com/repos/BobTheZombie/LPM.Org",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Use dotted import paths for setuptools cmdclass in pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3788519371,
+      "row_idx": 55,
+      "number": 339,
+      "repo_url": "https://api.github.com/repos/BobTheZombie/LPM.Org",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Remove setuptools 'scripts' entry from pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3788525733,
+      "row_idx": 56,
+      "number": 340,
+      "repo_url": "https://api.github.com/repos/BobTheZombie/LPM.Org",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add `backend-path` to pyproject.toml to expose local cmdclass",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3971043307,
+      "row_idx": 1224,
+      "number": 340,
+      "repo_url": "https://api.github.com/repos/CalculatedContent/WeightWatcher",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Bump package version to 0.7.7, modernize setup.py, and add pyproject.toml",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3227906656,
+      "row_idx": 1285,
+      "number": 7,
+      "repo_url": "https://api.github.com/repos/Cjw9000-py/pyars",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3630632409,
+      "row_idx": 10,
+      "number": 10,
+      "repo_url": "https://api.github.com/repos/Code0x58/python-stripzip",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Move packaging metadata into pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3751381807,
+      "row_idx": 519,
+      "number": 3,
+      "repo_url": "https://api.github.com/repos/codemeetscopper/OpenBot",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt with Python dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3107054615,
+      "row_idx": 353,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/Danialgharaie/mutant-landscape",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix newline in pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3988682638,
+      "row_idx": 1337,
+      "number": 32,
+      "repo_url": "https://api.github.com/repos/DavidAlexandre93/hortelan-backend",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add PEP 621 [project] metadata to pyproject.toml for Vercel uv compatibility",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4023568668,
+      "row_idx": 133,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/defffis/Open-ipa-Library",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix ModuleNotFoundError when running `python src/app.py` in CI",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4067318631,
+      "row_idx": 716,
+      "number": 35,
+      "repo_url": "https://api.github.com/repos/DO1FFE/meshcore-network-monitor",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "requirements.txt mit meshcore und bleak hinzufügen",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3349738122,
+      "row_idx": 288,
+      "number": 87,
+      "repo_url": "https://api.github.com/repos/DocWobble/Project_Morpheus",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Gracefully handle missing dependencies in start script",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3146316413,
+      "row_idx": 400,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/doodmeister/slm",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3123450393,
+      "row_idx": 417,
+      "number": 12,
+      "repo_url": "https://api.github.com/repos/drachenjager/TESIS2",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix newline in requirements.txt",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3122497433,
+      "row_idx": 1025,
+      "number": 26,
+      "repo_url": "https://api.github.com/repos/DylanLRPollock/Monkey-Head-Project",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for yaml parser",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3148033968,
+      "row_idx": 1078,
+      "number": 221,
+      "repo_url": "https://api.github.com/repos/DylanLRPollock/Monkey-Head-Project",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependencies",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3460751539,
+      "row_idx": 947,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/eotter-beep/devicemanager",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Install missing dependencies in DeviceManager installer",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4041498262,
+      "row_idx": 1272,
+      "number": 3,
+      "repo_url": "https://api.github.com/repos/FermedePommerieux/mail-assistant",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Bump Python requirement to >=3.12 in pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3786769180,
+      "row_idx": 62,
+      "number": 179,
+      "repo_url": "https://api.github.com/repos/FoilMiser/Dataset_Collector",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add `dev` optional dependency extras to pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3506772278,
+      "row_idx": 1087,
+      "number": 1224,
+      "repo_url": "https://api.github.com/repos/futuroptimist/sugarkube",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Allow download dry-run to tolerate missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3126899461,
+      "row_idx": 241,
+      "number": 10,
+      "repo_url": "https://api.github.com/repos/fuzzylabs/capsule-mcp",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3882099686,
+      "row_idx": 976,
+      "number": 8,
+      "repo_url": "https://api.github.com/repos/hkitt/nie",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add Python dependencies to requirements.txt",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3262445674,
+      "row_idx": 1343,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/jacobvoss/geopolitical-dashboard",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for dashboard",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4054736529,
+      "row_idx": 480,
+      "number": 144,
+      "repo_url": "https://api.github.com/repos/jcval94/InsideForest",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Migrar metadata a pyproject.toml y separar dependencias runtime/dev",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3164784768,
+      "row_idx": 195,
+      "number": 18,
+      "repo_url": "https://api.github.com/repos/jcval94/yahoo",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for data fetch",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3978817539,
+      "row_idx": 550,
+      "number": 141,
+      "repo_url": "https://api.github.com/repos/JelleZijlstra/pycroscope",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Remove unused requirements.txt",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3158025381,
+      "row_idx": 291,
+      "number": 31,
+      "repo_url": "https://api.github.com/repos/jgwill/jgtpy",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "chore: update version to 0.5.116 in package.json, pyproject.toml, and…",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3927960082,
+      "row_idx": 270,
+      "number": 22,
+      "repo_url": "https://api.github.com/repos/jsellars88/H-W-supreme-Ai-",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add pyproject.toml with packaging metadata and tool configuration",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3296266546,
+      "row_idx": 352,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/jwutsetro/IB-sampling",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt with core dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3792684826,
+      "row_idx": 175,
+      "number": 200,
+      "repo_url": "https://api.github.com/repos/karilint/mammalbase",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Sync prompt dependency snapshots with app/requirements.txt (Django 4.2)",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3116401639,
+      "row_idx": 814,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/kaveeshagim/ai-content-creator-agent",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3947510058,
+      "row_idx": 61,
+      "number": 81,
+      "repo_url": "https://api.github.com/repos/KleinerBaum/Miris-Mikroabenteuer-Guide-2026",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix: make `mikroabenteuer` importable by installing local package via `requirements.txt`",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3969852807,
+      "row_idx": 770,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/KojiOchiai/timer_cui",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Migrate deprecated `tool.uv.dev-dependencies` to `dependency-groups.dev` in pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3267175263,
+      "row_idx": 148,
+      "number": 419,
+      "repo_url": "https://api.github.com/repos/MelkorBalrog/AutoML",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Improve build instructions for missing dependencies",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3874653876,
+      "row_idx": 858,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/merllinsbeard/x-without-junk",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Detect repository root via pyproject.toml for prompt paths",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3242826738,
+      "row_idx": 883,
+      "number": 174,
+      "repo_url": "https://api.github.com/repos/MForofontov/pyutils-collection",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix whitespace in requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3127742035,
+      "row_idx": 192,
+      "number": 10,
+      "repo_url": "https://api.github.com/repos/nickelslol/OverFiltrr",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix newline in requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3245261050,
+      "row_idx": 1238,
+      "number": 10,
+      "repo_url": "https://api.github.com/repos/nyacly/runyoro-llm-data-pipeline",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4005390637,
+      "row_idx": 1415,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/obinexusmk2/pyics",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix pyproject.toml: valid PEP 621 layout and consolidated setuptools/scripts metadata",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3073230323,
+      "row_idx": 861,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/OR-Craft/Regge-Topology",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Update requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3757497004,
+      "row_idx": 274,
+      "number": 317,
+      "repo_url": "https://api.github.com/repos/Organization5762/heart",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Enable mypy strict mode in pyproject.toml",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3760272404,
+      "row_idx": 1052,
+      "number": 429,
+      "repo_url": "https://api.github.com/repos/Organization5762/heart",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Resolve project metadata placeholders in pyproject.toml",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3557743746,
+      "row_idx": 1287,
+      "number": 462,
+      "repo_url": "https://api.github.com/repos/RNA4219/katamari",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add lazy OpenAI import with missing dependency guard",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3558948519,
+      "row_idx": 392,
+      "number": 469,
+      "repo_url": "https://api.github.com/repos/RNA4219/katamari",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Ensure OpenAI provider handles missing dependency gracefully",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3348344621,
+      "row_idx": 282,
+      "number": 51,
+      "repo_url": "https://api.github.com/repos/rsdmu/layscience",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "fix: add missing dependency to useEffect",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3307088304,
+      "row_idx": 482,
+      "number": 201,
+      "repo_url": "https://api.github.com/repos/ryanrodriguez8982/trading-bot-devin-demo",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "[Packaging] Modernize packaging to pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4019753268,
+      "row_idx": 879,
+      "number": 6,
+      "repo_url": "https://api.github.com/repos/sandeepsn1997/OpenPaw",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing Python dependencies for WhatsApp and HTTP modules",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3125901801,
+      "row_idx": 975,
+      "number": 344,
+      "repo_url": "https://api.github.com/repos/scottfalconer/compact-memory",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Improve missing dependency guidance",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3923882893,
+      "row_idx": 911,
+      "number": 8,
+      "repo_url": "https://api.github.com/repos/sdfa66065-lang/convergeai",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt and update setup docs to use it",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4078636046,
+      "row_idx": 896,
+      "number": 139,
+      "repo_url": "https://api.github.com/repos/seanwevans/lockstep",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add Black configuration to pyproject.toml to enforce formatting",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3105158684,
+      "row_idx": 539,
+      "number": 13,
+      "repo_url": "https://api.github.com/repos/shaswata-das/basic-mcp-server",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3862144879,
+      "row_idx": 986,
+      "number": 3,
+      "repo_url": "https://api.github.com/repos/Simonwan03/stock_agent",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add project metadata and dependencies to pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4080143813,
+      "row_idx": 1316,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/smaeyama/test_dlra",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add README with usage instructions and add requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3237451134,
+      "row_idx": 580,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/sounny/geoaiagents",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt and update README",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3924618811,
+      "row_idx": 37,
+      "number": 9,
+      "repo_url": "https://api.github.com/repos/srichs/python-spot-client",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add MIT license file and declare license in pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3070979002,
+      "row_idx": 489,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/Stu8866/openai-flask-template",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add newline to requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3181024888,
+      "row_idx": 135,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/SUKARDADDY/okx-chatgpt-bot",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt for dependency installation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3249789883,
+      "row_idx": 91,
+      "number": 14,
+      "repo_url": "https://api.github.com/repos/swerb420/grok721",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3130485416,
+      "row_idx": 271,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/tensorus/models",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add pyproject.toml metadata",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3144315256,
+      "row_idx": 881,
+      "number": 98,
+      "repo_url": "https://api.github.com/repos/thesavant42/retrorecon",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3331913811,
+      "row_idx": 127,
+      "number": 32,
+      "repo_url": "https://api.github.com/repos/timothyf/baseball-data-lab",
+      "proposed_role": "test",
+      "signal_not_label": "dependency_title",
+      "title": "Add pyproject.toml build system metadata",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3985713186,
+      "row_idx": 933,
+      "number": 115,
+      "repo_url": "https://api.github.com/repos/tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix setuptools build-backend in pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3120908793,
+      "row_idx": 310,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/tsilva/parsehealthlog",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3898870334,
+      "row_idx": 26,
+      "number": 290,
+      "repo_url": "https://api.github.com/repos/userf8a2c4/centinel-engine",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix poetry.lock content-hash to match pyproject.toml",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3834935325,
+      "row_idx": 452,
+      "number": 13,
+      "repo_url": "https://api.github.com/repos/waqastakkar/DeepMD",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt for project dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3115557479,
+      "row_idx": 1121,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/wwExpert/KiSo_pdf-auto-renamer",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt for pip dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3155196605,
+      "row_idx": 1230,
+      "number": 138,
+      "repo_url": "https://api.github.com/repos/xXFirst555Xx/FuelTracker",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for tests",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3160119008,
+      "row_idx": 386,
+      "number": 200,
+      "repo_url": "https://api.github.com/repos/xXFirst555Xx/FuelTracker",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix tests by installing missing dependencies",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3140913281,
+      "row_idx": 655,
+      "number": 20,
+      "repo_url": "https://api.github.com/repos/ytlee0430/LotteryPython",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Add requirements.txt",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3194835964,
+      "row_idx": 82,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/zh1peng/sk-neuro",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Rename project.toml -> pyproject.toml",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3561290605,
+      "row_idx": 1193,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/4d4MP/TI_IP_checker-bulk",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in multi day UI",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3803310684,
+      "row_idx": 1063,
+      "number": 272,
+      "repo_url": "https://api.github.com/repos/Abisena/IMOGI-FINANCE",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Normalize indentation in ExpenseRequest.before_submit and remove duplicate approver validation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3803355058,
+      "row_idx": 1064,
+      "number": 273,
+      "repo_url": "https://api.github.com/repos/Abisena/IMOGI-FINANCE",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation and normalize approval-route formatting in Expense Request",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3536841981,
+      "row_idx": 1085,
+      "number": 37,
+      "repo_url": "https://api.github.com/repos/adpena/teadata",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix campus creation loop indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3147597812,
+      "row_idx": 493,
+      "number": 83,
+      "repo_url": "https://api.github.com/repos/adrianwedd/agentic-research-engine",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix minimal CI workflow indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4023230635,
+      "row_idx": 837,
+      "number": 90,
+      "repo_url": "https://api.github.com/repos/AIC-Turku/AIC-Turku-database",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Leica Thunder YAML indentation for objectives block",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4047364682,
+      "row_idx": 700,
+      "number": 210,
+      "repo_url": "https://api.github.com/repos/AIC-Turku/AIC-Turku-database",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation of `objectives` key in 3i CSU-W1 Spinning Disk YAML",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3424164467,
+      "row_idx": 37,
+      "number": 13,
+      "repo_url": "https://api.github.com/repos/Alice-Sabrina-Ivy/asi-letter",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix YAML indentation in ots-append workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3459692136,
+      "row_idx": 173,
+      "number": 61,
+      "repo_url": "https://api.github.com/repos/Alice-Sabrina-Ivy/asi-letter",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix ots-upgrade workflow inline Python indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3460741665,
+      "row_idx": 946,
+      "number": 65,
+      "repo_url": "https://api.github.com/repos/Alice-Sabrina-Ivy/asi-letter",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix heredoc indentation in ots-upgrade workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3460792735,
+      "row_idx": 28,
+      "number": 66,
+      "repo_url": "https://api.github.com/repos/Alice-Sabrina-Ivy/asi-letter",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix ots-upgrade inline python indentation failure",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3987537006,
+      "row_idx": 1346,
+      "number": 254,
+      "repo_url": "https://api.github.com/repos/AllanYiin/Amon",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "fix(core): remove broken MCP log call causing SyntaxError",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3750825784,
+      "row_idx": 158,
+      "number": 60,
+      "repo_url": "https://api.github.com/repos/AllanYiin/SlideManager",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix f-string syntax error in index service",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3433516207,
+      "row_idx": 75,
+      "number": 1220,
+      "repo_url": "https://api.github.com/repos/Alphonsus411/pCobra",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "feat: add text indentation and wrapping helpers",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3673689632,
+      "row_idx": 390,
+      "number": 58,
+      "repo_url": "https://api.github.com/repos/animicaorg/all",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix devnet compose heredoc indentation",
+      "license_hint_not_pinned_proof": "OFL-1.1",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3673694956,
+      "row_idx": 391,
+      "number": 59,
+      "repo_url": "https://api.github.com/repos/animicaorg/all",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix node2 command indentation in devnet compose",
+      "license_hint_not_pinned_proof": "OFL-1.1",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3778697042,
+      "row_idx": 789,
+      "number": 863,
+      "repo_url": "https://api.github.com/repos/animicaorg/all",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix IndentationError in mempool CLI JSON output",
+      "license_hint_not_pinned_proof": "OFL-1.1",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3798357910,
+      "row_idx": 20,
+      "number": 1037,
+      "repo_url": "https://api.github.com/repos/animicaorg/all",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix P2P sync indentation; add P2P supervisor, sync-status fallback, and compile guard tests",
+      "license_hint_not_pinned_proof": "OFL-1.1",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3929365510,
+      "row_idx": 400,
+      "number": 1584,
+      "repo_url": "https://api.github.com/repos/animicaorg/all",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "fix(wallet-extension): avoid prebuild eval syntax error in shell",
+      "license_hint_not_pinned_proof": "OFL-1.1",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3210395557,
+      "row_idx": 1374,
+      "number": 70,
+      "repo_url": "https://api.github.com/repos/Aries-Serpent/gh_COPILOT",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Resolve syntax errors and fix unicode mappings",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3278389758,
+      "row_idx": 704,
+      "number": 1007,
+      "repo_url": "https://api.github.com/repos/Aries-Serpent/gh_COPILOT",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "fix: align quantum fallback indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3278413375,
+      "row_idx": 128,
+      "number": 1013,
+      "repo_url": "https://api.github.com/repos/Aries-Serpent/gh_COPILOT",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in auto_generator",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3278502705,
+      "row_idx": 1317,
+      "number": 1035,
+      "repo_url": "https://api.github.com/repos/Aries-Serpent/gh_COPILOT",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "fix: adjust stub quantum scoring indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3134162238,
+      "row_idx": 170,
+      "number": 75,
+      "repo_url": "https://api.github.com/repos/AutomationOptimization/tsce_demo",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in generated hypothesis scripts",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3245605158,
+      "row_idx": 86,
+      "number": 18,
+      "repo_url": "https://api.github.com/repos/ayjays132/chain_of_thought_wrapper",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation error in GUI",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3140147419,
+      "row_idx": 92,
+      "number": 24,
+      "repo_url": "https://api.github.com/repos/b-vitamins/dotfiles",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Emacs module syntax errors",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3669116927,
+      "row_idx": 272,
+      "number": 91,
+      "repo_url": "https://api.github.com/repos/BA-CalderonMorales/my-life-as-a-dev",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Cleanup: Fix bullet list indentation in docs pages",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3666833973,
+      "row_idx": 63,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/bairesearch/GIAANNpy",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Use tabs for beam search indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3647749931,
+      "row_idx": 1367,
+      "number": 93,
+      "repo_url": "https://api.github.com/repos/balazsbme/keep-the-future-human-survival-rpg",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix baseline context indentation",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3857454812,
+      "row_idx": 322,
+      "number": 50,
+      "repo_url": "https://api.github.com/repos/bartoszskarbek-pixel/pdf-renamer",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in load_icon to resolve IndentationError",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3940551991,
+      "row_idx": 297,
+      "number": 277,
+      "repo_url": "https://api.github.com/repos/basebase-ai/basebase",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix SyntaxError in agents tools logging helper",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3329312238,
+      "row_idx": 36,
+      "number": 291,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in speed calculation and stub HA util for tests",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3948307456,
+      "row_idx": 471,
+      "number": 1247,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "fix: resolve Ruff E111 indentation warnings in test imports",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3959725138,
+      "row_idx": 478,
+      "number": 1284,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix hassfest syntax error in coordinator runtime import fallback",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3984976940,
+      "row_idx": 151,
+      "number": 1412,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix hassfest SyntaxError in entity module exception handling",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3126014261,
+      "row_idx": 1126,
+      "number": 72,
+      "repo_url": "https://api.github.com/repos/BioTRaX/NiceGrow",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in database function",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3126099965,
+      "row_idx": 546,
+      "number": 84,
+      "repo_url": "https://api.github.com/repos/BioTRaX/NiceGrow",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "fix syntax error in gpt_handler",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3324965602,
+      "row_idx": 433,
+      "number": 550,
+      "repo_url": "https://api.github.com/repos/blakinio/thesslagreen",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in config flow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3335795078,
+      "row_idx": 389,
+      "number": 731,
+      "repo_url": "https://api.github.com/repos/blakinio/thesslagreen",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix device scanner indentation error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3337493857,
+      "row_idx": 1407,
+      "number": 749,
+      "repo_url": "https://api.github.com/repos/blakinio/thesslagreen",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix switch block indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3337495698,
+      "row_idx": 1408,
+      "number": 750,
+      "repo_url": "https://api.github.com/repos/blakinio/thesslagreen",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix switch condition indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3462854001,
+      "row_idx": 568,
+      "number": 138,
+      "repo_url": "https://api.github.com/repos/BobTheZombie/LPM.Org",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Makefile recipe indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3462915239,
+      "row_idx": 199,
+      "number": 140,
+      "repo_url": "https://api.github.com/repos/BobTheZombie/LPM.Org",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Makefile indentation to restore valid recipes",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3519862394,
+      "row_idx": 263,
+      "number": 501,
+      "repo_url": "https://api.github.com/repos/bradhawkins85/MyPortal",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix admin.js modal handler syntax error",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3246540836,
+      "row_idx": 151,
+      "number": 61,
+      "repo_url": "https://api.github.com/repos/bvweerd/dynamic_energy_contract_calculator",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix release workflow indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3106238767,
+      "row_idx": 452,
+      "number": 75,
+      "repo_url": "https://api.github.com/repos/bwerff/TokenTally",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix BigQuery export test indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3653056095,
+      "row_idx": 118,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/chrisnewell91/Meta-MCP-Server",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in test runner",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3139343625,
+      "row_idx": 289,
+      "number": 83,
+      "repo_url": "https://api.github.com/repos/cssius111/xianxia-world-engine",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix test_api syntax error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3157344404,
+      "row_idx": 51,
+      "number": 113,
+      "repo_url": "https://api.github.com/repos/d0tTino/DeepThought-ReThought",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CI workflow indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3128248913,
+      "row_idx": 1251,
+      "number": 17,
+      "repo_url": "https://api.github.com/repos/DanielJSimons/open-lilli",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix TestReviewer indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3348773418,
+      "row_idx": 136,
+      "number": 6,
+      "repo_url": "https://api.github.com/repos/DenisZol/test",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Mega_Help_Scriptv2 syntax error",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3356680201,
+      "row_idx": 1128,
+      "number": 20,
+      "repo_url": "https://api.github.com/repos/dfiore1230/HA-Expiring-Consumables",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in config flow test",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4061200189,
+      "row_idx": 1102,
+      "number": 26,
+      "repo_url": "https://api.github.com/repos/DO1FFE/meshcore-network-monitor",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Behebt SyntaxError in PATH-Event-Schlüssel f-String",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4074926172,
+      "row_idx": 890,
+      "number": 46,
+      "repo_url": "https://api.github.com/repos/DO1FFE/meshcore-network-monitor",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix SyntaxError durch korrektes Quoting im f-String des Companion-Clients",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3114428606,
+      "row_idx": 1253,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/elboKazQC/AGVConfig-Traduction",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in hierarchical editor",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3173245103,
+      "row_idx": 651,
+      "number": 6,
+      "repo_url": "https://api.github.com/repos/ereal21/eftgegege",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix import issues and syntax errors",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3678763444,
+      "row_idx": 982,
+      "number": 3,
+      "repo_url": "https://api.github.com/repos/ernestoruiz89/lemonsqueezy",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix inconsistent indentation in LemonSqueezy settings",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3681055521,
+      "row_idx": 60,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/ernestoruiz89/lemonsqueezy",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in LemonSqueezy checkout API",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3077352480,
+      "row_idx": 402,
+      "number": 6,
+      "repo_url": "https://api.github.com/repos/eunwol1991/eunwol1991",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix epub_converter syntax error and language parameter",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3507810004,
+      "row_idx": 299,
+      "number": 8,
+      "repo_url": "https://api.github.com/repos/farukalpay/Semantic-Lexicon",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix sample output code block indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3114015627,
+      "row_idx": 382,
+      "number": 67,
+      "repo_url": "https://api.github.com/repos/FelixGru/whereisthisplace",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Makefile indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3869450620,
+      "row_idx": 1207,
+      "number": 6,
+      "repo_url": "https://api.github.com/repos/finarco/DeliveryNotes_to_CollectInvoice",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Add README troubleshooting steps for SyntaxError on startup",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3217094971,
+      "row_idx": 235,
+      "number": 106,
+      "repo_url": "https://api.github.com/repos/fmonfasani/framework",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix orchestrator shutdown log indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3661778529,
+      "row_idx": 194,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/forrestrest/RAG",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Add lite script and indentation guidance",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3479029962,
+      "row_idx": 1395,
+      "number": 394,
+      "repo_url": "https://api.github.com/repos/francis18georges-png/Watcher",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation of inline Python in release workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3773251349,
+      "row_idx": 1215,
+      "number": 2025,
+      "repo_url": "https://api.github.com/repos/franklinbaldo/egregora",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix: Correct indentation in shared Gemini runner",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3535009932,
+      "row_idx": 319,
+      "number": 1384,
+      "repo_url": "https://api.github.com/repos/futuroptimist/sugarkube",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "🛠️ : – align bootstrap block with just indentation rules",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3335372341,
+      "row_idx": 1309,
+      "number": 7,
+      "repo_url": "https://api.github.com/repos/Gms006/SIMULA-AO-DE-FATURAMENTO",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix SyntaxError in scenario HTML generation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3551755414,
+      "row_idx": 277,
+      "number": 193,
+      "repo_url": "https://api.github.com/repos/gustavomhss/trendmarketv2",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in dbt freshness tests",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3716728844,
+      "row_idx": 569,
+      "number": 165,
+      "repo_url": "https://api.github.com/repos/Hackerpro33/project",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix email log writer indentation",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3825769315,
+      "row_idx": 133,
+      "number": 864,
+      "repo_url": "https://api.github.com/repos/hisr2024/BhriguWelt",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in English i18n copy",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3247728001,
+      "row_idx": 1271,
+      "number": 179,
+      "repo_url": "https://api.github.com/repos/IMOGI-ITB/Payroll-Indonesia",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in GL account mapper",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3813074257,
+      "row_idx": 168,
+      "number": 126,
+      "repo_url": "https://api.github.com/repos/ipsissima/esm-agentbench",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "fix(ci): correct heredoc indentation in CI workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3813102257,
+      "row_idx": 169,
+      "number": 128,
+      "repo_url": "https://api.github.com/repos/ipsissima/esm-agentbench",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix YAML heredoc indentation in GitHub workflows",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3255391289,
+      "row_idx": 296,
+      "number": 135,
+      "repo_url": "https://api.github.com/repos/Isaac-McPadden/Farkle_II",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in FarklePlayer._should_continue",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3955285808,
+      "row_idx": 609,
+      "number": 214,
+      "repo_url": "https://api.github.com/repos/issdandavis/SCBE-AETHERMOORE",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix sheafCohomology syntax error and lower Coherence Gate threshold to 0.20",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3170879057,
+      "row_idx": 348,
+      "number": 288,
+      "repo_url": "https://api.github.com/repos/IvanStarostin1984/ML_classification",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix TODO indentation for markdownlint",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3750719800,
+      "row_idx": 924,
+      "number": 243,
+      "repo_url": "https://api.github.com/repos/jackandcarter/AdventureBot",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in `get_level_growth` to prevent import-time errors",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3433138781,
+      "row_idx": 767,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/Jahyuching/Prismalia",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix input handling indentation and clean entity classes",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3910913551,
+      "row_idx": 499,
+      "number": 28,
+      "repo_url": "https://api.github.com/repos/Jastroger/ha-nest-protect",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Nest Protect SyntaxError and typing; mark iot_class as cloud_push",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3497782698,
+      "row_idx": 49,
+      "number": 9,
+      "repo_url": "https://api.github.com/repos/jirivrba/filmgraingen",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix PNG export loop indentation",
+      "license_hint_not_pinned_proof": "Unlicense",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3718736671,
+      "row_idx": 280,
+      "number": 156,
+      "repo_url": "https://api.github.com/repos/joaotovolli/Sustainacore",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in news service and TECH100 auth helpers",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3494748759,
+      "row_idx": 1297,
+      "number": 170,
+      "repo_url": "https://api.github.com/repos/kenhaesler/streamlit-portainer-dashboard",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix session token cookie handling indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3563626642,
+      "row_idx": 360,
+      "number": 53,
+      "repo_url": "https://api.github.com/repos/kenmck3772/welltegra.network",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix appState wellFilters syntax error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3251629632,
+      "row_idx": 484,
+      "number": 173,
+      "repo_url": "https://api.github.com/repos/KenYu910645/MapleStoryAutoLevelUp",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in f-strings",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3147892382,
+      "row_idx": 265,
+      "number": 95,
+      "repo_url": "https://api.github.com/repos/kinoshitayoshihiro/composer2",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Resolve indentation in drum generator",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3437029458,
+      "row_idx": 740,
+      "number": 747,
+      "repo_url": "https://api.github.com/repos/kinoshitayoshihiro/composer2",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix train phrase indentation, expose mask helper, and add fallback stub",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3445641996,
+      "row_idx": 1330,
+      "number": 845,
+      "repo_url": "https://api.github.com/repos/kinoshitayoshihiro/composer2",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation regression in train_phrase reweight handling",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3445648606,
+      "row_idx": 1331,
+      "number": 846,
+      "repo_url": "https://api.github.com/repos/kinoshitayoshihiro/composer2",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in train_phrase reweight block",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3445649830,
+      "row_idx": 1332,
+      "number": 847,
+      "repo_url": "https://api.github.com/repos/kinoshitayoshihiro/composer2",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in reweight inv_freq block",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3445650929,
+      "row_idx": 1333,
+      "number": 848,
+      "repo_url": "https://api.github.com/repos/kinoshitayoshihiro/composer2",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation for tag reweight block",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3324461296,
+      "row_idx": 0,
+      "number": 30,
+      "repo_url": "https://api.github.com/repos/kiyoteruhosoda/FlaskApp",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in upsert_exif helper",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3897871861,
+      "row_idx": 422,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/klabir/SafetcWater",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Normalize indentation and log integration version in Safetec Water sensor",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3387396204,
+      "row_idx": 1009,
+      "number": 98,
+      "repo_url": "https://api.github.com/repos/Kote87/rosbot2",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "fix: correct navigation service indentation and default MAP",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3398027294,
+      "row_idx": 371,
+      "number": 102,
+      "repo_url": "https://api.github.com/repos/Kote87/rosbot2",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Revert to fix compose.yaml indentation and defaults",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 4176111730,
+      "row_idx": 222,
+      "number": 13,
+      "repo_url": "https://api.github.com/repos/kuverabridge/jhora-operator-pack",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "fix: root-cause SyntaxError crashing all JS + redesign login page",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3185949284,
+      "row_idx": 281,
+      "number": 17,
+      "repo_url": "https://api.github.com/repos/KyssK00L/Port2ctree",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3186050756,
+      "row_idx": 212,
+      "number": 20,
+      "repo_url": "https://api.github.com/repos/KyssK00L/Port2ctree",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix YAML indentation in publish workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3305487010,
+      "row_idx": 2,
+      "number": 83,
+      "repo_url": "https://api.github.com/repos/LKSchwartz95/techbehandler",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix config handler JSON syntax error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3123053888,
+      "row_idx": 1283,
+      "number": 105,
+      "repo_url": "https://api.github.com/repos/Lotus-Gaming-DE/lotus-discord-bot",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in tests",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3165121825,
+      "row_idx": 974,
+      "number": 200,
+      "repo_url": "https://api.github.com/repos/Lotus-Gaming-DE/lotus-discord-bot",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in picture categories",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3182940033,
+      "row_idx": 1176,
+      "number": 43,
+      "repo_url": "https://api.github.com/repos/mattiacreates/EmotionKnowledge",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation issue in diarization workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3514019153,
+      "row_idx": 874,
+      "number": 43,
+      "repo_url": "https://api.github.com/repos/maxDcb/C2TeamServer",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Normalize TeamServer indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3292667193,
+      "row_idx": 413,
+      "number": 7,
+      "repo_url": "https://api.github.com/repos/MAYER-Ti/word_copywriter",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in create_document",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3326440873,
+      "row_idx": 219,
+      "number": 1700,
+      "repo_url": "https://api.github.com/repos/MelkorBalrog/AutoML",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix JSON syntax errors in diagram rules configuration",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3330759989,
+      "row_idx": 705,
+      "number": 1938,
+      "repo_url": "https://api.github.com/repos/MelkorBalrog/AutoML",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix JSON syntax errors in configuration files",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3474832462,
+      "row_idx": 1208,
+      "number": 587,
+      "repo_url": "https://api.github.com/repos/mfat/sshpilot",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Restore sidebar row indentation defaults",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3509614426,
+      "row_idx": 1183,
+      "number": 3,
+      "repo_url": "https://api.github.com/repos/MMirabel/Code_Snippets",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Improve snippet index indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3220946683,
+      "row_idx": 991,
+      "number": 3199,
+      "repo_url": "https://api.github.com/repos/MontrealAI/AGI-Alpha-Agent-v0",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "[alpha_factory] Fix size-check workflow indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3221122014,
+      "row_idx": 292,
+      "number": 3203,
+      "repo_url": "https://api.github.com/repos/MontrealAI/AGI-Alpha-Agent-v0",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix size-check workflow indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3222780444,
+      "row_idx": 511,
+      "number": 3210,
+      "repo_url": "https://api.github.com/repos/MontrealAI/AGI-Alpha-Agent-v0",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Browser Size workflow indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3151967131,
+      "row_idx": 272,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/Morley-Labs/Morley-Core-Testing",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation of arithmetic test",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3094578588,
+      "row_idx": 406,
+      "number": 258,
+      "repo_url": "https://api.github.com/repos/morris2016/Spectre_Bot",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in reinforcement environment",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3099600574,
+      "row_idx": 351,
+      "number": 311,
+      "repo_url": "https://api.github.com/repos/morris2016/Spectre_Bot",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error when importing TradingEnvironment",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3934547365,
+      "row_idx": 803,
+      "number": 196,
+      "repo_url": "https://api.github.com/repos/munjed80/smart-accounting-pla",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in zzp_time router (unmatched parenthesis)",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3136204905,
+      "row_idx": 795,
+      "number": 32,
+      "repo_url": "https://api.github.com/repos/neslonso/srfs",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Switch to tabs for indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3089302148,
+      "row_idx": 180,
+      "number": 53,
+      "repo_url": "https://api.github.com/repos/nodetool-ai/nodetool-core",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation to enable test run",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3699442514,
+      "row_idx": 971,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/Nouni2/Seasonal",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation for polar day return",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3971940138,
+      "row_idx": 1167,
+      "number": 8,
+      "repo_url": "https://api.github.com/repos/ornab74/roadscanner-alpha",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Stabilize session cookie loader to prevent deploy-time indentation/import failures",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3272841846,
+      "row_idx": 183,
+      "number": 229,
+      "repo_url": "https://api.github.com/repos/PanagiotisVasilakis/thesis",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix timer indentation and f-strings",
+      "license_hint_not_pinned_proof": "CC0-1.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3973446573,
+      "row_idx": 1392,
+      "number": 3,
+      "repo_url": "https://api.github.com/repos/PKHarsimran/discord-coop-game-deals-bot",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CheapShark f-string syntax error and add network error handling in main workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3696057569,
+      "row_idx": 65,
+      "number": 55,
+      "repo_url": "https://api.github.com/repos/Project-SimPM/SimPM",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in dashboard log table",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3388302250,
+      "row_idx": 204,
+      "number": 32,
+      "repo_url": "https://api.github.com/repos/rasikasrimal/Heartlytics",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix settings form macros to avoid TemplateSyntaxError",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3769633784,
+      "row_idx": 1308,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/RecursiveIntell/Agentic-AiDENS",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CLI JSON indentation and cleanup scope in run_graph_command",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3247717551,
+      "row_idx": 1270,
+      "number": 115,
+      "repo_url": "https://api.github.com/repos/rhamenator/ai-scraping-defense",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix postgres service indentation",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3478420007,
+      "row_idx": 285,
+      "number": 259,
+      "repo_url": "https://api.github.com/repos/rinward23/AstroEngine",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix test target indentation",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3678262554,
+      "row_idx": 317,
+      "number": 156,
+      "repo_url": "https://api.github.com/repos/Rishikiran98/HIEROMEM",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix cancel_subscription indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3563444206,
+      "row_idx": 388,
+      "number": 561,
+      "repo_url": "https://api.github.com/repos/RNA4219/Day8",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Preserve folded block indentation in evaluator CLI",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3568971040,
+      "row_idx": 436,
+      "number": 584,
+      "repo_url": "https://api.github.com/repos/RNA4219/Day8",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Preserve indentation in folded block scalars",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3531829026,
+      "row_idx": 169,
+      "number": 164,
+      "repo_url": "https://api.github.com/repos/RNA4219/katamari",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CI workflow heredoc indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3525145602,
+      "row_idx": 889,
+      "number": 141,
+      "repo_url": "https://api.github.com/repos/RNA4219/workflow-cookbook",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix YAML syntax error in required labels workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4022154052,
+      "row_idx": 966,
+      "number": 169,
+      "repo_url": "https://api.github.com/repos/rovinlr/POS_factura_electronica",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix IndentationError in POS FE order model",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4018577663,
+      "row_idx": 275,
+      "number": 7,
+      "repo_url": "https://api.github.com/repos/ryanm-plastic-recycling/NetPot",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Escape literal braces in UI f-strings to fix SyntaxError",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3150652896,
+      "row_idx": 8,
+      "number": 47,
+      "repo_url": "https://api.github.com/repos/SaptaDey/Adaptive-Graph-of-Thoughts-MCP-server",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix datamodel indentation and cleanup utils",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3165814489,
+      "row_idx": 173,
+      "number": 126,
+      "repo_url": "https://api.github.com/repos/SaptaDey/Adaptive-Graph-of-Thoughts-MCP-server",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in load_with_overrides",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3489306060,
+      "row_idx": 906,
+      "number": 1909,
+      "repo_url": "https://api.github.com/repos/SatoryKono/ChEMBL_data_acquisition",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix config loader env imports to avoid Windows SyntaxError",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3503978365,
+      "row_idx": 54,
+      "number": 2598,
+      "repo_url": "https://api.github.com/repos/SatoryKono/ChEMBL_data_acquisition",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in target CLI parameter resolver",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3504263958,
+      "row_idx": 1166,
+      "number": 2636,
+      "repo_url": "https://api.github.com/repos/SatoryKono/ChEMBL_data_acquisition",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in cli_utils meta generation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3504925926,
+      "row_idx": 237,
+      "number": 2689,
+      "repo_url": "https://api.github.com/repos/SatoryKono/ChEMBL_data_acquisition",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix RunPipelineResult docstring indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3626143447,
+      "row_idx": 159,
+      "number": 34,
+      "repo_url": "https://api.github.com/repos/scanalesespinoza/the-wise-tech",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in PR summarizer workflow script",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3626169618,
+      "row_idx": 160,
+      "number": 35,
+      "repo_url": "https://api.github.com/repos/scanalesespinoza/the-wise-tech",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix heredoc indentation in PR summarizer workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3160982376,
+      "row_idx": 347,
+      "number": 15,
+      "repo_url": "https://api.github.com/repos/seclution/hetzner_dyndns",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in update_dns",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3163025367,
+      "row_idx": 1083,
+      "number": 87,
+      "repo_url": "https://api.github.com/repos/seclution/hetzner_dyndns",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix README indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3140399432,
+      "row_idx": 530,
+      "number": 52,
+      "repo_url": "https://api.github.com/repos/seiya/fautodiff",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Refine indentation depth for generated routines",
+      "license_hint_not_pinned_proof": "BSD-2-Clause",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3523361803,
+      "row_idx": 132,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/shahinmnm/Poker-Bot",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Makefile recipe indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3271366868,
+      "row_idx": 132,
+      "number": 122,
+      "repo_url": "https://api.github.com/repos/SkillHeaven/RunePy",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in client.py",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3515370237,
+      "row_idx": 706,
+      "number": 2642,
+      "repo_url": "https://api.github.com/repos/stranske/Trend_Model_Project",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in mypy pin verification step",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3082008116,
+      "row_idx": 116,
+      "number": 1450,
+      "repo_url": "https://api.github.com/repos/swarmauri/swarmauri-sdk",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix block scalar indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3786049174,
+      "row_idx": 20,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/synchromite/GTNH-Helper",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Refactor merge insert to avoid IndentationError and include output_slot_index handling",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3368625596,
+      "row_idx": 1412,
+      "number": 16,
+      "repo_url": "https://api.github.com/repos/Tahseen-gh/openai-ml-phase1",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "fix: remove stray tokens causing syntax error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3965215943,
+      "row_idx": 301,
+      "number": 9,
+      "repo_url": "https://api.github.com/repos/tayW84/T.I.T.A.N.",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix TITAN-CLI syntax and indentation errors",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3207277010,
+      "row_idx": 599,
+      "number": 83,
+      "repo_url": "https://api.github.com/repos/Thabonel/wheels-wins-landing-page",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in wheels_node",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3727549390,
+      "row_idx": 246,
+      "number": 8,
+      "repo_url": "https://api.github.com/repos/thejohnd0e/LUTplus",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Refactor app startup to prevent indentation errors",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3257456879,
+      "row_idx": 87,
+      "number": 50,
+      "repo_url": "https://api.github.com/repos/THEMKM/Seraaj",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "fix: correct vote_post indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3775257297,
+      "row_idx": 330,
+      "number": 34,
+      "repo_url": "https://api.github.com/repos/thstyl2000/Koozer",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix heredoc terminator indentation in release workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3775263630,
+      "row_idx": 331,
+      "number": 36,
+      "repo_url": "https://api.github.com/repos/thstyl2000/Koozer",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix release workflow heredoc indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3505643318,
+      "row_idx": 392,
+      "number": 92,
+      "repo_url": "https://api.github.com/repos/TJZine/frame-compare-legacy",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Improve summary bullet hanging indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3116913359,
+      "row_idx": 24,
+      "number": 296,
+      "repo_url": "https://api.github.com/repos/Tosaaaki/piphawk-ai",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in job_runner",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3135001564,
+      "row_idx": 1353,
+      "number": 575,
+      "repo_url": "https://api.github.com/repos/Tosaaaki/piphawk-ai",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3132976328,
+      "row_idx": 1080,
+      "number": 22,
+      "repo_url": "https://api.github.com/repos/TrololoBird/tv-generator",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix YAML indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3135110381,
+      "row_idx": 198,
+      "number": 35,
+      "repo_url": "https://api.github.com/repos/TrololoBird/tv-generator",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation for Slack notification",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3141982609,
+      "row_idx": 486,
+      "number": 126,
+      "repo_url": "https://api.github.com/repos/TrololoBird/tv-generator",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CI indentation and coverage condition",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3203959881,
+      "row_idx": 618,
+      "number": 22,
+      "repo_url": "https://api.github.com/repos/Unic0rn0ver10ad/zippy",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in zippy.py",
+      "license_hint_not_pinned_proof": "Unlicense",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3901668261,
+      "row_idx": 1263,
+      "number": 5,
+      "repo_url": "https://api.github.com/repos/vashisthNitesh/team",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix django-easy-thumbnails syntax error on team page",
+      "license_hint_not_pinned_proof": "BSD-3-Clause",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3226577598,
+      "row_idx": 432,
+      "number": 225,
+      "repo_url": "https://api.github.com/repos/viiiviii538/NWCD",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in result_page.dart",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3187618299,
+      "row_idx": 804,
+      "number": 331,
+      "repo_url": "https://api.github.com/repos/VimsRocz/Smart_Sensor_Fusion_for_Robust_initialization_and_Accurate_Trajectory_Estimation",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in Task_5",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4125800048,
+      "row_idx": 119,
+      "number": 17,
+      "repo_url": "https://api.github.com/repos/vipin-odoo/My_Repo",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors and restore API key generation/read flow",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3420435470,
+      "row_idx": 963,
+      "number": 19,
+      "repo_url": "https://api.github.com/repos/vkgo/OCRAutoScore",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix get_score return indentation",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3868281881,
+      "row_idx": 467,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/w1k5/gold-crash",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix workflow YAML indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3868324832,
+      "row_idx": 468,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/w1k5/gold-crash",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Move dashboard to repo root, update updater/workflow/docs, and fix workflow heredoc indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3153145813,
+      "row_idx": 96,
+      "number": 42,
+      "repo_url": "https://api.github.com/repos/WSG23/yosai_intel_dashboard",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3699199899,
+      "row_idx": 40,
+      "number": 39,
+      "repo_url": "https://api.github.com/repos/xyhjmc/FFB6D-high-pytorch",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix eval_sc docstring syntax error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4078228607,
+      "row_idx": 25,
+      "number": 11,
+      "repo_url": "https://api.github.com/repos/Y-coder-guru/YOLOv8__GUI",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix IndentationError in camera start endpoint",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3332203771,
+      "row_idx": 131,
+      "number": 235,
+      "repo_url": "https://api.github.com/repos/Yefym707/Game",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in attack command handling",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3438506075,
+      "row_idx": 686,
+      "number": 746,
+      "repo_url": "https://api.github.com/repos/yegorsokolov/BotCopier",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CV indentation and fallback metrics after shrinkage updates",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3443652370,
+      "row_idx": 1171,
+      "number": 861,
+      "repo_url": "https://api.github.com/repos/yegorsokolov/MT5",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CLI local import indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3854033704,
+      "row_idx": 397,
+      "number": 809,
+      "repo_url": "https://api.github.com/repos/zcm58/FPVS-Toolbox-Repo",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix stats clipboard TSV export syntax error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3070649186,
+      "row_idx": 1289,
+      "number": 17,
+      "repo_url": "https://api.github.com/repos/zhangzhongnan928/mcp-warpcast-server",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in requests stub",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3277040346,
+      "row_idx": 447,
+      "number": 16,
+      "repo_url": "https://api.github.com/repos/zurbaran/odoo_metal_manufacturing",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix RST indentation in attribute price README",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    }
+  ],
+  "qualification": "Discovery hints only: current dataset language/license/fork metadata does not prove pinned-base license, causal class, CI outcome or authorship. Proposed roles are deterministic before experiments; existing role takes precedence. PR/commit/license/files and family checks still required. No new eligibility screens or model calls."
+}

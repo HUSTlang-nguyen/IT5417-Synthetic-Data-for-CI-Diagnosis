@@ -4,6 +4,7 @@ import math
 import os
 from pathlib import Path
 import shutil
+import stat
 
 from .batch import BudgetStop, batch_lock
 from .common import CACHE, ROOT, now, read_json, sha256
@@ -20,12 +21,19 @@ def tree_bytes(path):
         return path.stat().st_size
     total, pending = 0, [path]
     while pending:
-        with os.scandir(pending.pop()) as entries:
+        try:
+            entries = os.scandir(pending.pop())
+        except FileNotFoundError:
+            continue
+        with entries:
             for entry in entries:
-                info = entry.stat(follow_symlinks=False)
-                if entry.is_symlink() or getattr(info,'st_file_attributes',0) & 0x400:
+                try:
+                    info = entry.stat(follow_symlinks=False)
+                except FileNotFoundError:
                     continue
-                if entry.is_dir(follow_symlinks=False):
+                if stat.S_ISLNK(info.st_mode) or getattr(info,'st_file_attributes',0) & 0x400:
+                    continue
+                if stat.S_ISDIR(info.st_mode):
                     pending.append(entry.path)
                 else:
                     total += info.st_size
@@ -47,6 +55,8 @@ def elapsed(state, timestamp):
 
 
 class DataStudy(Experiment):
+    metadata_lock_wait_seconds = 120
+
     def __init__(self, run_id):
         self.folder = ROOT/'runs'/run_id
         if not self.folder.resolve().is_relative_to((ROOT/'runs').resolve()):
@@ -69,7 +79,7 @@ class DataStudy(Experiment):
 
     def check_prepare_step(self, *, timeout=180):
         """Preparation was admitted by reserve(); still check time/free space per command."""
-        with batch_lock(self.lock, wait_seconds=30):
+        with batch_lock(self.lock, wait_seconds=self.metadata_lock_wait_seconds):
             state = read_json(self.manifest)
             if not any(row['stage'] == 'real_reproduction' and row['status'] == 'reserved'
                        for row in state['operations'].values()):

@@ -1,0 +1,76 @@
+{
+  "case_id": "pypa__pip-10079-ds2-upstream",
+  "source_case_id": "pypa__pip-10079",
+  "record_id": "pypa__pip-10079",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "train",
+  "repo_url": "https://github.com/pypa/pip",
+  "base": "76cd70ac42cbbe6a51d83bd100f500ac4c21f26b",
+  "head": "base+repair:75eb0160aa86c9c102c7d2c353ae5eb440ae7cc7a8f5a53cf110e34ddb2964e0",
+  "allowed_file": "src/pip/_internal/models/link.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "dataset_protocol": "dataset-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pypa__pip-10079-ds2-upstream/repair.patch",
+  "repair_patch_sha256": "75eb0160aa86c9c102c7d2c353ae5eb440ae7cc7a8f5a53cf110e34ddb2964e0",
+  "test_patch": ".cache/dataset-v2-source/cases/pypa__pip-10079-ds2-upstream/test.patch",
+  "test_patch_sha256": "46ab39ae1b308c6e1bbfc4636a605807a6467c915fe9a9507f2c83bd8140d1eb",
+  "source_record_sha256": "54b802fc5cad411cdd034f0b5c1de19b5cdcb6ce431804f3499a6be0b76074fd",
+  "fail_to_pass": [],
+  "pass_to_pass": [],
+  "test_reference_policy": "upstream_pr_recovered_v1",
+  "local_expected_failures": [
+    "tests/unit/test_link.py::test_links_equivalent[drop-egg]"
+  ],
+  "local_expected_passes": [
+    "tests/unit/test_link.py::test_links_equivalent_false[different-keys]"
+  ],
+  "upstream_test_provenance": ".cache/dataset-v2-source/cases/pypa__pip-10079-ds2-upstream/upstream-provenance.json",
+  "upstream_test_provenance_sha256": "67628ce3116adf8dfe9ef3ba7e622e0d8c71dc8b704d0495ccba1841cb765288",
+  "source_id_matching": "exact",
+  "test_targets": [
+    "tests/unit/test_link.py::test_links_equivalent[drop-egg]",
+    "tests/unit/test_link.py::test_links_equivalent_false[different-keys]"
+  ],
+  "frozen_test_files": [
+    "tests/functional/test_install_reqs.py",
+    "tests/functional/test_new_resolver.py",
+    "tests/unit/test_link.py"
+  ],
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "python_image": "python:3.9-slim-bookworm",
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [],
+  "dependencies": [
+    "setuptools==57.5.0",
+    "wheel==0.37.1",
+    "scripttest==1.3",
+    "virtualenv==16.7.12",
+    "Werkzeug==1.0.1",
+    "cryptography==3.4.8",
+    "freezegun==1.2.2",
+    "pretend==1.0.9",
+    "toml==0.10.2"
+  ],
+  "install_project": false,
+  "test_workdir": "work",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Two URLs differing only by redundant egg fragment should be equivalent: pinned upstream drop-egg unit fails on base/passes fixed, while different-hash control passes both. Local offline utility hypothesis, not original benchmark references or installation CI.",
+  "recipe_basis": "Python3.9 source paths src/root and upstream imported test-library requirements pinned separately. No network runtime or external service; test/production bytes unchanged. Pip inspected only as development/train, never heldout."
+}

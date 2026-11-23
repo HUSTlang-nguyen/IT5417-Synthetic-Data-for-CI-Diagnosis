@@ -1,0 +1,140 @@
+{
+  "checked_at": "2026-11-24T06:46:10+07:00",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "url": "https://huggingface.co/datasets/hao-li/AIDev/resolve/b8dc67df93e7c11f6f20c84129db7232eb1ec253/all_pull_request.parquet",
+  "parquet_metadata": {
+    "groups": 39,
+    "rows": 7685281,
+    "first_group_rows": 200000
+  },
+  "repository_schemas": {
+    "repository": {
+      "columns": [
+        "id",
+        "url",
+        "license",
+        "full_name",
+        "is_forked",
+        "language",
+        "forks",
+        "stars"
+      ],
+      "rows": 25402,
+      "projected_path": ".cache/dataset-v2-aidev-repository-projected-metadata.json",
+      "projected_sha256": "ec6a81e69a3876675e54014b4672c33f59947df96d9274726842d6b890462cb9",
+      "projected_columns": [
+        "id",
+        "url",
+        "full_name",
+        "language",
+        "license"
+      ]
+    },
+    "all_repository": {
+      "columns": [
+        "id",
+        "url",
+        "license",
+        "full_name",
+        "is_forked",
+        "language",
+        "forks",
+        "stars"
+      ],
+      "rows": 957209
+    }
+  },
+  "groups": [
+    {
+      "row_group": 3,
+      "rows_read": 200000,
+      "matches": 257,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    },
+    {
+      "row_group": 4,
+      "rows_read": 200000,
+      "matches": 225,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    },
+    {
+      "row_group": 5,
+      "rows_read": 200000,
+      "matches": 229,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    },
+    {
+      "row_group": 6,
+      "rows_read": 200000,
+      "matches": 216,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    },
+    {
+      "row_group": 7,
+      "rows_read": 200000,
+      "matches": 239,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    },
+    {
+      "row_group": 8,
+      "rows_read": 200000,
+      "matches": 250,
+      "projected_columns": [
+        "id",
+        "number",
+        "title",
+        "repo_url",
+        "html_url",
+        "merged_at",
+        "agent"
+      ]
+    }
+  ],
+  "candidate_rows": 1416,
+  "unique_candidate_ids": 1416,
+  "raw_index": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+  "raw_index_sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2",
+  "new_case_eligibility_reviews": 0,
+  "model_calls": 0,
+  "qualification": "Bounded column-projected discovery index, not full-file download or screened/approved samples. Full Parquet LFS hash is published upstream but not reverified by this partial read; provenance is pinned revision plus actual projected cache hash. Raw projections remain outside Git."
+}
