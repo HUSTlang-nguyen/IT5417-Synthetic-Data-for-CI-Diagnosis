@@ -1,0 +1,86 @@
+{
+  "case_id": "pydata__xarray-3677-ds2-heldout2",
+  "source_case_id": "pydata__xarray-3677",
+  "record_id": "pydata__xarray-3677",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "ef6e6a7b86f8479b9a1fecf15ad5b88a2326b31e",
+  "head": "base+repair:eb6bc3dcb4a4406f23abc17190cffd828ee58e1948e5621cc75abbd9fae142cd",
+  "allowed_file": "xarray/core/dataset.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3677-ds2-heldout2/repair.patch",
+  "repair_patch_sha256": "eb6bc3dcb4a4406f23abc17190cffd828ee58e1948e5621cc75abbd9fae142cd",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3677-ds2-heldout2/test.patch",
+  "test_patch_sha256": "378d54dd2ff404fe064e1dff3d69bd6cd2682f33b0e1202c664842b73d3372be",
+  "source_record_sha256": "ed10f7bd23b5ee08d4bb0428ad3d41a068e9ea28b1e645abad16dce7da7bc4d5",
+  "fail_to_pass": [
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_dataarray"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_merge.py::TestMergeInternals::test_broadcast_dimension_size",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_arrays",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_datasets",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_dataarray_unnamed",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_dicts_simple",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_dicts_dims",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_error",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_alignment_error",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_wrong_input_error",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_single_var",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_multi_var",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_preserve_attrs",
+    "xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_broadcast",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_broadcast_equals",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_compat",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_auto_align",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_fill_value[fill_value0]",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_fill_value[2]",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_fill_value[2.0]",
+    "xarray/tests/test_merge.py::TestMergeMethod::test_merge_no_conflicts"
+  ],
+  "test_targets": [
+    "xarray/tests/test_merge.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_merge.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same-repo/source-version passing heldout recipe, except Requests uses source setup/test constraints read before execution."
+}

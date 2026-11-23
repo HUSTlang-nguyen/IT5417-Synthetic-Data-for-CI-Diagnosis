@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 import shutil
 
-from .batch import BudgetStop
+from .batch import BudgetStop, batch_lock
 from .common import CACHE, ROOT, now, read_json, sha256
 from .experiment import Experiment
 
@@ -67,7 +67,16 @@ class DataStudy(Experiment):
         if stage == 'real_reproduction' and sum(r['stage']==stage for r in state['operations'].values()) >= read_json(self.spec_path)['limits']['new_source_cases']:
             raise BudgetStop('New source-case limit reached')
 
-    def _check(self, state, stage, timeout):
+    def check_prepare_step(self, *, timeout=180):
+        """Preparation was admitted by reserve(); still check time/free space per command."""
+        with batch_lock(self.lock, wait_seconds=30):
+            state = read_json(self.manifest)
+            if not any(row['stage'] == 'real_reproduction' and row['status'] == 'reserved'
+                       for row in state['operations'].values()):
+                raise ValueError('Preparation requires an admitted real-case operation')
+            return self._check(state, 'real_reproduction', timeout, scan_artifacts=False)[1]
+
+    def _check(self, state, stage, timeout, *, scan_artifacts=True):
         if isinstance(timeout, bool) or not isinstance(timeout, (float,int)) or not math.isfinite(timeout) or timeout < 0:
             raise ValueError('Invalid timeout')
         if stage not in {'audit','metadata','real_reproduction','synthetic'}:
@@ -94,7 +103,8 @@ class DataStudy(Experiment):
             volume = path.anchor
             if shutil.disk_usage(volume).free < limits['minimum_free_bytes']:
                 raise BudgetStop('Artifact/Docker volume free-space gate')
-            growth += max(0,tree_bytes(path)-entry['bytes'])
+            if scan_artifacts:
+                growth += max(0,tree_bytes(path)-entry['bytes'])
         if growth >= limits['maximum_artifact_growth_bytes']:
             raise BudgetStop('Artifact growth limit reached')
         return timestamp,remaining

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T13:25:03+07:00",
+  "updated_at": "2026-11-23T13:54:03+07:00",
   "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
@@ -24,17 +24,17 @@
   },
   "v2_real_selected": 0,
   "v2_synthetic_selected": 0,
-  "new_case_attempts": 23,
+  "new_case_attempts": 30,
   "new_generator_requests": 0,
   "live_worker": {
-    "session_id": 71523,
-    "log": ".cache/dataset-v2-wave2-live.txt",
+    "session_id": 54676,
+    "log": ".cache/dataset-v2-wave2-stage-guards-live.txt",
     "plan": "data-manifests/dataset-v2-wave2-interleaved.json",
-    "last_observed_at": "2026-11-23T13:25:03+07:00",
-    "observation": "Session71523 returned running; first marshmallow passed, pvlib1458 not confirmed."
+    "last_observed_at": "2026-11-23T13:54:03+07:00",
+    "observation": "Resumed after clean case-boundary handoff. First new source pvlib1165 finished not confirmed; prior8wave2 cases skipped."
   },
   "collection_budget_initialized": true,
-  "next_task": "Follow71523 without replay; review completed train evidence, expand heldout recipes, and continue rare-class AIDev screening. Input v3 frozen; uniform exports are candidates, not final quota/dedup selection.",
+  "next_task": "Follow54676; review remaining strict wave2 cases. Run prepared5-source heldout plan serially after this wave. Expand train source cohort with recovered upstream test provenance and append-only repo roles; source capacity626 cannot meet700. Preserve missing source reference labels and all gates.",
   "qualification": "Portable v1.1 published and relocation verified. New counts are reconstruction outcomes; silver prototypes are not finalized v2 selection. No new generator or diagnosis/training calls.",
   "study_run_id": "dataset-v2-20261122T190232092876Z",
   "execution_enabled": true,
@@ -48,10 +48,11 @@
     "status": "completed_for_published_v1_1"
   },
   "software_tests": {
-    "total": 142,
-    "passed": 141,
+    "total": 144,
+    "passed": 143,
     "skipped": 1,
-    "log": ".cache/software-tests-dataset-v2-export-retriever.txt"
+    "log": ".cache/software-tests-dataset-v2-stage-boundaries.txt",
+    "additional_focused_guard_tests": 3
   },
   "budget_guard": "implemented_and_tested",
   "baseline_worker_session": null,
@@ -70,7 +71,7 @@
     "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 6047.0,
+  "execution_seconds_charged": 7720.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -102,9 +103,9 @@
     "receipt": "docs/evidence/dataset-v2-development-review.json",
     "gold": "pending"
   },
-  "new_cases_strict_reproduced": 14,
-  "new_passing_seeds": 14,
-  "new_real_silver_prototype_exports": 12,
+  "new_cases_strict_reproduced": 20,
+  "new_passing_seeds": 22,
+  "new_real_silver_prototype_exports": 16,
   "first_batch": {
     "status": "finished",
     "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
@@ -160,8 +161,8 @@
   },
   "by_role": {
     "train": {
-      "attempted": 21,
-      "strict_reproduced": 12
+      "attempted": 28,
+      "strict_reproduced": 18
     },
     "validation": {
       "attempted": 1,
@@ -186,7 +187,7 @@
     "completed_records": 50,
     "receipt": "docs/evidence/dataset-v2-retrieval-v3-calibration-50.json"
   },
-  "uniform_v3_exports": 12,
+  "uniform_v3_exports": 16,
   "retrieval_v3_calibration": {
     "protocol": "data-manifests/dataset-v2-input-protocol.json",
     "protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
@@ -207,8 +208,8 @@
     "review": "docs/evidence/dataset-v2-first-heldout-review.json"
   },
   "new_data_curation": {
-    "reviewed": 13,
-    "retain_silver_candidates": 12,
+    "reviewed": 17,
+    "retain_silver_candidates": 16,
     "excluded_feature_only": 1,
     "human_confirmation": "pending",
     "gold": "pending",
@@ -216,9 +217,9 @@
     "final_selected": 0
   },
   "eligibility_screen_count": {
-    "swebench": 2519,
+    "swebench": 2521,
     "aidev": 4,
-    "total": 2523,
+    "total": 2525,
     "limit": 5000
   },
   "storage_snapshot": {
@@ -228,5 +229,44 @@
       "D:/": 199478419456
     },
     "artifact_growth": "Full scan enforced by stage guard; not measured again for this status snapshot."
+  },
+  "latest_code_publication": {
+    "verified_at": "2026-11-23T13:27:50+07:00",
+    "branch": "codex/w1-review-skill",
+    "commit": "420e283c998402b88fe8bf6bb93234bfcb19ed8a",
+    "remote_verified": true,
+    "main_unchanged": "289ddea569bc7ea24a3c8fff3270ca75bf5f6c63",
+    "qualification": "Partial collection/code/review milestone, not a completed v2 dataset publication."
+  },
+  "guard_upgrade": {
+    "previous_worker": 71523,
+    "previous_worker_status": "finished_exit_0_after_cooperative_handoff",
+    "interrupted_cases": 0,
+    "replayed_cases": 0,
+    "budget_reset": false,
+    "receipt": "docs/evidence/dataset-v2-stage-guard-handoff.json",
+    "first_resumed_case_seconds": 89,
+    "old8case_median_seconds": 257.5,
+    "qualification": "Different source tasks; not a matched performance benchmark."
+  },
+  "source_capacity": {
+    "receipt": "data-manifests/dataset-v2-source-capacity.json",
+    "train_upper_bound_with_v1_reuse": 626,
+    "required": 700,
+    "status": "new_source_cohort_required"
+  },
+  "source_extension_probes": {
+    "eligibility_reviews": 2,
+    "provenance_receipt": "data-manifests/dataset-v2-upstream-test-probes-2.json",
+    "stronger_blob_verification": "data-manifests/dataset-v2-upstream-test-blob-verification-2.json",
+    "candidate": "ytdl-org__youtube-dl-23199",
+    "qualification": "Upstream tests recovered and exact repaired product blob matches. Source has no F2P/P2P reference; no new repo role/recipe or execution clearance yet. FastAPI493 excluded because no test delta."
+  },
+  "heldout_next_wave": {
+    "plan": "data-manifests/dataset-v2-heldout-wave2.json",
+    "new_sources": 5,
+    "repos": 3,
+    "status": "prepared_and_frozen_not_started",
+    "sha256": "8131af53557de7a1dd491e5143e64dc637f240f5ed4b7aab3ea572b1d2cba107"
   }
 }

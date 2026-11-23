@@ -1,0 +1,132 @@
+{
+  "created_at": "2026-11-23T13:40:02+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test"
+  },
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "selected": [
+    {
+      "source_case_id": "mwaskom__seaborn-3407",
+      "repo": "mwaskom/seaborn",
+      "role": "validation",
+      "base_commit": "515286e02be3e4c0ff2ef4addb34a53c4a676ee4",
+      "source_version": "0.13",
+      "product_files": [
+        "seaborn/axisgrid.py"
+      ],
+      "test_files": [
+        "tests/test_axisgrid.py"
+      ],
+      "repair_bytes": 583,
+      "f2p_count": 1,
+      "p2p_count": 120,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "mwaskom__seaborn-3407-ds2-heldout2",
+      "case_sha256": "1dae0cd2079a77c00c6fbe9658323a94aefb1806105f5b6110a712748de61f26"
+    },
+    {
+      "source_case_id": "pydata__xarray-3677",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "ef6e6a7b86f8479b9a1fecf15ad5b88a2326b31e",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/dataset.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_merge.py"
+      ],
+      "repair_bytes": 422,
+      "f2p_count": 1,
+      "p2p_count": 21,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydata__xarray-3677-ds2-heldout2",
+      "case_sha256": "5c5580b3450617e02d0606aa4d6fc1a70826f71c2ca994e64e144f33250b5404"
+    },
+    {
+      "source_case_id": "pydata__xarray-4629",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "a41edc7bf5302f2ea327943c0c48c532b12009bc",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/merge.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_merge.py"
+      ],
+      "repair_bytes": 471,
+      "f2p_count": 1,
+      "p2p_count": 32,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydata__xarray-4629-ds2-heldout2",
+      "case_sha256": "ff9c6e796179766f1e2fa1984d62766c7f3da5d89a3b42a60322fad78babe819"
+    },
+    {
+      "source_case_id": "pydata__xarray-4098",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "e5cc19cd8f8a69e0743f230f5bf51b7778a0ff96",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/groupby.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_groupby.py"
+      ],
+      "repair_bytes": 475,
+      "f2p_count": 1,
+      "p2p_count": 24,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "pydata__xarray-4098-ds2-heldout2",
+      "case_sha256": "5d974a79a90e1a9f850a4c2c785b565fc1a604ce14df9717eedcc7eb7921c8b1"
+    },
+    {
+      "source_case_id": "psf__requests-6028",
+      "repo": "psf/requests",
+      "role": "test",
+      "base_commit": "0192aac24123735b3eaf9b08df46429bb770c283",
+      "source_version": "2.27",
+      "product_files": [
+        "requests/utils.py"
+      ],
+      "test_files": [
+        "tests/test_utils.py"
+      ],
+      "repair_bytes": 454,
+      "f2p_count": 2,
+      "p2p_count": 185,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "case_id": "psf__requests-6028-ds2-heldout2",
+      "case_sha256": "74b3d4d02f28facf7336ae40b216842f692617b50e8dfef2ee7319ebab7223b9"
+    }
+  ],
+  "qualification": "Five new source cases with pinned upstream test/repair bytes, not execution results. No heldout-driven retrieval changes; run only after current serial Docker wave terminal."
+}

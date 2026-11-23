@@ -1,0 +1,89 @@
+{
+  "case_id": "pydata__xarray-4098-ds2-heldout2",
+  "source_case_id": "pydata__xarray-4098",
+  "record_id": "pydata__xarray-4098",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "e5cc19cd8f8a69e0743f230f5bf51b7778a0ff96",
+  "head": "base+repair:054a6ed009ce7c35aade60583eab78f1fb108487e4500eeabc43fc652332be04",
+  "allowed_file": "xarray/core/groupby.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4098-ds2-heldout2/repair.patch",
+  "repair_patch_sha256": "054a6ed009ce7c35aade60583eab78f1fb108487e4500eeabc43fc652332be04",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4098-ds2-heldout2/test.patch",
+  "test_patch_sha256": "90f6abfb9c65d22b2380c59322f8bf5ec6a04b8384ae2d4c62909cc29afa494f",
+  "source_record_sha256": "8763bc4ffbc7cf7f93916b79efee58906875cc41d20eda58fc15222f5d14f709",
+  "fail_to_pass": [
+    "xarray/tests/test_groupby.py::test_groupby_none_group_name"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_groupby.py::test_consolidate_slices",
+    "xarray/tests/test_groupby.py::test_groupby_dims_property",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_map",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_sum",
+    "xarray/tests/test_groupby.py::test_groupby_da_datetime",
+    "xarray/tests/test_groupby.py::test_groupby_duplicate_coordinate_labels",
+    "xarray/tests/test_groupby.py::test_groupby_input_mutation",
+    "xarray/tests/test_groupby.py::test_groupby_map_shrink_groups[obj0]",
+    "xarray/tests/test_groupby.py::test_groupby_map_shrink_groups[obj1]",
+    "xarray/tests/test_groupby.py::test_groupby_map_change_group_size[obj0]",
+    "xarray/tests/test_groupby.py::test_groupby_map_change_group_size[obj1]",
+    "xarray/tests/test_groupby.py::test_da_groupby_map_func_args",
+    "xarray/tests/test_groupby.py::test_ds_groupby_map_func_args",
+    "xarray/tests/test_groupby.py::test_da_groupby_empty",
+    "xarray/tests/test_groupby.py::test_da_groupby_quantile",
+    "xarray/tests/test_groupby.py::test_ds_groupby_quantile",
+    "xarray/tests/test_groupby.py::test_da_groupby_assign_coords",
+    "xarray/tests/test_groupby.py::test_groupby_repr[obj0-z]",
+    "xarray/tests/test_groupby.py::test_groupby_repr[obj1-z]",
+    "xarray/tests/test_groupby.py::test_groupby_drops_nans",
+    "xarray/tests/test_groupby.py::test_groupby_grouping_errors",
+    "xarray/tests/test_groupby.py::test_groupby_reduce_dimension_error",
+    "xarray/tests/test_groupby.py::test_groupby_multiple_string_args",
+    "xarray/tests/test_groupby.py::test_groupby_bins_timeseries"
+  ],
+  "test_targets": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Frozen source F2P fail on base and pass after reference repair, with P2P preserved; local reconstruction only",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same-repo/source-version passing heldout recipe, except Requests uses source setup/test constraints read before execution."
+}

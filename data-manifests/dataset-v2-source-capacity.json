@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-11-23T13:46:01+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "train_metadata_by_repo": {
+    "sympy/sympy": 363,
+    "pylint-dev/astroid": 27,
+    "pytest-dev/pytest": 101,
+    "pydicom/pydicom": 54,
+    "pylint-dev/pylint": 38,
+    "pvlib/pvlib-python": 62,
+    "sqlfluff/sqlfluff": 47,
+    "marshmallow-code/marshmallow": 9,
+    "sphinx-doc/sphinx": 147,
+    "pallets/flask": 8
+  },
+  "upper_bound_after_140_per_repo": 626,
+  "v1_real_train_ids_outside_metadata_lock": [],
+  "union_with_v1_train_upper_bound": 626,
+  "required_train": 700,
+  "status": "additional_source_cohort_required",
+  "qualification": "Theoretical distinct-source capacity before reproduction, fault curation, class/family dedup and license gates; no success guarantee. V1 reuse is included, never added twice.",
+  "upstream_test_probe_receipts": [
+    "data-manifests/dataset-v2-upstream-test-probes-2.json",
+    "data-manifests/dataset-v2-upstream-test-blob-verification-2.json"
+  ],
+  "next_action": "Expand source cohorts with pinned provenance/tests and append-only repository roles before execution; preserve missing source F2P/P2P status instead of inventing reference labels."
+}

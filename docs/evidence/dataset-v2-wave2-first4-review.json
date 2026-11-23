@@ -1,0 +1,230 @@
+{
+  "reviewed_at": "2026-11-23T13:50:26+07:00",
+  "input_protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+  "records": [
+    {
+      "sample_id": "marshmallow-code__marshmallow-1359",
+      "run_id": "reproduce-20261123T061549756477Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T061549756477Z",
+        "evidence_hashes": {
+          "manifest.json": "1e1d655ac7b5102ba4425b725a9507bca1fdf603baed1717df012f8497d61f78",
+          "license-evidence.json": "26bca2caa2ea75474dbdb047e086505a82efe5b7051e20614b993030a3d833a4",
+          "historical-base.stdout.txt": "e10a2489fc5832e15d8bb6dc4fc2f79eb807f64aa64463250b5ccc86cf7d496d",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "4bfdfb132dcc3fae9fd310d37cdc8a8e66c8a1b2f9940b2ff165f1eb1abc2f50",
+          "historical-fixed.stdout.txt": "709880e555424e5cf50cde929169fec7d776055301dc1c95bc373b538ee4ab7a",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "fdf9bb70d70c3e0a43750ab03e3414f551b3dfd8c7667bbf0c8d9872a86f4878"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/marshmallow/fields.py",
+            "function": "DateTime._bind_to_schema"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "DateTime binding reads schema.opts although the immediate schema argument is a List/Tuple container when nested. That container lacks opts; self.root is the actual root Schema. The repair reads self.root.opts.",
+        "evidence_reason": "Saved nested-DateTime test raises AttributeError List has no opts at fields.py:1117, fixed harness passes. Source issue explicitly documents a regression from rc8 to rc9.",
+        "limitations": "Parent/container interface mismatch is the proposed API/type cause; caller schema initialization is the detector, not a missing dependency.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "35d211b66d8ae81bce623139a2739be4d5c08ce81be9c62bcb9403740d5feefd",
+      "source_sha256": "5529e7074bebc094e09fcbc8efaf88397f8026d1f21605bf62fc9d99b8ae601f",
+      "location_availability": [
+        {
+          "file": "src/marshmallow/fields.py",
+          "function": "DateTime._bind_to_schema",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/marshmallow-code__marshmallow-1359-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "52c912ac74251dff9c92792f2ab2835f2ddfa9952062aa8eb4d2bf3b236167ee",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/marshmallow-code__marshmallow-1359",
+      "manifest_sha256": "d405a0eeb075437c842d38fa584733f6d9759c1387b8907bb049e28396189d14"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1268",
+      "run_id": "reproduce-20261123T062908929045Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T062908929045Z",
+        "evidence_hashes": {
+          "manifest.json": "d409130fcc0c6962db78d1c6fd7243e691fb5d8937daabbd4d206d71d47ce016",
+          "license-evidence.json": "6f323a30a49d63671a95f5375666ce6eb4bc60156a8fcdd4067837fff279625b",
+          "historical-base.stdout.txt": "2ef0de3f713c27f0233b967d0f1945aa6964aa0ce2d6e08abaeb38210f02c0dd",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "dc1c3782c5826f31e051ad68d3e48641360d508e63fe6732ac80d2285f7d7bc9",
+          "historical-fixed.stdout.txt": "5a2e6046ea343984122069a0e4d67338727658ac2c172e6b332ccae090f6313f",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "6e01c04b4f0f95d943b72db2616edf6434ceeffe6da219b65e403fabd8e1e03f"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "astroid/nodes/as_string.py",
+            "function": "AsStringVisitor.visit_unknown"
+          }
+        ],
+        "missing_definitions": [
+          {
+            "file": "astroid/nodes/as_string.py",
+            "function": "AsStringVisitor.visit_unknown"
+          }
+        ],
+        "mechanism": "Unknown.accept dispatches to visit_unknown, but AsStringVisitor does not implement that visitor method. The repair adds visit_unknown returning the node representation.",
+        "evidence_reason": "Saved JUnit reports missing AsStringVisitor.visit_unknown during nodes.Unknown().as_string(); fixed harness passes. Source issue reproduces the same missing visitor.",
+        "limitations": "The causal method is absent from the failing source. Record reviewed causal absence, not an invented base line; NodeNG.accept is where dispatch detects it.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "6d64dbdb597df6d5ff8d7fdec4d0805b3745868bc46cc848972216d94ccbacec",
+      "source_sha256": "e06418cd86153728a9cc769a18302a4d467a6cc6cdb2a28f179c90f1f695cdcf",
+      "location_availability": [
+        {
+          "file": "astroid/nodes/as_string.py",
+          "function": "AsStringVisitor.visit_unknown",
+          "present_in_failing_source": false,
+          "relationship": "reviewed_causal_absence"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1268-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "6af745df89e49aaf964ceca18301e1c984b7347703bc11f902f896fa1dfb5b29",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/pylint-dev__astroid-1268",
+      "manifest_sha256": "fff4e32865d5a3e3958301d14292f90736cb02e4f3781309c9e02dcb3798eb59"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-11160",
+      "run_id": "reproduce-20261123T063308647757Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T063308647757Z",
+        "evidence_hashes": {
+          "manifest.json": "a146620fa9a282fcf98b0887b9c5b61e0fb58c37a16e62a1f93094c522e7faa8",
+          "license-evidence.json": "c87103413b969840f5547e82dd122431624d1ea988ac6e2dc09b8b05f71b4c20",
+          "historical-base.stdout.txt": "e20db2a0776097f15e445f40848239f4fb0db80e7708211306d0f57f4e307d54",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "34c3fd658c7cf9f4bec272f043fbe73d4d51d06a8ab3eaf68daf467c5c43f2bc",
+          "historical-fixed.stdout.txt": "325ec442846e86c96224a1f1115779f2b9a5b2a820ba7e132e3313749c95ce8a",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "9df24959dfd9516013b39fcb0de958277927a98e035d63770e8ee71b871f24f4"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/_pytest/recwarn.py",
+            "function": "WarningsRecorder.pop"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "WarningsRecorder.pop returns the first subclass match, so an earlier child warning wins over a later exact requested category or a less-derived match. The repair prioritizes exact category and otherwise tracks the best inexact match.",
+        "evidence_reason": "Saved tests request ParentWarning or its closest descendant but receive ChildWarning/ChildOfChildWarning. Fixed harness passes; source issue documents improper warning matching.",
+        "limitations": "This is selection-order logic; warning classes are valid types, not invalid Python or a missing warning dependency.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "5d3658d163b460416489383571001d935724f73d395b219ef1d3e16774978256",
+      "source_sha256": "ca0af58607f15133f8fb182e8c057992ba8338a5f009c0cf979a0ee686e2785b",
+      "location_availability": [
+        {
+          "file": "src/_pytest/recwarn.py",
+          "function": "WarningsRecorder.pop",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-11160-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "aaeb74105736b6050f2360bc9b232b4efdc1ff45be5aea0d04a1116b0a93f7f0",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/pytest-dev__pytest-11160",
+      "manifest_sha256": "e0a27128b8f73c21ec7aba5a5ccbfd1a2ba73160ac6a3b746d3df740eeada65f"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-7350",
+      "run_id": "reproduce-20261123T063740574254Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T063740574254Z",
+        "evidence_hashes": {
+          "manifest.json": "c3ac707f5616087ae0d2ae54f3c8d5cf6d7ca3b608c7caae10a7c7d0f7795727",
+          "license-evidence.json": "8dd0765a115cdb8942009d9cd8c4d4f8a9c2d128e5a114cbd873c13cb176f354",
+          "historical-base.stdout.txt": "6d207714cef351fa714133da0527c663129f195e957a22a4dce50d32663a7ebd",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "851ca845a9eb961616c064a0f122684992ee414f254eb9012081cf56d9811571",
+          "historical-fixed.stdout.txt": "6041f6d0a98bbd9d5a8d2520fd79053e578a3b6b95411504f490783f2660e74b",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "b28e2642f4793ed48cb824583f0eefb0daf93bf9b88928a2933626bb19782b63"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sphinx/ext/napoleon/docstring.py",
+            "function": "GoogleDocstring._parse_attributes_section"
+          },
+          {
+            "file": "sphinx/ext/napoleon/docstring.py",
+            "function": "GoogleDocstring._parse_methods_section"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Napoleon emits attribute and method directives without propagating the existing noindex option. The repair inserts the noindex option into the generated directive text when it is set.",
+        "evidence_reason": "Saved docstring test expects noindex on both directives but base output lacks it; fixed harness passes. Source issue describes Attributes ignoring an existing noindex option.",
+        "limitations": "This repairs ignored-option propagation; output mismatch is measured text generation, not historical CI evidence or a newly invented feature requirement.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "bf3976c681b41a31c0ff40d290103d1e2f68505c4905ec105cf2e84383a46889",
+      "source_sha256": "eb12fe81f7ba05c5b71f35050a2493067bd38ab6a8f17ace95fe91b14d780a8c",
+      "location_availability": [
+        {
+          "file": "sphinx/ext/napoleon/docstring.py",
+          "function": "GoogleDocstring._parse_attributes_section",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        },
+        {
+          "file": "sphinx/ext/napoleon/docstring.py",
+          "function": "GoogleDocstring._parse_methods_section",
+          "present_in_failing_source": true,
+          "relationship": "existing_function"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-7350-ds2-wave2/repair.patch",
+      "repair_patch_sha256": "4186c3b91374f6a9c437a07948ad3a1961707fc1234422fa9c831ca5bc53fab5",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/sphinx-doc__sphinx-7350",
+      "manifest_sha256": "79e2c858ffd567d266c4974be7657c1acfff01eaeaf2584936aa4c642e225977"
+    }
+  ],
+  "qualification": "Four evidence-bound silver train candidates, frozen reference-free input v3. Human/gold/training pending; not final v2 quota/family selection. No source/model execution for review."
+}

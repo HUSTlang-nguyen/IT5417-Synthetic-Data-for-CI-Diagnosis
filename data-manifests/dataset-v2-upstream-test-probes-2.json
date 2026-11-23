@@ -1,0 +1,44 @@
+{
+  "probed_at": "2026-11-23T13:35:39+07:00",
+  "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "eligibility_reviews": 2,
+  "records": [
+    {
+      "source_case_id": "ytdl-org__youtube-dl-23199",
+      "repo": "ytdl-org/youtube-dl",
+      "base_commit": "0de9fd24dc8723c78a90cb546e4a05818304521e",
+      "upstream_head": "0d35d2e97f3d54830153c6ad95dd4e25e9a7f6a6",
+      "api_base_matches_source": true,
+      "product_patch_matches_source": false,
+      "upstream_test_paths": [
+        "test/test_utils.py"
+      ],
+      "source_supplied_test_patch": false,
+      "source_fail_to_pass": "[]",
+      "decision": "exclude_no_matching_product_or_upstream_test_delta",
+      "source_record_sha256": "4e12a29de885eea3ff7e002de52fdaceeeefeb31b1d81913a61f4e91b41534ff",
+      "pr_metadata_sha256": "33d89c536649beb072411c6c80db0df6907722158b85a9bf7314cbafa31b0658",
+      "upstream_product_patch_sha256": "9ded88980180ba03fbee3fcb4ebac3e1d08efd2c82a426b8e9f8b870c580d3cc",
+      "upstream_test_patch_sha256": "bc14c4ab1272847bde3890c023502c9b4dbdfe6971dcb1161db71a5ec28b51f0",
+      "artifact_directory": ".cache/dataset-v2-upstream-test-probes/ytdl-org__youtube-dl-23199"
+    },
+    {
+      "source_case_id": "tiangolo__fastapi-493",
+      "repo": "tiangolo/fastapi",
+      "base_commit": "203e10596f7de81eda52925113440ebc9a1278a0",
+      "upstream_head": "9ffcf40df493d597f51604a8fc491bf93e8a70d6",
+      "api_base_matches_source": true,
+      "product_patch_matches_source": false,
+      "upstream_test_paths": [],
+      "source_supplied_test_patch": false,
+      "source_fail_to_pass": "[]",
+      "decision": "exclude_no_matching_product_or_upstream_test_delta",
+      "source_record_sha256": "8e1b3818dde9249dba478caca7a1aa61714d76a141be9b781919e75cbab45112",
+      "pr_metadata_sha256": "989f2fc06b48957d14c1f5e5e55384195c998916dc0d0c9eafabe1fc940e4050",
+      "upstream_product_patch_sha256": "293dfca23753d81c2ea118be4ad20040a8b7717eb502ba2c8cbf46e99b065db4",
+      "upstream_test_patch_sha256": null,
+      "artifact_directory": ".cache/dataset-v2-upstream-test-probes/tiangolo__fastapi-493"
+    }
+  ],
+  "qualification": "Upstream commit/test provenance probe only, not reproduced faults or dataset approval. No source code imported/executed; any recovered tests must be frozen before a separately recorded experiment."
+}

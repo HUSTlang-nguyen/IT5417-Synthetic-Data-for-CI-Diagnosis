@@ -95,6 +95,7 @@ def summary(experiment, plan):
 
 
 def reproduce(experiment, plan, *, limit=None):
+    from .data_study import DataStudy
     processed = 0
     with batch_lock(experiment.folder / "reproduction-worker.lock"):
         uncertain = [name for name, record in read_json(experiment.manifest).get("operations", {}).items()
@@ -122,10 +123,17 @@ def reproduce(experiment, plan, *, limit=None):
             folder = new_run("reproduce")
             experiment.attach(operation, run_id=folder.name, case_id=row["case_id"], role=row["role"])
             experiment.attach(operation, implementation_sha256=sha256(multicase.__file__))
+            if isinstance(experiment, DataStudy):
+                from . import data_study
+                experiment.attach(operation, budget_guard_sha256=sha256(data_study.__file__),
+                                  orchestration_sha256=sha256(__file__))
 
             def guard(name):
                 timeout = 1200 if name == "docker-build" else 300 if name.startswith("historical-") else 180
-                experiment.check("real_reproduction", timeout=timeout)
+                if isinstance(experiment, DataStudy) and name != 'docker-build' and not name.startswith('historical-'):
+                    experiment.check_prepare_step(timeout=timeout)
+                else:
+                    experiment.check("real_reproduction", timeout=timeout)
 
             print(row["role"], row["case_id"], folder.name, "started", flush=True)
             try:

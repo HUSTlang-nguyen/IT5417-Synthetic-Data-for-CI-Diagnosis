@@ -40,3 +40,16 @@ Rà nguyên nhân sau khi [input protocol v3](../data-manifests/dataset-v2-input
 | xarray-3812 / test | Base/fixed đạt strict gate: OPTIONS display_style từ text sang html, test mới đòi html. Issue “Turn on _repr_html_ by default?” hỏi thay đổi một mặc định đã có lựa chọn khác, không nêu defect hiện hữu. | Loại khỏi cohort real-fault v2 vì thay đổi tính năng/mặc định. Không ép nhãn logic/value chỉ do assertion fail. Giữ lượt thử, strict result, log/hash và lý do loại; không xuất mẫu này vào dataset. |
 
 Số tái hiện đạt có thể lớn hơn số ứng viên được giữ. Không mô tả log tái dựng local là log CI lịch sử; không suy actor từ tác giả PR. Người dùng chưa xác nhận các kiến nghị mới hoặc nhãn gold.
+
+## Bốn mẫu đầu được rà ở wave 2
+
+[Receipt, source/patch/log hashes và bản xuất v3](evidence/dataset-v2-wave2-first4-review.json). Cả bốn có base fail, fixed pass và F2P/P2P khớp; issue nguồn xác nhận đây là hành vi lỗi hiện hữu. Các kiến nghị sau còn chờ người dùng xác nhận.
+
+| Case | Nguyên nhân và bằng chứng | Nhãn / vị trí đề xuất | Kiến nghị |
+|---|---|---|---|
+| marshmallow-1359 | DateTime lồng trong List/Tuple nhận container làm đối số schema, nhưng đọc `schema.opts` như một Schema. Log báo List không có opts tại fields.py:1117. Patch lấy opts từ root Schema. | API/type; `src/marshmallow/fields.py::DateTime._bind_to_schema` | Giữ ứng viên silver; chắc chắn cao. Đây là regression được issue mô tả, không phải thiếu dependency. |
+| astroid-1268 | Visitor dispatch gọi `visit_unknown` chưa được triển khai. Log báo AsStringVisitor không có method đó; patch bổ sung method trả representation của Unknown. | API/type; `astroid/nodes/as_string.py::AsStringVisitor.visit_unknown` | Giữ ứng viên silver; ghi rõ causal absence, không bịa dòng method trong bản lỗi. NodeNG.accept là nơi phát hiện. |
+| pytest-11160 | `WarningsRecorder.pop` lấy subclass đầu tiên, bỏ qua exact match hoặc lớp phù hợp hơn ở phía sau. Hai assertion nhận Child/ChildOfChild thay vì Parent/Child. | logic/value; `src/_pytest/recwarn.py::WarningsRecorder.pop` | Giữ ứng viên silver; lỗi chọn phần tử theo thứ tự, không phải warning class không hợp lệ. |
+| sphinx-7350 | Khi phát sinh directive attribute/method, Napoleon không truyền tiếp noindex đã có trong options. Test thấy thiếu hai dòng `:noindex:`. | logic/value; `sphinx/ext/napoleon/docstring.py::GoogleDocstring._parse_attributes_section` và `_parse_methods_section` | Giữ ứng viên silver; đây là bỏ sót option đã tồn tại. Issue yêu cầu sửa việc option bị bỏ qua. |
+
+Đã xuất cả bốn bằng input v3 đã khóa; reference, issue và assessment vẫn ở ngoài input. Chưa có nhãn gold hoặc training approval. Các mẫu không thấy causal function trong retrieved code vẫn giữ nguyên trạng thái coverage, không thêm reference vào truy xuất.

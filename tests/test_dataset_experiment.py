@@ -3,7 +3,7 @@ from pathlib import Path
 from datetime import datetime, timedelta, timezone
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch, call
 
 from ci_demo.common import read_json, write_json, sha256
 from ci_demo.dataset_experiment import freeze_plan, ordered_cases, reproduce, summary
@@ -11,6 +11,27 @@ from ci_demo.experiment import Experiment
 
 
 class DatasetExperimentTests(unittest.TestCase):
+    def test_v2_full_storage_checks_remain_at_each_build_and_test_boundary(self):
+        from ci_demo.data_study import DataStudy
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);write_json(root/'manifest.json',{'operations':{}})
+            experiment=Mock(spec=DataStudy)
+            experiment.folder=root;experiment.manifest=root/'manifest.json';experiment.lock=root/'lock'
+            plan={'selected':[{'case_id':'fixture','role':'train'}],'targets':{'train':1}}
+            result={'by_role':{'train':{}}}
+            def reconstruct(case,folder,guard):
+                for name in ['source-init','base-fetch','gold-repair','docker-build','historical-base','historical-head']:
+                    guard(name)
+                return {'status':'software_fixture'}
+            with patch('ci_demo.dataset_experiment.case_config',return_value={'source_case_id':'source'}), \
+                 patch('ci_demo.dataset_experiment.summary',return_value=result), \
+                 patch('ci_demo.dataset_experiment.new_run',return_value=root/'reproduce'), \
+                 patch('ci_demo.dataset_experiment.multicase.reproduce_case',side_effect=reconstruct):
+                reproduce(experiment,plan)
+            self.assertEqual(experiment.check.call_args_list,[call('real_reproduction',timeout=1200),
+                call('real_reproduction',timeout=300),call('real_reproduction',timeout=300)])
+            self.assertEqual(experiment.check_prepare_step.call_args_list,[call(timeout=180)]*3)
+
     def test_plan_lock_refuses_source_patch_mutation_and_role_mismatch(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

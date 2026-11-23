@@ -1,0 +1,145 @@
+{
+  "checked_at": "2026-11-23T13:53:18+07:00",
+  "handoff": {
+    "recorded_at": "2026-11-23T13:49:50+07:00",
+    "event": "cooperative_case_boundary_guard_upgrade",
+    "previous_worker_session": 71523,
+    "terminal_case_operations": [
+      "real-pydicom__pydicom-1256-ds2",
+      "real-pvlib__pvlib-python-1154-ds2-env-ready",
+      "real-pydicom__pydicom-1694-ds2-wave1",
+      "real-pydicom__pydicom-1139-ds2-wave1",
+      "real-pydicom__pydicom-1428-ds2-wave1",
+      "real-pydicom__pydicom-903-ds2-wave1",
+      "real-pvlib__pvlib-python-1072-ds2-wave1",
+      "real-pvlib__pvlib-python-1854-ds2-wave1",
+      "real-pvlib__pvlib-python-1707-ds2-wave1",
+      "real-pvlib__pvlib-python-1606-ds2-wave1",
+      "real-sphinx-doc__sphinx-7910-ds2-wave1",
+      "real-sphinx-doc__sphinx-10481-ds2-wave1",
+      "real-sphinx-doc__sphinx-11192-ds2-wave1",
+      "real-sphinx-doc__sphinx-9309-ds2-wave1",
+      "real-pytest-dev__pytest-7521-ds2-wave1",
+      "real-pytest-dev__pytest-10051-ds2-wave1",
+      "real-pytest-dev__pytest-11044-ds2-wave1",
+      "real-pytest-dev__pytest-8861-ds2-wave1",
+      "real-mwaskom__seaborn-3276-ds2-heldout",
+      "real-pydata__xarray-3812-ds2-heldout",
+      "real-marshmallow-code__marshmallow-1359-ds2-wave2",
+      "real-pvlib__pvlib-python-1458-ds2-wave2",
+      "real-pydicom__pydicom-958-ds2-wave2",
+      "real-pylint-dev__astroid-1268-ds2-wave2",
+      "real-pytest-dev__pytest-11160-ds2-wave2",
+      "real-sphinx-doc__sphinx-7350-ds2-wave2",
+      "real-sympy__sympy-24102-ds2-wave2",
+      "real-marshmallow-code__marshmallow-1343-ds2-wave2"
+    ],
+    "reason": "Avoid repeated full artifact scans inside already admitted source preparation; retain full scans at admission/build/test boundaries and per-command time/free-space checks.",
+    "budget_reset": false,
+    "partial_case_interrupted": false,
+    "next_guard_sha256": "d4965c739ee0cf2c48bffb3e3a9e5cfe88e73512e183353bfe21a001b054771f",
+    "next_orchestration_sha256": "b72f6ba70cee8da0f53072dde2034e95182e9051d6a55ec39c803c5e5359192a"
+  },
+  "resumed": {
+    "recorded_at": "2026-11-23T13:51:09+07:00",
+    "event": "guard_upgrade_handoff_completed",
+    "previous_worker_session": 71523,
+    "previous_worker_exit_code": 0,
+    "new_guard_sha256": "d4965c739ee0cf2c48bffb3e3a9e5cfe88e73512e183353bfe21a001b054771f",
+    "new_orchestration_sha256": "b72f6ba70cee8da0f53072dde2034e95182e9051d6a55ec39c803c5e5359192a",
+    "plan_sha256": "915ae2d45f92275f3db6e8d4f4d3fab5f7ab4de9086e912918384a15ff4ce2c5",
+    "completed_wave2_sources": 8,
+    "remaining_wave2_sources": 106,
+    "budgets_reset": false,
+    "partial_case_interrupted": false
+  },
+  "full_scan_boundaries": [
+    "case admission/source preparation",
+    "docker-build",
+    "historical-base",
+    "historical-head"
+  ],
+  "per_prepare_command_checks": [
+    "execution budget",
+    "free disk",
+    "spec/budget integrity",
+    "execution gates",
+    "prior case admission"
+  ],
+  "software_tests": {
+    "total": 144,
+    "passed": 143,
+    "skipped": 1,
+    "log": ".cache/software-tests-dataset-v2-stage-boundaries.txt",
+    "sha256": "3d2e3a34ba145ca6b5f7986dcdfa455257dc48229ff5918043be50e20ce8acb7"
+  },
+  "old_cases": [
+    {
+      "case_id": "marshmallow-code__marshmallow-1359-ds2-wave2",
+      "run_id": "reproduce-20261123T061549756477Z",
+      "wall_seconds": 248.0,
+      "command_seconds": 5.549,
+      "status": "hypothesis_supported_locally"
+    },
+    {
+      "case_id": "pvlib__pvlib-python-1458-ds2-wave2",
+      "run_id": "reproduce-20261123T061955598561Z",
+      "wall_seconds": 297.0,
+      "command_seconds": 18.094,
+      "status": "hypothesis_not_confirmed"
+    },
+    {
+      "case_id": "pydicom__pydicom-958-ds2-wave2",
+      "run_id": "reproduce-20261123T062452571504Z",
+      "wall_seconds": 255.0,
+      "command_seconds": 10.405,
+      "status": "hypothesis_not_confirmed"
+    },
+    {
+      "case_id": "pylint-dev__astroid-1268-ds2-wave2",
+      "run_id": "reproduce-20261123T062908929045Z",
+      "wall_seconds": 240.0,
+      "command_seconds": 11.454,
+      "status": "hypothesis_supported_locally"
+    },
+    {
+      "case_id": "pytest-dev__pytest-11160-ds2-wave2",
+      "run_id": "reproduce-20261123T063308647757Z",
+      "wall_seconds": 273.0,
+      "command_seconds": 8.608,
+      "status": "hypothesis_supported_locally"
+    },
+    {
+      "case_id": "sphinx-doc__sphinx-7350-ds2-wave2",
+      "run_id": "reproduce-20261123T063740574254Z",
+      "wall_seconds": 260.0,
+      "command_seconds": 11.686,
+      "status": "hypothesis_supported_locally"
+    },
+    {
+      "case_id": "sympy__sympy-24102-ds2-wave2",
+      "run_id": "reproduce-20261123T064159740594Z",
+      "wall_seconds": 272.0,
+      "command_seconds": 16.267,
+      "status": "hypothesis_supported_locally"
+    },
+    {
+      "case_id": "marshmallow-code__marshmallow-1343-ds2-wave2",
+      "run_id": "reproduce-20261123T064632054289Z",
+      "wall_seconds": 215.0,
+      "command_seconds": 5.266,
+      "status": "hypothesis_supported_locally"
+    }
+  ],
+  "new_cases": [
+    {
+      "case_id": "pvlib__pvlib-python-1165-ds2-wave2",
+      "run_id": "reproduce-20261123T065130167079Z",
+      "wall_seconds": 89.0,
+      "command_seconds": 19.548,
+      "status": "hypothesis_not_confirmed"
+    }
+  ],
+  "old_median_wall_seconds": 257.5,
+  "qualification": "First observed resumed case is a different source task, not a matched speed benchmark. Wall minus command time also includes inventories, file operations and coordination. Execution failures remain counted; no failed case replay or budget reset. Full resource scans remain before each major stage."
+}

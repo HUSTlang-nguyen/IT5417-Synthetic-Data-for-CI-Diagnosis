@@ -1,0 +1,46 @@
+{
+  "verified_at": "2026-11-23T13:37:05+07:00",
+  "records": [
+    {
+      "source_case_id": "ytdl-org__youtube-dl-23199",
+      "repo": "ytdl-org/youtube-dl",
+      "blobs": [
+        {
+          "path": "youtube_dl/utils.py",
+          "source_repaired_blob": "0d30075aa1dd982a6b0a95e717575ce217453533",
+          "upstream_head_blob": "0d30075aa1dd982a6b0a95e717575ce217453533",
+          "equal": true
+        }
+      ],
+      "all_product_blobs_equal": true,
+      "test_paths": [
+        "test/test_utils.py"
+      ],
+      "test_patch_sha256": "bc14c4ab1272847bde3890c023502c9b4dbdfe6971dcb1161db71a5ec28b51f0",
+      "source_repair_patch_sha256": "2dd3345d7f24cbb55e83326bb813481d55d2d58040be3e2f3f61e38fd141b580",
+      "source_record_sha256": "4e12a29de885eea3ff7e002de52fdaceeeefeb31b1d81913a61f4e91b41534ff",
+      "decision": "upstream_test_recovery_candidate",
+      "qualification": "Earlier text diff comparison disagreed only on hunk function-context headers. This checks exact Git blob bytes after applying the unchanged dataset patch to its pinned base index; no source code executed."
+    },
+    {
+      "source_case_id": "tiangolo__fastapi-493",
+      "repo": "tiangolo/fastapi",
+      "blobs": [
+        {
+          "path": "fastapi/exceptions.py",
+          "source_repaired_blob": "310da940d8e8feb598c1333915d0859167865129",
+          "upstream_head_blob": "310da940d8e8feb598c1333915d0859167865129",
+          "equal": true
+        }
+      ],
+      "all_product_blobs_equal": true,
+      "test_paths": [],
+      "test_patch_sha256": null,
+      "source_repair_patch_sha256": "210c23c9dd8d76a6f118dcebd7ad8006e4d37f40b536eff6f1d073fcdf1671bc",
+      "source_record_sha256": "8e1b3818dde9249dba478caca7a1aa61714d76a141be9b781919e75cbab45112",
+      "decision": "exclude_no_matching_product_or_upstream_test_delta",
+      "qualification": "Earlier text diff comparison disagreed only on hunk function-context headers. This checks exact Git blob bytes after applying the unchanged dataset patch to its pinned base index; no source code executed."
+    }
+  ],
+  "qualification": "Append-only stronger verification of the same two source identities, not two additional eligibility screens or experiment runs."
+}

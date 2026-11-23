@@ -50,3 +50,31 @@ class StudyTests(unittest.TestCase):
                 self.assertEqual(tree_bytes(data),1000000)
                 state['specification_sha256']='wrong';write_json(file,state)
                 with self.assertRaises(ValueError):resumed.check('audit')
+
+    def test_preparation_subcommands_keep_time_free_space_and_admission_gates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);spec=root/'data-manifests/dataset-v2.json';data=root/'artifacts';data.mkdir()
+            limits={'execution_seconds':1000,'new_generator_requests':1,'new_source_cases':2,
+                    'minimum_free_bytes':1,'maximum_artifact_growth_bytes':100}
+            write_json(spec,{'limits':limits})
+            state={'kind':'dataset_collection_v2','specification_sha256':sha256(spec),'status':'running',
+                'execution_limit_seconds':1000,'preledger_charge_seconds':300,'operations':{},
+                'request_limits':{'generator_7b':1,'diagnoser_3b':0},'execution_enabled':True,'pending_gates':[],
+                'artifact_baseline':[{'path':str(data),'bytes':0}]}
+            file=root/'runs/fixture/manifest.json';write_json(file,state)
+            with patch('ci_demo.data_study.ROOT',root),patch('ci_demo.data_study.CACHE',root/'.cache'):
+                study=DataStudy('fixture')
+                with self.assertRaisesRegex(ValueError,'admitted'):study.check_prepare_step()
+                study.reserve('real-one','real_reproduction')
+                (data/'growth').write_bytes(b'x'*100)
+                with patch('ci_demo.data_study.tree_bytes',side_effect=AssertionError('No repeat tree scan within preparation')):
+                    self.assertGreater(study.check_prepare_step(timeout=1),0)
+                with self.assertRaises(BudgetStop):study.check('real_reproduction')
+                with self.assertRaises(BudgetStop):study.reserve('real-two','real_reproduction')
+                with patch('ci_demo.data_study.shutil.disk_usage') as usage:
+                    usage.return_value.free=0
+                    with self.assertRaises(BudgetStop):study.check_prepare_step()
+                current=read_json(file);current['execution_enabled']=False;write_json(file,current)
+                with self.assertRaises(BudgetStop):study.check_prepare_step()
+                current['execution_enabled']=True;current['preledger_charge_seconds']=1001;write_json(file,current)
+                with self.assertRaises(BudgetStop):study.check_prepare_step()
