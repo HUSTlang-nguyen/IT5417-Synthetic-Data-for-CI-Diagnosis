@@ -239,3 +239,11 @@ Explicit swebench_pytest_options matching is limited to declared SWE source repo
 ### Pinned Git fixture for source tests
 
 Only an explicit GitPython recipe with declared git tool may request git_test_fixture. A fresh bare fixture fetches the exact source base commit from the controlled source cache without host alternates; no fake commits or test/source edits. Docker copies it to /fixtures/source.git, permits only that safe.directory and points the upstream test environment there. Root stays read-only at runtime under UID65534, network none. Fixture commit/full inventory enter the gate and are checked again before generation/export. Git uses per-command longpaths and relative Git directory from the controlled context for Windows worktrees; no global config change. Default recipes unchanged.
+
+## Declared AIDev local compilation checks
+
+`local_compilation_smoke_v1` is an explicit dependency-free v2 AIDev mode, separate from upstream regression tests. It binds the original dataset row, PR number/merged timestamp, base/head, one modified production file and exact Git blobs. Source tests stay unchanged; a pipeline-owned harness is copied outside both source trees and hashed into the gate/evidence. Runtime Python uses -I/-B, no source import, a separate pytest root/confcutdir and only compile(bytes, filename, exec-mode); it never executes the resulting code object. Existing Docker isolation/cleanup/time/storage guards apply.
+
+The result records local_test_resolution and its own reference origin/qualification, never benchmark F2P/P2P or historical CI. A fixed compile pass is diagnosis evidence, not a functional passing seed; generation is refused before any model/Docker call. Real export rechecks source blobs and owned harness and keeps the qualification.
+
+Reference validation distinguishes causal absence from an existing definition in unparseable source. Explicit unparseable_definitions requires valid fixed-source qualified function and an unchanged source prefix through its header; otherwise use supported module scope or keep unresolved. This changes reference validation only: frozen v3 input/retrieval/parser/model/budgets are unchanged. PR-author metadata does not identify who introduced the original bug.

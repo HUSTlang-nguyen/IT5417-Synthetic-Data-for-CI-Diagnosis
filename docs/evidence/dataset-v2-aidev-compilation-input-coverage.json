@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-11-23T19:21:56+07:00",
+  "sample_id": "aidev-3232895285",
+  "input_sha256": "f553165a207126a9f9bf48521a9897b32f22fc6d029f2da4689711e1afb93e59",
+  "review_sha256": "5fd2b78e646da8b426e63cc9ec90b39275aa0e1038d1f8f1cc4e7183411cbf6d",
+  "observed_file_in_log": true,
+  "reference_function": "AstroImageAnalyzerGUI.finalize_analysis",
+  "reference_function_name_present_in_exported_input": false,
+  "retrieved_entities": [
+    {
+      "file": "analyse_gui.py",
+      "function": "<module>"
+    },
+    {
+      "file": "stack_plan.py",
+      "function": "_extract_session_date"
+    },
+    {
+      "file": "bortle_utils.py",
+      "function": "load_bortle_raster"
+    },
+    {
+      "file": "analyse_logic.py",
+      "function": "debug_counts"
+    },
+    {
+      "file": "sat_trail.py",
+      "function": "AstroImageAnalyzerGUI.open_log_file"
+    }
+  ],
+  "qualification": "Static pre-tokenizer input coverage check, not model accuracy or an inference call. Function absent from exported input; do not inject reference/repair or discard solely for retrieval miss. Training eligibility remains pending."
+}

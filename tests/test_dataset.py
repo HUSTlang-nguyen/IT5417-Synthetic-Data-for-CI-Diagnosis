@@ -9,6 +9,25 @@ from ci_demo.dataset import audit_real_exports, check_assessment, export_real
 
 
 class DatasetTests(unittest.TestCase):
+    def test_syntax_function_is_reviewed_and_anchored_not_a_missing_definition(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            base='class C:\n    def cause(self):\n        if True:\n            return 1\n         return 2\n'
+            head=base.replace('         return 2','        return 2')
+            for role,text in [('base',base),('head',head)]:
+                (root/role).mkdir();(root/role/'a.py').write_text(text)
+            location={'file':'a.py','function':'C.cause'}
+            assessment={'quality':'silver','disposition':'include','cause_type':'syntax','confidence':'high',
+                'mechanism':'Inert indentation fixture','evidence_reason':'Owned software fixture',
+                'limitations':'No upstream execution','label_source':'fixture','locations':[location]}
+            raw={'environment':{'context':str(root)}}
+            with self.assertRaises(ValueError):check_assessment(assessment,raw)
+            with self.assertRaises(ValueError):check_assessment({**assessment,'missing_definitions':[location]},raw)
+            reviewed={**assessment,'unparseable_definitions':[location]}
+            self.assertEqual(check_assessment(reviewed,raw),[('a.py','C.cause')])
+            (root/'base/a.py').write_text(base.replace('class C:','class Other:'))
+            with self.assertRaises(ValueError):check_assessment(reviewed,raw)
+
     def test_draft_audit_preserves_small_sample_gates_and_rejects_changed_input(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

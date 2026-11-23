@@ -90,3 +90,13 @@ Cả bốn đã đối chiếu full inventory, patch/log/JUnit và source F2P/P2
 | astroid-1196 | Dict.getitem gọi .getitem lên AST Name của biểu thức unpack, chưa infer thành Dict. Hai test báo Name thiếu getitem tại node_classes.py:2364; fixed pass khi infer/check type trước. | API/type; Dict.getitem, astroid/nodes/node_classes.py. Giữ silver; TODO về overriding là giới hạn riêng, không coi mọi pattern unpack đều đã kiểm chứng. |
 
 GitPython dùng upstream recovered local expectations, không phải F2P/P2P có sẵn từ nguồn. Cả bốn input chỉ là log/failing code theo v3 khóa; reference, patch, issue và nhận định ở ngoài input.
+
+## AIDev: một lỗi cú pháp được kiểm chứng local
+
+[Review/hash](evidence/dataset-v2-aidev-first-compilation-review.json), [coverage input](evidence/dataset-v2-aidev-compilation-input-coverage.json), run `reproduce-20261123T120616750003Z`. Case `aidev-3232895285`, repo tinystork/zeanalyser, [PR52](https://github.com/tinystork/zeanalyser/pull/52). Nguồn ghim từ AIDev; base/head là hai commit thật, không phải candidate synthetic.
+
+- **Kết luận:** base không biên dịch được với Python3.11; head biên dịch pass bằng cùng owned harness. Đây là kiểm tra cú pháp local, chưa chạy GUI, dependency hay test pytest của repo; không phải log CI lịch sử.
+- **Bằng chứng/cơ chế:** block sau `if processed_count > 0` dùng17dấu cách từ dòng3180, rồi lùi về16ở dòng3185; mức16không có trong stack indentation. Log báo IndentationError tại3185. Patch sửa block về16dấu cách; source blobs, full inventories và harness đều khớp hash.
+- **Vị trí đề xuất:** syntax / `analyse_gui.py::AstroImageAnalyzerGUI.finalize_analysis`, chắc chắn cao. Header3117 và toàn bộ prefix trước nó không đổi so với fixed. Đây là hàm hiện hữu trong file lỗi cú pháp, không phải causal absence; dùng trường unparseable_definitions riêng. Dòng Python phát hiện lỗi và đầu block gây lỗi được phân biệt.
+- **Kiến nghị:** giữ ứng viên silver cho chẩn đoán; không dùng làm seed sinh vì chỉ có compile check. AIDev metadata cho biết tác giả PR sửa lỗi, không chứng minh ai đưa lỗi vào code. Input giữ source/log, repair/PR/nhận định ở ngoài.
+- **Giới hạn input/người dùng review:** v3 lấy được file lỗi nhưng không có tên finalize_analysis trong input đã xuất; không coi đây là mẫu đã đủ evidence để model trả đúng hàm. Giữ kết quả coverage thay vì thêm đáp án vào input hoặc loại âm thầm. Gold và training eligibility vẫn pending. Người dùng review các kết luận/kiến nghị này; không phải tự phân tích lại log.

@@ -1,0 +1,495 @@
+{
+  "recorded_at": "2026-11-23T19:31:16+07:00",
+  "worklist_sha256": "dfe0a432b840e0a2f81517411240f3edd15835ae7cf8a524b64285fafec443b5",
+  "requested": 20,
+  "attempted": 20,
+  "records": [
+    {
+      "dataset_id": 3119928912,
+      "repo": "Deadier/Eleo",
+      "pr": 1,
+      "proposed_role": "test",
+      "source_record_sha256": "fbae454acecc6b7a95053f9dc881beeff28d9e09d1c77af4d17ec5fa2587af3d",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3119928912/repo.json",
+          "sha256": "fdccfd2306f1555560d1b048e0f0a91ad14bddb10a967f4ac925cb973077c0a0"
+        }
+      },
+      "started_at": "2026-11-23T19:20:37+07:00",
+      "license_spdx_hint": "MIT",
+      "fork": true,
+      "canonical_repo": "Deadier/Eleo",
+      "decision": "defer_fork_parent_group_resolution",
+      "finished_at": "2026-11-23T19:20:57+07:00"
+    },
+    {
+      "dataset_id": 3126529326,
+      "repo": "asik14014/family_assistant_complete_project",
+      "pr": 10,
+      "proposed_role": "train",
+      "source_record_sha256": "ea7f32b1011e398b5528efd6dee5cafe3a9585fcf4039aef60dfb4a44dad09f2",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3126529326/repo.json",
+          "sha256": "8e0c46800e366710929bc098311bad7a792e2b5bdbb74c0b0e2f7359a04d8ee0"
+        }
+      },
+      "started_at": "2026-11-23T19:20:57+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "asik14014/family_assistant_complete_project",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:21:17+07:00"
+    },
+    {
+      "dataset_id": 3135172097,
+      "repo": "compusom/ReportesV2",
+      "pr": 17,
+      "proposed_role": "train",
+      "source_record_sha256": "5cbf14534615f63e7d20aae234abf83f993411f328759de1f8af242e69430991",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3135172097/repo.json",
+          "sha256": "2022a61b4f49bcf974d8ccb5a2dbec0a09b99b25ee01a0e48408ba902ff05917"
+        }
+      },
+      "started_at": "2026-11-23T19:21:17+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "compusom/ReportesV2",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:21:36+07:00"
+    },
+    {
+      "dataset_id": 3135750738,
+      "repo": "alexkolchak157/ege-superbot",
+      "pr": 13,
+      "proposed_role": "validation",
+      "source_record_sha256": "448b2c21f05c7cdcc416eb46e99428dcbc3191613f54422e1f7ad6cae8ff7a2c",
+      "artifacts": {},
+      "started_at": "2026-11-23T19:21:36+07:00",
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 404
+      },
+      "finished_at": "2026-11-23T19:21:56+07:00"
+    },
+    {
+      "dataset_id": 3136962971,
+      "repo": "tinystork/zeseestarstacker",
+      "pr": 248,
+      "proposed_role": "test",
+      "source_record_sha256": "2bdb02d32c23127fe14546dd18235aee8c6689082c9e8484f626c6eca93d8dd4",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3136962971/repo.json",
+          "sha256": "09a0f72f43010f2025e3dfe29b34fc57c2d562e6d8af9ed2021dac75075aec2a"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3136962971/pr.json",
+          "sha256": "5b32aff0c0ae3c88b2c51802c0346484e06a6e04236f03198cdebf170520a6a8"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3136962971/files.json",
+          "sha256": "bf97f2e65b5f6fb262ab92d2aa002ea80be06e51b434bd87bfb5db80cfc48003"
+        }
+      },
+      "started_at": "2026-11-23T19:21:56+07:00",
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "tinystork/zeseestarstacker",
+      "base": "32ad829429ce5de1fb33bb9aea51de7fc652f006",
+      "head": "988eb2f7f05b386eb8a92d25ee9e94391645fbdf",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "seestar/queuep/queue_manager.py"
+      ],
+      "decision": "candidate_requires_pinned_blob_license_and_compilation",
+      "finished_at": "2026-11-23T19:22:51+07:00"
+    },
+    {
+      "dataset_id": 3137319809,
+      "repo": "TonyDeRosia/evennia-minimud",
+      "pr": 537,
+      "proposed_role": "train",
+      "source_record_sha256": "8b7de4d61fac5f4347524829b593c01c01487ffe9b94eb1a2f172105f4ffe91b",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3137319809/repo.json",
+          "sha256": "4532d9e2678043c986d418e98d8248df9003dc1687ac2d1516fdb67f1be36387"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3137319809/pr.json",
+          "sha256": "e07064c510b9ee7e70c4dd1cbe8425910e1cf6d45855f3851206413f5c770054"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3137319809/files.json",
+          "sha256": "b469a4ebd1fa20cbcbfd74c78775e97c003fdeae6e6a0131c6864a9d6cd8988a"
+        }
+      },
+      "started_at": "2026-11-23T19:22:51+07:00",
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "TonyDeRosia/evennia-minimud",
+      "base": "19db466452b25c7c391449789dc834f84729706e",
+      "head": "5e9f3acdbe581e2fbeacf993e551e50422e9d936",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "combat/combat_actions.py"
+      ],
+      "decision": "candidate_requires_pinned_blob_license_and_compilation",
+      "finished_at": "2026-11-23T19:23:45+07:00"
+    },
+    {
+      "dataset_id": 3141550333,
+      "repo": "Padenshoe/padenport",
+      "pr": 17,
+      "proposed_role": "validation",
+      "source_record_sha256": "4a8f29174999cbef07fc34ac7ccada623808350966312b939c20687539380dc7",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3141550333/repo.json",
+          "sha256": "2f72924036f4054e7c5a3c995b768603a21f4d8ecd15c6939f02b6e33b3c43e1"
+        }
+      },
+      "started_at": "2026-11-23T19:23:45+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "Padenshoe/padenport",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:24:03+07:00"
+    },
+    {
+      "dataset_id": 3194109543,
+      "repo": "x-CK-x/Dataset-Curation-Tool",
+      "pr": 78,
+      "proposed_role": "train",
+      "source_record_sha256": "771baa3d683f7ca80653f9c8dd408d7a2a33221701f8d86ba128ea5996ef2aab",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3194109543/repo.json",
+          "sha256": "1da19956b1832bd71f9c05c9964adfa226fd8b28873d61f43ed63194e3286249"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3194109543/pr.json",
+          "sha256": "4abdb1950b5ed85d7c4a0898b8432a1431ee5568ffc404ea7131f5155b068e23"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3194109543/files.json",
+          "sha256": "74bae6fee8614ee06d22d137724459022dd27615134a23f20ffc681855038133"
+        }
+      },
+      "started_at": "2026-11-23T19:24:03+07:00",
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "x-CK-x/Dataset-Curation-Tool",
+      "base": "4b775074132c97f7e48a6588eb19a3bf99e71ded",
+      "head": "cc37cf84fd5391356224505427bd4c88042a8c77",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "UI_tabs/gallery_tab.py"
+      ],
+      "decision": "candidate_requires_pinned_blob_license_and_compilation",
+      "finished_at": "2026-11-23T19:24:57+07:00"
+    },
+    {
+      "dataset_id": 3194111137,
+      "repo": "cobaemon/ServerlessPortfolio",
+      "pr": 41,
+      "proposed_role": "train",
+      "source_record_sha256": "048a65fe906fcd004b71fd445cd04cfbba5342fe32ffb9371c1841dc2fb26763",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3194111137/repo.json",
+          "sha256": "9713cf0e9e90a4982fa957f28ec546f3f7537633d4069d61fdb64c0f775a62c2"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3194111137/pr.json",
+          "sha256": "dc647fdd51fbbe2e0378530a09873ec5bfb204623475e197796627d3c4cad717"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3194111137/files.json",
+          "sha256": "45899af8a0e3352ce501b97007c71d98a1d45b5abbb86057853ad800f9227d87"
+        }
+      },
+      "started_at": "2026-11-23T19:24:57+07:00",
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "cobaemon/ServerlessPortfolio",
+      "base": "1bf2819e4622941432548100ac08f7244915d965",
+      "head": "b459e88f0b60ed363a468c7f9aa1c021e389130a",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "buildspec.yml"
+      ],
+      "decision": "defer_not_one_modified_production_python_file",
+      "finished_at": "2026-11-23T19:25:51+07:00"
+    },
+    {
+      "dataset_id": 3226294394,
+      "repo": "MForofontov/pyutils-collection",
+      "pr": 163,
+      "proposed_role": "train",
+      "source_record_sha256": "49e26e52d40f505bfab6bd5521b084e99158efd1b0de1bcfce713b5b36193ea6",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3226294394/repo.json",
+          "sha256": "29332aad683e23cdff4ddfbab7c13422915b2116c25e005b5cccd53a23887708"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3226294394/pr.json",
+          "sha256": "2195e4f635591a602749d14d279ce755b5f2abd850d4f4fb0d6a716abd1cca8b"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3226294394/files.json",
+          "sha256": "84b311b65e8686e6ec4097dd66c8a16064f38dd071f2c9eb1fc1f4b4c517668d"
+        }
+      },
+      "started_at": "2026-11-23T19:25:51+07:00",
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "MForofontov/pyutils-collection",
+      "base": "376b82f9d969fbe25a450908a6e46c8716dea6b2",
+      "head": "12310c6be8cadfd1800e0e9b903e25dd22572f63",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "print_functions/print_message.py"
+      ],
+      "decision": "candidate_requires_pinned_blob_license_and_compilation",
+      "finished_at": "2026-11-23T19:26:45+07:00"
+    },
+    {
+      "dataset_id": 3245143429,
+      "repo": "IMOGI-ITB/Payroll-Indonesia",
+      "pr": 140,
+      "proposed_role": "validation",
+      "source_record_sha256": "ae5bf8a05420c1a4e990dc1e88b8e55c0fb396ec3030b082bb96e161072caa39",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3245143429/repo.json",
+          "sha256": "ab11ad50d3a7d63436ba0b305cddf31699b70736e7990577fb09ff7dbc85d547"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3245143429/pr.json",
+          "sha256": "de0772817fb4cb874e562dbdddcd843a0a475f8b3ad7f0e0ca4e83002ee8d024"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3245143429/files.json",
+          "sha256": "5d3159ba3907844d1f8c74acf5949ce0be9ce2236d2a19c8d0cf50cb58bd26fe"
+        }
+      },
+      "started_at": "2026-11-23T19:26:45+07:00",
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "IMOGI-ITB/Payroll-Indonesia",
+      "base": "3668e2bea143bc195874698a6602da3269c56643",
+      "head": "ed4366a83199c13ae19ffe63af1e7aa92ac19771",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "payroll_indonesia/config/gl_account_mapper.py"
+      ],
+      "decision": "candidate_requires_pinned_blob_license_and_compilation",
+      "finished_at": "2026-11-23T19:27:40+07:00"
+    },
+    {
+      "dataset_id": 3253908020,
+      "repo": "elestirmen/seyahat_onerisi",
+      "pr": 32,
+      "proposed_role": "validation",
+      "source_record_sha256": "0c410629a37f17ba4fa43ed8ec13708c8e89f50cbdd5e53d1ac0bf9411ab5fea",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3253908020/repo.json",
+          "sha256": "693050ea8c31f1d119a2c493a554a64d4383f4c602e0174cbd27d1d23396aeaf"
+        }
+      },
+      "started_at": "2026-11-23T19:27:40+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "elestirmen/seyahat_onerisi",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:27:58+07:00"
+    },
+    {
+      "dataset_id": 3263598324,
+      "repo": "MelkorBalrog/AutoML",
+      "pr": 363,
+      "proposed_role": "validation",
+      "source_record_sha256": "2d1cc54da4e8cf8ba01545f87c6d121c7453eb343f3ab86199faaff8c1a32e54",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3263598324/repo.json",
+          "sha256": "da123fd23655ba451589a486b53293354b5fd65532cad405fc440b57015ca5c4"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3263598324/pr.json",
+          "sha256": "60eac79e803167363dcf37bf3b5632cf0a7366fadc12c5abcd125218537f9a5a"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3263598324/files.json",
+          "sha256": "a065e0cc93706ab1ffa386d27db7abf69f70a4f81bd3b152e8bf73e6ced5aad0"
+        }
+      },
+      "started_at": "2026-11-23T19:27:58+07:00",
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "MelkorBalrog/AutoML",
+      "base": "3e299d7ab3d17298d746d5317a8dcb3afb3b7150",
+      "head": "ec89fdb571fe2952ec784526f7a05ceeed6fabca",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "AutoML.py"
+      ],
+      "decision": "candidate_requires_pinned_blob_license_and_compilation",
+      "finished_at": "2026-11-23T19:28:53+07:00"
+    },
+    {
+      "dataset_id": 3270157328,
+      "repo": "hofcoral/able",
+      "pr": 41,
+      "proposed_role": "train",
+      "source_record_sha256": "bfc84d1337a350a7fb009623673a9e6f550fc9bef209a038212904c88ecb1fe4",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3270157328/repo.json",
+          "sha256": "d51bd2c5844fcd4c73fc3e0c78fde3effd63099c03605bf0cdb095c48d2f2424"
+        }
+      },
+      "started_at": "2026-11-23T19:28:53+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "hofcoral/able",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:29:11+07:00"
+    },
+    {
+      "dataset_id": 3285439808,
+      "repo": "547atoshinakamo70/547-blockchain",
+      "pr": 12,
+      "proposed_role": "train",
+      "source_record_sha256": "a999d9a774f7fc1bbf9f9a45b10a2f879b1be74bd6a052882ac654127299a27d",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3285439808/repo.json",
+          "sha256": "514a96ba1ae3d897e3ac2d5910b1979b9ef362ed8a0440af510983e1a1732b3e"
+        }
+      },
+      "started_at": "2026-11-23T19:29:11+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "547atoshinakamo70/547-blockchain",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:29:30+07:00"
+    },
+    {
+      "dataset_id": 3313891312,
+      "repo": "henribesnard/harena",
+      "pr": 83,
+      "proposed_role": "test",
+      "source_record_sha256": "1967c19ce584b814c51cf34dcfaab1f5f86d7114a1dac6eeb60454ac3f2a379e",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3313891312/repo.json",
+          "sha256": "1f6b9ac2bd8c88fa771488dff4533eecaf4a5f843c4538b9481754a04ee7151a"
+        }
+      },
+      "started_at": "2026-11-23T19:29:30+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "henribesnard/harena",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:29:47+07:00"
+    },
+    {
+      "dataset_id": 3338891549,
+      "repo": "wenzelpro/rauma-ais",
+      "pr": 12,
+      "proposed_role": "train",
+      "source_record_sha256": "183b5589d4ab94caff254d6dbd61db8c61950933e13dda657c4ca9c03e46f631",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3338891549/repo.json",
+          "sha256": "ec8931656e2f88074d0704f3c1fe5191457e0302a5967eb9a9dec43d8d15d386"
+        }
+      },
+      "started_at": "2026-11-23T19:29:47+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "wenzelpro/rauma-ais",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:30:05+07:00"
+    },
+    {
+      "dataset_id": 3346450554,
+      "repo": "MagellaX/StreamAttn",
+      "pr": 18,
+      "proposed_role": "train",
+      "source_record_sha256": "1210d94e677f1edad5381123bcbc6f75a92a7d002fa5a671b4a7136ef625990f",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3346450554/repo.json",
+          "sha256": "9ad47e508c8db2a44c93b051b587f0c5928cc494042a933e3f7194c425c66111"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3346450554/pr.json",
+          "sha256": "4c1d048c699604e7f7836f4021b1dd7d056181a196eea865de7f1ecdbebf585e"
+        }
+      },
+      "started_at": "2026-11-23T19:30:05+07:00",
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "MagellaX/StreamAttn",
+      "base": "ec8100ff8ff70ac83fe5d4fcecfac3fcb2498f51",
+      "head": "f341c4f2373cddc56b54a60b75a63ba0f83f44a5",
+      "changed_files": 22,
+      "merged_timestamp_matches": true,
+      "decision": "defer_multi_file_compile_scope",
+      "finished_at": "2026-11-23T19:30:41+07:00"
+    },
+    {
+      "dataset_id": 3354913913,
+      "repo": "williamgki/reviewer",
+      "pr": 19,
+      "proposed_role": "train",
+      "source_record_sha256": "60232a0b72e857c6b99da36f138d72fc3080fb79e3d68d585cb3240be2bd9cb7",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-compilation-screen20/3354913913/repo.json",
+          "sha256": "cff80bf8292b35adcbea276cd40377d66b94804dceaa22611ecaf056ccf3a344"
+        }
+      },
+      "started_at": "2026-11-23T19:30:41+07:00",
+      "license_spdx_hint": null,
+      "fork": false,
+      "canonical_repo": "williamgki/reviewer",
+      "decision": "exclude_license_unresolved",
+      "finished_at": "2026-11-23T19:30:59+07:00"
+    },
+    {
+      "dataset_id": 3354932721,
+      "repo": "Cloudhabil/CLI",
+      "pr": 135,
+      "proposed_role": "train",
+      "source_record_sha256": "9e8dc6a0932354b8191c7071c8f8a46aecb05c1d828a8602dba5c80b42a08208",
+      "artifacts": {},
+      "started_at": "2026-11-23T19:30:59+07:00",
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 404
+      },
+      "finished_at": "2026-11-23T19:31:16+07:00"
+    }
+  ],
+  "stop": null,
+  "unattempted_ids": [],
+  "candidate_count": 6,
+  "qualification": "Metadata/role proposals only. No new fault labels, pinned-license approval, reproduced source, model request or gold. Original records/API bodies remain ignored."
+}

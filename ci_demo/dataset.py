@@ -34,10 +34,13 @@ def real_evidence(run_id):
     mode = case.get("source_id_matching", "exact")
     from .upstream_tests import references
     fail_to_pass, pass_to_pass, origin = references(case)
+    if origin != 'dataset_supplied' and raw.get('test_reference_origin') != origin:
+        raise ValueError('Local-test origin missing from execution evidence')
+    if case.get('local_compilation_check'):
+        from .compilation import check
+        check(case, gate)
     if origin == 'upstream_recovered_local':
         from .upstream_tests import verify_products
-        if raw.get('test_reference_origin') != origin:
-            raise ValueError('Recovered-test origin missing from execution evidence')
         verify_products(case, Path(gate['context']) / 'head')
     for role, expectation in (("base", "fail"), ("head", "pass")):
         if not resolve_targets(raw[role], folder, fail_to_pass, expectation, mode)[0]:
@@ -48,6 +51,8 @@ def real_evidence(run_id):
                  "license-evidence.json": sha256(folder / "license-evidence.json")}
     if case.get('git_test_fixture'):
         artifacts['git-test-fixture.json'] = sha256(folder / 'git-test-fixture.json')
+    if case.get('local_compilation_check'):
+        artifacts['compilation-harness.json'] = sha256(folder / 'compilation-harness.json')
     for role in ("base", "head"):
         result = raw[role]
         if not result.get("container_removed") or result.get("timed_out"):
@@ -76,11 +81,24 @@ def check_assessment(assessment, raw, *, source_role="base"):
         if is_test(file):
             raise ValueError("Test detection is not a production causal location")
         text = (tree / file).read_text(encoding="utf-8")
-        if function != "<module>" and function not in {name for name, _, _ in functions(text)}:
+        if function == '<module>':
+            continue
+        try:
+            present = {name for name, _, _ in functions(text)}
+            unparseable = False
+        except SyntaxError:
+            present, unparseable = set(), True
+        if function not in present:
             missing = locations(assessment.get("missing_definitions"), limit=None)
-            head = (Path(raw["environment"]["context"]) / "head" / file).read_text(encoding="utf-8") if (file, function) in missing else ""
-            if function not in {name for name, _, _ in functions(head)}:
+            syntax_locations = locations(assessment.get('unparseable_definitions'), limit=None)
+            reviewed = syntax_locations if unparseable else missing
+            head = (Path(raw["environment"]["context"]) / "head" / file).read_text(encoding="utf-8") if (file, function) in reviewed else ""
+            head_functions = {name: start for name, start, _ in functions(head)}
+            if function not in head_functions:
                 raise ValueError("Reference function absent without reviewed missing-definition evidence")
+            # An unchanged prefix anchors the same qualified header before the syntax fault.
+            if unparseable and text.splitlines()[:head_functions[function]] != head.splitlines()[:head_functions[function]]:
+                raise ValueError('Unparseable reference function lacks an unchanged qualified header')
     if assessment.get("actor", "unknown") != "unknown":
         raise ValueError("Real actor attribution requires a separately approved provenance protocol")
     return expected
@@ -233,6 +251,10 @@ def export_real(run_id, assessment_path, destination, *, retriever=None):
     if case.get('test_reference_policy'):
         metadata['source_test_reference_policy'] = case['test_reference_policy']
         metadata['source_test_reference_qualification'] = 'Upstream recovered local expectations; source F2P/P2P absent'
+    if case.get('local_compilation_check'):
+        from .compilation import POLICY
+        metadata['source_test_reference_policy'] = POLICY
+        metadata['source_test_reference_qualification'] = 'Pipeline-owned local compilation smoke, not upstream tests or historical CI'
     write_json(destination / "manifest.json", metadata)
     return metadata
 

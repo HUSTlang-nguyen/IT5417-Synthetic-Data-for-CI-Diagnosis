@@ -1,0 +1,51 @@
+{
+  "created_at": "2026-11-23T19:03:03+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3232895285",
+      "repo": "tinystork/zeanalyser",
+      "role": "train",
+      "base_commit": "ef4e7a920c3df3d63b46f590db1734077da8bb7f",
+      "upstream_head": "0f9212e8d034643a7a51e2bc2b18f72fca17fa88",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "analyse_gui.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3232895285-ds2-compile",
+      "case_sha256": "7071241fc1886315c8749dbd70e08fb40a327341567865dc05607e324cb586a9",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Local immutable compilation harness, not upstream tests; one declared trial. Labels pending actual evidence review; generation prohibited."
+}

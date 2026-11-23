@@ -1,0 +1,33 @@
+{
+  "schema": "v2-source-role-supplement-v1",
+  "created_at": "2026-11-23T19:03:02+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "repo_roles": {
+    "tinystork/zeanalyser": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3232895285",
+      "repo": "tinystork/zeanalyser",
+      "role": "train",
+      "base_commit": "ef4e7a920c3df3d63b46f590db1734077da8bb7f",
+      "upstream_head": "0f9212e8d034643a7a51e2bc2b18f72fca17fa88",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "analyse_gui.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3232895285-ds2-compile",
+      "case_sha256": "7071241fc1886315c8749dbd70e08fb40a327341567865dc05607e324cb586a9",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "repo_provenance": {
+    "tinystork/zeanalyser": {
+      "pr_metadata": ".cache/dataset-v2-aidev-compilation-probe/3232895285/pr.json",
+      "pr_metadata_sha256": "43a7fa140558bba5e610d7f7b99477f94b47894cad70babbf7307ab71eff407e"
+    }
+  },
+  "qualification": "One previously screened source identity, new local compilation policy declared before experiment. Not a reproduced fault, syntax label, generator seed or historical CI log."
+}

@@ -46,6 +46,8 @@ def freeze_plan(experiment, path):
             expected = expected_sources[row['source_case_id']]
             if case['base'] != expected['base_commit'] or case['dataset_revision'] != expected['source_revision']:
                 raise ValueError('Case commit/revision differs from frozen source cohort')
+            if case.get('source_kind') == 'aidev' and case['head'] != expected.get('upstream_head'):
+                raise ValueError('AIDev head differs from frozen upstream commit')
         hashes = locked["cases"][identity]
         if sha256(ROOT / "cases" / identity / "case.json") != hashes["case_sha256"]:
             raise ValueError("Frozen case changed: " + identity)

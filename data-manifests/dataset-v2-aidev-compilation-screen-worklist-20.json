@@ -1,0 +1,150 @@
+{
+  "created_at": "2026-11-23T19:18:30+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "kind": "metadata_discovery_worklist",
+  "selected": [
+    {
+      "id": 3119928912,
+      "row_idx": 131553,
+      "number": 1,
+      "repo_url": "https://api.github.com/repos/Deadier/Eleo",
+      "proposed_role": "test"
+    },
+    {
+      "id": 3126529326,
+      "row_idx": 139067,
+      "number": 10,
+      "repo_url": "https://api.github.com/repos/asik14014/family_assistant_complete_project",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3135172097,
+      "row_idx": 86222,
+      "number": 17,
+      "repo_url": "https://api.github.com/repos/compusom/ReportesV2",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3135750738,
+      "row_idx": 36713,
+      "number": 13,
+      "repo_url": "https://api.github.com/repos/alexkolchak157/ege-superbot",
+      "proposed_role": "validation"
+    },
+    {
+      "id": 3136962971,
+      "row_idx": 66179,
+      "number": 248,
+      "repo_url": "https://api.github.com/repos/tinystork/zeseestarstacker",
+      "proposed_role": "test"
+    },
+    {
+      "id": 3137319809,
+      "row_idx": 177162,
+      "number": 537,
+      "repo_url": "https://api.github.com/repos/TonyDeRosia/evennia-minimud",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3141550333,
+      "row_idx": 158932,
+      "number": 17,
+      "repo_url": "https://api.github.com/repos/Padenshoe/padenport",
+      "proposed_role": "validation"
+    },
+    {
+      "id": 3194109543,
+      "row_idx": 84684,
+      "number": 78,
+      "repo_url": "https://api.github.com/repos/x-CK-x/Dataset-Curation-Tool",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3194111137,
+      "row_idx": 84693,
+      "number": 41,
+      "repo_url": "https://api.github.com/repos/cobaemon/ServerlessPortfolio",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3226294394,
+      "row_idx": 149503,
+      "number": 163,
+      "repo_url": "https://api.github.com/repos/MForofontov/pyutils-collection",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3245143429,
+      "row_idx": 105185,
+      "number": 140,
+      "repo_url": "https://api.github.com/repos/IMOGI-ITB/Payroll-Indonesia",
+      "proposed_role": "validation"
+    },
+    {
+      "id": 3253908020,
+      "row_idx": 96473,
+      "number": 32,
+      "repo_url": "https://api.github.com/repos/elestirmen/seyahat_onerisi",
+      "proposed_role": "validation"
+    },
+    {
+      "id": 3263598324,
+      "row_idx": 87903,
+      "number": 363,
+      "repo_url": "https://api.github.com/repos/MelkorBalrog/AutoML",
+      "proposed_role": "validation"
+    },
+    {
+      "id": 3270157328,
+      "row_idx": 73666,
+      "number": 41,
+      "repo_url": "https://api.github.com/repos/hofcoral/able",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3285439808,
+      "row_idx": 60251,
+      "number": 12,
+      "repo_url": "https://api.github.com/repos/547atoshinakamo70/547-blockchain",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3313891312,
+      "row_idx": 118584,
+      "number": 83,
+      "repo_url": "https://api.github.com/repos/henribesnard/harena",
+      "proposed_role": "test"
+    },
+    {
+      "id": 3338891549,
+      "row_idx": 136330,
+      "number": 12,
+      "repo_url": "https://api.github.com/repos/wenzelpro/rauma-ais",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3346450554,
+      "row_idx": 12998,
+      "number": 18,
+      "repo_url": "https://api.github.com/repos/MagellaX/StreamAttn",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3354913913,
+      "row_idx": 126494,
+      "number": 19,
+      "repo_url": "https://api.github.com/repos/williamgki/reviewer",
+      "proposed_role": "train"
+    },
+    {
+      "id": 3354932721,
+      "row_idx": 126553,
+      "number": 135,
+      "repo_url": "https://api.github.com/repos/Cloudhabil/CLI",
+      "proposed_role": "train"
+    }
+  ],
+  "selection": "Remaining explicit syntax/indentation title hits, source ID order, first distinct repositories; Makefile-only title excluded from Python scope. No execution/causal labels used.",
+  "role_proposals": "SHA256(lowercase repository)mod5:0/1/2train,3validation,4test; existing frozen roles take precedence. Proposals are not admission/bindings.",
+  "qualification": "20provenance screens planned, not20eligible faults. License/fork/single-file/runtime checks precede any reproduction; labels and pinned license unresolved."
+}

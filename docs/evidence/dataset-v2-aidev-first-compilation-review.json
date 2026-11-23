@@ -1,0 +1,68 @@
+{
+  "reviewed_at": "2026-11-23T19:11:16+07:00",
+  "input_protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
+  "records": [
+    {
+      "sample_id": "aidev-3232895285",
+      "run_id": "reproduce-20261123T120616750003Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T120616750003Z",
+        "evidence_hashes": {
+          "manifest.json": "f5ceb725b8ea1d44c0ea3bc57beb96774419223e125ad326cc97e877cb8a0aac",
+          "license-evidence.json": "0e50870e8136c0537ef7ef31d3598470654646e053563bfdf5951f8b74322fc0",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "51b3dd11023ab2001bf424df8306d5fda6901a00d129964eff91ba863e8d6f27",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "dec50bbf0fdf4145ead5392898834403710ac8ddd913cc633f7d69dd63934a79",
+          "historical-fixed.stdout.txt": "9a395ae88ad7d4eae01fcebc3bc557778ba18840a825e4edfe29c2bce8659542",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "df0e94686fab28276d02c8fcb6feea0b69944409ceb6c1fa954c63b1c34f2889"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "analyse_gui.py",
+            "function": "AstroImageAnalyzerGUI.finalize_analysis"
+          }
+        ],
+        "missing_definitions": [],
+        "unparseable_definitions": [
+          {
+            "file": "analyse_gui.py",
+            "function": "AstroImageAnalyzerGUI.finalize_analysis"
+          }
+        ],
+        "mechanism": "The processed_count branch first indents statements by seventeen spaces, then returns to sixteen spaces at the next if. Sixteen is not an outer indentation level of that block, so Python rejects the module. The repair consistently uses sixteen spaces in that body.",
+        "evidence_reason": "Saved local compilation reports IndentationError at analyse_gui.py:3185 on base; fixed compilation passes. The earlier inconsistent block begins at3180. The qualified function header is unchanged at3117 in the same source prefix; this is an existing unparseable function, not a missing method.",
+        "limitations": "Only local Python3.11 grammar compilation was tested, not GUI import, behavior or the pytest claim in the PR body. AIDev identifies the repair PR author, not the original fault author. Function retrieval may be incomplete; retain its measured coverage without injecting reference into input.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v3 failing source/log only; issue, repair, proposed cause and assessment kept outside diagnosis input. Existing comments do not imply automatic exclusion."
+      },
+      "assessment_sha256": "30da51652ddb7a0e31e4a00d1507cb5d9b22c91632c60d815d25a5b87e06159e",
+      "source_sha256": "34e56c049123c66bd8ce4f178b985a6e105075c5a828e17fdf4881b7fc510940",
+      "location_availability": [
+        {
+          "file": "analyse_gui.py",
+          "function": "AstroImageAnalyzerGUI.finalize_analysis",
+          "present_in_failing_source": true,
+          "base_ast_parseable": false,
+          "header_line": 3117,
+          "relationship": "reviewed_unparseable_definition"
+        }
+      ],
+      "repair_patch": ".cache/dataset-v2-source/cases/aidev-3232895285-ds2-compile/repair.patch",
+      "repair_patch_sha256": "4c8a25d9a9690939f6c1efd45fd1e8a96aef00da30bf40f2b3cd8771358c5983",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v3/aidev-3232895285",
+      "manifest_sha256": "ebe74f76ccda943884013cbbac22c69971f8a00d4e5a3f5c9b5d84692b79ebfa"
+    }
+  ],
+  "qualification": "One evidence-bound silver AIDev local compilation train candidate, frozen reference-free input v3. Human/gold/training pending; not final v2 quota/family selection. No source/model execution for review."
+}

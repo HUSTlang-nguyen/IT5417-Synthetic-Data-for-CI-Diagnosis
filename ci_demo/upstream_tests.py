@@ -87,6 +87,10 @@ def verify_products(case, fixed_tree):
 
 
 def references(case):
+    if case.get('local_compilation_check'):
+        from . import compilation
+        compilation.provenance(case)
+        return [compilation.TARGET], [], compilation.POLICY
     if case.get('test_reference_policy') is None:
         return case['fail_to_pass'], case.get('pass_to_pass', []), 'dataset_supplied'
     provenance(case)

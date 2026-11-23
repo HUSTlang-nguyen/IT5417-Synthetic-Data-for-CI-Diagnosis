@@ -11,6 +11,28 @@ from ci_demo.experiment import Experiment
 
 
 class DatasetExperimentTests(unittest.TestCase):
+    def test_v2_aidev_head_must_match_the_frozen_source_cohort(self):
+        from ci_demo.data_study import DataStudy
+        for head in ['b'*40,'c'*40]:
+            with self.subTest(head=head),tempfile.TemporaryDirectory() as tmp:
+                root=Path(tmp);folder=root/'run';folder.mkdir();write_json(folder/'manifest.json',{})
+                for name in ['repair.patch','test.patch']:(root/name).write_bytes(b'inert fixture\n')
+                case={'source_kind':'aidev','base':'a'*40,'head':head,'dataset_revision':'revision',
+                      'experiment_role':'train','repo_url':'https://github.com/example/repo','source_case_id':'source',
+                      'repair_patch':'repair.patch','test_patch':'test.patch',
+                      'repair_patch_sha256':sha256(root/'repair.patch'),'test_patch_sha256':sha256(root/'test.patch')}
+                write_json(root/'cases/fixture/case.json',case)
+                plan={'targets':{'real':1000},'repo_roles':{'example/repo':'train'},
+                      'selected':[{'case_id':'fixture','source_case_id':'source','repo':'example/repo','role':'train'}]}
+                path=root/'new-plan.json';write_json(path,plan)
+                study=Mock(spec=DataStudy);study.folder=folder;study.manifest=folder/'manifest.json'
+                expected={'source':{'base_commit':'a'*40,'upstream_head':'b'*40,'source_revision':'revision'}}
+                with patch('ci_demo.dataset_experiment.ROOT',root),patch('ci_demo.dataset_experiment.case_config',return_value=case), \
+                        patch('ci_demo.source_roles.validate_plan_sources',return_value=expected):
+                    if head=='b'*40:freeze_plan(study,path)
+                    else:
+                        with self.assertRaisesRegex(ValueError,'AIDev head'):freeze_plan(study,path)
+
     def test_v2_refuses_unexplained_or_third_environment_profile_before_reservation(self):
         from ci_demo.data_study import DataStudy
         from ci_demo.batch import BudgetStop

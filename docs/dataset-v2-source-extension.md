@@ -45,3 +45,9 @@ Lượt đầu dừng trước build do giới hạn đường dẫn Windows, [r
 [Receipt tính từ source-role lock và hai supplement](../data-manifests/dataset-v2-capacity-all-roles.json): trần lý thuyết train628/700, validation155/150, test163/150, trước tái hiện, curation, lớp và dedup. Train còn thiếu ngay cả nếu mọi case đạt; validation chỉ chịu được5 trường hợp bị loại, test13. Vì vậy cần thêm cohort cho cả heldout, giữ vai trò repo cũ và quota hiện hành. Không cộng lại175v1train đã nằm trong pool.
 
 [Probe8pip utility PR](../data-manifests/dataset-v2-upstream-pip-probes-8.json) mới là metadata/Git provenance:3không có test delta,5có đường dẫn test/helper thay đổi. Chưa có case pip được tái hiện, chốt role hoặc nhận làm mẫu; helper-only/feature/functional-service còn phải sàng lọc và đối chiếu blob. Chính sách upstream_pr_recovered_v1 hiện vẫn train-only; chưa nới cho heldout hoặc gọi đó là benchmark F2P/P2P.
+
+## AIDev và compilation smoke v1
+
+PR52tinystork/zeanalyser đã ghim dataset/API/base/head/license và role train trước khi chạy. [Plan](../data-manifests/dataset-v2-aidev-compilation-first.json). Compiler harness riêng chỉ compile bytes trong Docker, không import hoặc chạy GUI, không thay test nguồn; không gọi đó là test upstream. [Review thực tế](dataset-v2-new-data-review.md#aidev-một-lỗi-cú-pháp-được-kiểm-chứng-local). Base lỗi indentation, head pass; actor gây lỗi vẫn unknown. Case diagnosis-only, CLI generate từ chối trước model call.
+
+[Worklist20](../data-manifests/dataset-v2-aidev-compilation-screen-worklist-20.json) chỉ chứa identities/role proposals; raw body/API vẫn trong cache. Role đề xuất từ hash repo trước đọc code/kết quả, vai trò đã khóa được ưu tiên. Metadata screen không phải20lỗi hoặc20mẫu đủ điều kiện; giấy phép ghim/commit/harness phải đạt trước trial.

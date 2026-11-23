@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-23T18:45:34+07:00",
+  "updated_at": "2026-11-23T19:51:02+07:00",
   "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
@@ -24,21 +24,17 @@
   },
   "v2_real_selected": 0,
   "v2_synthetic_selected": 0,
-  "new_case_attempts": 57,
+  "new_case_attempts": 62,
   "new_generator_requests": 0,
   "live_worker": {
-    "session_id": 14776,
-    "kind": "serial_real_reconstruction",
-    "log": ".cache/dataset-v2-heldout-then-wave2-live.txt",
-    "last_observed_at": "2026-11-23T18:45:34+07:00",
-    "plans": [
-      "data-manifests/dataset-v2-heldout-wave3.json",
-      "data-manifests/dataset-v2-wave2-interleaved.json"
-    ],
-    "observation": "23heldout profiles then86remaining train; prior operations all terminal before launch, no replay/reset. Do not mutate loaded runner/guards/policy."
+    "session_id": 95729,
+    "kind": "metadata_source_preparation",
+    "log": ".cache/dataset-v2-aidev-screen20-prepare-live.txt",
+    "last_observed_at": "2026-11-23T19:51:02+07:00",
+    "observation": "Pin6screened candidates and original proposed roles, no new source screening count, Docker or model. No concurrent fullscan audit."
   },
   "collection_budget_initialized": true,
-  "next_task": "Follow14776. Broaden source cohorts for all roles and real syntax/dependency classes; existing pooled bounds are628/155/163 before curation. Current recovered-test policy remains train-only; any new heldout extension must be versioned and frozen before trials. Final selection/generation still gated.",
+  "next_task": "Finish95729, inspect preparation results and freeze source plans; run compiled-source trials only after all pending stages terminal. Before heldout syntax causal review/export, investigate function-header retrieval using train-only data and a separate versioned prototype; preserve frozen v3 and all old exports. Resume17heldout/86train without replay; dependency/config sources still missing.",
   "qualification": "Portable v1.1 published and relocation verified. New counts are reconstruction outcomes; silver prototypes are not finalized v2 selection. No new generator or diagnosis/training calls.",
   "study_run_id": "dataset-v2-20261122T190232092876Z",
   "execution_enabled": true,
@@ -52,10 +48,10 @@
     "status": "completed_for_published_v1_1"
   },
   "software_tests": {
-    "total": 155,
-    "passed": 154,
+    "total": 160,
+    "passed": 159,
     "skipped": 1,
-    "log": ".cache/software-tests-dataset-v2-git-fixture-longpaths.txt"
+    "log": ".cache/software-tests-dataset-v2-compilation-causal-locations.txt"
   },
   "budget_guard": "implemented_and_tested",
   "baseline_worker_session": null,
@@ -74,7 +70,7 @@
     "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 10875.0,
+  "execution_seconds_charged": 12051.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -106,9 +102,9 @@
     "receipt": "docs/evidence/dataset-v2-development-review.json",
     "gold": "pending"
   },
-  "new_cases_strict_reproduced": 37,
-  "new_passing_seeds": 43,
-  "new_real_silver_prototype_exports": 26,
+  "new_cases_strict_reproduced": 41,
+  "new_passing_seeds": 48,
+  "new_real_silver_prototype_exports": 27,
   "first_batch": {
     "status": "finished",
     "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
@@ -164,27 +160,27 @@
   },
   "by_role": {
     "train": {
-      "attempted_profiles": 50,
-      "attempted_source_cases": 48,
-      "finished_profiles": 50,
-      "strict_reproduced": 29,
-      "passing_source_cases": 35,
-      "strict_repositories": 8
+      "attempted_profiles": 51,
+      "attempted_source_cases": 49,
+      "finished_profiles": 51,
+      "strict_reproduced": 30,
+      "passing_fixed_sources": 36,
+      "strict_repositories": 9
     },
     "validation": {
-      "attempted_profiles": 3,
-      "attempted_source_cases": 3,
-      "finished_profiles": 3,
-      "strict_reproduced": 3,
-      "passing_source_cases": 3,
+      "attempted_profiles": 5,
+      "attempted_source_cases": 5,
+      "finished_profiles": 5,
+      "strict_reproduced": 5,
+      "passing_fixed_sources": 5,
       "strict_repositories": 1
     },
     "test": {
-      "attempted_profiles": 7,
-      "attempted_source_cases": 6,
-      "finished_profiles": 6,
-      "strict_reproduced": 5,
-      "passing_source_cases": 5,
+      "attempted_profiles": 9,
+      "attempted_source_cases": 8,
+      "finished_profiles": 9,
+      "strict_reproduced": 6,
+      "passing_fixed_sources": 7,
       "strict_repositories": 2
     }
   },
@@ -204,7 +200,7 @@
     "completed_records": 50,
     "receipt": "docs/evidence/dataset-v2-retrieval-v3-calibration-50.json"
   },
-  "uniform_v3_exports": 26,
+  "uniform_v3_exports": 27,
   "retrieval_v3_calibration": {
     "protocol": "data-manifests/dataset-v2-input-protocol.json",
     "protocol_sha256": "a40e134dde4dd96413993bef31eece42b36fcdf16490157435276f4dff77ce6c",
@@ -225,8 +221,8 @@
     "review": "docs/evidence/dataset-v2-first-heldout-review.json"
   },
   "new_data_curation": {
-    "reviewed": 27,
-    "retain_silver_candidates": 26,
+    "reviewed": 28,
+    "retain_silver_candidates": 27,
     "excluded_feature_only": 1,
     "human_confirmation": "pending",
     "gold": "pending",
@@ -235,8 +231,8 @@
   },
   "eligibility_screen_count": {
     "swebench": 2532,
-    "aidev": 4,
-    "total": 2536,
+    "aidev": 24,
+    "total": 2556,
     "limit": 5000
   },
   "storage_snapshot": {
@@ -283,7 +279,7 @@
     "status": "prepared_and_frozen_not_started",
     "sha256": "8131af53557de7a1dd491e5143e64dc637f240f5ed4b7aab3ea572b1d2cba107"
   },
-  "new_reproduction_profiles": 60,
+  "new_reproduction_profiles": 65,
   "source_role_supplements": [
     {
       "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
@@ -292,6 +288,10 @@
     {
       "path": "data-manifests/dataset-v2-source-supplement-gitpython.json",
       "sha256": "69cdacd81b507abeb050fe4bfd5bd62410fa40d306bb88b778201dfbce1801ca"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-compilation.json",
+      "sha256": "0ec280d78c8c86f9918ddd20de9ebbfda42864dbd2556de1fc408882405350a3"
     }
   ],
   "heldout_wave2": {
@@ -334,5 +334,56 @@
     "reconstructed": 0,
     "repo_role": "not_assigned",
     "receipt": "data-manifests/dataset-v2-upstream-pip-probes-8.json"
-  }
+  },
+  "new_passing_fixed_sources": 48,
+  "new_passing_seeds_qualification": "Legacy fixed-pass count includes heldout and compile-only cases; not generator eligibility. Final selected train sources remains0.",
+  "functional_strict_train_candidates_before_curation": 29,
+  "proposed_silver_class_counts": {
+    "syntax": 1,
+    "dependency/configuration": 0,
+    "API/type": 9,
+    "logic/value": 17
+  },
+  "source_breakdown": {
+    "swebench": {
+      "attempted_source_cases": 61,
+      "attempted_profiles": 64
+    },
+    "aidev": {
+      "attempted_source_cases": 1,
+      "attempted_profiles": 1
+    }
+  },
+  "aidev_screen20": {
+    "status": "finished",
+    "requested": 20,
+    "completed_checkpoint": 20,
+    "checkpoint": "runs/dataset-v2-20261122T190232092876Z/aidev-screen20-checkpoint.json",
+    "candidates": 6,
+    "result": "data-manifests/dataset-v2-aidev-compilation-screen-results-20.json"
+  },
+  "compilation_mode": {
+    "policy": "local_compilation_smoke_v1",
+    "first_run": "reproduce-20261123T120616750003Z",
+    "status": "strict_local_compilation_supported",
+    "generator_eligible": false,
+    "review": "docs/evidence/dataset-v2-aidev-first-compilation-review.json",
+    "input_coverage": "docs/evidence/dataset-v2-aidev-compilation-input-coverage.json",
+    "qualification": "Syntax only, no GUI/upstream tests/historical CI result. Function absent from exported input; no training approval."
+  },
+  "current_metadata_upper_bounds": {
+    "train": 629,
+    "validation": 155,
+    "test": 163
+  },
+  "remaining_execution_plans": [
+    {
+      "plan": "data-manifests/dataset-v2-heldout-wave3.json",
+      "remaining_profiles": 17
+    },
+    {
+      "plan": "data-manifests/dataset-v2-wave2-interleaved.json",
+      "remaining_profiles": 86
+    }
+  ]
 }
