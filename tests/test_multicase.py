@@ -19,6 +19,30 @@ def config(name="example"):
 
 
 class CaseTests(unittest.TestCase):
+    def test_stdlib_distutils_is_explicit_and_runtime_isolation_stays_enabled(self):
+        for value in ["stdlib", "true", 1, None, {"PYTHONPATH": "/host"}]:
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, "stdlib_distutils"):
+                multicase.validate_case({**config(), "stdlib_distutils": value})
+        with tempfile.TemporaryDirectory() as tmp:
+            for setting in [None, False, True]:
+                case = config()
+                if setting is not None:
+                    case["stdlib_distutils"] = setting
+                multicase.validate_case(case)
+                calls = []
+                def command(args, folder, name, **kwargs):
+                    calls.append(args)
+                    return {"exit_code": 0, "timed_out": False}
+                with patch.object(multicase, "command", side_effect=command):
+                    multicase.execute(case, {"image_id": "sha256:fixture"}, Path(tmp) / str(setting), "test")
+                args = calls[0]
+                self.assertEqual(args.count("SETUPTOOLS_USE_DISTUTILS=stdlib"), int(setting is True))
+                self.assertIn("--network=none", args)
+                self.assertIn("--read-only", args)
+                self.assertIn("65534:65534", args)
+                self.assertIn("PYTEST_DISABLE_PLUGIN_AUTOLOAD=1", args)
+                self.assertEqual(calls[-1][:3], ["docker", "rm", "-f"])
+
     def test_conflicting_bootstrap_pins_fail_before_build(self):
         case = config()
         case['pytest_version'] = '6.2.5'

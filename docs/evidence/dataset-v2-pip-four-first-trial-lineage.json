@@ -1,0 +1,46 @@
+{
+  "recorded_at": "2026-11-24T07:33:38+07:00",
+  "history": [
+    {
+      "unexecuted_preparation_profile": "pypa__pip-9569-ds2-upstream",
+      "unexecuted_case_sha256": "67f40a6529ee26f00ee6951e16dc0f50358111b6cf321089c6091e67e63592d1",
+      "first_trial_profile": "pypa__pip-9569-ds2-unit",
+      "removed_inherited_metadata": {
+        "profile_parent_case_id": "pypa__pip-10079-ds2-upstream",
+        "environment_correction": "Parent build failed before tests because the recipe duplicated runner bootstrap pins with setuptools57.5/wheel0.37. Remove those two contradictory direct dependencies and retain unchanged runner setuptools75.6/wheel0.45. Source/test/provenance/targets/runtime versions/isolation unchanged; only environment correction."
+      },
+      "source_or_test_changed": false
+    },
+    {
+      "unexecuted_preparation_profile": "pypa__pip-9050-ds2-upstream",
+      "unexecuted_case_sha256": "31c94201f8872fefc26122c37a716560b09c1bdd6a4598fb0352ffd78d5a43fb",
+      "first_trial_profile": "pypa__pip-9050-ds2-unit",
+      "removed_inherited_metadata": {
+        "profile_parent_case_id": "pypa__pip-10079-ds2-upstream",
+        "environment_correction": "Parent build failed before tests because the recipe duplicated runner bootstrap pins with setuptools57.5/wheel0.37. Remove those two contradictory direct dependencies and retain unchanged runner setuptools75.6/wheel0.45. Source/test/provenance/targets/runtime versions/isolation unchanged; only environment correction."
+      },
+      "source_or_test_changed": false
+    },
+    {
+      "unexecuted_preparation_profile": "pypa__pip-4430-ds2-upstream",
+      "unexecuted_case_sha256": "f6c068c63c4434ce95319cfe179815ef3481c7be7b2a4289d338ac5c5b756334",
+      "first_trial_profile": "pypa__pip-4430-ds2-unit",
+      "removed_inherited_metadata": {
+        "profile_parent_case_id": "pypa__pip-10079-ds2-upstream",
+        "environment_correction": "Parent build failed before tests because the recipe duplicated runner bootstrap pins with setuptools57.5/wheel0.37. Remove those two contradictory direct dependencies and retain unchanged runner setuptools75.6/wheel0.45. Source/test/provenance/targets/runtime versions/isolation unchanged; only environment correction."
+      },
+      "source_or_test_changed": false
+    },
+    {
+      "unexecuted_preparation_profile": "pypa__pip-4982-ds2-upstream",
+      "unexecuted_case_sha256": "88d2c6f14d329d1c29f955a45de8f2fb12ec5fb44ca8a66b6402ba61a3870713",
+      "first_trial_profile": "pypa__pip-4982-ds2-unit",
+      "removed_inherited_metadata": {
+        "profile_parent_case_id": "pypa__pip-10079-ds2-upstream",
+        "environment_correction": "Parent build failed before tests because the recipe duplicated runner bootstrap pins with setuptools57.5/wheel0.37. Remove those two contradictory direct dependencies and retain unchanged runner setuptools75.6/wheel0.45. Source/test/provenance/targets/runtime versions/isolation unchanged; only environment correction."
+      },
+      "source_or_test_changed": false
+    }
+  ],
+  "qualification": "Pre-execution audit caught unrelated pip10079 correction metadata inherited by the preparation template. No source run started. Old prepared recipes/locked plan preserved as superseded; new first-trial profiles remove only inherited lineage fields, same source/test/environment/targets."
+}

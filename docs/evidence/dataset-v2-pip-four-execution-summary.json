@@ -1,0 +1,156 @@
+{
+  "checked_at": "2026-11-24T07:52:09+07:00",
+  "records": [
+    {
+      "source_case_id": "pypa__pip-9569",
+      "case_id": "pypa__pip-9569-ds2-unit",
+      "run_id": "reproduce-20261124T003444193218Z",
+      "status": "hypothesis_not_confirmed",
+      "historical_supported_locally": false,
+      "head_passed": true,
+      "roles": {
+        "base": {
+          "exit_code": 0,
+          "junit": "historical-base.junit.xml"
+        },
+        "head": {
+          "exit_code": 0,
+          "junit": "historical-fixed.junit.xml"
+        }
+      },
+      "evidence_hashes": {
+        "manifest.json": "307ebcc3bd10016830b557f7982839f288921a0c6ac874894b59998dad1f3191",
+        "historical-base.stdout.txt": "6146f45274a373947152a63d55ac282106800a1a6fa7ad66c98b63f2b1f694b5",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "49f00995c224f4138f2d8222732ce9cc5df916dc3efb66bab60ae8022978e50e",
+        "historical-fixed.stdout.txt": "35740a83e4ed54b9fac4db9e19c44df54a1f9b8e9943e41ad367b3fbbff1c60a",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "e62286ed4923194ee8661d9def6054a5a69bd0ed5a66aa82d327549389d17b93"
+      },
+      "stdlib_distutils": false,
+      "source_and_test_inventories_unchanged": true
+    },
+    {
+      "source_case_id": "pypa__pip-9050",
+      "case_id": "pypa__pip-9050-ds2-unit",
+      "run_id": "reproduce-20261124T003653936470Z",
+      "status": "hypothesis_not_confirmed",
+      "historical_supported_locally": false,
+      "head_passed": false,
+      "roles": {
+        "base": {
+          "exit_code": 4,
+          "junit": null
+        },
+        "head": {
+          "exit_code": 4,
+          "junit": null
+        }
+      },
+      "evidence_hashes": {
+        "manifest.json": "d1cc6d263a005ab86006ff298c3ad9bb995fc3f16ea1403faeb0259e44b07d24",
+        "historical-base.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.stderr.txt": "f9f60691f06f0eeb72dd2005e61d9cae2419aedc1738b61e5a3a9862c3d34574",
+        "historical-fixed.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.stderr.txt": "a98674b4fdaaf358ef4019eadf8d612eb6bca7f3e6bfcffbe0cb4b1eb4f02a7b"
+      },
+      "stdlib_distutils": false,
+      "source_and_test_inventories_unchanged": true
+    },
+    {
+      "source_case_id": "pypa__pip-4430",
+      "case_id": "pypa__pip-4430-ds2-unit",
+      "run_id": "reproduce-20261124T003828659847Z",
+      "status": "hypothesis_supported_locally",
+      "historical_supported_locally": true,
+      "head_passed": true,
+      "roles": {
+        "base": {
+          "exit_code": 1,
+          "junit": "historical-base.junit.xml"
+        },
+        "head": {
+          "exit_code": 0,
+          "junit": "historical-fixed.junit.xml"
+        }
+      },
+      "evidence_hashes": {
+        "manifest.json": "91cc99d8d809b1fa512a1b8c477f5880827aa9368614fb1a8e731bb38236aa2f",
+        "historical-base.stdout.txt": "50c862babe2a76f57c0f6484fa71d23084ace611eb6b33111959584beb2a72f7",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "6d0ea9cf7dece3fc2b43ebc35d60d2969289a6cece28f407115a11a8c2d07457",
+        "historical-fixed.stdout.txt": "aeba22d07b2a9c31f251eee69bb8ea0a9149f9ab7016d829be3dd787da5e07cb",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "3ab15e58384fe69a1bb6055b19ba971bb212dcff778021d86b431cbfd8d9297e"
+      },
+      "stdlib_distutils": false,
+      "source_and_test_inventories_unchanged": true
+    },
+    {
+      "source_case_id": "pypa__pip-4982",
+      "case_id": "pypa__pip-4982-ds2-unit",
+      "run_id": "reproduce-20261124T003957692647Z",
+      "status": "hypothesis_not_confirmed",
+      "historical_supported_locally": false,
+      "head_passed": false,
+      "roles": {
+        "base": {
+          "exit_code": 3,
+          "junit": "historical-base.junit.xml"
+        },
+        "head": {
+          "exit_code": 3,
+          "junit": "historical-fixed.junit.xml"
+        }
+      },
+      "evidence_hashes": {
+        "manifest.json": "488348ba633d9c02d5948c54d84bbb5e1422e789095944be5bc7306705c72824",
+        "historical-base.stdout.txt": "b5c001b5382df0f1b74213f8fd639c37b3a23434d41c40290a5df0506d5a4e1a",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "b3bb44f7084ede3d3d2410b07c317b1573de5c25a6eec5f71a9caf64a26408c6",
+        "historical-fixed.stdout.txt": "b185d68ca84365a1c33002728021af2363ff6fae7dfbf3ccee43a924a5eabd3f",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "655b84e8e6663238be83e7af4031fbb18ab865196a34e2db6a5b91b863cd2e3d"
+      },
+      "stdlib_distutils": false,
+      "source_and_test_inventories_unchanged": true
+    },
+    {
+      "source_case_id": "pypa__pip-9050",
+      "case_id": "pypa__pip-9050-ds2-unit-r1",
+      "run_id": "reproduce-20261124T004450833170Z",
+      "status": "hypothesis_not_confirmed",
+      "historical_supported_locally": false,
+      "head_passed": false,
+      "roles": {
+        "base": {
+          "exit_code": 4,
+          "junit": null
+        },
+        "head": {
+          "exit_code": 4,
+          "junit": null
+        }
+      },
+      "evidence_hashes": {
+        "manifest.json": "af510e21e6daa6bb28e970e1ca12d01f1f43ba9c5ce833fc5b1a87ba8c1af8f0",
+        "historical-base.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.stderr.txt": "69701e3bfc89c009cab2f69a37be3a4b814508286d963ff08724de94d33a42a9",
+        "historical-fixed.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.stderr.txt": "7e1ab51f84976f5cec5f50119fd0a5e179a67e8e3d56e122fac56572c760c42b"
+      },
+      "stdlib_distutils": true,
+      "source_and_test_inventories_unchanged": true
+    }
+  ],
+  "source_cases": 4,
+  "executed_profiles": 5,
+  "strict_source_cases": 1,
+  "interpretation": {
+    "4430": "Base decode(None) TypeError/fixed pass; silver review separate.",
+    "9569": "Both roles pass under the declared UTF8 environment, local bug hypothesis unconfirmed; no forced failure or rerun.",
+    "9050": "First profile import-order distutils assertion. Sole r1 with explicit stdlib mode passes that point then lacks test helper csv23; still blocked before target tests. No third profile.",
+    "4982": "Both roles blocked by legacy conftest item.get_marker API absent from pytest6.2.5. Subprocess behavior itself unmeasured; not a product cause label."
+  },
+  "qualification": "Actual saved Docker execution artifacts/hash/inventory check, no re-execution. Environment/setup failures are not fault labels. Preparation-only superseded recipes excluded from attempted denominator."
+}

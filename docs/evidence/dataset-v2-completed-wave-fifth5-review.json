@@ -1,0 +1,179 @@
+{
+  "reviewed_at": "2026-11-24T07:38:21+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "pvlib__pvlib-python-1589",
+      "run_id": "reproduce-20261123T214907474671Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T214907474671Z",
+        "evidence_hashes": {
+          "manifest.json": "5499ded3a44e2c235ec9a407d3a93034544b26057facdb3d2feb834167aaccfe",
+          "license-evidence.json": "3ecd4e968788db9923d687487a9bbc060933ed62a17cf2d878011a336f014412",
+          "historical-base.stdout.txt": "b01b2a247ea5211214e2738a9b59c0287d04853a7d5fa7238849eea8c1b96b6b",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "3b10c86a0bcf23c437e589db56e53719b15df4432b121308bb2be8286a7f0822",
+          "historical-fixed.stdout.txt": "5d2bdc50a56b9d1af10f7ae759d3e65bba39f60b7c15e24541771aa150173ea4",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "86aa43664de4ae73727886e74cf39d42c32f4562eaf0203646b581f97441e0d3"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "pvlib/bifacial/infinite_sheds.py",
+            "function": "_ground_angle"
+          },
+          {
+            "file": "pvlib/shading.py",
+            "function": "masking_angle"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The angle formulas divide by ground coverage ratio before evaluating the angle. At gcr=0, a meaningful limiting/single-row case, scalar1/gcr raises instead of producing zero angle; multiplying numerator and denominator by gcr removes this singular intermediate.",
+        "evidence_reason": "Both saved zero-gcr tests raise ZeroDivisionError in the original two formulas. Fixed same21tests pass, with expected zero angles and existing nonzero controls retained.",
+        "limitations": "Numerical edge-case/control logic, not a missing package or invalid Python. The local tests cover the two helper formulas, not an additional full irradiance/physical deployment experiment.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only, repair/test patch/issue/assessment separate. Natural comments and stack traces are not automatically leakage."
+      },
+      "assessment_sha256": "72d7bd62ab60a72cc5efc1c53f092dfbe891266364bdf458e2c9481bb59842d3",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pvlib__pvlib-python-1589",
+      "manifest_sha256": "99d79c8214302d41e969226942753b7c6525718393f317f089ea1e36228642a8"
+    },
+    {
+      "sample_id": "pydicom__pydicom-965",
+      "run_id": "reproduce-20261123T215040436537Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T215040436537Z",
+        "evidence_hashes": {
+          "manifest.json": "c0170f29be4d1f49009e7c581ea8771d6cb64fb216f3590428906966030c4b85",
+          "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+          "historical-base.stdout.txt": "2333a96cffcb8cca032039df1fea2367c78d33feef17d1383f9fe3fb7c0050e4",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "f71df3d9935a6178f7e6e959d0e73b627ecbf1341089fdcf7dbf9a5dd96b8eac",
+          "historical-fixed.stdout.txt": "662081e7c8fb87cc9ba386ec3a31b9c535d8df3c9b9c59dee193d952fecd5746",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "3b8aed386b9494435b574449072a383919336d097829c3529466ee275d071ced"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "pydicom/dataelem.py",
+            "function": "empty_value_for_VR"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Decoded empty SQ values fall through the generic empty-VR logic and become None instead of an empty sequence. The repair handles SQ first and returns a fresh empty list independently of text-empty configuration.",
+        "evidence_reason": "Saved test_empty_sequence_is_handled_as_array creates an empty sequence correctly, writes/reads it and then observes None rather than[]. Fixed same test passes;40tests total with1unrelated skip.",
+        "limitations": "API/type refers to the wrong sequence representation/type contract. Local evidence is an assertion on None versus[], not the historical issue len(None) TypeError; no extra print/read experiment or invalid user configuration claimed.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only, repair/test patch/issue/assessment separate. Natural comments and stack traces are not automatically leakage."
+      },
+      "assessment_sha256": "48faff6d221268c1f08ffb1706e193d2f404e51db19644591c54f8da0872654f",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydicom__pydicom-965",
+      "manifest_sha256": "3c2fe5d66e1bec5facf9c472920fe09fd2a029b8feb823b4b4ce0e9d1b01446f"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-9646",
+      "run_id": "reproduce-20261123T215216511203Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T215216511203Z",
+        "evidence_hashes": {
+          "manifest.json": "1cbdae78fb228f0cdec85af22fbe1df989f07cb2e0013a80863aaa58252e03bc",
+          "license-evidence.json": "0461de6c1deab23ff0012dbaa00505feb1d50e6e2be7ad7981234d71b38e4fb2",
+          "historical-base.stdout.txt": "60860f635973a19bae297a77ef13fbd5a56865f4f4775dfc71ace4a143014282",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "2a7bd4f2fe133667e7975c2f5580bc6eb88967ff1819b819b7f6b96c5759f86f",
+          "historical-fixed.stdout.txt": "20af63c8adea1445da175174e4cdf1c987bf45af76ec95de96a18461d1e6b405",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "fb66ad6748106b04b31a16f80001dcb24ce9ffb57c97a183ecd46ab2d976ad38"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/_pytest/nodes.py",
+            "function": "Item.__init_subclass__"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The diamond-inheritance warning is emitted when a plugin subclass is defined, before the intended node-instantiation/configuration lifecycle. It cannot reliably respect later warning handling; moving it to instance initialization and guarding once per class fixes timing.",
+        "evidence_reason": "Saved test defines SoWrong under warnings-as-errors and fails immediately inside Item.__init_subclass__. The repair defers this check; all18saved tests pass and warning assertions at instantiation remain supported.",
+        "limitations": "The causal base method is removed by repair; the new helper is not a base-source location. Valid warning configuration exposes the premature event, so classification is code lifecycle logic rather than dependency/configuration. No separate historical pytest.ini execution.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only, repair/test patch/issue/assessment separate. Natural comments and stack traces are not automatically leakage."
+      },
+      "assessment_sha256": "5631913025239188cbe54f9f886c7cc93f30c66da1431ddaad3e494c64ba2c6e",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pytest-dev__pytest-9646",
+      "manifest_sha256": "72e7fe4af54038e733d0d7f3fdf55b0cddab789395e93fed183ed52775615fb5"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10325",
+      "run_id": "reproduce-20261123T214552285932Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Source explicitly requests inherited-members support for multiple base classes; repair adds comma-list/set parsing and corresponding filtering. Saved new list option test returns extra inherited members on base; old single-class behavior is not independently shown broken. Exclude optional feature extension.",
+      "evidence_hashes": {
+        "manifest.json": "c20161f23b7b1b23d25fec97bdea390098fada38f77086a321c6a98ecb1670c4",
+        "license-evidence.json": "c465c85d881677430ec7b192b676f3a23198de84da8a4146eff58b0d7fcea833",
+        "historical-base.stdout.txt": "8fcd7eaafc480196d7a03b3fd439269057e68b6c08a2c573bca5decc19f546de",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "1059ea1513c95e6749c9908ed8a0a552ebf1d5713c22d1dfe837ca2988776326",
+        "historical-fixed.stdout.txt": "2ddea90c545f58143e3714ecef98d327805082ef3a52627bce315362b1125962",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "10efdc0ffa026fc987075d5328d650a847464de2a040b17f134f916b7c111229"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-11109",
+      "run_id": "reproduce-20261123T215338569471Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Source requests a new formatting configuration option; repair introduces python_display_short_literal_types=False and optional Literal-to-union rendering. Saved new-option doctree test fails on old representation, fixed passes. Exclude display-feature extension rather than invalid syntax or existing runtime defect.",
+      "evidence_hashes": {
+        "manifest.json": "09cfaeec60027e0e4522b8df0f06cc06d3872559df0b2f23dd17b9277da1d347",
+        "license-evidence.json": "86059ed8e6034a4b0ea76d120d1a91f9d194456f393c87801062967103f26131",
+        "historical-base.stdout.txt": "b253543c8cf01ac3047226f99c9ebc18141771f2d7f2e046464cd045436dfacd",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "d884400d04daf92066885992cd6cf2dc606c81906b55db7bd091ebbdcdc5cc8f",
+        "historical-fixed.stdout.txt": "94f68ecc020cc81f3d6842861e1d2a7544bebad344b5f072986438efc0c97141",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "349b8ba47083c032734d4f1ed3ebbe31cb522e2f7bd8896476458e588d96f149"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 3,
+  "feature_excluded": 2,
+  "qualification": "Read-only saved source/issue/diff/JUnit review plus full inventory/hash/reference checks. No source/Docker/model execution during review. All human/gold/training pending, no final selection."
+}

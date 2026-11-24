@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-11-24T07:43:38+07:00",
+  "parent_case": "pypa__pip-9050-ds2-unit",
+  "parent_run": "reproduce-20261124T003653936470Z",
+  "evidence": [
+    {
+      "role": "base",
+      "path": "runs/reproduce-20261124T003653936470Z/historical-base.stderr.txt",
+      "sha256": "f9f60691f06f0eeb72dd2005e61d9cae2419aedc1738b61e5a3a9862c3d34574"
+    },
+    {
+      "role": "head",
+      "path": "runs/reproduce-20261124T003653936470Z/historical-fixed.stderr.txt",
+      "sha256": "a98674b4fdaaf358ef4019eadf8d612eb6bca7f3e6bfcffbe0cb4b1eb4f02a7b"
+    }
+  ],
+  "setuptools_pinned_source": "https://raw.githubusercontent.com/pypa/setuptools/v75.6.0/_distutils_hack/__init__.py",
+  "official_environment_documentation": "https://setuptools.pypa.io/en/stable/deprecated/distutils-legacy.html",
+  "qualification": "Observed harness import-order failure, not source bug label. Pinned legacy reproduction opt-in, not a general recommendation for current packages. No source/test edit, global host environment change or relaxed isolation."
+}

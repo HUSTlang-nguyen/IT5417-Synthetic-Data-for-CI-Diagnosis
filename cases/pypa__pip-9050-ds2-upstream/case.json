@@ -1,0 +1,76 @@
+{
+  "case_id": "pypa__pip-9050-ds2-upstream",
+  "source_case_id": "pypa__pip-9050",
+  "record_id": "pypa__pip-9050",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "train",
+  "repo_url": "https://github.com/pypa/pip",
+  "base": "08c99b6e00135ca8df2e98db58aa0b701b971c64",
+  "head": "base+repair:8a0c8834de6d82ec8b7f099cef1c8141fb858a712caca363960c3a425065255c",
+  "allowed_file": "src/pip/_internal/utils/direct_url_helpers.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "dataset_protocol": "dataset-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pypa__pip-9050-ds2-upstream/repair.patch",
+  "repair_patch_sha256": "8a0c8834de6d82ec8b7f099cef1c8141fb858a712caca363960c3a425065255c",
+  "test_patch": ".cache/dataset-v2-source/cases/pypa__pip-9050-ds2-upstream/test.patch",
+  "test_patch_sha256": "f324a55f4199206f2c98a3949c80683f63c757d76c60f80f26129bffbb13f0b1",
+  "source_record_sha256": "1501dc46a6e412b0b3ff8164bffe082dd1253b8911f29df5c1f68fca03276516",
+  "fail_to_pass": [],
+  "pass_to_pass": [],
+  "test_reference_policy": "upstream_pr_recovered_v1",
+  "local_expected_failures": [
+    "tests/unit/test_direct_url_helpers.py::test_as_pep440_requirement_editable_dir"
+  ],
+  "local_expected_passes": [
+    "tests/unit/test_direct_url_helpers.py::test_as_pep440_requirement_dir"
+  ],
+  "upstream_test_provenance": ".cache/dataset-v2-source/cases/pypa__pip-9050-ds2-upstream/upstream-provenance.json",
+  "upstream_test_provenance_sha256": "e929d3149cc391c54bc0942b49124b8f1b30c5183ef7bb77efc363b7f9a7e686",
+  "source_id_matching": "exact",
+  "test_targets": [
+    "tests/unit/test_direct_url_helpers.py::test_as_pep440_requirement_editable_dir",
+    "tests/unit/test_direct_url_helpers.py::test_as_pep440_requirement_dir"
+  ],
+  "frozen_test_files": [
+    "tests/unit/test_direct_url_helpers.py"
+  ],
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "python_image": "python:3.9-slim-bookworm",
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [],
+  "dependencies": [
+    "scripttest==1.3",
+    "virtualenv==16.7.12",
+    "Werkzeug==1.0.1",
+    "cryptography==3.4.8",
+    "freezegun==1.2.2",
+    "pretend==1.0.9",
+    "toml==0.10.2",
+    "six==1.16.0",
+    "mock==3.0.5"
+  ],
+  "install_project": false,
+  "test_workdir": "work",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Editable DirInfo metadata should render a non-editable direct reference rather than asserting; directory control should pass both. Original upstream local test expectations, not benchmark F2P/P2P or historical CI.",
+  "recipe_basis": "Python3.9 utility-only targets and unchanged upstream test patch; existing passing pip10079 conftest dependencies plus explicitly imported six/mock. No network service/virtualenv creation target chosen, source/tests unchanged, writable/work and existing isolation retained.",
+  "profile_parent_case_id": "pypa__pip-10079-ds2-upstream",
+  "environment_correction": "Parent build failed before tests because the recipe duplicated runner bootstrap pins with setuptools57.5/wheel0.37. Remove those two contradictory direct dependencies and retain unchanged runner setuptools75.6/wheel0.45. Source/test/provenance/targets/runtime versions/isolation unchanged; only environment correction."
+}

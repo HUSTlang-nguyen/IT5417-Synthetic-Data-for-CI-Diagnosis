@@ -122,6 +122,8 @@ def validate_case(case):
     if case.get("python_image", "python:3.11-slim-bookworm") not in {
             "python:3.9-slim-bookworm", "python:3.10-slim-bookworm", "python:3.11-slim-bookworm"}:
         raise ValueError("Unsupported Python build image")
+    if not isinstance(case.get("stdlib_distutils", False), bool):
+        raise ValueError("stdlib_distutils must be a boolean recipe setting")
     if case.get("test_timeout", 300) > 300 or case.get("build_timeout", 1200) > 1200:
         raise ValueError("Stage timeout exceeds batch protocol")
     for package in case.get("dependencies", []):
@@ -409,6 +411,8 @@ def execute(case, gate, evidence, name, role="head", candidate=None, guard=None)
             "--workdir", "/work" if case.get("test_workdir") == "work" else "/source/" + role]
     paths = ["/source/" + role + ("/" + p if p != "." else "") for p in case.get("python_paths", ["."])]
     args += ["--env", "PYTHONPATH=" + ":".join(paths), "--env", "HOME=/tmp", "--env", "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1"]
+    if case.get("stdlib_distutils", False):
+        args += ["--env", "SETUPTOOLS_USE_DISTUTILS=stdlib"]
     if case.get('local_compilation_check'):
         args += ['--env', 'CI_COMPILE_SOURCE=/source/' + role + '/' + case['allowed_file']]
     for path in case.get("writable_dirs", []):

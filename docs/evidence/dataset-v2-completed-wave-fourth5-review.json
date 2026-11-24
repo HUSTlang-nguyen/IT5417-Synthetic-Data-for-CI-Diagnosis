@@ -1,0 +1,154 @@
+{
+  "reviewed_at": "2026-11-24T07:34:34+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "pydicom__pydicom-944",
+      "run_id": "reproduce-20261123T212315378379Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T212315378379Z",
+        "evidence_hashes": {
+          "manifest.json": "52ba4463bdf122ecb61f32b90719c1927a2aba1aaf7cf7249e98fcedf6969941",
+          "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+          "historical-base.stdout.txt": "67b4b751aafd35fd5e56bd41120c719f6d5f8d4e1cc2e8cd83a90479d97f9eb6",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "82e5941bc162eaca6d8427a4e38bd8a3ce18cb9418cd19768295635f645a6478",
+          "historical-fixed.stdout.txt": "7421fec64d2e46db8a36c4d1a560d6660dcb2b7504e8f4f557d040ed178f3770",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "a1b06b078344ae45db5e413b6eaa8c759d612499eca8d3606832c9bf59a52c2d"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "pydicom/values.py",
+            "function": "convert_single_string"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The string conversion removes at most one trailing space and does not strip trailing NULs. Repeated padding therefore remains in decoded text; the repair loops over both padding characters until no suffix remains.",
+        "evidence_reason": "Saved test_value_ending_with_padding first observes two spaces left after decoding three trailing spaces. Fixed passes the same complete test, including later NUL/multivalue checks;19tests with3unrelated skips.",
+        "limitations": "Primary local failure is repeated space padding, not the historical issue charset lookup exception. MultiString is also changed, but this base test stops at its first convert_single_string assertion; no independently observed MultiString failure claimed.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing source/log only; repair, source issue, test patch and causal review stay outside diagnosis input. Natural comments/tracebacks not automatically leakage."
+      },
+      "assessment_sha256": "721ec7b671839e3fb8c4ebdcbd6fb65b2994057942e6c636d1271c15a7d0a5b1",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydicom__pydicom-944",
+      "manifest_sha256": "b1690bb8a81efc67b835fc543939437be27f0609962047294d5b91fef164253c"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-2240",
+      "run_id": "reproduce-20261123T214303901581Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T214303901581Z",
+        "evidence_hashes": {
+          "manifest.json": "13ddb47d9264767fbb4606ad63a74482f7403ebb0946b566e79fee07001671bc",
+          "license-evidence.json": "33c381e6fd544e86ee047b9063265bcdd4bacf287b0282bb2e0001e7a8afd21a",
+          "historical-base.stdout.txt": "403453a73df3f47b5dd2b19912689437c02c96c1884bd501e11e6d2d3c0eadc4",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "4d19112465d78c0521518f4f5077c5cc769288de4172720ac23bf416cb1b0d16",
+          "historical-fixed.stdout.txt": "ef5643808a57b46c2d7fce251ac4306b33fff5c0b54478f1cce9cc5d57225730",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "c37dbf1683aaefebe6509abb8a816e562e9d4de7518a58820fbace119cc62f1c"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "medium",
+        "locations": [
+          {
+            "file": "astroid/nodes/node_classes.py",
+            "function": "Arguments.arguments"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The aggregate argument property chains only positional-only and positional nodes. Keyword-only and vararg/kwarg names exist in other fields but are omitted from this node list, so consumers requesting all names receive an incomplete set.",
+        "evidence_reason": "Saved test_arguments_contains_all gets only fruit instead of fruit,args,b,c,kwargs. Repair extends argument aggregation and supplies variadic AssignName nodes during rebuilding;187tests pass fixed with9skips.",
+        "limitations": "The repair spans constructor/rebuilder/inference/default-index logic. The saved failure isolates incomplete aggregate output, not every changed branch; old doc enumerates positional categories, so scope of the all-arguments contract merits human review. No forced API/type or unobserved inference crash.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing source/log only; repair, source issue, test patch and causal review stay outside diagnosis input. Natural comments/tracebacks not automatically leakage."
+      },
+      "assessment_sha256": "bd20eb0f69d700f189f6718af38e280c8727eeb7ca7f625c8c7ad34bde784420",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pylint-dev__astroid-2240",
+      "manifest_sha256": "7690145db89c8c3644e7c06096b200e4f49839525717729da87ad492fc3840f7"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8273",
+      "run_id": "reproduce-20261123T212717702035Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "New man_make_section_directory option is introduced in setup and target path generation; unchanged default flat output is still supported. Saved new-option test misses section subdirectory on base, fixed passes. This establishes optional feature support rather than an existing configured-runtime fault.",
+      "evidence_hashes": {
+        "manifest.json": "eeb9e06721dc6be0b5493a4e427bd9333ce983aeff2d50a7eb8448e7edbbc213",
+        "license-evidence.json": "f20239cbe9cb673d6b4591d05ee9959c631f365a6dcc5d322564395328b4f10e",
+        "historical-base.stdout.txt": "5fe52e8549a32ce972f6db07f2be25c51db7c87ffcedd9d288789de356f1a933",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "f234e0700779528f3944a50d63606c6fdb8450da8c758e917fe1064bdf83513d",
+        "historical-fixed.stdout.txt": "0fa5b6bb3e293821db06cd3af4affb052ad7002dd304fde435b2636724a607df",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "b9ac8a6d01a6673cba771d10f6f4c12b20c241219ba7c367b2c0f7da34f07adb"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "sympy__sympy-20049",
+      "run_id": "reproduce-20261123T212851845565Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Point.vel previously looked up explicitly stored velocity; repair adds BFS inference from nearby points and documentation for the new automatic calculation. Saved new auto-velocity cases fail with the existing undefined-velocity ValueError. Exclude feature extension rather than force logic/API fault.",
+      "evidence_hashes": {
+        "manifest.json": "a70337d85ee645f98f36133718a9a8b2fc7dd06299a7c7b20fd00db569d0f692",
+        "license-evidence.json": "554c0046bd66de66ddcde0a1bf5c9beb4224a884957d7395530c12444c4b264c",
+        "historical-base.stdout.txt": "04cd459e0b4fd8a7090ca48f13fc8fd9ba371c149ef3c0182265738b28843f25",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "ca7949e842e4243b9fb497cdbb307da4f00c9df6ee66735b7957071a7ef577c9",
+        "historical-fixed.stdout.txt": "cabf908c67b94968f5b55b148c6fba454473b53bf0e03c7ea21aacccd1f393e9",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "88d1565e7eb357b55e07f5c08136072ac315a82dd730f2531829d0d31eb76243"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1764",
+      "run_id": "reproduce-20261123T213957576730Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Source request asks to expose solver tolerances/maxiter/full_output through new method_kwargs. Saved base tests fail on unexpected keyword method_kwargs before exercising numerical behavior; default solver remains supported. Exclude new-option feature evidence, not API/type regression.",
+      "evidence_hashes": {
+        "manifest.json": "018c2957fd7db69739f4372da283842c544bb11562ce517c095ac152ba6ff7b7",
+        "license-evidence.json": "4fac0e005063637d7af7145b6234016b121bff6f364f0b3ce3ecafcfd021120d",
+        "historical-base.stdout.txt": "42569708b66df13ccc452e4d4229926885370ece4f4f18a881557eaa0df69611",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "eb5d2dab154457c77de3e282440f6ec13eb16e8c54f4e6d3dc1dde68546eb89c",
+        "historical-fixed.stdout.txt": "999b458b175d700f9591f763a1b4b233953a03a45e6c3164558818e04fafcf2d",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "aa962239f0db6c0777bcc58fe006355a8e61030220e5d7530017051e511766dc"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 2,
+  "feature_excluded": 3,
+  "qualification": "Read-only source/issue/patch/JUnit review, full inventory/hash/reference validation via real_evidence. No source/model/Docker run in review. Human/gold/training pending, not final curation."
+}

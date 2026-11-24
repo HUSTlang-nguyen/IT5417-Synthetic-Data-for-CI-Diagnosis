@@ -1,0 +1,111 @@
+{
+  "created_at": "2026-11-24T07:31:49+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train",
+    "IMOGI-ITB/Payroll-Indonesia": "validation",
+    "TonyDeRosia/evennia-minimud": "train",
+    "MelkorBalrog/AutoML": "validation",
+    "x-CK-x/Dataset-Curation-Tool": "train",
+    "tinystork/zeseestarstacker": "test",
+    "MForofontov/pyutils-collection": "train",
+    "pypa/pip": "train",
+    "bartoszskarbek-pixel/pdf-renamer": "validation"
+  },
+  "selected": [
+    {
+      "source_case_id": "pypa__pip-9569",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4b8004a1b994f44673ddb3f775fda220fea208e0",
+      "upstream_head": "dc9efc856f180d755c618573050cf13266168127",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/unpacking.py"
+      ],
+      "test_files": [
+        "tests/unit/test_utils_unpacking.py"
+      ],
+      "case_id": "pypa__pip-9569-ds2-upstream",
+      "case_sha256": "67f40a6529ee26f00ee6951e16dc0f50358111b6cf321089c6091e67e63592d1",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "pypa__pip-9050",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "08c99b6e00135ca8df2e98db58aa0b701b971c64",
+      "upstream_head": "89b765db9606b35e948a2db8e9e834982d92a068",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/direct_url_helpers.py"
+      ],
+      "test_files": [
+        "tests/unit/test_direct_url_helpers.py"
+      ],
+      "case_id": "pypa__pip-9050-ds2-upstream",
+      "case_sha256": "31c94201f8872fefc26122c37a716560b09c1bdd6a4598fb0352ffd78d5a43fb",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "pypa__pip-4430",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4ee868553c473fd1f08179534763ad342ba07db4",
+      "upstream_head": "67d68873392b36495a68ae3e68790d0d445e835d",
+      "source_version": "",
+      "product_files": [
+        "pip/utils/encoding.py"
+      ],
+      "test_files": [
+        "tests/unit/test_utils.py"
+      ],
+      "case_id": "pypa__pip-4430-ds2-upstream",
+      "case_sha256": "f6c068c63c4434ce95319cfe179815ef3481c7be7b2a4289d338ac5c5b756334",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "pypa__pip-4982",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4f8541972f65e347dc76518f8a5554aac8acdf3d",
+      "upstream_head": "ec3ee8a1189dd41506cd53a68438c0e5bdeb9155",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/misc.py"
+      ],
+      "test_files": [
+        "tests/unit/test_utils.py"
+      ],
+      "case_id": "pypa__pip-4982-ds2-upstream",
+      "case_sha256": "88d2c6f14d329d1c29f955a45de8f2fb12ec5fb44ca8a66b6402ba61a3870713",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Four first source trials with immutable local test expectations and real fixture; no labels/successes claimed."
+}

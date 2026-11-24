@@ -1,0 +1,52 @@
+{
+  "reviewed_at": "2026-11-24T07:45:24+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "pypa__pip-4430",
+      "run_id": "reproduce-20261124T003828659847Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261124T003828659847Z",
+        "evidence_hashes": {
+          "manifest.json": "91cc99d8d809b1fa512a1b8c477f5880827aa9368614fb1a8e731bb38236aa2f",
+          "license-evidence.json": "ec6ec27d5d9f6fea2d83ed316fc944a019b2822aed8395d4ecf1345946ad1305",
+          "historical-base.stdout.txt": "50c862babe2a76f57c0f6484fa71d23084ace611eb6b33111959584beb2a72f7",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "6d0ea9cf7dece3fc2b43ebc35d60d2969289a6cece28f407115a11a8c2d07457",
+          "historical-fixed.stdout.txt": "aeba22d07b2a9c31f251eee69bb8ea0a9149f9ab7016d829be3dd787da5e07cb",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "3ab15e58384fe69a1bb6055b19ba971bb212dcff778021d86b431cbfd8d9297e"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "pip/utils/encoding.py",
+            "function": "auto_decode"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "When no BOM or encoding cookie is present, auto_decode forwards locale.getpreferredencoding(False) directly into bytes.decode. If the locale API returns None, decode requires a string and raises; repair uses sys.getdefaultencoding as fallback.",
+        "evidence_reason": "Saved test_auto_decode_no_preferred_encoding mocks preferred encoding to None and default to ascii, then observes TypeError at encoding.py31. Fixed passes that same original upstream method and unchanged no-BOM control,2tests total.",
+        "limitations": "The locale result is mocked by the original upstream test, not measured as the host/container locale. API/type describes passing an incompatible None value; no missing dependency or historical locale deployment claim. Original SWEtrain test references absent; recovered local expectations stay separate.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only; repair/test patch, source issue and review excluded. Natural encoding comments and traceback are evidence, not automatic leakage."
+      },
+      "assessment_sha256": "a9015257802c5ebea702d969b2d4868729b5708e1d1dee541f841b99d03dda2e",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pypa__pip-4430",
+      "manifest_sha256": "6667493f17a17795a263179e01540515820ae872d2360fc11e67c0f084b28e8b"
+    }
+  ],
+  "new_silver_exports": 1,
+  "qualification": "Saved source/repair/upstream test/JUnit reviewed; full inventories/hash/reference checks via real_evidence. No source/Docker/model execution during review; human/gold/training pending, final selection separate."
+}

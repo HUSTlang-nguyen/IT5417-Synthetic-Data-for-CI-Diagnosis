@@ -232,3 +232,23 @@ Tổng56prototype:syntax5/API-type13/logic-value38/dependency0. Còn35saved stri
 GitPython dùng test upstream gốc được phục hồi, có local expectations riêng; nguồn SWEtrain không cung cấp F2P/P2P. Lần đầu cả hai case dừng vì thiếu plugin do pyproject yêu cầu; đúng một profile hiệu chỉnh khai báo plugin đã đạt, không sửa test/source. Đây là tái hiện local, không phải log CI lịch sử.
 
 Tổng61prototype (syntax5/API-type14/logic-value42/dependency0), còn30saved strict outcomes chưa rà; human/gold/training vẫn pending, finalselected0. Các nhận định/repair nằm ngoài input v4. Kiến nghị giữ năm prototype mới để tuyển chọn tiếp, không tự phê duyệt huấn luyện.
+
+
+## Lô đã hoàn tất: mười review tiếp và pip4430
+
+[Review4th5](evidence/dataset-v2-completed-wave-fourth5-review.json) / [review5th5](evidence/dataset-v2-completed-wave-fifth5-review.json) / [pip4430](evidence/dataset-v2-pip4430-review.json). Tất cả kết luận dựa trên source/diff/test/JUnit đã lưu, kiểm tra inventory/hash/reference; không chạy lại để rà dữ liệu.
+
+| Case | Bằng chứng và nguyên nhân đề xuất | Kiến nghị |
+|---|---|---|
+| pydicom944 | convert_single_string chỉ bỏ một space; log còn2space từ3padding. Fixed loop bỏ padding; test còn kiểm tra NUL và multivalue. | logic/value, cao. Base dừng ở assert đầu; chưa chứng minh độc lập lỗi MultiString hoặc charset KeyError lịch sử |
+| astroid2240 | Arguments.arguments chỉ gom positional nodes; test nhận fruit thay fruit,args,b,c,kwargs. Fixed bổ sung aggregation/variadic nodes. | logic/value, vừa; repair nhiều phần và phạm vi API all-arguments cần người dùng review.187test tổng,9skip,0fail ởfixed |
+| pvlib1589 | _ground_angle/masking_angle tính1/gcr vớigcr0, haiZeroDivisionError; công thức fixed loại trung gian chia0. | logic/value, cao; kiểm chứng haihelper, chưa thêm thí nghiệm hệPV |
+| pydicom965 | Empty SQ sauwrite/read thànhNone thay[]; empty_value_for_VR thiếu nhánhSQ đầu tiên. | API/type, cao về representation contract; local làassert None!=[], không phải loglen(None) lịch sử |
+| pytest9646 | Item.__init_subclass__ phátwarning khi định nghĩa class; testwarnings-as-errors fail trước giai đoạn tạo node. Fixed dời việc check và chỉwarning một lần/class. | logic/value, cao; cấu hình hợp lệ làm lộ sai lifecycle, không phải cấu hình người dùng hỏng |
+| pip4430 | auto_decode truyềnNone từlocale.getpreferredencoding vào bytes.decode; TypeError tạiencoding.py31. Fixedfallbackdefaultencoding và cả2node pass. | API/type, cao; localeNone do test upstream mock, không phải đo locale thật của host |
+
+Năm case còn lại (Sphinx8273/10325/11109,Sympy20049,pvlib1764) bị loại khỏi subset lỗi hiện có: lần lượt thêm thư mục section manpage, danh sách inherited classes, tùy chọn Literal ngắn, tự suy vận tốc và method_kwargs solver. Test mới yêu cầu tính năng chưa tồn tại; không ép thành nhãn lỗi vì base fail/fixed pass.
+
+Lô pip4 được báo riêng trong [audit thực thi](evidence/dataset-v2-pip-four-execution-summary.json):9569pass cảhairole dưới UTF8 nên khôngxácnhận;4982bị chặn bởi conftest.get_marker củapytestcũ trước khi đo subprocess.9050lầnđầu vướngimport-order distutils; một r1tườngminh vượt lỗi đó nhưng thiếu helper csv23, không thử profile thứba. Các lỗi harness này không được gán thành dependency/configuration cho sản phẩm. Bốn recipe chuẩn bị bị thừa lineage của template đã được phát hiện và thay trước chạy; lịch sử/hash giữ riêng, không cộng vào profile đã thực thi.
+
+Tổng67prototype:syntax5/API-type16/logic-value46/dependency0; còn20strict chưareview, finalselected0. Human/gold/training eligibility tiếp tục pending; sourceissue/repair/assessment nằm ngoài inputv4. Giữ sáu prototype mới để tuyển chọn tiếp; user review kết luận còn quan trọng, không phải tự dò lại log.

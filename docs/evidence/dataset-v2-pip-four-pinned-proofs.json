@@ -1,0 +1,378 @@
+{
+  "checked_at": "2026-11-24T07:29:16+07:00",
+  "outcomes": [
+    {
+      "source_case_id": "pypa__pip-9569",
+      "base": "4b8004a1b994f44673ddb3f775fda220fea208e0",
+      "head": "dc9efc856f180d755c618573050cf13266168127",
+      "artifacts": {
+        "fetch.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/fetch.json",
+          "sha256": "eb4e562d4c7a255b77bcb9c7730348c74bc762a9096e5fb485e207fee6ec2d4f"
+        },
+        "fetch.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/fetch.stderr.txt",
+          "sha256": "ac2ef066119d27ca77d3ed204cd6e0c2591fa2841ba245694dfb0e2a1b06a873"
+        },
+        "fetch.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/fetch.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/init.json",
+          "sha256": "531e9743e70859ecf36f74fe5812f3e375eb7719b8421b54cb1d6a494b933fc9"
+        },
+        "init.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/init.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/init.stdout.txt",
+          "sha256": "c56be20ef0b06fc8859677a804f2d3d7dcfb1c4911e227344ff244c8a6f0549f"
+        },
+        "pinned-license.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/pinned-license.txt",
+          "sha256": "23a7361c2b1581028bc623b9da2bd24997abcaa4781ace6ad444a37944f8dae1"
+        },
+        "repair.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/repair.patch",
+          "sha256": "3c6e185085fc0938fe3e7ffd0d8a43f3e234ce8ac790bf9501dfbc12e42066de"
+        },
+        "source-record.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/source-record.json",
+          "sha256": "6d21c5b04fb5c9b896c29cd36d9262d03ce87d6f2087cab0bc6d0ad225bb12b6"
+        },
+        "test.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/test.patch",
+          "sha256": "671ab385d432c5146148aa89352401a5d9aedd7b97ec83aa37652e8bf5602192"
+        },
+        "base-files/pyproject.toml": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/pyproject.toml",
+          "sha256": "0e1f5864fe20054ef70c5cb317f40c0416d9215878518c2ddc32bcc679e35f1b"
+        },
+        "base-files/setup.cfg": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/setup.cfg",
+          "sha256": "107f7857221589b06721982bc2b27ab25883f3ec317c1fe4462efa35f0c022b5"
+        },
+        "base-files/setup.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/setup.py",
+          "sha256": "4d2d207d84a8183be2f0bbab8c85f5b3a6f6f2bb79869b593af87dba8fea94d7"
+        },
+        "base-files/tox.ini": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/tox.ini",
+          "sha256": "b3f13cd7af083e9537978951704116e417c836d8a584889e9490a50f493bd36b"
+        },
+        "base-files/tests/conftest.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/tests/conftest.py",
+          "sha256": "08830595f0173a223f94acf3ff52aa51aa7523579a6928094df4c24a1b0a6a92"
+        },
+        "base-files/tests/lib/compat.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/tests/lib/compat.py",
+          "sha256": "d817e6a9081fa0b12f93c61dd0eb33657e697cd34915f078a23e8f477cbcf7e2"
+        },
+        "base-files/tests/lib/__init__.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/tests/lib/__init__.py",
+          "sha256": "6a3a54ed8c3db990c27b8f6d42ef7d3fd308b06ae206f7a6e8837b1b15128706"
+        },
+        "base-files/tests/unit/test_utils_unpacking.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/base-files/tests/unit/test_utils_unpacking.py",
+          "sha256": "4475406d05fa3f41ec1217a982ec5cf4f7c57bcc47af156ba0d77a7efe533ef1"
+        },
+        "head-files/tests/unit/test_utils_unpacking.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9569/head-files/tests/unit/test_utils_unpacking.py",
+          "sha256": "c67f03c9e058eceb859dc57f9bc868f99155f902b26e82745e0040c513ed1967"
+        }
+      },
+      "status": "pinned_proof_passed_not_executed",
+      "product_blobs": [
+        {
+          "path": "src/pip/_internal/utils/unpacking.py",
+          "repaired_blob": "bffb3cd653e541819fcefe06d5e4a09383809286",
+          "upstream_head_blob": "bffb3cd653e541819fcefe06d5e4a09383809286"
+        }
+      ],
+      "test_paths": [
+        "tests/unit/test_utils_unpacking.py"
+      ],
+      "license": "MIT",
+      "base_license_path": "LICENSE.txt"
+    },
+    {
+      "source_case_id": "pypa__pip-9050",
+      "base": "08c99b6e00135ca8df2e98db58aa0b701b971c64",
+      "head": "89b765db9606b35e948a2db8e9e834982d92a068",
+      "artifacts": {
+        "fetch.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/fetch.json",
+          "sha256": "d8e424db1377e8c19c4841b46c1d57367bbef1c4cd3ee544831b070688624c0d"
+        },
+        "fetch.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/fetch.stderr.txt",
+          "sha256": "357cc77c4e2c1727501763c0290929bb3709b6886a21f50d2cab4c171e57597a"
+        },
+        "fetch.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/fetch.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/init.json",
+          "sha256": "f3c7ff4b6c21722bbcffc644c993a7c1fa274ec1c275b292e4afe42d786cc635"
+        },
+        "init.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/init.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/init.stdout.txt",
+          "sha256": "cb390833689a73bb4e2b154d346f8b83d4ca047e0e6501322bb73441195656ed"
+        },
+        "pinned-license.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/pinned-license.txt",
+          "sha256": "81d012fe03f24d49014efbe0a0d3651bd32fd4a1434e283a5b525d78c0f611f8"
+        },
+        "repair.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/repair.patch",
+          "sha256": "8a0c8834de6d82ec8b7f099cef1c8141fb858a712caca363960c3a425065255c"
+        },
+        "source-record.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/source-record.json",
+          "sha256": "1501dc46a6e412b0b3ff8164bffe082dd1253b8911f29df5c1f68fca03276516"
+        },
+        "test.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/test.patch",
+          "sha256": "f324a55f4199206f2c98a3949c80683f63c757d76c60f80f26129bffbb13f0b1"
+        },
+        "base-files/pyproject.toml": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/base-files/pyproject.toml",
+          "sha256": "2955d711cff3688b6ae2cb677354f5a97c896c303cf5843c5d4dfbe493849b75"
+        },
+        "base-files/setup.cfg": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/base-files/setup.cfg",
+          "sha256": "fefad8a88d0df84975a21fbf6a8eba841c9854fe9ffef97b3d7f3aec1133e6ee"
+        },
+        "base-files/setup.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/base-files/setup.py",
+          "sha256": "21e388ad8bc0573a78bdf9763209cab1604c01981d7ef718793656dfdb9b7d8a"
+        },
+        "base-files/tox.ini": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/base-files/tox.ini",
+          "sha256": "ef208aed57021afa37f5c147caf616ba20a83525afc8c002d8b63fe732e843ce"
+        },
+        "base-files/tests/conftest.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/base-files/tests/conftest.py",
+          "sha256": "affecbc7ee28f40d22b80f3603e89ec7379ff91028eac524962f61132dc9c644"
+        },
+        "base-files/tests/lib/__init__.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/base-files/tests/lib/__init__.py",
+          "sha256": "e5cdd7fd749bc05fde098d9e8ef8308770f90224262bd0dc2382d10f2842c1d7"
+        },
+        "base-files/tests/unit/test_direct_url_helpers.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/base-files/tests/unit/test_direct_url_helpers.py",
+          "sha256": "11e12fd47778de4ffcbf9723fcf1f7f1be7222532f8f18c1836491a6efce91dd"
+        },
+        "head-files/tests/unit/test_direct_url_helpers.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-9050/head-files/tests/unit/test_direct_url_helpers.py",
+          "sha256": "c17852f329e7e3305227068ef29fa75ad44741c4accf4ba2bb3bda23232c2e40"
+        }
+      },
+      "status": "pinned_proof_passed_not_executed",
+      "product_blobs": [
+        {
+          "path": "src/pip/_internal/utils/direct_url_helpers.py",
+          "repaired_blob": "87bd61fa01f29e726d488828d3dd283252b4ff41",
+          "upstream_head_blob": "87bd61fa01f29e726d488828d3dd283252b4ff41"
+        }
+      ],
+      "test_paths": [
+        "tests/unit/test_direct_url_helpers.py"
+      ],
+      "license": "MIT",
+      "base_license_path": "LICENSE.txt"
+    },
+    {
+      "source_case_id": "pypa__pip-4430",
+      "base": "4ee868553c473fd1f08179534763ad342ba07db4",
+      "head": "67d68873392b36495a68ae3e68790d0d445e835d",
+      "artifacts": {
+        "fetch.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/fetch.json",
+          "sha256": "4bd07ab239a44ba7c3c913acdda3b65e8230d01e55bf611754064c649f890846"
+        },
+        "fetch.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/fetch.stderr.txt",
+          "sha256": "82ae100dfe1991369eee58b7d0110f9f61ebb976e5ee5d96c868fba77e062a9c"
+        },
+        "fetch.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/fetch.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/init.json",
+          "sha256": "aead097758b8815b67dc3d3b3891bf79b8c3ecc4aae372ff7bba996fe49e3b09"
+        },
+        "init.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/init.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/init.stdout.txt",
+          "sha256": "6a4a9da72e5209280bc2b4052d59c74e026797cc428c76a30d5c399757d06fd8"
+        },
+        "pinned-license.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/pinned-license.txt",
+          "sha256": "fc89805a1f8ebf63b0fa389bead64bb23136f386b397e66ef4ec980f1e72e34f"
+        },
+        "repair.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/repair.patch",
+          "sha256": "78c8bbd2bd7b19a4399b90d901881c55040072de278bb8bc654c098d563875b3"
+        },
+        "source-record.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/source-record.json",
+          "sha256": "0e8125382be215099a6975aa8f0074199335b83e4213e294183bbbc5616fffda"
+        },
+        "test.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/test.patch",
+          "sha256": "d42ad820bba5a7400270a794f56c42f9bdaa5e653d2ef00d4bbc6caa6c2aad00"
+        },
+        "base-files/pyproject.toml": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/base-files/pyproject.toml",
+          "sha256": "7b6f23f5c1899f41f37ad3c5bc8257bb0fd988482a1829d189f85363f66bca85"
+        },
+        "base-files/setup.cfg": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/base-files/setup.cfg",
+          "sha256": "5844f98cc4ad374d31d8f8aa0992edfc6deb87d5246e224aca2774e825a39357"
+        },
+        "base-files/setup.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/base-files/setup.py",
+          "sha256": "417c1205b98dc27668e4d5bff880cc0f7247e29519358aea35593d00a5af09e4"
+        },
+        "base-files/tox.ini": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/base-files/tox.ini",
+          "sha256": "c766a72c97a07840334ad4d2f70aa4896e47a7f3b28fd124e60a659c753cadd2"
+        },
+        "base-files/tests/conftest.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/base-files/tests/conftest.py",
+          "sha256": "567dc4cdc2afe5f3153fc20e8197499a97bdceb7680a449a3572944f0835e21c"
+        },
+        "base-files/tests/lib/__init__.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/base-files/tests/lib/__init__.py",
+          "sha256": "31132ea181e8cf79ccd13721d3ba0d8b3fa171ebd3932a04a42834dd32b0025e"
+        },
+        "base-files/tests/unit/test_utils.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/base-files/tests/unit/test_utils.py",
+          "sha256": "ebe667f9b42b42745d665ce8a570f8cc5cec9d939cbbc5b6309db3f46f771bc8"
+        },
+        "head-files/tests/unit/test_utils.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4430/head-files/tests/unit/test_utils.py",
+          "sha256": "eb742431cac5b773512b2756490443e79b9cc0b65803ca7cb132749b49c8e400"
+        }
+      },
+      "status": "pinned_proof_passed_not_executed",
+      "product_blobs": [
+        {
+          "path": "pip/utils/encoding.py",
+          "repaired_blob": "db075b2c3d79c776d6bb6778e19cd879bb8aea20",
+          "upstream_head_blob": "db075b2c3d79c776d6bb6778e19cd879bb8aea20"
+        }
+      ],
+      "test_paths": [
+        "tests/unit/test_utils.py"
+      ],
+      "license": "MIT",
+      "base_license_path": "LICENSE.txt"
+    },
+    {
+      "source_case_id": "pypa__pip-4982",
+      "base": "4f8541972f65e347dc76518f8a5554aac8acdf3d",
+      "head": "ec3ee8a1189dd41506cd53a68438c0e5bdeb9155",
+      "artifacts": {
+        "fetch.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/fetch.json",
+          "sha256": "5b2f811997446a2e8500cefc2c22216d3bd64a6d6ad48af84df5925ba4125784"
+        },
+        "fetch.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/fetch.stderr.txt",
+          "sha256": "29766e68beaf1054556684b05cbc8bb20d8e4a87e5420694e3beddc550bca335"
+        },
+        "fetch.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/fetch.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/init.json",
+          "sha256": "f45ea38024bd4d4837358f556c72562f48fbbea9fba2ee6a9897e7fce236ad39"
+        },
+        "init.stderr.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/init.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.stdout.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/init.stdout.txt",
+          "sha256": "126ed597307de76d1b6957e917790738ccea5da043e829304bce8ce5626199f4"
+        },
+        "pinned-license.txt": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/pinned-license.txt",
+          "sha256": "fc89805a1f8ebf63b0fa389bead64bb23136f386b397e66ef4ec980f1e72e34f"
+        },
+        "repair.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/repair.patch",
+          "sha256": "5f969cc89e6df36ad535f7132ce1d4f6d031a099af13e45a8011c1b92584f47e"
+        },
+        "source-record.json": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/source-record.json",
+          "sha256": "8d514509b646ddf2e83c58c2fabf7e755a76a4e9c5640dab874233a38c993024"
+        },
+        "test.patch": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/test.patch",
+          "sha256": "cea6188973ec090291ceb056cd5d816b918bdaff612bb417e335bf8d8cd54b37"
+        },
+        "base-files/pyproject.toml": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/base-files/pyproject.toml",
+          "sha256": "be1fa1618b129e436d02d5728fdc8db177c4742c6707c97865bf7dd8136c866e"
+        },
+        "base-files/setup.cfg": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/base-files/setup.cfg",
+          "sha256": "74a0ab808120c24f9ed564f0492774f1ef561d92b13046b8e56694ca491ab3fe"
+        },
+        "base-files/setup.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/base-files/setup.py",
+          "sha256": "933c297a82f4360f8b739fb972be0b8662d5bbde12dfed542709bf4afdc7d8cc"
+        },
+        "base-files/tox.ini": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/base-files/tox.ini",
+          "sha256": "499701ec3e4c3c2f5b65a1e60eac102c3d1ee6f290490990f8b342e084c4a070"
+        },
+        "base-files/tests/conftest.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/base-files/tests/conftest.py",
+          "sha256": "9e3b924876482bd9da03aa40e28206302950fb7885427e39fe546e9747778d70"
+        },
+        "base-files/tests/lib/__init__.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/base-files/tests/lib/__init__.py",
+          "sha256": "85416c56a4c7a29b86acca6fe6eccf4490a3717f5b780ba8453be9c0f0a7d84f"
+        },
+        "base-files/tests/unit/test_utils.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/base-files/tests/unit/test_utils.py",
+          "sha256": "65e060fb9df147f7735bdc5eb0c6c9bdb19253e758f1443d07d83b4a975972fb"
+        },
+        "head-files/tests/unit/test_utils.py": {
+          "path": ".cache/dataset-v2-pip-four-pinned-proofs/pypa__pip-4982/head-files/tests/unit/test_utils.py",
+          "sha256": "48275460e7bd87c973d103deeeadf6769944b17f54ee2a9e29b76556399f6453"
+        }
+      },
+      "status": "pinned_proof_passed_not_executed",
+      "product_blobs": [
+        {
+          "path": "src/pip/_internal/utils/misc.py",
+          "repaired_blob": "d0280f36405e051b088c71b7392bda52a1e399bd",
+          "upstream_head_blob": "d0280f36405e051b088c71b7392bda52a1e399bd"
+        }
+      ],
+      "test_paths": [
+        "tests/unit/test_utils.py"
+      ],
+      "license": "MIT",
+      "base_license_path": "LICENSE.txt"
+    }
+  ],
+  "qualification": "Read-only pinned source/test/license and Git-index repair proof; no source imported/executed. Original SWEtrain references absent. Recipes/local expectations and admission not yet created. No new source attempts/eligibility identities/model calls."
+}

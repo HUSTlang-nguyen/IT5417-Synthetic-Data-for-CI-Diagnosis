@@ -1,0 +1,115 @@
+{
+  "created_at": "2026-11-24T07:33:38+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train",
+    "IMOGI-ITB/Payroll-Indonesia": "validation",
+    "TonyDeRosia/evennia-minimud": "train",
+    "MelkorBalrog/AutoML": "validation",
+    "x-CK-x/Dataset-Curation-Tool": "train",
+    "tinystork/zeseestarstacker": "test",
+    "MForofontov/pyutils-collection": "train",
+    "pypa/pip": "train",
+    "bartoszskarbek-pixel/pdf-renamer": "validation"
+  },
+  "selected": [
+    {
+      "source_case_id": "pypa__pip-9569",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4b8004a1b994f44673ddb3f775fda220fea208e0",
+      "upstream_head": "dc9efc856f180d755c618573050cf13266168127",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/unpacking.py"
+      ],
+      "test_files": [
+        "tests/unit/test_utils_unpacking.py"
+      ],
+      "case_id": "pypa__pip-9569-ds2-unit",
+      "case_sha256": "a1f08c9d456cd4fe20439bb507b1b966b3b377b5201eacd774e0b75560226b7d",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "pypa__pip-9050",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "08c99b6e00135ca8df2e98db58aa0b701b971c64",
+      "upstream_head": "89b765db9606b35e948a2db8e9e834982d92a068",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/direct_url_helpers.py"
+      ],
+      "test_files": [
+        "tests/unit/test_direct_url_helpers.py"
+      ],
+      "case_id": "pypa__pip-9050-ds2-unit",
+      "case_sha256": "d8b0be619c3a6c89fd2d039b8d354b3bb14fdc46a9d8508e94a4b13fdab4306f",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "pypa__pip-4430",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4ee868553c473fd1f08179534763ad342ba07db4",
+      "upstream_head": "67d68873392b36495a68ae3e68790d0d445e835d",
+      "source_version": "",
+      "product_files": [
+        "pip/utils/encoding.py"
+      ],
+      "test_files": [
+        "tests/unit/test_utils.py"
+      ],
+      "case_id": "pypa__pip-4430-ds2-unit",
+      "case_sha256": "b121cb8f54a7ce38fd505e9e1f19370d2eea23176d0aeab2a2899b584cf0b07c",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "pypa__pip-4982",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4f8541972f65e347dc76518f8a5554aac8acdf3d",
+      "upstream_head": "ec3ee8a1189dd41506cd53a68438c0e5bdeb9155",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/misc.py"
+      ],
+      "test_files": [
+        "tests/unit/test_utils.py"
+      ],
+      "case_id": "pypa__pip-4982-ds2-unit",
+      "case_sha256": "4629dbba0683b806d8cee1c94e56529dde94b6b20fcc1a1d904f61a5ca3ca8aa",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Authoritative first-trial plan after pre-execution lineage cleanup. No environment retry or source/test modification. Prior preparation recipes are not execution results.",
+  "supersedes_unexecuted_plan": {
+    "path": "data-manifests/dataset-v2-pip-four-plan.json",
+    "sha256": "0c86b8e969a9d95a507b6855126ec25b8f1c8e291516b4bcce8e9f893ce5abbc"
+  }
+}
