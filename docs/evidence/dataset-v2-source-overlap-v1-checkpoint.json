@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-11-24T07:25:31+07:00",
+  "v1_lock_sha256": "f3d7869bb77d48b5ea460ec1722a50c0de36e45e81cf8c6d5e40b6368931222b",
+  "v1_real_identities": 250,
+  "v2_attempted_source_identities": 175,
+  "overlap_with_v1_real": [],
+  "qualification": "Exact source ID overlap only, not a substitute for repo/commit/fork/near-duplicate family audit. Attempted profiles within v2 still counted separately, including environment failures/corrections."
+}

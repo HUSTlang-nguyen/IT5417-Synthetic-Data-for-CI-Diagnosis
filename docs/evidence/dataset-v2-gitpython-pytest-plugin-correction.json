@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-11-24T07:16:44+07:00",
+  "evidence": [
+    {
+      "case_id": "gitpython-developers__GitPython-1314-ds2-upstream",
+      "role": "base",
+      "path": "runs/reproduce-20261124T001248413581Z/historical-base.stderr.txt",
+      "sha256": "0e3c08a46b826a1c247e47c6f9134e246ea096b26c30740c1d53ce46a26d85e2"
+    },
+    {
+      "case_id": "gitpython-developers__GitPython-1314-ds2-upstream",
+      "role": "head",
+      "path": "runs/reproduce-20261124T001248413581Z/historical-fixed.stderr.txt",
+      "sha256": "e769f0bdf54e39d72bc2f364b4233396a05a047b066feb651a64613629262c2f"
+    },
+    {
+      "case_id": "gitpython-developers__GitPython-1547-ds2-upstream",
+      "role": "base",
+      "path": "runs/reproduce-20261124T001430302325Z/historical-base.stderr.txt",
+      "sha256": "0e3c08a46b826a1c247e47c6f9134e246ea096b26c30740c1d53ce46a26d85e2"
+    },
+    {
+      "case_id": "gitpython-developers__GitPython-1547-ds2-upstream",
+      "role": "head",
+      "path": "runs/reproduce-20261124T001430302325Z/historical-fixed.stderr.txt",
+      "sha256": "e769f0bdf54e39d72bc2f364b4233396a05a047b066feb651a64613629262c2f"
+    }
+  ],
+  "qualification": "Explicit environment-only correction based on saved usage errors, not fault labels. Load upstream-required plugins under existing disabled-autoload policy; coverage data uses existing writable /work. No source/test changes or retry of a source that already passed."
+}

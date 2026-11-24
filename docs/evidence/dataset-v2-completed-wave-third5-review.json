@@ -1,0 +1,175 @@
+{
+  "reviewed_at": "2026-11-24T07:14:30+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "pvlib__pvlib-python-1213",
+      "run_id": "reproduce-20261123T211236450786Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T211236450786Z",
+        "evidence_hashes": {
+          "manifest.json": "278e4098dc6c361c9352f0277144a9951bcac53907be3430986dedb89944bde0",
+          "license-evidence.json": "3ecd4e968788db9923d687487a9bbc060933ed62a17cf2d878011a336f014412",
+          "historical-base.stdout.txt": "d2f6ee37360b7b7077b07e4da3e74d09a7e4900d1d8d0a7021a1bec696fb657f",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "0a129570c739dd6d4827e73a251253694bfefe16140571012ecf806a863557ea",
+          "historical-fixed.stdout.txt": "155d6db4100738df1a351b86be173c7dd5476d9dfe917b93758db99758e09aad",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "785120a3708d4e9f8108cd4d173c2d300cdae4eb4cb714949828978b423a2392"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "pvlib/scaling.py",
+            "function": "_compute_wavelet"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The smallest scale starts with an averaged signal instead of the original signal, losing the highest-frequency detail coefficient. Scale count and cropping/rolling alignment also omit or shift the expected detail structure.",
+        "evidence_reason": "Saved tests show12time scales instead of13 including the original unit scale, plus wrong coefficients/reconstruction and smoothed output. Source repair retains the original signal at scale0 and adjusts averaging/alignment; all13saved tests pass fixed.",
+        "limitations": "Algorithmic numerical defect, not a changed external API. Multiple coupled indexing/scale edits, so no isolated contribution claim. No extra random signal or MATLAB experiment run.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only; repair/test patch, source issue and causal review remain outside diagnosis input. No automatic exclusion for natural comments or traceback."
+      },
+      "assessment_sha256": "da9461f4481a702b220baee6ed63269f2c9cfb25d477f7349e40e8aeed54409a",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pvlib__pvlib-python-1213",
+      "manifest_sha256": "11a28fff9a4ce7da83c76ed111ff54ffa41d592e56af10c346c350430e77b822"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-10427",
+      "run_id": "reproduce-20261123T211826784984Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T211826784984Z",
+        "evidence_hashes": {
+          "manifest.json": "1d9f901861141dcb5e42911b8cc6f38c2ac73e52e0616ee680aefeb38d79acd4",
+          "license-evidence.json": "c465c85d881677430ec7b192b676f3a23198de84da8a4146eff58b0d7fcea833",
+          "historical-base.stdout.txt": "624a3bb3653891d6e259ff1d857583abec4465287c7e78c4bab3d9012f947e09",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "2e1a434a14fe9e8251e3090d5d3c46135ee5bc7bd1ecd0594bd79874212ccfbd",
+          "historical-fixed.stdout.txt": "a44757b16a0185d808cabd8e10233c01d30c6731a528bc488103d193bd3e0bcd",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "9679cd019c7a36727f2f72877a5dedc8345f2ce7265d3ed5c6c9b0dec0482a9b"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sphinx/ext/autodoc/preserve_defaults.py",
+            "function": "update_defvalue"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The signature-preservation path treats a bound classmethod like a writable function object. Direct __signature__ assignment is unsupported and caught by the broad AttributeError/TypeError handler, leaving evaluated defaults; a signature attached through the function dictionary also needs the bound cls parameter restored.",
+        "evidence_reason": "Saved test_preserve_defaults renders Class.clsmeth with evaluated foo/object/datetime/integer defaults instead of CONSTANT/SENTINEL/datetime.now()/0xFFFFFF. Repair handles bound method signature storage and cls, and the unchanged saved test passes.",
+        "limitations": "The saved outer failure is a rendered-text assertion, not an uncaught AttributeError traceback. The object-interface explanation follows base code and repair; both signature edits are combined, not independently measured. Existing ordinary-method/function outputs remain controls.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only; repair/test patch, source issue and causal review remain outside diagnosis input. No automatic exclusion for natural comments or traceback."
+      },
+      "assessment_sha256": "8ba33fa6031ee4b83dcb840e9f4d4f900c011617332681b793d5cefafb908c45",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sphinx-doc__sphinx-10427",
+      "manifest_sha256": "d3a3963367e667b302ca371810454d9f5692d4e06e0c2397713bae083b0cf47e"
+    },
+    {
+      "sample_id": "sympy__sympy-23191",
+      "run_id": "reproduce-20261123T211959547101Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T211959547101Z",
+        "evidence_hashes": {
+          "manifest.json": "328ac297f9949c32ea807804a8cef4b415b788075ccddb20c2dcd1f321c8dfab",
+          "license-evidence.json": "4c8ebdb3c27a301b4b6bc744dee3934a70a085d213862a69395b89fbeb1263ce",
+          "historical-base.stdout.txt": "6dd363d91f54e5198bd10f30a26d79f0bdac0f8838b311bafc7c63d314aae173",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "3d8e2cd571180c25946adc62b2c7ff042d278149c5239fc9d28dd5a379422818",
+          "historical-fixed.stdout.txt": "be2019f51b73c4da70acc44dbc9fda715b37b86380b653e5796a4c0ffaf6eda1",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "c621ef8f504956d024aa4d30f103ebb12be569fd1d294a7c9f4b71323214fc74"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sympy/printing/pretty/pretty.py",
+            "function": "PrettyPrinter._print_BasisDependent"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Vector-name insertion selects the first matching right-parenthesis glyph inside a multiline scalar expression rather than the rightmost outer closing delimiter. The unit vector is inserted in the middle of nested trigonometric factors.",
+        "evidence_reason": "Saved test_issue_23058 shows i_C inside the scalar product before cos instead of after the outer right parenthesis. Repair chooses the end-of-line/rightmost closing delimiter and all4saved tests pass fixed.",
+        "limitations": "Representation defect, not incorrect symbolic vector arithmetic. Unicode glyph spelling changes alone do not explain it; insertion position/selection does. No terminal rendering beyond saved text assertions.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only; repair/test patch, source issue and causal review remain outside diagnosis input. No automatic exclusion for natural comments or traceback."
+      },
+      "assessment_sha256": "5a93c7b5f3a3aac69aab9753427ccfda399b29b8f1312c47832a73ae80c6b0c0",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sympy__sympy-23191",
+      "manifest_sha256": "d5ada253df61220b9197045a1f4d687c8ebbd97378045097c0531fd7b6c3cb8b"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1616",
+      "run_id": "reproduce-20261123T210345498788Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Original issue proposes AR-coating support absent from the old physical model. Both saved base failures are unexpected new n_ar keyword; they establish the new interface is absent, not an existing API/type regression. Exclude feature-extension case from existing-fault subset.",
+      "evidence_hashes": {
+        "manifest.json": "726f46121b4dbca53a87d8ed68946b5eccc342b5b61ee2e3595ce033cd674667",
+        "license-evidence.json": "3ecd4e968788db9923d687487a9bbc060933ed62a17cf2d878011a336f014412",
+        "historical-base.stdout.txt": "af41787ef9e90dec855ccd977bb24eb44c05d8909eebcdab2e39c8bac71d93ac",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "6ab8cb4fa589f6ea5cd0c82d9ce4f154f2dd759eda563309da7275205b7dd2ef",
+        "historical-fixed.stdout.txt": "5e5ea805d2743893aa976523ad1e954883f06c78d842ffc03045883507e6fb97",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "7893b6e42f2b82fbc47b106482125831cb6a9f120e22c4307d0f75ca240eb101"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "sympy__sympy-13852",
+      "run_id": "reproduce-20261123T211055822037Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Saved base fails on a new demand for exact polylog(2,2) closed-form evaluation while returning an unevaluated symbolic expression. Source repair also changes the s=1 branch, but saved selected tests do not demonstrate that separate branch defect. Exclude new-evaluation feature evidence; do not relabel an unevaluated valid expression as a proven arithmetic error.",
+      "evidence_hashes": {
+        "manifest.json": "ebe0b6f4f74825d7aa6fe531675622041f23d5e659346aaea0de80ceacea48d7",
+        "license-evidence.json": "905808e5d27e90d7b08025c2282e333bfb80a1b998a1e4b01f46d92ce788db1c",
+        "historical-base.stdout.txt": "30f3802566e67f3ac9ef30b0771acb206f5a9bad515eb4efa8c3021f6c8f8365",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "59094d9ca3154d71c91706736ed2a692975f39036f7ba24ae1667429f696aff5",
+        "historical-fixed.stdout.txt": "847fea0f7bd8c8b5ea31f076105b1d9cd6466ff8ccac0ceccb887526c700c7c7",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "bee2e893f5e910e583cb09e3009dc355254912e9ffbb81f2e175a165591a4247"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 3,
+  "feature_excluded": 2,
+  "qualification": "Read-only source/issue/patch/JUnit review with complete inventories/log/hash/reference checks via real_evidence. No source execution, model or Docker in review. All human/gold/training pending, not final selection."
+}

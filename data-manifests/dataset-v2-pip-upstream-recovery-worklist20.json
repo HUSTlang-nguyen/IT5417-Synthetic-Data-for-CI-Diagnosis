@@ -1,0 +1,319 @@
+{
+  "created_at": "2026-11-24T07:20:52+07:00",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "source_role_lock": {
+    "path": "data-manifests/dataset-v2-source-roles.json",
+    "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da"
+  },
+  "records": [
+    {
+      "source_case_id": "pypa__pip-3117",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "e78df3e069e41deb85a465dd4dc469cdc264a6e3",
+      "source_version": "",
+      "product_files": [
+        "pip/utils/__init__.py"
+      ],
+      "changed_product_lines": 1,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "0d8b733482e36863fd593d0e9ea037c69cbbca990e012e17c5b4b1ef533b317c",
+      "source_repair_sha256": "c047a01eab5f2e22daa4163896d1c2a4a262039bcfd373bf5775589d55f2a99a",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-11229",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "c260ecc3e3e836b4d0dcfd56e1c365e40421ac6e",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/deprecation.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "5a377c71eddef99fe0e2c4c5d7931501430436a22e4dcda410f4cda1c91ad709",
+      "source_repair_sha256": "6b7e2d24f7cf40031d50d6085344ea8e42d33c0dddacad94b88d6e34d8aa073c",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-11333",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "56dcb7f3af5f401002631596661c05815be35e09",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/deprecation.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "03c760eaff68eafcaab94d10fd84e64d7b2720af996caefb8b37ff66e2c27479",
+      "source_repair_sha256": "596fc0047a811c5b29670571d56228b54ca7826bbed3dfe8c7b14e7934fc4115",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-2977",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "589dd66a04fb88fcc75405ea9d374f4dd52d6a26",
+      "source_version": "",
+      "product_files": [
+        "pip/utils/logging.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "2bda3a6d47e0acb5fda77eff84ff3307d4b168e0f8b13c4872b6c544364da3c6",
+      "source_repair_sha256": "39f8445494808ae4a8039f05bad1e4315ba95edf3e6ec26c5ffe4f711508e793",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-9569",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4b8004a1b994f44673ddb3f775fda220fea208e0",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/unpacking.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "3d5ba7339d8253d74f45ac376daffe9545f2fcc240863dbcd0ecc9dc22ca7442",
+      "source_repair_sha256": "3c6e185085fc0938fe3e7ffd0d8a43f3e234ce8ac790bf9501dfbc12e42066de",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-9636",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "8a949a1c52ae47584242e5bb0155d1d1018275ae",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/setuptools_build.py"
+      ],
+      "changed_product_lines": 2,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "0c880a706627d85098801c17a894179e4f0685b535cb9f73410c77a2301e514b",
+      "source_repair_sha256": "d23504578583e6bcdaabf0db434df032857c047bc723fa6426c47d5ddbb69877",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-1015",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "3ea56eaecdddb91f5ba038a175e35555a34e5506",
+      "source_version": "",
+      "product_files": [
+        "pip/util.py"
+      ],
+      "changed_product_lines": 3,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "0185778b23749172b2709e05d176faff17225b222370401d837a14e75899cda0",
+      "source_repair_sha256": "d022cd353afea36e55f9b6fec447e771489aa5ac436af90a59b336518f2ad653",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-265",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "1da5a985b181694225ca8971083512aa4ba58808",
+      "source_version": "",
+      "product_files": [
+        "pip/util.py"
+      ],
+      "changed_product_lines": 3,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "4ce7157203155fc62c0614c8d63005380d1cd02187047ce4c80ab440c48659e6",
+      "source_repair_sha256": "c14341b98508d3105b5ca8e5ca8e5cf17d892b8c2d9dfae9315171be4280a9f0",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-3522",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "f5d27846c2c47b8bf0bdf3c14b53fad429e5a1d4",
+      "source_version": "",
+      "product_files": [
+        "pip/utils/__init__.py"
+      ],
+      "changed_product_lines": 3,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "712efa9586d861372c38def8d519e21919b3fadf6c44eaf653d65bc124eb701e",
+      "source_repair_sha256": "50eb1555e5565cca8c9e00f7f4606b7c3602a66b0b3792e3c388bc1024648ece",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-6427",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "dddd28b8decd245f05a3678a3ad849c9e3a45456",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/misc.py"
+      ],
+      "changed_product_lines": 3,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "0f9240a0d3ca1fb8ad7d265d8eb099d16091b3e6d5f89668b7b106faf5945ff6",
+      "source_repair_sha256": "2ce2ec52ad168c51295c7fe3fd1606905bb9f7841f8076c5728bbf492ea5c7e3",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-10819",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "79e6237aa63b8b9ee7ffc1bcf7c1c98ab7f62cdc",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/commands/configuration.py"
+      ],
+      "changed_product_lines": 4,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "fb658e9750944bbf46fd3ebf20dba168f82904a93e262cefef50aa3791052855",
+      "source_repair_sha256": "4fa897cf1c9f8643e4cc60572bb413a1330c95079d932f3dd32ce9f0cc024f66",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-6616",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4b6bb5da37c182acd509c85f72840ca37108cf65",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/outdated.py"
+      ],
+      "changed_product_lines": 4,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "d62559cbd7afc585418269adcea61472a234d8049ff5803a3f71ce5c0bb80879",
+      "source_repair_sha256": "d67a25c1ed1b2059289408d70e7ec94132e1c2baf6b70a10728f65f60135e03c",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-9050",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "08c99b6e00135ca8df2e98db58aa0b701b971c64",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/direct_url_helpers.py"
+      ],
+      "changed_product_lines": 4,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "feba301d26a3dafb5f1121d934d9832aa273a20ffbd5fe536d85d73351324505",
+      "source_repair_sha256": "8a0c8834de6d82ec8b7f099cef1c8141fb858a712caca363960c3a425065255c",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-4430",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4ee868553c473fd1f08179534763ad342ba07db4",
+      "source_version": "",
+      "product_files": [
+        "pip/utils/encoding.py"
+      ],
+      "changed_product_lines": 5,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "9bc580893537c7cff033f7147637b925ded50d4e528b5851eba2a3e44cd137fe",
+      "source_repair_sha256": "78c8bbd2bd7b19a4399b90d901881c55040072de278bb8bc654c098d563875b3",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-4982",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "4f8541972f65e347dc76518f8a5554aac8acdf3d",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/misc.py"
+      ],
+      "changed_product_lines": 5,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "3e6f8089cea6cae7352a1fd548de4fdbd9cbb190f99a10a0d2f0ac7c1e242f41",
+      "source_repair_sha256": "5f969cc89e6df36ad535f7132ce1d4f6d031a099af13e45a8011c1b92584f47e",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-8025",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "62c822dc78c2cb04563f726f6a40b4f4e8dae9b0",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/filesystem.py"
+      ],
+      "changed_product_lines": 5,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "3371c0d4b86f0f05e9c78a494f2edd6d13c2d5d6210860768cc1b129a3c1dda9",
+      "source_repair_sha256": "6b94dfedc8c43132e7afec4993852753b8f543b0a74021de364b20bfad830c46",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-8718",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "f51bd8fed8ca3c96c87cef22fa2f5a8098e4b4bd",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/virtualenv.py"
+      ],
+      "changed_product_lines": 5,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "0ae06bbede7b4bc9584c8fa15e843cf60cac3bc96fc3a569427d608e0a6cf92f",
+      "source_repair_sha256": "dbce38a1b87cf568e3d3a42f0ba1ee89154e5de15bba39e5ff3f118130a45694",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-10418",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "48dc9f400d45682f244aae0db324fbda280266a5",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/configuration.py"
+      ],
+      "changed_product_lines": 6,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "17030818c31681856bcc596a349dacd39045a36740003cfa0c38d7f151a27c8b",
+      "source_repair_sha256": "e250df94c168b9b017ac44c24b1706f131cbf4bd36ee081bff9c6c87b4a89a1e",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-10560",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "6d1c027ec877f9a52bd7e7d3ff53e3a4ca7e9cea",
+      "source_version": "",
+      "product_files": [
+        "src/pip/_internal/utils/misc.py"
+      ],
+      "changed_product_lines": 6,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "b050154eeb78ccd211ae672cafaf85a373f343da1b5c964797a908e14e3d61b8",
+      "source_repair_sha256": "babd5882057b0ebbb7e2b07fbbc9811a741956e9c2a928dacd49056620911e65",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-2308",
+      "repo": "pypa/pip",
+      "role": "train",
+      "base_commit": "0e96c4b5d5dd7f632dbca7cadb2438e2c6df0579",
+      "source_version": "",
+      "product_files": [
+        "pip/utils/filesystem.py"
+      ],
+      "changed_product_lines": 6,
+      "environment_cost_rank": 0,
+      "canonical_record_content_sha256": "6dbc3a1b0fe321f62bc46435febf5a91d2c9fb316d2a66cf032f78d6f67b6056",
+      "source_repair_sha256": "3c92ae8a2685c069ef03b9c8a277072424613cf6ed9a140bbcb055abfab69cef",
+      "status": "metadata_candidate_requires_upstream_test_license_and_fixed_blob_proof"
+    }
+  ],
+  "selected_count": 20,
+  "by_repo": {
+    "pypa/pip": 20
+  },
+  "eligibility_reviews": 20,
+  "prior_eligibility_reviews": 2606,
+  "eligibility_total_after": 2626,
+  "selection": "Existing frozen train repositories; unadmitted SWE train IDs without supplied tests; one production Python file, <=100changed lines; utility/config/dict/field path rank then change count then source ID, up to20perrepo. No outcome or label selection.",
+  "qualification": "Metadata screening only: no retrieved upstream test, proven license, environment recipe, reconstruction, label or final dataset admission. Original absent benchmark references remain absent. Original train rows stay in ignored cache."
+}

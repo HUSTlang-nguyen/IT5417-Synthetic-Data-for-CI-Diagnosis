@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T07:06:51+07:00",
+  "updated_at": "2026-11-24T07:25:31+07:00",
   "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
@@ -24,11 +24,11 @@
   },
   "v2_real_selected": 0,
   "v2_synthetic_selected": 0,
-  "new_case_attempts": 173,
+  "new_case_attempts": 175,
   "new_generator_requests": 0,
   "live_worker": null,
   "collection_budget_initialized": true,
-  "next_task": "Review35 remaining saved strict outcomes; prepare pinned upstream test recovery for GitPython1547/1314 (metadata only so far). Expand pure-Python train source cohorts to exceed current633upperbound and investigate genuine dependency/config evidence. No completed stage replay, finalselected0, no7B/3B/train/modeltest.",
+  "next_task": "Review30 remaining saved strict outcomes; pin low-cost original unit tests/license/product blobs for pip9569/9050/4430/4982 from9metadata candidates, defer external-service/large functional tests. Expand train source headroom beyond635 and genuine syntax/dependency-config coverage. No completed replay; finalselected0, no7B/3B/train/modeltest.",
   "qualification": "Portable v1.1 published and relocation verified. New counts are reconstruction outcomes; silver prototypes are not finalized v2 selection. No new generator or diagnosis/training calls.",
   "study_run_id": "dataset-v2-20261122T190232092876Z",
   "execution_enabled": true,
@@ -65,7 +65,7 @@
     "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 25471.0,
+  "execution_seconds_charged": 26228.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -97,9 +97,9 @@
     "receipt": "docs/evidence/dataset-v2-development-review.json",
     "gold": "pending"
   },
-  "new_cases_strict_reproduced": 99,
-  "new_passing_seeds": 130,
-  "new_real_silver_prototype_exports": 56,
+  "new_cases_strict_reproduced": 101,
+  "new_passing_seeds": 132,
+  "new_real_silver_prototype_exports": 61,
   "first_batch": {
     "status": "finished",
     "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
@@ -225,9 +225,9 @@
     "final_selected": 0
   },
   "eligibility_screen_count": {
-    "swebench": 2542,
+    "swebench": 2562,
     "aidev": 64,
-    "total": 2606,
+    "total": 2626,
     "limit": 5000
   },
   "storage_snapshot": {
@@ -274,7 +274,7 @@
     "status": "prepared_and_frozen_not_started",
     "sha256": "8131af53557de7a1dd491e5143e64dc637f240f5ed4b7aab3ea572b1d2cba107"
   },
-  "new_reproduction_profiles": 178,
+  "new_reproduction_profiles": 182,
   "source_role_supplements": [
     {
       "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
@@ -330,19 +330,19 @@
     "repo_role": "not_assigned",
     "receipt": "data-manifests/dataset-v2-upstream-pip-probes-8.json"
   },
-  "new_passing_fixed_sources": 130,
+  "new_passing_fixed_sources": 132,
   "new_passing_seeds_qualification": "Legacy fixed-pass count includes heldout and compile-only cases; not generator eligibility. Final selected train sources remains0.",
   "functional_strict_train_candidates_before_curation": 29,
   "proposed_silver_class_counts": {
     "syntax": 5,
-    "API/type": 13,
-    "logic/value": 38,
+    "logic/value": 42,
+    "API/type": 14,
     "dependency/configuration": 0
   },
   "source_breakdown": {
     "swebench": {
-      "attempted_source_cases": 165,
-      "attempted_profiles": 170
+      "attempted_source_cases": 167,
+      "attempted_profiles": 174
     },
     "aidev": {
       "attempted_source_cases": 8,
@@ -373,7 +373,7 @@
     "qualification": "Syntax only, no GUI/upstream tests/historical CI result. Function absent from exported input; no training approval."
   },
   "current_metadata_upper_bounds": {
-    "train": 633,
+    "train": 635,
     "validation": 158,
     "test": 164
   },
@@ -399,9 +399,9 @@
   },
   "reproduction_by_role": {
     "train": {
-      "profiles": 142,
-      "finished": 142,
-      "strict": 75
+      "profiles": 146,
+      "finished": 146,
+      "strict": 77
     },
     "validation": {
       "profiles": 8,
@@ -414,7 +414,7 @@
       "strict": 16
     }
   },
-  "uniform_v4_exports": 56,
+  "uniform_v4_exports": 61,
   "review_screen20": {
     "receipt": "docs/evidence/dataset-v2-aidev-screen20-compilation-review.json",
     "trials": 6,
@@ -495,7 +495,7 @@
     "quarantined_contract_boundary": 1,
     "all_human_gold_training": "pending"
   },
-  "unreviewed_strict_saved_outcomes": 35,
+  "unreviewed_strict_saved_outcomes": 30,
   "completed_wave_next5_review": {
     "receipt": "docs/evidence/dataset-v2-completed-wave-next5-review.json",
     "new_exports": 5,
@@ -507,5 +507,27 @@
     "test_delta_candidates": 2,
     "no_test_delta_deferred": 8,
     "new_eligibility_identities": 0
+  },
+  "completed_wave_third5_review": {
+    "receipt": "docs/evidence/dataset-v2-completed-wave-third5-review.json",
+    "new_exports": 3,
+    "feature_excluded": 2
+  },
+  "gitpython_two_outcomes": {
+    "prepared": 2,
+    "first_profiles_unconfirmed": 2,
+    "only_environment_corrections": 2,
+    "strict": 2,
+    "new_exports": 2,
+    "source_plan": "data-manifests/dataset-v2-gitpython-two-plan.json",
+    "correction_plan": "data-manifests/dataset-v2-gitpython-two-r1-plan.json",
+    "review": "docs/evidence/dataset-v2-gitpython-two-review.json"
+  },
+  "pip_upstream_metadata": {
+    "receipt": "data-manifests/dataset-v2-pip-upstream20-metadata.json",
+    "screened": 20,
+    "with_test_delta": 9,
+    "without_test_delta": 11,
+    "admitted_source_cases": 0
   }
 }

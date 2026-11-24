@@ -1,0 +1,99 @@
+{
+  "reviewed_at": "2026-11-24T07:23:12+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "gitpython-developers__GitPython-1314",
+      "run_id": "reproduce-20261124T001718560692Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261124T001718560692Z",
+        "evidence_hashes": {
+          "manifest.json": "f52f6458e86a3423f351836bc0b4a3eee12cd386f678c077bd17c7be81677957",
+          "license-evidence.json": "2cc04b8d6a5409eb21c075fc60daf87cff2dd5c6701d6e24531afbe02f958176",
+          "git-test-fixture.json": "6e1cdf0c21a05c564396f1afc593b2343a5d473e026873b57e96209c8cb56162",
+          "historical-base.stdout.txt": "f36fa7216d8e8e70cc034f4d984d9649f85e27ec8fb4841793f7d6c214fc4351",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "b10cee130eaa1195fc5f990c0eea096f345f9ad59a7dc928102d84016e1154a1",
+          "historical-fixed.stdout.txt": "6c66403d93970f8faa655231efd90c8d2b2d5050b173a7bbafe204377b6db7e5",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "23d022c365807cc729bab232d26bd9c779a769a3ca581e15f9e8cb820b2acd65"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "git/util.py",
+            "function": "Actor._main_actor"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The default() argument is evaluated eagerly before config_reader.get_value, even when the configured name/email exist. The fallback reaches getpass.getuser unnecessarily; the repair queries configuration first and calls fallback only on failure.",
+        "evidence_reason": "Saved test_actor_get_uid_laziness_not_called reports True is not false for the mocked get-user call. Configured actor values themselves satisfy earlier assertions; fixed passes that original upstream test and the unchanged dashify control.",
+        "limitations": "Valid configuration is present, so this is control-flow/eager-evaluation logic rather than missing dependency or invalid configuration. Actor here is a GitPython class, not a human/agent fault-attribution label. Original dataset references absent; expectations are recovered local upstream tests.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing-source/log only; repair, original issue/test patch and assessment remain separate from diagnosis input. No generator labels; natural comments and traceback are evidence, not automatic leakage."
+      },
+      "assessment_sha256": "ded8d1df195bde867eaf49cff7ce53f4608e62c09b2c85c4d9d7961125f907e8",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/gitpython-developers__GitPython-1314",
+      "manifest_sha256": "c046b3637438a50809201ebc912d0b5fea687ab7696da024adb57b54623cb948"
+    },
+    {
+      "sample_id": "gitpython-developers__GitPython-1547",
+      "run_id": "reproduce-20261124T001849032671Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261124T001849032671Z",
+        "evidence_hashes": {
+          "manifest.json": "4304c19aa1495d5a0fd82ac1be5f4b1b989d3a340e4bfb2e14b0e3afe45b0c48",
+          "license-evidence.json": "2cc04b8d6a5409eb21c075fc60daf87cff2dd5c6701d6e24531afbe02f958176",
+          "git-test-fixture.json": "af4774733e40280e3cd1c8b913319b3b50f9f345db2de2b1c1d6214677e62684",
+          "historical-base.stdout.txt": "d842f1615d7aa8eb44378881ed32a928243f577cf3ad0797ca2f4c6b982dfab6",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "563456d04eb4b6326ef6cd7e35865f762212411d069b43bba65ba8af3f2c517f",
+          "historical-fixed.stdout.txt": "3c0dd98fa3e9bbe5d179471c5835f0ef25917e610ddf2d33e32db5d9982dd609",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "e4301ed82fe38400697df0c5f308bc6b529b7d6e3fc10112b6f8eb266d1d40c2"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "git/objects/util.py",
+            "function": "utctz_to_altz"
+          },
+          {
+            "file": "git/objects/util.py",
+            "function": "altz_to_utctz_str"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Timezone offsets encode hours and minutes as HHMM, but conversion divides/multiplies by100 as if the digits were decimal hours. This mis-scales non-hour minute offsets in both directions.",
+        "evidence_reason": "Saved base utctz test reports -36 rather than -60 for+0001, and inverse test returns+0550 instead of+0530. Fixed uses separate hour/minute arithmetic and all3selected tests pass, including unchanged dashify control.",
+        "limitations": "Numerical representation logic, not a type incompatibility or missing timezone package. Only selected original upstream methods/local reconstruction are claimed; no historical CI results or synthetic generation.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing-source/log only; repair, original issue/test patch and assessment remain separate from diagnosis input. No generator labels; natural comments and traceback are evidence, not automatic leakage."
+      },
+      "assessment_sha256": "c896fc2158625f05329cfa28926a1f2252bc264c49293f32f8591f20978bd05c",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/gitpython-developers__GitPython-1547",
+      "manifest_sha256": "ef285feec4da36124ded6b448fe57cdd4def92a36aa069c207d29d87d70e4c8b"
+    }
+  ],
+  "new_silver_exports": 2,
+  "qualification": "Source and unchanged recovered upstream tests/logs reviewed with exact inventories/hash/reference checks. First environment failures retained; sole r1 passed. No source/model/Docker execution during this review. Human/gold/training pending, final curation separate."
+}

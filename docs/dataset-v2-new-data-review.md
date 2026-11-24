@@ -213,3 +213,22 @@ Repair/issue/assessment nằm riêng khỏi input v4, không có nhãn generator
 | Sympy15225 | _finger tính trọng số cả lần xuất hiện phủ định gây trùng fingerprint; bool_map trả mapping cho XOR/XNOR | logic/value / _finger; repair cũng sửa đường trả no-match trong bool_map, test không tách tác động từng edit |
 
 Tổng56prototype:syntax5/API-type13/logic-value38/dependency0. Còn35saved strict outcomes chưa rà; finalselected0. Repair, issue và nhận định không vào input v4; không có generator label cho các case thật này. Người dùng cần review kết luận/kiến nghị khi bàn giao, không cần tự lần lại log từ đầu.
+
+
+## Lô đã hoàn tất: năm case thứ ba và hai GitPython mới
+
+[Review5](evidence/dataset-v2-completed-wave-third5-review.json) / [GitPython2](evidence/dataset-v2-gitpython-two-review.json): inventory, hash patch/log và test IDs đã đối chiếu, không chạy lại để phân tích.
+
+| Case | Code → hành vi → log | Kiến nghị |
+|---|---|---|
+| pvlib1213 | _compute_wavelet bắt đầu bằng tín hiệu đã lấy trung bình, thiếu detail scale nhỏ nhất và lệch crop/alignment. Saved test có12scale thay13; kiểm tra tổng wavelet sai3/10000phần tử, sai số lớn nhất0,1. Fixed13test pass. | logic/value / _compute_wavelet, cao; nhiều edit liên quan, không tách hiệu quả từng edit |
+| Sphinx10427 | update_defvalue gán __signature__ trực tiếp cho bound classmethod, lỗi bị catch; default hiển thị giá trị đã evaluate thay tên biểu thức. Fixed xử lý storage và cls. | API/type / update_defvalue, cao; log là assertion về text, không có uncaught AttributeError |
+| Sympy23191 | Chèn tên vector tại dấu ngoặc phải đầu tiên bên trong biểu thức thay vì ngoặc ngoài cùng; i_C lọt giữa sin/cos trong saved diff. Fixed4test pass. | logic/value / PrettyPrinter._print_BasisDependent, cao; lỗi biểu diễn, không phải tính vector sai |
+| pvlib1616 | Hai base failures dùng keyword n_ar mới; source issue yêu cầu thêm mô hình AR coating | Loại khỏi subset lỗi hiện có: feature extension, không ép thành API/type |
+| Sympy13852 | Base giữ polylog(2,2) unevaluated; test mới đòi closed form. Patch cũng sửa nhánh s=1 nhưng các test được chọn chưa chứng minh lỗi nhánh đó. | Loại evidence bổ sung phép evaluate; chưa gán lỗi số học từ biểu thức chưa rút gọn |
+| GitPython1314 | Actor._main_actor gọi default() khi tạo argument cho get_value, dù config đã có name/email. Mock getpass bị gọi, assertion True is not false. Fixed2node pass. | logic/value / Actor._main_actor, cao; Actor là tên class, không phải nhãn người/agent gây lỗi |
+| GitPython1547 | Hai hàm đổi múi giờ coi HHMM là giờ thập phân: +0001 ra-36thay-60giây; chiều ngược ra+0550thay+0530. Fixed3node pass. | logic/value / utctz_to_altz, altz_to_utctz_str, cao |
+
+GitPython dùng test upstream gốc được phục hồi, có local expectations riêng; nguồn SWEtrain không cung cấp F2P/P2P. Lần đầu cả hai case dừng vì thiếu plugin do pyproject yêu cầu; đúng một profile hiệu chỉnh khai báo plugin đã đạt, không sửa test/source. Đây là tái hiện local, không phải log CI lịch sử.
+
+Tổng61prototype (syntax5/API-type14/logic-value42/dependency0), còn30saved strict outcomes chưa rà; human/gold/training vẫn pending, finalselected0. Các nhận định/repair nằm ngoài input v4. Kiến nghị giữ năm prototype mới để tuyển chọn tiếp, không tự phê duyệt huấn luyện.

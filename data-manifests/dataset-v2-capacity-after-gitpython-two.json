@@ -1,0 +1,218 @@
+{
+  "created_at": "2026-11-24T07:25:31+07:00",
+  "source_role_lock": {
+    "path": "data-manifests/dataset-v2-source-roles.json",
+    "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da"
+  },
+  "supplements": [
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-youtube.json",
+      "sha256": "2afbad2e905902b224ba772044e7994a2f4fd384e9848bb4086763e7197b965a"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-gitpython.json",
+      "sha256": "69cdacd81b507abeb050fe4bfd5bd62410fa40d306bb88b778201dfbce1801ca"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-compilation.json",
+      "sha256": "0ec280d78c8c86f9918ddd20de9ebbfda42864dbd2556de1fc408882405350a3"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-screen20.json",
+      "sha256": "5ed288de9fad6968d325e8ee65004a462d2060fd07adfd22feb4919e4e1f663f"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-screen20-license-resolved.json",
+      "sha256": "7bbc2ef0fe801f5be5c9b73d32058beee3a5644ded58eac7fbfdfcf1e571445d"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-pip.json",
+      "sha256": "d0e2f1737bb478e2d506075c4c47bcf14cd33bb25d9c457aba076cd2e4133e83"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-aidev-projected-two.json",
+      "sha256": "653de327595b98f197986871e842f8ff1a7edef7acde0795f0801c3885e993e0"
+    },
+    {
+      "path": "data-manifests/dataset-v2-source-supplement-gitpython-two.json",
+      "sha256": "549ce4d0ca1751932d8e3ba99d5fe976924d7ead7351fb527fff014c5afce202"
+    }
+  ],
+  "source_identities": 2277,
+  "upper_bound_by_role": {
+    "train": 635,
+    "validation": 158,
+    "test": 164
+  },
+  "by_repo": [
+    {
+      "role": "test",
+      "repo": "psf/requests",
+      "source_identities": 43,
+      "quota_capped": 43
+    },
+    {
+      "role": "test",
+      "repo": "pydata/xarray",
+      "source_identities": 102,
+      "quota_capped": 60
+    },
+    {
+      "role": "test",
+      "repo": "scikit-learn/scikit-learn",
+      "source_identities": 220,
+      "quota_capped": 60
+    },
+    {
+      "role": "test",
+      "repo": "tinystork/zeseestarstacker",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "train",
+      "repo": "MForofontov/pyutils-collection",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "train",
+      "repo": "TonyDeRosia/evennia-minimud",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "train",
+      "repo": "gitpython-developers/GitPython",
+      "source_identities": 3,
+      "quota_capped": 3
+    },
+    {
+      "role": "train",
+      "repo": "marshmallow-code/marshmallow",
+      "source_identities": 9,
+      "quota_capped": 9
+    },
+    {
+      "role": "train",
+      "repo": "pallets/flask",
+      "source_identities": 8,
+      "quota_capped": 8
+    },
+    {
+      "role": "train",
+      "repo": "pvlib/pvlib-python",
+      "source_identities": 62,
+      "quota_capped": 62
+    },
+    {
+      "role": "train",
+      "repo": "pydicom/pydicom",
+      "source_identities": 54,
+      "quota_capped": 54
+    },
+    {
+      "role": "train",
+      "repo": "pylint-dev/astroid",
+      "source_identities": 27,
+      "quota_capped": 27
+    },
+    {
+      "role": "train",
+      "repo": "pylint-dev/pylint",
+      "source_identities": 38,
+      "quota_capped": 38
+    },
+    {
+      "role": "train",
+      "repo": "pypa/pip",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "train",
+      "repo": "pytest-dev/pytest",
+      "source_identities": 101,
+      "quota_capped": 101
+    },
+    {
+      "role": "train",
+      "repo": "sphinx-doc/sphinx",
+      "source_identities": 147,
+      "quota_capped": 140
+    },
+    {
+      "role": "train",
+      "repo": "sqlfluff/sqlfluff",
+      "source_identities": 47,
+      "quota_capped": 47
+    },
+    {
+      "role": "train",
+      "repo": "sympy/sympy",
+      "source_identities": 363,
+      "quota_capped": 140
+    },
+    {
+      "role": "train",
+      "repo": "tinystork/zeanalyser",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "train",
+      "repo": "x-CK-x/Dataset-Curation-Tool",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "train",
+      "repo": "ytdl-org/youtube-dl",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "validation",
+      "repo": "IMOGI-ITB/Payroll-Indonesia",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "validation",
+      "repo": "MelkorBalrog/AutoML",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "validation",
+      "repo": "bartoszskarbek-pixel/pdf-renamer",
+      "source_identities": 1,
+      "quota_capped": 1
+    },
+    {
+      "role": "validation",
+      "repo": "django/django",
+      "source_identities": 828,
+      "quota_capped": 60
+    },
+    {
+      "role": "validation",
+      "repo": "matplotlib/matplotlib",
+      "source_identities": 180,
+      "quota_capped": 60
+    },
+    {
+      "role": "validation",
+      "repo": "mwaskom/seaborn",
+      "source_identities": 21,
+      "quota_capped": 21
+    },
+    {
+      "role": "validation",
+      "repo": "pyvista/pyvista",
+      "source_identities": 14,
+      "quota_capped": 14
+    }
+  ],
+  "qualification": "Metadata upper bound before reconstruction/fault curation/dedup/class gates, not actual dataset size. V1train identities already in the admitted pool and not added a second time. Two new GitPython IDs admitted, not20pip metadata probes."
+}

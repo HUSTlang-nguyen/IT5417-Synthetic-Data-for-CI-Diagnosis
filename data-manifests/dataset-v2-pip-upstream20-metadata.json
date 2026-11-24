@@ -1,0 +1,518 @@
+{
+  "checked_at": "2026-11-24T07:22:09+07:00",
+  "worklist": "data-manifests/dataset-v2-pip-upstream-recovery-worklist20.json",
+  "worklist_sha256": "6e994f89feb4b99e3b1eb302b04e793d0a71aa1b3289e32f5078d2b82948376d",
+  "requested": 20,
+  "attempted": 20,
+  "records": [
+    {
+      "source_case_id": "pypa__pip-3117",
+      "source_base": "e78df3e069e41deb85a465dd4dc469cdc264a6e3",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-3117/pr.json",
+          "sha256": "4fb7996dc2c4a746c070860d292cf13ea2d714492dee7c5819d1fb70a4b996fc"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-3117/files.json",
+          "sha256": "48cdbf5cb9aee8273493b3d1f8b2289ec150fd4a26388f64dbb7bd89ea22c8fa"
+        }
+      },
+      "upstream_base": "e78df3e069e41deb85a465dd4dc469cdc264a6e3",
+      "upstream_head": "070a7289a26fa6356292237cbfa2d538bdaf0390",
+      "merged_at": "2015-09-29T18:46:51Z",
+      "changed_files": 1,
+      "file_paths": [
+        "pip/utils/__init__.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-11229",
+      "source_base": "c260ecc3e3e836b4d0dcfd56e1c365e40421ac6e",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-11229/pr.json",
+          "sha256": "d4317d9e6e4b71f07d530f574b49535a72b4c28bcfa8cf7ab43b0f90b2c6673b"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-11229/files.json",
+          "sha256": "40675e2fab49b6c33e7cd2ab6862e373bf2948a1cce82aea67bf30accedacd1f"
+        }
+      },
+      "upstream_base": "c260ecc3e3e836b4d0dcfd56e1c365e40421ac6e",
+      "upstream_head": "f1bc96a4a336e2b8889269aec046ac4044e4b46c",
+      "merged_at": "2022-07-08T12:20:50Z",
+      "changed_files": 2,
+      "file_paths": [
+        "news/11225.feature.rst",
+        "src/pip/_internal/utils/deprecation.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-11333",
+      "source_base": "56dcb7f3af5f401002631596661c05815be35e09",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-11333/pr.json",
+          "sha256": "c3ea932cf25afc390e343f1b30dcde64a459fd51de785c32e3f5debb89cc9b2d"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-11333/files.json",
+          "sha256": "fae856dbe96b80d881d6bef9caa669490435836552eb7daec65ebd1c793bbee2"
+        }
+      },
+      "upstream_base": "56dcb7f3af5f401002631596661c05815be35e09",
+      "upstream_head": "d5317f27785d9c623e3f5c74af16f1fb73d6fd50",
+      "merged_at": "2022-08-01T14:20:16Z",
+      "changed_files": 2,
+      "file_paths": [
+        "news/11330.bugfix.rst",
+        "src/pip/_internal/utils/deprecation.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-2977",
+      "source_base": "589dd66a04fb88fcc75405ea9d374f4dd52d6a26",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-2977/pr.json",
+          "sha256": "d77111b88dd7bf3bee1350b005128e2f0752a26a72922225135f1f5e473cfcb0"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-2977/files.json",
+          "sha256": "7e95cfe15cd9d606b7b6b5a5122cd57bfde67dfb86b20612ac66a52c269aa843"
+        }
+      },
+      "upstream_base": "589dd66a04fb88fcc75405ea9d374f4dd52d6a26",
+      "upstream_head": "a5e06a506c4b3c52deabc6f31a85b2f02b0753f5",
+      "merged_at": "2015-07-15T18:20:57Z",
+      "changed_files": 1,
+      "file_paths": [
+        "pip/utils/logging.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-9569",
+      "source_base": "4b8004a1b994f44673ddb3f775fda220fea208e0",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-9569/pr.json",
+          "sha256": "2be6fe6cb301e7c664097748befe41cef017a59d6acf0aa1ce8e5b741cd06f5e"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-9569/files.json",
+          "sha256": "357b0bcfb2db3667b9cf6ce520b68797e51665b4ec514a799c6504abbaba5cb4"
+        }
+      },
+      "upstream_base": "4b8004a1b994f44673ddb3f775fda220fea208e0",
+      "upstream_head": "dc9efc856f180d755c618573050cf13266168127",
+      "merged_at": "2021-07-12T06:01:50Z",
+      "changed_files": 3,
+      "file_paths": [
+        "news/7667.bugfix.rst",
+        "src/pip/_internal/utils/unpacking.py",
+        "tests/unit/test_utils_unpacking.py"
+      ],
+      "upstream_test_paths": [
+        "tests/unit/test_utils_unpacking.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-9636",
+      "source_base": "8a949a1c52ae47584242e5bb0155d1d1018275ae",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-9636/pr.json",
+          "sha256": "6fae80ed6f36f3da9a6dbfe13ba45973aee781561611c9c15769ab0f50796255"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-9636/files.json",
+          "sha256": "7fbcf21af90ea6a76b17f7254a4afa8da983832bfd3dfde9969816dee3515c8c"
+        }
+      },
+      "upstream_base": "8a949a1c52ae47584242e5bb0155d1d1018275ae",
+      "upstream_head": "7b2548905db91b584b5f8a11e7d3c87bf807faae",
+      "merged_at": "2021-02-28T14:16:28Z",
+      "changed_files": 3,
+      "file_paths": [
+        "news/4390.bugfix.rst",
+        "src/pip/_internal/utils/setuptools_build.py",
+        "tests/functional/test_install.py"
+      ],
+      "upstream_test_paths": [
+        "tests/functional/test_install.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-1015",
+      "source_base": "3ea56eaecdddb91f5ba038a175e35555a34e5506",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-1015/pr.json",
+          "sha256": "a873e2f60f29fbe686161aabb86f063306287b13b9e34de4231ccdf425b73e62"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-1015/files.json",
+          "sha256": "1497bba48486b9e7b556a7b5e54dd4d20c0b94a465df7da5f295f05bc0b9af0e"
+        }
+      },
+      "upstream_base": "3ea56eaecdddb91f5ba038a175e35555a34e5506",
+      "upstream_head": "42102e9deaea99db08b681d06906c2945f6f95e2",
+      "merged_at": "2013-06-26T19:22:08Z",
+      "changed_files": 4,
+      "file_paths": [
+        "pip/util.py",
+        "tests/data/packages/README.txt",
+        "tests/data/packages/meta-1.0-py2.py3-none-any.whl",
+        "tests/unit/test_wheel.py"
+      ],
+      "upstream_test_paths": [
+        "tests/unit/test_wheel.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-265",
+      "source_base": "1da5a985b181694225ca8971083512aa4ba58808",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-265/pr.json",
+          "sha256": "1556c87837922827fad08cfc6ee995135e91c91331e4032aaaf00a5288637afb"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-265/files.json",
+          "sha256": "3ebd1d64a65f5c1d15cf4e48f9bd82e00148293dfda818e8e41a10c43c39e4ac"
+        }
+      },
+      "upstream_base": "1da5a985b181694225ca8971083512aa4ba58808",
+      "upstream_head": "52bf4e9cbff4a24331725a35d2f632a79f33582b",
+      "merged_at": "2011-04-25T16:10:09Z",
+      "changed_files": 2,
+      "file_paths": [
+        "pip/util.py",
+        "tests/test_basic.py"
+      ],
+      "upstream_test_paths": [
+        "tests/test_basic.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-3522",
+      "source_base": "f5d27846c2c47b8bf0bdf3c14b53fad429e5a1d4",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-3522/pr.json",
+          "sha256": "aabbe5045879c6d7b093c1f715031185f9c64dd4251baf104dce2809e4fabb12"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-3522/files.json",
+          "sha256": "b055ad0f9983d5687d256cad49b1caa2fd70aa15f7a04bf8677f9a6b6e5974e0"
+        }
+      },
+      "upstream_base": "f5d27846c2c47b8bf0bdf3c14b53fad429e5a1d4",
+      "upstream_head": "0dc868a1a1b2f1dab985a134cd7e17098e905d73",
+      "merged_at": "2016-03-04T11:12:40Z",
+      "changed_files": 2,
+      "file_paths": [
+        "CHANGES.txt",
+        "pip/utils/__init__.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-6427",
+      "source_base": "dddd28b8decd245f05a3678a3ad849c9e3a45456",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-6427/pr.json",
+          "sha256": "f10f6ed29a3f4b7154701ba182fa1b12e75b6774c47849ddaf693dbc7f92d8c3"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-6427/files.json",
+          "sha256": "16a52dc59d78617e73e2c4a12657587f16b08163c0cc369564497d1b606a8746"
+        }
+      },
+      "upstream_base": "dddd28b8decd245f05a3678a3ad849c9e3a45456",
+      "upstream_head": "5b69dc3a7b7ad5b9d89939c22aa3ffde830eb8bf",
+      "merged_at": "2019-11-28T04:05:18Z",
+      "changed_files": 2,
+      "file_paths": [
+        "news/6426.bugfix",
+        "src/pip/_internal/utils/misc.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-10819",
+      "source_base": "79e6237aa63b8b9ee7ffc1bcf7c1c98ab7f62cdc",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-10819/pr.json",
+          "sha256": "9f21fd0250dfbc989d244f14d61c3e4d0c7120bda5fe8c3679273d4e82e1ccef"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-10819/files.json",
+          "sha256": "32a37c65b8e847848225438a74293665153e73e25a9937920e3a2a7bcbb0a2a2"
+        }
+      },
+      "upstream_base": "79e6237aa63b8b9ee7ffc1bcf7c1c98ab7f62cdc",
+      "upstream_head": "7f6a9cad22b4fa4177358f548b803718039de68f",
+      "merged_at": "2022-02-03T12:37:39Z",
+      "changed_files": 3,
+      "file_paths": [
+        "news/10812.feature.rst",
+        "src/pip/_internal/commands/configuration.py",
+        "tests/functional/test_configuration.py"
+      ],
+      "upstream_test_paths": [
+        "tests/functional/test_configuration.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-6616",
+      "source_base": "4b6bb5da37c182acd509c85f72840ca37108cf65",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-6616/pr.json",
+          "sha256": "8357dbf3809c418cc30570a821c22dde59c6d542a35b920d5bbfc33f9a98a7bf"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-6616/files.json",
+          "sha256": "2d2b4035d418b270d351395e310e40ccf8e03cb5debc00bbdd9bfbae861de66c"
+        }
+      },
+      "upstream_base": "4b6bb5da37c182acd509c85f72840ca37108cf65",
+      "upstream_head": "2ffbf88bbc51a1961aac51a659f8db7d340da60a",
+      "merged_at": "2019-06-16T15:55:54Z",
+      "changed_files": 2,
+      "file_paths": [
+        "news/6533.trivial",
+        "src/pip/_internal/utils/outdated.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-9050",
+      "source_base": "08c99b6e00135ca8df2e98db58aa0b701b971c64",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-9050/pr.json",
+          "sha256": "fdfa8d569fe31b1eb0a8e21d9c642e92c803aba2fda7f53c178d371d1b5cb080"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-9050/files.json",
+          "sha256": "5546760d95c05b0bbbbe89d07ea35d6cfca28502bee4f33551e08cd38ac022ec"
+        }
+      },
+      "upstream_base": "08c99b6e00135ca8df2e98db58aa0b701b971c64",
+      "upstream_head": "89b765db9606b35e948a2db8e9e834982d92a068",
+      "merged_at": "2020-10-27T14:04:11Z",
+      "changed_files": 3,
+      "file_paths": [
+        "news/8996.bugfix.rst",
+        "src/pip/_internal/utils/direct_url_helpers.py",
+        "tests/unit/test_direct_url_helpers.py"
+      ],
+      "upstream_test_paths": [
+        "tests/unit/test_direct_url_helpers.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-4430",
+      "source_base": "4ee868553c473fd1f08179534763ad342ba07db4",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-4430/pr.json",
+          "sha256": "40c906f3b4806122894250ce31fa73cba3cc67485243ef33d89a2498ff061e8f"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-4430/files.json",
+          "sha256": "72495d97a8577c95a12389c3468b82941348612e07a61a227365ac9fa50a0ca8"
+        }
+      },
+      "upstream_base": "4ee868553c473fd1f08179534763ad342ba07db4",
+      "upstream_head": "67d68873392b36495a68ae3e68790d0d445e835d",
+      "merged_at": "2017-06-01T19:41:02Z",
+      "changed_files": 3,
+      "file_paths": [
+        "news/4184.bugfix",
+        "pip/utils/encoding.py",
+        "tests/unit/test_utils.py"
+      ],
+      "upstream_test_paths": [
+        "tests/unit/test_utils.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-4982",
+      "source_base": "4f8541972f65e347dc76518f8a5554aac8acdf3d",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-4982/pr.json",
+          "sha256": "2c82e038494a05d65cc45efdd161a3c0f78ec445e40f90de553e6e5608fe45dc"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-4982/files.json",
+          "sha256": "cf54303973371a550661736cfe46145c4740a191081a5a66c0a2ea5fb8b7b51a"
+        }
+      },
+      "upstream_base": "4f8541972f65e347dc76518f8a5554aac8acdf3d",
+      "upstream_head": "ec3ee8a1189dd41506cd53a68438c0e5bdeb9155",
+      "merged_at": "2018-01-24T04:40:43Z",
+      "changed_files": 4,
+      "file_paths": [
+        "news/2732.bugfix",
+        "news/4982.bugfix",
+        "src/pip/_internal/utils/misc.py",
+        "tests/unit/test_utils.py"
+      ],
+      "upstream_test_paths": [
+        "tests/unit/test_utils.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-8025",
+      "source_base": "62c822dc78c2cb04563f726f6a40b4f4e8dae9b0",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-8025/pr.json",
+          "sha256": "119497bd27584979b886b5c00e1c3d66b68ee2f22c8f351278d18c030f868b30"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-8025/files.json",
+          "sha256": "044d3c21624cdb75d8c89b9fa5a45879c93a015efc66e856f8fb74a6d421178e"
+        }
+      },
+      "upstream_base": "62c822dc78c2cb04563f726f6a40b4f4e8dae9b0",
+      "upstream_head": "dbd2c2f7601477f6c70280591c13a9e58dc58835",
+      "merged_at": "2020-04-14T11:33:11Z",
+      "changed_files": 2,
+      "file_paths": [
+        "news/8013.bugfix",
+        "src/pip/_internal/utils/filesystem.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-8718",
+      "source_base": "f51bd8fed8ca3c96c87cef22fa2f5a8098e4b4bd",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-8718/pr.json",
+          "sha256": "199db74d3d168d984a4ea227c13b9f045b760e0c475a25cdeaa9d193d4f66e5c"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-8718/files.json",
+          "sha256": "963e0c52c15c0d346395a497319e4f1726220c3cd97454145b1b73c181e53699"
+        }
+      },
+      "upstream_base": "f51bd8fed8ca3c96c87cef22fa2f5a8098e4b4bd",
+      "upstream_head": "810385b971bc101182ded21e83457d83790e413a",
+      "merged_at": "2020-08-07T09:41:32Z",
+      "changed_files": 2,
+      "file_paths": [
+        "news/8717.bugfix",
+        "src/pip/_internal/utils/virtualenv.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-10418",
+      "source_base": "48dc9f400d45682f244aae0db324fbda280266a5",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-10418/pr.json",
+          "sha256": "0ddaa8aed5430033f82778509ca35c8dc39772f9dbee6211a36ff0fc3a7a1cfb"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-10418/files.json",
+          "sha256": "9a51d6d15f639a556efb0c2942f0ec41415acf5a1d9616e63af553bdb0c8f232"
+        }
+      },
+      "upstream_base": "48dc9f400d45682f244aae0db324fbda280266a5",
+      "upstream_head": "61db4f35bb71908384e70253cbc141a8d60c739b",
+      "merged_at": "2021-09-20T22:01:36Z",
+      "changed_files": 2,
+      "file_paths": [
+        "news/10418.trivial.rst",
+        "src/pip/_internal/configuration.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "pypa__pip-10560",
+      "source_base": "6d1c027ec877f9a52bd7e7d3ff53e3a4ca7e9cea",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-10560/pr.json",
+          "sha256": "d3580006177aab0bb3e7d50d5a14a1e369da312dd6483cb13854be8db0a0caaf"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-10560/files.json",
+          "sha256": "3a6e69f7f42cdbc8012a77bea1bb2a3d7b9f8e37ad3655939ba007dff4336bf6"
+        }
+      },
+      "upstream_base": "6d1c027ec877f9a52bd7e7d3ff53e3a4ca7e9cea",
+      "upstream_head": "4912fdfa4105cbef697735a5f72967a9763a0742",
+      "merged_at": "2022-03-18T12:32:19Z",
+      "changed_files": 4,
+      "file_paths": [
+        "news/10560.bugfix.rst",
+        "src/pip/_internal/utils/misc.py",
+        "tests/functional/test_install_upgrade.py",
+        "tests/lib/__init__.py"
+      ],
+      "upstream_test_paths": [
+        "tests/functional/test_install_upgrade.py",
+        "tests/lib/__init__.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "pypa__pip-2308",
+      "source_base": "0e96c4b5d5dd7f632dbca7cadb2438e2c6df0579",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-2308/pr.json",
+          "sha256": "8e2fb0df3ed5617b5166aa11b217060ef9f82f6d216a03a0f4c07596c288f383"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-pip-upstream20/pypa__pip-2308/files.json",
+          "sha256": "01b2db826eb9d9f179a106367ca5a8d8c82062788b25b1a0936f3d876b2e4b81"
+        }
+      },
+      "upstream_base": "0e96c4b5d5dd7f632dbca7cadb2438e2c6df0579",
+      "upstream_head": "eccc0e60ff103e3112a6fecc949c54bebeae3953",
+      "merged_at": "2015-01-03T07:45:44Z",
+      "changed_files": 1,
+      "file_paths": [
+        "pip/utils/filesystem.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    }
+  ],
+  "new_eligibility_identities": 0,
+  "qualification": "First upstream API probe for the20identities already charged in prior metadata worklist. No original F2P/P2P or test patches supplied by SWEtrain; recovery still needs exact dataset-repair/head product blob proof, pinned source license, unchanged original upstream test patch and declared local references. No source execution/model calls."
+}

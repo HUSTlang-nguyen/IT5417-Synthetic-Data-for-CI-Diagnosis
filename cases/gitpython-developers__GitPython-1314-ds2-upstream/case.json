@@ -1,0 +1,72 @@
+{
+  "case_id": "gitpython-developers__GitPython-1314-ds2-upstream",
+  "source_case_id": "gitpython-developers__GitPython-1314",
+  "record_id": "gitpython-developers__GitPython-1314",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "train",
+  "repo_url": "https://github.com/gitpython-developers/GitPython",
+  "base": "8e226ed8865f0ad78cec6b83f0b5436ce11017bf",
+  "head": "base+repair:2c74795c5630d7d75b01a8435287fb6b9764b5d67364cc1383c5ca06e9c10684",
+  "allowed_file": "git/util.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "dataset_protocol": "dataset-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-1314-ds2-upstream/repair.patch",
+  "repair_patch_sha256": "2c74795c5630d7d75b01a8435287fb6b9764b5d67364cc1383c5ca06e9c10684",
+  "test_patch": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-1314-ds2-upstream/test.patch",
+  "test_patch_sha256": "058eed8557d298450d2d9252da3f4cb6859ffc136223901042d63286cbda2652",
+  "source_record_sha256": "cbd3f697441c53d5379a953c5b440d865081539c715144ae251bd834e8a45d76",
+  "fail_to_pass": [],
+  "pass_to_pass": [],
+  "test_reference_policy": "upstream_pr_recovered_v1",
+  "local_expected_failures": [
+    "test/test_util.py::TestUtils::test_actor_get_uid_laziness_not_called"
+  ],
+  "local_expected_passes": [
+    "test/test_util.py::TestUtils::test_it_should_dashify"
+  ],
+  "upstream_test_provenance": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-1314-ds2-upstream/upstream-provenance.json",
+  "upstream_test_provenance_sha256": "f07863f353c288ad1957129359a44ad656ac5180a5c17fc4e3fab87bf984059a",
+  "source_id_matching": "exact",
+  "test_targets": [
+    "test/test_util.py::TestUtils::test_actor_get_uid_laziness_not_called",
+    "test/test_util.py::TestUtils::test_it_should_dashify"
+  ],
+  "frozen_test_files": [
+    "test/test_util.py"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "python_image": "python:3.9-slim-bookworm",
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [],
+  "dependencies": [
+    "gitdb==4.0.11",
+    "smmap==5.0.1",
+    "ddt==1.6.0",
+    "typing-extensions==4.12.2"
+  ],
+  "system_tools": [
+    "git"
+  ],
+  "git_test_fixture": true,
+  "install_project": false,
+  "test_workdir": "work",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Configured actor name/email should avoid getpass fallback calls when configuration supplies both values. Selected original upstream nodes may fail base/pass fixed, while dashify control should pass both. Local reconstruction only.",
+  "recipe_basis": "Pinned source requires Python>=3.7 and gitdb>=4,<5; pytest6.2.5/ddt1.6 and gitdb4.0.11/smmap5.0.1 on Python3.9. TestBase needs the declared read-only real base-commit Git fixture;1314 clones it only into writable temporary storage. Source/test bytes unchanged, no external service/network runtime."
+}

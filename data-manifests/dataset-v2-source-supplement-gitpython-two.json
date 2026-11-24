@@ -1,0 +1,51 @@
+{
+  "schema": "v2-source-role-supplement-v1",
+  "created_at": "2026-11-24T07:11:47+07:00",
+  "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "repo_roles": {
+    "gitpython-developers/GitPython": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "gitpython-developers__GitPython-1314",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "8e226ed8865f0ad78cec6b83f0b5436ce11017bf",
+      "upstream_head": "ec04ea01dbbab9c36105dfc3e34c94bbbbf298b2",
+      "source_version": "",
+      "product_files": [
+        "git/util.py"
+      ],
+      "test_files": [
+        "test/test_util.py"
+      ],
+      "case_id": "gitpython-developers__GitPython-1314-ds2-upstream",
+      "case_sha256": "7129b09717b85c4fe26b70be3ec2ea12bea49318caf1fe0056bfbc21eb3c278a",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1547",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "cc92d5126b2fc80f7cc6866fc8f99b3ffb0189ae",
+      "upstream_head": "854a2d1f7fde596babe85ba9f76f282e9d53086d",
+      "source_version": "",
+      "product_files": [
+        "git/objects/util.py"
+      ],
+      "test_files": [
+        "test/test_util.py"
+      ],
+      "case_id": "gitpython-developers__GitPython-1547-ds2-upstream",
+      "case_sha256": "8c78ed14b4e4fc516fedb57b3043918ae87e619e752ad6a54c79dab0f3b6745e",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    }
+  ],
+  "repo_provenance": {
+    "gitpython-developers/GitPython": {
+      "pr_metadata": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1314/pr.json",
+      "pr_metadata_sha256": "4069d924c25136fb4171cbb6fe85644987d959a83d33aab59159ea74c38d1908"
+    }
+  },
+  "qualification": "Two previously screened identities with original test deltas; product blob/license proof checked. Train role already frozen, no new eligibility IDs or results. Source test references remain absent; explicit local expectations."
+}

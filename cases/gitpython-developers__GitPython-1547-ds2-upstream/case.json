@@ -1,0 +1,74 @@
+{
+  "case_id": "gitpython-developers__GitPython-1547-ds2-upstream",
+  "source_case_id": "gitpython-developers__GitPython-1547",
+  "record_id": "gitpython-developers__GitPython-1547",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "train",
+  "repo_url": "https://github.com/gitpython-developers/GitPython",
+  "base": "cc92d5126b2fc80f7cc6866fc8f99b3ffb0189ae",
+  "head": "base+repair:9e448bcf3f69f0db5d636a6015acba16a705756465e741cbc88d907d0ee2b287",
+  "allowed_file": "git/objects/util.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "dataset_protocol": "dataset-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-1547-ds2-upstream/repair.patch",
+  "repair_patch_sha256": "9e448bcf3f69f0db5d636a6015acba16a705756465e741cbc88d907d0ee2b287",
+  "test_patch": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-1547-ds2-upstream/test.patch",
+  "test_patch_sha256": "ec81d46c2e9185e6cbdf916c18d754c62c1cb5693da504d824d99996f79578d3",
+  "source_record_sha256": "eab2a2b1a019bca78a50fa0ef3d1642dcb3e5caaa9cbfdbfb3e409bedc9eeca0",
+  "fail_to_pass": [],
+  "pass_to_pass": [],
+  "test_reference_policy": "upstream_pr_recovered_v1",
+  "local_expected_failures": [
+    "test/test_util.py::TestUtils::test_utctz_to_altz",
+    "test/test_util.py::TestUtils::test_altz_to_utctz_str"
+  ],
+  "local_expected_passes": [
+    "test/test_util.py::TestUtils::test_it_should_dashify"
+  ],
+  "upstream_test_provenance": ".cache/dataset-v2-source/cases/gitpython-developers__GitPython-1547-ds2-upstream/upstream-provenance.json",
+  "upstream_test_provenance_sha256": "e860a38f6c612603d41eaaf3c66d9d955f7f61d111f465e3cba7b7c86e46fa6d",
+  "source_id_matching": "exact",
+  "test_targets": [
+    "test/test_util.py::TestUtils::test_utctz_to_altz",
+    "test/test_util.py::TestUtils::test_altz_to_utctz_str",
+    "test/test_util.py::TestUtils::test_it_should_dashify"
+  ],
+  "frozen_test_files": [
+    "test/test_util.py"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "python_image": "python:3.9-slim-bookworm",
+  "pytest_version": "6.2.5",
+  "pytest_plugins": [],
+  "dependencies": [
+    "gitdb==4.0.11",
+    "smmap==5.0.1",
+    "ddt==1.6.0",
+    "typing-extensions==4.12.2"
+  ],
+  "system_tools": [
+    "git"
+  ],
+  "git_test_fixture": true,
+  "install_project": false,
+  "test_workdir": "work",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Timezone conversion must treat the last two offset digits as minutes, including half-hour and minute offsets, not decimal fractions of an hour. Selected original upstream nodes may fail base/pass fixed, while dashify control should pass both. Local reconstruction only.",
+  "recipe_basis": "Pinned source requires Python>=3.7 and gitdb>=4,<5; pytest6.2.5/ddt1.6 and gitdb4.0.11/smmap5.0.1 on Python3.9. TestBase needs the declared read-only real base-commit Git fixture;1314 clones it only into writable temporary storage. Source/test bytes unchanged, no external service/network runtime."
+}

@@ -1,0 +1,190 @@
+{
+  "checked_at": "2026-11-24T07:09:50+07:00",
+  "outcomes": [
+    {
+      "source_case_id": "gitpython-developers__GitPython-1314",
+      "base": "8e226ed8865f0ad78cec6b83f0b5436ce11017bf",
+      "head": "ec04ea01dbbab9c36105dfc3e34c94bbbbf298b2",
+      "artifacts": {
+        "fetch.json": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/fetch.json",
+          "sha256": "5fc4bd3de3203f0eff54a0d3674a230ef09b6d887be9040b4d0fecf4fb7102e0"
+        },
+        "fetch.stderr.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/fetch.stderr.txt",
+          "sha256": "a36d243f216336ef3ce25500b557712cc5908ec759aec7e0f0feb11a148615f7"
+        },
+        "fetch.stdout.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/fetch.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.json": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/init.json",
+          "sha256": "ea5f373d6bc9a789f3c4681faee34ec0dd01bab799a7b5f61340dd011b9407e6"
+        },
+        "init.stderr.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/init.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.stdout.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/init.stdout.txt",
+          "sha256": "9a55070ab1db836670e7f199382b97bf7ca9453fc6e6c43597c42819dc976422"
+        },
+        "pinned-license.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/pinned-license.txt",
+          "sha256": "fd657ffc2cef63d25c78cab7808d414dd03a282e63893491fd11c32f98be67fb"
+        },
+        "repair.patch": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/repair.patch",
+          "sha256": "2c74795c5630d7d75b01a8435287fb6b9764b5d67364cc1383c5ca06e9c10684"
+        },
+        "source-record.json": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/source-record.json",
+          "sha256": "cbd3f697441c53d5379a953c5b440d865081539c715144ae251bd834e8a45d76"
+        },
+        "test.patch": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/test.patch",
+          "sha256": "058eed8557d298450d2d9252da3f4cb6859ffc136223901042d63286cbda2652"
+        },
+        "base-files/pyproject.toml": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/base-files/pyproject.toml",
+          "sha256": "e3ba6a3a718897c2434f5fddd68712d0efbcca9b33ac7a1137cb661b3675ee1c"
+        },
+        "base-files/requirements.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/base-files/requirements.txt",
+          "sha256": "24b70310a04fc1395b8ee26c57d5ff0a30738c2288c83e4af5dd5f398955e0a0"
+        },
+        "base-files/setup.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/base-files/setup.py",
+          "sha256": "6fa70c5927f211c1cfed2771eeb4931fd170001d9c1d7cc2c9f21f69c278b470"
+        },
+        "base-files/test-requirements.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/base-files/test-requirements.txt",
+          "sha256": "0d8c4097c3c33b0bfa8090cdb490ce3003379b1333cbbfd695a875b10d0c0697"
+        },
+        "base-files/test/test_util.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/base-files/test/test_util.py",
+          "sha256": "6ba5ea3635b5314aedab4eebbb880c68ce41dec1dd72558683ac3d131c2f2a59"
+        },
+        "base-files/test/lib/helper.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/base-files/test/lib/helper.py",
+          "sha256": "8cd13288102cda38493f9baf98cb21e473067c7cec86974a02bb92f70e4f4eae"
+        },
+        "base-files/test/lib/__init__.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/base-files/test/lib/__init__.py",
+          "sha256": "b0416dd6d7c77aa492779d0a80ce4ae386a1b9df7dae31796b08fabc978760fd"
+        },
+        "head-files/test/test_util.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1314/head-files/test/test_util.py",
+          "sha256": "9fe2837289592bfc9c5e15b7d626bceac409ebdf8b7024cb2d3899fdb67b6a6b"
+        }
+      },
+      "status": "pinned_proof_passed_not_executed",
+      "product_blobs": [
+        {
+          "path": "git/util.py",
+          "repaired_blob": "b81332ea491c4da622a4e8acd28d10d09ca28328",
+          "upstream_head_blob": "b81332ea491c4da622a4e8acd28d10d09ca28328"
+        }
+      ],
+      "test_paths": [
+        "test/test_util.py"
+      ],
+      "license": "BSD-3-Clause",
+      "base_license_path": "LICENSE"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1547",
+      "base": "cc92d5126b2fc80f7cc6866fc8f99b3ffb0189ae",
+      "head": "854a2d1f7fde596babe85ba9f76f282e9d53086d",
+      "artifacts": {
+        "fetch.json": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/fetch.json",
+          "sha256": "d28de3692864297bb60c43658f0a3d27521108b7785d819ff1cb57820e06affa"
+        },
+        "fetch.stderr.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/fetch.stderr.txt",
+          "sha256": "58276f15701827d540cfd43c648005622cc7bd540e709b9263384c8b4a2ae2d3"
+        },
+        "fetch.stdout.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/fetch.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.json": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/init.json",
+          "sha256": "ca0a469d89334294bc27cdcb5fd38ed8bc83bd309d265fa3d37170dd57e31fcb"
+        },
+        "init.stderr.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/init.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "init.stdout.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/init.stdout.txt",
+          "sha256": "37e874007b7c8beaa7add756bbcfabf3231f9203986913a1f32e69cc7cbe80f7"
+        },
+        "pinned-license.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/pinned-license.txt",
+          "sha256": "fd657ffc2cef63d25c78cab7808d414dd03a282e63893491fd11c32f98be67fb"
+        },
+        "repair.patch": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/repair.patch",
+          "sha256": "9e448bcf3f69f0db5d636a6015acba16a705756465e741cbc88d907d0ee2b287"
+        },
+        "source-record.json": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/source-record.json",
+          "sha256": "eab2a2b1a019bca78a50fa0ef3d1642dcb3e5caaa9cbfdbfb3e409bedc9eeca0"
+        },
+        "test.patch": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/test.patch",
+          "sha256": "ec81d46c2e9185e6cbdf916c18d754c62c1cb5693da504d824d99996f79578d3"
+        },
+        "base-files/pyproject.toml": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/base-files/pyproject.toml",
+          "sha256": "974dd71570c3d947833af65b63164c96f2b986dca897163a0c9c25fa0617f226"
+        },
+        "base-files/requirements.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/base-files/requirements.txt",
+          "sha256": "00af89a30acaadc633d0265cc4f4286cbf9f697f657d10087260f6696a1f9b8c"
+        },
+        "base-files/setup.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/base-files/setup.py",
+          "sha256": "2044a05d867fd1850c5d9b9c5d730647e4cf7a3be7b5e9129c5cde1d6762fb05"
+        },
+        "base-files/test-requirements.txt": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/base-files/test-requirements.txt",
+          "sha256": "6c7cf30b27ad652096702c361b138f17844bc6a4392efc6acd533b51d183132f"
+        },
+        "base-files/test/test_util.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/base-files/test/test_util.py",
+          "sha256": "4adb79c802dfb86468177d7595670a0163e4abe689b2127f9578a1bc46e52841"
+        },
+        "base-files/test/lib/helper.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/base-files/test/lib/helper.py",
+          "sha256": "c508e70829f2df5844a81af76fabc0fe5a9fecc2152279a9b9f171958180a3d9"
+        },
+        "base-files/test/lib/__init__.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/base-files/test/lib/__init__.py",
+          "sha256": "f74f6e866976285ea9eebb6b126389827501186c0119c77e21ff9a0c924c4d7d"
+        },
+        "head-files/test/test_util.py": {
+          "path": ".cache/dataset-v2-gitpython-two-pinned-proofs/gitpython-developers__GitPython-1547/head-files/test/test_util.py",
+          "sha256": "3a917ff955e86fb7e3f014a7f52db1b465dcbe2afc59f390118d3b59f25d9a26"
+        }
+      },
+      "status": "pinned_proof_passed_not_executed",
+      "product_blobs": [
+        {
+          "path": "git/objects/util.py",
+          "repaired_blob": "af279154c760294f69f5785679d80d136f91147a",
+          "upstream_head_blob": "af279154c760294f69f5785679d80d136f91147a"
+        }
+      ],
+      "test_paths": [
+        "test/test_util.py"
+      ],
+      "license": "BSD-3-Clause",
+      "base_license_path": "LICENSE"
+    }
+  ],
+  "qualification": "Read-only pinned source/test/license and Git-index repair proof; no source imported/executed. Original SWEtrain references absent. Recipes/local expectations and admission not yet created. No new source attempts/eligibility identities/model calls."
+}

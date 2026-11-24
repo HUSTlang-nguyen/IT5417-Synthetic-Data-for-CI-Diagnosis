@@ -1,0 +1,77 @@
+{
+  "created_at": "2026-11-24T07:16:44+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train",
+    "IMOGI-ITB/Payroll-Indonesia": "validation",
+    "TonyDeRosia/evennia-minimud": "train",
+    "MelkorBalrog/AutoML": "validation",
+    "x-CK-x/Dataset-Curation-Tool": "train",
+    "tinystork/zeseestarstacker": "test",
+    "MForofontov/pyutils-collection": "train",
+    "pypa/pip": "train",
+    "bartoszskarbek-pixel/pdf-renamer": "validation"
+  },
+  "selected": [
+    {
+      "source_case_id": "gitpython-developers__GitPython-1314",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "8e226ed8865f0ad78cec6b83f0b5436ce11017bf",
+      "upstream_head": "ec04ea01dbbab9c36105dfc3e34c94bbbbf298b2",
+      "source_version": "",
+      "product_files": [
+        "git/util.py"
+      ],
+      "test_files": [
+        "test/test_util.py"
+      ],
+      "case_id": "gitpython-developers__GitPython-1314-ds2-upstream-r1",
+      "case_sha256": "f321c2d8f485bbba2acb5b6b8667cc2ee5146adbfb6a0669a0b3a770bfd489ef",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1547",
+      "repo": "gitpython-developers/GitPython",
+      "role": "train",
+      "base_commit": "cc92d5126b2fc80f7cc6866fc8f99b3ffb0189ae",
+      "upstream_head": "854a2d1f7fde596babe85ba9f76f282e9d53086d",
+      "source_version": "",
+      "product_files": [
+        "git/objects/util.py"
+      ],
+      "test_files": [
+        "test/test_util.py"
+      ],
+      "case_id": "gitpython-developers__GitPython-1547-ds2-upstream-r1",
+      "case_sha256": "ef70e5d8b06bd229254dbfc2c9a358048493d6980d4517abbc3161f1cc9917f6",
+      "source_reference_policy": "upstream_pr_recovered_v1"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Sole declared environment correction per two source IDs. Prior first-profile failures preserved, exact parent/reason/evidence. Original test expectations unchanged."
+}
