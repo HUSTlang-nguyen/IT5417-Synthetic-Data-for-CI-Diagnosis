@@ -1,0 +1,109 @@
+{
+  "case_id": "sphinx-doc__sphinx-9367-ds2-provided-next",
+  "source_case_id": "sphinx-doc__sphinx-9367",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-9367",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "6918e69600810a4664e53653d6ff0290c3c4a788",
+  "head": "base+repair:ec53e5fbf7ff38374de4700b9f6c2fb91630d7b525f2e0bafafa00c1cec42a77",
+  "allowed_file": "sphinx/pycode/ast.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-9367-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "ec53e5fbf7ff38374de4700b9f6c2fb91630d7b525f2e0bafafa00c1cec42a77",
+  "test_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-9367-ds2-provided-next/test.patch",
+  "test_patch_sha256": "b1bc20d773cab4c012782bcee77d374fa2ffd33567f0d1a4757198204641bf4f",
+  "source_record_sha256": "df2093b9a694dca83cc936bda8d751e4426849d8893811bd5dee3571e620538c",
+  "fail_to_pass": [
+    "tests/test_pycode_ast.py::test_unparse[(1,)-(1,)]"
+  ],
+  "pass_to_pass": [
+    "tests/test_pycode_ast.py::test_unparse[a",
+    "tests/test_pycode_ast.py::test_unparse[os.path-os.path]",
+    "tests/test_pycode_ast.py::test_unparse[1",
+    "tests/test_pycode_ast.py::test_unparse[b'bytes'-b'bytes']",
+    "tests/test_pycode_ast.py::test_unparse[object()-object()]",
+    "tests/test_pycode_ast.py::test_unparse[1234-1234_0]",
+    "tests/test_pycode_ast.py::test_unparse[{'key1':",
+    "tests/test_pycode_ast.py::test_unparse[...-...]",
+    "tests/test_pycode_ast.py::test_unparse[Tuple[int,",
+    "tests/test_pycode_ast.py::test_unparse[~",
+    "tests/test_pycode_ast.py::test_unparse[lambda",
+    "tests/test_pycode_ast.py::test_unparse[[1,",
+    "tests/test_pycode_ast.py::test_unparse[sys-sys]",
+    "tests/test_pycode_ast.py::test_unparse[1234-1234_1]",
+    "tests/test_pycode_ast.py::test_unparse[not",
+    "tests/test_pycode_ast.py::test_unparse[{1,",
+    "tests/test_pycode_ast.py::test_unparse['str'-'str']",
+    "tests/test_pycode_ast.py::test_unparse[+",
+    "tests/test_pycode_ast.py::test_unparse[-",
+    "tests/test_pycode_ast.py::test_unparse[(1,",
+    "tests/test_pycode_ast.py::test_unparse[()-()]",
+    "tests/test_pycode_ast.py::test_unparse_None",
+    "tests/test_pycode_ast.py::test_unparse_py38[lambda",
+    "tests/test_pycode_ast.py::test_unparse_py38[0x1234-0x1234]",
+    "tests/test_pycode_ast.py::test_unparse_py38[1_000_000-1_000_000]"
+  ],
+  "test_targets": [
+    "tests/test_pycode_ast.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_pycode_ast.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "docutils==0.17.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-9180-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ],
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "sphinx-doc__sphinx-9281-ds2-wave2",
+  "recipe_template_case_sha256": "6df16c4ad1f5b94289d7c1734ca3e9b35e609d6721926a1340a57726be5286de",
+  "recipe_template_passing_run": "reproduce-20261123T110747115219Z"
+}

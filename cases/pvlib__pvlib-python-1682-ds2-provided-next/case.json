@@ -1,0 +1,100 @@
+{
+  "case_id": "pvlib__pvlib-python-1682-ds2-provided-next",
+  "source_case_id": "pvlib__pvlib-python-1682",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1682",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "ef8ad2fee9840a77d14b0dfd17fc489dd85c9b91",
+  "head": "base+repair:3c55d10629fd5ad0ec591a954ba0cb4835f782baa3496730e0aa4031b34f4143",
+  "allowed_file": "benchmarks/benchmarks/infinite_sheds.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1682-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "3c55d10629fd5ad0ec591a954ba0cb4835f782baa3496730e0aa4031b34f4143",
+  "test_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1682-ds2-provided-next/test.patch",
+  "test_patch_sha256": "2be28409e6eb4ca2623a57407c82b19e288e17ac9274c375bdf7b02a3d1734e3",
+  "source_record_sha256": "d2d7774d96cc847ec28ecf383a8f8a503fa5020d2e47cfeb3e631af100a26777",
+  "fail_to_pass": [
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__vf_ground_sky_integ[True]",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__vf_ground_sky_integ[False]",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test_get_irradiance[True]",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test_get_irradiance[False]",
+    "pvlib/tests/bifacial/test_utils.py::test__vf_ground_sky_2d"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__vf_row_sky_integ",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__poa_sky_diffuse_pv",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__ground_angle",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__ground_angle_zero_gcr",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__vf_row_ground",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__vf_row_ground_integ",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__poa_ground_shadows",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__shaded_fraction_floats",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__shaded_fraction_array",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test_get_irradiance_poa",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test__backside_tilt",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test_get_irradiance_limiting_gcr",
+    "pvlib/tests/bifacial/test_infinite_sheds.py::test_get_irradiance_with_haydavies",
+    "pvlib/tests/bifacial/test_utils.py::test__solar_projection_tangent",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.5-0.0-180.0-0.0-180.0-0.5]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[1.0-0.0-180.0-0.0-180.0-0.0]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[1.0-90.0-180.0-0.0-180.0-1.0]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.5-45.0-180.0-45.0-270.0-0.6464466094067263]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.5-45.0-180.0-90.0-180.0-0.0]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.7071067811865476-45-180-0-180-0.5]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.7071067811865476-45-180-45-180-0.0]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.7071067811865476-45-180-45-90-0.5]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.7071067811865476-45-180-45-0-1.0]",
+    "pvlib/tests/bifacial/test_utils.py::test__unshaded_ground_fraction[0.7071067811865476-45-180-45-135-0.1464466094067262]"
+  ],
+  "test_targets": [
+    "pvlib/tests/bifacial/test_infinite_sheds.py",
+    "pvlib/tests/bifacial/test_utils.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/bifacial/test_infinite_sheds.py",
+    "pvlib/tests/bifacial/test_utils.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2",
+    "pytest-mock==3.11.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "pytest_mock"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pvlib__pvlib-python-1140-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pvlib__pvlib-python-1480-ds2-wave2",
+  "recipe_template_case_sha256": "5aa5792dc94bad05edfd71c48e834aa3d651c9780bb2061ef2c3be66c4922d8f",
+  "recipe_template_passing_run": "reproduce-20261123T225135098213Z"
+}

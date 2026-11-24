@@ -1,0 +1,129 @@
+{
+  "created_at": "2026-11-24T12:08:10+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train",
+    "IMOGI-ITB/Payroll-Indonesia": "validation",
+    "TonyDeRosia/evennia-minimud": "train",
+    "MelkorBalrog/AutoML": "validation",
+    "x-CK-x/Dataset-Curation-Tool": "train",
+    "tinystork/zeseestarstacker": "test",
+    "MForofontov/pyutils-collection": "train",
+    "pypa/pip": "train",
+    "bartoszskarbek-pixel/pdf-renamer": "validation",
+    "tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM": "train",
+    "4d4MP/TI_IP_checker-bulk": "validation",
+    "AllanYiin/SlideManager": "train",
+    "balazsbme/keep-the-future-human-survival-rpg": "train",
+    "AllanYiin/Amon": "test",
+    "AutomationOptimization/tsce_demo": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3561290605",
+      "repo": "4d4MP/TI_IP_checker-bulk",
+      "role": "validation",
+      "base_commit": "dacdfef43c49728e65c97de0b68adeb57ae392c4",
+      "upstream_head": "45ba17e3249efb48d7519d52192d175c84403776",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "multi_day_ui.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3561290605-ds2-syntax-licensed",
+      "case_sha256": "aa513847b155c8ef231907b630379c7ec36056d25ad79e5c959992e9f492b417",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    },
+    {
+      "source_case_id": "aidev-3750825784",
+      "repo": "AllanYiin/SlideManager",
+      "role": "train",
+      "base_commit": "6f33d61759078af8eb7a30f70d7dce4d7ee734a3",
+      "upstream_head": "3e1e6bba007decf00bc91f95a0505c5d1c627982",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "src/app/services/index_service.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3750825784-ds2-syntax-licensed",
+      "case_sha256": "184bb1fb46a2b8379d2b64537393f1984c4f652ad6070ccc5f043f922c1c0757",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    },
+    {
+      "source_case_id": "aidev-3647749931",
+      "repo": "balazsbme/keep-the-future-human-survival-rpg",
+      "role": "train",
+      "base_commit": "a97d935759c161d47bf258743a01b9bd0eb5a402",
+      "upstream_head": "f7ac8938478f0f86002c38edc4c91727ae4989f1",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "rpg/assessment_agent.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3647749931-ds2-syntax-licensed",
+      "case_sha256": "ea698ab55507c8f5ed05e885274c9d646b3a3921547e4cb0275afa259935b1a5",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    },
+    {
+      "source_case_id": "aidev-3987537006",
+      "repo": "AllanYiin/Amon",
+      "role": "test",
+      "base_commit": "1c30f460338fc2dc409b1367d478cb4d12f57b8f",
+      "upstream_head": "a6956c9593ed840d03310b97e2e4af4ffb9aea79",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "src/amon/core.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3987537006-ds2-syntax-licensed",
+      "case_sha256": "cb5b36a775fa5f0e568a494c449e9bc411c0749ee32243de11a5371322260aee",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    },
+    {
+      "source_case_id": "aidev-3134162238",
+      "repo": "AutomationOptimization/tsce_demo",
+      "role": "train",
+      "base_commit": "6452a3377a913904cc6b2852ff501fd4c373d79c",
+      "upstream_head": "12afed284dd68605ec4349de72ead88cac650db0",
+      "source_version": "local-Python3.11-compilation",
+      "product_files": [
+        "agents/orchestrator.py"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3134162238-ds2-syntax-licensed",
+      "case_sha256": "78c7d79cc13d910e66e546cdcd73e606e838550ae31657dae69057551551896e",
+      "source_reference_policy": "local_compilation_smoke_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Pinned local compilation source trials only. Roles fixed before outcomes; no generation; labels require actual evidence review."
+}

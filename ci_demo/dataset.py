@@ -39,6 +39,9 @@ def real_evidence(run_id):
     if case.get('local_compilation_check'):
         from .compilation import check
         check(case, gate)
+    if case.get('local_configuration_check'):
+        from .configuration import check
+        check(case, gate)
     if origin == 'upstream_recovered_local':
         from .upstream_tests import verify_products
         verify_products(case, Path(gate['context']) / 'head')
@@ -53,6 +56,8 @@ def real_evidence(run_id):
         artifacts['git-test-fixture.json'] = sha256(folder / 'git-test-fixture.json')
     if case.get('local_compilation_check'):
         artifacts['compilation-harness.json'] = sha256(folder / 'compilation-harness.json')
+    if case.get('local_configuration_check'):
+        artifacts['configuration-harness.json'] = sha256(folder / 'configuration-harness.json')
     for role in ("base", "head"):
         result = raw[role]
         if not result.get("container_removed") or result.get("timed_out"):
@@ -216,6 +221,9 @@ def export_real(run_id, assessment_path, destination, *, retriever=None):
     """Export observed input first; use the separate assessment only for target/metadata."""
     raw, evidence_hashes = real_evidence(run_id)
     case, gate = raw["source"], raw["environment"]
+    if case.get('local_configuration_check'):
+        # shortcut: frozen v4 retrieves Python only; require a separately calibrated input protocol before config export.
+        raise ValueError('Configuration export requires a separately frozen configuration input protocol')
     assessment = read_json(assessment_path)
     if assessment.get("run_id") != run_id or assessment.get("evidence_hashes") != evidence_hashes:
         raise ValueError("Assessment is not bound to these exact execution artifacts")

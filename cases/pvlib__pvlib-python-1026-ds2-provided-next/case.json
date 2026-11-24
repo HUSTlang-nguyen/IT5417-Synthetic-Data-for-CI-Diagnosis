@@ -1,0 +1,69 @@
+{
+  "case_id": "pvlib__pvlib-python-1026-ds2-provided-next",
+  "source_case_id": "pvlib__pvlib-python-1026",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1026",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "27872b83b0932cc419116f79e442963cced935bb",
+  "head": "base+repair:b95a132b9fd997eb39917059f3f56151680f1bc758fcbb655f0e4def92c2c8e5",
+  "allowed_file": "pvlib/iotools/crn.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1026-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "b95a132b9fd997eb39917059f3f56151680f1bc758fcbb655f0e4def92c2c8e5",
+  "test_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1026-ds2-provided-next/test.patch",
+  "test_patch_sha256": "c10f6632ff6490d480258facae1316d35045f9eb48b4fefd2cf88dd80b6cc52b",
+  "source_record_sha256": "ac62af670793149aafbbeb484e875f112b6fb3fda558915d8e38dd09fc4fb948",
+  "fail_to_pass": [
+    "pvlib/tests/iotools/test_crn.py::test_read_crn"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "pvlib/tests/iotools/test_crn.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/iotools/test_crn.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2",
+    "pytest-mock==3.11.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "pytest_mock"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pvlib__pvlib-python-1026-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pvlib__pvlib-python-1089-ds2-wave2",
+  "recipe_template_case_sha256": "f50a439fd75fca398f1c0bc09e1f71c7f54224e9182a66480dcfbf697617a69c",
+  "recipe_template_passing_run": "reproduce-20261123T221234980068Z"
+}

@@ -87,6 +87,10 @@ def verify_products(case, fixed_tree):
 
 
 def references(case):
+    if case.get('local_configuration_check'):
+        from . import configuration
+        configuration.provenance(case)
+        return [configuration.TARGET], [], configuration.POLICY
     if case.get('local_compilation_check'):
         from . import compilation
         compilation.provenance(case)

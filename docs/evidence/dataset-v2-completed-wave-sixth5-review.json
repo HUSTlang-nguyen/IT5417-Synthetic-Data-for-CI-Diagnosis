@@ -1,0 +1,196 @@
+{
+  "reviewed_at": "2026-11-24T08:06:58+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "sympy__sympy-21596",
+      "run_id": "reproduce-20261123T215514745787Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T215514745787Z",
+        "evidence_hashes": {
+          "manifest.json": "5b5f340743fe2cc0643d2a7fdf7dee22a22034484abb6acbb594f36deb74b25f",
+          "license-evidence.json": "231e177bba7310658b6270bc15b47568c9c05dc9c6863541ec826950f4444e7f",
+          "historical-base.stdout.txt": "bcaa291895df01994b64b32b22e160d050112a56875569c740e4ef37d3c51250",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "1c38b23b05af0e45765d7942d4ca7ebe73968d5abe96cb3fafbbd6b3b52396a1",
+          "historical-fixed.stdout.txt": "3bc8d2df74dee9e8b461232d6114f9e26eb02139b9878b6de1639327914c753d",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "1bdd8c6ec9fb789f19281a71aaa317c04fea56f4bc4646f5df2323f1e9c9140c"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sympy/sets/handlers/intersection.py",
+            "function": "intersection_sets"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The ImageSet/Reals intersection handler subtracts roots of the imaginary component from the parameter domain, although real outputs require keeping those roots. It also packages the roots as one tuple instead of distinct values; denominator exclusions use the wrong expression.",
+        "evidence_reason": "Saved test_imageset_intersect_real receives Complement(Integers,FiniteSet((-1,1))) instead of FiniteSet(-1,1). Repair intersects with the imaginary-zero solution union and separately excludes denominator zeros; all47saved tests pass fixed.",
+        "limitations": "The file defines several dispatched functions named intersection_sets; the causal base overload is the definition spanning224–382, not a new _solution_union helper. Function-level schema cannot distinguish overload signatures; no separate symbolic solving experiment performed.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing source/log only; repair, issue, test patch and causal assessment stay separate. Natural comments/tracebacks are not automatically leakage."
+      },
+      "assessment_sha256": "38a9e66f824a32f828ebb4cd66e5bee0cea62ac02d5b54f6c7d0f24309d1b27c",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sympy__sympy-21596",
+      "manifest_sha256": "fedcd01c0bd3e2e82a25e1f308972a9de2966e71d218b8a06403862e39175e68"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-11445",
+      "run_id": "reproduce-20261123T220123959028Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T220123959028Z",
+        "evidence_hashes": {
+          "manifest.json": "4dc61f9740d40c1f13e62c0e8baa9725c8e1af4e23f6f757760711ddcbb5969f",
+          "license-evidence.json": "86059ed8e6034a4b0ea76d120d1a91f9d194456f393c87801062967103f26131",
+          "historical-base.stdout.txt": "2b06f23412812bbe60cd0fc4c2736ec639d827fd615fbf6811f98f5e0f6bd84b",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "90273beac22e08f62e3ac81cda9898bcf3f035db530f4d3b960db258f9da527c",
+          "historical-fixed.stdout.txt": "5b9eba28dad15076ad62c8dd0197eccda7c1e3d7bfc03e61352f5b7ddfe56d3f",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "f4a101487825669e19a3f0da6dd6fa6a641e10445d1c83b83dbdfb2df000df57"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sphinx/util/rst.py",
+            "function": "prepend_prolog"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The docinfo matcher treats an inline role heading such as :mod:`foo` as a document field. The prolog is inserted after that heading line and before its underline, breaking section structure. Repair uses the docutils field-marker pattern.",
+        "evidence_reason": "Both saved role-heading tests, with/without a trailing prolog newline, show the original heading before prolog where prolog should come first. The same10saved tests pass fixed.",
+        "limitations": "Valid rst_prolog exposes a classification/placement bug, not invalid user configuration. Repair also adjusts imports/lineno initialization, but saved failures isolate insertion order; no extra HTML build or Jinja compatibility claim.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing source/log only; repair, issue, test patch and causal assessment stay separate. Natural comments/tracebacks are not automatically leakage."
+      },
+      "assessment_sha256": "f5aa3752e29f1df0d8e9994bd5d796a7de197cbf87f75583bdfe4bcf9816f0d6",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sphinx-doc__sphinx-11445",
+      "manifest_sha256": "c3d48260c28d24808f12c722c40216e13f81744b6f8de2f5f74475225d63e295"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-8033",
+      "run_id": "reproduce-20261123T220738065140Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T220738065140Z",
+        "evidence_hashes": {
+          "manifest.json": "932c51b3ca7f2fc8976216a7ed8071d104201427766f2a9e0d1e49441cd96b01",
+          "license-evidence.json": "a7c8402b355e8467dae2d0417e20c2aae3e5049ee653fe7dc375c8709b987173",
+          "historical-base.stdout.txt": "56bac60066ecb63652df0f846b896b52c3ff14733d173fdb998145ac128e9761",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "b2343629a86f127f874d1c68c9dd269488f8ca4e43171bc6616f7805f6080c94",
+          "historical-fixed.stdout.txt": "8bdbca65870f5d3311afb52756372a0bc7f36d915d30822c5553f9ed9067eb53",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "cd742c4bc0f5506c4d39cb55723fd1962825fd1cbf7fc2cec340f45e98da8273"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/_pytest/unittest.py",
+            "function": "_make_xunit_fixture.fixture"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The generated unittest fixture calls class setup/teardown but never invokes registered class cleanups. Setup exceptions also escape before a cleanup path. Repair supplies the cleanup callback and runs it on setup failure or in a teardown finally block.",
+        "evidence_reason": "Saved tests for success, setupclass failure and teardownclass failure observe incorrect subprocess outcomes because class cleanup callbacks were not run. The repaired same tests pass, preserving unittest cleanup/error reporting behavior.",
+        "limitations": "The nested production fixture is the causal base location; new helper parameters or test callback functions are not base causes. This is missing lifecycle behavior in existing unittest integration, not an invented method-absence label or a measured resource leak outside the tests.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing source/log only; repair, issue, test patch and causal assessment stay separate. Natural comments/tracebacks are not automatically leakage."
+      },
+      "assessment_sha256": "c6713f899bb884c3fe3f426c2d99a37d73d7d1db59ef1fefcdbee451fbb95bfb",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pytest-dev__pytest-8033",
+      "manifest_sha256": "2c95172a6a4ab42a9e7869b08066d3c2e39d706d58f3c5e366bf2c60d97e9eba"
+    },
+    {
+      "sample_id": "pvlib__pvlib-python-1089",
+      "run_id": "reproduce-20261123T221234980068Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T221234980068Z",
+        "evidence_hashes": {
+          "manifest.json": "34f64c4768d316cd90f97ab502fbdbca83d106b0b9598f6c9321ad0693bfdfaf",
+          "license-evidence.json": "3ecd4e968788db9923d687487a9bbc060933ed62a17cf2d878011a336f014412",
+          "historical-base.stdout.txt": "649b96f15dd3fe5b8ad666d74542a088d5ee0d82d21ea9f967776c16608f3fa1",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "fa3871e58b9e0ef649d6aef3bec967d51d9551f7eeaad579086c85a3f64d7105",
+          "historical-fixed.stdout.txt": "96ec74971dd962a2e4adcba4f2782c5e179692e3a41253d214830a2db6b4f113",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "e91c445aac4abeff7bdf21d168221c6da792c433fdd58c74a9f09f2ccd9bb5e7"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "pvlib/tools.py",
+            "function": "_golden_sect_DataFrame"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Golden-section search stops once its interval error is below0.01, too coarse for the requested numerical result. This produces inaccurate scalar/vector maxima and solar current calculations; repair tightens convergence with a declared tolerance and a scale-derived iteration limit.",
+        "evidence_reason": "Saved analytic objective tests return0.4934221912517876 instead of0.5 and other wrong maxima. The current array comparison differs by up to0.01326605. These failures use existing calls; the separate new-atol keyword failure is not the basis for the label. Fixed saved suite passes.",
+        "limitations": "Repair also adds an atol parameter and filters NaN in another function. Only the demonstrated search/convergence defect is proposed, not every changed branch or an independently validated physical PV model.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 failing source/log only; repair, issue, test patch and causal assessment stay separate. Natural comments/tracebacks are not automatically leakage."
+      },
+      "assessment_sha256": "dfdf99835244d9b821f2416bcce84751e59fe3eb8e90695d0d0562f35e4fed2f",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pvlib__pvlib-python-1089",
+      "manifest_sha256": "d274f184029c34114c9df878f6a8e7981129a8eb042058463aa58bb92fa54fb4"
+    },
+    {
+      "sample_id": "sympy__sympy-18351",
+      "run_id": "reproduce-20261123T221050542206Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Source explicitly adds matrix-expression support to NumPyPrinter. New ZeroMatrix test expects numpy.zeros instead of the existing scalar fallback0; many new printer handlers are introduced. Exclude unsupported-new-feature evidence from existing-fault subset rather than label new method absence as a proven regression.",
+      "evidence_hashes": {
+        "manifest.json": "ee4265f574d7e2b98b9bd41963f9e7d215924bfe848641f3572ba195ec6dd540",
+        "license-evidence.json": "8c016352d018abc0b3ea8ee4ef8f8b1138e8916b448440a4c98bc7002f283852",
+        "historical-base.stdout.txt": "03e98c370b609c617008308dc21be7246055cd0721aa50f32ea6435409103b92",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "f10976ed293aaca2d79e625ca1e6ba001e8c2435eec41ff2d4ef6cd35e91cb11",
+        "historical-fixed.stdout.txt": "9a2f8c8b89ad72b49cbaf0cbc05c50e77254cd03ae71064ca400643b20f77c37",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "e5a80c512db66cb2f74cd341104ca9d563024f9f26d5ab2e6c6bca19ec3f5707"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 4,
+  "feature_excluded": 1,
+  "qualification": "Saved source/issue/diff/JUnit reviewed; full inventory/hash/reference validation via real_evidence. No source/Docker/model run during review. Human/gold/training pending, final selection separate."
+}

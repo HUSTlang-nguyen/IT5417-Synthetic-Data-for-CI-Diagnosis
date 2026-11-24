@@ -1,5 +1,7 @@
 # Rà dữ liệu mới của v2
 
+Số liệu và worker mới nhất đọc ở [snapshot](../data-manifests/dataset-v2-status.json); các tổng trong từng mục dưới đây là checkpoint tại thời điểm review, không cộng chồng giữa các phiên bản export. Các review mới nằm cuối trang.
+
 Đây là nhận định kỹ thuật từ source/diff và log thực thi đã lưu. Các nhãn là **silver đề xuất**; xác nhận người dùng, gold và training eligibility còn pending. Không chạy lại thí nghiệm để viết review. Các bản export hiện là prototype, chưa thuộc bộ v2 đã khóa.
 
 ## Pvlib — wave 1
@@ -252,3 +254,31 @@ Năm case còn lại (Sphinx8273/10325/11109,Sympy20049,pvlib1764) bị loại k
 Lô pip4 được báo riêng trong [audit thực thi](evidence/dataset-v2-pip-four-execution-summary.json):9569pass cảhairole dưới UTF8 nên khôngxácnhận;4982bị chặn bởi conftest.get_marker củapytestcũ trước khi đo subprocess.9050lầnđầu vướngimport-order distutils; một r1tườngminh vượt lỗi đó nhưng thiếu helper csv23, không thử profile thứba. Các lỗi harness này không được gán thành dependency/configuration cho sản phẩm. Bốn recipe chuẩn bị bị thừa lineage của template đã được phát hiện và thay trước chạy; lịch sử/hash giữ riêng, không cộng vào profile đã thực thi.
 
 Tổng67prototype:syntax5/API-type16/logic-value46/dependency0; còn20strict chưareview, finalselected0. Human/gold/training eligibility tiếp tục pending; sourceissue/repair/assessment nằm ngoài inputv4. Giữ sáu prototype mới để tuyển chọn tiếp; user review kết luận còn quan trọng, không phải tự dò lại log.
+
+## Năm review tiếp theo và một case cấu hình
+
+[Review5 đã lưu](evidence/dataset-v2-completed-wave-sixth5-review.json): giữ bốn ứng viên logic/value (Sympy21596, Sphinx11445, pytest8033, pvlib1089); loại Sympy18351 khỏi subset lỗi hiện hữu vì mở rộng tính năng matrix printer. Đã đối chiếu inventory/hash/reference qua `real_evidence`; bốn export V4 nâng tổng lên71, không phải71mẫu đã duyệt train.
+
+[Review backend train AIDev3985713186](evidence/dataset-v2-train-backend-config-review.json): dòng3 `pyproject.toml` trỏ `setuptools.backends._legacy:_Backend`, module không có trong môi trường setuptools75.6.0 đã ghim. Cùng harness báo ModuleNotFoundError ở base và pass sau thay thành `setuptools.build_meta`. Đề xuất **dependency/configuration**, vị trí `pyproject.toml::<module>`, chắc chắn cao trong phạm vi nạp backend. Nơi phát hiện là hàm harness; nguyên nhân nằm ở cấu hình sản phẩm.
+
+Kiến nghị giữ assessment silver nhưng **chưa export**: cần giao thức input cấu hình được hiệu chỉnh/freeze trên train, vì V4 chỉ lấy Python. Chưa chứng minh wheel build, cài project hoặc chạy ứng dụng; không được dùng làm seed sinh. Không có output generator, chưa có input chẩn đoán nên chưa kết luận leakage cho input cuối. PR metadata không chứng minh actor gây lỗi. Human confirmation, gold và training eligibility vẫn pending; không cần người dùng tự phân tích lại log từ đầu.
+
+## Năm review kế tiếp từ evidence cũ
+
+[Chi tiết](evidence/dataset-v2-completed-wave-seventh5-review.json) giữ ba ứng viên: pytest9709 (API/type, `approx` nhận collection không có thứ tự và bỏ sót indexed sequence), Sympy12270 (logic/value, trả None khi tách hệ số âm hợp lệ), pydicom1033 (logic/value, ép callback bulk-data vốn tùy chọn thay vì fallback InlineBinary). Với pydicom, traceback trong issue cũ là AttributeError nhưng log local thực tế là TypeError; nhãn và giải thích bám log local đã lưu, không đồng nhất hai sự kiện.
+
+Sphinx8552 (thêm mục Receives) và pytest7939 (thêm alias --sw-skip) bị loại khỏi subset lỗi hiện hữu: test thất bại đòi tính năng mới. Các thay đổi phụ trong patch không tự trở thành lỗi đã chứng minh. Cả năm đã qua đối chiếu inventory/hash/source references; không chạy lại. Tổng74prototypeV4 sau ba export, human/gold/training vẫn pending; xem snapshot cho trạng thái mới hơn.
+
+## AIDev: bốn lỗi cú pháp mới, một trường hợp chưa xác nhận
+
+[Review và hash](evidence/dataset-v2-aidev-syntax-licensed-five-review.json) dùng log compile-only đã lưu, giữ input V4, không chạy ứng dụng hoặc model trong review:
+
+| Case / role | Quan sát và nguyên nhân đề xuất | Vị trí / kiến nghị |
+|---|---|---|
+| TI_IP_checker3561290605 / validation | SyntaxError dòng67: hai biến ip_list1 và ip_list2 đứng cạnh nhau thiếu toán tử +. Patch còn sửa nhiều chỗ; compiler chỉ chứng minh lỗi đầu tiên trước khi chạy chương trình. | get_unique_ips; giữ silver syntax, không khẳng định UI/API hoặc các lỗi sau đã được thực thi. |
+| SlideManager3750825784 / train | SyntaxError dòng449: dấu nháy của f-string bị escape ngoài chuỗi, gây line-continuation không hợp lệ. | IndexService.rebuild_for_files; giữ silver syntax, chưa kiểm thử render slide/vector. |
+| Amon3987537006 / test | SyntaxError dòng2410: log_event( mở ngoặc nhưng không đóng; bản sửa bỏ block logging thừa. | AmonCore.call_mcp_tool; giữ silver syntax, không gọi MCP/server. |
+| RPG3647749931 / train | IndentationError phát hiện ở dấu đóng ngoặc dòng126; trước các f-string thiếu baseline_context = (. | AssessmentAgent._assess_single; giữ silver syntax, phân biệt nơi phát hiện với chỗ thiếu câu lệnh. |
+| tsce_demo3134162238 / train | Cả base/fixed đều compile pass. Patch thêm sanitizer cho chuỗi script sinh lúc runtime; phép compile source không đo output đó. | Chưa xác nhận bằng phép kiểm tra này; không sinh hoặc chạy lại script để lấp bằng chứng. |
+
+Bốn header hàm được đối chiếu với prefix source không đổi và AST bản sửa; không gán thành hàm mới bị thiếu. Tổng78prototype V4 (syntax9/API-type17/logic-value52), thêm1assessment cấu hình chưaexport. Mọi xác nhận người dùng, gold và training eligibility còn pending; chưa đạt cổng v2 cuối.

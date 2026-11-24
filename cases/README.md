@@ -1,5 +1,9 @@
 # Danh mục case và profile
 
+[Lô AIDev cú pháp5case](../data-manifests/dataset-v2-aidev-syntax-licensed-plan.json): role ghim trước chạy, compile-only trong Docker; [5đạt/4chưađạt bước giấy phép](../docs/evidence/dataset-v2-aidev-syntax-licensed-preparation.json). Trạng thái thực thi không suy ra từ số folder.
+
+V2 mới: [lô100 có test tham chiếu nguồn](../data-manifests/dataset-v2-provided-reference100-plan.json), [audit kết quả](../docs/evidence/dataset-v2-provided100-execution-summary.json), và [case backend cấu hình](aidev-3985713186-ds2-backend/case.json). Case cấu hình chỉ kiểm tra nạp backend local trong Docker; không phải seed sinh hoặc kiểm thử chức năng. Số liệu hiện hành xem [snapshot](../data-manifests/dataset-v2-status.json).
+
 Mỗi thư mục con chứa `case.json`; source checkout, weights và raw runs ở cache/runtime bị ignore. `-r1` là profile hiệu chỉnh của cùng case nguồn, không phải PR mới.
 
 Dataset v2: [wave train114](../data-manifests/dataset-v2-wave2-interleaved.json), [heldout5](../data-manifests/dataset-v2-heldout-wave2.json) và [heldout23 đã chuẩn bị](../data-manifests/dataset-v2-heldout-wave3.json). Case/profile là recipe, không phải số mẫu đạt. [Snapshot hiện tại](../data-manifests/dataset-v2-status.json) tách unique source, profiles, strict reproduction và curation; không cộng số folder để báo dữ liệu train.

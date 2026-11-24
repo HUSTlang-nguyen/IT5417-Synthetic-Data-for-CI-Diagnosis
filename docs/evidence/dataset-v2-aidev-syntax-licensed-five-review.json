@@ -1,0 +1,224 @@
+{
+  "reviewed_at": "2026-11-24T12:18:35+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "aidev-3561290605",
+      "run_id": "reproduce-20261124T051129086527Z",
+      "role": "validation",
+      "assessment": {
+        "run_id": "reproduce-20261124T051129086527Z",
+        "evidence_hashes": {
+          "manifest.json": "7b8b1c3ac8c7bf3bfdada11cbc19791ba01545e4adae1eee5d4c3c72480475ac",
+          "license-evidence.json": "49324629b1a75d48b11a80f2458b78b6b0ead76f5e95a203123a4e5f9fdf4d8c",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "de59cbe951de7d136d9eb879b720089add77b7fd2780a95aba033eae3ef2aee4",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "4dcfb5af98e57fd6e02cbb0ec63ae42510cf40d94163adbbdd1db5cc8ee13d9b",
+          "historical-fixed.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "3bfc41c15796f0d76236a319c4f791a6ccf7961ec0e2bbc3975ac61665d5d675"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "multi_day_ui.py",
+            "function": "get_unique_ips"
+          }
+        ],
+        "unparseable_definitions": [
+          {
+            "file": "multi_day_ui.py",
+            "function": "get_unique_ips"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The assignment places two variable names next to each other without an operator: ip_list1  ip_list2. Python rejects the module before the IP merging/UI behavior can run. Repair inserts + between the operands.",
+        "evidence_reason": "The saved compiler reports SyntaxError: invalid syntax at multi_day_ui.py:67 on base and passes fixed. The same original function header is present in both revisions.",
+        "limitations": "The patch also fixes other missing operators, f-string expressions and a progress counter. Compilation stops at the first syntax error; only the observed first failure and containing existing function are proposed. No API network, UI, progress or later branch behavior was executed.",
+        "label_source": "code_patch_and_saved_local_compilation_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozenv4 failing source/log only; repair/issue/PR title/reference/assessment stay separate. Natural source comments and error locations are valid evidence, not automatic answer leakage. No input retuning from heldout examples."
+      },
+      "assessment_sha256": "da44aa8cc636873c5b8ed1bdf7f1efef3dd192901ffb3460b7e115854ace136f",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3561290605",
+      "manifest_sha256": "8510eede803d16f531abb261378f96610a29c0506771abf0b40055c76410c345"
+    },
+    {
+      "sample_id": "aidev-3750825784",
+      "run_id": "reproduce-20261124T050901226255Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261124T050901226255Z",
+        "evidence_hashes": {
+          "manifest.json": "d9d8dd393e6454823e12e2a92d3c707ea190b7671999e5e4036ede250e399793",
+          "license-evidence.json": "0e0d048f229f69c01dbfe96ca2f16663f2347dc11ef32d0fbaee5412a289a832",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "ecea443a7fa0b9d951b288c39f63c7c42cf8cd9779a110d1999a2c37359532e2",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "bb763952fdbbee6600b773bc979b49fab4d9be977bc4b0b7c2623cc2303f5638",
+          "historical-fixed.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "f53916b6c4f4b8a73cb94d028cdb6406fd85fe86783b3ac8af27cdc2d07fb107"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/app/services/index_service.py",
+            "function": "IndexService.rebuild_for_files"
+          }
+        ],
+        "unparseable_definitions": [
+          {
+            "file": "src/app/services/index_service.py",
+            "function": "IndexService.rebuild_for_files"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The f-string uses escaped quote characters outside an enclosing string, leaving a backslash before the quote after f. Python treats it as an invalid line continuation. Repair replaces the escaped delimiters with ordinary f-string quotes.",
+        "evidence_reason": "Saved compiler reports SyntaxError: unexpected character after line continuation character at index_service.py:449, exactly the single changed line; fixed compile passes.",
+        "limitations": "Only grammar compilation, not slide rendering, vector generation or application import was tested. The containing long function is identified from an unchanged header; retrieval body coverage remains measured independently.",
+        "label_source": "code_patch_and_saved_local_compilation_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozenv4 failing source/log only; repair/issue/PR title/reference/assessment stay separate. Natural source comments and error locations are valid evidence, not automatic answer leakage. No input retuning from heldout examples."
+      },
+      "assessment_sha256": "07e0002e558b234d5b84b1f99589ef155510d807c56a2df936af887780bd1967",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3750825784",
+      "manifest_sha256": "1567c8b593d9d0a65881f872ff0166f62e2d08ddb5bf7f1dae713fb21a325262"
+    },
+    {
+      "sample_id": "aidev-3647749931",
+      "run_id": "reproduce-20261124T051511605229Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261124T051511605229Z",
+        "evidence_hashes": {
+          "manifest.json": "b9fd62ca8d998dd6889ad7e291887639445d295d98f4861fff5ca75892d27759",
+          "license-evidence.json": "b342682bc8c5e70c03abbb99cfbcc519442ba024cac53c2dad46a7dbf1fd3c9c",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "e5e28abcf7304ec00952a8de687d393e04793956cfe43aa040ad949697697230",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "08430f94647f0f09217daa8eb4a7a366f7b9bf9df33c4d2fec0267f687706b0d",
+          "historical-fixed.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "13a8b118d46b76c21c03dede4c8e3ae3040e5b8e4268e7bfe026f395e074a36a"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "rpg/assessment_agent.py",
+            "function": "AssessmentAgent._assess_single"
+          }
+        ],
+        "unparseable_definitions": [
+          {
+            "file": "rpg/assessment_agent.py",
+            "function": "AssessmentAgent._assess_single"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The else branch contains indented adjacent f-string fragments and a closing parenthesis but lacks the opening baseline_context assignment/parenthesis. The closing line dedents to an indentation level that does not belong to that nested fragment block. Adding baseline_context = ( restores the intended grouped expression.",
+        "evidence_reason": "Saved compiler reports IndentationError: unindent does not match any outer indentation level at rpg/assessment_agent.py:126; fixed compile passes after inserting the assignment before the existing strings.",
+        "limitations": "Detection is the closing parenthesis line126; the omitted assignment at the start of the expression is the proposed cause. No assessment/model/API calls or application imports were executed. This validates grammar only; actor who introduced the omission remains unknown.",
+        "label_source": "code_patch_and_saved_local_compilation_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozenv4 failing source/log only; repair/issue/PR title/reference/assessment stay separate. Natural source comments and error locations are valid evidence, not automatic answer leakage. No input retuning from heldout examples."
+      },
+      "assessment_sha256": "4955466c41de941c45676c30eed30e1b720d7aa66aa29e7311b168e1c8cf32cf",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3647749931",
+      "manifest_sha256": "79a2013043ffcf01f2477e1a22f6aa25237adda8329b8eb4d988a85e571d6a73"
+    },
+    {
+      "sample_id": "aidev-3987537006",
+      "run_id": "reproduce-20261124T051303082210Z",
+      "role": "test",
+      "assessment": {
+        "run_id": "reproduce-20261124T051303082210Z",
+        "evidence_hashes": {
+          "manifest.json": "993970443da20d1046cee9f21e0cb590f0f9264c15a769d0be79e0f5b6e9f312",
+          "license-evidence.json": "fe5981b34b79cf058502bab924ce72849372e1d805c91f1e7336c9d3e4d6011c",
+          "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+          "historical-base.stdout.txt": "3a3d3bc8fb87bf7de5692787549812cadf4c179dff852aed6575e2c498119da6",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "7c14a5f3569286f429ecd56ffb61db4bf34931ddac7408c9faf94a7249d37a3e",
+          "historical-fixed.stdout.txt": "02660f8e5e82f4eb20239ca60f20f30f7fff51cb8c99a8dbe1c0c4ae0170baae",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "1ec3b51cc173316bd37a96a8438657f4a0a969206a3c30d6bdcb9938a818e400"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "syntax",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/amon/core.py",
+            "function": "AmonCore.call_mcp_tool"
+          }
+        ],
+        "unparseable_definitions": [
+          {
+            "file": "src/amon/core.py",
+            "function": "AmonCore.call_mcp_tool"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "A leftover log_event( call opens parentheses without closing them before the subsequent result-processing statements. Removing the unfinished duplicated logging block restores Python grammar.",
+        "evidence_reason": "Saved compiler reports SyntaxError: opening parenthesis was never closed at src/amon/core.py:2410 and fixed compile passes. The existing call_mcp_tool header is unchanged.",
+        "limitations": "No MCP server/network, tool error handling or application imports were executed. The patch also removes duplicated result variables; their runtime effect is not independently established. Scope is an existing unparseable function, not a missing method.",
+        "label_source": "code_patch_and_saved_local_compilation_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozenv4 failing source/log only; repair/issue/PR title/reference/assessment stay separate. Natural source comments and error locations are valid evidence, not automatic answer leakage. No input retuning from heldout examples."
+      },
+      "assessment_sha256": "ad999a0d7b9583b58ecd7faf6e8a9d3cfe7fc988634193432f47d969389603da",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/aidev-3987537006",
+      "manifest_sha256": "361f163b1133469bce1975772332530fb05fd6db52959e957edc1a857b40b54d"
+    },
+    {
+      "sample_id": "aidev-3134162238",
+      "run_id": "reproduce-20261124T051642708707Z",
+      "role": "train",
+      "disposition": "exclude_not_reproduced_by_declared_compile_check",
+      "reason": "Both pinned orchestrator source versions compile. Repair adds a sanitizer for generated script strings, whose runtime output is not part of the owned compile-only check. No source syntax fault, generated-script failure, actor cause or functional success is proven here. Do not invent/replay script output to fill this gap.",
+      "evidence_hashes": {
+        "manifest.json": "9ff700b9bec71f21ca3b748aa6ee64a1b160a9e79055272649ea9249388b307b",
+        "compilation-harness.json": "9b7fab2c5eb3d956d6bf29c6a94f3f237ea7864606756dffc1a651f389a2fa47",
+        "historical-base.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "e6d7b0981f6346b8095379c95d133605b571c248f1d7b98c561509b7053e51a6",
+        "historical-fixed.stdout.txt": "ea4b8f6d516026d1458d31100e376403c53ab26f726a6a6a8378208c1b207607",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "98acf9c934a77b69fc54bef1616ac3bf2f1947db3e95c0459e4f651372e89d8c"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 4,
+  "not_confirmed": 1,
+  "qualification": "Saved local compile-only evidence and original product diff reviewed with full hash/blob/inventory checks; no Docker/source/model rerun in review. Raw labels/actor/user/gold/training approval never inferred. Four existing-function headers validated against unchanged prefix and fixed AST."
+}

@@ -73,6 +73,9 @@ def validate_case(case):
     if 'local_compilation_check' in case:
         from .compilation import provenance
         provenance(case)
+    if 'local_configuration_check' in case:
+        from .configuration import provenance
+        provenance(case)
     if case.get("test_reference_policy") is not None:
         from .upstream_tests import provenance
         provenance(case)
@@ -90,7 +93,7 @@ def validate_case(case):
     if not case.get("license") or case["license"] in ("NOASSERTION", "unknown"):
         raise ValueError("Unresolved source license")
     safe_relative(case["allowed_file"])
-    if not case["allowed_file"].endswith(".py") or is_test(case["allowed_file"]):
+    if not case.get('local_configuration_check') and (not case["allowed_file"].endswith(".py") or is_test(case["allowed_file"])):
         raise ValueError("Generator can edit only a production Python file")
     if not case.get("test_targets") or len(case["test_targets"]) > 600:
         raise ValueError("Explicit bounded test targets required")
@@ -341,6 +344,10 @@ def prepare_case(case, evidence, guard=None):
     if case.get('local_compilation_check'):
         from .compilation import prepare
         compilation_harness = prepare(case, work, evidence)
+    configuration_harness = None
+    if case.get('local_configuration_check'):
+        from .configuration import prepare
+        configuration_harness = prepare(case, work, evidence)
     dependencies = bootstrap_dependencies(case) + case.get("dependencies", [])
     install = ["/opt/venv/bin/pip", "install", "--disable-pip-version-check", *dependencies]
     dockerfile = ("FROM " + case.get("python_image", "python:3.11-slim-bookworm") + "\n"
@@ -357,6 +364,8 @@ def prepare_case(case, evidence, guard=None):
                        'ENV GIT_PYTHON_TEST_GIT_REPO_BASE=/fixtures/source.git\n')
     if compilation_harness:
         dockerfile += 'COPY compilation-harness /compilation-harness\n'
+    if configuration_harness:
+        dockerfile += 'COPY configuration-harness /configuration-harness\n'
     links = [("/source/" + role + "/" + path, target) for role in ("base", "head") for path, target in source_links[role].items()]
     if links:
         program = ("import os; links=" + repr(links) + "; "
@@ -382,6 +391,8 @@ def prepare_case(case, evidence, guard=None):
         gate['git_test_fixture'] = fixture
     if compilation_harness:
         gate['compilation_harness'] = compilation_harness
+    if configuration_harness:
+        gate['configuration_harness'] = configuration_harness
     write_json(evidence / "environment.json", gate)
     return gate
 
@@ -415,6 +426,8 @@ def execute(case, gate, evidence, name, role="head", candidate=None, guard=None)
         args += ["--env", "SETUPTOOLS_USE_DISTUTILS=stdlib"]
     if case.get('local_compilation_check'):
         args += ['--env', 'CI_COMPILE_SOURCE=/source/' + role + '/' + case['allowed_file']]
+    if case.get('local_configuration_check'):
+        args += ['--env', 'CI_CONFIG_SOURCE=/source/' + role + '/' + case['allowed_file']]
     for path in case.get("writable_dirs", []):
         args += ["--tmpfs", "/source/" + role + "/" + path + ":rw,noexec,nosuid,size=16m,mode=1777"]
     if candidate:
@@ -425,7 +438,7 @@ def execute(case, gate, evidence, name, role="head", candidate=None, guard=None)
         output = Path(tmp).resolve(); output.chmod(0o777)
         if "," in str(output): raise ValueError("Invalid results mount path")
         args += ["--mount", "type=bind,src=" + str(output) + ",dst=/results", gate["image_id"],
-                 "/opt/venv/bin/python", *(['-I', '-B'] if case.get('local_compilation_check') else []), "-m", "pytest", "-v", "-p", "no:cacheprovider",
+                 "/opt/venv/bin/python", *(['-I', '-B'] if case.get('local_compilation_check') or case.get('local_configuration_check') else []), "-m", "pytest", "-v", "-p", "no:cacheprovider",
                  "--junitxml=/results/results.xml"]
         for plugin in case.get("pytest_plugins", []): args += ["-p", plugin]
         targets = gate.get("resolved_test_targets", case["test_targets"])
@@ -433,6 +446,10 @@ def execute(case, gate, evidence, name, role="head", candidate=None, guard=None)
             from .compilation import TARGET
             args += ['--rootdir=/compilation-harness', '--confcutdir=/compilation-harness']
             targets = ['/compilation-harness/' + TARGET]
+        elif case.get('local_configuration_check'):
+            from .configuration import TARGET
+            args += ['--rootdir=/configuration-harness', '--confcutdir=/configuration-harness']
+            targets = ['/configuration-harness/' + TARGET]
         elif case.get("test_workdir") == "work":
             args += ["--rootdir=/source/" + role]
             targets = ["/source/" + role + "/" + target for target in targets]
@@ -534,6 +551,9 @@ def reproduce_case(case, folder=None, guard=None):
                 "created_at": now(), "status": "running", "qualification": "Local reconstruction with frozen upstream tests; not historical CI logs"}
     if case.get('local_compilation_check'):
         manifest['qualification'] = 'Local compilation smoke with a pipeline-owned immutable harness; no upstream test or historical CI claim'
+    if case.get('local_configuration_check'):
+        from .configuration import QUALIFICATION
+        manifest['qualification'] = QUALIFICATION
     write_json(folder / "manifest.json", manifest)
     try:
         gate = prepare_case(case, folder, guard); manifest["environment"] = gate
@@ -542,13 +562,16 @@ def reproduce_case(case, folder=None, guard=None):
         base_fail = bool(runner.failure_signature(manifest["base"], folder))
         fixed_pass = test_passed(manifest["head"], folder)
         supported = base_fail and fixed_pass
-        if case["source_kind"] == "swebench" or case.get('local_compilation_check'):
+        if case["source_kind"] == "swebench" or case.get('local_compilation_check') or case.get('local_configuration_check'):
             from . import upstream_tests
             fail_to_pass, pass_to_pass, origin = upstream_tests.references(case)
             implementation = upstream_tests
             if case.get('local_compilation_check'):
                 from . import compilation
                 implementation = compilation
+            if case.get('local_configuration_check'):
+                from . import configuration
+                implementation = configuration
             mode = case.get("source_id_matching", "exact")
             recovered = origin != 'dataset_supplied'
             resolution_key = 'local_test_resolution' if recovered else 'source_test_resolution'
@@ -596,6 +619,9 @@ def check_gate(case, gate):
     check_git_fixture(case, gate)
     if case.get('local_compilation_check'):
         from .compilation import check
+        check(case, gate)
+    if case.get('local_configuration_check'):
+        from .configuration import check
         check(case, gate)
     return head
 
@@ -695,6 +721,8 @@ def generate_case(case, endpoint, folder=None, reproduction_run=None, guard=None
     try:
         if case.get('local_compilation_check'):
             raise ValueError('Compilation-only real cases are diagnosis data, not generator seeds')
+        if case.get('local_configuration_check'):
+            raise ValueError('Configuration-only real cases are diagnosis data, not generator seeds')
         if case.get("experiment_role") in {"validation", "test"}:
             raise ValueError("Held-out validation/test cases cannot be used for generation")
         if reproduction_run is None:

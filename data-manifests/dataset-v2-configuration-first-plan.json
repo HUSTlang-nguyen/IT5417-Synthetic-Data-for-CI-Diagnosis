@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-11-24T12:01:54+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "sympy/sympy": "train",
+    "pydicom/pydicom": "train",
+    "pvlib/pvlib-python": "train",
+    "pylint-dev/astroid": "train",
+    "marshmallow-code/marshmallow": "train",
+    "sqlfluff/sqlfluff": "train",
+    "pylint-dev/pylint": "train",
+    "sphinx-doc/sphinx": "train",
+    "pytest-dev/pytest": "train",
+    "pallets/flask": "train",
+    "django/django": "validation",
+    "matplotlib/matplotlib": "validation",
+    "mwaskom/seaborn": "validation",
+    "pyvista/pyvista": "validation",
+    "psf/requests": "test",
+    "pydata/xarray": "test",
+    "scikit-learn/scikit-learn": "test",
+    "ytdl-org/youtube-dl": "train",
+    "gitpython-developers/GitPython": "train",
+    "tinystork/zeanalyser": "train",
+    "IMOGI-ITB/Payroll-Indonesia": "validation",
+    "TonyDeRosia/evennia-minimud": "train",
+    "MelkorBalrog/AutoML": "validation",
+    "x-CK-x/Dataset-Curation-Tool": "train",
+    "tinystork/zeseestarstacker": "test",
+    "MForofontov/pyutils-collection": "train",
+    "pypa/pip": "train",
+    "bartoszskarbek-pixel/pdf-renamer": "validation",
+    "tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "aidev-3985713186",
+      "repo": "tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM",
+      "role": "train",
+      "base_commit": "531d5c9d223d40b284342b3ecf937f9bd8788afe",
+      "upstream_head": "aa60097a896e6a6a75390e51867dc0d9456e4c6e",
+      "source_version": "local-Python3.11-backend-resolution",
+      "product_files": [
+        "pyproject.toml"
+      ],
+      "test_files": [],
+      "case_id": "aidev-3985713186-ds2-backend",
+      "case_sha256": "a96b4620c3541ac116c56f96e49cef630d98f2b0c66cdc2a1ffdc78374596e8b",
+      "source_reference_policy": "local_build_backend_resolution_v1",
+      "source_supplied_test_references": false
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "Local pyproject backend import/hook-presence check only; no wheel build, application test or historical CI claim; generation/export prohibited; no label assumed."
+}

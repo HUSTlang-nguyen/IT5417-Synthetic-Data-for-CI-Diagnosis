@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-11-24T11:46:59+07:00",
+  "dataset_id": 3985713186,
+  "repo": "tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM",
+  "proposed_role": "train",
+  "base": "531d5c9d223d40b284342b3ecf937f9bd8788afe",
+  "head": "aa60097a896e6a6a75390e51867dc0d9456e4c6e",
+  "source_projection": {
+    "path": ".cache/dataset-v2-aidev-dependency-screen20/3985713186/source-record.json",
+    "sha256": "e26faf67bdd3417d92e18f107393f0b8c18e3beabc5a7d867030c3cb4334c3e2"
+  },
+  "pr_metadata": {
+    "path": ".cache/dataset-v2-aidev-dependency-screen20/3985713186/pr.json",
+    "sha256": "facb6d38d60e5a0cad33ea56c18fce7ce03108a3ce043717c1fff76b7975a9c3"
+  },
+  "source_blobs": {
+    "base": "82fddb494f4af525dc2043e478c1571b9ab94142",
+    "head": "ad91f2bc9adabdb9e99fad0c776b0de62ab687d0"
+  },
+  "config_files": {
+    "base": {
+      "path": ".cache/dataset-v2-train-config-backend-proof/3985713186/base-pyproject.toml",
+      "sha256": "cd5d4c26b55c6a641081c04d93a6382cf6025bd155b87cd9d69bae427c3b1086"
+    },
+    "head": {
+      "path": ".cache/dataset-v2-train-config-backend-proof/3985713186/head-pyproject.toml",
+      "sha256": "a3607a81bf8aca4c63ac6e8124a5a63c35c45a20c7aabcc063eace2befdad8fb"
+    }
+  },
+  "license": {
+    "spdx": "MIT",
+    "base_path": "LICENSE",
+    "path": ".cache/dataset-v2-train-config-backend-proof/3985713186/pinned-license.txt",
+    "sha256": "338726b6c9e5ba789b18b340cc5314862d3561bc7251029ae64af8796bcceb0c"
+  },
+  "repair_patch": {
+    "path": ".cache/dataset-v2-train-config-backend-proof/3985713186/repair.patch",
+    "sha256": "cbefb6bd68a5229ea537b6a9273f5c79cb306223ace39cb6a690ac0c23e298ab"
+  },
+  "static_observation": "Single config change replaces setuptools.backends._legacy:_Backend with setuptools.build_meta. Invalid backend resolution is a concrete train-only hypothesis, not a measured outcome.",
+  "execution_status": "not_run",
+  "proposed_cause_type": "pending_evidence",
+  "gold": "pending",
+  "human_confirmation": "pending",
+  "training_eligibility": "pending",
+  "qualification": "Pinned source/license/blob proof only. Current Python-only recipe/retrieval cannot yet execute/export config-only case. Requires explicit owned backend-resolution harness and train-calibrated input policy before any source trial/export. No source code imported/executed, Docker or model calls in this metadata stage; no new eligibility identity."
+}

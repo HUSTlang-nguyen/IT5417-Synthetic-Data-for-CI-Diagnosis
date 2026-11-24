@@ -17,7 +17,12 @@ def test_source_compiles():
 
 
 def provenance(case):
-    if (case.get('local_compilation_check') is not True or case.get('source_kind') != 'aidev'
+    return source_provenance(case, POLICY, 'local_compilation_check', 'compilation')
+
+
+def source_provenance(case, policy, flag, prefix):
+    """Bind a declared owned local check to one original AIDev file change."""
+    if (case.get(flag) is not True or case.get('source_kind') != 'aidev'
             or case.get('dataset_protocol') != 'dataset-v2' or case.get('frozen_test_files') != []
             or case.get('experiment_role') not in {'train', 'validation', 'test'}
             or case.get('test_targets') != [case['allowed_file']]
@@ -26,13 +31,13 @@ def provenance(case):
             or case.get('pytest_plugins') or case.get('test_workdir') != 'work'
             or case.get('source_id_matching', 'exact') != 'exact'
             or case.get('test_reference_policy') is not None):
-        raise ValueError('Compilation checks require a separate dependency-free v2 AIDev recipe')
-    info = read_json(cached_file(case['compilation_provenance'], case['compilation_provenance_sha256']))
+        raise ValueError('Owned local checks require a separate dependency-free v2 AIDev recipe')
+    info = read_json(cached_file(case[prefix + '_provenance'], case[prefix + '_provenance_sha256']))
     row = read_json(cached_file(info['source_record'], info['source_record_sha256']))
     pr = read_json(cached_file(info['pr_metadata'], info['pr_metadata_sha256']))
     files = read_json(cached_file(info['pr_files'], info['pr_files_sha256']))
     repo = case['repo_url'].removeprefix('https://github.com/')
-    if (info['policy'] != POLICY or info['source_case_id'] != case['source_case_id']
+    if (info['policy'] != policy or info['source_case_id'] != case['source_case_id']
             or info['source_record_sha256'] != case['source_record_sha256']
             or str(row['id']) != str(case['record_id']) or row['number'] != pr['number']
             or row['repo_url'] != 'https://api.github.com/repos/' + repo

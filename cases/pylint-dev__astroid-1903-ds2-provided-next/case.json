@@ -1,0 +1,72 @@
+{
+  "case_id": "pylint-dev__astroid-1903-ds2-provided-next",
+  "source_case_id": "pylint-dev__astroid-1903",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pylint-dev__astroid-1903",
+  "repo_url": "https://github.com/pylint-dev/astroid",
+  "base": "344454c8ee25d41a4ce12980bc85ba604b7835dd",
+  "head": "base+repair:b9d7375e63295cef6b3b126b842a9ab578db2a32de563212023180695204ef7b",
+  "allowed_file": "astroid/brain/brain_builtin_inference.py",
+  "license": "LGPL-2.1-or-later",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1903-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "b9d7375e63295cef6b3b126b842a9ab578db2a32de563212023180695204ef7b",
+  "test_patch": ".cache/dataset-v2-source/cases/pylint-dev__astroid-1903-ds2-provided-next/test.patch",
+  "test_patch_sha256": "a8b9b8046624844c1e57ee9d0525b8e59cfde919b2455f84f0884ff882d7d3d3",
+  "source_record_sha256": "cf6eaefefbf9cfacc36e4c6ff7f18401ae2625831ebe19e0255c5e1546c63048",
+  "fail_to_pass": [
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\\n"
+  ],
+  "pass_to_pass": [
+    "tests/unittest_brain_builtin.py::BuiltinsTest::test_infer_property",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[numbered-indexes-from-positional]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[named-indexes-from-keyword]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[mixed-indexes-from-mixed]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format[empty-indexes-on-variable]",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_uninferable[\"I",
+    "tests/unittest_brain_builtin.py::TestStringNodes::test_string_format_with_specs"
+  ],
+  "test_targets": [
+    "tests/unittest_brain_builtin.py"
+  ],
+  "frozen_test_files": [
+    "tests/unittest_brain_builtin.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "wrapt==1.15.0",
+    "lazy-object-proxy==1.9.0",
+    "typing_extensions==4.12.2"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pylint-dev__astroid-1866-ds2-wave2",
+  "recipe_template_case_sha256": "65fd0264bd88ecd5cf6e7022b3b39fe45f0b2f338ebe481d6bdb6d52c70fef51",
+  "recipe_template_passing_run": "reproduce-20261123T065418993449Z"
+}

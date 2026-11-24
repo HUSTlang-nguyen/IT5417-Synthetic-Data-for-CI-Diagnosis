@@ -1,0 +1,66 @@
+{
+  "case_id": "pydicom__pydicom-901-ds2-provided-next",
+  "source_case_id": "pydicom__pydicom-901",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-901",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "3746878d8edf1cbda6fbcf35eec69f9ba79301ca",
+  "head": "base+repair:2ccf2ce8d4191710b1132cc14cb13fb078b4e90d9f81bef0d7f478d4938029db",
+  "allowed_file": "pydicom/config.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-901-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "2ccf2ce8d4191710b1132cc14cb13fb078b4e90d9f81bef0d7f478d4938029db",
+  "test_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-901-ds2-provided-next/test.patch",
+  "test_patch_sha256": "66402414b0355e583282282572a5126ab07e5780d56fd76c24972fbc3d096887",
+  "source_record_sha256": "658bc427c038a00dd63d4fc60d8ef41bb92f16843fcc6184e0724c94b4f256a4",
+  "fail_to_pass": [
+    "pydicom/tests/test_config.py::TestDebug::test_default",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_on_handler_null",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_off_handler_null",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_on_handler_stream",
+    "pydicom/tests/test_config.py::TestDebug::test_debug_off_handler_stream"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "pydicom/tests/test_config.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_config.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pydicom__pydicom-1000-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "test_workdir": "work",
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pydicom__pydicom-965-ds2-wave2",
+  "recipe_template_case_sha256": "d5061eb0ebab3301f67b4dfbf412684affc28b20fee1a0e431462fa204025b2d",
+  "recipe_template_passing_run": "reproduce-20261123T215040436537Z"
+}

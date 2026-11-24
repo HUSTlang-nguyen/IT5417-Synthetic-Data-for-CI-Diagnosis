@@ -1,0 +1,175 @@
+{
+  "reviewed_at": "2026-11-24T12:12:39+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "pytest-dev__pytest-9709",
+      "run_id": "reproduce-20261123T221544146671Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T221544146671Z",
+        "evidence_hashes": {
+          "manifest.json": "2ca75e39fdb7908a7e706984cb75d0c2f93e27a752358b743f280d7d71c4a395",
+          "license-evidence.json": "0461de6c1deab23ff0012dbaa00505feb1d50e6e2be7ad7981234d71b38e4fb2",
+          "historical-base.stdout.txt": "9ddcbc68fccfcca23b6b8f0e2b2e45c5cb085d8e49a078f9c2a0de9e616bdabe",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "bed83324f043e90d3a9661d7b501718aeec90d920b7b24a0ffe53562224dd06e",
+          "historical-fixed.stdout.txt": "72faa3e4f20c9c1f276d18fe22486d48480d252cc9d98e4c2ad54fcd76fbe379",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "c6a1243c3bae3f2f2969ad60c9772df34bfbb5ba58761ccf2e67766429439412"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/_pytest/python_api.py",
+            "function": "approx"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The dispatch accepts any Sized Iterable as an ordered sequence, including unordered sets, and fails to recognize an indexed sequence without an explicit __iter__. Approximate pairwise comparison requires a positional interface; the repair checks __getitem__ and rejects unordered Collections.",
+        "evidence_reason": "Saved tests show a custom indexed MySequence compares incorrectly and set input fails to raise TypeError. The repaired same74test nodes have no failures,16non-reference optional skips retained. Existing source test references satisfy their declared statuses.",
+        "limitations": "This is input-interface/type dispatch, not Python syntax or a dependency absence. No stochastic shuffled-set demonstration rerun; observed assertions plus dispatch code support the proposal. Class rename and doc edits are not separate faults.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozenv4 failing source/log only; issue/repair/test patch/reference/assessment excluded. Natural source comments and tracebacks are not automatically answer leakage."
+      },
+      "assessment_sha256": "c417fa60b262d026337e5adc9363911655ce4c9fde9c6cfe6fb42a038db19db9",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pytest-dev__pytest-9709",
+      "manifest_sha256": "cc84786647d214544da72585108771947008994389976144c9db8bfbf42be34e"
+    },
+    {
+      "sample_id": "sympy__sympy-12270",
+      "run_id": "reproduce-20261123T221841883663Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T221841883663Z",
+        "evidence_hashes": {
+          "manifest.json": "5555f975dba23e1af15ac92f21ac9779fca9b51ca8f3a7e0f32cc3b78fd62b76",
+          "license-evidence.json": "1dc81ef2466694f542d80581cc37ccc23383d32ccd5ea3078e2191bebbfe9077",
+          "historical-base.stdout.txt": "a189a72e90169e5e3305cf885401a3646ef6ba56864e6d8902366aef8cf39d4c",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "c5a8d5218e4fe1017964051a248909d8ca9ea1ba57fdcc60d8e3b92b6ec105fe",
+          "historical-fixed.stdout.txt": "1fcc436401d8125152189ffa50c517f81e8dec4c5185b630a5694c9b7d8d41bd",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "ae65007f181c1c97830bd5d4303cbac2829cebb098ef58bb8ec4e560440fb58d"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sympy/core/expr.py",
+            "function": "Expr.extract_multiplicatively"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "For an Add with a non-unit primitive coefficient, the old branch converts it into unevaluated Mul and recursively extracts the requested factor. Negative numerical factor extraction then returns None even for the divisible expression -2-4*I. Repair extracts the numerical coefficient with sign handling before reconstructing the additive quotient.",
+        "evidence_reason": "Saved test_extractions asserts None ==1+2*I for (-2-4*I).extract_multiplicatively(-2), while all72saved fixed tests pass. Existing source method is the causal location, not the test or newly imported helper.",
+        "limitations": "Execution stops at the first new assertion, so later symbolic/vector factor cases are patch/test intent rather than individually observed base failures. No independent algebra experiments or historical CI claim.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozenv4 failing source/log only; issue/repair/test patch/reference/assessment excluded. Natural source comments and tracebacks are not automatically answer leakage."
+      },
+      "assessment_sha256": "7d60d694d6539f5b9d078b27e6405c5bdd29eaf8a948bd861e14dec51d25c748",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sympy__sympy-12270",
+      "manifest_sha256": "b6742b1324694330e7e324d4668d39c861e71afbd702bd89317b265f5c5a9a0d"
+    },
+    {
+      "sample_id": "pydicom__pydicom-1033",
+      "run_id": "reproduce-20261123T222156434630Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T222156434630Z",
+        "evidence_hashes": {
+          "manifest.json": "2105953c1d4cd05c303ff084fde1a5cc373268bcc789f835dab658141feb0c08",
+          "license-evidence.json": "9e6ed4abc38b67c9592c928b4d2d20c8bb412586f450280b25a5eae6d647dfff",
+          "historical-base.stdout.txt": "8e8975f735b37146c57a8d8001ff7ac09b54fb16bdb9383e67438e794700157f",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "5113022de95699afdb071ba1bb8d7e666726ce7ee24f5069d0a4f1bea59f3e86",
+          "historical-fixed.stdout.txt": "082a4870dd5bd6434e23c2af58939ff437b69ffadd8be129a185cc637b772439",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "e12716211e944a6bff979609ebf3f4427bc14b6d223d15609c653244045a3cf0"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "pydicom/dataelem.py",
+            "function": "DataElement.to_json_dict"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Binary JSON serialization checks encoded size against the threshold and raises when no bulk-data callback is provided, instead of using InlineBinary. The conditional wrongly makes the optional callback mandatory for values above the threshold; repair uses BulkDataURI only when a handler exists and otherwise keeps inline data.",
+        "evidence_reason": "Saved JSON conversion/roundtrip/inline-binary tests all reach the explicit TypeError at dataelem.py:339 for missing optional handler. The same21fixed tests pass. Repair changes that conditional and default thresholds, preserving fallback behavior.",
+        "limitations": "The issue includes an older bytes.encode AttributeError, but saved local evidence demonstrates a different explicit TypeError in this pinned base. The proposal covers observed fallback/control-flow failure, not the historical traceback or every changed default/JSON branch. Valid function arguments reach an incorrect branch; exception name alone does not determine API/type.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozenv4 failing source/log only; issue/repair/test patch/reference/assessment excluded. Natural source comments and tracebacks are not automatically answer leakage."
+      },
+      "assessment_sha256": "755d72056c4bbb4f26ed6e5a28591b95ee886a31befa725bd62677cf725fd16b",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydicom__pydicom-1033",
+      "manifest_sha256": "4e139bde07a0bf75c19c4098b2d7984907f83864152e86eb04b85411597d2db4"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8552",
+      "run_id": "reproduce-20261123T221706178766Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Source explicitly requests Napoleon support for the new Receives section, adding a handler and section mapping. Saved tests demand new formatted output from unsupported headings. Exclude feature extension from existing-fault subset; do not label absent new handler as a proven regression.",
+      "evidence_hashes": {
+        "manifest.json": "b7904337b498704414bb0b5a7f852ddeb8de506c2582703c9c5da3bf272b8312",
+        "license-evidence.json": "f20239cbe9cb673d6b4591d05ee9959c631f365a6dcc5d322564395328b4f10e",
+        "historical-base.stdout.txt": "095fca3f4609261e2f723fee6ec9e208f5a7adf1dd0239c89822b6c93151e819",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "a635922be1edce0fbe86c2bcade93ce13f7daee19df15f3f89a55d43f42ca3a1",
+        "historical-fixed.stdout.txt": "70bfdfddad5ab642a8c4f01a857c0ed76643822f2cadac139fde8402a95cc586",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "9a8f0584144c7302952491b666471f8b754a8e5f6d13bf66445ea5d96bba09de"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-7939",
+      "run_id": "reproduce-20261123T222332871363Z",
+      "role": "train",
+      "disposition": "exclude_feature_extension",
+      "reason": "Explicit feature request adds --sw-skip shorthand. Only saved base failure is this new alias being unrecognized, while long-option behavior passes. Other lifecycle/reporting edits are not independently proven faulty by this run. Exclude feature-only evidence rather than label source dependency/configuration.",
+      "evidence_hashes": {
+        "manifest.json": "194de5620444764af1a81dbb9b7f4f556a1fadf78d3121a096864115f9e544bb",
+        "license-evidence.json": "a7c8402b355e8467dae2d0417e20c2aae3e5049ee653fe7dc375c8709b987173",
+        "historical-base.stdout.txt": "0d1e22d1113cf029320dbe152db7efcb3afdd523d7831803f4a59f224735b68e",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "12b24bbbfdfc6ca5a55c3f243b192e73a3d4f9baf2b8b2db4be091a43a67cebb",
+        "historical-fixed.stdout.txt": "3d202ee9f96178442a7b43ead076457f00ee3f54b421ab85d0921f55bba37e06",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "957b937a6a5b8229ec1af4a5005038b43b2a6b4e1e8c8d862274e621ec7cb3da"
+      },
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 3,
+  "feature_excluded": 2,
+  "qualification": "Saved source/diff/issue/JUnit reviewed; full inventory/hash/source-reference validation via real_evidence. No source/Docker/model rerun during review; human/gold/training pending, finalselection separate."
+}

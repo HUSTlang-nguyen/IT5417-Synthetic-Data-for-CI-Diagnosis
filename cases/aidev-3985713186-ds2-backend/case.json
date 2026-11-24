@@ -1,0 +1,53 @@
+{
+  "case_id": "aidev-3985713186-ds2-backend",
+  "source_case_id": "aidev-3985713186",
+  "record_id": 3985713186,
+  "source_kind": "aidev",
+  "dataset": "hao-li/AIDev",
+  "dataset_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "revision": "v5",
+  "table": "all_pull_request",
+  "repo_url": "https://github.com/tjx578/TUYUL-FX-WOLF-15LAYER-SYSTEM",
+  "base": "531d5c9d223d40b284342b3ecf937f9bd8788afe",
+  "head": "aa60097a896e6a6a75390e51867dc0d9456e4c6e",
+  "allowed_file": "pyproject.toml",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "runner_kind": "python-source-v2",
+  "split": "development",
+  "experiment_role": "train",
+  "dataset_protocol": "dataset-v2",
+  "generation_protocol": "single-line-site-v3",
+  "local_configuration_check": true,
+  "test_targets": [
+    "pyproject.toml"
+  ],
+  "frozen_test_files": [],
+  "fail_to_pass": [],
+  "pass_to_pass": [],
+  "source_id_matching": "exact",
+  "repair_patch": ".cache/dataset-v2-source/cases/aidev-3985713186-ds2-backend/repair.patch",
+  "repair_patch_sha256": "cbefb6bd68a5229ea537b6a9273f5c79cb306223ace39cb6a690ac0c23e298ab",
+  "test_patch": ".cache/dataset-v2-source/cases/aidev-3985713186-ds2-backend/test.patch",
+  "test_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "source_record_sha256": "e26faf67bdd3417d92e18f107393f0b8c18e3beabc5a7d867030c3cb4334c3e2",
+  "configuration_provenance": ".cache/dataset-v2-source/cases/aidev-3985713186-ds2-backend/configuration-provenance.json",
+  "configuration_provenance_sha256": "d765a03562d9fd58c52c0c19d3796404f4078e657bd9dfc57dbefd4fe2e62e37",
+  "python_image": "python:3.11-slim-bookworm",
+  "dependencies": [],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_paths": [
+    "."
+  ],
+  "resources": {
+    "memory_mb": 512,
+    "cpus": 1
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Pinned invalid backend reference may fail to resolve while fixed reference exposes build_wheel in the same isolated bootstrap environment. Not a full build/application test or generator seed; input/export remains gated.",
+  "actor": "unknown",
+  "provenance_warning": "Repair PR authorship does not identify who introduced the original fault."
+}

@@ -1,0 +1,86 @@
+{
+  "case_id": "pydata__xarray-3527-ds2-provided-next",
+  "source_case_id": "pydata__xarray-3527",
+  "record_id": "pydata__xarray-3527",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "c0ef2f616e87e9f924425bcd373ac265f14203cb",
+  "head": "base+repair:a52c05eb46dac9ba8a90378480e8e9b2d8daaac491d3183a4ee6abd81f0e58ed",
+  "allowed_file": "xarray/core/groupby.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3527-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "a52c05eb46dac9ba8a90378480e8e9b2d8daaac491d3183a4ee6abd81f0e58ed",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-3527-ds2-provided-next/test.patch",
+  "test_patch_sha256": "54a5dcd55dc8ceea7866aae4a2065ae53c29bfe2645f79a2474ba0ad19250ad0",
+  "source_record_sha256": "72b2ba1f9f6fedd376d73b38b7ac9fb68fafc83f4fced80b1c869178d53b4660",
+  "fail_to_pass": [
+    "xarray/tests/test_groupby.py::test_da_groupby_quantile",
+    "xarray/tests/test_groupby.py::test_ds_groupby_quantile"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_groupby.py::test_consolidate_slices",
+    "xarray/tests/test_groupby.py::test_groupby_dims_property",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_map",
+    "xarray/tests/test_groupby.py::test_multi_index_groupby_sum",
+    "xarray/tests/test_groupby.py::test_groupby_da_datetime",
+    "xarray/tests/test_groupby.py::test_groupby_duplicate_coordinate_labels",
+    "xarray/tests/test_groupby.py::test_groupby_input_mutation",
+    "xarray/tests/test_groupby.py::test_da_groupby_map_func_args",
+    "xarray/tests/test_groupby.py::test_ds_groupby_map_func_args",
+    "xarray/tests/test_groupby.py::test_da_groupby_empty",
+    "xarray/tests/test_groupby.py::test_da_groupby_assign_coords",
+    "xarray/tests/test_groupby.py::test_groupby_repr[obj0-z]",
+    "xarray/tests/test_groupby.py::test_groupby_repr[obj1-z]",
+    "xarray/tests/test_groupby.py::test_groupby_drops_nans",
+    "xarray/tests/test_groupby.py::test_groupby_grouping_errors",
+    "xarray/tests/test_groupby.py::test_groupby_reduce_dimension_error",
+    "xarray/tests/test_groupby.py::test_groupby_bins_timeseries"
+  ],
+  "test_targets": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_groupby.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pydata__xarray-3905-ds2-heldout3",
+  "recipe_template_case_sha256": "6e908eab3f742828e22d5217c3c5b2bcf871cc22e38294294b0d14df01dc0da3",
+  "recipe_template_passing_run": "reproduce-20261123T204558280886Z"
+}

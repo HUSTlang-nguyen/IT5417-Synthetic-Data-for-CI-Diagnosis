@@ -1,0 +1,90 @@
+{
+  "case_id": "pydata__xarray-4750-ds2-provided-next",
+  "source_case_id": "pydata__xarray-4750",
+  "record_id": "pydata__xarray-4750",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "repo_url": "https://github.com/pydata/xarray",
+  "base": "0f1eb96c924bad60ea87edd9139325adabfefa33",
+  "head": "base+repair:574e6098a950b0b88e65fcbe04928ce06fe62e235e3d373190b3d84f1af56149",
+  "allowed_file": "xarray/core/formatting.py",
+  "license": "Apache-2.0",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "test",
+  "runner_kind": "python-source-v2",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "repair_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4750-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "574e6098a950b0b88e65fcbe04928ce06fe62e235e3d373190b3d84f1af56149",
+  "test_patch": ".cache/dataset-v2-source/cases/pydata__xarray-4750-ds2-provided-next/test.patch",
+  "test_patch_sha256": "ecc4c3685fd1bcb71a95b5391e94df360018670a7241e738bcfbf36658bb0f16",
+  "source_record_sha256": "3cf9f51f1c6bf1b859132aaa744ed08daeff10d2f19423dcce221f0b322e42e6",
+  "fail_to_pass": [
+    "xarray/tests/test_formatting.py::test__mapping_repr[50-40-30]",
+    "xarray/tests/test_formatting.py::test__mapping_repr[35-40-30]",
+    "xarray/tests/test_formatting.py::test__mapping_repr[11-40-30]",
+    "xarray/tests/test_formatting.py::test__mapping_repr[1-40-30]"
+  ],
+  "pass_to_pass": [
+    "xarray/tests/test_formatting.py::TestFormatting::test_get_indexer_at_least_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_first_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_last_n_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_last_item",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_item",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_items",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_array_flat",
+    "xarray/tests/test_formatting.py::TestFormatting::test_pretty_print",
+    "xarray/tests/test_formatting.py::TestFormatting::test_maybe_truncate",
+    "xarray/tests/test_formatting.py::TestFormatting::test_format_timestamp_out_of_bounds",
+    "xarray/tests/test_formatting.py::TestFormatting::test_attribute_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_array_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_attrs_repr_with_array",
+    "xarray/tests/test_formatting.py::TestFormatting::test_diff_dataset_repr",
+    "xarray/tests/test_formatting.py::TestFormatting::test_array_repr",
+    "xarray/tests/test_formatting.py::test_inline_variable_array_repr_custom_repr",
+    "xarray/tests/test_formatting.py::test_set_numpy_options",
+    "xarray/tests/test_formatting.py::test_short_numpy_repr",
+    "xarray/tests/test_formatting.py::test_large_array_repr_length"
+  ],
+  "test_targets": [
+    "xarray/tests/test_formatting.py"
+  ],
+  "frozen_test_files": [
+    "xarray/tests/test_formatting.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "dependencies": [
+    "numpy==1.23.0",
+    "packaging==23.1",
+    "pandas==1.5.3",
+    "python-dateutil==2.8.2",
+    "pytz==2023.3",
+    "six==1.16.0",
+    "scipy==1.11.1",
+    "dask==2022.8.1"
+  ],
+  "python_paths": [
+    "."
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "test_workdir": "work",
+  "python_image": "python:3.10-slim-bookworm",
+  "resources": {
+    "memory_mb": 4096,
+    "cpus": 2
+  },
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "dataset_protocol": "dataset-v2",
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "recipe_deviations_from_reference": "Use existing pinned pytest7.4.4/setuptools75.6.0 and pure source imports; do not install project editable; original source/tests unchanged.",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pydata__xarray-3905-ds2-heldout3",
+  "recipe_template_case_sha256": "6e908eab3f742828e22d5217c3c5b2bcf871cc22e38294294b0d14df01dc0da3",
+  "recipe_template_passing_run": "reproduce-20261123T204558280886Z"
+}

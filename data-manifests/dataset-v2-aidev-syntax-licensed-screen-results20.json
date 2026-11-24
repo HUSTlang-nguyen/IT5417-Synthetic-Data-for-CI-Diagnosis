@@ -1,0 +1,689 @@
+{
+  "checked_at": "2026-11-24T12:05:08+07:00",
+  "worklist": "data-manifests/dataset-v2-aidev-syntax-licensed-screen-worklist20.json",
+  "worklist_sha256": "4e3b5fd3338c9b827ee2480771af7ce7be45ac484f683eead1455b4ec52b1840",
+  "requested": 20,
+  "attempted": 20,
+  "unattempted": 0,
+  "results": [
+    {
+      "dataset_id": 3561290605,
+      "repo": "4d4MP/TI_IP_checker-bulk",
+      "pr": 4,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:04:24+07:00",
+      "source_record_sha256": "223f1fd241f001e0d8577a8515aba4727f764c806f48c1fa550fe9f3f4a4d804",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3561290605/repo.json",
+          "sha256": "24023ac2e8bd843f9a9fe1ba935bdfd26e85d57195c9d4e8d3dff98447c2fc92"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3561290605/pr.json",
+          "sha256": "1f1e44c02eae73573cb79453bd2a94aae1e59a8dffdc63ea62532644bf71f7fd"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3561290605/files.json",
+          "sha256": "24115708ffb1b9eb103f02353f5ce3a7772ea20bdc5535f0bbc478a133c21cfb"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "4d4MP/TI_IP_checker-bulk",
+      "base": "dacdfef43c49728e65c97de0b68adeb57ae392c4",
+      "head": "45ba17e3249efb48d7519d52192d175c84403776",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "multi_day_ui.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:26+07:00"
+    },
+    {
+      "dataset_id": 3803310684,
+      "repo": "Abisena/IMOGI-FINANCE",
+      "pr": 272,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:26+07:00",
+      "source_record_sha256": "ce8ca432f025a2580c5cad0c7f886c73244026f5fa19fd9129993a0b8d8134a5",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3803310684/repo.json",
+          "sha256": "9060368cf77b39c97d99fef99cc14b66e008546577a254e8287958d26d807c79"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3803310684/pr.json",
+          "sha256": "3adc535295437bf78f816800a584555a0722a23a1d041c25f715627d1f41aebf"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3803310684/files.json",
+          "sha256": "f84b318228108db4f0177835987493c586893c221b53ec9d532bb239202bc934"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "Abisena/IMOGI-FINANCE",
+      "base": "33838df308ae4b63b0284c17eccaf35fc63fafbc",
+      "head": "97fef44a73bf34cb83a931bcac75073cbd2c6533",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "imogi_finance/imogi_finance/doctype/expense_request/expense_request.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:29+07:00"
+    },
+    {
+      "dataset_id": 3536841981,
+      "repo": "adpena/teadata",
+      "pr": 37,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:29+07:00",
+      "source_record_sha256": "790bcc4d57292f3ac26995eeec0704af81f58400b44278d6f3a0d8230de966b8",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3536841981/repo.json",
+          "sha256": "988ab9447d8735b03f238d4296bcf09f3a83b156b56f84952356609411c1c92a"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3536841981/pr.json",
+          "sha256": "e92c8f762d11973aa8e59b61292523d6f2d633dea47920dcc89b7d6c47bdd94f"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3536841981/files.json",
+          "sha256": "310c509521ad344d37e6f635f1f77ca65be620952aa43d8d73abb907330e6e1d"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "adpena/teadata",
+      "base": "9d4eec6cc8fb7b7a0742404f84aed0a49f8b0127",
+      "head": "35c39ef8fec9dc11e4b4f500e16a672c6c4ab63b",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "teadata/load_data.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:31+07:00"
+    },
+    {
+      "dataset_id": 3147597812,
+      "repo": "adrianwedd/agentic-research-engine",
+      "pr": 83,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T12:04:31+07:00",
+      "source_record_sha256": "6fefd1827b170a81ec5bdb9b997763a73fcad254a55b323e6be7b8689f712c6e",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3147597812/repo.json",
+          "sha256": "f31ac367b5fa2d4a5477a0d36da2177399ddcf479e3da6afc74179d95250beb3"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3147597812/pr.json",
+          "sha256": "864d647eda4a6b6d36f6a44f583accb0ca57aae336978f73003c83631dc4c7c4"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3147597812/files.json",
+          "sha256": "08c22782c7b7acf991870c16dc802bd2cf64d392718b18ab394fc62a26b77fb6"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "adrianwedd/agentic-research-engine",
+      "base": "6e07196957831505b36db5a270cbc8372e5d4916",
+      "head": "5f97b15970c4a6b4a150cd9149764ce7ee214f63",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        ".github/workflows/minimal-ci.yml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:33+07:00"
+    },
+    {
+      "dataset_id": 4023230635,
+      "repo": "AIC-Turku/AIC-Turku-database",
+      "pr": 90,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:04:33+07:00",
+      "source_record_sha256": "98993e713982f310fbcbf18fafca9d480dc4611071b63db903bea280b89b6981",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/4023230635/repo.json",
+          "sha256": "926198d0b9783f4c757d4342ff4d70b65ed509def064960ada9c206ec9d21bca"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/4023230635/pr.json",
+          "sha256": "55f1110eb81272defd1f017b991331a8b5dbb26d8dc63420a66d4e518065ff35"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/4023230635/files.json",
+          "sha256": "4e7cc8dcdfb643fca078bead7909867117a136459518162f067e5032a6b70c99"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "AIC-Turku/AIC-Turku-database",
+      "base": "b6e9b3a0c0634e08c6938c28a0a37b4604a28bc0",
+      "head": "2ac82c48b3cb9c0235bc8d9ab54cca7da8f0a064",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "instruments/Leica Thunder.yaml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:36+07:00"
+    },
+    {
+      "dataset_id": 3424164467,
+      "repo": "Alice-Sabrina-Ivy/asi-letter",
+      "pr": 13,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:36+07:00",
+      "source_record_sha256": "62d89195b87654ca9a3c4c780511f22d28cb30ad80e98cb99df1f0522c4f5d9e",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3424164467/repo.json",
+          "sha256": "0a6867ae0626e80634d374ac604d73635340c7f0162ec8ed7173241acd7fea59"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3424164467/pr.json",
+          "sha256": "4c628322b60f636ba7330f54f01d6d8009db680d67d70a0b833e627d58ae207a"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3424164467/files.json",
+          "sha256": "a409549b68b2120fcecad1c3acb7cb6e607e12d574cd3e6a91a7015d579d2baa"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "Alice-Sabrina-Ivy/asi-letter",
+      "base": "8017dd55e9e7e86297595ecf45191d47120acd4d",
+      "head": "7e405a5a29d861e2b5dd06e4c14fb86146569f9e",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        ".github/workflows/ots-append.yml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:37+07:00"
+    },
+    {
+      "dataset_id": 3987537006,
+      "repo": "AllanYiin/Amon",
+      "pr": 254,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T12:04:37+07:00",
+      "source_record_sha256": "6ae8df72c935dc8605b245f3cd31c458973172baed571fe7563ca0db1bf1b58e",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3987537006/repo.json",
+          "sha256": "287c997165d2dfada1dc08ef68857f7621301b6f55d4e353e5598c9c92b02cae"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3987537006/pr.json",
+          "sha256": "efa0383f5f9c6d91e2252fc80dd5f82598d47305a1c7bcc564024d4fa891b503"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3987537006/files.json",
+          "sha256": "cc1de94f18c6e2c6240a7054d6c84340707d8114f36864a9fd45ae15e71545e8"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "AllanYiin/Amon",
+      "base": "1c30f460338fc2dc409b1367d478cb4d12f57b8f",
+      "head": "a6956c9593ed840d03310b97e2e4af4ffb9aea79",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "src/amon/core.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:39+07:00"
+    },
+    {
+      "dataset_id": 3750825784,
+      "repo": "AllanYiin/SlideManager",
+      "pr": 60,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:39+07:00",
+      "source_record_sha256": "5ba56eac9cc5030c104b8630f1ff50df6b5c16ec1d9b6242e8ae94ddf4f9de19",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3750825784/repo.json",
+          "sha256": "a999a642ea9989c472d9e614a4f69860adc94efbef62a24a250c7fad22ec7cec"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3750825784/pr.json",
+          "sha256": "9d54bc459911866f472c9f900ae4900d65a11d96fe653ab577df1a3e2b4a1be4"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3750825784/files.json",
+          "sha256": "e00b51f50353dbb0086ab8fd481330dd62b580efd123815e5d08d2962f4717b5"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "AllanYiin/SlideManager",
+      "base": "6f33d61759078af8eb7a30f70d7dce4d7ee734a3",
+      "head": "3e1e6bba007decf00bc91f95a0505c5d1c627982",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "src/app/services/index_service.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:42+07:00"
+    },
+    {
+      "dataset_id": 3433516207,
+      "repo": "Alphonsus411/pCobra",
+      "pr": 1220,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:04:42+07:00",
+      "source_record_sha256": "3608820f7505138fa8c36119fc9e49e23057742e77a16233eafeab5557172a2b",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3433516207/repo.json",
+          "sha256": "fa544f6b5bf5c2b3cad691416dd47609a3058052dbaed4c5c1d556b21ce1aee1"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3433516207/pr.json",
+          "sha256": "f304713961b1abc1b9b4435ce360aed13eec8bf6d50bbb9b6f6738e50b20c9c9"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3433516207/files.json",
+          "sha256": "83e8cc6765e3fe000a4622054266d2f04337bd9c687a451d237c86a929378f99"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "Alphonsus411/pCobra",
+      "base": "c8251041546e49b74a329aa3734d61b8505a0a79",
+      "head": "d048b3f5c3b988a09ca24ef1230ee260c75aacf5",
+      "changed_files": 8,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "docs/MANUAL_COBRA.md",
+        "docs/README.en.md",
+        "src/pcobra/core/nativos/texto.js",
+        "src/pcobra/corelibs/__init__.py",
+        "src/pcobra/corelibs/texto.py",
+        "src/pcobra/standard_library/__init__.py",
+        "src/pcobra/standard_library/texto.py",
+        "tests/unit/test_standard_library_texto.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:45+07:00"
+    },
+    {
+      "dataset_id": 3673689632,
+      "repo": "animicaorg/all",
+      "pr": 58,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:45+07:00",
+      "source_record_sha256": "926b81bac40b08155e2ed9f008d3370a015870cfa1976696439e332711ce82cf",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3673689632/repo.json",
+          "sha256": "e6205da83b3664089055767c4701e98199b698d09fa5b86a36826bfaa8ac8056"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3673689632/pr.json",
+          "sha256": "740e94951a6092b169d55f6c412c4f91c025de84b5efb742b5e04f3aa91b768a"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3673689632/files.json",
+          "sha256": "cf6bae2c6907bf688194521f96ca9184b307c45bafeab4603d1325225284cc07"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "animicaorg/all",
+      "base": "a9c2b5550731162e6eb8a3395dad657a26f01757",
+      "head": "7ac365c0030f30930b9c8827467e80b5acbeffd6",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "tests/devnet/docker-compose.yml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:47+07:00"
+    },
+    {
+      "dataset_id": 3210395557,
+      "repo": "Aries-Serpent/gh_COPILOT",
+      "pr": 70,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T12:04:47+07:00",
+      "source_record_sha256": "f6b588932131a7609dab40456df6e75d9466342c4ecfb16775c2698fcdff1462",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3210395557/repo.json",
+          "sha256": "7d0bc2a880c26add0dfecbcb9e13ac0d5c00b9f2b2fbb7bfdaa31ae52949ffd9"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3210395557/pr.json",
+          "sha256": "407a7893350159d36f3afc53a9f969a1d569792faafe3e9a8e06a1b63e1f0aae"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3210395557/files.json",
+          "sha256": "e99f6c1777f5fe91a30917039135b5c07f7156bba7a262ed7d4febb6162d3aa8"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "Aries-Serpent/gh_COPILOT",
+      "base": "7fa643bcaf52c49f881ed0ee3289b90939f1f2d1",
+      "head": "76144ba8c7a49a491be8d1e38bf356080037e97f",
+      "changed_files": 7,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "copilot/core/enterprise_unicode_compatibility_fix.py",
+        "enterprise_unicode_compatibility_fix.py",
+        "scripts/deployment/enterprise_unicode_compatibility_fix.py",
+        "scripts/deployment/unicode_character_cleaner.py",
+        "scripts/deployment/web_gui_documentation_generator.py",
+        "scripts/unicode_character_cleaner.py",
+        "scripts/web_gui_documentation_generator.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:49+07:00"
+    },
+    {
+      "dataset_id": 3134162238,
+      "repo": "AutomationOptimization/tsce_demo",
+      "pr": 75,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:49+07:00",
+      "source_record_sha256": "9311f31b31cdfb92112ab0baab6f0b75984a48b25ce155489b5ad2463d1e81b4",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3134162238/repo.json",
+          "sha256": "44a70258ed5d5f5a5f7703b0418930a6589813abbd30010a1e8385377c601198"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3134162238/pr.json",
+          "sha256": "8e83fc198d0947eedcf737c764703e7bb964af7981edbe5bc19ab3d2c3a7716b"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3134162238/files.json",
+          "sha256": "2901127b35a29be9436bf7e2bca96a44edbf8c9667819184d0d9d8231ec317bd"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "AutomationOptimization/tsce_demo",
+      "base": "6452a3377a913904cc6b2852ff501fd4c373d79c",
+      "head": "12afed284dd68605ec4349de72ead88cac650db0",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "agents/orchestrator.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:53+07:00"
+    },
+    {
+      "dataset_id": 3245605158,
+      "repo": "ayjays132/chain_of_thought_wrapper",
+      "pr": 18,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:04:53+07:00",
+      "source_record_sha256": "8de77df0f0b91c277e6af675e1b0e14921139a28826922c103fd0b2f8228f9bd",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3245605158/repo.json",
+          "sha256": "f71d6103ab664eb8d133dfc9785a3adb618a0a60e4c94a32c4b8732c46d4b8c6"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3245605158/pr.json",
+          "sha256": "3139c0dc483e499e6cfe96f0249d6b7e2b141913ea8aa17dec31d0bc57d93d67"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3245605158/files.json",
+          "sha256": "ca281665f1eb86cf9304ceda9654ac9829bad5d6a025084021535525994dbc2a"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "ayjays132/chain_of_thought_wrapper",
+      "base": "e6122077cd3e7df784cc4c7f6c7e42c520d502fd",
+      "head": "01b4777b09ab5c6c1001f5bad9ed2de275bd840a",
+      "changed_files": 2,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "chain_of_thought_gui.py",
+        "tests/test_device_selection.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:55+07:00"
+    },
+    {
+      "dataset_id": 3140147419,
+      "repo": "b-vitamins/dotfiles",
+      "pr": 24,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:55+07:00",
+      "source_record_sha256": "63528910d1df8a8e3d136cd6dbd695db830fa59710592f84236d500a3586ad71",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3140147419/repo.json",
+          "sha256": "8c41227dd7d7653691e0d6c9b528554633c8669bde017c6c44e7fbeeadc82742"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3140147419/pr.json",
+          "sha256": "f920645248c27f93ee17799b0fda1c09cc6b47831f74451efaf21e38c8e94cfa"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3140147419/files.json",
+          "sha256": "5d513c9c9af4870e8aaf7fba05a6da2c21f6c866a4a7e05737d014bde6f596b3"
+        }
+      },
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "b-vitamins/dotfiles",
+      "base": "b3a244c4c4c212c543eb58dcda0b82c2bbffe4d2",
+      "head": "cc9ddf712166c304a29ed08075b5bb2717310b86",
+      "changed_files": 4,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "CHANGELOG.md",
+        "emacs/lisp/bv-lang-rust.el",
+        "emacs/lisp/bv-navigation.el",
+        "emacs/lisp/bv-writing.el"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:04:57+07:00"
+    },
+    {
+      "dataset_id": 3669116927,
+      "repo": "BA-CalderonMorales/my-life-as-a-dev",
+      "pr": 91,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:04:57+07:00",
+      "source_record_sha256": "c8e51a1a7899fb3eb352e5ba2a85de4e5232d2b454652c60bef0e3a4c794827b",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3669116927/repo.json",
+          "sha256": "4e150fa1c0f15c39082f8136acfc1adf1eb3280a05ad660ec04cb27d81ffd59f"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3669116927/pr.json",
+          "sha256": "484571a3e26f0bf99fec61c25bf684f2bd9871ceac5e1495b8cca0c1c83ea5a3"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "BA-CalderonMorales/my-life-as-a-dev",
+      "base": "2721cf6264930d1a80ca53ed615dbc47db133432",
+      "head": "d3d9f1d3b0da1b163838cd278041873c0f60ea58",
+      "changed_files": 14,
+      "merged_timestamp_matches": true,
+      "decision": "defer_large_patch",
+      "finished_at": "2026-11-24T12:04:58+07:00"
+    },
+    {
+      "dataset_id": 3666833973,
+      "repo": "bairesearch/GIAANNpy",
+      "pr": 2,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T12:04:58+07:00",
+      "source_record_sha256": "a7f5713c490aafa8915d30222254bf231f136b08e326c0107a949a4382a160e9",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3666833973/repo.json",
+          "sha256": "1abf9b82d752abd713db0b70257bc2a48e43ae5adfb9027bb706da72817a02e3"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3666833973/pr.json",
+          "sha256": "fd60ba7b227464d814f940f84be88248c8cfa2e51ebbf52b550129954224de07"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3666833973/files.json",
+          "sha256": "5523c88b4531f74694245e5e3ba909510e6d57106b2746e4bbac75a3fb20cb65"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "bairesearch/GIAANNpy",
+      "base": "875f5e29da6eb5563a3cfa7f81a600ce6abd5fff",
+      "head": "d1b33f9373c98d17d78dc6010fbe569b2121dc2e",
+      "changed_files": 2,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "dev/beam_search_review.md",
+        "proto/GIAANNproto_predictiveNetworkBeamSearch.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:05:00+07:00"
+    },
+    {
+      "dataset_id": 3647749931,
+      "repo": "balazsbme/keep-the-future-human-survival-rpg",
+      "pr": 93,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:05:00+07:00",
+      "source_record_sha256": "2c57925048c05656f266b6e122b395e753f2536af3507900b77c5548b32860e4",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3647749931/repo.json",
+          "sha256": "a3c14025c50f1d9ac3d4714393de585d031333630c2a276e6663b2393bdea5af"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3647749931/pr.json",
+          "sha256": "7f596b306efa8732a4f2f6f8baec704f06cfcd60990455fa007c7ab04fcb4106"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3647749931/files.json",
+          "sha256": "a5b158383278b6ca936b4b388637d9b8a49820ff98cfb56d3994785414dd4d49"
+        }
+      },
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "balazsbme/keep-the-future-human-survival-rpg",
+      "base": "a97d935759c161d47bf258743a01b9bd0eb5a402",
+      "head": "f7ac8938478f0f86002c38edc4c91727ae4989f1",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "rpg/assessment_agent.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:05:03+07:00"
+    },
+    {
+      "dataset_id": 3940551991,
+      "repo": "basebase-ai/basebase",
+      "pr": 277,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:05:03+07:00",
+      "source_record_sha256": "da186fe98a68e77b174d6921af3f6c19f0e6f5234a39bccc86799835cca2fd93",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3940551991/repo.json",
+          "sha256": "ba32918914fa4152bcdfb93a379c0000b691a303da80a925a9f36177135add34"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3940551991/pr.json",
+          "sha256": "a5ced7c8212e3df9028cb4e2cd677ab808732b0a483de353443f6075e20b7b14"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3940551991/files.json",
+          "sha256": "306374df2e2e24f5aa942d79520482c2205364b885b61d17dcb3a27643be4a1d"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "basebase-ai/basebase",
+      "base": "0e30a437b0c5f24599ccea79bc8ad670bbfd1070",
+      "head": "c8b4ee8a620f8f51d2390706b337e227b321b21f",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "backend/agents/tools.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:05:05+07:00"
+    },
+    {
+      "dataset_id": 3329312238,
+      "repo": "Bigdaddy1990/pawcontrol",
+      "pr": 291,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:05:05+07:00",
+      "source_record_sha256": "c3cec1ad820e5c32a53395f6dae97b2b4f0c113016cae5077368cb80b72c1b56",
+      "artifacts": {},
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 404
+      },
+      "finished_at": "2026-11-24T12:05:06+07:00"
+    },
+    {
+      "dataset_id": 3126014261,
+      "repo": "BioTRaX/NiceGrow",
+      "pr": 72,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:05:06+07:00",
+      "source_record_sha256": "9d01fdb428a162494460f21ce6807680e490e867280b5d53a29c3baaeef82915",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3126014261/repo.json",
+          "sha256": "6d3095dc901b485ca1dde13a789fc4d5fd2c73c323e1481bbf9c3a4f1533bb9d"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3126014261/pr.json",
+          "sha256": "3aca80910806e2363eb7b2b3662953de64dfb6e259ba41ef19fe13b1e66404e5"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-syntax-licensed-screen20/3126014261/files.json",
+          "sha256": "3cf248983411c2e5b21be4e5c351d6562404258c2cb22c27929895e99870370b"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "BioTRaX/NiceGrow",
+      "base": "ce4559d8630e30fd5f8c3100dc46128d6c3cdd4c",
+      "head": "a0c6da541a3b8fa611ea781033aaa63383b29928",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "Sandy bot/sandybot/database.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:05:08+07:00"
+    }
+  ],
+  "decision_counts": {
+    "candidate_requires_causal_harness_and_pinned_license_review": 18,
+    "defer_large_patch": 1,
+    "metadata_http_error": 1
+  },
+  "stop": null,
+  "model_calls": 0,
+  "qualification": "Provenance/patch metadata only; syntax title signals do not establish a syntax fault label. No execution, pinned-base license approval, gold labels or historical CI claims."
+}

@@ -270,4 +270,14 @@ Runtime source bytes are preserved in ignored hash-addressed implementation snap
 
 ### Declared legacy setuptools runtime mode
 
+For the distinct configuration-only mode, see the local backend section below.
+
 Optional boolean `stdlib_distutils` adds only `SETUPTOOLS_USE_DISTUTILS=stdlib` to the constrained test container. Default recipes and build dependency pins remain unchanged; arbitrary environment variables are not accepted through this field. Supported Python images are3.9–3.11, which retain stdlib distutils. This is a source-specific legacy reconstruction setting, not a host/global configuration or a fault label. The whole recipe already enters context/image/gate identity, so this setting cannot reuse a different recipe's passing gate. Pip9050's saved import-order failure motivates it; [pinned setuptools75.6 source](https://raw.githubusercontent.com/pypa/setuptools/v75.6.0/_distutils_hack/__init__.py) and [upstream documentation](https://setuptools.pypa.io/en/stable/deprecated/distutils-legacy.html) describe the switch. Tests cover strict boolean validation, default absence, explicit opt-in, cleanup and unchanged isolation flags.
+
+### Declared local build-backend resolution
+
+`local_configuration_check: true` declares `local_build_backend_resolution_v1`, limited to one modified root `pyproject.toml` in a pinned v2 AIDev PR, Python3.11 and the existing bootstrap environment. It reuses the compilation mode's original-row/PR/commit/file/blob provenance checks; the separate configuration harness has its own immutable bytes, gate and artifact hashes. No project install, extra dependencies/plugins/tools, source Python paths or writable source directories are accepted.
+
+The owned harness parses TOML and resolves the declared `module[:object]` backend in an isolated interpreter, then checks that `build_wheel` is callable. It never calls the hook or imports application code from the source tree. Nonempty `backend-path` is unsupported. This follows the lookup form in [PEP517](https://peps.python.org/pep-0517/#source-trees), but is only an import/hook-presence smoke, not a complete PEP517 build, application regression suite or historical CI result. Dependency requirements beyond the pinned bootstrap are not automatically installed or declared validated.
+
+Existing Docker restrictions, separate pytest root/confcutdir, `-I/-B`, cleanup, time and storage guards apply. Source/backend imports happen only inside Docker. Generation rejects this diagnosis-only mode before model or runtime calls and retains all three attempts in its error denominator. `real_evidence` checks both source inventories, original blobs, harness and saved local test nodes. Export is refused while frozen input v4 only retrieves Python; a separately calibrated/frozen configuration input policy is required. Existing v4 source/budget/helper bindings and earlier exports remain unchanged.

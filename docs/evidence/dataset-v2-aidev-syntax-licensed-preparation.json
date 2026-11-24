@@ -1,0 +1,99 @@
+{
+  "recorded_at": "2026-11-24T12:08:10+07:00",
+  "outcomes": [
+    {
+      "source_case_id": "aidev-3561290605",
+      "repo": "4d4MP/TI_IP_checker-bulk",
+      "role": "validation",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3561290605-ds2-syntax-licensed",
+      "source_blobs": {
+        "base": "d515191b4da1add67a3ed904b277c71f995b5e7a",
+        "head": "f73ba67e97560a2cfc075fe890d34d295ad4ba7f"
+      }
+    },
+    {
+      "source_case_id": "aidev-3750825784",
+      "repo": "AllanYiin/SlideManager",
+      "role": "train",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3750825784-ds2-syntax-licensed",
+      "source_blobs": {
+        "base": "b5da2a2e91cc3d8d67628a45076a22a09ddadc16",
+        "head": "688211ebcac68afa30ca69d974f8f5ba29f8b071"
+      }
+    },
+    {
+      "source_case_id": "aidev-3647749931",
+      "repo": "balazsbme/keep-the-future-human-survival-rpg",
+      "role": "train",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3647749931-ds2-syntax-licensed",
+      "source_blobs": {
+        "base": "6556b9a2370cbbbefd08a0db6b78bd215770aa7f",
+        "head": "80c015e80d96ce79127c702a0368430a61c711f1"
+      }
+    },
+    {
+      "source_case_id": "aidev-3126014261",
+      "repo": "BioTRaX/NiceGrow",
+      "role": "train",
+      "metadata_only": true,
+      "status": "preparation_failed_no_trial",
+      "error": "ValueError('Pinned source license missing; no trial')"
+    },
+    {
+      "source_case_id": "aidev-3803310684",
+      "repo": "Abisena/IMOGI-FINANCE",
+      "role": "train",
+      "metadata_only": true,
+      "status": "preparation_failed_no_trial",
+      "error": "ValueError('Pinned source license missing; no trial')"
+    },
+    {
+      "source_case_id": "aidev-3987537006",
+      "repo": "AllanYiin/Amon",
+      "role": "test",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3987537006-ds2-syntax-licensed",
+      "source_blobs": {
+        "base": "dbbb8a260bf09427d3ca7407679406ba73db78f3",
+        "head": "ebddde55194e577c87e08af471119f032866b1d8"
+      }
+    },
+    {
+      "source_case_id": "aidev-3940551991",
+      "repo": "basebase-ai/basebase",
+      "role": "validation",
+      "metadata_only": true,
+      "status": "preparation_failed_no_trial",
+      "error": "ValueError('Pinned source license missing; no trial')"
+    },
+    {
+      "source_case_id": "aidev-3134162238",
+      "repo": "AutomationOptimization/tsce_demo",
+      "role": "train",
+      "metadata_only": true,
+      "status": "prepared",
+      "case_id": "aidev-3134162238-ds2-syntax-licensed",
+      "source_blobs": {
+        "base": "423d3809944f867b8cb682565354fa2f34f8419b",
+        "head": "b457180b54e87f5424fc55f551b7597800c8b912"
+      }
+    },
+    {
+      "source_case_id": "aidev-3536841981",
+      "repo": "adpena/teadata",
+      "role": "train",
+      "metadata_only": true,
+      "status": "preparation_failed_no_trial",
+      "error": "ValueError('Pinned license family not confirmed')"
+    }
+  ],
+  "prepared": 5,
+  "qualification": "No source compiled/executed during preparation; no new eligibility identities or trial success asserted."
+}

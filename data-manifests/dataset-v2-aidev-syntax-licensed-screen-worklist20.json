@@ -1,0 +1,291 @@
+{
+  "created_at": "2026-11-24T12:03:48+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "discovery": {
+    "path": "data-manifests/dataset-v2-aidev-licensed-python-discovery.json",
+    "sha256": "acc9dbe7782087916719d28b267477150ff8eabd9472ba139baf3b8335aeda98"
+  },
+  "selected": [
+    {
+      "id": 3561290605,
+      "row_idx": 1193,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/4d4MP/TI_IP_checker-bulk",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in multi day UI",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3803310684,
+      "row_idx": 1063,
+      "number": 272,
+      "repo_url": "https://api.github.com/repos/Abisena/IMOGI-FINANCE",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Normalize indentation in ExpenseRequest.before_submit and remove duplicate approver validation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3536841981,
+      "row_idx": 1085,
+      "number": 37,
+      "repo_url": "https://api.github.com/repos/adpena/teadata",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix campus creation loop indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3147597812,
+      "row_idx": 493,
+      "number": 83,
+      "repo_url": "https://api.github.com/repos/adrianwedd/agentic-research-engine",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix minimal CI workflow indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4023230635,
+      "row_idx": 837,
+      "number": 90,
+      "repo_url": "https://api.github.com/repos/AIC-Turku/AIC-Turku-database",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Leica Thunder YAML indentation for objectives block",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3424164467,
+      "row_idx": 37,
+      "number": 13,
+      "repo_url": "https://api.github.com/repos/Alice-Sabrina-Ivy/asi-letter",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix YAML indentation in ots-append workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3987537006,
+      "row_idx": 1346,
+      "number": 254,
+      "repo_url": "https://api.github.com/repos/AllanYiin/Amon",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "fix(core): remove broken MCP log call causing SyntaxError",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3750825784,
+      "row_idx": 158,
+      "number": 60,
+      "repo_url": "https://api.github.com/repos/AllanYiin/SlideManager",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix f-string syntax error in index service",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3433516207,
+      "row_idx": 75,
+      "number": 1220,
+      "repo_url": "https://api.github.com/repos/Alphonsus411/pCobra",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "feat: add text indentation and wrapping helpers",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3673689632,
+      "row_idx": 390,
+      "number": 58,
+      "repo_url": "https://api.github.com/repos/animicaorg/all",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix devnet compose heredoc indentation",
+      "license_hint_not_pinned_proof": "OFL-1.1",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3210395557,
+      "row_idx": 1374,
+      "number": 70,
+      "repo_url": "https://api.github.com/repos/Aries-Serpent/gh_COPILOT",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Resolve syntax errors and fix unicode mappings",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3134162238,
+      "row_idx": 170,
+      "number": 75,
+      "repo_url": "https://api.github.com/repos/AutomationOptimization/tsce_demo",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax errors in generated hypothesis scripts",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3245605158,
+      "row_idx": 86,
+      "number": 18,
+      "repo_url": "https://api.github.com/repos/ayjays132/chain_of_thought_wrapper",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation error in GUI",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3140147419,
+      "row_idx": 92,
+      "number": 24,
+      "repo_url": "https://api.github.com/repos/b-vitamins/dotfiles",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Emacs module syntax errors",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3669116927,
+      "row_idx": 272,
+      "number": 91,
+      "repo_url": "https://api.github.com/repos/BA-CalderonMorales/my-life-as-a-dev",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Cleanup: Fix bullet list indentation in docs pages",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3666833973,
+      "row_idx": 63,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/bairesearch/GIAANNpy",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Use tabs for beam search indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3647749931,
+      "row_idx": 1367,
+      "number": 93,
+      "repo_url": "https://api.github.com/repos/balazsbme/keep-the-future-human-survival-rpg",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix baseline context indentation",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3940551991,
+      "row_idx": 297,
+      "number": 277,
+      "repo_url": "https://api.github.com/repos/basebase-ai/basebase",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix SyntaxError in agents tools logging helper",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3329312238,
+      "row_idx": 36,
+      "number": 291,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in speed calculation and stub HA util for tests",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3126014261,
+      "row_idx": 1126,
+      "number": 72,
+      "repo_url": "https://api.github.com/repos/BioTRaX/NiceGrow",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in database function",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    }
+  ],
+  "qualification": "Frozen title-driven provenance screen only, one source per previously unadmitted repo; no causal labels or execution eligibility implied. Roles proposed before outcomes, pending canonical/family checks."
+}

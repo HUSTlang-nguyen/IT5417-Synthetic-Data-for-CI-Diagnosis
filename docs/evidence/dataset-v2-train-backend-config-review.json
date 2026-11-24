@@ -1,0 +1,58 @@
+{
+  "reviewed_at": "2026-11-24T12:06:24+07:00",
+  "sample_id": "aidev-3985713186",
+  "run_id": "reproduce-20261124T050236427703Z",
+  "role": "train",
+  "source_case": "aidev-3985713186-ds2-backend",
+  "assessment": {
+    "run_id": "reproduce-20261124T050236427703Z",
+    "evidence_hashes": {
+      "manifest.json": "676a20f9a87bc5f86787036aa2f5cec6bf95d0c592e0f312c294096650a93679",
+      "license-evidence.json": "9265c37e25abd549af2edc35857240a6f3640555d4cae26d9dfa62ec7c6ac17b",
+      "configuration-harness.json": "b95456196ff9c4d83a35ce31762e6453f9f722f06cb75cb70caa375e5c1d8983",
+      "historical-base.stdout.txt": "041eda9a4302cf11a7bc1c04682ae7d856af349af1c4689b701caf09c8082abd",
+      "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical-base.junit.xml": "97e8956f9c5a35c3a229c013fe2e2ff9e88ca057192d7848ac545ed7cba19a94",
+      "historical-fixed.stdout.txt": "dabdd4bcd3a71e1bc8b0cdb8e10b0799543fad24f9d248ac0849e48f054b47c3",
+      "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical-fixed.junit.xml": "0696b0a0c815d4ee697cad52ae2d2ec11d79a35060c37093b67253cc33366c08"
+    },
+    "quality": "silver",
+    "disposition": "include",
+    "cause_type": "dependency/configuration",
+    "confidence": "high",
+    "locations": [
+      {
+        "file": "pyproject.toml",
+        "function": "<module>"
+      }
+    ],
+    "mechanism": "The build-system backend setting names setuptools.backends._legacy:_Backend, whose module cannot be imported from the pinned setuptools75.6.0 environment. Changing this configuration to setuptools.build_meta resolves an installed backend with a callable build_wheel hook.",
+    "evidence_reason": "Same owned isolated harness reports ModuleNotFoundError for setuptools.backends on base and one passing backend-resolution test on fixed. Only pyproject.toml:3 changes between pinned product revisions; full source/test inventories, Git blobs, local nodes, log hashes and cleanup checked.",
+    "limitations": "This is a local import/hook-presence smoke, not a wheel build, project installation, application test, repeated failure verification or historical CI result. It does not validate all declared build requirements/versions. <module> denotes TOML configuration scope, not a Python function. No actor attribution or functional generator seed eligibility.",
+    "label_source": "code_patch_and_saved_local_backend_resolution_review",
+    "human_confirmation": "pending",
+    "gold": "pending",
+    "training_eligibility": "pending",
+    "actor": "unknown",
+    "input_leakage_review": "No diagnosis input exported. Frozen v4 retrieves Python only; separate train-calibrated configuration input policy required. Repair, PR title and assessment must stay outside model input."
+  },
+  "assessment_path": ".cache/dataset-v2/assessments/aidev-3985713186.json",
+  "assessment_sha256": "fc1a6aa70c272c6b0d70c695c0489e6478ac951b78a5f426d4af1ceaa60b7bfb",
+  "evidence_hashes": {
+    "manifest.json": "676a20f9a87bc5f86787036aa2f5cec6bf95d0c592e0f312c294096650a93679",
+    "license-evidence.json": "9265c37e25abd549af2edc35857240a6f3640555d4cae26d9dfa62ec7c6ac17b",
+    "configuration-harness.json": "b95456196ff9c4d83a35ce31762e6453f9f722f06cb75cb70caa375e5c1d8983",
+    "historical-base.stdout.txt": "041eda9a4302cf11a7bc1c04682ae7d856af349af1c4689b701caf09c8082abd",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "97e8956f9c5a35c3a229c013fe2e2ff9e88ca057192d7848ac545ed7cba19a94",
+    "historical-fixed.stdout.txt": "dabdd4bcd3a71e1bc8b0cdb8e10b0799543fad24f9d248ac0849e48f054b47c3",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "0696b0a0c815d4ee697cad52ae2d2ec11d79a35060c37093b67253cc33366c08"
+  },
+  "execution_condition": "Owned local backend import/hook-presence failure on base and pass on fixed; no full build or upstream tests",
+  "export_status": "blocked_pending_separate_frozen_config_input_policy",
+  "new_export_count": 0,
+  "generator_seed_eligible": false,
+  "qualification": "Saved evidence review only; no Docker/model/source rerun. Cause proposal is separate from user/gold/training confirmation; no prepared input claims."
+}

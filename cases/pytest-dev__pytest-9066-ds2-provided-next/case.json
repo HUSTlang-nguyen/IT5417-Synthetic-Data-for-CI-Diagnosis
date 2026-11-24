@@ -1,0 +1,101 @@
+{
+  "case_id": "pytest-dev__pytest-9066-ds2-provided-next",
+  "source_case_id": "pytest-dev__pytest-9066",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pytest-dev__pytest-9066",
+  "repo_url": "https://github.com/pytest-dev/pytest",
+  "base": "20863c3a0c92501e7f55d747a33797f23e56c818",
+  "head": "base+repair:9a39d2d78f16c684f46f9718852872dce4f5b480bbde21a21b0134826f9278e2",
+  "allowed_file": "src/_pytest/nodes.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-9066-ds2-provided-next/repair.patch",
+  "repair_patch_sha256": "9a39d2d78f16c684f46f9718852872dce4f5b480bbde21a21b0134826f9278e2",
+  "test_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-9066-ds2-provided-next/test.patch",
+  "test_patch_sha256": "636b794d3d26dbcc2960bdf87de7869a851d25e74a40ea7d5b2a0f29a4f06d9e",
+  "source_record_sha256": "686e7e6e5b0b3753dd4769fa7f375b058a5ce435c9f810c084521783e8dc1c39",
+  "fail_to_pass": [
+    "testing/test_nodes.py::test_node_direct_construction_deprecated"
+  ],
+  "pass_to_pass": [
+    "testing/test_nodes.py::test_iterparentnodeids[-expected0]",
+    "testing/test_nodes.py::test_iterparentnodeids[a-expected1]",
+    "testing/test_nodes.py::test_iterparentnodeids[aa/b-expected2]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c-expected3]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/bbb/c::D-expected4]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c::D::eee-expected5]",
+    "testing/test_nodes.py::test_iterparentnodeids[::xx-expected6]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b/c::D/d::e-expected7]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b::D:e:f::g-expected8]",
+    "testing/test_nodes.py::test_iterparentnodeids[a/b::c/d::e[/test]-expected9]",
+    "testing/test_nodes.py::test_node_from_parent_disallowed_arguments",
+    "testing/test_nodes.py::test_subclassing_both_item_and_collector_deprecated",
+    "testing/test_nodes.py::test__check_initialpaths_for_relpath",
+    "testing/test_nodes.py::test_node_warn_is_no_longer_only_pytest_warnings[DeprecationWarning-deprecated]",
+    "testing/test_nodes.py::test_node_warn_is_no_longer_only_pytest_warnings[PytestWarning-pytest]",
+    "testing/test_nodes.py::test_node_warning_enforces_warning_types",
+    "testing/test_nodes.py::test_failure_with_changed_cwd"
+  ],
+  "test_targets": [
+    "testing/test_nodes.py"
+  ],
+  "frozen_test_files": [
+    "testing/test_nodes.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "7.4.4",
+  "pytest_plugins": [
+    "pytester"
+  ],
+  "install_project": true,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dependencies": [
+    "py==1.11.0",
+    "attrs==21.4.0",
+    "iniconfig==2.0.0",
+    "packaging==23.2",
+    "tomli==2.0.1",
+    "exceptiongroup==1.1.3",
+    "typing_extensions==4.12.2",
+    "pluggy==1.6.0",
+    "more-itertools==9.1.0",
+    "atomicwrites==1.4.1",
+    "wcwidth==0.2.13",
+    "mock==5.1.0",
+    "setuptools-scm==8.1.0"
+  ],
+  "environment_parent_case_id": "pytest-dev__pytest-8861-ds1-eval",
+  "environment_revision": "actual-git-scm-generated-metadata",
+  "scm_build_version": "7.0.0.dev7+g6740fb9da",
+  "scm_version_derivation": {
+    "path": "runs\\source-version-metadata-20261112T005305285876Z\\versions.json",
+    "sha256": "e15cab85c177d2529a014da03b3047f6cc31ec356203ef0bca2b4f5ebfe9b3b1",
+    "tool": "setuptools-scm==8.1.0",
+    "method": "clean exact-commit checkout with full tag ancestry; no target-source setup/import on host"
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pytest-dev__pytest-9133-ds2-wave2",
+  "recipe_template_case_sha256": "dae1b1385403c5806bb902b614a7e04ad5824cdc4878d46bd3e0f5b1e8d40cac",
+  "recipe_template_passing_run": "reproduce-20261123T225447748524Z"
+}
