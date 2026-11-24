@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24T06:55:01+07:00",
+  "updated_at": "2026-11-24T07:00:51+07:00",
   "status": "collecting_real",
   "goal_complete": false,
   "plan": "docs/dataset-v2-plan.md",
@@ -28,7 +28,7 @@
   "new_generator_requests": 0,
   "live_worker": null,
   "collection_budget_initialized": true,
-  "next_task": "Review saved44 strict outcomes; investigate pinned-base license and actual test/harness for dependency candidates, starting pyics4005390637 and local-import4023568668. Config-only files need explicit evidence/input policy before execution/export. Expand finite source cohorts; no completed stage replay. Finalselected0, new7B0, no3B/train/modeltest.",
+  "next_task": "Review40 remaining saved strict outcomes (exact run-ID queue corrected from prior inferred44 to45 before reviewing5). Investigate pinned-base license/harness/input policy for dependency candidates; prepare new finite source cohort. No replay; finalselected0, no7B/3B/train/modeltest.",
   "qualification": "Portable v1.1 published and relocation verified. New counts are reconstruction outcomes; silver prototypes are not finalized v2 selection. No new generator or diagnosis/training calls.",
   "study_run_id": "dataset-v2-20261122T190232092876Z",
   "execution_enabled": true,
@@ -65,7 +65,7 @@
     "publication": "incorporated_into_published_portable_v1_1"
   },
   "artifact_baseline_complete": true,
-  "execution_seconds_charged": 25148.0,
+  "execution_seconds_charged": 25271.0,
   "source_roles": {
     "path": "data-manifests/dataset-v2-source-roles.json",
     "sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
@@ -99,7 +99,7 @@
   },
   "new_cases_strict_reproduced": 99,
   "new_passing_seeds": 130,
-  "new_real_silver_prototype_exports": 47,
+  "new_real_silver_prototype_exports": 51,
   "first_batch": {
     "status": "finished",
     "plan": "data-manifests/dataset-v2-first-recipes-ready.json",
@@ -336,7 +336,7 @@
   "proposed_silver_class_counts": {
     "syntax": 5,
     "API/type": 12,
-    "logic/value": 30,
+    "logic/value": 34,
     "dependency/configuration": 0
   },
   "source_breakdown": {
@@ -414,7 +414,7 @@
       "strict": 16
     }
   },
-  "uniform_v4_exports": 47,
+  "uniform_v4_exports": 51,
   "review_screen20": {
     "receipt": "docs/evidence/dataset-v2-aidev-screen20-compilation-review.json",
     "trials": 6,
@@ -487,5 +487,13 @@
     "dependency_title_signals": 79,
     "syntax_title_signals": 179,
     "approved_samples": 0
-  }
+  },
+  "completed_wave_first5_review": {
+    "receipt": "docs/evidence/dataset-v2-completed-wave-first5-review.json",
+    "reviewed": 5,
+    "new_exports": 4,
+    "quarantined_contract_boundary": 1,
+    "all_human_gold_training": "pending"
+  },
+  "unreviewed_strict_saved_outcomes": 40
 }

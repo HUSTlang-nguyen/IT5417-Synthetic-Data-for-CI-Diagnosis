@@ -1,0 +1,200 @@
+{
+  "reviewed_at": "2026-11-24T07:00:05+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "pydata__xarray-4075",
+      "run_id": "reproduce-20261123T203426406513Z",
+      "role": "test",
+      "assessment": {
+        "run_id": "reproduce-20261123T203426406513Z",
+        "evidence_hashes": {
+          "manifest.json": "6b585f39695d68a30ae8397a2f542750fbc109964f7ea6349c5aa71bcebe86ce",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "4d94117e56ac7a5ce3f09d62561bc4245597a7644e97b59d694237783f26eb08",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "426e3454204b4b430607fca5a796156b6040a1ddbbaa2059ef4baceeb441fe77",
+          "historical-fixed.stdout.txt": "cb9f675e6a992d4119139aaa39aacd6770a3e22b6b408cecbe9f2bba56fe5655",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "653a46f225fa310c163c1fbb2720831bddaac6ab51e5a4d3e5d81b36c21d6622"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/weighted.py",
+            "function": "Weighted._sum_of_weights"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The data-validity mask and boolean weights are reduced without converting weights to an arithmetic dtype. A boolean dot reduction yields true rather than the number of valid weights, so normalization divides by one instead of two.",
+        "evidence_reason": "Saved base tests observe sum_of_weights=1 instead of2 and weighted_mean=2 instead of1; the unchanged test patch passes on the repaired source after converting boolean weights to integer.",
+        "limitations": "logic/value describes the wrong normalization result, not a TypeError. The local weighted test suite includes two unrelated skips; declared F2P/P2P checks were satisfied. No additional dtype combinations or historical CI measured.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log input only. Reference repair, source issue, assessment and causal label remain separate; natural comments and traceback are not automatically leakage."
+      },
+      "assessment_sha256": "24fdd59f93b719c018d8f2c3a0ef0cf0e8ccc1339f16cba767aebc24bf439144",
+      "base_source_line": 145,
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydata__xarray-4075",
+      "manifest_sha256": "5198d3cc507e0dbcf8c158c1455a5e1bcf5ea6bf0e979f2edd6f298af1bf116e"
+    },
+    {
+      "sample_id": "pydata__xarray-3905",
+      "run_id": "reproduce-20261123T204558280886Z",
+      "role": "test",
+      "assessment": {
+        "run_id": "reproduce-20261123T204558280886Z",
+        "evidence_hashes": {
+          "manifest.json": "f9c2506ab833b26abb1a4869d18f37a97c2ec55bd66153eb39af8d74407492a1",
+          "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+          "historical-base.stdout.txt": "c2d462281b53fc41c2148c60b7978e0a00ba1380522034c9da6b9ff6ea907c14",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "8cfa40f30a04735c0530de7baa2919e6d52b26e430a5a74a0245f549693968fc",
+          "historical-fixed.stdout.txt": "8e958d32ee43a684ea97a190cb3da61f4386bd2be00778659f79cf3bd160cd67",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "75a80d565fbdfdfd2ee13e00e5a3ef845f54a6c9ac9937e9908e27d29b85bf42"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "xarray/core/formatting.py",
+            "function": "short_data_repr"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The array-function/dask branch returns repr(array.data) without the shortening used by other branches. A narrow multidimensional array can expand to hundreds of lines instead of the compact representation.",
+        "evidence_reason": "Saved test_large_array_repr_length observes601lines against the less-than50 expectation. The repair bounds this branch via limit_lines(...,limit=40); fixed saved suite passes.",
+        "limitations": "Presentation/representation logic, not invalid syntax or numerical data corruption. Random sample values in the saved upstream test are not deterministic across a new execution; only the recorded length failure and fixed result are claimed.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log input only. Reference repair, source issue, assessment and causal label remain separate; natural comments and traceback are not automatically leakage."
+      },
+      "assessment_sha256": "63762427fd56e1d1e2cc2486a8d568fa5cac79d7d3c62f7211ba16aaa73b96d1",
+      "base_source_line": 450,
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pydata__xarray-3905",
+      "manifest_sha256": "0c37432104204df470a4e77c892d2c8413abaa13bfb0a1494175bc411344747a"
+    },
+    {
+      "sample_id": "pylint-dev__astroid-1978",
+      "run_id": "reproduce-20261123T204833727547Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T204833727547Z",
+        "evidence_hashes": {
+          "manifest.json": "943d0596b476e912cf7abf3dfac19e3f64907ce92d5c7bbca72517c8d3c3c424",
+          "license-evidence.json": "33c381e6fd544e86ee047b9063265bcdd4bacf287b0282bb2e0001e7a8afd21a",
+          "historical-base.stdout.txt": "82263f55e081880fd5ed938c0c6cbc16caae86920d74827d29eb6b8c1b317295",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "e3b904ad5ebb0d3d0f297fe70e2e8a8a961eabe29c414cf8c25d06711bda409d",
+          "historical-fixed.stdout.txt": "a64f1a19cabb66490a93b9e5fc44f69a086e9f3c4dbaa95373b95c09b1384d1f",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "fa01e12d120da429036e86fac496960bd2849e080725667a136d64407ed31d8d"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "medium",
+        "locations": [
+          {
+            "file": "astroid/raw_building.py",
+            "function": "InspectBuilder.imported_member"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Introspection directly calls a module getattr hook without redirecting emitted stdout/stderr. Side effects escape the intended inspection/logging boundary; the repair captures and routes both streams through the logger.",
+        "evidence_reason": "Saved test_build_module_getattr_catch_output uses a mocked posix getattr emitting known strings. Base caplog lacks the expected INFO text; the fixed source passes the same test and all13tests.",
+        "limitations": "The source issue reports numpy FutureWarning, but the local test simulates output hooks rather than running that historical numpy example. Silver scope is stream handling during introspection, not proof that all warning categories are suppressed. Contract boundary has medium confidence.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log input only. Reference repair, source issue, assessment and causal label remain separate; natural comments and traceback are not automatically leakage."
+      },
+      "assessment_sha256": "0bd4f6d3bcb5d29a7c977f9d4c199f2971472183e808b06f02978d7c5b6e9708",
+      "base_source_line": 474,
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pylint-dev__astroid-1978",
+      "manifest_sha256": "e33b8c15bc065fe53e20674310844bd1a43f270a24f03a1b7e7c461bf6ea056e"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-8022",
+      "run_id": "reproduce-20261123T204948265861Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T204948265861Z",
+        "evidence_hashes": {
+          "manifest.json": "156c818ce46960a1eca307d78a9eed236ede3a10e77a9e1659c20744cad7c099",
+          "license-evidence.json": "a7c8402b355e8467dae2d0417e20c2aae3e5049ee653fe7dc375c8709b987173",
+          "historical-base.stdout.txt": "3bfebc2b5b34d6365546f8e234c66d24920b36af29123618860516d289f07a4f",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "c8900cfd853cc9fb29c3134c103407f3741489f08fac75209515a4be76c58650",
+          "historical-fixed.stdout.txt": "d01ce3c69c70fce19a1575b8c55b4969b007e08febad3617f541ca1e96dcf4d1",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "c82a50ee33413ce4b9db9b99e03904a64c7afdd531ffbe67f4a20d09753b107d"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/_pytest/main.py",
+            "function": "Session.collect"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "The __init__.py filename special case assumes the matching collector is a Package. A DoctestModule also reaches this branch, where only next(iter(collect())) is yielded, dropping later doctests.",
+        "evidence_reason": "Saved __init__ parametrization collects1item where2are expected; the repair restricts the special case to Package. Fixed tests pass while the ordinary filename control remains supported.",
+        "limitations": "Classification follows control flow and lost items, not API/type merely because isinstance appears in the repair. One unrelated skip is retained; no new doctest execution in this review.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log input only. Reference repair, source issue, assessment and causal label remain separate; natural comments and traceback are not automatically leakage."
+      },
+      "assessment_sha256": "dd108deb630d3b11c99b169a32cf39d5646443d0f5bbccae99a4844a13a402b4",
+      "base_source_line": 772,
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pytest-dev__pytest-8022",
+      "manifest_sha256": "300878f7d909e0f7f7a24ccd1f016ad420b5cbad288de1eebd9fb5da23733eee"
+    },
+    {
+      "sample_id": "pydata__xarray-4966",
+      "run_id": "reproduce-20261123T204205448792Z",
+      "role": "test",
+      "disposition": "quarantine_new_convention_boundary",
+      "evidence_hashes": {
+        "manifest.json": "5bba53bb43678d872aad0960f19129711ad561476e7280af5b8010dcc157b05d",
+        "license-evidence.json": "6b121abe0fc77022e1128cecf98a2b6f2341f4d4988e8d04c5514f0a8be6ec38",
+        "historical-base.stdout.txt": "427f5a52ce395b966a87a160e88c26588e5c3047e382d33227665f50b69df03c",
+        "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-base.junit.xml": "530b72422d5757745b3c5b74c3eb8d71287c3f4e54c600ee72befd86ab4590c6",
+        "historical-fixed.stdout.txt": "e85e2a185dcdc67149a2040844c23eb30617be67ae4b83c64209b088c4a952f9",
+        "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "historical-fixed.junit.xml": "2ee0d38c6d9832db5b71a3a17178dbd7431f7611910d5f6d7242c24a2431aaaf"
+      },
+      "reason": "Source issue explicitly describes an OPeNDAP signed-byte convention not previously handled. New tests demand uint-to-signed conversion for _Unsigned=false; base retains unsigned dtype (four failures), fixed passes. This proves added behavior, but existing-fault versus supported-protocol extension is unresolved. No forced API/type or logic/value export until that boundary is reviewed.",
+      "human_confirmation": "pending",
+      "gold": "pending",
+      "training_eligibility": "pending"
+    }
+  ],
+  "new_silver_exports": 4,
+  "quarantined_contract_boundary": 1,
+  "qualification": "Read saved source/repair/test/JUnit, verified inventories/artifact hashes/reference IDs via real_evidence. No candidate execution, Docker, model or rerun. Human/gold/training pending, no final selection."
+}

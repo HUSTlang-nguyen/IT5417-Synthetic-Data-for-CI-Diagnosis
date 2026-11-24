@@ -183,3 +183,18 @@ Trong `19build_updated_v6.py`, try308 indent8 nhưng assignment309 vẫn indent8
 | pyics4005390637 | Diff thể hiện lặp bảng project.scripts/tool.setuptools ở base và sửa nhiều phần packaging | Ưu tiên xác minh file/license ở commit ghim; cần policy kiểm tra TOML và input cấu hình rõ ràng trước chạy/export |
 
 Chưa có log thực thi cho bốn case này, chưa gán nhãn silver hoặc vị trí được xác nhận. Không có generator tham gia; gold/human/training vẫn pending. Không đưa patch sửa hoặc nhận định ở đây vào input chẩn đoán. 44case strict mới còn chờ phân tích nhân quả; tổng prototype vẫn47.
+
+
+## Lô đã hoàn tất: năm case đầu
+
+[Receipt và hash evidence](evidence/dataset-v2-completed-wave-first5-review.json). Cả năm đáp ứng kiểm chứng base/fixed với cùng test patch; không chạy lại để review. Các vị trí dưới đây là nguyên nhân đề xuất ở source base, khác dòng test phát hiện lỗi.
+
+| Case | Quan sát và nguyên nhân | Kiến nghị |
+|---|---|---|
+| xarray4075, test | Weighted._sum_of_weights dòng145 dùng phép giảm boolean nên tổng hai trọng số thành1; mean thành2thay vì1. Fixed chuyển trọng số sang int. | Silver logic/value, chắc chắn cao |
+| xarray3905, test | short_data_repr dòng450 trả repr trực tiếp; log ghi601dòng, yêu cầu<50. Fixed giới hạn độ dài nhánh này. | Silver logic/value, chắc chắn cao; không phải hỏng dữ liệu số |
+| astroid1978, train | InspectBuilder.imported_member dòng474 gọi getattr không giữ/định tuyến stdout/stderr; test caplog thiếu chuỗi INFO mong đợi. Fixed ghi lại qua logger. | Silver logic/value, chắc chắn vừa: test mô phỏng hook, chưa chứng minh mọi FutureWarning từ numpy được xử lý |
+| pytest8022, train | Session.collect dòng772–775 áp đặc lệ __init__.py cho cả DoctestModule và chỉ yield phần tử đầu; log1test thay vì2. Fixed chỉ áp cho Package. | Silver logic/value, chắc chắn cao |
+| xarray4966, test | Bốn test yêu cầu giải mã unsigned thành signed với _Unsigned=false thất bại ở base, fixed pass. Issue mô tả quy ước trước đó chưa được hỗ trợ. | Quarantine ranh giới bug/feature; chưa gán taxonomy hoặc export |
+
+Repair/issue/assessment nằm riêng khỏi input v4, không có nhãn generator cho các lỗi nguồn này. Kiến nghị giữ bốn prototype để tuyển chọn tiếp; người dùng chưa xác nhận nhãn, gold và training eligibility vẫn pending. Tổng51prototype (syntax5/API-type12/logic-value34/dependency0), finalselected0. Đếm đầy đủ theo run ID sửa backlog trước rà từ44thành45, còn40sau năm case này.
