@@ -1,0 +1,84 @@
+{
+  "case_id": "sphinx-doc__sphinx-8771-ds2-provided-rest",
+  "source_case_id": "sphinx-doc__sphinx-8771",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-8771",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "647510e184f3bb8c14d82911b6a0e1d9f8a2b15b",
+  "head": "base+repair:094466b36bc4ba861941f41e5089c398c01109b3c3c56d37d387c1236463497e",
+  "allowed_file": "sphinx/ext/autodoc/__init__.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-8771-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "094466b36bc4ba861941f41e5089c398c01109b3c3c56d37d387c1236463497e",
+  "test_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-8771-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "6f5702095b5880ab34d793d140a3443fc99754eb44e6ee576707760b98bf6c1b",
+  "source_record_sha256": "584b379bb37febb3ff1f103ffba47dc175778bf6a528ad2ed3cc0454d66a4891",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_preserve_defaults.py::test_preserve_defaults"
+  ],
+  "pass_to_pass": [],
+  "test_targets": [
+    "tests/test_ext_autodoc_preserve_defaults.py"
+  ],
+  "frozen_test_files": [
+    "tests/roots/test-ext-autodoc/target/preserve_defaults.py",
+    "tests/test_ext_autodoc_preserve_defaults.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "docutils==0.17.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7961-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ],
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "sphinx-doc__sphinx-8951-ds2-wave2",
+  "recipe_template_case_sha256": "c158bd43ef2029c3e61b600fdd5caad74db35d168b1eb54891a9fd189d92a328",
+  "recipe_template_passing_run": "reproduce-20261123T065652500956Z"
+}

@@ -1,0 +1,77 @@
+{
+  "case_id": "pydicom__pydicom-916-ds2-provided-final",
+  "source_case_id": "pydicom__pydicom-916",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-916",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "a94cc9996d2c716298c846f2dbba84f9f901e0a7",
+  "head": "base+repair:81acf5849a065fd58ee5e30934210f535eaea3e821cd84c1baf1ea29a0f57b78",
+  "allowed_file": "pydicom/dataelem.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-916-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "81acf5849a065fd58ee5e30934210f535eaea3e821cd84c1baf1ea29a0f57b78",
+  "test_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-916-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "96ecbf21615c6f4a9561304db86d4030c6d71c5f0d7bdfd73f2ff83d822d74fc",
+  "source_record_sha256": "4bd753576e3d75b6c7c45e671e16bae9956e2b309cb97db48e570956d1c4e278",
+  "fail_to_pass": [
+    "pydicom/tests/test_json.py::TestPersonName::test_PN_components_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_PN_components_from_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_empty_value",
+    "pydicom/tests/test_json.py::TestPersonName::test_multi_value_to_json",
+    "pydicom/tests/test_json.py::TestAT::test_to_json",
+    "pydicom/tests/test_json.py::TestAT::test_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_json",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_json_from_dicom_file",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_roundtrip"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_json.py::TestPersonName::test_json_PN_from_file",
+    "pydicom/tests/test_json.py::TestPersonName::test_dataelem_from_json",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_json_private_DS_VM"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_json.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_json.py"
+  ],
+  "source_id_matching": "swebench_pytest_options",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pydicom__pydicom-1000-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "test_workdir": "work",
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pydicom__pydicom-965-ds2-wave2",
+  "recipe_template_case_sha256": "d5061eb0ebab3301f67b4dfbf412684affc28b20fee1a0e431462fa204025b2d",
+  "recipe_template_passing_run": "reproduce-20261123T215040436537Z",
+  "supersedes_unexecuted_case_id": "pydicom__pydicom-916-ds2-provided-rest",
+  "superseded_preparation_case_sha256": "163f7928da168033902197f497735ae020d555241000cd1ae7ef90155c71a155",
+  "source_parser_basis": "Pinned SWE726c5461 source test-ID parser; whitespace groups for declared pytest repos, existing options parser for pydicom, original matching retained for other repos. Every observed member must match expected status. Source IDs/tests remain unchanged."
+}

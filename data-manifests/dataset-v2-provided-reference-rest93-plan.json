@@ -1,0 +1,2168 @@
+{
+  "created_at": "2026-11-24T12:28:44+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "pydata/xarray": "test",
+    "pvlib/pvlib-python": "train",
+    "pydicom/pydicom": "train",
+    "pytest-dev/pytest": "train",
+    "sphinx-doc/sphinx": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "pydata__xarray-4767",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "7298df0c05168896a9813249b54a2d11f35cfa8f",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/dataarray.py",
+        "xarray/core/utils.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_dataarray.py",
+        "xarray/tests/test_dataset.py",
+        "xarray/tests/test_variable.py"
+      ],
+      "repair_bytes": 5697,
+      "f2p_count": 4,
+      "p2p_count": 2144,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-4767-ds2-provided-rest",
+      "case_sha256": "4292a3606359beaa821930e7a29bf6fc68e748e040eac9d1a7683e50b719e736"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1666",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "209376e288fe7c928fa2e0a1178ffa44612112f7",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/bifacial/infinite_sheds.py",
+        "pvlib/bifacial/utils.py",
+        "pvlib/shading.py"
+      ],
+      "test_files": [
+        "pvlib/tests/bifacial/test_infinite_sheds.py",
+        "pvlib/tests/bifacial/test_utils.py",
+        "pvlib/tests/test_shading.py"
+      ],
+      "repair_bytes": 26842,
+      "f2p_count": 36,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pvlib__pvlib-python-1666-ds2-provided-rest",
+      "case_sha256": "9d4dda2e1e4dacdaf865fbab8a199334c046c8d1f43cc674603de46f139f68b6"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1000",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "14acdd4d767ee55e8e84daeb6f80f81ef4748fee",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/filereader.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filereader.py"
+      ],
+      "repair_bytes": 2475,
+      "f2p_count": 1,
+      "p2p_count": 94,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydicom__pydicom-1000-ds2-provided-rest",
+      "case_sha256": "0306289afcda6921ef841e2034a227130466b6171a598a0893d06e7b49a7b888"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-8428",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "fe51121f39ca48c1af21733a60ae069b316b1cdb",
+      "source_version": "8.0",
+      "product_files": [
+        "src/_pytest/deprecated.py",
+        "src/_pytest/fixtures.py",
+        "src/_pytest/mark/structures.py"
+      ],
+      "test_files": [
+        "testing/deprecated_test.py"
+      ],
+      "repair_bytes": 2310,
+      "f2p_count": 3,
+      "p2p_count": 18,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pytest-dev__pytest-8428-ds2-provided-rest",
+      "case_sha256": "2e1d4a6fd5e573f6bd2846809d1d4c739e46fe85e88401b2412963f735b9476e"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10492",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "873d9f6fdababb96f0763f538e85921f7d332b70",
+      "source_version": "5.1",
+      "product_files": [
+        "sphinx/config.py"
+      ],
+      "test_files": [
+        "tests/test_config.py"
+      ],
+      "repair_bytes": 1124,
+      "f2p_count": 1,
+      "p2p_count": 35,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-10492-ds2-provided-rest",
+      "case_sha256": "91f01413e5b049b0dab5f548d6e369ae65836d704843425808352e0871d5b259"
+    },
+    {
+      "source_case_id": "pydata__xarray-4758",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "46591d28d9fbbfc184aaf4075d330b1c8f070627",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/coding/cftime_offsets.py",
+        "xarray/coding/times.py"
+      ],
+      "test_files": [
+        "xarray/tests/__init__.py",
+        "xarray/tests/test_cftime_offsets.py",
+        "xarray/tests/test_coding_times.py"
+      ],
+      "repair_bytes": 6294,
+      "f2p_count": 160,
+      "p2p_count": 1540,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-4758-ds2-provided-rest",
+      "case_sha256": "d24d20aa6fabc0cca62bf982d0b21b36afe9b9522a54d7fb7c870896c674a982"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1448",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "8d0f863da92739669e01ac4da4145e4547638b50",
+      "source_version": "0.8",
+      "product_files": [
+        "pvlib/iotools/crn.py",
+        "pvlib/solarposition.py",
+        "pvlib/tracking.py",
+        "setup.py"
+      ],
+      "test_files": [
+        "pvlib/tests/iotools/test_crn.py",
+        "pvlib/tests/iotools/test_psm3.py",
+        "pvlib/tests/test_conftest.py"
+      ],
+      "repair_bytes": 3457,
+      "f2p_count": 1,
+      "p2p_count": 19,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pvlib__pvlib-python-1448-ds2-provided-rest",
+      "case_sha256": "75b511ed39b0b4fd94bc5ee9d1f07b84c3c0a5398ba403f90ea790c676b395b3"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-996",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "d21e97c9a35b5c225dc3340faaa7c293e7c8ee9b",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/dataset.py",
+        "pydicom/filewriter.py",
+        "pydicom/sequence.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filewriter.py"
+      ],
+      "repair_bytes": 3390,
+      "f2p_count": 1,
+      "p2p_count": 148,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydicom__pydicom-996-ds2-provided-rest",
+      "case_sha256": "65edc54c81526dab6cd33cf4f567bd26b4fc64ef3d29aa2cedb9306ef964b0c7"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-9956",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "cc0fbbefa0f8a6b390e89ef0d4d64dd78783a5c1",
+      "source_version": "7.2",
+      "product_files": [
+        "src/_pytest/python.py",
+        "src/_pytest/warning_types.py",
+        "src/pytest/__init__.py"
+      ],
+      "test_files": [
+        "testing/acceptance_test.py"
+      ],
+      "repair_bytes": 2494,
+      "f2p_count": 1,
+      "p2p_count": 77,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pytest-dev__pytest-9956-ds2-provided-rest",
+      "case_sha256": "9786d1ae5e13a2ba2a51fb1aabbad25dd7be42304d5b4244ea7e295460b6deb6"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9229",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "876fa81e0a038cda466925b85ccf6c5452e0f685",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/classes.py",
+        "tests/test_ext_autodoc_autoclass.py"
+      ],
+      "repair_bytes": 1666,
+      "f2p_count": 1,
+      "p2p_count": 13,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9229-ds2-provided-rest",
+      "case_sha256": "ec884ec8ecf7b2bd6f007c7ef950f9c9a0aad720c513402e1a62d6eb7bf912c7"
+    },
+    {
+      "source_case_id": "pydata__xarray-4510",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "7ce0110f727b37a776d509174365cf0905163234",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/common.py",
+        "xarray/core/rolling.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_dataarray.py",
+        "xarray/tests/test_dataset.py"
+      ],
+      "repair_bytes": 19407,
+      "f2p_count": 10,
+      "p2p_count": 1771,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-4510-ds2-provided-rest",
+      "case_sha256": "62e27d6b45995e0d4c0f203e8dd2e69c5a57bc2b2dbad2af5c43624a243ffcc1"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1053",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "bc3a9c8efcedd4b686f60ed0e3d3d7548189bb27",
+      "source_version": "0.7",
+      "product_files": [
+        "pvlib/location.py",
+        "pvlib/modelchain.py",
+        "pvlib/pvsystem.py",
+        "pvlib/tracking.py"
+      ],
+      "test_files": [
+        "pvlib/tests/test_location.py",
+        "pvlib/tests/test_modelchain.py",
+        "pvlib/tests/test_pvsystem.py"
+      ],
+      "repair_bytes": 5497,
+      "f2p_count": 8,
+      "p2p_count": 229,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pvlib__pvlib-python-1053-ds2-provided-rest",
+      "case_sha256": "1724678bb41ef1a4a144face1cd891032ffecfd3869bc884396eec771c437985"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-809",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "356a51ab4bc54fd18950041ebc44dbfa1a425a10",
+      "source_version": "1.2",
+      "product_files": [
+        "pydicom/dataset.py",
+        "pydicom/filewriter.py",
+        "pydicom/sequence.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_filewriter.py"
+      ],
+      "repair_bytes": 3645,
+      "f2p_count": 2,
+      "p2p_count": 142,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydicom__pydicom-809-ds2-provided-rest",
+      "case_sha256": "5fe4d503361d2416b2eb1edda6b94936deceaaad35b9abef45d6db0424dd917d"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7985",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "4cd0fde277f657560bf5c4453d3b645094d2c747",
+      "source_version": "6.2",
+      "product_files": [
+        "src/_pytest/config/__init__.py",
+        "src/_pytest/deprecated.py",
+        "src/_pytest/main.py",
+        "src/_pytest/mark/structures.py"
+      ],
+      "test_files": [
+        "testing/deprecated_test.py"
+      ],
+      "repair_bytes": 2423,
+      "f2p_count": 1,
+      "p2p_count": 17,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pytest-dev__pytest-7985-ds2-provided-rest",
+      "case_sha256": "6d4b48af3454dfcde39e0bb0256866fc85b9061c48a86fb1e9306476ddfacd07"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8579",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "955d6558ec155dffaef999d890c2cdb224cbfbb9",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/builders/linkcheck.py"
+      ],
+      "test_files": [
+        "tests/roots/test-linkcheck-localserver-two-links/conf.py",
+        "tests/test_build_linkcheck.py"
+      ],
+      "repair_bytes": 1684,
+      "f2p_count": 1,
+      "p2p_count": 27,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8579-ds2-provided-rest",
+      "case_sha256": "b7d305152a6bf8758bccc9b346834329cf1e5dbb83653dc6e5a5a51fd05ced66"
+    },
+    {
+      "source_case_id": "pydata__xarray-3114",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "b3ba4ba5f9508e4b601d9cf5dbcd9024993adf37",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/dataarray.py",
+        "xarray/core/dataset.py",
+        "xarray/core/indexing.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_indexing.py"
+      ],
+      "repair_bytes": 2147,
+      "f2p_count": 1,
+      "p2p_count": 120,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-3114-ds2-provided-rest",
+      "case_sha256": "6f96c1c9bc73f384754241d1b175598eca7389cb6c5cf0de4f480b354ab22fa5"
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1048",
+      "repo": "pvlib/pvlib-python",
+      "role": "train",
+      "base_commit": "7fc595a13bcd42e3269c0806f5505ac907af9730",
+      "source_version": "0.7",
+      "product_files": [
+        "pvlib/ivtools/__init__.py",
+        "pvlib/ivtools/sde.py",
+        "pvlib/ivtools/sdm.py",
+        "pvlib/ivtools/utility.py",
+        "pvlib/ivtools/utils.py"
+      ],
+      "test_files": [
+        "pvlib/tests/ivtools/test_utility.py",
+        "pvlib/tests/ivtools/test_utils.py"
+      ],
+      "repair_bytes": 6319,
+      "f2p_count": 5,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pvlib__pvlib-python-1048-ds2-provided-rest",
+      "case_sha256": "0ab540d21989763c4407e3cfbde615dfef03ea199435c977e540ca980dad6aa5"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1720",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "a8be738418dee0a2b93c241fbd5e0bc82f4b8680",
+      "source_version": "2.3",
+      "product_files": [
+        "pydicom/config.py",
+        "pydicom/dataset.py",
+        "pydicom/valuerep.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_json.py",
+        "pydicom/tests/test_valuerep.py"
+      ],
+      "repair_bytes": 6024,
+      "f2p_count": 345,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydicom__pydicom-1720-ds2-provided-rest",
+      "case_sha256": "efa7d1e4f947fddb50f623f69465a911788ebb0595aa27c34c2f49fb38b3acc1"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7637",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "d69abff2c7de8bc65b7f1ef867dec5b5b9c564bd",
+      "source_version": "6.0",
+      "product_files": [
+        "src/_pytest/fixtures.py",
+        "src/_pytest/hookspec.py",
+        "src/_pytest/mark/__init__.py",
+        "src/pytest/collect.py"
+      ],
+      "test_files": [
+        "testing/deprecated_test.py"
+      ],
+      "repair_bytes": 3806,
+      "f2p_count": 12,
+      "p2p_count": 4,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pytest-dev__pytest-7637-ds2-provided-rest",
+      "case_sha256": "59a213b67c5ceae5da296546831b515c3cca367a874cef9c8ec113fad655a30b"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7975",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "4ec6cbe341fd84468c448e20082c778043bbea4b",
+      "source_version": "3.2",
+      "product_files": [
+        "sphinx/environment/adapters/indexentries.py"
+      ],
+      "test_files": [
+        "tests/test_environment_indexentries.py"
+      ],
+      "repair_bytes": 1713,
+      "f2p_count": 1,
+      "p2p_count": 7,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7975-ds2-provided-rest",
+      "case_sha256": "eb104fc8d65e675304c0d23e55ed69e416c4965eb098e174d7dd37dac5916d70"
+    },
+    {
+      "source_case_id": "pydata__xarray-4911",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "7c4e2ac83f7b4306296ff9b7b51aaf016e5ad614",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/dtypes.py",
+        "xarray/core/nanops.py",
+        "xarray/core/ops.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_dtypes.py",
+        "xarray/tests/test_duck_array_ops.py"
+      ],
+      "repair_bytes": 2620,
+      "f2p_count": 4,
+      "p2p_count": 850,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-4911-ds2-provided-rest",
+      "case_sha256": "bad8bd86e38cac84ee653639e48793294b09ed0089874aa09bbef9a5c7babb94"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1228",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "8112bb69bfc0423c3a08cb89e7960defbe7237bf",
+      "source_version": "2.0",
+      "product_files": [
+        "pydicom/dataelem.py",
+        "pydicom/dataset.py",
+        "pydicom/jsonrep.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_json.py"
+      ],
+      "repair_bytes": 7419,
+      "f2p_count": 1,
+      "p2p_count": 21,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydicom__pydicom-1228-ds2-provided-rest",
+      "case_sha256": "6d1d660a1070abcd76813df3ecf8953b7b1a2f10503a4cf5288f33afb7df743f"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7648",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "d426a79a90351dff0492fbd40404b1256b24f91f",
+      "source_version": "6.0",
+      "product_files": [
+        "src/_pytest/deprecated.py",
+        "src/_pytest/main.py",
+        "src/_pytest/nodes.py",
+        "src/_pytest/python.py"
+      ],
+      "test_files": [
+        "testing/deprecated_test.py"
+      ],
+      "repair_bytes": 7107,
+      "f2p_count": 1,
+      "p2p_count": 9,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pytest-dev__pytest-7648-ds2-provided-rest",
+      "case_sha256": "354ef807e79bff522b3e09dff5bbaaa2af071f2fe1d1bb8e88d5a38f518c3642"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8282",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "2c2335bbb8af99fa132e1573bbf45dc91584d5a2",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 1737,
+      "f2p_count": 1,
+      "p2p_count": 16,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8282-ds2-provided-rest",
+      "case_sha256": "f8b0a63944f59188ed02bda7a6edac658403b07a8232873194b009974691b611"
+    },
+    {
+      "source_case_id": "pydata__xarray-4827",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "f98d6f065db2ad1f8911cb22aa04b4e0210ecee4",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/combine.py",
+        "xarray/core/concat.py",
+        "xarray/core/merge.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_combine.py",
+        "xarray/tests/test_concat.py",
+        "xarray/tests/test_merge.py"
+      ],
+      "repair_bytes": 6488,
+      "f2p_count": 5,
+      "p2p_count": 167,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-4827-ds2-provided-rest",
+      "case_sha256": "b35fa9cedd36545391fd6038fc21c3f8c9b465612d8821351b76d82ebebdefed"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-916",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "a94cc9996d2c716298c846f2dbba84f9f901e0a7",
+      "source_version": "1.3",
+      "product_files": [
+        "pydicom/dataelem.py",
+        "pydicom/jsonrep.py",
+        "pydicom/valuerep.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_json.py"
+      ],
+      "repair_bytes": 9159,
+      "f2p_count": 9,
+      "p2p_count": 3,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydicom__pydicom-916-ds2-provided-rest",
+      "case_sha256": "163f7928da168033902197f497735ae020d555241000cd1ae7ef90155c71a155"
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-8950",
+      "repo": "pytest-dev/pytest",
+      "role": "train",
+      "base_commit": "398783521383e7f0d9897da679e8c12061024f30",
+      "source_version": "7.0",
+      "product_files": [
+        "src/_pytest/compat.py",
+        "src/_pytest/deprecated.py",
+        "src/_pytest/outcomes.py",
+        "src/_pytest/python.py",
+        "src/_pytest/scope.py"
+      ],
+      "test_files": [
+        "testing/deprecated_test.py",
+        "testing/test_main.py",
+        "testing/test_skipping.py"
+      ],
+      "repair_bytes": 8781,
+      "f2p_count": 10,
+      "p2p_count": 126,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pytest-dev__pytest-8950-ds2-provided-rest",
+      "case_sha256": "cce398082298f483810024cd7da42232fe0a7d71cd80d4468d98f09e73393b42"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7757",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "212fd67b9f0b4fae6a7c3501fdf1a9a5b2801329",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/test_util_inspect.py"
+      ],
+      "repair_bytes": 1738,
+      "f2p_count": 1,
+      "p2p_count": 33,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7757-ds2-provided-rest",
+      "case_sha256": "a4e73d5538d5649e990ee52533d21f785aa5c69ac42830f0c9e2767b01741a00"
+    },
+    {
+      "source_case_id": "pydata__xarray-4184",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "65ca92a5c0a4143d00dd7a822bcb1d49738717f1",
+      "source_version": "0.12",
+      "product_files": [
+        "asv_bench/benchmarks/pandas.py",
+        "xarray/core/dataset.py",
+        "xarray/core/indexes.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_dataset.py"
+      ],
+      "repair_bytes": 7124,
+      "f2p_count": 2,
+      "p2p_count": 863,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-4184-ds2-provided-rest",
+      "case_sha256": "3cdda54e8ef523fb3a515d4f53551ea40a9f0c97a321f26f71e755141dde5628"
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1255",
+      "repo": "pydicom/pydicom",
+      "role": "train",
+      "base_commit": "59be4993000cc8af2cd9a4176f15398b6a7875d7",
+      "source_version": "2.1",
+      "product_files": [
+        "pydicom/_version.py",
+        "pydicom/filebase.py",
+        "pydicom/jsonrep.py",
+        "setup.py"
+      ],
+      "test_files": [
+        "pydicom/tests/test_json.py"
+      ],
+      "repair_bytes": 2837,
+      "f2p_count": 1,
+      "p2p_count": 22,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydicom__pydicom-1255-ds2-provided-rest",
+      "case_sha256": "ed529d25c592405edcc0267940d5595e7052c2c09158d4ff3470af53677f44ed"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8611",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "3f560cd67239f75840cc7a439ab54d8509c855f6",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_ext_autodoc_events.py"
+      ],
+      "repair_bytes": 1771,
+      "f2p_count": 1,
+      "p2p_count": 5,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8611-ds2-provided-rest",
+      "case_sha256": "9e2934d6b7f88c75d799a0e083cda938bbe0b6ef930358bbfe430db9fde3330d"
+    },
+    {
+      "source_case_id": "pydata__xarray-5126",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "6bfbaede69eb73810cb63672a8161bd1fc147594",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/formatting.py",
+        "xarray/core/formatting_html.py",
+        "xarray/core/options.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_formatting.py",
+        "xarray/tests/test_formatting_html.py"
+      ],
+      "repair_bytes": 8591,
+      "f2p_count": 7,
+      "p2p_count": 30,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-5126-ds2-provided-rest",
+      "case_sha256": "c63a6ddc3409c4931c7d7ee6398de61e2ea740a0bb6ccfe6b6aca7789c6a1a7e"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10449",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "36367765fe780f962bba861bf368a765380bbc68",
+      "source_version": "5.1",
+      "product_files": [
+        "sphinx/ext/autodoc/typehints.py"
+      ],
+      "test_files": [
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 1798,
+      "f2p_count": 1,
+      "p2p_count": 30,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-10449-ds2-provided-rest",
+      "case_sha256": "36c41d6a26be9a8453b95106bd9f0e1c69692a515192310daa82ce91c25a133c"
+    },
+    {
+      "source_case_id": "pydata__xarray-4683",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "19ebec52ef93ab8a640d04eb0edb7264823f6ba8",
+      "source_version": "0.12",
+      "product_files": [
+        "doc/conf.py",
+        "xarray/core/common.py",
+        "xarray/core/duck_array_ops.py",
+        "xarray/core/variable.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_dataarray.py"
+      ],
+      "repair_bytes": 8513,
+      "f2p_count": 1,
+      "p2p_count": 876,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-4683-ds2-provided-rest",
+      "case_sha256": "c90a764e4403c426b5fac39a3367210c5a29621864ab40ea3d06b2383d4b753a"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8056",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "e188d56ed1248dead58f3f8018c0e9a3f99193f7",
+      "source_version": "3.2",
+      "product_files": [
+        "sphinx/ext/napoleon/docstring.py"
+      ],
+      "test_files": [
+        "tests/test_ext_napoleon_docstring.py"
+      ],
+      "repair_bytes": 1878,
+      "f2p_count": 1,
+      "p2p_count": 40,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8056-ds2-provided-rest",
+      "case_sha256": "f0973c103bb6cedd4ee058603db0fbb7cd74378eff15ed53f7e9835ae31b329d"
+    },
+    {
+      "source_case_id": "pydata__xarray-2922",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "65a5bff79479c4b56d6f733236fe544b7f4120a8",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/common.py",
+        "xarray/core/dataarray.py",
+        "xarray/core/dataset.py",
+        "xarray/core/weighted.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_weighted.py"
+      ],
+      "repair_bytes": 10498,
+      "f2p_count": 952,
+      "p2p_count": 6,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-2922-ds2-provided-rest",
+      "case_sha256": "aaea36e42db532dba56d5db961c9a7c90e5ab2a4864512d411fc92b24d07f9c1"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7578",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "d59584f4096c75af4a94fb2bf70974039f7af0bb",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/ext/autosummary/generate.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autosummary-template/conf.py",
+        "tests/roots/test-ext-autosummary-template/target.py",
+        "tests/test_ext_autosummary.py"
+      ],
+      "repair_bytes": 1904,
+      "f2p_count": 1,
+      "p2p_count": 14,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7578-ds2-provided-rest",
+      "case_sha256": "173449affb91710c100fc3f1e52bc97052fa366d586ffa9cccdd6a20141b486d"
+    },
+    {
+      "source_case_id": "pydata__xarray-3302",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "94525bbaf417476dbe9a70b98801ae04aceaebf3",
+      "source_version": "0.12",
+      "product_files": [
+        "doc/conf.py",
+        "xarray/core/dataarray.py",
+        "xarray/core/dataset.py",
+        "xarray/core/missing.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_missing.py"
+      ],
+      "repair_bytes": 17062,
+      "f2p_count": 2,
+      "p2p_count": 43,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-3302-ds2-provided-rest",
+      "case_sha256": "dd7419aa86a4dacc8ba76f98136ca95f1aaaa7c9d34412c304f2bd248b8fca12"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7395",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "7887615374656da0556966b8cd37d2af8dac2654",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/domains/python.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py"
+      ],
+      "repair_bytes": 1905,
+      "f2p_count": 1,
+      "p2p_count": 27,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7395-ds2-provided-rest",
+      "case_sha256": "f42715616b11b737dc75d9a4fb8ace1d56d4b127b6a3c71259a678ce6bfcc3be"
+    },
+    {
+      "source_case_id": "pydata__xarray-5187",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "b2351cbe3f3e92f0e242312dae5791fc83a4467a",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/core/dask_array_ops.py",
+        "xarray/core/dataarray.py",
+        "xarray/core/dataset.py",
+        "xarray/core/duck_array_ops.py",
+        "xarray/core/missing.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_duck_array_ops.py",
+        "xarray/tests/test_missing.py"
+      ],
+      "repair_bytes": 5842,
+      "f2p_count": 422,
+      "p2p_count": 448,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-5187-ds2-provided-rest",
+      "case_sha256": "b8923dbd382596a21180d74e0e35dff59e6056b277e7b7430e018a09f5d7ec10"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9015",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "9f62b9cccbd69d250ff84a3cfb346725476f83a8",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/util/typing.py"
+      ],
+      "test_files": [
+        "tests/test_util_typing.py"
+      ],
+      "repair_bytes": 1996,
+      "f2p_count": 2,
+      "p2p_count": 17,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9015-ds2-provided-rest",
+      "case_sha256": "129521e6f0fd91b84a05c88672edd3ad786182d38af687a4bad345d71430d722"
+    },
+    {
+      "source_case_id": "pydata__xarray-3631",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "c32e58b4fff72816c6b554db51509bea6a891cdc",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/coding/cftimeindex.py",
+        "xarray/core/dataarray.py",
+        "xarray/core/dataset.py",
+        "xarray/core/duck_array_ops.py",
+        "xarray/core/missing.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_duck_array_ops.py",
+        "xarray/tests/test_interp.py",
+        "xarray/tests/test_missing.py"
+      ],
+      "repair_bytes": 17555,
+      "f2p_count": 303,
+      "p2p_count": 344,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-3631-ds2-provided-rest",
+      "case_sha256": "34d84a6af966af1f08eb5ebb2f63591b1370c597609ffb5d97f2c9b62544a7d3"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7501",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "50d2d289e150cb429de15770bdd48a723de8c45d",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/domains/std.py"
+      ],
+      "test_files": [
+        "tests/test_domain_std.py"
+      ],
+      "repair_bytes": 2118,
+      "f2p_count": 1,
+      "p2p_count": 12,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7501-ds2-provided-rest",
+      "case_sha256": "3058ee553cc5e2cda1d9689ac6714e8b995ccb795e509579b5b36cb6e8455076"
+    },
+    {
+      "source_case_id": "pydata__xarray-3239",
+      "repo": "pydata/xarray",
+      "role": "test",
+      "base_commit": "e90e8bc06cf8e7c97c7dc4c0e8ff1bf87c49faf6",
+      "source_version": "0.12",
+      "product_files": [
+        "xarray/backends/api.py",
+        "xarray/core/combine.py",
+        "xarray/core/concat.py",
+        "xarray/core/dataarray.py",
+        "xarray/core/merge.py"
+      ],
+      "test_files": [
+        "xarray/tests/test_combine.py",
+        "xarray/tests/test_concat.py",
+        "xarray/tests/test_dask.py",
+        "xarray/tests/test_merge.py"
+      ],
+      "repair_bytes": 23813,
+      "f2p_count": 6,
+      "p2p_count": 189,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "pydata__xarray-3239-ds2-provided-rest",
+      "case_sha256": "024797cc16abb715861e1da12e580effbd808a3c2a3e4fde01d5739b0338f0f3"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9233",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "8d87dde43ba0400c46d791e42d9b50bc879cdddb",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_ext_autodoc_autoclass.py"
+      ],
+      "repair_bytes": 2122,
+      "f2p_count": 1,
+      "p2p_count": 14,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9233-ds2-provided-rest",
+      "case_sha256": "30b0f3d6df5479a6429d2797d5e5c2f298d52673ad1daed8c852459d52fc9afb"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7305",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "f85b870ad59f39c8637160a4cd4d865ce1e1628e",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/pycode/ast.py"
+      ],
+      "test_files": [
+        "tests/test_pycode_ast.py"
+      ],
+      "repair_bytes": 2259,
+      "f2p_count": 6,
+      "p2p_count": 16,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7305-ds2-provided-rest",
+      "case_sha256": "05f2cf05ddb5e8482ac13b930414b588739f7c458e2468ba94317847b64541ac"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9260",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "e878299cc608614e959e0e99025cccfd48de00bc",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/builders/linkcheck.py"
+      ],
+      "test_files": [
+        "tests/test_build_linkcheck.py"
+      ],
+      "repair_bytes": 2631,
+      "f2p_count": 1,
+      "p2p_count": 24,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9260-ds2-provided-rest",
+      "case_sha256": "dde4a4d9b60a5c4b5bc254a2e8fba2db19e1f51a8a91aaf554284ecb9a3ad467"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9246",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "630e5bd15f43c6cd91e61723f40b6c94ef622060",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/transforms/post_transforms/__init__.py"
+      ],
+      "test_files": [
+        "tests/roots/test-transforms-post_transforms-missing-reference/conf.py",
+        "tests/test_transforms_post_transforms.py"
+      ],
+      "repair_bytes": 2775,
+      "f2p_count": 1,
+      "p2p_count": 2,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9246-ds2-provided-rest",
+      "case_sha256": "da33ac3f24afbdcede98e13d4f3eaf3d4717fb48c7f523cc1af79869f8f06dc0"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11510",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "6cb783c0024a873722952a67ebb9f41771c8eb6d",
+      "source_version": "7.2",
+      "product_files": [
+        "sphinx/directives/other.py"
+      ],
+      "test_files": [
+        "tests/roots/test-directive-include/conf.py",
+        "tests/test_directive_other.py"
+      ],
+      "repair_bytes": 2867,
+      "f2p_count": 2,
+      "p2p_count": 7,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-11510-ds2-provided-rest",
+      "case_sha256": "7e58b38df951fabf29fe13b9d8aacb8db71f0bce35828b94a06b9782df0d947b"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7686",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "752d3285d250bbaf673cff25e83f03f247502021",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/ext/autosummary/generate.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autosummary/autosummary_dummy_module.py",
+        "tests/test_ext_autosummary.py"
+      ],
+      "repair_bytes": 2888,
+      "f2p_count": 2,
+      "p2p_count": 15,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7686-ds2-provided-rest",
+      "case_sha256": "3344efd6f6157f55b61a9b4e7f618c332670da897af67c129ba0282204abdce1"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9386",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "805fd98e00229b419106063e5fd1566ca4bd938f",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/typehints.py",
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 2909,
+      "f2p_count": 1,
+      "p2p_count": 24,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9386-ds2-provided-rest",
+      "case_sha256": "11123c595ffaa445cceec6cadc61b280713912f65e089811c34b57dc0abce932"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9799",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "2b5c55e45a0fc4e2197a9b8edb482b77c2fa3f85",
+      "source_version": "4.3",
+      "product_files": [
+        "sphinx/ext/autodoc/preserve_defaults.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/preserve_defaults.py",
+        "tests/test_ext_autodoc_preserve_defaults.py"
+      ],
+      "repair_bytes": 2976,
+      "f2p_count": 1,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9799-ds2-provided-rest",
+      "case_sha256": "75b65fa6a5187ff2c5e541af9b004acf039dc5de5e1e7cfb3b9f8c5bca1d4cd2"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8969",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "ae413e95ed6fd2b3a9d579a3d802e38846906b54",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/directives/patches.py"
+      ],
+      "test_files": [
+        "tests/test_directive_patch.py"
+      ],
+      "repair_bytes": 3020,
+      "f2p_count": 1,
+      "p2p_count": 2,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8969-ds2-provided-rest",
+      "case_sha256": "21cf4d1b9ad192a7d55c9ff60ffc998a0671a9205c0dd70eb0088aeb5d6cce11"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9128",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "dfdc7626b5dd06bff3d326e6efddc492ef00c471",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/domains/python.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py"
+      ],
+      "repair_bytes": 3027,
+      "f2p_count": 2,
+      "p2p_count": 42,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9128-ds2-provided-rest",
+      "case_sha256": "18bf57f8665a0c0561e3069d664d2a88a238350cbd94318fd0dec0a7508dc3da"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11312",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "5cf3dce36ec35c429724bf1312ece9faa0c8db39",
+      "source_version": "7.2",
+      "product_files": [
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/test_util_inspect.py"
+      ],
+      "repair_bytes": 4082,
+      "f2p_count": 4,
+      "p2p_count": 40,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-11312-ds2-provided-rest",
+      "case_sha256": "672ea90db597ca7fd4dede16540c27cae3bdbeb2b2f84903aa14e3be65a647cc"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7930",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "2feb0b43b64012ac982a9d07af85002b43b59226",
+      "source_version": "3.2",
+      "product_files": [
+        "sphinx/domains/python.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py"
+      ],
+      "repair_bytes": 4408,
+      "f2p_count": 3,
+      "p2p_count": 27,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7930-ds2-provided-rest",
+      "case_sha256": "5bffcb1158b1f1d5c88dd3672001b721b76399072c168f4907ebaa6c62e62a97"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11550",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "4dee1629901f5e5c2aefc274da42483e16770e50",
+      "source_version": "7.2",
+      "product_files": [
+        "sphinx/ext/autodoc/preserve_defaults.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/preserve_defaults.py",
+        "tests/roots/test-ext-autodoc/target/preserve_defaults_special_constructs.py",
+        "tests/test_ext_autodoc_preserve_defaults.py"
+      ],
+      "repair_bytes": 5014,
+      "f2p_count": 2,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-11550-ds2-provided-rest",
+      "case_sha256": "a2ecf72efef23510611bad43d07d00efdb5892a6a0ef3a0bdc8e99d0949f4804"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7748",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "9988d5ce267bf0df4791770b469431b1fb00dcdd",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/docstring_signature.py",
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 5740,
+      "f2p_count": 2,
+      "p2p_count": 12,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7748-ds2-provided-rest",
+      "case_sha256": "884b4f4295c562b7c046e905926e2299879a3064dd2ba3f14ccb17f2e2299368"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8037",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "0cfb433b25c085071ea46c3ecf8e84f17228643f",
+      "source_version": "3.2",
+      "product_files": [
+        "sphinx/domains/cpp.py"
+      ],
+      "test_files": [
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 6850,
+      "f2p_count": 1,
+      "p2p_count": 27,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8037-ds2-provided-rest",
+      "case_sha256": "d56a18fcb02a96afd5ba51380403527cf32e643e25a3143e0fbe518de6c616e8"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7670",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "3419079fb0d1f0eecd845eff0d12b367d34cd5e9",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/domains/cpp.py"
+      ],
+      "test_files": [
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 11987,
+      "f2p_count": 1,
+      "p2p_count": 26,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7670-ds2-provided-rest",
+      "case_sha256": "b5403f2751b0590e1f41bdc40640deccde01f630e150d0abeb8de23d488a0ad9"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7380",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "6deb592a2fadbf88b7a00a332837a81a3198a830",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/domains/cpp.py"
+      ],
+      "test_files": [
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 23227,
+      "f2p_count": 2,
+      "p2p_count": 21,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7380-ds2-provided-rest",
+      "case_sha256": "a09c203531d3e337c017ed37ca68b1c162fc47e6e416fc2d6c11441b53b18750"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8551",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "57ed10c68057c96491acbd3e62254ccfaf9e3861",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/domains/python.py",
+        "sphinx/util/docfields.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py"
+      ],
+      "repair_bytes": 1205,
+      "f2p_count": 1,
+      "p2p_count": 32,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8551-ds2-provided-rest",
+      "case_sha256": "0b22ba5482c1a7526641720d45e46c57fffb6cc90eff5710784c5545b7a9e620"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8058",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "f92fa6443fe6f457ab0c26d41eb229e825fda5e1",
+      "source_version": "3.2",
+      "product_files": [
+        "sphinx/builders/gettext.py",
+        "sphinx/util/i18n.py"
+      ],
+      "test_files": [
+        "tests/test_build_gettext.py"
+      ],
+      "repair_bytes": 1413,
+      "f2p_count": 1,
+      "p2p_count": 5,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8058-ds2-provided-rest",
+      "case_sha256": "da28ee633639e255f08bf47346a5ec8110476436551250fd8200c01bec77b978"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9654",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "4a9e015fc6b87fc54c7a01f94d65bcf602fefeaa",
+      "source_version": "4.3",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/classes.py",
+        "tests/test_ext_autodoc_autoclass.py"
+      ],
+      "repair_bytes": 1529,
+      "f2p_count": 1,
+      "p2p_count": 16,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9654-ds2-provided-rest",
+      "case_sha256": "2ac46d7f0ca6a0b874e51da50e92b875827fff49176ff7beb3dd09fb5f565293"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7462",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "b3e26a6c851133b82b50f4b68b53692076574d13",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/domains/python.py",
+        "sphinx/pycode/ast.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py",
+        "tests/test_pycode_ast.py"
+      ],
+      "repair_bytes": 1684,
+      "f2p_count": 2,
+      "p2p_count": 49,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7462-ds2-provided-rest",
+      "case_sha256": "c56bc465154f390d3a59272fc1fd0047a54f9a0019f28b163d98e8fbd418712d"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8120",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "795747bdb6b8fb7d717d5bbfc2c3316869e66a73",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/application.py",
+        "sphinx/locale/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_intl.py"
+      ],
+      "repair_bytes": 1740,
+      "f2p_count": 1,
+      "p2p_count": 44,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8120-ds2-provided-rest",
+      "case_sha256": "71a0d38665f8d6762b7428d89f3957beb3fa43e371c5cb8c7ce7bab9c8b091dc"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10048",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "d417b0ab8399810079cdafddc6ebaa46a6a85036",
+      "source_version": "5.0",
+      "product_files": [
+        "sphinx/writers/html.py",
+        "sphinx/writers/html5.py"
+      ],
+      "test_files": [
+        "tests/test_build_html.py"
+      ],
+      "repair_bytes": 2125,
+      "f2p_count": 1,
+      "p2p_count": 527,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-10048-ds2-provided-rest",
+      "case_sha256": "0be9bdcc6eced0a8bd3bbe5bcf4c4441958ad60ba66cd39287125a4fc0b64633"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8362",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "8981e84779ff87f1a058939a5d678e5993d67aa8",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/decorator.py",
+        "tests/test_ext_autodoc_autoclass.py",
+        "tests/test_util_inspect.py"
+      ],
+      "repair_bytes": 2184,
+      "f2p_count": 2,
+      "p2p_count": 36,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8362-ds2-provided-rest",
+      "case_sha256": "c29938d1d481d806292d121fb788f604942e107df8de2809aa9783951fc39e0f"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7831",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "b56772102e138b0a5d83f02e0031eb075c854921",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/ext/autodoc/type_comment.py",
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/wrappedfunction.py",
+        "tests/test_ext_autodoc_autofunction.py"
+      ],
+      "repair_bytes": 2256,
+      "f2p_count": 1,
+      "p2p_count": 9,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7831-ds2-provided-rest",
+      "case_sha256": "f2f26d8c88a5fe0e8da525272561514b5fb8c1d8a2217f69e6e5f834f6dd636e"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8095",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "bf26080042fabf6e3aba22cfe05ad8d93bcad3e9",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/ext/napoleon/__init__.py",
+        "sphinx/ext/napoleon/docstring.py"
+      ],
+      "test_files": [
+        "tests/test_ext_napoleon_docstring.py"
+      ],
+      "repair_bytes": 2333,
+      "f2p_count": 7,
+      "p2p_count": 35,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8095-ds2-provided-rest",
+      "case_sha256": "294a224e02ade46941ba583a83e99d9e9ae2e1d0c1aa04618efe7d6a7ed0c797"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9261",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "4d90277c49633705148793ab02b28353c8a59b48",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/test_util_inspect.py"
+      ],
+      "repair_bytes": 2944,
+      "f2p_count": 1,
+      "p2p_count": 37,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9261-ds2-provided-rest",
+      "case_sha256": "d6f20ba29ac4f6ea0d74629da753b70fd96bcee982874672e157bf2afbf7221f"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7374",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "70c61e44c34b4dadf1a7552be7c5feabd74b98bc",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/builders/_epub_base.py",
+        "sphinx/util/nodes.py"
+      ],
+      "test_files": [
+        "tests/test_build_epub.py",
+        "tests/test_build_html.py",
+        "tests/test_domain_js.py",
+        "tests/test_domain_py.py",
+        "tests/test_domain_std.py",
+        "tests/test_environment_indexentries.py",
+        "tests/test_intl.py",
+        "tests/test_util_nodes.py"
+      ],
+      "repair_bytes": 3176,
+      "f2p_count": 25,
+      "p2p_count": 544,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7374-ds2-provided-rest",
+      "case_sha256": "2f37d472b6675f0ac723263aeda5e99f835cb21f610629270cc005cc4c3ac005"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7268",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "a73617c51b9e29d7f059a2794f4574bb80cfcf57",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/ext/autodoc/typehints.py"
+      ],
+      "test_files": [
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 3559,
+      "f2p_count": 1,
+      "p2p_count": 13,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7268-ds2-provided-rest",
+      "case_sha256": "676f1611f9b4c4cda0efab355a6f9bc0520af402abc9ebfb4777d15db1a18e4f"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7351",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "c75470f9b79046f6d32344be5eacf60a4e1c1b7d",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/project.py",
+        "sphinx/util/logging.py"
+      ],
+      "test_files": [
+        "tests/test_util_logging.py"
+      ],
+      "repair_bytes": 3692,
+      "f2p_count": 1,
+      "p2p_count": 15,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7351-ds2-provided-rest",
+      "case_sha256": "d2a8e3987cf15a214c1705ab65c9591525ff1acdbf313343a3305a5689ee3fe6"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8548",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "dd1615c59dc6fff633e27dbb3861f2d27e1fb976",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/ext/autodoc/importer.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/instance_variable.py",
+        "tests/test_ext_autodoc_autoclass.py"
+      ],
+      "repair_bytes": 3907,
+      "f2p_count": 1,
+      "p2p_count": 5,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8548-ds2-provided-rest",
+      "case_sha256": "8c00cf792477d558c0c942903ad20f5ccf39cc0b4a8194ebd6dfd229fcbeb11e"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8771",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "647510e184f3bb8c14d82911b6a0e1d9f8a2b15b",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/ext/autodoc/preserve_defaults.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/preserve_defaults.py",
+        "tests/test_ext_autodoc_preserve_defaults.py"
+      ],
+      "repair_bytes": 3970,
+      "f2p_count": 1,
+      "p2p_count": 0,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8771-ds2-provided-rest",
+      "case_sha256": "994666d883eb613935707bad1a03418abe2e72ad5a9eef724fe1f986cbf95518"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7557",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "1f5dab6446ebe7b70d1210689026a649b74a280d",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/test_util_inspect.py"
+      ],
+      "repair_bytes": 4007,
+      "f2p_count": 1,
+      "p2p_count": 32,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7557-ds2-provided-rest",
+      "case_sha256": "b44bf92c021e4969bb98b9ccee99d0f4def189119d60c38beabd591ade6d9e76"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8539",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "e888a4424939fd34590e5443838709d00d8d8874",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/ext/autodoc/typehints.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/typehints.py",
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 4101,
+      "f2p_count": 3,
+      "p2p_count": 18,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8539-ds2-provided-rest",
+      "case_sha256": "b627dfa146c38e36ab515c98d44f652e99d2f91fd53f33b10ea75551658dbbe5"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9171",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "1513d5077439b6f1e69108233d1a08059f420970",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/ext/autosummary/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 4287,
+      "f2p_count": 2,
+      "p2p_count": 23,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9171-ds2-provided-rest",
+      "case_sha256": "c30d72efa52fac61d272d8addd7330f56b9f8c779a1e8e85edd07f16de62eb0c"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7356",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "4050f2df9d618d4deb4ce28ccea69ede65b45005",
+      "source_version": "3.0",
+      "product_files": [
+        "sphinx/domains/python.py",
+        "sphinx/util/nodes.py"
+      ],
+      "test_files": [
+        "tests/test_build_epub.py",
+        "tests/test_build_html.py",
+        "tests/test_domain_js.py",
+        "tests/test_domain_py.py",
+        "tests/test_environment.py",
+        "tests/test_intl.py",
+        "tests/test_util_nodes.py"
+      ],
+      "repair_bytes": 4512,
+      "f2p_count": 27,
+      "p2p_count": 524,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7356-ds2-provided-rest",
+      "case_sha256": "162531e69371bf02d68ce807eb24473ddfa59dc2e959d193546ed57a20ae5be6"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8278",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "a8abb9995f71b9bc02b6f83592751c779ae0f75a",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/pycode/ast.py",
+        "sphinx/util/inspect.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py",
+        "tests/test_pycode_ast.py"
+      ],
+      "repair_bytes": 4841,
+      "f2p_count": 23,
+      "p2p_count": 33,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8278-ds2-provided-rest",
+      "case_sha256": "50aa283bb4ffdd757d38580d93673cde2cb983c79a17f9142d5db6eab22c0105"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11311",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "65fd5be20d0269c47fbf8c5bbc37a6f24324594b",
+      "source_version": "7.2",
+      "product_files": [
+        "sphinx/addnodes.py",
+        "sphinx/transforms/post_transforms/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_addnodes.py",
+        "tests/test_transforms_post_transforms.py"
+      ],
+      "repair_bytes": 5752,
+      "f2p_count": 11,
+      "p2p_count": 6,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-11311-ds2-provided-rest",
+      "case_sha256": "e9be24edc76710ebae1158702e40b4d5073470561ed3ed64cb6c0847dde8de7f"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8481",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "a82b06f2abb1226d82b18e3f85bdf19be7b9eb3f",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/ext/autosummary/generate.py"
+      ],
+      "test_files": [
+        "tests/test_ext_autodoc_autoattribute.py"
+      ],
+      "repair_bytes": 7004,
+      "f2p_count": 1,
+      "p2p_count": 8,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8481-ds2-provided-rest",
+      "case_sha256": "64db99b8f1eda253e93472e42446c16cff8002ee19338ebe8e9a4eab8bfb9e5f"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9459",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "8dd84bc8aba782d924854174c5f9ad4a65cfccf1",
+      "source_version": "4.3",
+      "product_files": [
+        "sphinx/ext/intersphinx.py",
+        "sphinx/util/typing.py"
+      ],
+      "test_files": [
+        "tests/test_ext_intersphinx.py"
+      ],
+      "repair_bytes": 16311,
+      "f2p_count": 2,
+      "p2p_count": 17,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9459-ds2-provided-rest",
+      "case_sha256": "34e90bed032df0e482aea33cdffcc58583ef5b787da1e7f736fe08269c7934de"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9053",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "3ad1e5e7d1a5fa38e94124e8afc441764a95cdd9",
+      "source_version": "4.0",
+      "product_files": [
+        "sphinx/environment/adapters/toctree.py",
+        "sphinx/writers/html.py",
+        "sphinx/writers/html5.py"
+      ],
+      "test_files": [
+        "tests/test_environment_toctree.py",
+        "tests/test_intl.py"
+      ],
+      "repair_bytes": 2236,
+      "f2p_count": 4,
+      "p2p_count": 49,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9053-ds2-provided-rest",
+      "case_sha256": "f4331dca80537df3dfa2f891ebeaa03a63a24d06d2379083eb31b3bcf3d8b6fb"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8075",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "487b8436c6e8dc596db4b8d4d06e9145105a2ac2",
+      "source_version": "3.4",
+      "product_files": [
+        "sphinx/domains/std.py",
+        "sphinx/events.py",
+        "sphinx/transforms/post_transforms/__init__.py"
+      ],
+      "test_files": [
+        "tests/test_domain_py.py"
+      ],
+      "repair_bytes": 2665,
+      "f2p_count": 1,
+      "p2p_count": 31,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8075-ds2-provided-rest",
+      "case_sha256": "fb5a2a9ec5ce74b97696a59b041007458047827db2bae226a8e107737a962a76"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8117",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "667a188e25cb70a1c673081b066a8a90c6e8eea7",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/domains/c.py",
+        "sphinx/domains/cpp.py",
+        "sphinx/util/cfamily.py"
+      ],
+      "test_files": [
+        "tests/test_domain_c.py",
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 5532,
+      "f2p_count": 2,
+      "p2p_count": 45,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8117-ds2-provided-rest",
+      "case_sha256": "b2769f2fbe5804246cd01fdbcc88bbbc1ad97db36d4baa6df19a821694a9a613"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8007",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "9175da437ed84e43b00ed4c28ccfe629260d3c13",
+      "source_version": "3.3",
+      "product_files": [
+        "sphinx/ext/autodoc/__init__.py",
+        "sphinx/util/inspect.py",
+        "sphinx/util/typing.py"
+      ],
+      "test_files": [
+        "tests/roots/test-ext-autodoc/target/annotations.py",
+        "tests/test_ext_autodoc_configs.py"
+      ],
+      "repair_bytes": 9401,
+      "f2p_count": 1,
+      "p2p_count": 15,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8007-ds2-provided-rest",
+      "case_sha256": "08e464de83bb9aacbdf28fad9647999787a08dbfbb349c0ee85c678689988fc6"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7590",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "2e506c5ab457cba743bb47eb5b8c8eb9dd51d23d",
+      "source_version": "3.1",
+      "product_files": [
+        "sphinx/domains/c.py",
+        "sphinx/domains/cpp.py",
+        "sphinx/util/cfamily.py"
+      ],
+      "test_files": [
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 10055,
+      "f2p_count": 1,
+      "p2p_count": 24,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7590-ds2-provided-rest",
+      "case_sha256": "c7257f21ba9673cbb276d0601f4c2d2c42fdf48b5dfc63a90f10effb8eae9f7b"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10360",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "d951e55bc3419dbda809ed0aca17addeed8e9e30",
+      "source_version": "5.0",
+      "product_files": [
+        "sphinx/domains/c.py",
+        "sphinx/domains/cpp.py",
+        "sphinx/util/cfamily.py"
+      ],
+      "test_files": [
+        "tests/test_domain_c.py",
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 28026,
+      "f2p_count": 2,
+      "p2p_count": 57,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-10360-ds2-provided-rest",
+      "case_sha256": "c8e36ce2cafc0226b44ecefe35d59b4f9f91b9138f8821c0b4176c084c4e1d0d"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8291",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "c941b9cb14aefc132d6e3691085ce9704c1356e6",
+      "source_version": "3.4",
+      "product_files": [
+        "doc/usage/extensions/example_google.py",
+        "sphinx/ext/napoleon/__init__.py",
+        "sphinx/ext/napoleon/docstring.py",
+        "sphinx/util/typing.py"
+      ],
+      "test_files": [
+        "tests/ext_napoleon_pep526_data_google.py",
+        "tests/ext_napoleon_pep526_data_numpy.py",
+        "tests/test_ext_napoleon_docstring.py"
+      ],
+      "repair_bytes": 5020,
+      "f2p_count": 2,
+      "p2p_count": 44,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-8291-ds2-provided-rest",
+      "case_sha256": "65200fb45ca69a69bc2bdb0a85e007da52b235420db97b02ba35cdf7c1285790"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7906",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "fdd1aaf77058a579a5b5c2e3e6aff935265a7e49",
+      "source_version": "3.2",
+      "product_files": [
+        "sphinx/domains/c.py",
+        "sphinx/domains/cpp.py",
+        "sphinx/domains/javascript.py",
+        "sphinx/domains/python.py"
+      ],
+      "test_files": [
+        "tests/test_domain_c.py",
+        "tests/test_domain_cpp.py",
+        "tests/test_domain_js.py",
+        "tests/test_domain_py.py"
+      ],
+      "repair_bytes": 5863,
+      "f2p_count": 4,
+      "p2p_count": 82,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-7906-ds2-provided-rest",
+      "case_sha256": "a9f3e6580b40479fa0c9900999e248f2ba03db4344e60785c48916c51e1ebfa4"
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9155",
+      "repo": "sphinx-doc/sphinx",
+      "role": "train",
+      "base_commit": "69cbf7aa92b2d30a1d865de7429f6388cb94b946",
+      "source_version": "4.1",
+      "product_files": [
+        "sphinx/domains/c.py",
+        "sphinx/domains/cpp.py",
+        "sphinx/domains/javascript.py",
+        "sphinx/domains/python.py",
+        "sphinx/util/docfields.py"
+      ],
+      "test_files": [
+        "tests/test_domain_c.py",
+        "tests/test_domain_cpp.py"
+      ],
+      "repair_bytes": 16033,
+      "f2p_count": 2,
+      "p2p_count": 54,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "sphinx-doc__sphinx-9155-ds2-provided-rest",
+      "case_sha256": "c63cc3542cd8b0b9620e59d9493d8b9166ff96584a38daf47d23a6aedc726105"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "discovery": {
+    "path": "data-manifests/dataset-v2-provided-reference-remaining.json",
+    "sha256": "2783a009ff894f217c06049a418870d701ee5d021c8e003e67c0e9e772716da0"
+  },
+  "qualification": "Finite93remaining first-trial profiles,79train/14test across5repo groups, round-robin; excludes all285previously attempted source identities. Sympy deferred because v1train already has158 versus v2cap140; not a dataset quota change. Previously attempted and all250v1real IDs excluded. Environment templates same repo/version, not passing-gate/image reuse. Original refs/test patch immutable; actual outcomes and causal curation still required."
+}

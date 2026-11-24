@@ -1,0 +1,53 @@
+{
+  "reviewed_at": "2026-11-24T13:01:14+07:00",
+  "sample_id": "marshmallow-code__marshmallow-1524",
+  "run_id": "reproduce-20261124T055453466695Z",
+  "role": "train",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v5.json",
+    "sha256": "277eb3b58bcb0278e6c7e45ebcd373ac0e03714155fcc4dd19b827b238a6a0cd"
+  },
+  "assessment": {
+    "run_id": "reproduce-20261124T055453466695Z",
+    "evidence_hashes": {
+      "manifest.json": "42bcd3f9a71e7e74fc0cdeff61c47b2683ae77606eab368659f87d4c2b65e78a",
+      "license-evidence.json": "26fcd2d33d7a8cec4a1127746af17e2ad82a53b9453ecee16e67c3427ce6b064",
+      "historical-base.stdout.txt": "13a1fb1ce7cc49b0a7e05bdfa90baded9fff9f523b5090f5a5fadb7115bf5f8a",
+      "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical-base.junit.xml": "369d4731168f130aa7b4684a4c0212e3fb10466e74e6c0417625554eba346530",
+      "historical-fixed.stdout.txt": "0ca6c069ef3a005953b3b836ae8118635fd1432febfde01e5751d2611ae678ed",
+      "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical-fixed.junit.xml": "85e33d061cf6427dac7607e81924fe17f980480a53fffc9e461f5efa1bc58395"
+    },
+    "quality": "silver",
+    "disposition": "include",
+    "cause_type": "logic/value",
+    "confidence": "high",
+    "locations": [
+      {
+        "file": "src/marshmallow/validate.py",
+        "function": "URL.RegexMemoizer._regex_generator"
+      },
+      {
+        "file": "src/marshmallow/validate.py",
+        "function": "<module>"
+      }
+    ],
+    "missing_definitions": [],
+    "mechanism": "URL and email regexes end with $, which permits a match before a final newline. Validation therefore accepts URL/email strings containing a trailing newline, including the email local-part before @. Replacing these anchors with strict end-of-string \\Z rejects those inputs.",
+    "evidence_reason": "Five saved base tests fail because ValidationError is not raised: three URL variants with trailing newline and two email variants with a newline before @ or at the end. The same132test nodes pass fixed. Product repair changes exactly the relevant end anchors; full original test patch/source inventories, local reference statuses, log hashes and cleanup verified.",
+    "limitations": "The URL regex is defined inside existing URL.RegexMemoizer._regex_generator (base53-69, changed68). Email regex constants are initialized in the class body (base121-135), represented by the schema module fallback rather than falsely naming the unmodified Email.__call__ as the definition. Module location is coarse and does not distinguish class attributes. No exploit or security impact measured; source issue is context, not historical CI evidence. Original unresolved-ID run retained; sole correction changes mapping only, not test behavior.",
+    "label_source": "code_patch_and_saved_source_reference_execution_review",
+    "actor": "unknown",
+    "human_confirmation": "pending",
+    "gold": "pending",
+    "training_eligibility": "pending",
+    "input_leakage_review": "FrozenV5 source/log only; issue, repair/test patch, source-parser audit and assessment not supplied to retrieval. Existing comments and exception/assertion messages are evidence, not automatic answer leakage."
+  },
+  "assessment_sha256": "041aef214e29efd7441ba1e5f27ae9bfc78665a1958494b110ad616ef7d9a884",
+  "source_parser_audit": "docs/evidence/dataset-v2-marshmallow1524-source-id-check.json",
+  "export_directory": ".cache/dataset-v2/records-retrieval-v5/marshmallow-code__marshmallow-1524",
+  "manifest_sha256": "f6d002cc4a0499614a4bbee38b8739ba5eaea540e8861623cd6082b5ad21ac57",
+  "new_silver_exports": 1,
+  "qualification": "Saved strict execution evidence reviewed and exported; no Docker/model/source run in review. Cause high confidence within pinned tests; email class-constant location explicitly coarse. Human/gold/training pending, finalselection separate."
+}

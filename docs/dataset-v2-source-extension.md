@@ -70,3 +70,13 @@ Trần nguồn mới nằm ở [receipt sau pip4](../data-manifests/dataset-v2-c
 ## AIDev cú pháp từ metadata đã có giấy phép gợi ý
 
 [20screen mới](../data-manifests/dataset-v2-aidev-syntax-licensed-screen-results20.json) chỉ là sàng lọc provenance:18cần rà tiếp,1patchlớn,1HTTP404 không retry. Chín case có đúng một file Python; [ghim source/license](evidence/dataset-v2-aidev-syntax-licensed-preparation.json) chỉ nhận năm, bốn case chưa xác nhận được giấy phép ghim nên không chạy. [Plan compile-only](../data-manifests/dataset-v2-aidev-syntax-licensed-plan.json) giữ role trước kết quả và không gọi ứng dụng/model. Bản sửa compile pass không tự thành nhãn syntax hoặc seed sinh; phải đối chiếu lỗi base và code trong review riêng.
+
+## V5 sau hiệu chỉnh trên train
+
+Input cấu hình đã được hỗ trợ bằng [protocol V5 riêng](../data-manifests/dataset-v2-input-protocol-v5.json), [train calibration](evidence/dataset-v2-config-input-v5-train-calibration52.json) và [audit78mẫu chuyển/1backend mới](evidence/dataset-v2-input-v5-migration-config-export.json). Dùng `ci_demo.input_protocol_v5.export_real_bound` với binding được ghim; entrypoint V3/V4 cũ vẫn chỉ nhận protocol cũ. Mọi code ngoài owned-backend signal giữ nguyên snippets V4; trường hợp config không được xuất bằng callable riêng lẻ thiếu binding. Root mới `.cache/dataset-v2/records-retrieval-v5`; root V4 và raw/oldlocks không đổi. Nhãn và việc đủ điều kiện train không tự được duyệt qua migration.
+
+## Ánh xạ ID whitespace và recipe chưa chạy
+
+[Audit train marshmallow1524](evidence/dataset-v2-marshmallow1524-source-id-check.json) đối chiếu log/JUnit đã lưu với [parser SWE đã ghim](https://github.com/SWE-bench/SWE-bench/blob/726c5461e2ef52d83cf1ea2107870a8bb3328d57/swebench/harness/log_parsers/python.py). Tên test nguồn bị cắt ở whitespace; phép đối chiếu nhóm chính xác yêu cầu mọi node cùng ID/class có đúng trạng thái, không dùng fuzzy-prefix hoặc bỏ qua skip/mixed. Mode `swebench_pytest_whitespace` không rút absolute-path về basename; mode options cũ dành cho pydicom/requests/pylint giữ nguyên.
+
+[Profile hiệu chỉnh riêng](../data-manifests/dataset-v2-marshmallow1524-whitespace-r1-plan.json) không đổi source/test/dependency/command hoặc verdict raw cũ. [Plan86 first-trial](../data-manifests/dataset-v2-provided-reference-final86-plan.json) thay metadata của86recipe chưa chạy trong plan93; bảy profile đã hoàn tất giữ nguyên. Xem [receipt supersession](evidence/dataset-v2-provided-rest86-preparation-supersession.json); không cộng số thư mục thành số case thử và không resume plan93 đã được thay cho phần chưa chạy.

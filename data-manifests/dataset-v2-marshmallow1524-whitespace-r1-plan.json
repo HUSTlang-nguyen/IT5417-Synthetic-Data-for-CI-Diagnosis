@@ -1,0 +1,37 @@
+{
+  "created_at": "2026-11-24T12:53:19+07:00",
+  "source_role_lock_sha256": "7da64e4b3ac941e5ab213cdfede1fdbd67d51e920fd7417a20ed88aabdf292da",
+  "repo_roles": {
+    "marshmallow-code/marshmallow": "train"
+  },
+  "selected": [
+    {
+      "source_case_id": "marshmallow-code__marshmallow-1524",
+      "repo": "marshmallow-code/marshmallow",
+      "role": "train",
+      "base_commit": "7015fc4333a2f32cd58c3465296e834acd4496ff",
+      "source_version": "2.20",
+      "product_files": [
+        "src/marshmallow/validate.py"
+      ],
+      "test_files": [
+        "tests/test_validate.py"
+      ],
+      "repair_bytes": 1554,
+      "f2p_count": 5,
+      "p2p_count": 127,
+      "case_recipe_status": "not_prepared",
+      "license_status": "requires_pinned_file_evidence",
+      "source_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+      "case_id": "marshmallow-code__marshmallow-1524-ds2-provided-next-r1",
+      "case_sha256": "081276fb0b9e00a85d94c95ccda61578900c35158fc2c514283f59405deda641"
+    }
+  ],
+  "targets": {
+    "real": 1000,
+    "train": 700,
+    "validation": 150,
+    "test": 150
+  },
+  "qualification": "One exactparent source-ID parser correction; same immutable source/tests/environment. Saved proposal is not a runtime success; original source IDs retained, mixed groups rejected."
+}

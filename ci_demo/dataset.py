@@ -217,13 +217,16 @@ def export_synthetic(run_id, index, assessment_path, destination, *, retriever=N
     return metadata
 
 
-def export_real(run_id, assessment_path, destination, *, retriever=None):
+def export_real(run_id, assessment_path, destination, *, retriever=None, input_protocol=None):
     """Export observed input first; use the separate assessment only for target/metadata."""
     raw, evidence_hashes = real_evidence(run_id)
     case, gate = raw["source"], raw["environment"]
     if case.get('local_configuration_check'):
-        # shortcut: frozen v4 retrieves Python only; require a separately calibrated input protocol before config export.
-        raise ValueError('Configuration export requires a separately frozen configuration input protocol')
+        if input_protocol is None:
+            raise ValueError('Configuration export requires a separately frozen configuration input protocol')
+        from .input_protocol_v5 import checked_retriever
+        if checked_retriever(input_protocol)[0] is not retriever:
+            raise ValueError('Configuration export requires the exact frozen retriever')
     assessment = read_json(assessment_path)
     if assessment.get("run_id") != run_id or assessment.get("evidence_hashes") != evidence_hashes:
         raise ValueError("Assessment is not bound to these exact execution artifacts")
@@ -263,6 +266,11 @@ def export_real(run_id, assessment_path, destination, *, retriever=None):
         from .compilation import POLICY
         metadata['source_test_reference_policy'] = POLICY
         metadata['source_test_reference_qualification'] = 'Pipeline-owned local compilation smoke, not upstream tests or historical CI'
+    if case.get('local_configuration_check'):
+        from .configuration import POLICY, QUALIFICATION
+        metadata['source_test_reference_policy'] = POLICY
+        metadata['source_test_reference_qualification'] = QUALIFICATION
+        metadata['generator_seed_eligible'] = False
     write_json(destination / "manifest.json", metadata)
     return metadata
 

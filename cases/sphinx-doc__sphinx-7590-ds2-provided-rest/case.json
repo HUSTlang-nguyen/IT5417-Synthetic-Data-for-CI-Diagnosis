@@ -1,0 +1,108 @@
+{
+  "case_id": "sphinx-doc__sphinx-7590-ds2-provided-rest",
+  "source_case_id": "sphinx-doc__sphinx-7590",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-7590",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "2e506c5ab457cba743bb47eb5b8c8eb9dd51d23d",
+  "head": "base+repair:23c3b2333c3512be7350376c631bbbb079684b7ce1563c5a30ddf665c0f1ec7a",
+  "allowed_file": "sphinx/domains/c.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-7590-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "23c3b2333c3512be7350376c631bbbb079684b7ce1563c5a30ddf665c0f1ec7a",
+  "test_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-7590-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "77ee427a569addb63364093290096af046dffd77fa65fcc6f60197db7021d8da",
+  "source_record_sha256": "5506186197cd4847958c1cd9041d8f02fd8c8249112c574afdc5ef2be6292b51",
+  "fail_to_pass": [
+    "tests/test_domain_cpp.py::test_expressions"
+  ],
+  "pass_to_pass": [
+    "tests/test_domain_cpp.py::test_fundamental_types",
+    "tests/test_domain_cpp.py::test_type_definitions",
+    "tests/test_domain_cpp.py::test_concept_definitions",
+    "tests/test_domain_cpp.py::test_member_definitions",
+    "tests/test_domain_cpp.py::test_function_definitions",
+    "tests/test_domain_cpp.py::test_operators",
+    "tests/test_domain_cpp.py::test_class_definitions",
+    "tests/test_domain_cpp.py::test_union_definitions",
+    "tests/test_domain_cpp.py::test_enum_definitions",
+    "tests/test_domain_cpp.py::test_anon_definitions",
+    "tests/test_domain_cpp.py::test_templates",
+    "tests/test_domain_cpp.py::test_template_args",
+    "tests/test_domain_cpp.py::test_initializers",
+    "tests/test_domain_cpp.py::test_attributes",
+    "tests/test_domain_cpp.py::test_xref_parsing",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_multi_decl_lookup",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_warn_template_param_qualified_name",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_backslash_ok",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_semicolon",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_anon_dup_decl",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_misuse_of_roles",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_with_add_function_parentheses_is_True",
+    "tests/test_domain_cpp.py::test_build_domain_cpp_with_add_function_parentheses_is_False",
+    "tests/test_domain_cpp.py::test_xref_consistency"
+  ],
+  "test_targets": [
+    "tests/test_domain_cpp.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_domain_cpp.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7615-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ],
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "sphinx-doc__sphinx-7615-ds2-wave2",
+  "recipe_template_case_sha256": "d0c46dbbd343b72d981520dd20b4686528713b99c44170c43c14eb953df2a086",
+  "recipe_template_passing_run": "reproduce-20261123T223258822599Z"
+}

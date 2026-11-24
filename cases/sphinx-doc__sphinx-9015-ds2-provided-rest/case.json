@@ -1,0 +1,102 @@
+{
+  "case_id": "sphinx-doc__sphinx-9015-ds2-provided-rest",
+  "source_case_id": "sphinx-doc__sphinx-9015",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-9015",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "9f62b9cccbd69d250ff84a3cfb346725476f83a8",
+  "head": "base+repair:15a20fc13c6ec8226b6266fe4cbdb610b4b4634f4926fe7e170fda6ed541dad1",
+  "allowed_file": "sphinx/util/typing.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-9015-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "15a20fc13c6ec8226b6266fe4cbdb610b4b4634f4926fe7e170fda6ed541dad1",
+  "test_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-9015-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "f5cb2f6ad62110a716955656fe0cc096ac387f71f80e2c1de659552fd0298202",
+  "source_record_sha256": "a6f630ee70186efa931777bb89444696dae6632ebc1923f6adb1c6a3cd24f7e5",
+  "fail_to_pass": [
+    "tests/test_util_typing.py::test_restify",
+    "tests/test_util_typing.py::test_stringify"
+  ],
+  "pass_to_pass": [
+    "tests/test_util_typing.py::test_restify_type_hints_containers",
+    "tests/test_util_typing.py::test_restify_type_hints_Callable",
+    "tests/test_util_typing.py::test_restify_type_hints_Union",
+    "tests/test_util_typing.py::test_restify_type_hints_typevars",
+    "tests/test_util_typing.py::test_restify_type_hints_custom_class",
+    "tests/test_util_typing.py::test_restify_type_hints_alias",
+    "tests/test_util_typing.py::test_restify_type_ForwardRef",
+    "tests/test_util_typing.py::test_restify_broken_type_hints",
+    "tests/test_util_typing.py::test_stringify_type_hints_containers",
+    "tests/test_util_typing.py::test_stringify_Annotated",
+    "tests/test_util_typing.py::test_stringify_type_hints_string",
+    "tests/test_util_typing.py::test_stringify_type_hints_Callable",
+    "tests/test_util_typing.py::test_stringify_type_hints_Union",
+    "tests/test_util_typing.py::test_stringify_type_hints_typevars",
+    "tests/test_util_typing.py::test_stringify_type_hints_custom_class",
+    "tests/test_util_typing.py::test_stringify_type_hints_alias",
+    "tests/test_util_typing.py::test_stringify_broken_type_hints"
+  ],
+  "test_targets": [
+    "tests/test_util_typing.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_util_typing.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "docutils==0.17.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7961-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ],
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "sphinx-doc__sphinx-8951-ds2-wave2",
+  "recipe_template_case_sha256": "c158bd43ef2029c3e61b600fdd5caad74db35d168b1eb54891a9fd189d92a328",
+  "recipe_template_passing_run": "reproduce-20261123T065652500956Z"
+}

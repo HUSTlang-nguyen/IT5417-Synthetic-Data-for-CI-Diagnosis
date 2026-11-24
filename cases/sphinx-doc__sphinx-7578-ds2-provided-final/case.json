@@ -1,0 +1,103 @@
+{
+  "case_id": "sphinx-doc__sphinx-7578-ds2-provided-final",
+  "source_case_id": "sphinx-doc__sphinx-7578",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-7578",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "d59584f4096c75af4a94fb2bf70974039f7af0bb",
+  "head": "base+repair:d0ab8311ce20060d15623664d4d17062845f1f514e5cd0134034195d7aad30f5",
+  "allowed_file": "sphinx/ext/autosummary/generate.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-7578-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "d0ab8311ce20060d15623664d4d17062845f1f514e5cd0134034195d7aad30f5",
+  "test_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-7578-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "f7cd319996beed37300e6939fc2b99c98a832f4e838306807added7d0e558c75",
+  "source_record_sha256": "4ec4057865f0fb9b3235de9e0c527c37421c0d3bdc64805e161015d80622c455",
+  "fail_to_pass": [
+    "tests/test_ext_autosummary.py::test_autosummary_template"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autosummary.py::test_mangle_signature",
+    "tests/test_ext_autosummary.py::test_escaping",
+    "tests/test_ext_autosummary.py::test_autosummary_generate",
+    "tests/test_ext_autosummary.py::test_autosummary_generate_overwrite1",
+    "tests/test_ext_autosummary.py::test_autosummary_generate_overwrite2",
+    "tests/test_ext_autosummary.py::test_autosummary_recursive",
+    "tests/test_ext_autosummary.py::test_autosummary_latex_table_colspec",
+    "tests/test_ext_autosummary.py::test_import_by_name",
+    "tests/test_ext_autosummary.py::test_autosummary_imported_members",
+    "tests/test_ext_autosummary.py::test_generate_autosummary_docs_property",
+    "tests/test_ext_autosummary.py::test_autosummary_skip_member",
+    "tests/test_ext_autosummary.py::test_empty_autosummary_generate",
+    "tests/test_ext_autosummary.py::test_invalid_autosummary_generate",
+    "tests/test_ext_autosummary.py::test_autogen"
+  ],
+  "test_targets": [
+    "tests/test_ext_autosummary.py"
+  ],
+  "frozen_test_files": [
+    "tests/roots/test-ext-autosummary-template/conf.py",
+    "tests/roots/test-ext-autosummary-template/target.py",
+    "tests/test_ext_autosummary.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7615-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ],
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "sphinx-doc__sphinx-7615-ds2-wave2",
+  "recipe_template_case_sha256": "d0c46dbbd343b72d981520dd20b4686528713b99c44170c43c14eb953df2a086",
+  "recipe_template_passing_run": "reproduce-20261123T223258822599Z",
+  "supersedes_unexecuted_case_id": "sphinx-doc__sphinx-7578-ds2-provided-rest",
+  "superseded_preparation_case_sha256": "173449affb91710c100fc3f1e52bc97052fa366d586ffa9cccdd6a20141b486d",
+  "source_parser_basis": "Pinned SWE726c5461 source test-ID parser; whitespace groups for declared pytest repos, existing options parser for pydicom, original matching retained for other repos. Every observed member must match expected status. Source IDs/tests remain unchanged."
+}

@@ -1,0 +1,82 @@
+{
+  "case_id": "pydicom__pydicom-1255-ds2-provided-rest",
+  "source_case_id": "pydicom__pydicom-1255",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pydicom__pydicom-1255",
+  "repo_url": "https://github.com/pydicom/pydicom",
+  "base": "59be4993000cc8af2cd9a4176f15398b6a7875d7",
+  "head": "base+repair:c6a44f39cf1f7e7dc8ef0985f671352e94cb16e5032ab04d45a0c0fa8874a662",
+  "allowed_file": "pydicom/_version.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1255-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "c6a44f39cf1f7e7dc8ef0985f671352e94cb16e5032ab04d45a0c0fa8874a662",
+  "test_patch": ".cache/dataset-v2-source/cases/pydicom__pydicom-1255-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "99ac87bbdc49f9eeb6cc545c6fa598d407ceec9474369763a9586f652cd9b00b",
+  "source_record_sha256": "225666c9ff05d698533c0b44fbf1a12029c44da28b81247a34f55c35994b04c6",
+  "fail_to_pass": [
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_within_SQ"
+  ],
+  "pass_to_pass": [
+    "pydicom/tests/test_json.py::TestPersonName::test_json_pn_from_file",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_pn_components_from_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_empty_value",
+    "pydicom/tests/test_json.py::TestPersonName::test_multi_value_to_json",
+    "pydicom/tests/test_json.py::TestPersonName::test_dataelem_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_to_json",
+    "pydicom/tests/test_json.py::TestAT::test_from_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_value_in_json",
+    "pydicom/tests/test_json.py::TestAT::test_invalid_tag_in_json",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_json_from_dicom_file",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_roundtrip",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataset_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_dataelement_dumphandler",
+    "pydicom/tests/test_json.py::TestDataSetToJson::test_sort_order",
+    "pydicom/tests/test_json.py::TestSequence::test_nested_sequences",
+    "pydicom/tests/test_json.py::TestBinary::test_inline_binary",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_inline_binary",
+    "pydicom/tests/test_json.py::TestBinary::test_valid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_invalid_bulkdata_uri",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called",
+    "pydicom/tests/test_json.py::TestBinary::test_bulk_data_reader_is_called_2"
+  ],
+  "test_targets": [
+    "pydicom/tests/test_json.py"
+  ],
+  "frozen_test_files": [
+    "pydicom/tests/test_json.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "numpy==1.23.5"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pydicom__pydicom-1256-ds2",
+  "recipe_template_case_sha256": "3013fd2f12105515d9756626466d782be1e0e8c4486813305e2464b1806acb8f",
+  "recipe_template_passing_run": "reproduce-20261122T192305300764Z"
+}

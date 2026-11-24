@@ -1,0 +1,724 @@
+{
+  "checked_at": "2026-11-24T12:46:03+07:00",
+  "worklist": "data-manifests/dataset-v2-aidev-mixed40-screen-worklist.json",
+  "worklist_sha256": "8fe78e89e396a62d66fb1393319416f108d40661ea722f3e27e8c5e411fc98b9",
+  "discovery_requested": 40,
+  "available": 23,
+  "missing_dependency_candidates": 17,
+  "requested": 23,
+  "attempted": 23,
+  "unattempted": 0,
+  "results": [
+    {
+      "dataset_id": 3803355058,
+      "repo": "Abisena/IMOGI-FINANCE",
+      "pr": 273,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:43:44+07:00",
+      "source_record_sha256": "095bf9b6a09418be8db9d9a4d77a097c7a2ba911a7a101d5ae429355fe0e2340",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3803355058/repo.json",
+          "sha256": "9060368cf77b39c97d99fef99cc14b66e008546577a254e8287958d26d807c79"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3803355058/pr.json",
+          "sha256": "1960d3f12d1222bd1bd64675eb59f9f25438b630d2d83888512b2099d89fa7d8"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3803355058/files.json",
+          "sha256": "0e0c577133fc6b65fb8ea312372cd3f336c37ce08bfd491cc28fbe4ca1f93a36"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "Abisena/IMOGI-FINANCE",
+      "base": "32d399af889444b33325bfddef0fe7d4be2b7916",
+      "head": "185bccb89b328fc8d2d7b8c7497ef39948d4c670",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "imogi_finance/imogi_finance/doctype/expense_request/expense_request.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:44:06+07:00"
+    },
+    {
+      "dataset_id": 4047364682,
+      "repo": "AIC-Turku/AIC-Turku-database",
+      "pr": 210,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:44:06+07:00",
+      "source_record_sha256": "e84bf05aad23b3a3243672a024bfb676441b2b7791bbac9833f28b5ef03cbbd4",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/4047364682/repo.json",
+          "sha256": "926198d0b9783f4c757d4342ff4d70b65ed509def064960ada9c206ec9d21bca"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/4047364682/pr.json",
+          "sha256": "ca7d97687f8c1c35405d5a161e188a49c207a5c2305041be99d2f2f8a4954503"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/4047364682/files.json",
+          "sha256": "0fed0a4cd1e50d21de7509bc597c49fdb2ff92d87d6a8259206436553d9f43c5"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "AIC-Turku/AIC-Turku-database",
+      "base": "fa4f8543f4c6da5e868c4ff625dc773cfefeb378",
+      "head": "f741544761aef143ccc9cd28089a563bc8b47f17",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "instruments/3i CSU-W1 Spinning Disk.yaml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:44:27+07:00"
+    },
+    {
+      "dataset_id": 3460741665,
+      "repo": "Alice-Sabrina-Ivy/asi-letter",
+      "pr": 65,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:44:27+07:00",
+      "source_record_sha256": "7b8450610925f0a0585855f2f58b83c856b6f874fb7f848d63facf12b6b63b50",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3460741665/repo.json",
+          "sha256": "0a6867ae0626e80634d374ac604d73635340c7f0162ec8ed7173241acd7fea59"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3460741665/pr.json",
+          "sha256": "92abec9395b92e7eb6d4c9417fe730ffc542850167a94ca658af053a0bb47021"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3460741665/files.json",
+          "sha256": "66e7e958640f753f73da10c55ce053b46e7fa625bd74738e4cec644d5d2fabee"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "Alice-Sabrina-Ivy/asi-letter",
+      "base": "9c569027eeca4c7b2787dc2e3e6d278bcc85f77a",
+      "head": "3067756324806b4dc05c0117512fdf830081334f",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        ".github/workflows/ots-upgrade.yml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:44:29+07:00"
+    },
+    {
+      "dataset_id": 3673694956,
+      "repo": "animicaorg/all",
+      "pr": 59,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:44:29+07:00",
+      "source_record_sha256": "ee1f99fab437b5d14b7d0d5fc0da8a82b9236da5aab87faa089523b3e8d9a833",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3673694956/repo.json",
+          "sha256": "e6205da83b3664089055767c4701e98199b698d09fa5b86a36826bfaa8ac8056"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3673694956/pr.json",
+          "sha256": "dab61651c239cca3e0ec1ead43177300027e073d5171a666b36cebdbdf80f157"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3673694956/files.json",
+          "sha256": "ce3529fb1997953e50c90e341f28ed006d2400f8e560f066119006c7238a9c90"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "animicaorg/all",
+      "base": "a3a94f24891a6b2a7de35b12d054a8b2ce86b6b2",
+      "head": "262054a19a8a3228b71cd6e215060efc4e023294",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "tests/devnet/docker-compose.yml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:44:31+07:00"
+    },
+    {
+      "dataset_id": 3278389758,
+      "repo": "Aries-Serpent/gh_COPILOT",
+      "pr": 1007,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T12:44:31+07:00",
+      "source_record_sha256": "d87a16b2c982eb59cbdbf8657c97d7b9791ac7525594e54a5b890a18288be860",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3278389758/repo.json",
+          "sha256": "7d0bc2a880c26add0dfecbcb9e13ac0d5c00b9f2b2fbb7bfdaa31ae52949ffd9"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3278389758/pr.json",
+          "sha256": "0bf25a5c7ad27003fa151704e44568ea334fd72c9e1241eb380115ea7706ea77"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3278389758/files.json",
+          "sha256": "0ae099931c783da56ad6e7c5ce07c270ff04ce9e5f7b62fd5c2722e8fbc96c6a"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "Aries-Serpent/gh_COPILOT",
+      "base": "7cc651640444d86cb9a76653047ca667b814305b",
+      "head": "dcd46524e6a5a390a2e7a22026eedf689f4e8de7",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "template_engine/auto_generator.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:44:52+07:00"
+    },
+    {
+      "dataset_id": 3948307456,
+      "repo": "Bigdaddy1990/pawcontrol",
+      "pr": 1247,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:44:52+07:00",
+      "source_record_sha256": "936cb4b88a6e1f0b5144715820e3269614ec61a439c0e73497a9caba139333c0",
+      "artifacts": {},
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 404
+      },
+      "finished_at": "2026-11-24T12:44:52+07:00"
+    },
+    {
+      "dataset_id": 3126099965,
+      "repo": "BioTRaX/NiceGrow",
+      "pr": 84,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:44:52+07:00",
+      "source_record_sha256": "68600f4b2e69b45753dd019cd6087f1621371fa88a8e08ab7ad26a69d4b56c7a",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3126099965/repo.json",
+          "sha256": "6d3095dc901b485ca1dde13a789fc4d5fd2c73c323e1481bbf9c3a4f1533bb9d"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3126099965/pr.json",
+          "sha256": "c3ff62505f28dfdd90787a06d622480fc2c76cf5c8a78e1d69a23f0e6ef12679"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3126099965/files.json",
+          "sha256": "92e38ebb808c0231d7d28d2e3f370156ded3a1327096a37deeb337351026117b"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "BioTRaX/NiceGrow",
+      "base": "8b54d86776e39fb483037b0fa446e5d7af56643b",
+      "head": "77afe0184f0f1e93b6c8d29e96c7f5af145cfb6a",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "Sandy bot/sandybot/gpt_handler.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:44:54+07:00"
+    },
+    {
+      "dataset_id": 3324965602,
+      "repo": "blakinio/thesslagreen",
+      "pr": 550,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:44:54+07:00",
+      "source_record_sha256": "39c0e7fe3ab77693c90c2372572a3f7a9deb28afa67d06714af0e8af05feef4e",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3324965602/repo.json",
+          "sha256": "d00643c3145e393c48a74c75d5ab60fe2be46c434b28640b9b9def935153a215"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3324965602/pr.json",
+          "sha256": "0d4fa37d5da7e6d5029db6958eea15fdde3eea2775d335d3529bf31c09c12e52"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3324965602/files.json",
+          "sha256": "c39a6748038953547fe85e116e43a96723cb8ffcd689199bbdded877cac108c1"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "blakinio/thesslagreen",
+      "base": "f04e16089ab411e2a9f60a38eecc078478d740cc",
+      "head": "fe629975b1ddc26ffb34da26e5b730f72749c82d",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "custom_components/thessla_green_modbus/config_flow.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:19+07:00"
+    },
+    {
+      "dataset_id": 3462854001,
+      "repo": "BobTheZombie/LPM.Org",
+      "pr": 138,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:19+07:00",
+      "source_record_sha256": "3eb2a427457e28b0a7981cfcaddc92c1c04a43d33f03b147ac7b0d6ee2023b30",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3462854001/repo.json",
+          "sha256": "b20b7cb8b54bc68689b90e3ca1c36a0d7c0cdba13f7cdace2569d6a817e8e176"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3462854001/pr.json",
+          "sha256": "cf76c59fbe509b7ff6af5c6eec1d9acb3afd686edec8597830b23f4fc89ee8f8"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3462854001/files.json",
+          "sha256": "6b7619c998cc7f1f1b91ce90e0856e2a2a283bddd2c9af41b793face16e02ece"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "BobTheZombie/LPM.Org",
+      "base": "362cc4ac54db83fce55f163fb35dee75a9e0f576",
+      "head": "5ce416d80d73363e9550ca3f2d9ad1269009e162",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "Makefile"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:21+07:00"
+    },
+    {
+      "dataset_id": 3519862394,
+      "repo": "bradhawkins85/MyPortal",
+      "pr": 501,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:21+07:00",
+      "source_record_sha256": "85b4453649b5fd25c2e99507ede7718ffa0373eafad85941a1cfbf909af72819",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3519862394/repo.json",
+          "sha256": "aa956ba8921ef5cc813f09e97947359776de852339949692bb2e5d56d3478a3d"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3519862394/pr.json",
+          "sha256": "2f0b3a801ce4cf98c3de2c2ee67f5561704c4b525dcc804e2f8dd49cccfd2371"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3519862394/files.json",
+          "sha256": "d92b14d57a1373494cbaec794a355a609e9ff03b25e69aff587812b185dd336a"
+        }
+      },
+      "license_spdx_hint": "AGPL-3.0",
+      "fork": false,
+      "canonical_repo": "bradhawkins85/MyPortal",
+      "base": "d3ed3a97a7d56fd0714bffca4fc7df352192d0de",
+      "head": "b837a79ea1d48c052bbe924d587710d95db1e297",
+      "changed_files": 2,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "app/static/js/admin.js",
+        "changes.md"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:22+07:00"
+    },
+    {
+      "dataset_id": 3246540836,
+      "repo": "bvweerd/dynamic_energy_contract_calculator",
+      "pr": 61,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:45:22+07:00",
+      "source_record_sha256": "e3d3147304d68875d635b65fba73a672efb3d178efd46ff5107997c40657f205",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3246540836/repo.json",
+          "sha256": "6b369530caf92614254886d6892c3b7b432a435459c940845822332d078bf608"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3246540836/pr.json",
+          "sha256": "86790a05c899ffdd7fb99c57ffab39187327e541fe106ff630f95fe18eb9e6fd"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3246540836/files.json",
+          "sha256": "5f2b6b52075353d1f5b6592b8d28579d3f99f2b7a8512ad198f0f9e3a3dffb0e"
+        }
+      },
+      "license_spdx_hint": "Apache-2.0",
+      "fork": false,
+      "canonical_repo": "bvweerd/dynamic_energy_contract_calculator",
+      "base": "554eb56a694161f6ff53924c20495244f3826bff",
+      "head": "5dda6ac846dcaffe6c87203bc810f602f7dc0a80",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        ".github/workflows/release.yml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:24+07:00"
+    },
+    {
+      "dataset_id": 3106238767,
+      "repo": "bwerff/TokenTally",
+      "pr": 75,
+      "proposed_role": "test",
+      "started_at": "2026-11-24T12:45:25+07:00",
+      "source_record_sha256": "cdd698661e5656ecbc4478ea51cfe62d1c92e16c8cec335c5919b2d3361776ef",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3106238767/repo.json",
+          "sha256": "8d01c1e8189e7a2a7b311bf82ec79ae4698197418ec083e7441c3a9d8f76940e"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3106238767/pr.json",
+          "sha256": "b155554d336141e540748bc6ceb215e0b6b08cf221d3b581d358d72e3000c046"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3106238767/files.json",
+          "sha256": "e1cf72e6a2a8229edaada65c57007fd41eb3643dcb0bc1176f30043a5a217108"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "bwerff/TokenTally",
+      "base": "bcb9ec6e1d228cb36789943762a965561dfeb63b",
+      "head": "f6a7765a20e907cdf50d123e7eed5448d1841bc9",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "src/token_tally/cost_router.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:27+07:00"
+    },
+    {
+      "dataset_id": 3653056095,
+      "repo": "chrisnewell91/Meta-MCP-Server",
+      "pr": 2,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:27+07:00",
+      "source_record_sha256": "445de0598cb272f7e0587637810d730551b2fe9d64cd880bfa308dee402114af",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3653056095/repo.json",
+          "sha256": "cd66c48d9c236371a39292002c21c3258d2fe9061dc6d492d077341d540a4cd5"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3653056095/pr.json",
+          "sha256": "3733977dc2fd7c6ae643f275389fdd8fcf5d4c16963141fad0729b5d187d7b08"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3653056095/files.json",
+          "sha256": "5586bbbe0c4e1b41615854654d846280e8bc070aeac7dcf42ee7f5424b68f074"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "chrisnewell91/Meta-MCP-Server",
+      "base": "f868dabb2ce1ee0e89af7a5fd05c2da702f336d4",
+      "head": "2131a92a6be9c26cac33b046eb8518fdb7b6dc43",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "tests/test_server.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:28+07:00"
+    },
+    {
+      "dataset_id": 3139343625,
+      "repo": "cssius111/xianxia-world-engine",
+      "pr": 83,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:28+07:00",
+      "source_record_sha256": "ea729a95bf74ed9c3f5743fb3ba55120114a925d5c04996a5592ec9c59870df2",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3139343625/repo.json",
+          "sha256": "cdd43c772e6d0efe346de77a0eb946c920b1b206554b6ac7a97bcf39982d9f01"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3139343625/pr.json",
+          "sha256": "aad1c4affec1811289a1faf3e01bd6c576dc5ad016c71ed5c51f1e2547f554d6"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3139343625/files.json",
+          "sha256": "5cd43434f13d044df59c9083eabd6cfe4b780989866da4ecc67d3368da768267"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "cssius111/xianxia-world-engine",
+      "base": "637a2970d8f15734a26729f97375cbddee9fdec9",
+      "head": "d4379c2f18598b4159dda1880333db8079d814df",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "tests/unit/test_api.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:30+07:00"
+    },
+    {
+      "dataset_id": 3157344404,
+      "repo": "d0tTino/DeepThought-ReThought",
+      "pr": 113,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:45:30+07:00",
+      "source_record_sha256": "9f3b8999ea29a4f4b4058e7f8da4635597725fa0db57bb9b9b3ab240feb8bc1e",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3157344404/repo.json",
+          "sha256": "7ca6225da5c7afcfb91d293fce02101a7f15afd2eec7bef029d2d9c5e6971b34"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3157344404/pr.json",
+          "sha256": "03fd93369e471e5cea8379a1478e0d8ed64cdac3552d2a2152aaaf6771575c89"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3157344404/files.json",
+          "sha256": "31a3b67c28eceaa78f6bf24beff58cee8c7a580dc4b68d03906b88f2ce738cf4"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "d0tTino/DeepThought-ReThought",
+      "base": "979a3554a2b497569c8064eaf446b0bdcbe82520",
+      "head": "c901b0a0b0a61ef8a480091c3a34e7f8ac90a8d9",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        ".github/workflows/ci.yml"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:32+07:00"
+    },
+    {
+      "dataset_id": 3128248913,
+      "repo": "DanielJSimons/open-lilli",
+      "pr": 17,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:32+07:00",
+      "source_record_sha256": "60046f5d33dd5ac6a4f9d1a2b4a4d94e886d1f938c379cb0844229ab4a8f6761",
+      "artifacts": {},
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 404
+      },
+      "finished_at": "2026-11-24T12:45:33+07:00"
+    },
+    {
+      "dataset_id": 3348773418,
+      "repo": "DenisZol/test",
+      "pr": 6,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:33+07:00",
+      "source_record_sha256": "f8b14a5dec9e46f58c459809159d9aee572c93e680f8852c3bfb09ebd845b285",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3348773418/repo.json",
+          "sha256": "4a417944a21cf9d5c0fd3a224fcc704e52c294f95968b6aadd4bd88861144d80"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3348773418/pr.json",
+          "sha256": "91483dcb22f8692c8cef11c8c6164f1d856b3b672b80975b7ed3f1307d32bba3"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3348773418/files.json",
+          "sha256": "c76df4bcb3567c015388fa6227b0d7becfe71f4e5fce5f76f82b16fbb7895092"
+        }
+      },
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "DenisZol/test",
+      "base": "abca01eafb8d19f3056f0735a52345663232c166",
+      "head": "35554f39e6983075b700177745afee4d524381d1",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "Mega_Help_Scriptv2.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:35+07:00"
+    },
+    {
+      "dataset_id": 3356680201,
+      "repo": "dfiore1230/HA-Expiring-Consumables",
+      "pr": 20,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:45:35+07:00",
+      "source_record_sha256": "cdfbe19f2c41d8486df7c567ed001948aa6936106ee8c7378c7aec523651d363",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3356680201/repo.json",
+          "sha256": "416c96ab2f2c36bb2c83925b0160de998b87cc1168ca4f7054efa408f48462b8"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3356680201/pr.json",
+          "sha256": "81e3c1018abcc8ef13ca20948b70ad0359830461cd90bc8444c533b74adfa6ea"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3356680201/files.json",
+          "sha256": "80830393d42d6b296aba696b4b858463b38f61a1fd5579b677c27af97561e779"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "dfiore1230/HA-Expiring-Consumables",
+      "base": "a06a6e8236e076868d01017edea0f4823e72c2cd",
+      "head": "9dfa02718a5ba128904c4b19e32ac37b5ec0b30f",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "tests/test_config_flow.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:37+07:00"
+    },
+    {
+      "dataset_id": 4061200189,
+      "repo": "DO1FFE/meshcore-network-monitor",
+      "pr": 26,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:37+07:00",
+      "source_record_sha256": "ddb656545d3c7713435802786e65b4fc5c76851d3fc08faf4b952bf1be5df45d",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/4061200189/repo.json",
+          "sha256": "435364e3d370a5de089bff01d08695136cdebbc2340457e08ef4b4f93f47fda9"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/4061200189/pr.json",
+          "sha256": "dc54c2572f5b40e5afbf6dbe2e410e6caba84f056e4246338fd60a20c27ea1b7"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/4061200189/files.json",
+          "sha256": "d9e867f8f04a506de4515abded91ce80599e6e5f64e19ce80cb488982d24f113"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "DO1FFE/meshcore-network-monitor",
+      "base": "734c13587c478ff9857cd67c262d135e9b800ee5",
+      "head": "67e8f26d93bc9616e37cae2a3754bc5a5847cf10",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "scripts/meshcore_advert_server.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:45:57+07:00"
+    },
+    {
+      "dataset_id": 3114428606,
+      "repo": "elboKazQC/AGVConfig-Traduction",
+      "pr": 4,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:45:57+07:00",
+      "source_record_sha256": "65b506dec23ff18a1dedd97b90be140eb8492c81337096af55a5c0e4b8be9a8a",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3114428606/repo.json",
+          "sha256": "f95fb5c3cdc5c64f5726b92a14df1b611dda7ec31e809e2cb38cede2360dc863"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3114428606/pr.json",
+          "sha256": "f73336a4cb0834356517da165e7f6709aecba4bc964a387da90458730dde05e5"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3114428606/files.json",
+          "sha256": "04ce5f1577970ff62401039becd71bc2c5dd26f2a4efd3d24b1f4e8c4803659f"
+        }
+      },
+      "license_spdx_hint": "MIT",
+      "fork": false,
+      "canonical_repo": "elboKazQC/AGVConfig-Traduction",
+      "base": "0e4e51d2679050b611f838deed7ad18a7eece9d8",
+      "head": "5647429b86c0e022919d213a684971a6e25bd706",
+      "changed_files": 1,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "comparateur_jsonV9/ui/hierarchical_editor.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:46:00+07:00"
+    },
+    {
+      "dataset_id": 3148033968,
+      "repo": "DylanLRPollock/Monkey-Head-Project",
+      "pr": 221,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:46:00+07:00",
+      "source_record_sha256": "6423213a0c32f4523360640fdae80e5c7e8ca603f4457a2823b4a54d445967bc",
+      "artifacts": {
+        "repo": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3148033968/repo.json",
+          "sha256": "61119515ae317291ca9972ce2c20ad78c00991f5989c4e2d752917e2b6c75300"
+        },
+        "pr": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3148033968/pr.json",
+          "sha256": "61d0fd69575329f7ac8ec272d67d434ab6e833de3d32d1ca7efb356665b9aaea"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-aidev-mixed40-screen/3148033968/files.json",
+          "sha256": "4e1b2c1f297e40c0645638ed677f8277f58643c3dc5c0889627c1b828142ce8e"
+        }
+      },
+      "license_spdx_hint": "GPL-3.0",
+      "fork": false,
+      "canonical_repo": "DylanLRPollock/Monkey-Head-Project",
+      "base": "5a3386efbcf164395195a417e9dd706ef737adf9",
+      "head": "c6ee481926227caf97fbaf91f4c9cebd9e533100",
+      "changed_files": 2,
+      "merged_timestamp_matches": true,
+      "file_paths": [
+        "requirements.txt",
+        "setup.py"
+      ],
+      "decision": "candidate_requires_causal_harness_and_pinned_license_review",
+      "finished_at": "2026-11-24T12:46:02+07:00"
+    },
+    {
+      "dataset_id": 3898870334,
+      "repo": "userf8a2c4/centinel-engine",
+      "pr": 290,
+      "proposed_role": "validation",
+      "started_at": "2026-11-24T12:46:02+07:00",
+      "source_record_sha256": "0214fe61410ee00a2e886f2c0d52c20e055e88fab624f0a12ebd3a21187821fe",
+      "artifacts": {},
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 301
+      },
+      "finished_at": "2026-11-24T12:46:02+07:00"
+    },
+    {
+      "dataset_id": 3155196605,
+      "repo": "xXFirst555Xx/FuelTracker",
+      "pr": 138,
+      "proposed_role": "train",
+      "started_at": "2026-11-24T12:46:02+07:00",
+      "source_record_sha256": "6b128fb2cf640bcee3f3af71e33514fa80b2c4a647825d2ac25a9779e8901eb0",
+      "artifacts": {},
+      "decision": "metadata_http_error",
+      "error": {
+        "http_status": 404
+      },
+      "finished_at": "2026-11-24T12:46:03+07:00"
+    }
+  ],
+  "decision_counts": {
+    "candidate_requires_causal_harness_and_pinned_license_review": 19,
+    "metadata_http_error": 4
+  },
+  "stop": null,
+  "model_calls": 0,
+  "qualification": "Provenance/patch metadata only; title signals do not establish syntax or dependency fault labels. No execution, pinned-base license approval, gold labels or historical CI claims."
+}

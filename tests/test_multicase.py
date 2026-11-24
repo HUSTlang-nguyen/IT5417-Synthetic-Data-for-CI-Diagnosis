@@ -139,6 +139,30 @@ class CaseTests(unittest.TestCase):
                 file.write_text('<testsuite><testcase classname="tests.test_utils.TestPaths" name="test_path['+value+']"/></testsuite>')
                 self.assertFalse(multicase.resolve_targets(result,folder,[target],'pass','swebench_pytest_options')[0])
 
+    def test_swe_whitespace_group_is_strict_and_does_not_fold_paths(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder=Path(tmp);file=folder/'report.xml';result={'junit':file.name,'timed_out':False}
+            target='tests/test_api.py::TestAPI::test_url[http://'
+            file.write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_url[http:// bad one]"/><testcase classname="tests.test_api.TestAPI" name="test_url[http:// bad two]"/></testsuite>')
+            self.assertFalse(multicase.resolve_targets(result,folder,[target],'pass')[0])
+            ok,rows=multicase.resolve_targets(result,folder,[target],'pass','swebench_pytest_whitespace')
+            self.assertTrue(ok);self.assertEqual(len(rows[0]['resolved_names']),2)
+            file.write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_url[http:// bad one]"/><testcase classname="tests.test_api.TestAPI" name="test_url[http:// bad two]"><failure>fixture</failure></testcase></testsuite>')
+            self.assertFalse(multicase.resolve_targets(result,folder,[target],'pass','swebench_pytest_whitespace')[0])
+            file.write_text('<testsuite><testcase classname="tests.test_api.TestAPI" name="test_path[/source/base/example.py]"/></testsuite>')
+            shortened='tests/test_api.py::TestAPI::test_path[/example.py]'
+            self.assertFalse(multicase.resolve_targets(result,folder,[shortened],'pass','swebench_pytest_whitespace')[0])
+            self.assertTrue(multicase.resolve_targets(result,folder,[shortened],'pass','swebench_pytest_options')[0])
+
+    def test_swe_whitespace_recipe_requires_original_references_and_known_parser(self):
+        case={**config(),'source_kind':'swebench','source_id_matching':'swebench_pytest_whitespace',
+              'repo_url':'https://github.com/marshmallow-code/marshmallow'}
+        multicase.validate_case(case)
+        for change in [{'source_kind':'aidev'}, {'repo_url':'https://github.com/example/project'},
+                       {'test_reference_policy':'upstream_pr_recovered_v1'}]:
+            with self.subTest(change=change),self.assertRaises(ValueError):
+                multicase.validate_case({**case,**change})
+
     def test_pinned_license_markdown_and_apache_still_reject_missing_or_wrong_family(self):
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp)

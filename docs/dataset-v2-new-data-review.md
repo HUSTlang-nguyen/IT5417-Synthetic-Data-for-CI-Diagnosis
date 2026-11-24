@@ -282,3 +282,15 @@ Sphinx8552 (thêm mục Receives) và pytest7939 (thêm alias --sw-skip) bị lo
 | tsce_demo3134162238 / train | Cả base/fixed đều compile pass. Patch thêm sanitizer cho chuỗi script sinh lúc runtime; phép compile source không đo output đó. | Chưa xác nhận bằng phép kiểm tra này; không sinh hoặc chạy lại script để lấp bằng chứng. |
 
 Bốn header hàm được đối chiếu với prefix source không đổi và AST bản sửa; không gán thành hàm mới bị thiếu. Tổng78prototype V4 (syntax9/API-type17/logic-value52), thêm1assessment cấu hình chưaexport. Mọi xác nhận người dùng, gold và training eligibility còn pending; chưa đạt cổng v2 cuối.
+
+## Input V5 và mẫu cấu hình đã xuất
+
+[Hiệu chỉnh52train](evidence/dataset-v2-config-input-v5-train-calibration52.json) giữ nguyên51prompt cũ và thêm cấu hình lỗi vào input của case backend; số17/52→18/52 chỉ đo sự hiện diện file/hàm sau crop, không phải accuracy. [Protocol V5](../data-manifests/dataset-v2-input-protocol-v5.json) được freeze trước bước chuyển/export; không lấy patch/nhãn làm đầu vào truy xuất.
+
+[Audit chuyển và export](evidence/dataset-v2-input-v5-migration-config-export.json) xác nhận78input/reference/assessment byte-identical;312fileV4 không đổihash. Một assessment backend đã có từ trước được xuất thành mẫu thứ79 với cùng nhãn silver đề xuất và giới hạn nạp backend local, không phải fullbuild/seed sinh. Các đoạn “chưaexport” bên trên là lịch sử trước mốc này. Không cộng78mẫu chuyển phiên bản thành78case mới; human/gold/training eligibility vẫn pending, finalselected0.
+
+## Marshmallow1524: lỗi logic validator sau hiệu chỉnh ID nguồn
+
+[Review/hash](evidence/dataset-v2-marshmallow1524-review.json): năm test base không ném ValidationError cho URL/email chứa newline; cùng132test đều pass fixed. Regex dùng `$`, vốn chấp nhận vị trí trước newline cuối, thay vì `\Z` kiểm tra cuối chuỗi nghiêm ngặt. Đề xuất logic/value; URL có vị trí `URL.RegexMemoizer._regex_generator` dòng68. Regex Email là class constants khởi tạo ở phần thân class, được biểu diễn bằng `<module>` theo schema hiện hành; đây là định vị thô, không tự gán hàm caller `Email.__call__` thành chỗ định nghĩa lỗi.
+
+Profile r1 chỉ sửa phép ghép ID theo parser nguồn đã ghim, không sửa source/test/dependency/command hoặc verdict raw cũ. Đã qua đối chiếu inventory, patch, F2P/P2P, log/hash/cleanup. Giữ thêm một ứng viên silver, tổng80prototypeV5; chưa đo tác động bảo mật, chưa có gold hoặc phê duyệt train.

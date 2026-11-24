@@ -1,0 +1,93 @@
+{
+  "case_id": "pvlib__pvlib-python-1448-ds2-provided-rest",
+  "source_case_id": "pvlib__pvlib-python-1448",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "dev",
+  "record_id": "pvlib__pvlib-python-1448",
+  "repo_url": "https://github.com/pvlib/pvlib-python",
+  "base": "8d0f863da92739669e01ac4da4145e4547638b50",
+  "head": "base+repair:d0ee7af7c555bcd3aae2d906ddcf8461e98489e2b67e85c473900129346e8202",
+  "allowed_file": "pvlib/iotools/crn.py",
+  "license": "BSD-3-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1448-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "d0ee7af7c555bcd3aae2d906ddcf8461e98489e2b67e85c473900129346e8202",
+  "test_patch": ".cache/dataset-v2-source/cases/pvlib__pvlib-python-1448-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "2ad3e3fa871306d40e26c4f32c4d03baf3196714110045ed7e264f6e6f0c6568",
+  "source_record_sha256": "86159ca1174c59f1e6aa3904da3bdd80b880485934de2171bf9800d0f99e6343",
+  "fail_to_pass": [
+    "pvlib/tests/iotools/test_crn.py::test_read_crn_problems"
+  ],
+  "pass_to_pass": [
+    "pvlib/tests/iotools/test_crn.py::test_read_crn",
+    "pvlib/tests/iotools/test_crn.py::test_read_crn_map_variables",
+    "pvlib/tests/iotools/test_psm3.py::test_parse_psm3",
+    "pvlib/tests/iotools/test_psm3.py::test_read_psm3",
+    "pvlib/tests/iotools/test_psm3.py::test_read_psm3_map_variables",
+    "pvlib/tests/test_conftest.py::test_fail_on_pvlib_version_pass",
+    "pvlib/tests/test_conftest.py::test_use_fixture_with_decorator",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[True-1.0.0-assert_index_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[True-1.0.0-assert_series_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[True-1.0.0-assert_frame_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[True-1.1.0-assert_index_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[True-1.1.0-assert_series_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[True-1.1.0-assert_frame_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[False-1.0.0-assert_index_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[False-1.0.0-assert_series_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[False-1.0.0-assert_frame_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[False-1.1.0-assert_index_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[False-1.1.0-assert_series_equal]",
+    "pvlib/tests/test_conftest.py::test__check_pandas_assert_kwargs[False-1.1.0-assert_frame_equal]"
+  ],
+  "test_targets": [
+    "pvlib/tests/iotools/test_crn.py",
+    "pvlib/tests/iotools/test_psm3.py",
+    "pvlib/tests/test_conftest.py"
+  ],
+  "frozen_test_files": [
+    "pvlib/tests/iotools/test_crn.py",
+    "pvlib/tests/iotools/test_psm3.py",
+    "pvlib/tests/test_conftest.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "scipy==1.10.1",
+    "h5py==3.8.0",
+    "requests==2.31.0",
+    "pytz==2025.2",
+    "pytest-mock==3.11.1"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "pytest_mock"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "pvlib__pvlib-python-1140-ds1",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pvlib__pvlib-python-1480-ds2-wave2",
+  "recipe_template_case_sha256": "5aa5792dc94bad05edfd71c48e834aa3d651c9780bb2061ef2c3be66c4922d8f",
+  "recipe_template_passing_run": "reproduce-20261123T225135098213Z"
+}

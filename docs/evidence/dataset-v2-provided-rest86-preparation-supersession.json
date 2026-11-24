@@ -1,0 +1,870 @@
+{
+  "checked_at": "2026-11-24T12:56:57+07:00",
+  "previous_plan": "data-manifests/dataset-v2-provided-reference-rest93-plan.json",
+  "new_plan": "data-manifests/dataset-v2-provided-reference-final86-plan.json",
+  "completed_profiles_preserved": 7,
+  "unexecuted_profiles_superseded": [
+    {
+      "source_case_id": "pvlib__pvlib-python-1448",
+      "old_case_id": "pvlib__pvlib-python-1448-ds2-provided-rest",
+      "old_case_sha256": "75b511ed39b0b4fd94bc5ee9d1f07b84c3c0a5398ba403f90ea790c676b395b3",
+      "new_case_id": "pvlib__pvlib-python-1448-ds2-provided-final",
+      "new_case_sha256": "2d2bbf40be64463d859df3918c662bdc33e6d869b336404dba6737673bd5a2db",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydicom__pydicom-996",
+      "old_case_id": "pydicom__pydicom-996-ds2-provided-rest",
+      "old_case_sha256": "65edc54c81526dab6cd33cf4f567bd26b4fc64ef3d29aa2cedb9306ef964b0c7",
+      "new_case_id": "pydicom__pydicom-996-ds2-provided-final",
+      "new_case_sha256": "2b9bc7c7945c8866362afd4f8491c2d283b0845b8db5a7a562d18c0af5df0d9f",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_options",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-9956",
+      "old_case_id": "pytest-dev__pytest-9956-ds2-provided-rest",
+      "old_case_sha256": "9786d1ae5e13a2ba2a51fb1aabbad25dd7be42304d5b4244ea7e295460b6deb6",
+      "new_case_id": "pytest-dev__pytest-9956-ds2-provided-final",
+      "new_case_sha256": "be632afa5f516bab78317926f7b35454a0e3c7d4b2a342a2b5f754e82e8c26ea",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9229",
+      "old_case_id": "sphinx-doc__sphinx-9229-ds2-provided-rest",
+      "old_case_sha256": "ec884ec8ecf7b2bd6f007c7ef950f9c9a0aad720c513402e1a62d6eb7bf912c7",
+      "new_case_id": "sphinx-doc__sphinx-9229-ds2-provided-final",
+      "new_case_sha256": "66f164bdc7ca544a03fdc2a56b447bc52bf1ab0fc47bb54bb800bb8d24e92ce7",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1053",
+      "old_case_id": "pvlib__pvlib-python-1053-ds2-provided-rest",
+      "old_case_sha256": "1724678bb41ef1a4a144face1cd891032ffecfd3869bc884396eec771c437985",
+      "new_case_id": "pvlib__pvlib-python-1053-ds2-provided-final",
+      "new_case_sha256": "02d7877c71c14f6b9ca53641488882f1545af7a12814a1a6cd4825604853a415",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydicom__pydicom-809",
+      "old_case_id": "pydicom__pydicom-809-ds2-provided-rest",
+      "old_case_sha256": "5fe4d503361d2416b2eb1edda6b94936deceaaad35b9abef45d6db0424dd917d",
+      "new_case_id": "pydicom__pydicom-809-ds2-provided-final",
+      "new_case_sha256": "05bd55196f8e0788043a629a39dcb28ce6016d5083357e01d0e248dbbad61e30",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_options",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7985",
+      "old_case_id": "pytest-dev__pytest-7985-ds2-provided-rest",
+      "old_case_sha256": "6d4b48af3454dfcde39e0bb0256866fc85b9061c48a86fb1e9306476ddfacd07",
+      "new_case_id": "pytest-dev__pytest-7985-ds2-provided-final",
+      "new_case_sha256": "5cbc9b33a0dc8b9e26f427e7d27bc2faae90f84d2dadb0e7efc8d59969f8f35a",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8579",
+      "old_case_id": "sphinx-doc__sphinx-8579-ds2-provided-rest",
+      "old_case_sha256": "b7d305152a6bf8758bccc9b346834329cf1e5dbb83653dc6e5a5a51fd05ced66",
+      "new_case_id": "sphinx-doc__sphinx-8579-ds2-provided-final",
+      "new_case_sha256": "6978e34614947fee9d663d86fc31e0940f3abd295340d1658f2f6b7369370293",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-3114",
+      "old_case_id": "pydata__xarray-3114-ds2-provided-rest",
+      "old_case_sha256": "6f96c1c9bc73f384754241d1b175598eca7389cb6c5cf0de4f480b354ab22fa5",
+      "new_case_id": "pydata__xarray-3114-ds2-provided-final",
+      "new_case_sha256": "17d78647b388f45265bd3ba6f7ba1d6a34019da88f26bc2a0d5b75cafc1b6aa5",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pvlib__pvlib-python-1048",
+      "old_case_id": "pvlib__pvlib-python-1048-ds2-provided-rest",
+      "old_case_sha256": "0ab540d21989763c4407e3cfbde615dfef03ea199435c977e540ca980dad6aa5",
+      "new_case_id": "pvlib__pvlib-python-1048-ds2-provided-final",
+      "new_case_sha256": "bc372bf194083ae39230cddca4daa4ec0b960424435a1df983707ee225ee61ab",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1720",
+      "old_case_id": "pydicom__pydicom-1720-ds2-provided-rest",
+      "old_case_sha256": "efa7d1e4f947fddb50f623f69465a911788ebb0595aa27c34c2f49fb38b3acc1",
+      "new_case_id": "pydicom__pydicom-1720-ds2-provided-final",
+      "new_case_sha256": "755c45085adca88a80138f15dc58e5433d83571e1b2a017b0fe0a09bd4be6328",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_options",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7637",
+      "old_case_id": "pytest-dev__pytest-7637-ds2-provided-rest",
+      "old_case_sha256": "59a213b67c5ceae5da296546831b515c3cca367a874cef9c8ec113fad655a30b",
+      "new_case_id": "pytest-dev__pytest-7637-ds2-provided-final",
+      "new_case_sha256": "189df881f48fb1acbf4f55293ab5f9956fe03ed1c74aaa824f58a57a44d40d45",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7975",
+      "old_case_id": "sphinx-doc__sphinx-7975-ds2-provided-rest",
+      "old_case_sha256": "eb104fc8d65e675304c0d23e55ed69e416c4965eb098e174d7dd37dac5916d70",
+      "new_case_id": "sphinx-doc__sphinx-7975-ds2-provided-final",
+      "new_case_sha256": "c709d4cfee1e6fbc9d3504b9c54b63da934a8a7773e0643e6357f0da763a2726",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-4911",
+      "old_case_id": "pydata__xarray-4911-ds2-provided-rest",
+      "old_case_sha256": "bad8bd86e38cac84ee653639e48793294b09ed0089874aa09bbef9a5c7babb94",
+      "new_case_id": "pydata__xarray-4911-ds2-provided-final",
+      "new_case_sha256": "1edf078be4c0341503477bb3a61c1f4105fccde348d3591148b44df1e6b01fb8",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1228",
+      "old_case_id": "pydicom__pydicom-1228-ds2-provided-rest",
+      "old_case_sha256": "6d1d660a1070abcd76813df3ecf8953b7b1a2f10503a4cf5288f33afb7df743f",
+      "new_case_id": "pydicom__pydicom-1228-ds2-provided-final",
+      "new_case_sha256": "8d1feaf36c748557a30d6fcb04950778fc1192ee08a983047cfe64c8b3e73bdc",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_options",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-7648",
+      "old_case_id": "pytest-dev__pytest-7648-ds2-provided-rest",
+      "old_case_sha256": "354ef807e79bff522b3e09dff5bbaaa2af071f2fe1d1bb8e88d5a38f518c3642",
+      "new_case_id": "pytest-dev__pytest-7648-ds2-provided-final",
+      "new_case_sha256": "ddb1bb17015a4b91661d6727a6216b57b346ffafd8775ae09099fd1b55eb69c6",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8282",
+      "old_case_id": "sphinx-doc__sphinx-8282-ds2-provided-rest",
+      "old_case_sha256": "f8b0a63944f59188ed02bda7a6edac658403b07a8232873194b009974691b611",
+      "new_case_id": "sphinx-doc__sphinx-8282-ds2-provided-final",
+      "new_case_sha256": "c719817c0573ae881655def6b488935b66b1d84defd30b86eb36d1c98a677498",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-4827",
+      "old_case_id": "pydata__xarray-4827-ds2-provided-rest",
+      "old_case_sha256": "b35fa9cedd36545391fd6038fc21c3f8c9b465612d8821351b76d82ebebdefed",
+      "new_case_id": "pydata__xarray-4827-ds2-provided-final",
+      "new_case_sha256": "519d8317f410b39876015b7d9453a619e307acfff37f6556b922dd52c63901d0",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydicom__pydicom-916",
+      "old_case_id": "pydicom__pydicom-916-ds2-provided-rest",
+      "old_case_sha256": "163f7928da168033902197f497735ae020d555241000cd1ae7ef90155c71a155",
+      "new_case_id": "pydicom__pydicom-916-ds2-provided-final",
+      "new_case_sha256": "1540f90b17782779faf8295b4d32328f53285ee73fe3b5dbe38db0fe0f2a2593",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_options",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pytest-dev__pytest-8950",
+      "old_case_id": "pytest-dev__pytest-8950-ds2-provided-rest",
+      "old_case_sha256": "cce398082298f483810024cd7da42232fe0a7d71cd80d4468d98f09e73393b42",
+      "new_case_id": "pytest-dev__pytest-8950-ds2-provided-final",
+      "new_case_sha256": "aa346ce99b1ef2aaa9ce01d4a8a5014779bcea4a89086984f703f2158648b740",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7757",
+      "old_case_id": "sphinx-doc__sphinx-7757-ds2-provided-rest",
+      "old_case_sha256": "a4e73d5538d5649e990ee52533d21f785aa5c69ac42830f0c9e2767b01741a00",
+      "new_case_id": "sphinx-doc__sphinx-7757-ds2-provided-final",
+      "new_case_sha256": "376c6ef1156e5f2d83243e6ee0dc0c86b73cc798b0a3daf37a7b6b170af3b16a",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-4184",
+      "old_case_id": "pydata__xarray-4184-ds2-provided-rest",
+      "old_case_sha256": "3cdda54e8ef523fb3a515d4f53551ea40a9f0c97a321f26f71e755141dde5628",
+      "new_case_id": "pydata__xarray-4184-ds2-provided-final",
+      "new_case_sha256": "e8ec38b854ccfec3a209f2fc48a681a2b79e7fd9783c0903ff51806bba1b8ecf",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydicom__pydicom-1255",
+      "old_case_id": "pydicom__pydicom-1255-ds2-provided-rest",
+      "old_case_sha256": "ed529d25c592405edcc0267940d5595e7052c2c09158d4ff3470af53677f44ed",
+      "new_case_id": "pydicom__pydicom-1255-ds2-provided-final",
+      "new_case_sha256": "d36c5073a54e2157d7db36d5b9e34ffc36c8364e13f9e8c6b86e2c0bf4c25e0b",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_options",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8611",
+      "old_case_id": "sphinx-doc__sphinx-8611-ds2-provided-rest",
+      "old_case_sha256": "9e2934d6b7f88c75d799a0e083cda938bbe0b6ef930358bbfe430db9fde3330d",
+      "new_case_id": "sphinx-doc__sphinx-8611-ds2-provided-final",
+      "new_case_sha256": "3b1be19ae5e95835d01a53c7b579dbb28bff8da0ddae452529eefd4ec429b8e4",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-5126",
+      "old_case_id": "pydata__xarray-5126-ds2-provided-rest",
+      "old_case_sha256": "c63a6ddc3409c4931c7d7ee6398de61e2ea740a0bb6ccfe6b6aca7789c6a1a7e",
+      "new_case_id": "pydata__xarray-5126-ds2-provided-final",
+      "new_case_sha256": "f928dcc6dd247f4a0d1c8a50b4a9746a63da028129133cbbb825a31a9840d6b9",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10449",
+      "old_case_id": "sphinx-doc__sphinx-10449-ds2-provided-rest",
+      "old_case_sha256": "36c41d6a26be9a8453b95106bd9f0e1c69692a515192310daa82ce91c25a133c",
+      "new_case_id": "sphinx-doc__sphinx-10449-ds2-provided-final",
+      "new_case_sha256": "6d2555b9177da6a4cdb5e573ba5ab7b04acf95f87dea9a4bbaaa6d6367102487",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-4683",
+      "old_case_id": "pydata__xarray-4683-ds2-provided-rest",
+      "old_case_sha256": "c90a764e4403c426b5fac39a3367210c5a29621864ab40ea3d06b2383d4b753a",
+      "new_case_id": "pydata__xarray-4683-ds2-provided-final",
+      "new_case_sha256": "53fbc15bc5fbdf374324d0a634b5adf953c8c71035a6967b29c244f76941fcb8",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8056",
+      "old_case_id": "sphinx-doc__sphinx-8056-ds2-provided-rest",
+      "old_case_sha256": "f0973c103bb6cedd4ee058603db0fbb7cd74378eff15ed53f7e9835ae31b329d",
+      "new_case_id": "sphinx-doc__sphinx-8056-ds2-provided-final",
+      "new_case_sha256": "f329894d50e72a18e076460897b2aaae40b5920216209d3f514da5d1e31d904e",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-2922",
+      "old_case_id": "pydata__xarray-2922-ds2-provided-rest",
+      "old_case_sha256": "aaea36e42db532dba56d5db961c9a7c90e5ab2a4864512d411fc92b24d07f9c1",
+      "new_case_id": "pydata__xarray-2922-ds2-provided-final",
+      "new_case_sha256": "c38989303984d5600a61927921f482abc02d4516b9a5fc6c4f3dd3d19847566b",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7578",
+      "old_case_id": "sphinx-doc__sphinx-7578-ds2-provided-rest",
+      "old_case_sha256": "173449affb91710c100fc3f1e52bc97052fa366d586ffa9cccdd6a20141b486d",
+      "new_case_id": "sphinx-doc__sphinx-7578-ds2-provided-final",
+      "new_case_sha256": "5d1dda4e08432c3a4d323f784ad30657671310efd795d5bd1b32efea32b93a5b",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-3302",
+      "old_case_id": "pydata__xarray-3302-ds2-provided-rest",
+      "old_case_sha256": "dd7419aa86a4dacc8ba76f98136ca95f1aaaa7c9d34412c304f2bd248b8fca12",
+      "new_case_id": "pydata__xarray-3302-ds2-provided-final",
+      "new_case_sha256": "97317ed79b0834b1049979713a1495de1498ddded61fbcf6f22babe8538e0af0",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7395",
+      "old_case_id": "sphinx-doc__sphinx-7395-ds2-provided-rest",
+      "old_case_sha256": "f42715616b11b737dc75d9a4fb8ace1d56d4b127b6a3c71259a678ce6bfcc3be",
+      "new_case_id": "sphinx-doc__sphinx-7395-ds2-provided-final",
+      "new_case_sha256": "5391e73c918cf70082e3bcad8b4d237e67e804c43fe1272405e78b8a03a5840d",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-5187",
+      "old_case_id": "pydata__xarray-5187-ds2-provided-rest",
+      "old_case_sha256": "b8923dbd382596a21180d74e0e35dff59e6056b277e7b7430e018a09f5d7ec10",
+      "new_case_id": "pydata__xarray-5187-ds2-provided-final",
+      "new_case_sha256": "c3236f00565de6c8cc8d4a88d6bbbad265deda7b5b954c68c3cf9b4c42705872",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9015",
+      "old_case_id": "sphinx-doc__sphinx-9015-ds2-provided-rest",
+      "old_case_sha256": "129521e6f0fd91b84a05c88672edd3ad786182d38af687a4bad345d71430d722",
+      "new_case_id": "sphinx-doc__sphinx-9015-ds2-provided-final",
+      "new_case_sha256": "1e14521405f258928a405b039023aeb9c8add5b5c5f8606eca05cd990c75ebf1",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-3631",
+      "old_case_id": "pydata__xarray-3631-ds2-provided-rest",
+      "old_case_sha256": "34d84a6af966af1f08eb5ebb2f63591b1370c597609ffb5d97f2c9b62544a7d3",
+      "new_case_id": "pydata__xarray-3631-ds2-provided-final",
+      "new_case_sha256": "13fed1239a31001fbc91da75d7f51e23f1bc11371f4239a031eb74d1ad7686f2",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7501",
+      "old_case_id": "sphinx-doc__sphinx-7501-ds2-provided-rest",
+      "old_case_sha256": "3058ee553cc5e2cda1d9689ac6714e8b995ccb795e509579b5b36cb6e8455076",
+      "new_case_id": "sphinx-doc__sphinx-7501-ds2-provided-final",
+      "new_case_sha256": "afd9af116a50a69f2503d8de661905e9a8ebe7f7211dce1fc19023c3c025335f",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "pydata__xarray-3239",
+      "old_case_id": "pydata__xarray-3239-ds2-provided-rest",
+      "old_case_sha256": "024797cc16abb715861e1da12e580effbd808a3c2a3e4fde01d5739b0338f0f3",
+      "new_case_id": "pydata__xarray-3239-ds2-provided-final",
+      "new_case_sha256": "5a77327df03dbff8da60cdf91ff5cab7d0f9314a50313646ac627770488a0384",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "swebench_pytest_whitespace",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9233",
+      "old_case_id": "sphinx-doc__sphinx-9233-ds2-provided-rest",
+      "old_case_sha256": "30b0f3d6df5479a6429d2797d5e5c2f298d52673ad1daed8c852459d52fc9afb",
+      "new_case_id": "sphinx-doc__sphinx-9233-ds2-provided-final",
+      "new_case_sha256": "945390f409fcb172ab308a48365544b9b220e60a20f3a98e2eee299238808af9",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7305",
+      "old_case_id": "sphinx-doc__sphinx-7305-ds2-provided-rest",
+      "old_case_sha256": "05f2cf05ddb5e8482ac13b930414b588739f7c458e2468ba94317847b64541ac",
+      "new_case_id": "sphinx-doc__sphinx-7305-ds2-provided-final",
+      "new_case_sha256": "39a5b9fb853ed21147f01c8cf7ec783f081153c233c3a933fd942931c63dd006",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9260",
+      "old_case_id": "sphinx-doc__sphinx-9260-ds2-provided-rest",
+      "old_case_sha256": "dde4a4d9b60a5c4b5bc254a2e8fba2db19e1f51a8a91aaf554284ecb9a3ad467",
+      "new_case_id": "sphinx-doc__sphinx-9260-ds2-provided-final",
+      "new_case_sha256": "f18e5412e6c111f8caa277c38e3cf48cad55bf0110aec9ec47f18a522c3b8c55",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9246",
+      "old_case_id": "sphinx-doc__sphinx-9246-ds2-provided-rest",
+      "old_case_sha256": "da33ac3f24afbdcede98e13d4f3eaf3d4717fb48c7f523cc1af79869f8f06dc0",
+      "new_case_id": "sphinx-doc__sphinx-9246-ds2-provided-final",
+      "new_case_sha256": "f621e864d945c3eea0aec1931ac57a12e42271e665b473b48e810a993b458fe9",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11510",
+      "old_case_id": "sphinx-doc__sphinx-11510-ds2-provided-rest",
+      "old_case_sha256": "7e58b38df951fabf29fe13b9d8aacb8db71f0bce35828b94a06b9782df0d947b",
+      "new_case_id": "sphinx-doc__sphinx-11510-ds2-provided-final",
+      "new_case_sha256": "27ff3cf471ebe89c0ea5d4e97ee88b90b6d10c416cf586c0d58c3202dfa67382",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7686",
+      "old_case_id": "sphinx-doc__sphinx-7686-ds2-provided-rest",
+      "old_case_sha256": "3344efd6f6157f55b61a9b4e7f618c332670da897af67c129ba0282204abdce1",
+      "new_case_id": "sphinx-doc__sphinx-7686-ds2-provided-final",
+      "new_case_sha256": "7a0915718467b38b8f6dab8f68378d3a0bdfcabb5d11ae245b21bb048b23ca3c",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9386",
+      "old_case_id": "sphinx-doc__sphinx-9386-ds2-provided-rest",
+      "old_case_sha256": "11123c595ffaa445cceec6cadc61b280713912f65e089811c34b57dc0abce932",
+      "new_case_id": "sphinx-doc__sphinx-9386-ds2-provided-final",
+      "new_case_sha256": "f964796278a05188ba3961d33ed2eb96c2355c620c51f3910cd097f1c5aa8297",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9799",
+      "old_case_id": "sphinx-doc__sphinx-9799-ds2-provided-rest",
+      "old_case_sha256": "75b65fa6a5187ff2c5e541af9b004acf039dc5de5e1e7cfb3b9f8c5bca1d4cd2",
+      "new_case_id": "sphinx-doc__sphinx-9799-ds2-provided-final",
+      "new_case_sha256": "13c4926f858d2314552924177ffa4d8b70a42c4f98f8d48de00be185a3089a74",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8969",
+      "old_case_id": "sphinx-doc__sphinx-8969-ds2-provided-rest",
+      "old_case_sha256": "21cf4d1b9ad192a7d55c9ff60ffc998a0671a9205c0dd70eb0088aeb5d6cce11",
+      "new_case_id": "sphinx-doc__sphinx-8969-ds2-provided-final",
+      "new_case_sha256": "6a03a84462074c623d18ad339e075b59fe90d789f3d183d2f90db4ddbcad8d7a",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9128",
+      "old_case_id": "sphinx-doc__sphinx-9128-ds2-provided-rest",
+      "old_case_sha256": "18bf57f8665a0c0561e3069d664d2a88a238350cbd94318fd0dec0a7508dc3da",
+      "new_case_id": "sphinx-doc__sphinx-9128-ds2-provided-final",
+      "new_case_sha256": "5376e132f651d2a8dc88b383e0d1a4c0e044fff4df56a91eefec539bb1fc1c5f",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11312",
+      "old_case_id": "sphinx-doc__sphinx-11312-ds2-provided-rest",
+      "old_case_sha256": "672ea90db597ca7fd4dede16540c27cae3bdbeb2b2f84903aa14e3be65a647cc",
+      "new_case_id": "sphinx-doc__sphinx-11312-ds2-provided-final",
+      "new_case_sha256": "6082cf6345b17487c110bd0c67daca4e27729496e8a3db54162a87e3ad7260f9",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7930",
+      "old_case_id": "sphinx-doc__sphinx-7930-ds2-provided-rest",
+      "old_case_sha256": "5bffcb1158b1f1d5c88dd3672001b721b76399072c168f4907ebaa6c62e62a97",
+      "new_case_id": "sphinx-doc__sphinx-7930-ds2-provided-final",
+      "new_case_sha256": "05f654e86316136f9fea70ae0cbf158dca1f1401edbd3031b6835856620e3dbf",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11550",
+      "old_case_id": "sphinx-doc__sphinx-11550-ds2-provided-rest",
+      "old_case_sha256": "a2ecf72efef23510611bad43d07d00efdb5892a6a0ef3a0bdc8e99d0949f4804",
+      "new_case_id": "sphinx-doc__sphinx-11550-ds2-provided-final",
+      "new_case_sha256": "5d193ae668cf806d205600ee8238c30fec257a3a86216d8e05c48ca9be6202d9",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7748",
+      "old_case_id": "sphinx-doc__sphinx-7748-ds2-provided-rest",
+      "old_case_sha256": "884b4f4295c562b7c046e905926e2299879a3064dd2ba3f14ccb17f2e2299368",
+      "new_case_id": "sphinx-doc__sphinx-7748-ds2-provided-final",
+      "new_case_sha256": "7d54c88676a3a0790a2059158dd8c243915d5a441017f8478f5968c7a61b2192",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8037",
+      "old_case_id": "sphinx-doc__sphinx-8037-ds2-provided-rest",
+      "old_case_sha256": "d56a18fcb02a96afd5ba51380403527cf32e643e25a3143e0fbe518de6c616e8",
+      "new_case_id": "sphinx-doc__sphinx-8037-ds2-provided-final",
+      "new_case_sha256": "7219d2b1439bd5c9e72bd67867f49637354b84af12601767f8a412a3827287a8",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7670",
+      "old_case_id": "sphinx-doc__sphinx-7670-ds2-provided-rest",
+      "old_case_sha256": "b5403f2751b0590e1f41bdc40640deccde01f630e150d0abeb8de23d488a0ad9",
+      "new_case_id": "sphinx-doc__sphinx-7670-ds2-provided-final",
+      "new_case_sha256": "640aa1d82b7891587d68e23490dec67abae535eeb212ccd1326c772269fe4da3",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7380",
+      "old_case_id": "sphinx-doc__sphinx-7380-ds2-provided-rest",
+      "old_case_sha256": "a09c203531d3e337c017ed37ca68b1c162fc47e6e416fc2d6c11441b53b18750",
+      "new_case_id": "sphinx-doc__sphinx-7380-ds2-provided-final",
+      "new_case_sha256": "1a3505a0c76618612534c1eef2ce2ea998afcbe254e49cab1834007e45792c79",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8551",
+      "old_case_id": "sphinx-doc__sphinx-8551-ds2-provided-rest",
+      "old_case_sha256": "0b22ba5482c1a7526641720d45e46c57fffb6cc90eff5710784c5545b7a9e620",
+      "new_case_id": "sphinx-doc__sphinx-8551-ds2-provided-final",
+      "new_case_sha256": "4781c6242f22c42bd5eca50bd47f639a1508861c0866eda36684486cd799dfaf",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8058",
+      "old_case_id": "sphinx-doc__sphinx-8058-ds2-provided-rest",
+      "old_case_sha256": "da28ee633639e255f08bf47346a5ec8110476436551250fd8200c01bec77b978",
+      "new_case_id": "sphinx-doc__sphinx-8058-ds2-provided-final",
+      "new_case_sha256": "6f869ed54de396e16fad173e434e2ce4f05ec3253df0ee729c668de10199e1d8",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9654",
+      "old_case_id": "sphinx-doc__sphinx-9654-ds2-provided-rest",
+      "old_case_sha256": "2ac46d7f0ca6a0b874e51da50e92b875827fff49176ff7beb3dd09fb5f565293",
+      "new_case_id": "sphinx-doc__sphinx-9654-ds2-provided-final",
+      "new_case_sha256": "b4759fbe37cf7034030a7b57cf62016d8e4121d99b597df00da3a67f858bb7c0",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7462",
+      "old_case_id": "sphinx-doc__sphinx-7462-ds2-provided-rest",
+      "old_case_sha256": "c56bc465154f390d3a59272fc1fd0047a54f9a0019f28b163d98e8fbd418712d",
+      "new_case_id": "sphinx-doc__sphinx-7462-ds2-provided-final",
+      "new_case_sha256": "bce28553adee6681fdc6cfca75ab1c848844d8cbca0b1c2ed62c46bc450ec0bf",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8120",
+      "old_case_id": "sphinx-doc__sphinx-8120-ds2-provided-rest",
+      "old_case_sha256": "71a0d38665f8d6762b7428d89f3957beb3fa43e371c5cb8c7ce7bab9c8b091dc",
+      "new_case_id": "sphinx-doc__sphinx-8120-ds2-provided-final",
+      "new_case_sha256": "0aca60f5199dcf8f782b1444a1447232c0489ad3bf5adfa8ec19db6e8f69f5e4",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10048",
+      "old_case_id": "sphinx-doc__sphinx-10048-ds2-provided-rest",
+      "old_case_sha256": "0be9bdcc6eced0a8bd3bbe5bcf4c4441958ad60ba66cd39287125a4fc0b64633",
+      "new_case_id": "sphinx-doc__sphinx-10048-ds2-provided-final",
+      "new_case_sha256": "de2072a592eaba78bc32aadf20af8b8c986d724bccf6616ce6b14579191a251d",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8362",
+      "old_case_id": "sphinx-doc__sphinx-8362-ds2-provided-rest",
+      "old_case_sha256": "c29938d1d481d806292d121fb788f604942e107df8de2809aa9783951fc39e0f",
+      "new_case_id": "sphinx-doc__sphinx-8362-ds2-provided-final",
+      "new_case_sha256": "3902a49a6d78b76771309371ac4532d85be90328828e3f7199cf206e816260cf",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7831",
+      "old_case_id": "sphinx-doc__sphinx-7831-ds2-provided-rest",
+      "old_case_sha256": "f2f26d8c88a5fe0e8da525272561514b5fb8c1d8a2217f69e6e5f834f6dd636e",
+      "new_case_id": "sphinx-doc__sphinx-7831-ds2-provided-final",
+      "new_case_sha256": "96dae152e1f5c166d8d74f3f784170483488ab1f0f6d277826079f8a0d57f584",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8095",
+      "old_case_id": "sphinx-doc__sphinx-8095-ds2-provided-rest",
+      "old_case_sha256": "294a224e02ade46941ba583a83e99d9e9ae2e1d0c1aa04618efe7d6a7ed0c797",
+      "new_case_id": "sphinx-doc__sphinx-8095-ds2-provided-final",
+      "new_case_sha256": "db0524162610f530e1d168c4f71e0d1b579e7bed1b929bd6935482abc271eb94",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9261",
+      "old_case_id": "sphinx-doc__sphinx-9261-ds2-provided-rest",
+      "old_case_sha256": "d6f20ba29ac4f6ea0d74629da753b70fd96bcee982874672e157bf2afbf7221f",
+      "new_case_id": "sphinx-doc__sphinx-9261-ds2-provided-final",
+      "new_case_sha256": "309700cf592382623c8386e7d07f5dfac42f6253bcb9101e08e7f0d8fdad81de",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7374",
+      "old_case_id": "sphinx-doc__sphinx-7374-ds2-provided-rest",
+      "old_case_sha256": "2f37d472b6675f0ac723263aeda5e99f835cb21f610629270cc005cc4c3ac005",
+      "new_case_id": "sphinx-doc__sphinx-7374-ds2-provided-final",
+      "new_case_sha256": "24ad6bf1e4f4db5755e643e609abe669ffee89bdc03381cb47b670daf616bc37",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7268",
+      "old_case_id": "sphinx-doc__sphinx-7268-ds2-provided-rest",
+      "old_case_sha256": "676f1611f9b4c4cda0efab355a6f9bc0520af402abc9ebfb4777d15db1a18e4f",
+      "new_case_id": "sphinx-doc__sphinx-7268-ds2-provided-final",
+      "new_case_sha256": "941ba5428cfedf0ea1ab58e5a2aab057abcb99fa20e2fc348150657c501995f3",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7351",
+      "old_case_id": "sphinx-doc__sphinx-7351-ds2-provided-rest",
+      "old_case_sha256": "d2a8e3987cf15a214c1705ab65c9591525ff1acdbf313343a3305a5689ee3fe6",
+      "new_case_id": "sphinx-doc__sphinx-7351-ds2-provided-final",
+      "new_case_sha256": "3f8a809e4c0ae7a240a0ee00382cde75b75ab14ab1499359f5bdab3101a91d6b",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8548",
+      "old_case_id": "sphinx-doc__sphinx-8548-ds2-provided-rest",
+      "old_case_sha256": "8c00cf792477d558c0c942903ad20f5ccf39cc0b4a8194ebd6dfd229fcbeb11e",
+      "new_case_id": "sphinx-doc__sphinx-8548-ds2-provided-final",
+      "new_case_sha256": "e6f37fec29d8e27f128c6150c88f56f8af5a011c6656b574fc0552676d4cf3e5",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8771",
+      "old_case_id": "sphinx-doc__sphinx-8771-ds2-provided-rest",
+      "old_case_sha256": "994666d883eb613935707bad1a03418abe2e72ad5a9eef724fe1f986cbf95518",
+      "new_case_id": "sphinx-doc__sphinx-8771-ds2-provided-final",
+      "new_case_sha256": "b45bb9aa51e7e092b7df8fe587f0111cbf728d8763ddb2e3b9f16f2a39b28458",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7557",
+      "old_case_id": "sphinx-doc__sphinx-7557-ds2-provided-rest",
+      "old_case_sha256": "b44bf92c021e4969bb98b9ccee99d0f4def189119d60c38beabd591ade6d9e76",
+      "new_case_id": "sphinx-doc__sphinx-7557-ds2-provided-final",
+      "new_case_sha256": "4778188e781b78d232c4d87ad494d5ddcc80896c8c7b981e77065a16eae832d2",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8539",
+      "old_case_id": "sphinx-doc__sphinx-8539-ds2-provided-rest",
+      "old_case_sha256": "b627dfa146c38e36ab515c98d44f652e99d2f91fd53f33b10ea75551658dbbe5",
+      "new_case_id": "sphinx-doc__sphinx-8539-ds2-provided-final",
+      "new_case_sha256": "11639a8a5734facec2ff9dc9f2116211be97c955064a983ab2a6eb0b0741ee1f",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9171",
+      "old_case_id": "sphinx-doc__sphinx-9171-ds2-provided-rest",
+      "old_case_sha256": "c30d72efa52fac61d272d8addd7330f56b9f8c779a1e8e85edd07f16de62eb0c",
+      "new_case_id": "sphinx-doc__sphinx-9171-ds2-provided-final",
+      "new_case_sha256": "530f9a5e26abb0e182b3a150270f7724f7f7f6b6a75127f85db3610be15c845e",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7356",
+      "old_case_id": "sphinx-doc__sphinx-7356-ds2-provided-rest",
+      "old_case_sha256": "162531e69371bf02d68ce807eb24473ddfa59dc2e959d193546ed57a20ae5be6",
+      "new_case_id": "sphinx-doc__sphinx-7356-ds2-provided-final",
+      "new_case_sha256": "a9b4a9a150b496f043cc07f3e4294481814fa23592860b85e4cbd13d79c042b2",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8278",
+      "old_case_id": "sphinx-doc__sphinx-8278-ds2-provided-rest",
+      "old_case_sha256": "50aa283bb4ffdd757d38580d93673cde2cb983c79a17f9142d5db6eab22c0105",
+      "new_case_id": "sphinx-doc__sphinx-8278-ds2-provided-final",
+      "new_case_sha256": "ab3d5fe96ea296f6d8e720cc26b9960d1568194d0a24a7738cdc5d569fd734c2",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-11311",
+      "old_case_id": "sphinx-doc__sphinx-11311-ds2-provided-rest",
+      "old_case_sha256": "e9be24edc76710ebae1158702e40b4d5073470561ed3ed64cb6c0847dde8de7f",
+      "new_case_id": "sphinx-doc__sphinx-11311-ds2-provided-final",
+      "new_case_sha256": "12b91469d36bdebc8fbac21f318a7854813e37506d7ac605246fcdc6aaece83a",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8481",
+      "old_case_id": "sphinx-doc__sphinx-8481-ds2-provided-rest",
+      "old_case_sha256": "64db99b8f1eda253e93472e42446c16cff8002ee19338ebe8e9a4eab8bfb9e5f",
+      "new_case_id": "sphinx-doc__sphinx-8481-ds2-provided-final",
+      "new_case_sha256": "840f9a746285400b888a94e1d3fab4abe93d794dd0424b7a4597a31301dbe2bc",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9459",
+      "old_case_id": "sphinx-doc__sphinx-9459-ds2-provided-rest",
+      "old_case_sha256": "34e90bed032df0e482aea33cdffcc58583ef5b787da1e7f736fe08269c7934de",
+      "new_case_id": "sphinx-doc__sphinx-9459-ds2-provided-final",
+      "new_case_sha256": "9ab00552cd19a0612db59bf0872dda1be5350a258bf598f1cc5b316c3954006f",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9053",
+      "old_case_id": "sphinx-doc__sphinx-9053-ds2-provided-rest",
+      "old_case_sha256": "f4331dca80537df3dfa2f891ebeaa03a63a24d06d2379083eb31b3bcf3d8b6fb",
+      "new_case_id": "sphinx-doc__sphinx-9053-ds2-provided-final",
+      "new_case_sha256": "107d2e807729580a92e4046882fe789c83b856dc6faf9162f516ffcccdad95fd",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8075",
+      "old_case_id": "sphinx-doc__sphinx-8075-ds2-provided-rest",
+      "old_case_sha256": "fb5a2a9ec5ce74b97696a59b041007458047827db2bae226a8e107737a962a76",
+      "new_case_id": "sphinx-doc__sphinx-8075-ds2-provided-final",
+      "new_case_sha256": "a6f7308c220005c9783e80361bc46c3d62fec476ac2533f557b059d182b4ab25",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8117",
+      "old_case_id": "sphinx-doc__sphinx-8117-ds2-provided-rest",
+      "old_case_sha256": "b2769f2fbe5804246cd01fdbcc88bbbc1ad97db36d4baa6df19a821694a9a613",
+      "new_case_id": "sphinx-doc__sphinx-8117-ds2-provided-final",
+      "new_case_sha256": "529471d59c1b8005aca2d9acf1188786a0fb9d7c009f3f4681c76fef9a060794",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8007",
+      "old_case_id": "sphinx-doc__sphinx-8007-ds2-provided-rest",
+      "old_case_sha256": "08e464de83bb9aacbdf28fad9647999787a08dbfbb349c0ee85c678689988fc6",
+      "new_case_id": "sphinx-doc__sphinx-8007-ds2-provided-final",
+      "new_case_sha256": "b9abad6dc9f0dd2400d37c494ac872f41b68283b9805590531113e686cfc8da5",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7590",
+      "old_case_id": "sphinx-doc__sphinx-7590-ds2-provided-rest",
+      "old_case_sha256": "c7257f21ba9673cbb276d0601f4c2d2c42fdf48b5dfc63a90f10effb8eae9f7b",
+      "new_case_id": "sphinx-doc__sphinx-7590-ds2-provided-final",
+      "new_case_sha256": "47927d237632e295e69cc4ae890282647978c5a7cf31faaa118f1ee75f7e33f6",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-10360",
+      "old_case_id": "sphinx-doc__sphinx-10360-ds2-provided-rest",
+      "old_case_sha256": "c8e36ce2cafc0226b44ecefe35d59b4f9f91b9138f8821c0b4176c084c4e1d0d",
+      "new_case_id": "sphinx-doc__sphinx-10360-ds2-provided-final",
+      "new_case_sha256": "045cdcacb07b1247189b37fab37956afbb122c93c716f7a48c2779b1d9aeea5d",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-8291",
+      "old_case_id": "sphinx-doc__sphinx-8291-ds2-provided-rest",
+      "old_case_sha256": "65200fb45ca69a69bc2bdb0a85e007da52b235420db97b02ba35cdf7c1285790",
+      "new_case_id": "sphinx-doc__sphinx-8291-ds2-provided-final",
+      "new_case_sha256": "0ae82bced4dedfa05895c3c084a2ddd7490a04d985b08e285dff1842a6ea8175",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-7906",
+      "old_case_id": "sphinx-doc__sphinx-7906-ds2-provided-rest",
+      "old_case_sha256": "a9f3e6580b40479fa0c9900999e248f2ba03db4344e60785c48916c51e1ebfa4",
+      "new_case_id": "sphinx-doc__sphinx-7906-ds2-provided-final",
+      "new_case_sha256": "191cdb9e92667a5d81bc7763b8adc2b8399c35076b789c75ead0e2e63853ded9",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    },
+    {
+      "source_case_id": "sphinx-doc__sphinx-9155",
+      "old_case_id": "sphinx-doc__sphinx-9155-ds2-provided-rest",
+      "old_case_sha256": "c63cc3542cd8b0b9620e59d9493d8b9166ff96584a38daf47d23a6aedc726105",
+      "new_case_id": "sphinx-doc__sphinx-9155-ds2-provided-final",
+      "new_case_sha256": "feb7774a9bd71f35a64ea920bd6af8dbae4975f724dc5d196a8d71b281d578dd",
+      "old_matching": "exact_or_unique_truncated_param",
+      "new_matching": "exact_or_unique_truncated_param",
+      "old_profile_executed": false
+    }
+  ],
+  "new_case_attempts": 0,
+  "qualification": "Metadata supersession before execution only. OldJSON/hash/plan bytes retained, original source/test/dependency/command fields equal, no inherited correction lineage or source reexecution."
+}

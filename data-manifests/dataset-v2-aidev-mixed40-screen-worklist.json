@@ -1,0 +1,336 @@
+{
+  "created_at": "2026-11-24T12:43:17+07:00",
+  "source_revision": "b8dc67df93e7c11f6f20c84129db7232eb1ec253",
+  "discovery": {
+    "path": "data-manifests/dataset-v2-aidev-licensed-python-discovery.json",
+    "sha256": "acc9dbe7782087916719d28b267477150ff8eabd9472ba139baf3b8335aeda98"
+  },
+  "selected": [
+    {
+      "id": 3803355058,
+      "row_idx": 1064,
+      "number": 273,
+      "repo_url": "https://api.github.com/repos/Abisena/IMOGI-FINANCE",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation and normalize approval-route formatting in Expense Request",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4047364682,
+      "row_idx": 700,
+      "number": 210,
+      "repo_url": "https://api.github.com/repos/AIC-Turku/AIC-Turku-database",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation of `objectives` key in 3i CSU-W1 Spinning Disk YAML",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3460741665,
+      "row_idx": 946,
+      "number": 65,
+      "repo_url": "https://api.github.com/repos/Alice-Sabrina-Ivy/asi-letter",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix heredoc indentation in ots-upgrade workflow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3673694956,
+      "row_idx": 391,
+      "number": 59,
+      "repo_url": "https://api.github.com/repos/animicaorg/all",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix node2 command indentation in devnet compose",
+      "license_hint_not_pinned_proof": "OFL-1.1",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3278389758,
+      "row_idx": 704,
+      "number": 1007,
+      "repo_url": "https://api.github.com/repos/Aries-Serpent/gh_COPILOT",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "fix: align quantum fallback indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3948307456,
+      "row_idx": 471,
+      "number": 1247,
+      "repo_url": "https://api.github.com/repos/Bigdaddy1990/pawcontrol",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "fix: resolve Ruff E111 indentation warnings in test imports",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3126099965,
+      "row_idx": 546,
+      "number": 84,
+      "repo_url": "https://api.github.com/repos/BioTRaX/NiceGrow",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "fix syntax error in gpt_handler",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3324965602,
+      "row_idx": 433,
+      "number": 550,
+      "repo_url": "https://api.github.com/repos/blakinio/thesslagreen",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix syntax error in config flow",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3462854001,
+      "row_idx": 568,
+      "number": 138,
+      "repo_url": "https://api.github.com/repos/BobTheZombie/LPM.Org",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Makefile recipe indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3519862394,
+      "row_idx": 263,
+      "number": 501,
+      "repo_url": "https://api.github.com/repos/bradhawkins85/MyPortal",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix admin.js modal handler syntax error",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3246540836,
+      "row_idx": 151,
+      "number": 61,
+      "repo_url": "https://api.github.com/repos/bvweerd/dynamic_energy_contract_calculator",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix release workflow indentation",
+      "license_hint_not_pinned_proof": "Apache-2.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3106238767,
+      "row_idx": 452,
+      "number": 75,
+      "repo_url": "https://api.github.com/repos/bwerff/TokenTally",
+      "proposed_role": "test",
+      "signal_not_label": "syntax_title",
+      "title": "Fix BigQuery export test indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3653056095,
+      "row_idx": 118,
+      "number": 2,
+      "repo_url": "https://api.github.com/repos/chrisnewell91/Meta-MCP-Server",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in test runner",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3139343625,
+      "row_idx": 289,
+      "number": 83,
+      "repo_url": "https://api.github.com/repos/cssius111/xianxia-world-engine",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix test_api syntax error",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3157344404,
+      "row_idx": 51,
+      "number": 113,
+      "repo_url": "https://api.github.com/repos/d0tTino/DeepThought-ReThought",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix CI workflow indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups1-2.json",
+        "sha256": "5c2b12b3a3249517a0014cc76077116d2e67b6e8829dfa4a29a6dd986c1a7035"
+      }
+    },
+    {
+      "id": 3128248913,
+      "row_idx": 1251,
+      "number": 17,
+      "repo_url": "https://api.github.com/repos/DanielJSimons/open-lilli",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix TestReviewer indentation",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3348773418,
+      "row_idx": 136,
+      "number": 6,
+      "repo_url": "https://api.github.com/repos/DenisZol/test",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix Mega_Help_Scriptv2 syntax error",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3356680201,
+      "row_idx": 1128,
+      "number": 20,
+      "repo_url": "https://api.github.com/repos/dfiore1230/HA-Expiring-Consumables",
+      "proposed_role": "validation",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in config flow test",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 4061200189,
+      "row_idx": 1102,
+      "number": 26,
+      "repo_url": "https://api.github.com/repos/DO1FFE/meshcore-network-monitor",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Behebt SyntaxError in PATH-Event-Schlüssel f-String",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3114428606,
+      "row_idx": 1253,
+      "number": 4,
+      "repo_url": "https://api.github.com/repos/elboKazQC/AGVConfig-Traduction",
+      "proposed_role": "train",
+      "signal_not_label": "syntax_title",
+      "title": "Fix indentation in hierarchical editor",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3148033968,
+      "row_idx": 1078,
+      "number": 221,
+      "repo_url": "https://api.github.com/repos/DylanLRPollock/Monkey-Head-Project",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependencies",
+      "license_hint_not_pinned_proof": "GPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3898870334,
+      "row_idx": 26,
+      "number": 290,
+      "repo_url": "https://api.github.com/repos/userf8a2c4/centinel-engine",
+      "proposed_role": "validation",
+      "signal_not_label": "dependency_title",
+      "title": "Fix poetry.lock content-hash to match pyproject.toml",
+      "license_hint_not_pinned_proof": "AGPL-3.0",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    },
+    {
+      "id": 3155196605,
+      "row_idx": 1230,
+      "number": 138,
+      "repo_url": "https://api.github.com/repos/xXFirst555Xx/FuelTracker",
+      "proposed_role": "train",
+      "signal_not_label": "dependency_title",
+      "title": "Fix missing dependency for tests",
+      "license_hint_not_pinned_proof": "MIT",
+      "source_projection": {
+        "path": ".cache/dataset-v2-aidev-projected-title-index-groups3-8.json",
+        "sha256": "8a3ab3012b939ac7b0fadd3c5c31c8e180453c4561857a26c71d31a52c1c2ff2"
+      }
+    }
+  ],
+  "discovery_requested": 40,
+  "available_after_prior_identity_repo_and_title_filters": 23,
+  "missing_dependency_candidates": 17,
+  "qualification": "Frozen title-driven provenance screen only, one source per previously unadmitted repo; no causal labels or execution eligibility implied. Roles proposed before outcomes, pending canonical/family checks."
+}

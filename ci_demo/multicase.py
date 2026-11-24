@@ -108,8 +108,16 @@ def validate_case(case):
             raise ValueError("Runtime tmpfs must not cover source/tests")
     if case.get("generation_protocol", PROTOCOL) not in {PROTOCOL, SITE_PROTOCOL}:
         raise ValueError("Unknown generator protocol")
-    if case.get("source_id_matching", "exact") not in {"exact", "exact_or_unique_truncated_param", "exact_unique_function_name", "swebench_pytest_options"}:
+    if case.get("source_id_matching", "exact") not in {"exact", "exact_or_unique_truncated_param", "exact_unique_function_name", "swebench_pytest_options", "swebench_pytest_whitespace"}:
         raise ValueError("Unknown source test identity matching policy")
+    if case.get('source_id_matching') == 'swebench_pytest_whitespace' and (
+            case.get('source_kind') != 'swebench' or case.get('test_reference_policy') is not None
+            or case['repo_url'] not in {'https://github.com/marshmallow-code/marshmallow',
+                'https://github.com/pvlib/pvlib-python', 'https://github.com/pydata/xarray',
+                'https://github.com/pylint-dev/astroid', 'https://github.com/pytest-dev/pytest',
+                'https://github.com/pallets/flask', 'https://github.com/pyvista/pyvista',
+                'https://github.com/sqlfluff/sqlfluff'}):
+        raise ValueError('Whitespace source identifiers require the declared SWE pytest parser/repo')
     if case.get('source_id_matching') == 'swebench_pytest_options' and (case.get('source_kind') != 'swebench' or case['repo_url'] not in {
             'https://github.com/psf/requests','https://github.com/pydicom/pydicom','https://github.com/pylint-dev/pylint'}):
         raise ValueError('SWE pytest option normalization requires its declared source parser')
@@ -503,7 +511,7 @@ def split_test_id(target):
 
 
 def resolve_targets(result, folder, targets, expected, mode="exact"):
-    """Resolve only a unique incomplete parameter ID, never fuzzy test names."""
+    """Match exact identities or declared source-parser groups, never fuzzy names."""
     outcomes = test_outcomes(result, folder); records = []
     for target in targets:
         if mode == "exact_unique_function_name":
@@ -517,15 +525,15 @@ def resolve_targets(result, folder, targets, expected, mode="exact"):
         parts = split_test_id(target); cls = parts[0].removesuffix(".py")
         if len(parts) > 2: cls += "/" + "/".join(parts[1:-1])
         name = parts[-1]; resolved = name if (cls, name) in outcomes else None; how = "exact"
-        if mode == 'swebench_pytest_options':
-            # SWE-bench v4.1.0 parse_log_pytest_options canonicalizes absolute path parameters.
+        if mode in {'swebench_pytest_options', 'swebench_pytest_whitespace'}:
+            # Pinned SWE pytest parsers split whitespace; only the options parser folds absolute paths.
             def canonical(value):
                 tokens = value.split(maxsplit=1)
                 if not tokens: return value
                 value = tokens[0]
                 prefix, boundary, parameter = value.partition('[')
                 parameter = parameter[:-1] if value.endswith(']') else ''
-                if boundary and parameter.startswith('/') and not parameter.startswith('//') and '*' not in parameter:
+                if mode == 'swebench_pytest_options' and boundary and parameter.startswith('/') and not parameter.startswith('//') and '*' not in parameter:
                     return prefix + '[/' + parameter.rsplit('/', 1)[-1] + ']'
                 return value
             matches = sorted(n for c, n in outcomes if c == cls and canonical(n) == name)

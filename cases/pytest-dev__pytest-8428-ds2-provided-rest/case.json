@@ -1,0 +1,104 @@
+{
+  "case_id": "pytest-dev__pytest-8428-ds2-provided-rest",
+  "source_case_id": "pytest-dev__pytest-8428",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "pytest-dev__pytest-8428",
+  "repo_url": "https://github.com/pytest-dev/pytest",
+  "base": "fe51121f39ca48c1af21733a60ae069b316b1cdb",
+  "head": "base+repair:3187c7dcc126aadd7e533649e7eae9533819f2f284ff9b600503192398312247",
+  "allowed_file": "src/_pytest/deprecated.py",
+  "license": "MIT",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-8428-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "3187c7dcc126aadd7e533649e7eae9533819f2f284ff9b600503192398312247",
+  "test_patch": ".cache/dataset-v2-source/cases/pytest-dev__pytest-8428-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "5563919cecf72c7dcf9d898b787ab71668ef0d17e7605223d9404ab99ed73bcc",
+  "source_record_sha256": "3ef69aa0e45a691f1b1c51d1a44ecb07ea62446c3f349d85990161fcaf33d17c",
+  "fail_to_pass": [
+    "testing/deprecated_test.py::test_fixture_disallow_on_marked_functions",
+    "testing/deprecated_test.py::test_fixture_disallow_marks_on_fixtures",
+    "testing/deprecated_test.py::test_fixture_disallowed_between_marks"
+  ],
+  "pass_to_pass": [
+    "testing/deprecated_test.py::test_hookspec_via_function_attributes_are_deprecated",
+    "testing/deprecated_test.py::test_hookimpl_via_function_attributes_are_deprecated",
+    "testing/deprecated_test.py::test_yield_fixture_is_deprecated",
+    "testing/deprecated_test.py::test_private_is_deprecated",
+    "testing/deprecated_test.py::test_hookproxy_warnings_for_pathlib[hook]",
+    "testing/deprecated_test.py::test_hookproxy_warnings_for_pathlib[ihook]",
+    "testing/deprecated_test.py::test_warns_none_is_deprecated",
+    "testing/deprecated_test.py::test_external_plugins_integrated[pytest_capturelog]",
+    "testing/deprecated_test.py::test_external_plugins_integrated[pytest_catchlog]",
+    "testing/deprecated_test.py::test_external_plugins_integrated[pytest_faulthandler]",
+    "testing/deprecated_test.py::test_fscollector_gethookproxy_isinitpath",
+    "testing/deprecated_test.py::test_strict_option_is_deprecated",
+    "testing/deprecated_test.py::TestSkipMsgArgumentDeprecated::test_skip_with_msg_is_deprecated",
+    "testing/deprecated_test.py::TestSkipMsgArgumentDeprecated::test_fail_with_msg_is_deprecated",
+    "testing/deprecated_test.py::TestSkipMsgArgumentDeprecated::test_exit_with_msg_is_deprecated",
+    "testing/deprecated_test.py::test_deprecation_of_cmdline_preparse",
+    "testing/deprecated_test.py::test_node_ctor_fspath_argument_is_deprecated",
+    "testing/deprecated_test.py::test_importing_instance_is_deprecated"
+  ],
+  "test_targets": [
+    "testing/deprecated_test.py"
+  ],
+  "frozen_test_files": [
+    "testing/deprecated_test.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "python_image": "python:3.9-slim-bookworm",
+  "python_paths": [
+    "src",
+    "."
+  ],
+  "pytest_version": "8.3.5",
+  "pytest_plugins": [
+    "pytester"
+  ],
+  "install_project": true,
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "dependencies": [
+    "py==1.11.0",
+    "attrs==21.4.0",
+    "iniconfig==2.0.0",
+    "packaging==23.2",
+    "tomli==2.0.1",
+    "exceptiongroup==1.1.3",
+    "typing_extensions==4.12.2",
+    "pluggy==1.6.0",
+    "more-itertools==9.1.0",
+    "atomicwrites==1.4.1",
+    "wcwidth==0.2.13",
+    "mock==5.1.0",
+    "setuptools-scm==8.1.0"
+  ],
+  "environment_parent_case_id": "pytest-dev__pytest-11143-ds1-eval",
+  "environment_revision": "actual-git-scm-generated-metadata",
+  "scm_build_version": "8.0.0.dev53+g6995257cf",
+  "scm_version_derivation": {
+    "path": "runs\\source-version-metadata-20261112T005305285876Z\\versions.json",
+    "sha256": "e15cab85c177d2529a014da03b3047f6cc31ec356203ef0bca2b4f5ebfe9b3b1",
+    "tool": "setuptools-scm==8.1.0",
+    "method": "clean exact-commit checkout with full tag ancestry; no target-source setup/import on host"
+  },
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "pytest-dev__pytest-11178-ds2-wave2",
+  "recipe_template_case_sha256": "c46d4cd20c0b384eaf0177761e5f8be9ba84a6b32beabc7cb4eee73ddf999583",
+  "recipe_template_passing_run": "reproduce-20261123T205918957668Z"
+}

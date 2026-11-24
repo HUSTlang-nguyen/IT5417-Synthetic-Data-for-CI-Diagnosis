@@ -1,0 +1,2957 @@
+{
+  "checked_at": "2026-11-24T12:53:19+07:00",
+  "run_id": "reproduce-20261124T010344943252Z",
+  "original_case_id": "marshmallow-code__marshmallow-1524-ds2-provided-next",
+  "role": "train",
+  "policy_source": "https://github.com/SWE-bench/SWE-bench/blob/726c5461e2ef52d83cf1ea2107870a8bb3328d57/swebench/harness/log_parsers/python.py#L6",
+  "source_repo_parser_alias": "parse_log_marshmallow = parse_log_pytest",
+  "policy": "swebench_pytest_whitespace",
+  "comparisons": [
+    {
+      "role": "base",
+      "set": "fail_to_pass",
+      "old_satisfied": true,
+      "proposed_satisfied": true,
+      "new_resolution": [
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[https://example.org\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[https://example.org\\n]",
+          "resolved_names": [
+            "test_url_absolute_invalid[https://example.org\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "fail",
+          "observed": "fail"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[http://example.org\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[http://example.org\\n]",
+          "resolved_names": [
+            "test_url_relative_invalid[http://example.org\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "fail",
+          "observed": "fail"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http://example\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http://example\\n]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http://example\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "fail",
+          "observed": "fail"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[niceandsimple\\n@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[niceandsimple\\n@example.com]",
+          "resolved_names": [
+            "test_email_invalid[niceandsimple\\n@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "fail",
+          "observed": "fail"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[NiCeAnDsImPlE@eXaMpLe.CoM\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[NiCeAnDsImPlE@eXaMpLe.CoM\\n]",
+          "resolved_names": [
+            "test_email_invalid[NiCeAnDsImPlE@eXaMpLe.CoM\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "fail",
+          "observed": "fail"
+        }
+      ]
+    },
+    {
+      "role": "base",
+      "set": "pass_to_pass",
+      "old_satisfied": false,
+      "proposed_satisfied": true,
+      "new_resolution": [
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[https://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[https://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[https://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[ftp://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[ftp://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[ftp://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[ftps://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[ftps://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[ftps://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://example.co.jp]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://example.co.jp]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://example.co.jp]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com/a%C2%B1b]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com/a%C2%B1b]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com/a%C2%B1b]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com/~username/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com/~username/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com/~username/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://info.example.com/?fred]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://info.example.com/?fred]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://info.example.com/?fred]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://xn--mgbh0fb.xn--kgbechtv/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://xn--mgbh0fb.xn--kgbechtv/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://xn--mgbh0fb.xn--kgbechtv/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://example.com/blue/red%3Fand+green]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://example.com/blue/red%3Fand+green]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://example.com/blue/red%3Fand+green]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com/?array%5Bkey%5D=value]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com/?array%5Bkey%5D=value]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com/?array%5Bkey%5D=value]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://xn--rsum-bpad.example.org/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://xn--rsum-bpad.example.org/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://xn--rsum-bpad.example.org/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://123.45.67.8/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://123.45.67.8/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://123.45.67.8/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://2001:db8::ff00:42:8329]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://2001:db8::ff00:42:8329]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://2001:db8::ff00:42:8329]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com:8000/foo]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com:8000/foo]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com:8000/foo]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://user@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://user@example.com]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://user@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://user:pass@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://user:pass@example.com]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://user:pass@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[https:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[https:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[https:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[https://example.org\\\\]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[https://example.org\\\\]",
+          "resolved_names": [
+            "test_url_absolute_invalid[https://example.org\\\\]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[ftp:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[ftp:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[ftp:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[ftps:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[ftps:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[ftps:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http//example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http//example.org]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http//example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http:///]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http:///]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http:///]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http:/example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http:/example.org]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http:/example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[foo://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[foo://example.org]",
+          "resolved_names": [
+            "test_url_absolute_invalid[foo://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[../icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[../icons/logo.gif]",
+          "resolved_names": [
+            "test_url_absolute_invalid[../icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[abc]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[abc]",
+          "resolved_names": [
+            "test_url_absolute_invalid[abc]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[..]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[..]",
+          "resolved_names": [
+            "test_url_absolute_invalid[..]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[ ]",
+          "resolved_names": [
+            "test_url_absolute_invalid[ ]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[]",
+          "resolved_names": [
+            "test_url_absolute_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[None]",
+          "resolved_names": [
+            "test_url_absolute_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.org]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://123.45.67.8/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://123.45.67.8/]",
+          "resolved_names": [
+            "test_url_relative_valid[http://123.45.67.8/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.com/foo/bar/../baz]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.com/foo/bar/../baz]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.com/foo/bar/../baz]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[https://example.com/../icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[https://example.com/../icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_valid[https://example.com/../icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.com/./icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.com/./icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.com/./icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[ftp://example.com/../../../../g]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[ftp://example.com/../../../../g]",
+          "resolved_names": [
+            "test_url_relative_valid[ftp://example.com/../../../../g]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.com/g?y/./x]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.com/g?y/./x]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.com/g?y/./x]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[http//example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[http//example.org]",
+          "resolved_names": [
+            "test_url_relative_invalid[http//example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[suppliers.html]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[suppliers.html]",
+          "resolved_names": [
+            "test_url_relative_invalid[suppliers.html]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[../icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[../icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_invalid[../icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_invalid[icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[../.../g]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[../.../g]",
+          "resolved_names": [
+            "test_url_relative_invalid[../.../g]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[...]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[...]",
+          "resolved_names": [
+            "test_url_relative_invalid[...]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[\\\\]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[\\\\]",
+          "resolved_names": [
+            "test_url_relative_invalid[\\\\]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[ ]",
+          "resolved_names": [
+            "test_url_relative_invalid[ ]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[]",
+          "resolved_names": [
+            "test_url_relative_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[None]",
+          "resolved_names": [
+            "test_url_relative_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example.org]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://123.45.67.8/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://123.45.67.8/]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://123.45.67.8/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example.]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example.]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example.]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example:80]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example:80]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example:80]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://user.name:pass.word@example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://user.name:pass.word@example]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://user.name:pass.word@example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example/foo/bar]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example/foo/bar]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example/foo/bar]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http//example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http//example]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http//example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http://.example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http://.example.org]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http://.example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http:///foo/bar]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http:///foo/bar]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http:///foo/bar]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http://",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http:// /foo/bar]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http:// /foo/bar]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[None]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_custom_scheme",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_custom_scheme",
+          "resolved_names": [
+            "test_url_custom_scheme"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_and_custom_schemes",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_and_custom_schemes",
+          "resolved_names": [
+            "test_url_relative_and_custom_schemes"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_custom_message",
+          "resolved_names": [
+            "test_url_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_repr",
+          "resolved_names": [
+            "test_url_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[niceandsimple@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[niceandsimple@example.com]",
+          "resolved_names": [
+            "test_email_valid[niceandsimple@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[NiCeAnDsImPlE@eXaMpLe.CoM]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[NiCeAnDsImPlE@eXaMpLe.CoM]",
+          "resolved_names": [
+            "test_email_valid[NiCeAnDsImPlE@eXaMpLe.CoM]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[very.common@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[very.common@example.com]",
+          "resolved_names": [
+            "test_email_valid[very.common@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[a.little.lengthy.but.fine@a.iana-servers.net]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[a.little.lengthy.but.fine@a.iana-servers.net]",
+          "resolved_names": [
+            "test_email_valid[a.little.lengthy.but.fine@a.iana-servers.net]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[disposable.style.email.with+symbol@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[disposable.style.email.with+symbol@example.com]",
+          "resolved_names": [
+            "test_email_valid[disposable.style.email.with+symbol@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[\"very.unusual.@.unusual.com\"@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[\"very.unusual.@.unusual.com\"@example.com]",
+          "resolved_names": [
+            "test_email_valid[\"very.unusual.@.unusual.com\"@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[!#$%&'*+-/=?^_`{}|~@example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[!#$%&'*+-/=?^_`{}|~@example.org]",
+          "resolved_names": [
+            "test_email_valid[!#$%&'*+-/=?^_`{}|~@example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[niceandsimple@[64.233.160.0]]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[niceandsimple@[64.233.160.0]]",
+          "resolved_names": [
+            "test_email_valid[niceandsimple@[64.233.160.0]]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[niceandsimple@localhost]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[niceandsimple@localhost]",
+          "resolved_names": [
+            "test_email_valid[niceandsimple@localhost]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[jos\\xe9@blah.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[jos\\xe9@blah.com]",
+          "resolved_names": [
+            "test_email_valid[jos\\xe9@blah.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[\\u03b4\\u03bf\\u03ba.\\u03b9\\u03bc\\u03ae@\\u03c0\\u03b1\\u03c1\\u03ac\\u03b4\\u03b5\\u03b9\\u03b3\\u03bc\\u03b1.\\u03b4\\u03bf\\u03ba\\u03b9\\u03bc\\u03ae]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[\\u03b4\\u03bf\\u03ba.\\u03b9\\u03bc\\u03ae@\\u03c0\\u03b1\\u03c1\\u03ac\\u03b4\\u03b5\\u03b9\\u03b3\\u03bc\\u03b1.\\u03b4\\u03bf\\u03ba\\u03b9\\u03bc\\u03ae]",
+          "resolved_names": [
+            "test_email_valid[\\u03b4\\u03bf\\u03ba.\\u03b9\\u03bc\\u03ae@\\u03c0\\u03b1\\u03c1\\u03ac\\u03b4\\u03b5\\u03b9\\u03b3\\u03bc\\u03b1.\\u03b4\\u03bf\\u03ba\\u03b9\\u03bc\\u03ae]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[a\"b(c)d,e:f;g<h>i[j\\\\k]l@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[a\"b(c)d,e:f;g<h>i[j\\\\k]l@example.com]",
+          "resolved_names": [
+            "test_email_invalid[a\"b(c)d,e:f;g<h>i[j\\\\k]l@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[just\"not\"right@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[just\"not\"right@example.com]",
+          "resolved_names": [
+            "test_email_invalid[just\"not\"right@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[this",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[this is\"not\\x07llowed@example.com]",
+          "resolved_names": [
+            "test_email_invalid[this is\"not\\x07llowed@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[this\\\\",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[this\\\\ still\\\\\"not\\\\\\\\allowed@example.com]",
+          "resolved_names": [
+            "test_email_invalid[this\\\\ still\\\\\"not\\\\\\\\allowed@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[\"much.more",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[\"much.more unusual\"@example.com]",
+          "resolved_names": [
+            "test_email_invalid[\"much.more unusual\"@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[\"very.(),:;<>[]\".VERY.\"very@\\\\",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[\"very.(),:;<>[]\".VERY.\"very@\\\\ \"very\".unusual\"@strange.example.com]",
+          "resolved_names": [
+            "test_email_invalid[\"very.(),:;<>[]\".VERY.\"very@\\\\ \"very\".unusual\"@strange.example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[\"",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[\" \"@example.org]",
+          "resolved_names": [
+            "test_email_invalid[\" \"@example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[user@example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[user@example]",
+          "resolved_names": [
+            "test_email_invalid[user@example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[@nouser.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[@nouser.com]",
+          "resolved_names": [
+            "test_email_invalid[@nouser.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[example.com]",
+          "resolved_names": [
+            "test_email_invalid[example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[user]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[user]",
+          "resolved_names": [
+            "test_email_invalid[user]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[]",
+          "resolved_names": [
+            "test_email_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[None]",
+          "resolved_names": [
+            "test_email_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_custom_message",
+          "resolved_names": [
+            "test_email_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_repr",
+          "resolved_names": [
+            "test_email_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_min",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_min",
+          "resolved_names": [
+            "test_range_min"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_max",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_max",
+          "resolved_names": [
+            "test_range_max"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_custom_message",
+          "resolved_names": [
+            "test_range_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_repr",
+          "resolved_names": [
+            "test_range_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_min",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_min",
+          "resolved_names": [
+            "test_length_min"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_max",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_max",
+          "resolved_names": [
+            "test_length_max"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_equal",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_equal",
+          "resolved_names": [
+            "test_length_equal"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_custom_message",
+          "resolved_names": [
+            "test_length_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_repr",
+          "resolved_names": [
+            "test_length_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_equal",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_equal",
+          "resolved_names": [
+            "test_equal"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_equal_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_equal_custom_message",
+          "resolved_names": [
+            "test_equal_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_equal_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_equal_repr",
+          "resolved_names": [
+            "test_equal_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_str",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_str",
+          "resolved_names": [
+            "test_regexp_str"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_compile",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_compile",
+          "resolved_names": [
+            "test_regexp_compile"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_custom_message",
+          "resolved_names": [
+            "test_regexp_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_repr",
+          "resolved_names": [
+            "test_regexp_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_predicate",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_predicate",
+          "resolved_names": [
+            "test_predicate"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_predicate_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_predicate_custom_message",
+          "resolved_names": [
+            "test_predicate_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_predicate_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_predicate_repr",
+          "resolved_names": [
+            "test_predicate_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_noneof",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_noneof",
+          "resolved_names": [
+            "test_noneof"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_noneof_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_noneof_custom_message",
+          "resolved_names": [
+            "test_noneof_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_noneof_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_noneof_repr",
+          "resolved_names": [
+            "test_noneof_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof",
+          "resolved_names": [
+            "test_oneof"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_options",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_options",
+          "resolved_names": [
+            "test_oneof_options"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_text",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_text",
+          "resolved_names": [
+            "test_oneof_text"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_custom_message",
+          "resolved_names": [
+            "test_oneof_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_repr",
+          "resolved_names": [
+            "test_oneof_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_in_list",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_in_list",
+          "resolved_names": [
+            "test_containsonly_in_list"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_contains_only_unhashable_types",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_contains_only_unhashable_types",
+          "resolved_names": [
+            "test_contains_only_unhashable_types"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_in_tuple",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_in_tuple",
+          "resolved_names": [
+            "test_containsonly_in_tuple"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_contains_only_in_string",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_contains_only_in_string",
+          "resolved_names": [
+            "test_contains_only_in_string"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_contains_only_invalid",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_contains_only_invalid",
+          "resolved_names": [
+            "test_contains_only_invalid"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_custom_message",
+          "resolved_names": [
+            "test_containsonly_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_repr",
+          "resolved_names": [
+            "test_containsonly_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        }
+      ]
+    },
+    {
+      "role": "head",
+      "set": "fail_to_pass",
+      "old_satisfied": true,
+      "proposed_satisfied": true,
+      "new_resolution": [
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[https://example.org\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[https://example.org\\n]",
+          "resolved_names": [
+            "test_url_absolute_invalid[https://example.org\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[http://example.org\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[http://example.org\\n]",
+          "resolved_names": [
+            "test_url_relative_invalid[http://example.org\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http://example\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http://example\\n]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http://example\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[niceandsimple\\n@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[niceandsimple\\n@example.com]",
+          "resolved_names": [
+            "test_email_invalid[niceandsimple\\n@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[NiCeAnDsImPlE@eXaMpLe.CoM\\n]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[NiCeAnDsImPlE@eXaMpLe.CoM\\n]",
+          "resolved_names": [
+            "test_email_invalid[NiCeAnDsImPlE@eXaMpLe.CoM\\n]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        }
+      ]
+    },
+    {
+      "role": "head",
+      "set": "pass_to_pass",
+      "old_satisfied": false,
+      "proposed_satisfied": true,
+      "new_resolution": [
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[https://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[https://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[https://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[ftp://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[ftp://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[ftp://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[ftps://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[ftps://example.org]",
+          "resolved_names": [
+            "test_url_absolute_valid[ftps://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://example.co.jp]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://example.co.jp]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://example.co.jp]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com/a%C2%B1b]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com/a%C2%B1b]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com/a%C2%B1b]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com/~username/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com/~username/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com/~username/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://info.example.com/?fred]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://info.example.com/?fred]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://info.example.com/?fred]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://xn--mgbh0fb.xn--kgbechtv/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://xn--mgbh0fb.xn--kgbechtv/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://xn--mgbh0fb.xn--kgbechtv/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://example.com/blue/red%3Fand+green]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://example.com/blue/red%3Fand+green]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://example.com/blue/red%3Fand+green]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com/?array%5Bkey%5D=value]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com/?array%5Bkey%5D=value]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com/?array%5Bkey%5D=value]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://xn--rsum-bpad.example.org/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://xn--rsum-bpad.example.org/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://xn--rsum-bpad.example.org/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://123.45.67.8/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://123.45.67.8/]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://123.45.67.8/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://2001:db8::ff00:42:8329]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://2001:db8::ff00:42:8329]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://2001:db8::ff00:42:8329]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://www.example.com:8000/foo]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://www.example.com:8000/foo]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://www.example.com:8000/foo]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://user@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://user@example.com]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://user@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_valid[http://user:pass@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_valid[http://user:pass@example.com]",
+          "resolved_names": [
+            "test_url_absolute_valid[http://user:pass@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[https:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[https:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[https:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[https://example.org\\\\]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[https://example.org\\\\]",
+          "resolved_names": [
+            "test_url_absolute_invalid[https://example.org\\\\]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[ftp:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[ftp:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[ftp:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[ftps:///example.com/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[ftps:///example.com/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[ftps:///example.com/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http//example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http//example.org]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http//example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http:///]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http:///]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http:///]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[http:/example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[http:/example.org]",
+          "resolved_names": [
+            "test_url_absolute_invalid[http:/example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[foo://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[foo://example.org]",
+          "resolved_names": [
+            "test_url_absolute_invalid[foo://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[../icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[../icons/logo.gif]",
+          "resolved_names": [
+            "test_url_absolute_invalid[../icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[abc]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[abc]",
+          "resolved_names": [
+            "test_url_absolute_invalid[abc]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[..]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[..]",
+          "resolved_names": [
+            "test_url_absolute_invalid[..]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[/]",
+          "resolved_names": [
+            "test_url_absolute_invalid[/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[ ]",
+          "resolved_names": [
+            "test_url_absolute_invalid[ ]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[]",
+          "resolved_names": [
+            "test_url_absolute_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_absolute_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_absolute_invalid[None]",
+          "resolved_names": [
+            "test_url_absolute_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.org]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://123.45.67.8/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://123.45.67.8/]",
+          "resolved_names": [
+            "test_url_relative_valid[http://123.45.67.8/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.com/foo/bar/../baz]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.com/foo/bar/../baz]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.com/foo/bar/../baz]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[https://example.com/../icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[https://example.com/../icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_valid[https://example.com/../icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.com/./icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.com/./icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.com/./icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[ftp://example.com/../../../../g]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[ftp://example.com/../../../../g]",
+          "resolved_names": [
+            "test_url_relative_valid[ftp://example.com/../../../../g]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_valid[http://example.com/g?y/./x]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_valid[http://example.com/g?y/./x]",
+          "resolved_names": [
+            "test_url_relative_valid[http://example.com/g?y/./x]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[http//example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[http//example.org]",
+          "resolved_names": [
+            "test_url_relative_invalid[http//example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[suppliers.html]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[suppliers.html]",
+          "resolved_names": [
+            "test_url_relative_invalid[suppliers.html]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[../icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[../icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_invalid[../icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[icons/logo.gif]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[icons/logo.gif]",
+          "resolved_names": [
+            "test_url_relative_invalid[icons/logo.gif]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[../.../g]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[../.../g]",
+          "resolved_names": [
+            "test_url_relative_invalid[../.../g]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[...]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[...]",
+          "resolved_names": [
+            "test_url_relative_invalid[...]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[\\\\]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[\\\\]",
+          "resolved_names": [
+            "test_url_relative_invalid[\\\\]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[ ]",
+          "resolved_names": [
+            "test_url_relative_invalid[ ]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[]",
+          "resolved_names": [
+            "test_url_relative_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_invalid[None]",
+          "resolved_names": [
+            "test_url_relative_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example.org]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://123.45.67.8/]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://123.45.67.8/]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://123.45.67.8/]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example.]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example.]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example.]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example:80]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example:80]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example:80]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://user.name:pass.word@example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://user.name:pass.word@example]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://user.name:pass.word@example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_valid[http://example/foo/bar]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_valid[http://example/foo/bar]",
+          "resolved_names": [
+            "test_url_dont_require_tld_valid[http://example/foo/bar]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http//example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http//example]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http//example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http://.example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http://.example.org]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http://.example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http:///foo/bar]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http:///foo/bar]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http:///foo/bar]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[http://",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[http:// /foo/bar]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[http:// /foo/bar]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_dont_require_tld_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_dont_require_tld_invalid[None]",
+          "resolved_names": [
+            "test_url_dont_require_tld_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_custom_scheme",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_custom_scheme",
+          "resolved_names": [
+            "test_url_custom_scheme"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_relative_and_custom_schemes",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_relative_and_custom_schemes",
+          "resolved_names": [
+            "test_url_relative_and_custom_schemes"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_custom_message",
+          "resolved_names": [
+            "test_url_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_url_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_url_repr",
+          "resolved_names": [
+            "test_url_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[niceandsimple@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[niceandsimple@example.com]",
+          "resolved_names": [
+            "test_email_valid[niceandsimple@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[NiCeAnDsImPlE@eXaMpLe.CoM]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[NiCeAnDsImPlE@eXaMpLe.CoM]",
+          "resolved_names": [
+            "test_email_valid[NiCeAnDsImPlE@eXaMpLe.CoM]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[very.common@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[very.common@example.com]",
+          "resolved_names": [
+            "test_email_valid[very.common@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[a.little.lengthy.but.fine@a.iana-servers.net]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[a.little.lengthy.but.fine@a.iana-servers.net]",
+          "resolved_names": [
+            "test_email_valid[a.little.lengthy.but.fine@a.iana-servers.net]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[disposable.style.email.with+symbol@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[disposable.style.email.with+symbol@example.com]",
+          "resolved_names": [
+            "test_email_valid[disposable.style.email.with+symbol@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[\"very.unusual.@.unusual.com\"@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[\"very.unusual.@.unusual.com\"@example.com]",
+          "resolved_names": [
+            "test_email_valid[\"very.unusual.@.unusual.com\"@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[!#$%&'*+-/=?^_`{}|~@example.org]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[!#$%&'*+-/=?^_`{}|~@example.org]",
+          "resolved_names": [
+            "test_email_valid[!#$%&'*+-/=?^_`{}|~@example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[niceandsimple@[64.233.160.0]]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[niceandsimple@[64.233.160.0]]",
+          "resolved_names": [
+            "test_email_valid[niceandsimple@[64.233.160.0]]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[niceandsimple@localhost]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[niceandsimple@localhost]",
+          "resolved_names": [
+            "test_email_valid[niceandsimple@localhost]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[jos\\xe9@blah.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[jos\\xe9@blah.com]",
+          "resolved_names": [
+            "test_email_valid[jos\\xe9@blah.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_valid[\\u03b4\\u03bf\\u03ba.\\u03b9\\u03bc\\u03ae@\\u03c0\\u03b1\\u03c1\\u03ac\\u03b4\\u03b5\\u03b9\\u03b3\\u03bc\\u03b1.\\u03b4\\u03bf\\u03ba\\u03b9\\u03bc\\u03ae]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_valid[\\u03b4\\u03bf\\u03ba.\\u03b9\\u03bc\\u03ae@\\u03c0\\u03b1\\u03c1\\u03ac\\u03b4\\u03b5\\u03b9\\u03b3\\u03bc\\u03b1.\\u03b4\\u03bf\\u03ba\\u03b9\\u03bc\\u03ae]",
+          "resolved_names": [
+            "test_email_valid[\\u03b4\\u03bf\\u03ba.\\u03b9\\u03bc\\u03ae@\\u03c0\\u03b1\\u03c1\\u03ac\\u03b4\\u03b5\\u03b9\\u03b3\\u03bc\\u03b1.\\u03b4\\u03bf\\u03ba\\u03b9\\u03bc\\u03ae]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[a\"b(c)d,e:f;g<h>i[j\\\\k]l@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[a\"b(c)d,e:f;g<h>i[j\\\\k]l@example.com]",
+          "resolved_names": [
+            "test_email_invalid[a\"b(c)d,e:f;g<h>i[j\\\\k]l@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[just\"not\"right@example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[just\"not\"right@example.com]",
+          "resolved_names": [
+            "test_email_invalid[just\"not\"right@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[this",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[this is\"not\\x07llowed@example.com]",
+          "resolved_names": [
+            "test_email_invalid[this is\"not\\x07llowed@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[this\\\\",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[this\\\\ still\\\\\"not\\\\\\\\allowed@example.com]",
+          "resolved_names": [
+            "test_email_invalid[this\\\\ still\\\\\"not\\\\\\\\allowed@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[\"much.more",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[\"much.more unusual\"@example.com]",
+          "resolved_names": [
+            "test_email_invalid[\"much.more unusual\"@example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[\"very.(),:;<>[]\".VERY.\"very@\\\\",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[\"very.(),:;<>[]\".VERY.\"very@\\\\ \"very\".unusual\"@strange.example.com]",
+          "resolved_names": [
+            "test_email_invalid[\"very.(),:;<>[]\".VERY.\"very@\\\\ \"very\".unusual\"@strange.example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[\"",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[\" \"@example.org]",
+          "resolved_names": [
+            "test_email_invalid[\" \"@example.org]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[user@example]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[user@example]",
+          "resolved_names": [
+            "test_email_invalid[user@example]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[@nouser.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[@nouser.com]",
+          "resolved_names": [
+            "test_email_invalid[@nouser.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[example.com]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[example.com]",
+          "resolved_names": [
+            "test_email_invalid[example.com]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[user]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[user]",
+          "resolved_names": [
+            "test_email_invalid[user]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[]",
+          "resolved_names": [
+            "test_email_invalid[]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_invalid[None]",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_invalid[None]",
+          "resolved_names": [
+            "test_email_invalid[None]"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_custom_message",
+          "resolved_names": [
+            "test_email_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_email_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_email_repr",
+          "resolved_names": [
+            "test_email_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_min",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_min",
+          "resolved_names": [
+            "test_range_min"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_max",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_max",
+          "resolved_names": [
+            "test_range_max"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_custom_message",
+          "resolved_names": [
+            "test_range_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_range_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_range_repr",
+          "resolved_names": [
+            "test_range_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_min",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_min",
+          "resolved_names": [
+            "test_length_min"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_max",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_max",
+          "resolved_names": [
+            "test_length_max"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_equal",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_equal",
+          "resolved_names": [
+            "test_length_equal"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_custom_message",
+          "resolved_names": [
+            "test_length_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_length_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_length_repr",
+          "resolved_names": [
+            "test_length_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_equal",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_equal",
+          "resolved_names": [
+            "test_equal"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_equal_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_equal_custom_message",
+          "resolved_names": [
+            "test_equal_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_equal_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_equal_repr",
+          "resolved_names": [
+            "test_equal_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_str",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_str",
+          "resolved_names": [
+            "test_regexp_str"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_compile",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_compile",
+          "resolved_names": [
+            "test_regexp_compile"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_custom_message",
+          "resolved_names": [
+            "test_regexp_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_regexp_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_regexp_repr",
+          "resolved_names": [
+            "test_regexp_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_predicate",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_predicate",
+          "resolved_names": [
+            "test_predicate"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_predicate_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_predicate_custom_message",
+          "resolved_names": [
+            "test_predicate_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_predicate_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_predicate_repr",
+          "resolved_names": [
+            "test_predicate_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_noneof",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_noneof",
+          "resolved_names": [
+            "test_noneof"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_noneof_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_noneof_custom_message",
+          "resolved_names": [
+            "test_noneof_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_noneof_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_noneof_repr",
+          "resolved_names": [
+            "test_noneof_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof",
+          "resolved_names": [
+            "test_oneof"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_options",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_options",
+          "resolved_names": [
+            "test_oneof_options"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_text",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_text",
+          "resolved_names": [
+            "test_oneof_text"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_custom_message",
+          "resolved_names": [
+            "test_oneof_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_oneof_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_oneof_repr",
+          "resolved_names": [
+            "test_oneof_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_in_list",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_in_list",
+          "resolved_names": [
+            "test_containsonly_in_list"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_contains_only_unhashable_types",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_contains_only_unhashable_types",
+          "resolved_names": [
+            "test_contains_only_unhashable_types"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_in_tuple",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_in_tuple",
+          "resolved_names": [
+            "test_containsonly_in_tuple"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_contains_only_in_string",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_contains_only_in_string",
+          "resolved_names": [
+            "test_contains_only_in_string"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_contains_only_invalid",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_contains_only_invalid",
+          "resolved_names": [
+            "test_contains_only_invalid"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_custom_message",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_custom_message",
+          "resolved_names": [
+            "test_containsonly_custom_message"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        },
+        {
+          "source_id": "tests/test_validate.py::test_containsonly_repr",
+          "resolved_class": "tests/test_validate",
+          "resolved_name": "test_containsonly_repr",
+          "resolved_names": [
+            "test_containsonly_repr"
+          ],
+          "resolution": "swebench_canonical_group",
+          "expected": "pass",
+          "observed": "pass"
+        }
+      ]
+    }
+  ],
+  "evidence_hashes": {
+    "manifest.json": "018a7013aeabf2d32b8c4d4a03d637dd64c424dc037210d7a4415be61f064536",
+    "historical-base.stdout.txt": "37b774ac72c72ac7036b7e6bc7b837c0dcea7705373096721cd1dbd495744b31",
+    "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-base.junit.xml": "2f864a80bd17470d35b1627a07aabda335dfcea396ebd93602dee21697bab0be",
+    "historical-fixed.stdout.txt": "8aa453da46198f69d61f503965f9622d9dac1850a4dcbee9e35d57ed54dbccee",
+    "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "historical-fixed.junit.xml": "33aa6d51000cc13f775666381787df058c1413255733be072932857d45d3a0be"
+  },
+  "qualification": "Read-only proposed mapping check on savedTRAINJUnit; all actual members of a canonical whitespace group must have expected status. No fuzzy prefix, absolute-path folding, test edits or historical verdict rewrite. Does not count as a new successful source trial; sole correction must execute separately."
+}

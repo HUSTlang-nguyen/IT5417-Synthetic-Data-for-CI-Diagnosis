@@ -1,0 +1,90 @@
+{
+  "case_id": "sphinx-doc__sphinx-9246-ds2-provided-final",
+  "source_case_id": "sphinx-doc__sphinx-9246",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-9246",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "630e5bd15f43c6cd91e61723f40b6c94ef622060",
+  "head": "base+repair:a4c30822b788ef6d0604d778b31e0a29f255dd02d13ffe8cdeb04fa8b88d66c8",
+  "allowed_file": "sphinx/transforms/post_transforms/__init__.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-9246-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "a4c30822b788ef6d0604d778b31e0a29f255dd02d13ffe8cdeb04fa8b88d66c8",
+  "test_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-9246-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "1ca6d4b50ed9cf641465b42679d1a92f1e1a0108a01263cfbc65526456db83e2",
+  "source_record_sha256": "963d868239b50ba85c7b46f7231815f20f936ddf03094c61aa3cfdc8fa49edaa",
+  "fail_to_pass": [
+    "tests/test_transforms_post_transforms.py::test_missing_reference_conditional_pending_xref"
+  ],
+  "pass_to_pass": [
+    "tests/test_transforms_post_transforms.py::test_nitpicky_warning",
+    "tests/test_transforms_post_transforms.py::test_missing_reference"
+  ],
+  "test_targets": [
+    "tests/test_transforms_post_transforms.py"
+  ],
+  "frozen_test_files": [
+    "tests/roots/test-transforms-post_transforms-missing-reference/conf.py",
+    "tests/test_transforms_post_transforms.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "docutils==0.17.1",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-7961-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ],
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "sphinx-doc__sphinx-8951-ds2-wave2",
+  "recipe_template_case_sha256": "c158bd43ef2029c3e61b600fdd5caad74db35d168b1eb54891a9fd189d92a328",
+  "recipe_template_passing_run": "reproduce-20261123T065652500956Z",
+  "supersedes_unexecuted_case_id": "sphinx-doc__sphinx-9246-ds2-provided-rest",
+  "superseded_preparation_case_sha256": "da33ac3f24afbdcede98e13d4f3eaf3d4717fb48c7f523cc1af79869f8f06dc0",
+  "source_parser_basis": "Pinned SWE726c5461 source test-ID parser; whitespace groups for declared pytest repos, existing options parser for pydicom, original matching retained for other repos. Every observed member must match expected status. Source IDs/tests remain unchanged."
+}

@@ -1,0 +1,95 @@
+{
+  "case_id": "sphinx-doc__sphinx-8481-ds2-provided-final",
+  "source_case_id": "sphinx-doc__sphinx-8481",
+  "source_kind": "swebench",
+  "dataset": "princeton-nlp/SWE-bench",
+  "dataset_revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "revision": "e48e2bd1e9fecd5bbd641e9414ac59da9f2e69f6",
+  "table": "test",
+  "record_id": "sphinx-doc__sphinx-8481",
+  "repo_url": "https://github.com/sphinx-doc/sphinx",
+  "base": "a82b06f2abb1226d82b18e3f85bdf19be7b9eb3f",
+  "head": "base+repair:ec765854337cbc2b7551eeb82c449ca208a3f15e55d5ba6915fe8f3131acba4a",
+  "allowed_file": "sphinx/ext/autodoc/__init__.py",
+  "license": "BSD-2-Clause",
+  "verify_pinned_license": true,
+  "split": "development",
+  "experiment_role": "train",
+  "runner_kind": "python-source-v2",
+  "repair_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-8481-ds2-provided-rest/repair.patch",
+  "repair_patch_sha256": "ec765854337cbc2b7551eeb82c449ca208a3f15e55d5ba6915fe8f3131acba4a",
+  "test_patch": ".cache/dataset-v2-source/cases/sphinx-doc__sphinx-8481-ds2-provided-rest/test.patch",
+  "test_patch_sha256": "c670b8aa35d4eaedd87e5b2ba7e58a37ba3545ff3bd365a49862e817a7303c2c",
+  "source_record_sha256": "58235072f7cc16a658233125924568fd22985ab37705b0452283bd893aa10a66",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_slots_variable_dict"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute",
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_novalue",
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_typed_variable",
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_instance_variable",
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_slots_variable_list",
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_slots_variable_str",
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_NewType",
+    "tests/test_ext_autodoc_autoattribute.py::test_autoattribute_TypeVar"
+  ],
+  "test_targets": [
+    "tests/test_ext_autodoc_autoattribute.py"
+  ],
+  "frozen_test_files": [
+    "tests/test_ext_autodoc_autoattribute.py"
+  ],
+  "source_id_matching": "exact_or_unique_truncated_param",
+  "generation_protocol": "single-line-site-v3",
+  "focus_line": 1,
+  "build_timeout": 1200,
+  "test_timeout": 300,
+  "historical_hypothesis": "Reconstruct supplied SWE reference tests on pinned base and original repaired source: every declared FAIL_TO_PASS must fail/pass respectively and PASS_TO_PASS remain passing. No causal class or historical CI claim before actual execution/review.",
+  "dependencies": [
+    "docutils==0.16",
+    "Jinja2==3.0.3",
+    "Pygments==2.15.1",
+    "babel==2.12.1",
+    "alabaster==0.7.13",
+    "snowballstemmer==2.2.0",
+    "imagesize==1.4.1",
+    "packaging==23.2",
+    "requests==2.31.0",
+    "sphinxcontrib-applehelp==1.0.4",
+    "sphinxcontrib-devhelp==1.0.2",
+    "sphinxcontrib-jsmath==1.0.1",
+    "sphinxcontrib-htmlhelp==2.0.1",
+    "sphinxcontrib-serializinghtml==1.1.5",
+    "sphinxcontrib-qthelp==1.0.3",
+    "importlib-metadata==6.8.0",
+    "html5lib==1.1",
+    "filelock==3.12.4"
+  ],
+  "python_paths": [
+    ".",
+    "src"
+  ],
+  "pytest_plugins": [
+    "sphinx.testing.fixtures"
+  ],
+  "install_project": false,
+  "python_image": "python:3.9-slim-bookworm",
+  "resources": {
+    "memory_mb": 2048,
+    "cpus": 1
+  },
+  "environment_parent_case_id": "sphinx-doc__sphinx-8435-ds1-env2",
+  "environment_revision": "dataset-v1-evidence-calibrated",
+  "system_tools": [
+    "git"
+  ],
+  "dataset_protocol": "dataset-v2",
+  "recipe_basis": "Same repository and source-version environment from a saved passing fixed run; source/test bytes come from this new immutable source record. No success assumed or original source refs replaced.",
+  "recipe_template_case_id": "sphinx-doc__sphinx-8552-ds2-wave2",
+  "recipe_template_case_sha256": "31ddef004cc11a68a6d354b5a578edbf45258b625d753f2d60c0c459a67f0e34",
+  "recipe_template_passing_run": "reproduce-20261123T221706178766Z",
+  "supersedes_unexecuted_case_id": "sphinx-doc__sphinx-8481-ds2-provided-rest",
+  "superseded_preparation_case_sha256": "64db99b8f1eda253e93472e42446c16cff8002ee19338ebe8e9a4eab8bfb9e5f",
+  "source_parser_basis": "Pinned SWE726c5461 source test-ID parser; whitespace groups for declared pytest repos, existing options parser for pydicom, original matching retained for other repos. Every observed member must match expected status. Source IDs/tests remain unchanged."
+}

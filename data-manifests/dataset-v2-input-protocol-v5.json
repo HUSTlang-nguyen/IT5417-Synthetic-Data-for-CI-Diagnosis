@@ -1,0 +1,50 @@
+{
+  "protocol": "dataset-v2-input-v5",
+  "frozen_at": "2026-11-24T12:33:07+07:00",
+  "retrieval": "ci_demo.retrieval_v5.retrieve_configuration",
+  "parent_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "parameters": {
+    "max_functions": 5,
+    "max_chars": 6000,
+    "context": 2048,
+    "output_budget": 384
+  },
+  "source_sha256": {
+    "ci_demo/retrieval_v5.py": "0bc0450a45b869aaeee6fe7525c0a44b07aa3dfb7126764e3f93040fa3726f40",
+    "ci_demo/input_protocol_v5.py": "8fb79eeaa09221d2832fd982e01a45822a8591a02cb30fcb98947560c3eb0923",
+    "ci_demo/dataset.py": "d371e22a8ef72ca247026f851035816f711367a1167354576f9eac928c627014"
+  },
+  "tokenizer_sha256": {
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "959e7f1d9a1b7641a6d6ce05ca97b75c7894fcb66cbe5a040406458fb1128ee4"
+  },
+  "calibration": {
+    "train_receipt": "docs/evidence/dataset-v2-config-input-v5-train-calibration52.json",
+    "train_receipt_sha256": "96a42bbe24bae91a452058db5366a7145c9377d508c76a5a126c56ee68e1284e",
+    "records": 52,
+    "unchanged_prior_train_prompts": 51,
+    "coverage_after_crop": {
+      "v4": 17,
+      "v5": 18
+    },
+    "qualification": "Input presence only, not diagnosis accuracy. No model requests; labels used after retrieval for measurement, not ranking."
+  },
+  "input_boundary": [
+    "execution_log",
+    "code"
+  ],
+  "reference_separate": [
+    "repair_patch",
+    "cause_type",
+    "locations",
+    "explanation",
+    "assessment"
+  ],
+  "decision": "Only the declared owned backend-resolution log signal selects root pyproject.toml as module-scope data. No TOML/backend execution in retrieval; same source/log bounds. Other logs preserve v4 snippets/prepared prompts. Missing/oversized/symlinked declared config fails closed, never reconstructed from repair/reference.",
+  "heldout_policy": "Earlier v3/v4 heldout causal reviews already exist, including compilation-only cases. This change was selected/calibrated using the original51TRAIN inputs plus one TRAIN backend case and owned fixtures only. No claim that all old heldout is unseen. Freeze before migration/equivalence checks and any future config heldout evidence review.",
+  "model_inference_requests": 0,
+  "qualification": "Configuration smoke is import/hook-presence evidence, not full build or functional seed. Generator/config/old raw/reference/user/gold status unchanged. Old78V4exports remain immutable; use separate output root."
+}
