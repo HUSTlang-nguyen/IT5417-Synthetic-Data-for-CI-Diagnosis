@@ -1,0 +1,224 @@
+{
+  "reviewed_at": "2026-11-24T07:04:35+07:00",
+  "input_protocol": {
+    "path": "data-manifests/dataset-v2-input-protocol-v4.json",
+    "sha256": "8700c9316e2f67f0011bd4bb71b49686c25a629f79ace182f30ee465dfd59b97"
+  },
+  "records": [
+    {
+      "sample_id": "sphinx-doc__sphinx-9711",
+      "run_id": "reproduce-20261123T205112700937Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T205112700937Z",
+        "evidence_hashes": {
+          "manifest.json": "fe92d9930907a8ec62620d643f6242332d1d00a731de633d7d87872765a9f91d",
+          "license-evidence.json": "9432ed5f29c6121da7c4d995ea065d5ecd43be061591aadfb563a92444f0a40a",
+          "historical-base.stdout.txt": "5f000e05dd61aad85f35f9daca5c1a740c936ff97df8f9a16407d8e0bc97e994",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "808d3f2209fd272cb85264772020e43bc1830cdab0789faec2bb0fca4a2ad289",
+          "historical-fixed.stdout.txt": "4936bcff9489bda8efdc35137d0562d3086c9876c2a8ca2d296d29ec9381f2d4",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "c7d4bfd361d976517a98a6a0e97494801eaa93493983b2c19cf13f720caea513"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sphinx/extension.py",
+            "function": "verify_needs_extensions"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Minimum extension versions are compared lexicographically as strings. Required3.9 sorts above installed3.10, so a sufficient installed version is rejected.",
+        "evidence_reason": "Saved test_needs_extensions raises VersionRequirementError for required3.9/installed3.10. Fixed same test passes using parsed Version comparisons, including the insufficient3.11 control.",
+        "limitations": "Not a missing or outdated installed dependency: observed version satisfies the requested numeric ordering. Nonstandard-version fallback is present in repair but not separately measured by this one saved test.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only. Repair/test patch, issue and review labels remain outside input; natural comments and traceback locations are not automatic leakage."
+      },
+      "assessment_sha256": "c42b7e1e965bde7fb53977fbf7980a3b40354613f81763a237bcb77855f4da39",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sphinx-doc__sphinx-9711",
+      "manifest_sha256": "decc124370f6f3a5dbbea0c6a9fd3d0646811ce9d08e2aeb92f22ecea1212cf4"
+    },
+    {
+      "sample_id": "sympy__sympy-21259",
+      "run_id": "reproduce-20261123T205311625541Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T205311625541Z",
+        "evidence_hashes": {
+          "manifest.json": "3510aaa13577d330b89143233d1206597216ab087e9f578a86776dba7062a437",
+          "license-evidence.json": "231e177bba7310658b6270bc15b47568c9c05dc9c6863541ec826950f4444e7f",
+          "historical-base.stdout.txt": "8852c7c36904ee5caabae1f90c98255e4d7577764f467cfb0ee4899af9bcc13a",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "4eb1774693b9cd9fca489f5ac7f9de82ff8372e0089e6c1d09a5199dbef2adfb",
+          "historical-fixed.stdout.txt": "0b9fc2b56f081a514108c49a7ecfeee4a95436af3c6fe271517b7ffc14df8116",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "0694ff3af46cda1686ecfce2e3f761e16618846ade66e13f9659ccf504bd9f62"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "medium",
+        "locations": [
+          {
+            "file": "sympy/sets/fancysets.py",
+            "function": "Range.as_relational"
+          },
+          {
+            "file": "sympy/sets/fancysets.py",
+            "function": "Range.size"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Range.as_relational constrains bounds and integrality but omits the step/start congruence, so a step2 symbolic range admits integers of the wrong parity. Range.size also rejects symbolic stop/step before simplifying their quotient to a concrete count.",
+        "evidence_reason": "Saved test_Range_symbolic exposes the missing Mod(x,2)=Mod(i,2) constraint; test_inf_Range_len raises ValueError for Range(0,4*i,i) where the repaired size is4. Two other saved failures compare expression forms. All71tests pass fixed.",
+        "limitations": "This repair touches two related methods. Step1 floor-versus-Mod assertions alone do not prove a semantic defect; the stride2 symbolic case and concrete simplified cardinality support the diagnosis. Silver medium due combined scope and symbolic-domain assumptions; no new solver execution.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only. Repair/test patch, issue and review labels remain outside input; natural comments and traceback locations are not automatic leakage."
+      },
+      "assessment_sha256": "e164e91fc1952e5a2a8317384149b8120cddf1de13bf430d953680c8f9e0a8b7",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sympy__sympy-21259",
+      "manifest_sha256": "cb74690d88bb9699f637b3b4751d515a3ccf6e1e43af6283c78e9a80ad7a584e"
+    },
+    {
+      "sample_id": "pytest-dev__pytest-11178",
+      "run_id": "reproduce-20261123T205918957668Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T205918957668Z",
+        "evidence_hashes": {
+          "manifest.json": "e92cd08a54f666b07cc39d1cfa02b0fde7d48e3ed1d29d731a46b45bd59bf2dd",
+          "license-evidence.json": "0461de6c1deab23ff0012dbaa00505feb1d50e6e2be7ad7981234d71b38e4fb2",
+          "historical-base.stdout.txt": "6f3e82d13bc4e80f3d0bf0fc83d3329f510554725265bd7c5ed80dd505080eab",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "7e59e5459ae3959c01f835d6dec45963fd852dbee5081e00f10fc1b7d9bc3424",
+          "historical-fixed.stdout.txt": "2d367eb716ba724cccde16b5267e8830cd77acb56a7ef624a5ee21fc132bf1bd",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "4bec558daa58ab9a35a8d6fabc601ea5caf5aa7976d5a3b59ef52561fccea40e"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "API/type",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "src/_pytest/python_api.py",
+            "function": "ApproxMapping._repr_compare"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Approximate-mapping mismatch formatting subtracts expected and observed values to compute maximum differences without excluding None. A None/float mismatch triggers a secondary TypeError instead of the intended mismatch details.",
+        "evidence_reason": "Saved test_error_messages_native_dtypes captures representation failure at python_api.py269 for NoneType-minus-float, with2lines rather than the expected6. Fixed guard skips numeric difference calculations for None while retaining mismatched IDs; same suite passes.",
+        "limitations": "The outer failure is an assertion on the generated message; the causal error is incompatible operands in production formatting. The original comparison is expected to fail, and the repair restores its explanation.16unrelated skips retained, not extra successes.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only. Repair/test patch, issue and review labels remain outside input; natural comments and traceback locations are not automatic leakage."
+      },
+      "assessment_sha256": "a387d2db5063101d70c038c55284c52e980b9e4794ab7f0b7dfd120df5783ac1",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/pytest-dev__pytest-11178",
+      "manifest_sha256": "0ebdc9c2d376077307359000790b78fdc428a3fa8fb1d3a593f7bc81f9cf084d"
+    },
+    {
+      "sample_id": "sphinx-doc__sphinx-8435",
+      "run_id": "reproduce-20261123T210036012049Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T210036012049Z",
+        "evidence_hashes": {
+          "manifest.json": "203dbd04a6c31c811f5257da2b6cbbae963c24336a1017931c8ce332b8adee59",
+          "license-evidence.json": "f20239cbe9cb673d6b4591d05ee9959c631f365a6dcc5d322564395328b4f10e",
+          "historical-base.stdout.txt": "75e0943949e2762d2db1b3f9e8a327998954cec10e376f7637b14bd87357425c",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "de8143b6c310701f68a07169691c68b0d147734c4c6d5b985697e241a90b8ea8",
+          "historical-fixed.stdout.txt": "e438991284222a3811fc52b9ba805e0f118ef2bcbae9e76b1d18b958464c726f",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "a2ec392997caf38cdf40354120f13c88511619bbfbf1c5f62bbacd3cfd9ca027"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sphinx/ext/autodoc/__init__.py",
+            "function": "DataDocumenter.add_directive_header"
+          },
+          {
+            "file": "sphinx/ext/autodoc/__init__.py",
+            "function": "AttributeDocumenter.add_directive_header"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Variable and attribute annotation rendering calls get_type_hints without the configured autodoc_type_aliases namespace. The alias is evaluated to int rather than preserved as myint, unlike the configured function path.",
+        "evidence_reason": "Saved test_autodoc_type_aliases reports :type:int versus :type:myint after setting the alias map. Repair passes that map to both data and attribute header methods; all17saved tests pass fixed.",
+        "limitations": "Ignored configuration propagation is the code defect, not an invalid runtime configuration or absent dependency. First observed diff is the attribute; the same test expected output also includes the module variable. No separate build outside the saved tests.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only. Repair/test patch, issue and review labels remain outside input; natural comments and traceback locations are not automatic leakage."
+      },
+      "assessment_sha256": "b82857dd0c1ce6e3977ff1c156ac3e2ede1c415fda46870afa959b74524303d5",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sphinx-doc__sphinx-8435",
+      "manifest_sha256": "d36815464172c144822d46365f51ec82910554b34e1b7e68eafabee7a4ca2e48"
+    },
+    {
+      "sample_id": "sympy__sympy-15225",
+      "run_id": "reproduce-20261123T210206301730Z",
+      "role": "train",
+      "assessment": {
+        "run_id": "reproduce-20261123T210206301730Z",
+        "evidence_hashes": {
+          "manifest.json": "c1b473230227c257ff9f0e40da4a5d6da6a0af254d867a667c2a437b78ace1a0",
+          "license-evidence.json": "9bd8bac30047332f7664aec254cd29da02960590e2d3eb332b4c6cf6e19ce70b",
+          "historical-base.stdout.txt": "a42feeda4870a94fe4822c99d9bb94dd70c8c9e2aeb36936577b9ce45e3f8883",
+          "historical-base.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-base.junit.xml": "66dcc32984d33d834da5f16342861747a068f5e0b556fc24334c8e54f8023273",
+          "historical-fixed.stdout.txt": "4646f4e32d2af20eb1230b5af3f88118816de50a4bdda9b37f0b3263ae129732",
+          "historical-fixed.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "historical-fixed.junit.xml": "c9552e6339fec6dfef73adfa5cb8c36d5b62bb414cff207e5ee0513c0847c394"
+        },
+        "quality": "silver",
+        "disposition": "include",
+        "cause_type": "logic/value",
+        "confidence": "high",
+        "locations": [
+          {
+            "file": "sympy/logic/boolalg.py",
+            "function": "_finger"
+          }
+        ],
+        "missing_definitions": [],
+        "mechanism": "Boolean-variable fingerprints add argument-count weight for negated occurrences as well as positive ones. Distinct positive/negative structures can receive the same fingerprint, allowing bool_map to return a false symbol mapping for XOR and XNOR.",
+        "evidence_reason": "Saved test_bool_map receives a nonempty expression/mapping tuple for Xor(x,y) versus its negation where False is required. Repair stops adding that weight for negated terms, adjusts nesting validation and preserves the no-match sentinel; all48tests pass fixed.",
+        "limitations": "Primary cause is fingerprint construction; bool_map is the downstream consumer. The combined repair also changes the failure return path, so the saved test alone does not isolate each edit. Causal high confidence follows issue, old _finger code and exact failing counterexample; no new truth-table execution.",
+        "label_source": "agent_code_patch_issue_and_saved_execution_review",
+        "actor": "unknown",
+        "human_confirmation": "pending",
+        "gold": "pending",
+        "training_eligibility": "pending",
+        "input_leakage_review": "Frozen v4 source/log only. Repair/test patch, issue and review labels remain outside input; natural comments and traceback locations are not automatic leakage."
+      },
+      "assessment_sha256": "fc2e8defd8ef9bc335fadc79da22a7a94d687e22c4b415ae1f0483975a9340ae",
+      "export_directory": ".cache/dataset-v2/records-retrieval-v4/sympy__sympy-15225",
+      "manifest_sha256": "28c064907615a41e146751755913059cf670a4cc7b5fc5a8982c089d221493ca"
+    }
+  ],
+  "new_silver_exports": 5,
+  "qualification": "Saved issue, base source, repair/test diff and JUnit reviewed; full raw inventories, patch/log hashes and F2P/P2P checked by real_evidence. No source/model/Docker execution. Silver proposals only, all human/gold/training pending; final selection separate."
+}

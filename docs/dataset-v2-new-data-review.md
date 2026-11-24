@@ -198,3 +198,18 @@ Chưa có log thực thi cho bốn case này, chưa gán nhãn silver hoặc v�
 | xarray4966, test | Bốn test yêu cầu giải mã unsigned thành signed với _Unsigned=false thất bại ở base, fixed pass. Issue mô tả quy ước trước đó chưa được hỗ trợ. | Quarantine ranh giới bug/feature; chưa gán taxonomy hoặc export |
 
 Repair/issue/assessment nằm riêng khỏi input v4, không có nhãn generator cho các lỗi nguồn này. Kiến nghị giữ bốn prototype để tuyển chọn tiếp; người dùng chưa xác nhận nhãn, gold và training eligibility vẫn pending. Tổng51prototype (syntax5/API-type12/logic-value34/dependency0), finalselected0. Đếm đầy đủ theo run ID sửa backlog trước rà từ44thành45, còn40sau năm case này.
+
+
+## Lô đã hoàn tất: năm case tiếp theo
+
+[Receipt đầy đủ](evidence/dataset-v2-completed-wave-next5-review.json); cùng test patch trên base/fixed, inventory và log/reference hash đã kiểm tra. Đây là năm đề xuất silver, không phải gold hoặc duyệt training.
+
+| Case train | Code → hành vi → log | Nhãn/vị trí đề xuất và giới hạn |
+|---|---|---|
+| Sphinx9711 | So sánh chuỗi3.9>3.10 làm từ chối phiên bản đủ mới; saved test báo VersionRequirementError, fixed pass | logic/value / verify_needs_extensions; không phải dependency chưa cài |
+| Sympy21259 | Range.as_relational thiếu ràng buộc modulo bước nhảy; Range.size loại biểu thức symbolic trước rút gọn | logic/value / Range.as_relational, Range.size; mức vừa, repair hai cơ chế. So sánh biểu thức step1 đơn thuần chưa chứng minh lỗi ngữ nghĩa; step2 và cardinality hỗ trợ kết luận |
+| Pytest11178 | _repr_compare trừ None và float khi tạo chi tiết assertion; outer test nhận2dòng thay6, traceback có TypeError tại269 | API/type / ApproxMapping._repr_compare; lỗi tạo báo cáo, không phải phép so sánh ban đầu đáng ra phải pass;16skip giữ nguyên |
+| Sphinx8435 | Hai documenter không truyền autodoc_type_aliases vào get_type_hints; in int thay vì myint | logic/value / DataDocumenter.add_directive_header, AttributeDocumenter.add_directive_header; cấu hình hợp lệ bị bỏ qua |
+| Sympy15225 | _finger tính trọng số cả lần xuất hiện phủ định gây trùng fingerprint; bool_map trả mapping cho XOR/XNOR | logic/value / _finger; repair cũng sửa đường trả no-match trong bool_map, test không tách tác động từng edit |
+
+Tổng56prototype:syntax5/API-type13/logic-value38/dependency0. Còn35saved strict outcomes chưa rà; finalselected0. Repair, issue và nhận định không vào input v4; không có generator label cho các case thật này. Người dùng cần review kết luận/kiến nghị khi bàn giao, không cần tự lần lại log từ đầu.

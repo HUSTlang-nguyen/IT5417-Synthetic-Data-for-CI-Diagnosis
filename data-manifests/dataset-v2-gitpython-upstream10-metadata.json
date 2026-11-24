@@ -1,0 +1,249 @@
+{
+  "checked_at": "2026-11-24T07:05:40+07:00",
+  "worklist": "data-manifests/dataset-v2-upstream-recovery-worklist-50.json",
+  "worklist_sha256": "0c540ecc81de88f358376c61418ee46939c7a7ee533214794ced0334221f77e5",
+  "requested": 10,
+  "attempted": 10,
+  "records": [
+    {
+      "source_case_id": "gitpython-developers__GitPython-219",
+      "source_base": "891b124f5cc6bfd242b217759f362878b596f6e2",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-219/pr.json",
+          "sha256": "0c370b78c4f84fc3efdf6ecf5ce2359b9a687c56c7d51179d50b3c4d4a2d17d5"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-219/files.json",
+          "sha256": "7d33e6bd245c0bdf00545cff9b10ba31912fa56edcf3a868edd58d9e61cac533"
+        }
+      },
+      "upstream_base": "891b124f5cc6bfd242b217759f362878b596f6e2",
+      "upstream_head": "4a47a9c8d8253d0ae2a233fa8599b1a1c54ec53f",
+      "merged_at": "2014-12-19T16:43:51Z",
+      "changed_files": 2,
+      "file_paths": [
+        "git/objects/util.py",
+        "git/test/test_util.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1314",
+      "source_base": "8e226ed8865f0ad78cec6b83f0b5436ce11017bf",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1314/pr.json",
+          "sha256": "4069d924c25136fb4171cbb6fe85644987d959a83d33aab59159ea74c38d1908"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1314/files.json",
+          "sha256": "e9a1c6664d94118318b6c26945fb4a9dd523d0ef5fff2f064d0beabd2252a4b3"
+        }
+      },
+      "upstream_base": "8e226ed8865f0ad78cec6b83f0b5436ce11017bf",
+      "upstream_head": "ec04ea01dbbab9c36105dfc3e34c94bbbbf298b2",
+      "merged_at": "2021-08-06T16:42:46Z",
+      "changed_files": 2,
+      "file_paths": [
+        "git/util.py",
+        "test/test_util.py"
+      ],
+      "upstream_test_paths": [
+        "test/test_util.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-368",
+      "source_base": "0900a51f986f3ed736d9556b3296d37933018196",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-368/pr.json",
+          "sha256": "4f329545c739ea9cc9fad485597c37e46a0df96689839463d0aec9a0105ad178"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-368/files.json",
+          "sha256": "802b0e72835ed47a418003bd929863326561b1023e5abc1b812c43a52374c55d"
+        }
+      },
+      "upstream_base": "0900a51f986f3ed736d9556b3296d37933018196",
+      "upstream_head": "4a8700185dce5052ca1581b63432fb4d4839c226",
+      "merged_at": "2015-12-02T08:00:24Z",
+      "changed_files": 1,
+      "file_paths": [
+        "git/util.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-746",
+      "source_base": "0857d33852b6b2f4d7bc470b4c97502c7f978180",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-746/pr.json",
+          "sha256": "922d53ba55dc09d2b98bacbc74cb3a9df88f5b6b2683360874cc4fb6bc4d7158"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-746/files.json",
+          "sha256": "8f9c6e03d9e1869aa79d876deb81cb7121ffdf20545befb9718577129e2f2db4"
+        }
+      },
+      "upstream_base": "0857d33852b6b2f4d7bc470b4c97502c7f978180",
+      "upstream_head": "de54a8181d4ad7fb0c7459aeabb1d4afdced0846",
+      "merged_at": "2018-04-04T08:15:49Z",
+      "changed_files": 2,
+      "file_paths": [
+        "git/objects/util.py",
+        "git/test/test_util.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1240",
+      "source_base": "e76b5379cf55fcd31a2e8696fb97adf8c4df1a8d",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1240/pr.json",
+          "sha256": "031055fb377a5cb60b46783a38d8e9b3ba1aba9d27ca39fa36652681cca741fc"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1240/files.json",
+          "sha256": "6fbc1f2d742c772db3b99bba9ad61c44599d489406b985b1f1193f818efc7ab8"
+        }
+      },
+      "upstream_base": "e76b5379cf55fcd31a2e8696fb97adf8c4df1a8d",
+      "upstream_head": "cfa37825b011af682bc12047b82d8cec0121fe4e",
+      "merged_at": "2021-05-14T01:21:30Z",
+      "changed_files": 1,
+      "file_paths": [
+        "git/util.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1547",
+      "source_base": "cc92d5126b2fc80f7cc6866fc8f99b3ffb0189ae",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1547/pr.json",
+          "sha256": "c48cdb1d5574e422ff26366d694f2c52f9a83ad676f425f43b8f4508747d85af"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1547/files.json",
+          "sha256": "e1b40082cd203fd8c29d2491521f1c135b0732c7b7d6821687c60910a370316a"
+        }
+      },
+      "upstream_base": "cc92d5126b2fc80f7cc6866fc8f99b3ffb0189ae",
+      "upstream_head": "854a2d1f7fde596babe85ba9f76f282e9d53086d",
+      "merged_at": "2023-01-25T06:44:47Z",
+      "changed_files": 2,
+      "file_paths": [
+        "git/objects/util.py",
+        "test/test_util.py"
+      ],
+      "upstream_test_paths": [
+        "test/test_util.py"
+      ],
+      "decision": "candidate_requires_pinned_test_recovery_and_blob_license_proof"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-950",
+      "source_base": "dfa0eac1578bff14a8f7fa00bfc3c57aba24f877",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-950/pr.json",
+          "sha256": "a77d99eb9382c972e29645502fbe5ad81fbcf9393f56d5984160f87bfdecd84f"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-950/files.json",
+          "sha256": "418b0ada102d05e9a394cc7708bf59f97c16bc772de60bd4e935d56aa7d8db9a"
+        }
+      },
+      "upstream_base": "dfa0eac1578bff14a8f7fa00bfc3c57aba24f877",
+      "upstream_head": "91bde937f6a082f98fcfba002f7cc7c2ec5db77c",
+      "merged_at": "2019-10-28T07:43:59Z",
+      "changed_files": 1,
+      "file_paths": [
+        "git/config.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1190",
+      "source_base": "e62078d023ba436d84458d6e9d7a56f657b613ef",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1190/pr.json",
+          "sha256": "cc36e0a4713dffff8fc66a74a1157dda0ad6d2ff30fe129cba06fbf3083e8152"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1190/files.json",
+          "sha256": "3c6913e033f742044306493eff114273b2ff436efd7508090503ac7948bedb5e"
+        }
+      },
+      "upstream_base": "e62078d023ba436d84458d6e9d7a56f657b613ef",
+      "upstream_head": "963efe93cd11571f5b5b93b608c6b23e612560aa",
+      "merged_at": "2021-03-03T15:38:23Z",
+      "changed_files": 1,
+      "file_paths": [
+        "git/refs/symbolic.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1214",
+      "source_base": "651a81ded00eb993977bcdc6d65f157c751edb02",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1214/pr.json",
+          "sha256": "f7174187727cb9a9f14432a03422747fa0de1bbd734ec91aa4480092da3a9e08"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1214/files.json",
+          "sha256": "4a43096f3d0acc4adec88b59706202f785e553142a91df04e9957f458acb4251"
+        }
+      },
+      "upstream_base": "651a81ded00eb993977bcdc6d65f157c751edb02",
+      "upstream_head": "e6f7435c534d799fdee0282ac6d3adf3d8770e2c",
+      "merged_at": "2021-04-17T05:40:45Z",
+      "changed_files": 1,
+      "file_paths": [
+        "git/cmd.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    },
+    {
+      "source_case_id": "gitpython-developers__GitPython-1263",
+      "source_base": "17643e0bd1b65155412ba5dba8f995a4f0080188",
+      "artifacts": {
+        "pr": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1263/pr.json",
+          "sha256": "76c31f71a97360501d2637205d7b1c413d32fda4d0168afa33db8410bd59d9db"
+        },
+        "files": {
+          "path": ".cache/dataset-v2-gitpython-upstream10/gitpython-developers__GitPython-1263/files.json",
+          "sha256": "63713d91723d67214084b69c5d05b2f7f61b8b289f83a9339aebeffd7f000b84"
+        }
+      },
+      "upstream_base": "17643e0bd1b65155412ba5dba8f995a4f0080188",
+      "upstream_head": "4fbf0ef97d6f59d2eb0f37b29716ba0de95c4457",
+      "merged_at": "2021-06-03T01:15:39Z",
+      "changed_files": 1,
+      "file_paths": [
+        "git/remote.py"
+      ],
+      "upstream_test_paths": [],
+      "decision": "defer_no_original_upstream_test_delta"
+    }
+  ],
+  "new_eligibility_identities": 0,
+  "qualification": "First upstream API probe for the10identities already charged in prior metadata worklist. No original F2P/P2P or test patches supplied by SWEtrain; recovery still needs exact dataset-repair/head product blob proof, pinned source license, unchanged original upstream test patch and declared local references. No source execution/model calls."
+}
